@@ -71,6 +71,11 @@
 #define HSV_YELLOW       43, 255, 255
 #define HSV_OFF         HSV_BLACK
 
+
+#define HSV_MED_SLATE_BLUE 128, 128, 255
+#define HSV_RAZZLE_ROSE 255, 51, 221
+#define HSV_PLUM 128, 0, 106
+
 // clang-format on
 
 #if defined(__GNUC__)

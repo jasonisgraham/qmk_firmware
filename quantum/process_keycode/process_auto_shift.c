@@ -309,6 +309,7 @@ void autoshift_matrix_scan(void) {
     }
 }
 
+/* #include "../../keyboards/common/user_song_list.c" */
 void autoshift_toggle(void) {
     autoshift_flags.enabled = !autoshift_flags.enabled;
     autoshift_flush_shift();
