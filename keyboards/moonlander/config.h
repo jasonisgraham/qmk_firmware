@@ -46,7 +46,7 @@
 #define DIODE_DIRECTION ROW2COL
 
 /* Set 0 if debouncing isn't needed */
-#define DEBOUNCE 5
+/* #define DEBOUNCE 5 */
 
 /* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap */
 #define LOCKING_SUPPORT_ENABLE
@@ -133,7 +133,7 @@
 // #define RGB_MATRIX_LED_PROCESS_LIMIT 5
 // #define RGB_MATRIX_LED_FLUSH_LIMIT 26
 
-#define MOUSEKEY_INTERVAL           20
+/* #define MOUSEKEY_INTERVAL           20 */
 #define MOUSEKEY_DELAY              0
 #define MOUSEKEY_TIME_TO_MAX        60
 #define MOUSEKEY_MAX_SPEED          7
