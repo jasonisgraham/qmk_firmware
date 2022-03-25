@@ -1,19 +1,3 @@
-/* Copyright 2015-2021 Jack Humbert
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
 #include QMK_KEYBOARD_H
 #include "muse.h"
 
@@ -23,10 +7,10 @@ enum preonic_layers {
   _RAISE,
   _ADJUST,
   _LAYER4,
-  _LAYER5,
-  _LAYER6,
-  _LAYER7,
-  _LAYER8,
+  _SYSTEM,
+  _WINDOWS,
+  _MACROS,
+  _SHIFTLOK,
   _LAYER9,
   _LAYER10,
   _LAYER11,
@@ -37,7 +21,21 @@ enum preonic_keycodes {
   QWERTY = SAFE_RANGE,
   LOWER,
   RAISE,
-  BACKLIT
+  BACKLIT,
+  ST_MACRO_0,
+  ST_MACRO_1,
+  ST_MACRO_2,
+  ST_MACRO_3,
+  ST_MACRO_4,
+  ST_MACRO_5,
+  ST_MACRO_6,
+  ST_MACRO_7,
+  ST_MACRO_8,
+  ST_MACRO_9,
+  ST_MACRO_10,
+  ST_MACRO_11,
+  ST_MACRO_12,
+  ESC_THEN_LAYER_0,
 };
 
 enum tap_dance_codes {
@@ -101,78 +99,218 @@ enum tap_dance_codes {
                       DANCE_57,
                       DANCE_58,
                       DANCE_59,
+                      DANCE_60,
 };
 
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
+#define TD_D TD(DANCE_13)
+/* #define  */
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_BASE] = LAYOUT_preonic_grid(
-  KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    BACKLIT,
-  TD(DANCE_0),  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    TD(DANCE_10),
-  RCTL_T(KC_ESC),  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
-  KC_LSPO, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSPC,
-  KC_LCTL, KC_ESC, KC_LGUI, KC_LALT, RAISE,   KC_BSPC,  KC_SPC,  LOWER,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
+ TD(DANCE_60),  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_LEAD,
+ TD(DANCE_0),    TD(DANCE_1),    TD(DANCE_2),    TD(DANCE_3),    TD(DANCE_4),    TD(DANCE_5),    KC_Y,           TD(DANCE_6),    TD(DANCE_7),    TD(DANCE_8),    TD(DANCE_9),    TD(DANCE_10),
+ MT(MOD_RCTL, KC_ESCAPE),TD(DANCE_11),   TD(DANCE_12),   TD_D,   TD(DANCE_14),   TD(DANCE_15),   KC_H,           TD(DANCE_16),   TD(DANCE_17),   TD(DANCE_18),   TD(DANCE_19),   TD(DANCE_20),
+ KC_LSPO,        KC_Z,           KC_X,           KC_C,           KC_V,           KC_B,           TD(DANCE_21),   TD(DANCE_22),   TD(DANCE_23),   TD(DANCE_24),   TD(DANCE_25),   KC_RSPC,
+ MT(MOD_LCTL, KC_LBRACKET),TT(5), KC_LGUI, KC_LALT, RAISE,    LM(6,MOD_LGUI),      KC_SPACE,           LOWER,          KC_BSPACE,      KC_LEAD,  KC_UP, KC_RIGHT
 ),
 
-// _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
+// _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
 
 [_LOWER] = LAYOUT_preonic_grid(
-  KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_BSPC,
-  KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_DEL,
-  KC_DEL,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE,
-  _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,S(KC_NUHS),S(KC_NUBS),KC_HOME, KC_END, _______,
-  _______, _______, _______, _______, _______, _______, _______, _______, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY
+                               _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,  TD(DANCE_27),
+TD(DANCE_26),   KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_PSCREEN,     KC_HOME,        KC_PGUP,        KC_PGDOWN,      KC_END,         _______, TD(DANCE_27),
+_______, KC_F5,          KC_F6,          KC_F7,          KC_F8,          KC_SCROLLLOCK,  KC_LEFT,        KC_DOWN,        KC_UP,          KC_RIGHT,       _______, _______,
+TD(DANCE_28),   KC_F9,          KC_F10,         KC_F11,         KC_F12,         KC_APPLICATION, _______, _______, TD(DANCE_29),   TD(DANCE_30),   KC_DELETE,      TD(DANCE_31),
+_______, _______, KC_LGUI,        KC_LALT,        MO(4),         TO(8) ,        TO(4),          _______, KC_NO,          KC_NO,          _______, _______
+
 ),
 
-/* Raise
- * ,-----------------------------------------------------------------------------------.
- * |   `  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Bksp |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |   `  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Del  |
- * |------+------+------+------+------+-------------+------+------+------+------+------|
- * | Del  |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |   -  |   =  |   [  |   ]  |  \   |
- * |------+------+------+------+------+------|------+------+------+------+------+------|
- * |      |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |ISO # |ISO / | Pg Up| Pg Dn|      |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |             |      | Next | Vol- | Vol+ | Play |
- * `-----------------------------------------------------------------------------------'
- */
 [_RAISE] = LAYOUT_preonic_grid(
-  KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC,
-  KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_DEL,
-  KC_DEL,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_BSLS,
-  _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_NUHS, KC_NUBS, KC_PGUP, KC_PGDN, _______,
-  _______, _______, _______, _______, _______, _______, _______, _______, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY
+ _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+ TD(DANCE_32),   KC_NO,          ST_MACRO_0,     KC_END,         ST_MACRO_1,     KC_NO,          _______, KC_7,           KC_8,           KC_9,           KC_0,           KC_EQUAL,
+ _______, DYN_REC_START1, DYN_MACRO_PLAY1,KC_NO,          RALT(KC_ENTER), OSL(7),         KC_BSPACE,      KC_4,           KC_5,           KC_6,           KC_LBRACKET,    KC_RBRACKET,
+ _______, DYN_REC_START2, DYN_MACRO_PLAY2,DYN_REC_STOP,   KC_NO,          ST_MACRO_2,     KC_0,           KC_1,           KC_2,           KC_3,           KC_BSLASH,      _______,
+ _______, _______, KC_LGUI,        KC_LALT,        _______, _______, KC_NO,          KC_ENTER,       KC_0,           KC_DOT,         KC_NO,          _______
 ),
 
-/* Adjust (Lower + Raise)
- * ,-----------------------------------------------------------------------------------.
- * |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      | Reset| Debug|      |      |      |      |TermOf|TermOn|      |      |  Del |
- * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |      |      |Aud cy|Aud on|AudOff|AGnorm|AGswap|Qwerty|Colemk|Dvorak|      |      |
- * |------+------+------+------+------+------|------+------+------+------+------+------|
- * |      |Voice-|Voice+|Mus on|MusOff|MidiOn|MidOff|      |      |      |      |      |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |             |      |      |      |      |      |
- * `-----------------------------------------------------------------------------------'
- */
 [_ADJUST] = LAYOUT_preonic_grid(
   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,
-  _______, RESET,   DEBUG,   _______, _______, _______, _______, TERM_ON, TERM_OFF,_______, _______, KC_DEL,
-  _______, _______, MU_MOD,  AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, QWERTY,  _______, _______,  _______, _______,
-  _______, MUV_DE,  MUV_IN,  MU_ON,   MU_OFF,  MI_ON,   MI_OFF,  _______, _______, _______, _______, _______,
-  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
-)
+  _______, _______, _______, KC_MS_UP,       _______, _______, _______, _______, KC_ASRP,        KC_ASDN,        KC_ASUP,        KC_ASTG,
+  _______, _______, KC_MS_LEFT,     KC_MS_DOWN,     KC_MS_RIGHT,    _______, KC_MS_BTN1,     KC_MS_WH_DOWN,  KC_MS_WH_UP,    KC_MS_BTN2,     _______, _______,
+  KC_LSHIFT,      _______, KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_MS_BTN3,     _______, KC_BRIGHTNESS_DOWN,KC_BRIGHTNESS_UP,KC_RSHIFT,
+  _______, TG(4),          _______, _______, _______, KC_MS_BTN1,     KC_NO,          _______, _______, KC_AUDIO_VOL_DOWN,KC_AUDIO_VOL_UP,KC_AUDIO_MUTE
+),
+  [_LAYER4] = LAYOUT_preonic_grid(
+                                 _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+    TD(DANCE_33),   _______, _______, KC_MS_UP,       _______, _______, KC_HOME,        KC_PGUP,        KC_PGDOWN,      KC_END,         _______, _______,
+    _______, _______, KC_MS_LEFT,     KC_MS_DOWN,     KC_MS_RIGHT,    _______, KC_MS_BTN1,     KC_MS_WH_DOWN,  KC_MS_WH_UP,    KC_MS_BTN2,     _______, _______,
+    _______, _______, _______, _______, _______, _______, _______, KC_MS_BTN3,     TD(DANCE_34),   TD(DANCE_35),   _______, _______,
+    _______, _______, _______, _______, _______, KC_MS_BTN1,     KC_NO,          _______, _______, _______, _______, _______
+  ),
+
+[_SYSTEM] = LAYOUT_preonic_grid(
+    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+    TD(DANCE_36),   AU_TOG,         MU_MOD,         MU_TOG,         _______, RGB_SPD,        RGB_SPI,        RGB_SAD,        RGB_SAI,        _______, WEBUSB_PAIR,    RESET,
+    BL_TOGG, BL_STEP, BL_BRTG, BL_ON, BL_OFF, RGB_HUD,        RGB_HUI,        RGB_VAD,        RGB_VAI,        _______, KC_MEDIA_STOP,  _______,
+    _______, _______, _______, _______, BL_INC, BL_DEC,      _______, RGB_MOD,        _______,KC_MEDIA_PREV_TRACK,KC_MEDIA_PLAY_PAUSE,KC_MEDIA_NEXT_TRACK,
+    _______, _______, _______, _______, _______, _______, KC_NO,          KC_BRIGHTNESS_DOWN,KC_BRIGHTNESS_UP,KC_AUDIO_VOL_DOWN,KC_AUDIO_VOL_UP,KC_AUDIO_MUTE
+  ),
+
+  [_WINDOWS] = LAYOUT_preonic_grid(
+    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+    _______, TD(DANCE_37),   TD(DANCE_38),   LGUI(KC_E),     TD(DANCE_39),   LGUI(KC_T),     TD(DANCE_40),   LGUI(KC_7),     LGUI(KC_8),     LGUI(KC_9),     LGUI(KC_0),     LGUI(KC_MINUS),
+    RGUI(KC_ESCAPE),LGUI(KC_A),     LGUI(KC_S),     LALT(LGUI(LCTL(KC_D))),LGUI(KC_F),     TD(DANCE_41),   LGUI(KC_H),     TD(DANCE_42),   TD(DANCE_43),   TD(DANCE_44),   LGUI(LSFT(KC_TAB)),LGUI(KC_TAB),
+    _______, LGUI(KC_Z),     LGUI(KC_X),     LGUI(KC_C),     RGUI(KC_V),     _______, TD(DANCE_45),   LGUI(KC_M),     TD(DANCE_46),   _______, KC_GRAVE,       RGUI(RSFT(KC_J)),
+    _______, _______, _______, MO(12),         TT(9),          LGUI(KC_SPACE), LGUI(KC_SPACE),          TD(DANCE_47),   TD(DANCE_48),   TD(DANCE_49),   _______, TD(DANCE_50)
+  ),
+
+  [_MACROS] = LAYOUT_preonic_grid(
+                                 _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+    TD(DANCE_51),   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+    _______, _______, _______, ST_MACRO_3,     ST_MACRO_4,     _______, _______, _______, _______, ST_MACRO_5,     _______, _______,
+    _______, _______, _______, ST_MACRO_6,     _______, _______, _______, ST_MACRO_7,     _______, _______, _______, _______,
+    _______, _______, _______, _______, _______, _______, KC_NO,          _______, _______, _______, _______, _______
+  ),
+
+  [_SHIFTLOK] = LAYOUT_preonic_grid(
+    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+    TD(DANCE_52),   RSFT(KC_Q),     RSFT(KC_W),     RSFT(KC_E),     RSFT(KC_R),     RSFT(KC_T),     RSFT(KC_Y),     RSFT(KC_U),     RSFT(KC_I),     RSFT(KC_O),     RSFT(KC_P),     TD(DANCE_53),
+    ESC_THEN_LAYER_0, RSFT(KC_A),     RSFT(KC_S),     RSFT(KC_D),     RSFT(KC_F),     RSFT(KC_G),     RSFT(KC_H),     RSFT(KC_J),     RSFT(KC_K),     RSFT(KC_L),     TD(DANCE_54),   TD(DANCE_55),
+    TO(0),          RSFT(KC_Z),     RSFT(KC_X),     RSFT(KC_C),     RSFT(KC_V),     RSFT(KC_B),     RSFT(KC_N),     RSFT(KC_M),     KC_LABK,        KC_RABK,        KC_QUES,        TO(0),
+    _______, _______, _______, _______, _______,  TO(0),   _______,       _______, _______, _______, _______, _______
+  ),
+
+  [_LAYER9] = LAYOUT_preonic_grid(
+                                 _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+    TD(DANCE_56),   _______, _______, _______, _______, _______, RGUI(RSFT(KC_Y)),_______, _______, RGUI(RSFT(KC_O)),_______, _______,
+    _______, _______, _______, LALT(LGUI(LCTL(KC_D))),_______, _______, TD(DANCE_57),   RGUI(RSFT(KC_J)),TD(DANCE_58),   TD(DANCE_59),   _______, _______,
+    _______, _______, _______, _______, _______, _______, RGUI(RSFT(KC_N)),_______, _______, RGUI(RSFT(KC_DOT)),_______, _______,
+    _______, _______, _______, _______, TO(0),          _______, KC_NO,          _______, _______, _______, _______, _______
+  ),
+
+  [_LAYER10] = LAYOUT_preonic_grid(
+                                  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+    _______, _______, _______, _______, _______, _______, KC_NO,          _______, _______, _______, _______, _______
+  ),
+
+  [_LAYER11] = LAYOUT_preonic_grid(
+                                  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+    _______, _______, _______, _______, _______, _______, KC_NO,          _______, _______, _______, _______, _______
+  ),
+
+  [_LAYER12] = LAYOUT_preonic_grid(
+                                  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+    _______, _______, ST_MACRO_8,     _______, ST_MACRO_9,     _______, _______, LCTL(KC_7),     _______, _______, _______, _______,
+    _______, _______, _______, _______, RALT(KC_ENTER), _______, RALT(RSFT(KC_H)),RALT(RSFT(KC_J)),RALT(RSFT(KC_K)),RALT(RSFT(KC_L)),RCTL(KC_SCOLON),RCTL(KC_QUOTE),
+    _______, _______, _______, ST_MACRO_10,    _______, _______, _______, ST_MACRO_11,    _______, _______, ST_MACRO_12,    _______,
+    _______, _______, _______, _______, _______, _______, KC_NO,          RALT(KC_ENTER), _______, _______, _______, _______
+  ),
+
+
 
 
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
+        case ST_MACRO_0:
+    if (record->event.pressed) {
+      SEND_STRING(SS_RCTL(SS_TAP(X_W)) SS_DELAY(10) SS_RCTL(SS_TAP(X_W)));
+
+    }
+    break;
+    case ST_MACRO_1:
+    if (record->event.pressed) {
+      SEND_STRING(SS_RCTL(SS_TAP(X_C)) SS_DELAY(10) SS_TAP(X_R));
+
+    }
+    break;
+    case ST_MACRO_2:
+    if (record->event.pressed) {
+      SEND_STRING(SS_RALT(SS_RSFT(SS_TAP(X_L))) SS_DELAY(10) SS_TAP(X_ENTER));
+
+    }
+    break;
+    case ST_MACRO_3:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_D) SS_DELAY(10) SS_TAP(X_O) SS_DELAY(10) SS_TAP(X_C) SS_DELAY(10) SS_RALT(SS_TAP(X_SLASH)));
+
+    }
+    break;
+    case ST_MACRO_4:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_T) SS_DELAY(10) SS_TAP(X_F) SS_DELAY(10) SS_RALT(SS_TAP(X_SLASH)));
+
+    }
+    break;
+  case ST_MACRO_5:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_ESC) SS_DELAY(10) SS_TAP(X_I) SS_DELAY(10) SS_TAP(X_T) SS_DELAY(10) SS_TAP(X_L) SS_DELAY(10) SS_RALT(SS_TAP(X_SLASH)));
+
+    }
+    break;
+    case ST_MACRO_6:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_C) SS_DELAY(10) SS_RALT(SS_TAP(X_SLASH)));
+
+    }
+    break;
+    case ST_MACRO_7:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_M) SS_DELAY(10) SS_TAP(X_A) SS_DELAY(10) SS_TAP(X_P) SS_DELAY(10) SS_TAP(X_A) SS_DELAY(10) SS_RALT(SS_TAP(X_SLASH)));
+
+    }
+    break;
+    case ST_MACRO_8:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_ESCAPE) SS_DELAY(10) SS_RCTL(SS_TAP(X_W)) SS_DELAY(10) SS_RCTL(SS_TAP(X_W)));
+
+    }
+    break;
+    case ST_MACRO_9:
+    if (record->event.pressed) {
+      SEND_STRING(SS_RCTL(SS_TAP(X_C)) SS_DELAY(10) SS_TAP(X_R)  SS_DELAY(10) SS_TAP(X_ENTER));
+
+    }
+    break;
+    case ST_MACRO_10:
+    if (record->event.pressed) {
+      SEND_STRING(SS_RALT(SS_TAP(X_M)) SS_DELAY(10) SS_TAP(X_W) SS_DELAY(10) SS_TAP(X_C)  SS_DELAY(10) SS_TAP(X_ENTER));
+
+    }
+    break;
+    case ST_MACRO_11:
+    if (record->event.pressed) {
+      SEND_STRING(SS_RALT(SS_TAP(X_M)) SS_DELAY(10) SS_TAP(X_W) SS_DELAY(10) SS_RSFT(SS_TAP(X_M)));
+
+    }
+    break;
+    case ST_MACRO_12:
+    if (record->event.pressed) {
+      SEND_STRING(SS_LALT(SS_TAP(X_M)) SS_DELAY(10) SS_TAP(X_W) SS_DELAY(10) SS_TAP(X_C));
+
+    }
+    break;
+
+  case ESC_THEN_LAYER_0:
+    if (record->event.pressed) {
+      /* move_layer(0); */
+      /* SONG(ALL_STAR); */
+      /* SEND_STRING("buttman ttt"); */
+
+         SEND_STRING(SS_TAP(X_ESCAPE));
+    }
+    break;
+
         case QWERTY:
           if (record->event.pressed) {
             set_single_persistent_default_layer(_BASE);
@@ -276,26 +414,26 @@ bool dip_switch_update_user(uint8_t index, bool active) {
 }
 
 
-void matrix_scan_user(void) {
-#ifdef AUDIO_ENABLE
-    if (muse_mode) {
-        if (muse_counter == 0) {
-            uint8_t muse_note = muse_offset + SCALE[muse_clock_pulse()];
-            if (muse_note != last_muse_note) {
-                stop_note(compute_freq_for_midi_note(last_muse_note));
-                play_note(compute_freq_for_midi_note(muse_note), 0xF);
-                last_muse_note = muse_note;
-            }
-        }
-        muse_counter = (muse_counter + 1) % muse_tempo;
-    } else {
-        if (muse_counter) {
-            stop_all_notes();
-            muse_counter = 0;
-        }
-    }
-#endif
-}
+/* void matrix_scan_user(void) { */
+/* #ifdef AUDIO_ENABLE */
+/*     if (muse_mode) { */
+/*         if (muse_counter == 0) { */
+/*             uint8_t muse_note = muse_offset + SCALE[muse_clock_pulse()]; */
+/*             if (muse_note != last_muse_note) { */
+/*                 stop_note(compute_freq_for_midi_note(last_muse_note)); */
+/*                 play_note(compute_freq_for_midi_note(muse_note), 0xF); */
+/*                 last_muse_note = muse_note; */
+/*             } */
+/*         } */
+/*         muse_counter = (muse_counter + 1) % muse_tempo; */
+/*     } else { */
+/*         if (muse_counter) { */
+/*             stop_all_notes(); */
+/*             muse_counter = 0; */
+/*         } */
+/*     } */
+/* #endif */
+/* } */
 
 uint32_t layer_state_set_user(uint32_t state) {
   return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
@@ -315,7 +453,7 @@ enum {
       MORE_TAPS
 };
 
-static tap dance_state[60];
+static tap dance_state[61];
 
 uint8_t dance_step(qk_tap_dance_state_t *state);
 
@@ -2458,6 +2596,42 @@ void dance_59_reset(qk_tap_dance_state_t *state, void *user_data) {
     dance_state[59].step = 0;
 }
 
+void on_dance_60(qk_tap_dance_state_t *state, void *user_data);
+void dance_60_finished(qk_tap_dance_state_t *state, void *user_data);
+void dance_60_reset(qk_tap_dance_state_t *state, void *user_data);
+
+void on_dance_60(qk_tap_dance_state_t *state, void *user_data) {
+    if(state->count == 3) {
+        tap_code16(KC_GRAVE);
+        tap_code16(KC_GRAVE);
+        tap_code16(KC_GRAVE);
+    }
+    if(state->count > 3) {
+        tap_code16(KC_GRAVE);
+    }
+}
+
+void dance_60_finished(qk_tap_dance_state_t *state, void *user_data) {
+    dance_state[60].step = dance_step(state);
+    switch (dance_state[60].step) {
+        case SINGLE_TAP: register_code16(KC_GRAVE); break;
+        case SINGLE_HOLD: register_code16(KC_TILD); break;
+        case DOUBLE_TAP: register_code16(KC_GRAVE); register_code16(KC_GRAVE); break;
+        case DOUBLE_SINGLE_TAP: tap_code16(KC_GRAVE); register_code16(KC_GRAVE);
+    }
+}
+
+void dance_60_reset(qk_tap_dance_state_t *state, void *user_data) {
+    wait_ms(10);
+    switch (dance_state[60].step) {
+        case SINGLE_TAP: unregister_code16(KC_GRAVE); break;
+        case SINGLE_HOLD: unregister_code16(KC_TILD); break;
+        case DOUBLE_TAP: unregister_code16(KC_GRAVE); break;
+        case DOUBLE_SINGLE_TAP: unregister_code16(KC_GRAVE); break;
+    }
+    dance_state[60].step = 0;
+}
+
 qk_tap_dance_action_t tap_dance_actions[] = {
         [DANCE_0] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_0, dance_0_finished, dance_0_reset),
         [DANCE_1] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_1, dance_1_finished, dance_1_reset),
@@ -2519,4 +2693,76 @@ qk_tap_dance_action_t tap_dance_actions[] = {
         [DANCE_57] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_57, dance_57_finished, dance_57_reset),
         [DANCE_58] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_58, dance_58_finished, dance_58_reset),
         [DANCE_59] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_59, dance_59_finished, dance_59_reset),
+        [DANCE_60] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_60, dance_60_finished, dance_60_reset),
 };
+
+LEADER_EXTERNS();
+
+void matrix_scan_user(void) {
+  LEADER_DICTIONARY() {
+    leading = false;
+    leader_end();
+
+    SEQ_ONE_KEY(KC_C) {
+      // Anything you can do in a macro.
+      SEND_STRING("QMK is awesome.");
+    }
+    SEQ_TWO_KEYS(TD_D, TD_D) {
+      SEND_STRING(SS_LCTL("a") SS_LCTL("c"));
+    }
+    SEQ_THREE_KEYS(KC_D, KC_D, KC_S) {
+      SEND_STRING("https://start.duckduckgo.com\n");
+    }
+    SEQ_TWO_KEYS(KC_A, KC_S) {
+      register_code(KC_LGUI);
+      register_code(KC_S);
+      unregister_code(KC_S);
+      unregister_code(KC_LGUI);
+    }
+  }
+}
+
+/* bool did_leader_succeed; */
+/* #ifdef AUDIO_ENABLE */
+/* float play_leader_start[][2] = SONG(ONE_UP_SOUND ); */
+/* float play_leader_succeed[][2] = SONG(ALL_STAR); */
+/* float play_leader_fail[][2] = SONG(RICK_ROLL); */
+/* #endif */
+/* LEADER_EXTERNS(); */
+
+/* void matrix_scan_user(void) { */
+/*   LEADER_DICTIONARY() { */
+/*     did_leader_succeed = leading = false; */
+
+/*     SEQ_ONE_KEY(KC_E) { */
+/*       // Anything you can do in a macro. */
+/*       /\* SEND_STRING(SS_LCTL(SS_LSFT("t"))); *\/ */
+/*       SEND_STRING("buttman-success"); */
+/*       did_leader_succeed = true; */
+/*     } else */
+/*         SEQ_TWO_KEYS(KC_E, KC_D) { */
+/*           SEND_STRING("buttman-success69"); */
+/*           /\* SEND_STRING(SS_LGUI("r") "cmd\n" SS_LCTL("c")); *\/ */
+/*           did_leader_succeed = true; */
+/*         } */
+/*     leader_end(); */
+/*   } */
+/* } */
+
+/* void leader_start(void) { */
+/* #ifdef AUDIO_ENABLE */
+/*   PLAY_SONG(play_leader_start); */
+/* #endif */
+/* } */
+
+/* void leader_end(void) { */
+/*   if (did_leader_succeed) { */
+/* #ifdef AUDIO_ENABLE */
+/*     PLAY_SONG(play_leader_succeed); */
+/* #endif */
+/*   } else { */
+/* #ifdef AUDIO_ENABLE */
+/*     PLAY_SONG(play_leader_fail); */
+/* #endif */
+/*   } */
+/* } */
