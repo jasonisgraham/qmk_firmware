@@ -1,7 +1,11 @@
 SRC += muse.c
 
+AUDIO_ENABLE = yes
+
 LEADER_ENABLE = yes
+COMBO_ENABLE = yes
 TAP_DANCE_ENABLE = yes
+
 
 # Set any rules.mk overrides for your specific keymap here.
 # See rules at https://docs.qmk.fm/#/config_options?id=the-rulesmk-file
@@ -13,7 +17,7 @@ WEBUSB_ENABLE = yes
 DYNAMIC_MACRO_ENABLE = yes
 # BACKLIGHT_ENABLE = yes
 # RGBLIGHT_ENABLE = yes
+MIDI_ENABLE = yes
 
-AUDIO_ENABLE = yes
 
 NKRO_ENABLE = yes
