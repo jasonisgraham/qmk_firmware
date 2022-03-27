@@ -1,6 +1,13 @@
 #pragma once
 
 #include "song_list.h"
+#include "config_common.h"
+
+#define COMBO_COUNT 50
+
+/* #define BACKLIGHT_LEVELS 31 */
+/* #define BACKLIGHT_BREATHING */
+/* #define RGBLIGHT_LAYERS */
 
 
 #define LEADER_TIMEOUT 300
