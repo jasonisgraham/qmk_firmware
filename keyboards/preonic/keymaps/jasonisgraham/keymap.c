@@ -2855,29 +2855,29 @@ const uint16_t PROGMEM combo_closing_curly[] = {p, minus, COMBO_END};
 const uint16_t PROGMEM combo_closing_curly_3[] = {l, single_quote, semicolon, COMBO_END};
 const uint16_t PROGMEM combo_save_buffer[] = {j, l, COMBO_END};
 
-const uint16_t PROGMEM combo_zero[] = {d, p, COMBO_END};
-const uint16_t PROGMEM combo_one[] = {d, m, COMBO_END};
-const uint16_t PROGMEM combo_two[] = {d, comma, COMBO_END};
-const uint16_t PROGMEM combo_three[] = {d, p, COMBO_END};
-const uint16_t PROGMEM combo_four[] = {d, p, COMBO_END};
-const uint16_t PROGMEM combo_five[] = {d, p, COMBO_END};
-const uint16_t PROGMEM combo_six[] = {d, p, COMBO_END};
-const uint16_t PROGMEM combo_seven[] = {d, p, COMBO_END};
-const uint16_t PROGMEM combo_eight[] = {d, p, COMBO_END};
-const uint16_t PROGMEM combo_nine[] = {d, p, COMBO_END};
+/* const uint16_t PROGMEM combo_zero[] = {d, p, COMBO_END}; */
+/* const uint16_t PROGMEM combo_one[] = {d, m, COMBO_END}; */
+/* const uint16_t PROGMEM combo_two[] = {d, comma, COMBO_END}; */
+/* const uint16_t PROGMEM combo_three[] = {d, p, COMBO_END}; */
+/* const uint16_t PROGMEM combo_four[] = {d, p, COMBO_END}; */
+/* const uint16_t PROGMEM combo_five[] = {d, p, COMBO_END}; */
+/* const uint16_t PROGMEM combo_six[] = {d, p, COMBO_END}; */
+/* const uint16_t PROGMEM combo_seven[] = {d, p, COMBO_END}; */
+/* const uint16_t PROGMEM combo_eight[] = {d, p, COMBO_END}; */
+/* const uint16_t PROGMEM combo_nine[] = {d, p, COMBO_END}; */
 
-const uint16_t PROGMEM combo_lprn[] = {space, o, COMBO_END};
+/* const uint16_t PROGMEM combo_lprn[] = {space, o, COMBO_END}; */
 
-const uint16_t PROGMEM combo_lprn_n[] = {space, n, COMBO_END};
-const uint16_t PROGMEM combo_rprn[] = {space, p, COMBO_END};
-const uint16_t PROGMEM combo_exlm[] = {space, m, COMBO_END};
-const uint16_t PROGMEM combo_at[] =   {space, comma, COMBO_END};
-const uint16_t PROGMEM combo_hash[] = {space, period, COMBO_END};
-const uint16_t PROGMEM combo_dlr[] =  {space, j, COMBO_END};
-const uint16_t PROGMEM combo_perc[] = {space, k, COMBO_END};
-const uint16_t PROGMEM combo_circ[] = {space, l, COMBO_END};
-const uint16_t PROGMEM combo_ampr[] = {space, u, COMBO_END};
-const uint16_t PROGMEM combo_astr[] = {space, i, COMBO_END};
+/* const uint16_t PROGMEM combo_lprn_n[] = {space, n, COMBO_END}; */
+/* const uint16_t PROGMEM combo_rprn[] = {space, p, COMBO_END}; */
+/* const uint16_t PROGMEM combo_exlm[] = {space, m, COMBO_END}; */
+/* const uint16_t PROGMEM combo_at[] =   {space, comma, COMBO_END}; */
+/* const uint16_t PROGMEM combo_hash[] = {space, period, COMBO_END}; */
+/* const uint16_t PROGMEM combo_dlr[] =  {space, j, COMBO_END}; */
+/* const uint16_t PROGMEM combo_perc[] = {space, k, COMBO_END}; */
+/* const uint16_t PROGMEM combo_circ[] = {space, l, COMBO_END}; */
+/* const uint16_t PROGMEM combo_ampr[] = {space, u, COMBO_END}; */
+/* const uint16_t PROGMEM combo_astr[] = {space, i, COMBO_END}; */
 
 
 combo_t key_combos[COMBO_COUNT] = {COMBO(combo_esc, KC_ESC),
@@ -2885,17 +2885,17 @@ combo_t key_combos[COMBO_COUNT] = {COMBO(combo_esc, KC_ESC),
                                    COMBO(combo_osl_win_move, OSL(9)),
                                    COMBO(combo_backspace, KC_BSPC),
 
-                                   COMBO(combo_lprn_n, KC_LPRN),
-                                   COMBO(combo_lprn, KC_LPRN),
-                                   COMBO(combo_rprn, KC_RPRN),
-                                   COMBO(combo_exlm, KC_EXLM),
-                                   COMBO(combo_at, KC_AT),
-                                   COMBO(combo_hash, KC_HASH),
-                                   COMBO(combo_dlr, KC_DLR),
-                                   COMBO(combo_perc, KC_PERC),
-                                   COMBO(combo_circ, KC_CIRC),
-                                   COMBO(combo_ampr, KC_AMPR),
-                                   COMBO(combo_astr, KC_ASTR),
+                                   /* COMBO(combo_lprn_n, KC_LPRN), */
+                                   /* COMBO(combo_lprn, KC_LPRN), */
+                                   /* COMBO(combo_rprn, KC_RPRN), */
+                                   /* COMBO(combo_exlm, KC_EXLM), */
+                                   /* COMBO(combo_at, KC_AT), */
+                                   /* COMBO(combo_hash, KC_HASH), */
+                                   /* COMBO(combo_dlr, KC_DLR), */
+                                   /* COMBO(combo_perc, KC_PERC), */
+                                   /* COMBO(combo_circ, KC_CIRC), */
+                                   /* COMBO(combo_ampr, KC_AMPR), */
+                                   /* COMBO(combo_astr, KC_ASTR), */
 
                                    COMBO(combo_jo, KC_LSPO),
                                    COMBO(combo_jp, KC_RPRN),
