@@ -3,8 +3,12 @@
   See config.h options at https://docs.qmk.fm/#/config_options?id=the-configh-file
 */
 #include "config_common.h"
+#include "song_list.h"
+#include "user_song_list.h"
 
 #define COMBO_COUNT 50
+#define COMBO_TERM 20  // default is 50.  50ms produces false positives when typing kinda fast
+
 #define FORCE_NKRO
 
 
@@ -23,6 +27,7 @@
 #undef MOUSEKEY_INTERVAL
 #define MOUSEKEY_INTERVAL 13
 
+#define AUTO_SHIFT_TIMEOUT 150
 #define NO_AUTO_SHIFT_TAB
 #define CAPS_LOCK_STATUS
 #define HOLD_ON_OTHER_KEY_PRESS
