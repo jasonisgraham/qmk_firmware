@@ -11,10 +11,10 @@ enum preonic_layers {
   _WINDOWS,
   _EMACS_MACROS,
   _SHIFTLOK,
-  _LAYER9,
+  _WINMOVE,
   _LAYER10,
   _LAYER11,
-  _EDITOR_CMDS,
+  _EDITING,
 };
 
 enum preonic_keycodes {
@@ -30,14 +30,17 @@ enum preonic_keycodes {
   MACRO_THREAD_LAST,
   ST_MACRO_6,
   MACRO_MAP_ANON,
-  ST_MACRO_8,
+  CTRL_W_CTRL_W,
   ST_MACRO_9,
   ST_MACRO_10,
-  ST_MACRO_11,
+  ACE_SWAP,
   ST_MACRO_12,
   ST_MACRO_13,
   GET_FEED_MACRO,
   ESC_THEN_LAYER_0,
+  SYSTEM_LAYER_ACTIVATE,
+  RAISE_LAYER_HOLD,
+  LOWER_LAYER_HOLD,
 };
 
 enum tap_dance_codes {
@@ -103,60 +106,69 @@ enum tap_dance_codes {
                       DANCE_59,
 };
 
+#define my_ctl_esc MT(MOD_RCTL, KC_ESCAPE)
+#define my_K RSFT(KC_K)
+#define my_J  RSFT(KC_J)
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
 #define TD_D TD(DANCE_13)
 /* #define  */
 #define macro_alt_slash SS_RALT(SS_TAP(X_SLASH))
-#define a TD(DANCE_11)
-#define b KC_B
-#define c KC_C
-#define d KC_D
-#define e TD(DANCE_3)
-#define f TD(DANCE_14)
-#define g TD(DANCE_15)
-#define h KC_H
-#define i TD(DANCE_7)
-#define j TD(DANCE_16)
-#define k TD(DANCE_17)
-#define l TD(DANCE_18)
-#define m TD(DANCE_22)
-#define n TD(DANCE_21)
-#define o TD(DANCE_8)
-#define p TD(DANCE_9)
-#define q TD(DANCE_1)
-#define r TD(DANCE_4)
-#define s TD(DANCE_12)
-#define t TD(DANCE_5)
-#define u TD(DANCE_6)
-#define v KC_V
-#define w TD(DANCE_2)
-#define x KC_X
-#define y KC_Y
-#define z KC_Z
-/* #define left_shift KC_LSPO */
-#define left_shift KC_LSFT
-/* #define right_shift KC_RSPC */
-#define right_shift KC_RSFT
-#define semicolon TD(DANCE_19)
-#define backspace KC_LEAD
-#define comma TD(DANCE_23)
-#define period TD(DANCE_24)
-#define single_quote TD(DANCE_20)
-#define minus TD(DANCE_10)
-#define space KC_SPACE
+#define my_a TD(DANCE_11)
+#define my_b KC_B
+#define my_c KC_C
+#define my_d KC_D
+#define my_e TD(DANCE_3)
+#define my_f TD(DANCE_14)
+#define my_g TD(DANCE_15)
+#define my_h KC_H
+#define my_i TD(DANCE_7)
+#define my_j TD(DANCE_16)
+#define my_k TD(DANCE_17)
+#define my_l TD(DANCE_18)
+#define my_m TD(DANCE_22)
+#define my_n TD(DANCE_21)
+#define my_o TD(DANCE_8)
+#define my_p TD(DANCE_9)
+#define my_q TD(DANCE_1)
+#define my_r TD(DANCE_4)
+#define my_s TD(DANCE_12)
+#define my_t TD(DANCE_5)
+#define my_u TD(DANCE_6)
+#define my_v KC_V
+#define my_w TD(DANCE_2)
+#define my_x KC_X
+#define my_y KC_Y
+#define my_z KC_Z
 
+/* #define my_left_shift LSFT_T(KC_LPRN) */
+#define my_left_shift KC_LSPO
+/* #define my_left_shift KC_LSFT */
+/* #define my_right_shift RSFT_T(KC_RPRN) */
+#define my_right_shift KC_RSPC
+/* #define my_right_shift KC_RSFT */
+#define my_semicolon TD(DANCE_19)
+#define backspace KC_LEAD
+#define my_comma TD(DANCE_23)
+#define my_period TD(DANCE_24)
+#define my_single_quote TD(DANCE_20)
+#define my_minus TD(DANCE_10)
+#define my_space KC_SPACE
+#define my_raise RAISE
+#define my_lower LOWER
+#define my_right_of_lower KC_BSPACE
+#define my_forward_slash TD(DANCE_25)
 #include "user_song_list.h"
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_BASE] = LAYOUT_preonic_grid(
- TD(DANCE_0),  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    minus,
- TD(DANCE_0),    q,    w,    e,    r,    t,    y, u,  i, o, p,    minus,
- MT(MOD_RCTL, KC_ESCAPE), a,   s,   d,   f,   g,   h,           j,   k,   l,   semicolon,   single_quote,
- left_shift,        z,           x,           c,           v,           b,           n,   m,   comma,   period,   TD(DANCE_25),   right_shift,
- MT(MOD_LCTL, KC_LBRACKET),TT(5), KC_LGUI, KC_LALT, RAISE,    OSL(6),      space,           LOWER,          KC_BSPACE,      KC_UP, KC_DOWN, KC_RIGHT
+ TD(DANCE_0),  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    my_minus,
+ TD(DANCE_0),    my_q,    my_w,    my_e,    my_r,    my_t,    my_y, my_u,   my_i, my_o, my_p,    my_minus,
+ my_ctl_esc, my_a,   my_s,   my_d,   my_f,   my_g,   my_h,           my_j,   my_k,   my_l,   my_semicolon,   my_single_quote,
+ my_left_shift,        my_z,           my_x,           my_c,           my_v,           my_b,           my_n,   my_m,   my_comma,   my_period,   my_forward_slash,   my_right_shift,
+ MT(MOD_LCTL, KC_LBRACKET),TT(5), KC_LGUI, KC_LALT, my_raise,    OSL(6),      my_space,           LOWER,          my_right_of_lower,      KC_UP, KC_DOWN, KC_RIGHT
 ),
 
 // _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
@@ -221,12 +233,12 @@ _______, KC_F5,          KC_F6,          KC_F7,          KC_F8,          KC_SCRO
   [_SHIFTLOK] = LAYOUT_preonic_grid(
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
     TD(DANCE_52),   RSFT(KC_Q),     RSFT(KC_W),     RSFT(KC_E),     RSFT(KC_R),     RSFT(KC_T),     RSFT(KC_Y),     RSFT(KC_U),     RSFT(KC_I),     RSFT(KC_O),     RSFT(KC_P),     TD(DANCE_53),
-    ESC_THEN_LAYER_0, RSFT(KC_A),     RSFT(KC_S),     RSFT(KC_D),     RSFT(KC_F),     RSFT(KC_G),     RSFT(KC_H),     RSFT(KC_J),     RSFT(KC_K),     RSFT(KC_L),     TD(DANCE_54),   TD(DANCE_55),
+    ESC_THEN_LAYER_0, RSFT(KC_A),     RSFT(KC_S),     RSFT(KC_D),     RSFT(KC_F),     RSFT(KC_G),     RSFT(KC_H),     my_J,     my_K,     RSFT(KC_L),     TD(DANCE_54),   TD(DANCE_55),
     TO(0),          RSFT(KC_Z),     RSFT(KC_X),     RSFT(KC_C),     RSFT(KC_V),     RSFT(KC_B),     RSFT(KC_N),     RSFT(KC_M),     KC_LABK,        KC_RABK,        KC_QUES,        TO(0),
     _______, _______, _______, _______, _______,  TO(0),   _______,       _______, _______, _______, _______, _______
   ),
 
-  [_LAYER9] = LAYOUT_preonic_grid(
+  [_WINMOVE] = LAYOUT_preonic_grid(
                                  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
     TD(DANCE_56),   _______, _______, _______, _______, _______, RGUI(RSFT(KC_Y)),_______, _______, RGUI(RSFT(KC_O)),_______, _______,
     _______, _______, _______, LALT(LGUI(LCTL(KC_D))),_______, _______, TD(DANCE_57),   RGUI(RSFT(KC_J)),TD(DANCE_58),   TD(DANCE_59),   _______, _______,
@@ -250,11 +262,11 @@ _______, KC_F5,          KC_F6,          KC_F7,          KC_F8,          KC_SCRO
     _______, _______, _______, _______, _______, _______, KC_NO,          _______, _______, _______, _______, _______
   ),
 
-  [_EDITOR_CMDS] = LAYOUT_preonic_grid(
+  [_EDITING] = LAYOUT_preonic_grid(
    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-    _______, _______, ST_MACRO_8,     _______, ST_MACRO_9,     _______, _______, LCTL(KC_7),     _______, _______, _______, _______,
-    _______, _______, _______, _______, RALT(KC_ENTER), _______, RALT(RSFT(KC_H)),RALT(RSFT(KC_J)),RALT(RSFT(KC_K)),RALT(RSFT(KC_L)),RCTL(KC_SCOLON),RCTL(KC_QUOTE),
-   _______, _______, _______, ST_MACRO_10,    _______, ST_MACRO_13, RALT(RSFT(KC_N)), ST_MACRO_11,    _______, _______, ST_MACRO_12,    _______,
+   _______, _______, CTRL_W_CTRL_W,     _______, ST_MACRO_9,     _______, _______, LCTL(KC_7),     _______, CTRL_W_CTRL_W, _______, _______,
+   _______, _______, _______, _______, RALT(KC_ENTER), _______, RALT(RSFT(KC_H)),RALT(RSFT(KC_J)),RALT(RSFT(KC_K)),RALT(RSFT(KC_L)),RCTL(KC_SCOLON),RCTL(KC_QUOTE),
+   _______, _______, _______, ST_MACRO_10,    _______, ST_MACRO_13, RALT(RSFT(KC_N)), ACE_SWAP,    _______, _______, ST_MACRO_12,    _______,
     _______, _______, _______, _______, _______, _______, KC_NO,          RALT(KC_ENTER), _______, _______, _______, _______
   ),
 
@@ -263,8 +275,27 @@ _______, KC_F5,          KC_F6,          KC_F7,          KC_F8,          KC_SCRO
 
 };
 
+float zelda_puzzle[][2] =  SONG(ZELDA_PUZZLE);
+float old_spice[][2] =  SONG(OLD_SPICE);
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
+  case SYSTEM_LAYER_ACTIVATE:
+    PLAY_SONG(zelda_puzzle);
+    layer_on(_SYSTEM);
+    return false;
+
+  case RAISE_LAYER_HOLD:
+    PLAY_SONG(old_spice);
+    layer_on(_RAISE);
+    return false;
+
+  case LOWER_LAYER_HOLD:
+    PLAY_SONG(old_spice);
+    layer_on(_LOWER);
+    return false;
+
+
         case ST_MACRO_0:
     if (record->event.pressed) {
       SEND_STRING(SS_RCTL(SS_TAP(X_W)) SS_DELAY(10) SS_RCTL(SS_TAP(X_W)));
@@ -318,7 +349,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     break;
 
-    case ST_MACRO_8:
+    case CTRL_W_CTRL_W:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_ESCAPE) SS_DELAY(10) SS_RCTL(SS_TAP(X_W)) SS_DELAY(10) SS_RCTL(SS_TAP(X_W)));
 
@@ -336,7 +367,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     }
     break;
-    case ST_MACRO_11:
+    case ACE_SWAP:
     if (record->event.pressed) {
       SEND_STRING(SS_RALT(SS_TAP(X_M)) SS_DELAY(10) SS_TAP(X_W) SS_DELAY(10) SS_RSFT(SS_TAP(X_M)));
 
@@ -474,7 +505,7 @@ bool dip_switch_update_user(uint8_t index, bool active) {
 
 
 layer_state_t layer_state_set_user(layer_state_t state) {
-  float x[][2] = SONG(zelda);
+  float my_x[][2] = SONG(zelda);
   rgblight_config_t rgblight_config;
 
   switch(biton32(state)) {
@@ -490,8 +521,8 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     break;
   case 2:
     // Red
-    /* float x[][2] = SONG(ROCK_A_BYE_BABY); */
-    /* PLAY_SONG(x);             /\*  *\/ */
+    /* float my_x[][2] = SONG(ROCK_A_BYE_BABY); */
+    /* PLAY_SONG(my_x);             /\*  *\/ */
     rgblight_enable_noeeprom();
     rgblight_sethsv_noeeprom(HSV_RED);
     break;
@@ -508,7 +539,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
   case 5:
     // system stuff
-    PLAY_SONG(x);             /*  */
+    PLAY_SONG(my_x);             /*  */
     rgblight_enable_noeeprom();
     rgblight_sethsv_noeeprom(HSV_YELLOW);
     break;
@@ -2767,9 +2798,9 @@ void matrix_scan_user(void) {
     leading = false;
     leader_end();
 
-    SEQ_ONE_KEY(e) {SEND_STRING(SS_RGUI("e"));}
-    SEQ_ONE_KEY(t) {SEND_STRING(SS_RGUI("t"));}
-    SEQ_ONE_KEY(w) {SEND_STRING(SS_RGUI("w"));}
+    SEQ_ONE_KEY(my_e) {SEND_STRING(SS_RGUI("e"));}
+    SEQ_ONE_KEY(my_t) {SEND_STRING(SS_RGUI("t"));}
+    SEQ_ONE_KEY(my_w) {SEND_STRING(SS_RGUI("w"));}
     SEQ_ONE_KEY(backspace) {SEND_STRING(SS_RALT("/"));}
 
     SEQ_TWO_KEYS(TD_D, TD_D) {
@@ -2800,14 +2831,14 @@ void matrix_scan_user(void) {
 /*     did_leader_succeed = leading = false; */
 
 /*     SEQ_ONE_KEY(KC_E) { */
-/*       // Anything you can do in a macro. */
-/*       /\* SEND_STRING(SS_LCTL(SS_LSFT("t"))); *\/ */
+/*       // Anything you can do in my_a macro. */
+/*       /\* SEND_STRING(SS_LCTL(SS_LSFT("my_t"))); *\/ */
 /*       SEND_STRING("buttman-success"); */
 /*       did_leader_succeed = true; */
 /*     } else */
 /*         SEQ_TWO_KEYS(KC_E, KC_D) { */
 /*           SEND_STRING("buttman-success69"); */
-/*           /\* SEND_STRING(SS_LGUI("r") "cmd\n" SS_LCTL("c")); *\/ */
+/*           /\* SEND_STRING(SS_LGUI("my_r") "cmd\my_n" SS_LCTL("my_c")); *\/ */
 /*           did_leader_succeed = true; */
 /*         } */
 /*     leader_end(); */
@@ -2833,90 +2864,119 @@ void matrix_scan_user(void) {
 /* } */
 
 
-const uint16_t PROGMEM combo_esc[] = {m, comma, COMBO_END};
-const uint16_t PROGMEM combo_newline[] = {j, k, COMBO_END};
-const uint16_t PROGMEM combo_osl_windows[] = {s, d, COMBO_END};
-const uint16_t PROGMEM combo_osl_editor[] = {k, l, COMBO_END};
-const uint16_t PROGMEM combo_backspace[] = {h, j, COMBO_END};
-const uint16_t PROGMEM combo_jo[] = {o, j, COMBO_END};
-const uint16_t PROGMEM combo_jp[] = {p, j, COMBO_END};
-const uint16_t PROGMEM combo_opening_paren[] = {u, i, COMBO_END};
-const uint16_t PROGMEM combo_closing_paren[] = {i, o, COMBO_END};
-const uint16_t PROGMEM combo_max[] = {k, m, COMBO_END};
-const uint16_t PROGMEM combo_min[] = {j, n, COMBO_END};
-const uint16_t PROGMEM combo_win_right[] = {w, l, COMBO_END};
-const uint16_t PROGMEM combo_win_left[] = {w, h, COMBO_END};
-const uint16_t PROGMEM combo_osl_win_move[] = {w, e, COMBO_END};
-const uint16_t PROGMEM combo_hyper_clear[] = {k,semicolon, l, COMBO_END};
-const uint16_t PROGMEM combo_shiftlok[] = {left_shift, right_shift, COMBO_END};
-const uint16_t PROGMEM combo_opening_square[] = {l, semicolon, COMBO_END};
-const uint16_t PROGMEM combo_closing_square[] = {single_quote, semicolon, COMBO_END};
-const uint16_t PROGMEM combo_opening_curly[] = {o, p, COMBO_END};
-const uint16_t PROGMEM combo_opening_curly_3[] = {k, l, semicolon, COMBO_END};
-const uint16_t PROGMEM combo_closing_curly[] = {p, minus, COMBO_END};
-const uint16_t PROGMEM combo_closing_curly_3[] = {l, single_quote, semicolon, COMBO_END};
-const uint16_t PROGMEM combo_save_buffer[] = {j, l, COMBO_END};
-
-/* const uint16_t PROGMEM combo_underscore[] = {l, minus, COMBO_END}; */
-
-/* const uint16_t PROGMEM combo_zero[] = {d, p, COMBO_END}; */
-/* const uint16_t PROGMEM combo_one[] = {d, m, COMBO_END}; */
-/* const uint16_t PROGMEM combo_two[] = {d, comma, COMBO_END}; */
-/* const uint16_t PROGMEM combo_three[] = {d, p, COMBO_END}; */
-/* const uint16_t PROGMEM combo_four[] = {d, p, COMBO_END}; */
-/* const uint16_t PROGMEM combo_five[] = {d, p, COMBO_END}; */
-/* const uint16_t PROGMEM combo_six[] = {d, p, COMBO_END}; */
-/* const uint16_t PROGMEM combo_seven[] = {d, p, COMBO_END}; */
-/* const uint16_t PROGMEM combo_eight[] = {d, p, COMBO_END}; */
-/* const uint16_t PROGMEM combo_nine[] = {d, p, COMBO_END}; */
-
-/* const uint16_t PROGMEM combo_lprn[] = {space, o, COMBO_END}; */
-
-/* const uint16_t PROGMEM combo_lprn_n[] = {space, n, COMBO_END}; */
-/* const uint16_t PROGMEM combo_rprn[] = {space, p, COMBO_END}; */
-/* const uint16_t PROGMEM combo_exlm[] = {space, m, COMBO_END}; */
-/* const uint16_t PROGMEM combo_at[] =   {space, comma, COMBO_END}; */
-/* const uint16_t PROGMEM combo_hash[] = {space, period, COMBO_END}; */
-/* const uint16_t PROGMEM combo_dlr[] =  {space, j, COMBO_END}; */
-/* const uint16_t PROGMEM combo_perc[] = {space, k, COMBO_END}; */
-/* const uint16_t PROGMEM combo_circ[] = {space, l, COMBO_END}; */
-/* const uint16_t PROGMEM combo_ampr[] = {space, u, COMBO_END}; */
-/* const uint16_t PROGMEM combo_astr[] = {space, i, COMBO_END}; */
+const uint16_t PROGMEM combo_lprn[] = {my_space, my_o, COMBO_END};
+const uint16_t PROGMEM combo_lprn_n[] = {my_space, my_n, COMBO_END};
+const uint16_t PROGMEM combo_rprn[] = {my_space, my_p, COMBO_END};
+const uint16_t PROGMEM combo_exlm[] = {my_space, my_m, COMBO_END};
+const uint16_t PROGMEM combo_at[] =   {my_space, my_comma, COMBO_END};
+const uint16_t PROGMEM combo_hash[] = {my_space, my_period, COMBO_END};
+const uint16_t PROGMEM combo_dlr[] =  {my_space, my_j, COMBO_END};
+const uint16_t PROGMEM combo_perc[] = {my_space, my_k, COMBO_END};
+const uint16_t PROGMEM combo_circ[] = {my_space, my_l, COMBO_END};
+const uint16_t PROGMEM combo_ampr[] = {my_space, my_u, COMBO_END};
+const uint16_t PROGMEM combo_astr[] = {my_space,  my_i, COMBO_END};
+const uint16_t PROGMEM combo_osl_symbols[] = {my_j, my_l, COMBO_END};
 
 
-combo_t key_combos[COMBO_COUNT] = {COMBO(combo_esc, KC_ENTER),
-                                   COMBO(combo_osl_windows, OSL(6)),
-                                   COMBO(combo_osl_win_move, OSL(9)),
+
+
+const uint16_t PROGMEM combo_lctl_f[] = {my_ctl_esc, my_f, COMBO_END};
+const uint16_t PROGMEM combo_j_k[] = {my_j, my_k, COMBO_END};
+const uint16_t PROGMEM combo_J_K[] = {my_J, my_K, COMBO_END};
+const uint16_t PROGMEM combo_osl_windows[] = {my_s, my_d, COMBO_END};
+const uint16_t PROGMEM combo_osl_windows_2[] = {my_f, my_d, COMBO_END};
+const uint16_t PROGMEM combo_osl_editor[] = {my_k, my_l, COMBO_END};
+const uint16_t PROGMEM combo_backspace[] = {my_h, my_j, COMBO_END};
+const uint16_t PROGMEM combo_spc_h[] = {my_h, my_space, COMBO_END};
+const uint16_t PROGMEM combo_jo[] = {my_o, my_j, COMBO_END};
+const uint16_t PROGMEM combo_jp[] = {my_p, my_j, COMBO_END};
+const uint16_t PROGMEM combo_opening_paren[] = {my_u,  my_i, COMBO_END};
+const uint16_t PROGMEM combo_closing_paren[] = { my_i, my_o, COMBO_END};
+const uint16_t PROGMEM combo_max[] = {my_k, my_m, COMBO_END};
+const uint16_t PROGMEM combo_min[] = {my_j, my_n, COMBO_END};
+const uint16_t PROGMEM combo_win_right[] = {my_w, my_l, COMBO_END};
+const uint16_t PROGMEM combo_win_left[] = {my_w, my_h, COMBO_END};
+const uint16_t PROGMEM combo_osl_win_move[] = {my_w, my_e, COMBO_END};
+const uint16_t PROGMEM combo_hyper_clear[] = {my_k,my_semicolon, my_l, COMBO_END};
+const uint16_t PROGMEM combo_shiftlok[] = {my_left_shift, my_right_shift, COMBO_END};
+const uint16_t PROGMEM combo_opening_square[] = {my_l, my_semicolon, COMBO_END};
+const uint16_t PROGMEM combo_closing_square[] = {my_single_quote, my_semicolon, COMBO_END};
+const uint16_t PROGMEM combo_opening_curly[] = {my_o, my_p, COMBO_END};
+
+const uint16_t PROGMEM combo_l_semicolon[] = {my_l, my_semicolon, COMBO_END}; // [
+const uint16_t PROGMEM combo_comma_m[] = {my_m, my_comma, COMBO_END}; // [
+const uint16_t PROGMEM combo_l_semicolon_k[] = {my_k, my_l, my_semicolon, COMBO_END}; // {
+const uint16_t PROGMEM combo_period_comma_m[] = {my_period, my_m, my_comma, COMBO_END}; // {
+
+const uint16_t PROGMEM combo_semicolon_singlequote[] = {my_semicolon, my_single_quote, COMBO_END}; // ]
+const uint16_t PROGMEM combo_comma_period[] = {my_comma, my_period, COMBO_END}; // ]
+const uint16_t PROGMEM combo_l_singlequote_semicolon[] = {my_l, my_single_quote, my_semicolon, COMBO_END}; // }
+const uint16_t PROGMEM combo_comma_period_forward_slash[] = {my_forward_slash, my_comma, my_period, COMBO_END}; // ]
+
+const uint16_t PROGMEM combo_p_minus[] = {my_p, my_minus, COMBO_END}; // underscore
+const uint16_t PROGMEM combo_p_minus_o[] = {my_p, my_o, my_minus, COMBO_END}; // equal
+
+const uint16_t PROGMEM combo_lower_right_of_lower[] = {my_lower, my_right_of_lower, COMBO_END}; // equal
+
+/* OSL ctrl, my_raise, */
+/* TO low */
+/*   er */
+
+
+
+combo_t key_combos[COMBO_COUNT] = {COMBO(combo_osl_windows, OSL(_WINDOWS)),
+                                   COMBO(combo_osl_windows_2, OSL(_WINDOWS)),
+                                   COMBO(combo_osl_win_move, OSL(_WINMOVE)),
                                    COMBO(combo_backspace, KC_BSPC),
+                                   COMBO(combo_spc_h, KC_BSPC),
 
-                                   /* COMBO(combo_lprn_n, KC_LPRN), */
-                                   /* COMBO(combo_lprn, KC_LPRN), */
-                                   /* COMBO(combo_rprn, KC_RPRN), */
-                                   /* COMBO(combo_exlm, KC_EXLM), */
-                                   /* COMBO(combo_at, KC_AT), */
-                                   /* COMBO(combo_hash, KC_HASH), */
-                                   /* COMBO(combo_dlr, KC_DLR), */
-                                   /* COMBO(combo_perc, KC_PERC), */
-                                   /* COMBO(combo_circ, KC_CIRC), */
-                                   /* COMBO(combo_ampr, KC_AMPR), */
-                                   /* COMBO(combo_astr, KC_ASTR), */
+                                   COMBO(combo_lprn_n, KC_LPRN),
+                                   COMBO(combo_lprn, KC_LPRN),
+                                   COMBO(combo_rprn, KC_RPRN),
+                                   COMBO(combo_exlm, KC_EXLM),
+                                   COMBO(combo_at, KC_AT),
+                                   COMBO(combo_hash, KC_HASH),
+                                   COMBO(combo_dlr, KC_DLR),
+                                   COMBO(combo_perc, KC_PERC),
+                                   COMBO(combo_circ, KC_CIRC),
+                                   COMBO(combo_ampr, KC_AMPR),
+                                   COMBO(combo_astr, KC_ASTR),
 
-                                   /* COMBO(combo_underscore, KC_MINS), */
                                    COMBO(combo_jo, KC_LSPO),
                                    COMBO(combo_jp, KC_RPRN),
-                                   COMBO(combo_save_buffer, RCTL(KC_SCLN)),
-                                   COMBO(combo_osl_editor, OSL(12)),
+                                   COMBO(combo_osl_symbols, RCTL(KC_SCLN)),
+                                   COMBO(combo_osl_editor, OSL(_EDITING)),
                                    COMBO(combo_max, RGUI(RSFT(KC_K))),
                                    COMBO(combo_min, RGUI(RSFT(KC_J))),
-                                   COMBO(combo_shiftlok, TO(8)),
+                                   COMBO(combo_shiftlok, TO(_SHIFTLOK)),
                                    COMBO(combo_opening_paren, KC_LPRN),
                                    COMBO(combo_closing_paren, KC_RPRN),
-                                   COMBO(combo_opening_square, KC_LBRACKET),
-                                   COMBO(combo_closing_square, KC_RBRACKET),
-                                   COMBO(combo_opening_curly, KC_LCBR),
-                                   COMBO(combo_opening_curly_3, KC_LCBR),
-                                   COMBO(combo_closing_curly, KC_RCBR),
-                                   COMBO(combo_closing_curly_3, KC_RCBR),
-                                   COMBO(combo_win_left, RGUI(RSFT(KC_H))),
-                                   COMBO(combo_win_right, RGUI(RSFT(KC_L))),
-                                   COMBO(combo_newline, KC_ENTER)};
+                                   COMBO(combo_comma_m, KC_LBRACKET),
+                                   COMBO(combo_l_semicolon, KC_LBRACKET),
+
+                                   COMBO(combo_period_comma_m, KC_LCBR),
+                                   COMBO(combo_l_semicolon_k, KC_LCBR),
+
+                                   /* COMBO(combo_ou, KC_LPRN), */
+                                   /* COMBO(combo_bm, KC_EXLM), */
+                                   /* COMBO(combo_comman, KC_AT), */
+                                   /* COMBO(combo_periodm, KC_HASH), */
+                                   /* COMBO(combo_jg, KC_DLR), */
+                                   /* COMBO(combo_kh, KC_PERC), */
+                                   /* COMBO(combo_lj, KC_CIRC), */
+                                   /* COMBO(combo_ut, KC_AMPR), */
+                                   /* COMBO(combo_iy, KC_ASTR), */
+
+                                   COMBO(combo_lctl_f, OSM(KC_RCTL)),
+
+
+                                   COMBO(combo_comma_period, KC_RBRACKET),
+                                   COMBO(combo_semicolon_singlequote, KC_RBRACKET),
+                                   COMBO(combo_l_singlequote_semicolon, KC_RCBR),
+                                   COMBO(combo_comma_period_forward_slash, KC_RCBR),
+
+                                   COMBO(combo_lower_right_of_lower, TO(_LOWER)),
+                                   COMBO(combo_p_minus, KC_UNDS),
+                                   COMBO(combo_p_minus_o, KC_EQL),
+                                   COMBO(combo_j_k, KC_ENTER),
+                                   COMBO(combo_J_K, KC_ENTER)};

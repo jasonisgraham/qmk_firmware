@@ -1,6 +1,7 @@
 #include QMK_KEYBOARD_H
 #include "version.h"
 #include "muse.h"
+#include "user_song_list.h"
 
 #define KC_MAC_UNDO LGUI(KC_Z)
 #define KC_MAC_CUT LGUI(KC_X)
@@ -20,6 +21,61 @@
 #define SE_SECT_MAC ALGR(KC_6)
 #define MOON_LED_LEVEL LED_LEVEL
 
+#define max_buffer RALT(KC_ENTER)
+
+enum tap_dance_codes {
+                      DANCE_0,
+                      DANCE_1,
+                      DANCE_2,
+                      DANCE_3,
+                      DANCE_4,
+                      DANCE_5,
+                      DANCE_6,
+                      DANCE_7,
+                      DANCE_8,
+                      DANCE_9,
+                      DANCE_10,
+                      DANCE_11,
+                      DANCE_12,
+                      DANCE_13,
+                      DANCE_14,
+                      DANCE_15,
+                      DANCE_16,
+                      DANCE_17,
+                      DANCE_18,
+                      DANCE_19,
+                      DANCE_20,
+                      DANCE_21,
+                      DANCE_22,
+                      DANCE_23,
+                      DANCE_24,
+                      DANCE_25,
+                      DANCE_26,
+                      DANCE_27,
+                      DANCE_28,
+                      DANCE_29,
+                      DANCE_30,
+                      DANCE_31,
+                      DANCE_32,
+                      DANCE_33,
+                      DANCE_34,
+                      DANCE_35,
+                      DANCE_36,
+                      DANCE_37,
+                      DANCE_38,
+                      DANCE_39,
+                      DANCE_40,
+                      DANCE_41,
+                      DANCE_42,
+                      DANCE_43,
+                      DANCE_44,
+                      DANCE_45,
+                      DANCE_46,
+                      DANCE_47,
+                      DANCE_48,
+};
+
+
 #define my_j TD(DANCE_6)
 #define my_k TD(DANCE_7)
 #define my_s KC_S
@@ -35,14 +91,13 @@
 #define my_f KC_F
 #define my_semicolon TD(DANCE_9)
 #define my_left_shift KC_LSFT
-/* #define my_left_shift KC_LSPO */
 #define my_right_shift KC_RSFT
-/* #define my_right_shift KC_RSPC */
 #define my_single_quote TD(DANCE_10)
-/* #define my_ TD(DANCE_) */
-/* #define my_ TD(DANCE_) */
 #define my_space KC_SPACE
 
+#define my_right_of_lower KC_BSPACE
+#define my_lower MO(1)
+#define my_forward_slash TD(DANCE_14)
 #define my_minus TD(DANCE_5)
 #define my_comma TD(DANCE_12)
 #define my_period TD(DANCE_13)
@@ -50,106 +105,15 @@
 #define my_n KC_N
 
 
-enum custom_keycodes {
-  RGB_SLD = ML_SAFE_RANGE,
-  ST_MACRO_0,
-  ST_MACRO_1,
-  ST_MACRO_2,
-  ST_MACRO_3,
-  ST_MACRO_4,
-  ST_MACRO_5,
-  ST_MACRO_6,
-  ST_MACRO_7,
-  ST_MACRO_8,
-  ST_MACRO_9,
-  ST_MACRO_10,
-  ST_MACRO_11,
-  ST_MACRO_12,
-  GET_FEED_MACRO,
-  SHIFTLOK_LAYER_ACTIVATE,
-  SHIFTLOK_LAYER_DEACTIVATE,
-  SYSTEM_LAYER_ACTIVATE,
-  SYSTEM_LAYER_DEACTIVATE,
-};
-
-enum tap_dance_codes {
-  DANCE_0,
-  DANCE_1,
-  DANCE_2,
-  DANCE_3,
-  DANCE_4,
-  DANCE_5,
-  DANCE_6,
-  DANCE_7,
-  DANCE_8,
-  DANCE_9,
-  DANCE_10,
-  DANCE_11,
-  DANCE_12,
-  DANCE_13,
-  DANCE_14,
-  DANCE_15,
-  DANCE_16,
-  DANCE_17,
-  DANCE_18,
-  DANCE_19,
-  DANCE_20,
-  DANCE_21,
-  DANCE_22,
-  DANCE_23,
-  DANCE_24,
-  DANCE_25,
-  DANCE_26,
-  DANCE_27,
-  DANCE_28,
-  DANCE_29,
-  DANCE_30,
-  DANCE_31,
-  DANCE_32,
-  DANCE_33,
-  DANCE_34,
-  DANCE_35,
-  DANCE_36,
-  DANCE_37,
-  DANCE_38,
-  DANCE_39,
-  DANCE_40,
-  DANCE_41,
-  DANCE_42,
-  DANCE_43,
-  DANCE_44,
-  DANCE_45,
-  DANCE_46,
-  DANCE_47,
-  DANCE_48,
-};
-
-enum moonlander_layers {
-                    _BASE,
-                    _LOWER,
-                    _RAISE,
-                    _MOUSE,
-                    _SYSTEM,
-                    _WINDOWS,
-                    _MACROS,
-                    _SHIFTLOK,
-                    _WINMOVE,
-                    _META,
-                    _SUPER,
-                    _EDITING,
-                    _LAYER13,
-                    _VIM_CMDS,
-                    _LAYER15,
-                    _LAYER16,
-};
+#include "../../../common/keymap.c"
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_BASE] = LAYOUT_moonlander(
-    RCTL(KC_LBRACKET),KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           _______,                                 _______, KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           KC_BSPACE,
+                              RCTL(KC_LBRACKET),KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           MUSIC_LAYER_ACTIVATE,                                 _______, KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           KC_BSPACE,
     TD(DANCE_0),    KC_Q,           my_w,           my_e,           KC_R,           KC_T,           _______,                                 _______, KC_Y,           my_u,    my_i,    my_o,    my_p,    my_minus,
     MT(MOD_RCTL, KC_ESCAPE),KC_A,           my_s,           my_d,           my_f,           KC_G,           OSL(1),                                                                         KC_BSPACE,      my_h,           my_j,    my_k,    my_l,    my_semicolon,    my_single_quote,
-    my_left_shift,        KC_Z,           KC_X,           KC_C,           KC_V,           KC_B,                                           my_n,           my_m,   my_comma,   my_period,   TD(DANCE_14),   my_right_shift,
-    MT(MOD_LCTL, KC_LBRACKET),TT(4),          KC_LGUI,KC_LALT, MO(_RAISE),          KC_RCTRL,                                                                                                       KC_BSPACE,      MO(1),          KC_BSPACE,      TT(2),          TT(1),          KC_ENTER,
+    my_left_shift,        KC_Z,           KC_X,           KC_C,           KC_V,           KC_B,                                           my_n,           my_m,   my_comma,   my_period,   my_forward_slash,   my_right_shift,
+                              MT(MOD_LCTL, KC_LBRACKET), SYSTEM_LAYER_ACTIVATE,          KC_LGUI,KC_LALT, MO(_RAISE),          KC_RCTRL,                                                                                                       KC_BSPACE,      my_lower,         my_right_of_lower,      TT(2),          TT(1),          KC_ENTER,
     KC_BSPACE,      LM(_SUPER,MOD_LGUI),KC_ENTER,                       LM(9,MOD_LALT), LM(_WINDOWS, MOD_LGUI), my_space
   ),
   // lower
@@ -164,9 +128,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // raise
   [_RAISE] = LAYOUT_moonlander(
     KC_TILD,        KC_EXLM,        KC_AT,          KC_HASH,        KC_DLR,         KC_PERC,        _______,                                 _______, KC_CIRC,        KC_AMPR,        KC_ASTR,        KC_LPRN,        KC_RPRN,        _______,
-    TD(DANCE_22),   _______, ST_MACRO_0,     KC_END,         ST_MACRO_1,     _______, _______,                                 _______, _______, KC_7,           KC_8,           KC_9,           KC_0,           ST_MACRO_3,
+    TD(DANCE_22),   _______, EMACS_OTHER_WINDOW,     KC_END,         EMACS_BUFFER_REVERT,     _______, _______,                                 _______, _______, KC_7,           KC_8,           KC_9,           KC_0,           _______,
     _______, DYN_REC_START1, DYN_MACRO_PLAY1,_______, RALT(KC_ENTER), OSL(6),         _______,                                                                 _______, KC_BSPACE,      KC_4,           KC_5,           KC_6,           KC_LBRACKET,    KC_RBRACKET,
-    _______, DYN_REC_START2, DYN_MACRO_PLAY2,DYN_REC_STOP,   _______, ST_MACRO_2,                                     KC_0,           KC_1,           KC_2,           KC_3,           KC_BSLASH,      _______,
+    _______, DYN_REC_START2, DYN_MACRO_PLAY2,DYN_REC_STOP,   _______, FISH_ACCEPT_SEND,                                     KC_0,           KC_1,           KC_2,           KC_3,           KC_BSLASH,      _______,
     _______, _______, KC_LGUI,        KC_LALT,        _______, _______,                                                                                                 _______, KC_ENTER,       KC_0,           KC_DOT,         _______, _______,
     _______, _______, _______,                 _______, _______, _______
   ),
@@ -200,8 +164,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_MACROS] = LAYOUT_moonlander(
     _______, _______, _______, _______, _______, _______, _______,                                 _______, _______, _______, _______, _______, _______, _______,
     TD(DANCE_40),   _______, _______, _______, _______, _______, _______,                                 _______, _______, _______, _______, _______, _______, _______,
-    _______, _______, _______, ST_MACRO_4,     ST_MACRO_5,     GET_FEED_MACRO, _______,                                                                 _______, _______, _______, _______, ST_MACRO_7,     _______, _______,
-    _______, _______, _______, ST_MACRO_6,     _______, _______,                                 _______, ST_MACRO_8,     _______, _______, _______, _______,
+    _______, _______, _______, EMACS_YAS_DOC,     EMACS_YAS_TF,     EMACS_INSERT_GET_FEED, _______,                                                                 _______, _______, _______, _______, EMACS_YAS_TL,     _______, _______,
+    _______, _______, _______, EMACS_YAS_C,     _______, _______,                                 _______, EMACS_YAS_MAP_ANON,     _______, _______, _______, _______,
     _______, _______, _______, _______, _______, _______,                                                                                                 _______, _______, _______, _______, _______, _______,
     _______, _______, _______,                 _______, _______, _______
   ),
@@ -243,12 +207,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // editing
   [_EDITING] = LAYOUT_moonlander(
     _______, _______, _______, _______, _______, _______, _______,                                 _______, _______, _______, _______, _______, _______, _______,
-    _______, _______, ST_MACRO_9,     _______, ST_MACRO_10,    _______, _______,                                 _______, _______, LCTL(KC_7),     _______, _______, _______, _______,
-    _______, _______, _______, _______, RALT(KC_ENTER), _______, _______,                                                                 _______, LALT(LSFT(KC_H)),LALT(LSFT(KC_J)),LALT(LSFT(KC_K)),LALT(LSFT(KC_L)),RCTL(KC_SCOLON),RCTL(KC_QUOTE),
-    _______, _______, _______, ST_MACRO_11,    _______, _______,                                 _______, _______, _______, _______, ST_MACRO_12,    _______,
+    _______, _______, EMACS_OTHER_WINDOW,     _______, EMACS_BUFFER_REVERT,    _______, _______,                                 _______, _______, LCTL(KC_7),     _______, EMACS_OTHER_WINDOW,  _______, _______,
+    _______, _______, _______, _______, max_buffer, _______, _______,                                                                 _______, LALT(LSFT(KC_H)),LALT(LSFT(KC_J)),LALT(LSFT(KC_K)),LALT(LSFT(KC_L)),RCTL(KC_SCOLON),RCTL(KC_QUOTE),
+    _______, _______, _______, EMACS_WINDOW_CLOSE,    _______, _______,                                 RALT(RSFT(KC_N)), EMACS_ACE_WINDOW_SWAP, OSL(_SYMBOLS), _______, EMACS_WINDOW_CLOSEST_MACRO_12,    _______,
     _______, _______, _______, _______, _______, _______,                                                                                                 _______, _______, _______, _______, _______, _______,
     _______, _______, _______,                 _______, _______, _______
   ),
+    [_SYMBOLS] = LAYOUT_moonlander(
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_AMPR,        KC_ASTR,        KC_LPRN,        KC_RPRN,        KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_DLR,         KC_PERC,        KC_CIRC,        KC_LBRACKET,    KC_RBRACKET,
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_EXLM,        KC_AT,          KC_HASH,        KC_LCBR,        KC_RCBR,
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                                                                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
+  ),
+
 };
 
 extern bool g_suspend_state;
@@ -259,7 +232,15 @@ void keyboard_post_init_user(void) {
 }
 
 const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][3] = {
-    [_LOWER] = { {0,0,0}, {167,255,255}, {0,0,0}, {82,255,255}, {0,0,0}, {43,255,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,0}, {43,255,255}, {0,0,255}, {0,0,255}, {0,0,255}, {42,255,255}, {43,255,255}, {0,0,255}, {0,0,255}, {0,0,255}, {42,255,255}, {43,255,255}, {0,0,255}, {0,0,255}, {0,0,255}, {74,255,255}, {43,255,255}, {74,255,255}, {41,255,255}, {74,255,255}, {86,255,255}, {0,0,0}, {152,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {86,255,255}, {0,0,0}, {0,0,0}, {88,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,218,204}, {0,0,0}, {0,0,0}, {152,255,255}, {0,245,245}, {219,255,255}, {0,0,0}, {0,0,0}, {219,255,255}, {0,245,245}, {219,255,255}, {0,0,0}, {0,0,0}, {219,255,255}, {0,245,245}, {0,0,0}, {0,0,0}, {0,0,0}, {152,255,255}, {0,245,245}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {210,255,255}, {0,0,0}, {0,0,0}, {0,0,0} },
+    [_LOWER] = { {0,0,0}, {167,255,255}, {0,0,0}, {82,255,255}, {0,0,0},
+                 {43,255,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,0},
+                 {43,255,255}, {0,0,255}, {0,0,255}, {0,0,255}, {42,255,255},
+                 {43,255,255}, {0,0,255}, {0,0,255}, {0,0,255}, {42,255,255},
+                 {43,255,255}, {0,0,255}, {0,0,255}, {0,0,255}, {74,255,255},
+                 {43,255,255}, {74,255,255}, {41,255,255}, {74,255,255},
+                 {86,255,255}, {0,0,0}, {152,255,255},
+
+                 {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {86,255,255}, {0,0,0}, {0,0,0}, {88,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,218,204}, {0,0,0}, {0,0,0}, {152,255,255}, {0,245,245}, {219,255,255}, {0,0,0}, {0,0,0}, {219,255,255}, {0,245,245}, {219,255,255}, {0,0,0}, {0,0,0}, {219,255,255}, {0,245,245}, {0,0,0}, {0,0,0}, {0,0,0}, {152,255,255}, {0,245,245}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {210,255,255}, {0,0,0}, {0,0,0}, {0,0,0} },
 
     [_RAISE] = { {41,255,255}, {152,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {41,255,255}, {0,0,0}, {0,245,245}, {0,245,245}, {0,0,0}, {41,255,255}, {129,255,255}, {74,255,255}, {74,255,255}, {42,255,255}, {41,255,255}, {167,255,255}, {0,0,0}, {0,245,245}, {42,255,255}, {41,255,255}, {0,255,255}, {170,255,255}, {0,0,0}, {0,0,0}, {41,255,255}, {0,0,0}, {74,255,255}, {167,242,168}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {197,255,255}, {41,255,255}, {0,0,0}, {0,0,0}, {41,255,255}, {129,255,255}, {41,255,255}, {41,255,255}, {0,0,0}, {41,255,255}, {129,255,255}, {129,255,255}, {129,255,255}, {41,255,255}, {41,255,255}, {129,255,255}, {129,255,255}, {129,255,255}, {129,255,255}, {41,255,255}, {129,255,255}, {129,255,255}, {129,255,255}, {167,255,255}, {41,255,255}, {0,0,0}, {0,245,245}, {129,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0} },
 
@@ -279,8 +260,9 @@ const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][3] = {
 
     [_SUPER] = { {175,255,255}, {175,255,255}, {175,255,255}, {175,255,255}, {175,255,255}, {37,255,255}, {37,255,255}, {37,255,255}, {37,255,255}, {175,255,255}, {37,255,255}, {37,255,255}, {37,255,255}, {37,255,255}, {175,255,255}, {37,255,255}, {37,255,255}, {37,255,255}, {37,255,255}, {175,255,255}, {37,255,255}, {37,255,255}, {37,255,255}, {37,255,255}, {0,255,255}, {37,255,255}, {37,255,255}, {37,255,255}, {37,255,255}, {0,0,0}, {0,0,0}, {0,255,255}, {129,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {129,255,255}, {175,255,255}, {175,255,255}, {175,255,255}, {37,255,255}, {37,255,255}, {37,255,255}, {175,255,255}, {175,255,255}, {175,255,255}, {37,255,255}, {37,255,255}, {37,255,255}, {175,255,255}, {175,255,255}, {37,255,255}, {37,255,255}, {37,255,255}, {175,255,255}, {129,255,255}, {37,255,255}, {37,255,255}, {37,255,255}, {37,255,255}, {0,255,255}, {37,255,255}, {37,255,255}, {37,255,255}, {37,255,255}, {0,0,0}, {0,0,0}, {129,255,255}, {37,255,255}, {0,0,0}, {0,0,0}, {129,255,255} },
 
-    [_EDITING] = { {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {81,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,255,255}, {0,0,0}, {0,0,0}, {0,255,255}, {197,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {27,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {42,255,255}, {0,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {82,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {82,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {170,255,255}, {82,255,255}, {197,255,255}, {197,255,255}, {0,0,0}, {0,0,0}, {82,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0} },
+    [_EDITING] = { {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {81,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,255,255}, {0,0,0}, {0,0,0}, {0,255,255}, {197,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {27,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {42,255,255}, {0,255,255}, {0,0,0}, {0,0,0}, {89,255,255}, {82,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {82,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {170,255,255}, {82,255,255}, {197,255,255}, {197,255,255}, {0,0,0}, {0,0,0}, {82,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0} },
 
+    [_SYMBOLS] = { {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {129,255,255}, {129,255,255}, {0,0,0}, {0,0,0}, {129,255,255}, {129,255,255}, {129,255,255}, {0,0,0}, {0,0,0}, {129,255,255}, {129,255,255}, {129,255,255}, {0,0,0}, {0,0,0}, {129,255,255}, {129,255,255}, {129,255,255}, {0,0,0}, {0,0,0}, {129,255,255}, {129,255,255}, {129,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0} },
 };
 
 void set_layer_color(int layer) {
@@ -344,15 +326,150 @@ void rgb_matrix_indicators_user(void) {
 }
 
 
-#include "user_song_list.h"
+/* float zelda_tune[][2] = SONG(zelda); */
+float lp_numb[][2] =  SONG(LP_NUMB);
+float ode_to_joy[][2] =  SONG(ODE_TO_JOY);
+float rock_a_bye_baby[][2] =  SONG(ROCK_A_BYE_BABY);
+float close_encounters_5_note[][2] =  SONG(CLOSE_ENCOUNTERS_5_NOTE);
+float doe_a_deer[][2] =  SONG(DOE_A_DEER);
+float in_like_flint[][2] =  SONG(IN_LIKE_FLINT);
+float imperial_march[][2] =  SONG(IMPERIAL_MARCH);
+float clueboard_sound[][2] =  SONG(CLUEBOARD_SOUND);
+float basket_case[][2] =  SONG(BASKET_CASE);
+float startup_sound[][2] =  SONG(STARTUP_SOUND);
+float goodbye_sound[][2] =  SONG(GOODBYE_SOUND);
+float planck_sound[][2] =  SONG(PLANCK_SOUND);
+float preonic_sound[][2] =  SONG(PREONIC_SOUND);
+float qwerty_sound[][2] =  SONG(QWERTY_SOUND);
+float colemak_sound[][2] =  SONG(COLEMAK_SOUND);
+float dvorak_sound[][2] =  SONG(DVORAK_SOUND);
+float plover_sound[][2] =  SONG(PLOVER_SOUND);
+float plover_goodbye_sound[][2] =  SONG(PLOVER_GOODBYE_SOUND);
+float music_on_sound[][2] =  SONG(MUSIC_ON_SOUND);
+float audio_on_sound[][2] =  SONG(AUDIO_ON_SOUND);
+float audio_off_sound[][2] =  SONG(AUDIO_OFF_SOUND);
+float music_off_sound[][2] =  SONG(MUSIC_OFF_SOUND);
+float voice_change_sound[][2] =  SONG(VOICE_CHANGE_SOUND);
+float chromatic_sound[][2] =  SONG(CHROMATIC_SOUND);
+float major_sound[][2] =  SONG(MAJOR_SOUND);
+float minor_sound[][2] =  SONG(MINOR_SOUND);
+float guitar_sound[][2] =  SONG(GUITAR_SOUND);
+float violin_sound[][2] =  SONG(VIOLIN_SOUND);
+float caps_lock_on_sound[][2] =  SONG(CAPS_LOCK_ON_SOUND);
+float caps_lock_off_sound[][2] =  SONG(CAPS_LOCK_OFF_SOUND);
+float scroll_lock_on_sound[][2] =  SONG(SCROLL_LOCK_ON_SOUND);
+float scroll_lock_off_sound[][2] =  SONG(SCROLL_LOCK_OFF_SOUND);
+float num_lock_on_sound[][2] =  SONG(NUM_LOCK_ON_SOUND);
+float num_lock_off_sound[][2] =  SONG(NUM_LOCK_OFF_SOUND);
+float ag_norm_sound[][2] =  SONG(AG_NORM_SOUND);
+float ag_swap_sound[][2] =  SONG(AG_SWAP_SOUND);
+float unicode_windows[][2] =  SONG(UNICODE_WINDOWS);
+float unicode_linux[][2] =  SONG(UNICODE_LINUX);
+float coin_sound[][2] =  SONG(COIN_SOUND);
+float one_up_sound[][2] =  SONG(ONE_UP_SOUND);
+float sonic_ring[][2] =  SONG(SONIC_RING);
+float zelda_puzzle[][2] =  SONG(ZELDA_PUZZLE);
+float zelda_treasure[][2] =  SONG(ZELDA_TREASURE);
+float terminal_sound[][2] =  SONG(TERMINAL_SOUND);
+float overwatch_theme[][2] =  SONG(OVERWATCH_THEME);
+float mario_theme[][2] =  SONG(MARIO_THEME);
+float mario_gameover[][2] =  SONG(MARIO_GAMEOVER);
+float mario_mushroom[][2] =  SONG(MARIO_MUSHROOM);
+float e1m1_doom[][2] =  SONG(E1M1_DOOM);
+float disney_song[][2] =  SONG(DISNEY_SONG);
+float number_one[][2] =  SONG(NUMBER_ONE);
+float cabbage_song[][2] =  SONG(CABBAGE_SONG);
+float old_spice[][2] =  SONG(OLD_SPICE);
+float victory_fanfare_short[][2] =  SONG(VICTORY_FANFARE_SHORT);
+float all_star[][2] =  SONG(ALL_STAR);
+float rick_roll[][2] =  SONG(RICK_ROLL);
+float ff_prelude[][2] =  SONG(FF_PRELUDE);
+float to_boldly_go[][2] =  SONG(TO_BOLDLY_GO);
 
-float zelda_tune[][2] = SONG(zelda);
-
+int i = 0;
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
+  case MUSIC_LAYER_ACTIVATE:
+    if (record->event.pressed) {
+      switch (i++) {
+        /* case 0: PLAY_SONG(lp_numb); break; */
+        /* case 1: PLAY_SONG(ode_to_joy); break; */
+      case 2: PLAY_SONG(rock_a_bye_baby); break;
+        /* case 3: PLAY_SONG(close_encounters_5_note); break; */
+        /* case 4: PLAY_SONG(doe_a_deer); break; */
+        /* case 5: PLAY_SONG(in_like_flint); break; */
+      case 6: PLAY_SONG(imperial_march); break;
+        /* case 7: PLAY_SONG(clueboard_sound); break; */
+        /* case 8: PLAY_SONG(basket_case); break; */
+      case 9: PLAY_SONG(startup_sound); break;
+        /* case 10: PLAY_SONG(goodbye_sound); break; */
+        /* case 11: PLAY_SONG(planck_sound); break; */
+        /* case 12: PLAY_SONG(preonic_sound); break; */
+        /* case 13: PLAY_SONG(qwerty_sound); break; */
+        /* case 14: PLAY_SONG(colemak_sound); break; */
+        /* case 15: PLAY_SONG(dvorak_sound); break; */
+        /* case 16: PLAY_SONG(plover_sound); break; */
+        /* case 17: PLAY_SONG(plover_goodbye_sound); break; */
+        /* case 18: PLAY_SONG(music_on_sound); break; */
+        /* case 19: PLAY_SONG(audio_on_sound); break; */
+        /* case 20: PLAY_SONG(audio_off_sound); break; */
+        /* case 21: PLAY_SONG(music_off_sound); break; */
+        /* case 22: PLAY_SONG(voice_change_sound); break; */
+        /* case 23: PLAY_SONG(chromatic_sound); break; */
+        /* case 24: PLAY_SONG(major_sound); break; */
+        /* case 25: PLAY_SONG(minor_sound); break; */
+        /* case 26: PLAY_SONG(guitar_sound); break; */
+        /* case 27: PLAY_SONG(violin_sound); break; */
+        /* case 28: PLAY_SONG(caps_lock_on_sound); break; */
+        /* case 29: PLAY_SONG(caps_lock_off_sound); break; */
+        /* case 30: PLAY_SONG(scroll_lock_on_sound); break; */
+        /* case 31: PLAY_SONG(scroll_lock_off_sound); break; */
+        /* case 32: PLAY_SONG(num_lock_on_sound); break; */
+        /* case 33: PLAY_SONG(num_lock_off_sound); break; */
+        /* case 34: PLAY_SONG(ag_norm_sound); break; */
+        /* case 35: PLAY_SONG(ag_swap_sound); break; */
+        /* case 36: PLAY_SONG(unicode_windows); break; */
+        /* case 37: PLAY_SONG(unicode_linux); break; */
+      case 38: PLAY_SONG(coin_sound); break;
+      case 39: PLAY_SONG(one_up_sound); break;
+        /* case 40: PLAY_SONG(sonic_ring); break; */
+      case 41: PLAY_SONG(zelda_puzzle); break;
+        /* case 42: PLAY_SONG(zelda_treasure); break; */
+        /* case 43: PLAY_SONG(terminal_sound); break; */
+        /* case 44: PLAY_SONG(overwatch_theme); break; */
+        /* case 45: PLAY_SONG(mario_theme); break; */
+      case 46: PLAY_SONG(mario_gameover); break;
+      case 47: PLAY_SONG(mario_mushroom); break;
+      case 48: PLAY_SONG(e1m1_doom); break;
+      case 49: PLAY_SONG(disney_song); break;
+      case 50: PLAY_SONG(number_one); break;
+      case 51: PLAY_SONG(cabbage_song); break;
+      case 52: PLAY_SONG(old_spice); break;
+      case 53: PLAY_SONG(victory_fanfare_short); break;
+      case 54: PLAY_SONG(all_star); break;
+      case 55: PLAY_SONG(rick_roll); break;
+      case 56: PLAY_SONG(ff_prelude); break;
+      case 57: PLAY_SONG(to_boldly_go); break;
+      default: i = 0;
+
+      }
+
+
+      /* layer_on(_MUSIC); */
+
+      return false;
+
+    }
+    break;
+
+  case SYSTEM_LAYER_ACTIVATE:
+    PLAY_SONG(zelda_puzzle);
+    layer_on(_SYSTEM);
+    return false;
+
   case SHIFTLOK_LAYER_ACTIVATE:
     if (record->event.pressed) {
-      PLAY_SONG(zelda_tune);
+      /* PLAY_SONG(zelda_tune); */
 
       layer_on(_SHIFTLOK);
 
@@ -361,95 +478,80 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     break;
 
-    case ST_MACRO_0:
+  case EMACS_OTHER_WINDOW:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_ESCAPE)  SS_RCTL(SS_TAP(X_W))  SS_RCTL(SS_TAP(X_W)));
 
     }
     break;
-    case ST_MACRO_1:
+  case EMACS_BUFFER_REVERT:
     if (record->event.pressed) {
       SEND_STRING(SS_RCTL(SS_TAP(X_C))  SS_TAP(X_R));
 
     }
     break;
-    case ST_MACRO_2:
+  case FISH_ACCEPT_SEND:
     if (record->event.pressed) {
       SEND_STRING(SS_RALT(SS_RSFT(SS_TAP(X_L)))   SS_TAP(X_ENTER));
 
     }
     break;
-    case ST_MACRO_3:
-    if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_MINUS)  SS_TAP(X_MINUS));
 
-    }
-    break;
-    case ST_MACRO_4:
+  case EMACS_YAS_DOC:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_D)  SS_TAP(X_O)  SS_TAP(X_C)  SS_RALT(SS_TAP(X_SLASH)));
 
     }
     break;
-    case ST_MACRO_5:
+  case EMACS_YAS_TF:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_T)  SS_TAP(X_F)  SS_RALT(SS_TAP(X_SLASH)));
 
     }
     break;
-    case ST_MACRO_6:
+  case EMACS_YAS_C:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_C)  SS_RALT(SS_TAP(X_SLASH)));
 
     }
     break;
-    case ST_MACRO_7:
+  case EMACS_YAS_TL:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_T)  SS_TAP(X_L)  SS_RALT(SS_TAP(X_SLASH)));
 
     }
     break;
-    case ST_MACRO_8:
+  case EMACS_YAS_MAP_ANON:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_M)  SS_TAP(X_A)  SS_TAP(X_P)  SS_TAP(X_A)  SS_RALT(SS_TAP(X_SLASH)));
 
     }
     break;
-    case ST_MACRO_9:
+
+  case EMACS_ACE_WINDOW_SWAP:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_ESCAPE)  SS_RCTL(SS_TAP(X_W))  SS_RCTL(SS_TAP(X_W)));
+      SEND_STRING(SS_RALT(SS_TAP(X_M)) SS_DELAY(10) SS_TAP(X_W) SS_DELAY(10) SS_RSFT(SS_TAP(X_M)));
 
     }
     break;
-    case ST_MACRO_10:
-    if (record->event.pressed) {
-      SEND_STRING(SS_RCTL(SS_TAP(X_C))  SS_TAP(X_R));
 
-    }
-    break;
-    case ST_MACRO_11:
+  case EMACS_WINDOW_CLOSE:
     if (record->event.pressed) {
       SEND_STRING(SS_RALT(SS_TAP(X_M))  SS_TAP(X_W)  SS_TAP(X_C));
 
     }
     break;
-    case ST_MACRO_12:
-    if (record->event.pressed) {
-      SEND_STRING(SS_LALT(SS_TAP(X_M))  SS_TAP(X_W)  SS_TAP(X_C));
-
-    }
-    break;
-  case GET_FEED_MACRO:
+  case EMACS_INSERT_GET_FEED:
     if (record->event.pressed) {
       SEND_STRING("(def xs (get-feed))");
     }
     break;
 
-    case RGB_SLD:
-      if (record->event.pressed) {
-        rgblight_mode(1);
-      }
-      return false;
+  case RGB_SLD:
+    if (record->event.pressed) {
+      rgblight_mode(1);
+    }
+    return false;
   }
   return true;
 }
@@ -2230,93 +2332,3 @@ qk_tap_dance_action_t tap_dance_actions[] = {
         [DANCE_47] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_47, dance_47_finished, dance_47_reset),
         [DANCE_48] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_48, dance_48_finished, dance_48_reset),
 };
-
-/* /\* const uint16_t PROGMEM combo_newline[] = {KC_M, KC_COMM, COMBO_END}; *\/ */
-/* const uint16_t PROGMEM combo_newline[] = {my_comma, my_m, COMBO_END}; */
-
-/* combo_t key_combos[COMBO_COUNT] = { */
-/*                                    COMBO(combo_newline, KC_ENTER) */
-/* }; */
-
-
-const uint16_t PROGMEM combo_comma_m[] = {my_m, my_comma, COMBO_END};
-const uint16_t PROGMEM combo_newline[] = {my_j, my_k, COMBO_END};
-
-const uint16_t PROGMEM combo_osl_windows_2[] = {my_f, my_d, COMBO_END};
-const uint16_t PROGMEM combo_osl_windows[] = {my_s, my_d, COMBO_END};
-const uint16_t PROGMEM combo_osl_windows_3[] = {my_f, my_s, my_d, COMBO_END};
-
-const uint16_t PROGMEM combo_osl_editor[] = {my_k, my_l, COMBO_END};
-const uint16_t PROGMEM combo_backspace[] = {my_h, my_j, COMBO_END};
-const uint16_t PROGMEM combo_jo[] = {my_o, my_j, COMBO_END};
-const uint16_t PROGMEM combo_jp[] = {my_p, my_j, COMBO_END};
-const uint16_t PROGMEM combo_opening_paren[] = {my_u, my_i, COMBO_END};
-const uint16_t PROGMEM combo_closing_paren[] = {my_i, my_o, COMBO_END};
-const uint16_t PROGMEM combo_max[] = {my_k, my_m, COMBO_END};
-const uint16_t PROGMEM combo_min[] = {my_j, my_n, COMBO_END};
-const uint16_t PROGMEM combo_osl_win_move[] = {my_w, my_e, COMBO_END};
-const uint16_t PROGMEM combo_hyper_clear[] = {my_k,my_semicolon, my_l, COMBO_END};
-const uint16_t PROGMEM combo_shiftlok[] = {my_left_shift, my_right_shift, COMBO_END};
-
-const uint16_t PROGMEM combo_l_semicolon[] = {my_l, my_semicolon, COMBO_END}; // [
-const uint16_t PROGMEM combo_l_semicolon_k[] = {my_k, my_l, my_semicolon, COMBO_END}; // {
-
-const uint16_t PROGMEM combo_semicolon_singlequote[] = {my_semicolon, my_single_quote, COMBO_END}; // ]
-const uint16_t PROGMEM combo_l_singlequote_semicolon[] = {my_l, my_single_quote, my_semicolon, COMBO_END}; // }
-
-const uint16_t PROGMEM combo_p_minus[] = {my_p, my_minus, COMBO_END}; // underscore
-const uint16_t PROGMEM combo_p_minus_o[] = {my_p, my_o, my_minus, COMBO_END}; // equal
-
-const uint16_t PROGMEM combo_lprn[] = {my_space, my_o, COMBO_END};
-const uint16_t PROGMEM combo_lprn_n[] = {my_space, my_n, COMBO_END};
-const uint16_t PROGMEM combo_rprn[] = {my_space, my_p, COMBO_END};
-const uint16_t PROGMEM combo_exlm[] = {my_space, my_m, COMBO_END};
-const uint16_t PROGMEM combo_at[] =   {my_space, my_comma, COMBO_END};
-const uint16_t PROGMEM combo_hash[] = {my_space, my_period, COMBO_END};
-const uint16_t PROGMEM combo_dlr[] =  {my_space, my_j, COMBO_END};
-const uint16_t PROGMEM combo_perc[] = {my_space, my_k, COMBO_END};
-const uint16_t PROGMEM combo_circ[] = {my_space, my_l, COMBO_END};
-const uint16_t PROGMEM combo_ampr[] = {my_space, my_u, COMBO_END};
-const uint16_t PROGMEM combo_astr[] = {my_space, my_i, COMBO_END};
-
-
-combo_t key_combos[COMBO_COUNT] = {COMBO(combo_comma_m, KC_ENTER),
-                                   COMBO(combo_osl_windows, OSL(_WINDOWS)),
-                                   COMBO(combo_osl_windows_2, OSL(_WINDOWS)),
-                                   COMBO(combo_osl_windows_3, OSL(_WINDOWS)),
-
-                                   COMBO(combo_osl_win_move, OSL(_WINMOVE)),
-                                   COMBO(combo_backspace, KC_BSPC),
-
-                                   COMBO(combo_lprn_n, KC_LPRN),
-                                   COMBO(combo_lprn, KC_LPRN),
-                                   COMBO(combo_rprn, KC_RPRN),
-                                   COMBO(combo_exlm, KC_EXLM),
-                                   COMBO(combo_at, KC_AT),
-                                   COMBO(combo_hash, KC_HASH),
-                                   COMBO(combo_dlr, KC_DLR),
-                                   COMBO(combo_perc, KC_PERC),
-                                   COMBO(combo_circ, KC_CIRC),
-                                   COMBO(combo_ampr, KC_AMPR),
-                                   COMBO(combo_astr, KC_ASTR),
-
-                                   COMBO(combo_jo, KC_LSPO),
-                                   COMBO(combo_jp, KC_RPRN),
-                                   COMBO(combo_osl_editor, OSL(_EDITING)),
-                                   COMBO(combo_max, RGUI(RSFT(KC_K))),
-                                   COMBO(combo_min, RGUI(RSFT(KC_J))),
-
-                                   COMBO(combo_opening_paren, KC_LPRN),
-                                   COMBO(combo_closing_paren, KC_RPRN),
-                                   COMBO(combo_l_semicolon, KC_LBRACKET),
-                                   COMBO(combo_l_semicolon_k, KC_LCBR),
-
-
-                                   COMBO(combo_semicolon_singlequote, KC_RBRACKET),
-                                   COMBO(combo_l_singlequote_semicolon, KC_RCBR),
-
-                                   COMBO(combo_p_minus, KC_UNDS),
-                                   COMBO(combo_p_minus_o, KC_EQL),
-
-
-                                   COMBO(combo_newline, KC_ENTER)};

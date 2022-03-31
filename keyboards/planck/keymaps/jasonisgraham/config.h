@@ -5,12 +5,16 @@
 #define COMBO_COUNT 50
 #define COMBO_TERM 20  // default is 50.  50ms produces false positives when typing kinda fast
 
+#ifdef AUDIO_ENABLE
+#define STARTUP_SONG SONG(OLD_SPICE)
+#endif
+
 
 #define FORCE_NKRO
 
-#ifdef AUDIO_ENABLE
-#define STARTUP_SONG SONG(PLANCK_SOUND)
-#endif
+/* #ifdef AUDIO_ENABLE */
+/* #define STARTUP_SONG SONG(PLANCK_SOUND) */
+/* #endif */
 
 #define MIDI_BASIC
 
@@ -37,5 +41,5 @@
 
 #define NO_AUTO_SHIFT_TAB
 #define HOLD_ON_OTHER_KEY_PRESS
-#define FIRMWARE_VERSION u8"jaa0Y/bQZQp"
+/* #define FIRMWARE_VERSION u8"jaa0Y/bQZQp" */
 #define RGB_MATRIX_STARTUP_SPD 60

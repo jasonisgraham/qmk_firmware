@@ -49,7 +49,7 @@
 
 #define NO_AUTO_SHIFT_TAB
 #define HOLD_ON_OTHER_KEY_PRESS
-#define FIRMWARE_VERSION u8"jaa0Y/EPRjD"
+/* #define FIRMWARE_VERSION u8"jaa0Y/EPRjD" */
 #define RGB_MATRIX_STARTUP_SPD 60
 
 
