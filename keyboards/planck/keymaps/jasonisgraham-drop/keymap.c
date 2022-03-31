@@ -2,32 +2,32 @@
 #include "muse.h"
 
 enum planck_layers {
-                    _BASE,
-                    _LOWER,
-                    _RAISE,
-                    _ADJUST,
-                    _MOUSE,
-                    _SYSTEM,
-                    _WINDOWS,
-                    _MACROS,
-                    _SHIFTLOCK,
-                    _WINMOVE,
-                    _ALT,
-                    _SUPER,
-                    _EDITING,
-                    _LAYER13,
-                    _VIM_CMDS,
-                    _LAYER15,
-                    _COLORS,
-                    _LAYER17,
-                    _LAYER18,
-                    _LAYER19,
-                    _EMACS_SEL_WINDOW,
-                    _GAUTH,
-                    _AUDIO,
-                    _VOLUME,
-                    _BRIGHTNESS,
-                    _ADHOC_SET_HOTKEY,
+  _BASE,
+  _LOWER,
+  _RAISE,
+  _CTRL,
+  _MOUSE,
+  _SYSTEM,
+  _WINDOWS,
+  _MACROS,
+  _SHIFTLOCK,
+  _WINMOVE,
+  _ALT,
+  _SUPER,
+  _EDITING,
+  _LAYER13,
+  _VIM_CMDS,
+  _LAYER15,
+  _COLORS,
+  _LAYER17,
+  _LAYER18,
+  _LAYER19,
+  _EMACS_SEL_WINDOW,
+  _GAUTH,
+  _AUDIO,
+  _VOLUME,
+  _BRIGHTNESS,
+  _ADHOC_SET_HOTKEY,
 };
 
 #include "../../../common/keycodes.c"
@@ -63,7 +63,8 @@ enum planck_layers {
 #define my_cap_o RSFT(KC_O)
 #define my_comma KC_COMMA // TD(DANCE_23)
 #define my_forward_slash TD(DANCE_25)
-#define my_left_shift KC_LSFT
+#define my_left_shift KC_LSFT //  LM(_SHIFTLOCK, MOD_LSFT)
+
 #define my_lctl MT(MOD_RCTL, KC_ESCAPE)
 #define my_lower MO(_LOWER)
 #define my_lower MO(_LOWER)
@@ -98,7 +99,8 @@ enum planck_layers {
 #define my_raise_p KC_0
 #define my_raise_period KC_3
 #define my_raise_u  KC_7
-#define my_right_shift KC_RSFT
+#define my_right_shift LM(_ALT, MOD_LSFT) //KC_RSFT
+#define raise_semi KC_MINUS
 
 #define my_semicolon TD(DANCE_19)
 #define my_singlequote TD(DANCE_20)
@@ -137,12 +139,13 @@ enum planck_layers {
 #define my_y TD(DANCE_Y)
 #define my_z TD(Z_OR_SHIFT)
 
-#define right_of_lower esc_ctrl ///hyper // / MT(MOD_RCTL, KC_ESCAPE)
+#define right_of_lower esc_ctrl  // my_left_shift ///hyper // / MT(MOD_RCTL, KC_ESCAPE)
 #define select_slack LGUI(KC_S)
 #define show_desktop LALT(LGUI(LCTL(KC_D)))
 #define below_m MT(MOD_RCTL, KC_ESCAPE)
-/* #define super MT(MOD_LGUI, OSL(_WINDOWS)) //TD(SUPER_WINDOWS) */
-#define super KC_LGUI
+#define super LM(_SUPER, MOD_LGUI) //TD(SUPER_WINDOWS)
+/* #define super KC_LGUI */
+#define alt LM(_ALT, MOD_LALT)
 /* #define super TD(SUPER_WINDOWS) */
 #define topright _______
 #include "user_song_list.h"
@@ -153,7 +156,7 @@ enum planck_layers {
 
 #include "keymaps.c"
 
-  bool muse_mode = false;
+bool muse_mode = false;
 uint8_t last_muse_note = 0;
 uint16_t muse_counter = 0;
 uint8_t muse_offset = 70;
@@ -183,27 +186,27 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
       unregister_code(KC_PGUP);
     }
   }
-  return true;
+    return true;
 }
 
-bool dip_switch_update_user(uint8_t index, bool active) {
-  switch (index) {
-  case 0:
-    if (active) {
-      layer_on(_ADJUST);
-    } else {
-      layer_off(_ADJUST);
-    }
-    break;
-  case 1:
-    if (active) {
-      muse_mode = true;
-    } else {
-      muse_mode = false;
-    }
-  }
-  return true;
-}
+/* bool dip_switch_update_user(uint8_t index, bool active) { */
+/*     switch (index) { */
+/*         case 0: */
+/*             if (active) { */
+/*                 layer_on(_ADJUST); */
+/*             } else { */
+/*                 layer_off(_ADJUST); */
+/*             } */
+/*             break; */
+/*         case 1: */
+/*             if (active) { */
+/*                 muse_mode = true; */
+/*             } else { */
+/*                 muse_mode = false; */
+/*             } */
+/*     } */
+/*     return true; */
+/* } */
 
 
 #include "colors.c"
@@ -237,26 +240,64 @@ void leader_matrix_scan_user(void) {
 #include "../../../common/combos.c"
 
 bool get_custom_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
-  switch(keycode) {
-  case KC_LPRN:
-    return true;
-  case KC_LCBR:
-    return true;
-  default:
-    return false;
-  }
+    switch(keycode) {
+        case KC_LPRN:
+            return true;
+        case KC_LCBR:
+            return true;
+        default:
+            return false;
+    }
 }
 
 void autoshift_press_user(uint16_t keycode, bool shifted, keyrecord_t *record) {
-  switch(keycode) {
-  case KC_LPRN:
-    register_code16((!shifted) ? KC_LPRN : KC_RPRN);
-    break;
-  }
-
-  void autoshift_release_user(uint16_t keycode, bool shifted, keyrecord_t *record) {
     switch(keycode) {
-    case KC_LPRN:
-      unregister_code16((!shifted) ? KC_LPRN : KC_RPRN);
+        case KC_LPRN:
+            register_code16((!shifted) ? KC_LPRN : KC_RPRN);
+            break;
+
+      case KC_LCBR:
+        register_code16((!shifted) ? KC_LCBR : KC_RCBR);
+        break;
+
+    case KC_LBRACKET:
+        register_code16((!shifted) ? KC_LBRACKET : KC_RBRACKET);
+        break;
+
+    case KC_TAB:
+      register_code16((!shifted) ? KC_TAB : RALT(KC_SLASH));
       break;
+
+        default:
+            if (shifted) {
+                add_weak_mods(MOD_BIT(KC_LSFT));
+            }
+            // & 0xFF gets the Tap key for Tap Holds, required when using Retro Shift
+            register_code16((IS_RETRO(keycode)) ? keycode & 0xFF : keycode);
     }
+}
+
+void autoshift_release_user(uint16_t keycode, bool shifted, keyrecord_t *record) {
+    switch(keycode) {
+        case KC_LPRN:
+            unregister_code16((!shifted) ? KC_LPRN : KC_RPRN);
+            break;
+        case KC_LCBR:
+          unregister_code16((!shifted) ? KC_LCBR : KC_RCBR);
+          break;
+
+    case KC_LBRACKET:
+      unregister_code16((!shifted) ? KC_LBRACKET : KC_RBRACKET);
+      break;
+
+    case KC_TAB:
+      unregister_code16((!shifted) ? KC_TAB : RALT(KC_SLASH));
+      break;
+
+        default:
+            // & 0xFF gets the Tap key for Tap Holds, required when using Retro Shift
+            // The IS_RETRO check isn't really necessary here, always using
+            // keycode & 0xFF would be fine.
+            unregister_code16((IS_RETRO(keycode)) ? keycode & 0xFF : keycode);
+    }
+}
