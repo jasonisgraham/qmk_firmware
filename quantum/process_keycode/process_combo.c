@@ -18,6 +18,7 @@
 #include "process_combo.h"
 #include "action_tapping.h"
 #include "action.h"
+#include "hacks.c"
 
 #ifdef COMBO_COUNT
 __attribute__((weak)) combo_t key_combos[COMBO_COUNT];
@@ -537,10 +538,14 @@ bool process_combo(uint16_t keycode, keyrecord_t *record) {
         return true;
     }
 
-#ifdef COMBO_ONLY_FROM_LAYER
-    /* Only check keycodes from one layer. */
-    keycode = keymap_key_to_keycode(COMBO_ONLY_FROM_LAYER, record->event.key);
-#endif
+    if (use_only_base_layer_combos) {
+      keycode = keymap_key_to_keycode(true, record->event.key);
+    }
+
+/* #ifdef COMBO_ONLY_FROM_LAYER */
+/*     /\* Only check keycodes from one layer. *\/ */
+/*     keycode = keymap_key_to_keycode(COMBO_ONLY_FROM_LAYER, record->event.key); */
+/* #endif */
 
     for (uint16_t idx = 0; idx < COMBO_LEN; ++idx) {
         combo_t *combo = &key_combos[idx];
