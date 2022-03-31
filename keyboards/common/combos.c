@@ -11,6 +11,18 @@ const uint16_t PROGMEM combo_ampr[] = {my_space, my_u, COMBO_END};
 const uint16_t PROGMEM combo_astr[] = {my_space,  my_i, COMBO_END};
 const uint16_t PROGMEM combo_osl_symbols[] = {my_j, my_l, COMBO_END};
 
+
+const uint16_t PROGMEM combo_spc_q[] = {my_q, my_space, COMBO_END};
+const uint16_t PROGMEM combo_spc_w[] = {my_w, my_space, COMBO_END};
+const uint16_t PROGMEM combo_spc_e[] = {my_e, my_space, COMBO_END};
+const uint16_t PROGMEM combo_spc_t[] = {my_t, my_space, COMBO_END};
+const uint16_t PROGMEM combo_spc_a[] = {my_a, my_space, COMBO_END};
+const uint16_t PROGMEM combo_spc_s[] = {my_s, my_space, COMBO_END};
+const uint16_t PROGMEM combo_spc_z[] = {my_z, my_space, COMBO_END};
+const uint16_t PROGMEM combo_spc_x[] = {my_x, my_space, COMBO_END};
+const uint16_t PROGMEM combo_spc_c[] = {my_c, my_space, COMBO_END};
+
+
 const uint16_t PROGMEM combo_newline[] = {my_j, my_k, COMBO_END};
 const uint16_t PROGMEM combo_osl_windows[] = {my_s, my_d, COMBO_END};
 const uint16_t PROGMEM combo_osl_windows_2[] = {my_f, my_d, COMBO_END};
@@ -18,19 +30,20 @@ const uint16_t PROGMEM combo_osl_editor[] = {my_k, my_l, COMBO_END};
 const uint16_t PROGMEM combo_backspace[] = {my_h, my_j, COMBO_END};
 const uint16_t PROGMEM combo_spc_h[] = {my_h, my_space, COMBO_END};
 const uint16_t PROGMEM combo_jo[] = {my_o, my_j, COMBO_END};
-const uint16_t PROGMEM combo_jp[] = {my_p, my_j, COMBO_END};
-const uint16_t PROGMEM combo_opening_paren[] = {my_u,  my_i, COMBO_END};
+const uint16_t PROGMEM combo_j_i[] = {my_j, my_i, COMBO_END};
+/* const uint16_t PROGMEM combo_opening_paren[] = {my_u,  my_i, COMBO_END}; */
 const uint16_t PROGMEM combo_closing_paren[] = { my_i, my_o, COMBO_END};
 const uint16_t PROGMEM combo_max[] = {my_k, my_m, COMBO_END};
-const uint16_t PROGMEM combo_min[] = {my_j, my_n, COMBO_END};
+/* const uint16_t PROGMEM combo_min[] = {my_j, my_n, COMBO_END}; */
 const uint16_t PROGMEM combo_win_right[] = {my_w, my_l, COMBO_END};
 const uint16_t PROGMEM combo_win_left[] = {my_w, my_h, COMBO_END};
 const uint16_t PROGMEM combo_osl_win_move[] = {my_w, my_e, COMBO_END};
-const uint16_t PROGMEM combo_hyper_clear[] = {my_k,my_semicolon, my_l, COMBO_END};
-const uint16_t PROGMEM combo_shiftlok[] = {my_left_shift, my_right_shift, COMBO_END};
-const uint16_t PROGMEM combo_opening_square[] = {my_l, my_semicolon, COMBO_END};
-const uint16_t PROGMEM combo_closing_square[] = {my_single_quote, my_semicolon, COMBO_END};
-const uint16_t PROGMEM combo_opening_curly[] = {my_o, my_p, COMBO_END};
+/* const uint16_t PROGMEM combo_hyper_clear[] = {my_k,my_semicolon, my_l, COMBO_END}; */
+/* const uint16_t PROGMEM combo_shiftlok[] = {my_left_shift, my_right_shift, COMBO_END}; */
+
+/* const uint16_t PROGMEM combo_opening_square[] = {my_l, my_semicolon, COMBO_END}; */
+/* const uint16_t PROGMEM combo_closing_square[] = {my_single_quote, my_semicolon, COMBO_END}; */
+/* const uint16_t PROGMEM combo_opening_curly[] = {my_o, my_p, COMBO_END}; */
 
 const uint16_t PROGMEM combo_l_semicolon[] = {my_l, my_semicolon, COMBO_END}; // [
 const uint16_t PROGMEM combo_comma_m[] = {my_m, my_comma, COMBO_END}; // [
@@ -47,14 +60,21 @@ const uint16_t PROGMEM combo_p_minus_o[] = {my_p, my_o, my_minus, COMBO_END}; //
 
 const uint16_t PROGMEM combo_lower_right_of_lower[] = {my_lower, my_right_of_lower, COMBO_END}; // equal
 
-const uint16_t PROGMEM combo_j_l[] = {my_j, my_l, COMBO_END}; // osl(symbols)
+/* const uint16_t PROGMEM combo_j_l[] = {my_j, my_l, COMBO_END}; */
+const uint16_t PROGMEM combo_u_o[] = {my_u, my_o, COMBO_END};
+/* const uint16_t PROGMEM combo_u_i_o[] = {my_u, my_i, my_o, COMBO_END}; */
+const uint16_t PROGMEM combo_m_period[] = {my_m, my_period, COMBO_END};
 
 
 combo_t key_combos[COMBO_COUNT] = {COMBO(combo_osl_windows, OSL(_WINDOWS)),
                                    COMBO(combo_osl_windows_2, OSL(_WINDOWS)),
                                    COMBO(combo_osl_win_move, OSL(_WINMOVE)),
-                                   COMBO(combo_j_l, OSL(_SYMBOLS)),
+                                   COMBO(combo_j_i, KC_LPRN),
 
+                                   COMBO(combo_u_o, KC_MINUS),
+                                   /* COMBO(combo_u_i_o, KC_MINUS), */
+
+                                   COMBO(combo_m_period, KC_UNDS),
                                    COMBO(combo_backspace, KC_BSPC),
                                    COMBO(combo_spc_h, KC_BSPC),
 
@@ -70,14 +90,24 @@ combo_t key_combos[COMBO_COUNT] = {COMBO(combo_osl_windows, OSL(_WINDOWS)),
                                    COMBO(combo_ampr, KC_AMPR),
                                    COMBO(combo_astr, KC_ASTR),
 
+
+                                   COMBO(combo_spc_q, LGUI(KC_Q)),
+                                   COMBO(combo_spc_w, LGUI(KC_W)),
+                                   COMBO(combo_spc_e, LGUI(KC_E)),
+                                   COMBO(combo_spc_t, LGUI(KC_T)),
+                                   COMBO(combo_spc_a, LGUI(KC_A)),
+                                   COMBO(combo_spc_s, LGUI(KC_S)),
+                                   COMBO(combo_spc_z, LGUI(KC_Z)),
+                                   COMBO(combo_spc_x, LGUI(KC_X)),
+                                   COMBO(combo_spc_c, LGUI(KC_C)),
+
                                    COMBO(combo_jo, KC_LSPO),
-                                   COMBO(combo_jp, KC_RPRN),
                                    COMBO(combo_osl_symbols, RCTL(KC_SCLN)),
                                    COMBO(combo_osl_editor, OSL(_EDITING)),
                                    COMBO(combo_max, RGUI(RSFT(KC_K))),
-                                   COMBO(combo_min, RGUI(RSFT(KC_J))),
-                                   COMBO(combo_shiftlok, TO(_SHIFTLOK)),
-                                   COMBO(combo_opening_paren, KC_LPRN),
+                                   /* COMBO(combo_min, RGUI(RSFT(KC_J))), */
+                                   /* COMBO(combo_shiftlok, TO(_SHIFTLOK)), */
+                                   /* COMBO(combo_opening_paren, KC_LPRN), */
                                    COMBO(combo_closing_paren, KC_RPRN),
                                    COMBO(combo_comma_m, KC_LBRACKET),
                                    COMBO(combo_l_semicolon, KC_LBRACKET),

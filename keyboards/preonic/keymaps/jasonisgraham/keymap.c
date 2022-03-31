@@ -1,5 +1,33 @@
 #include QMK_KEYBOARD_H
 #include "muse.h"
+/* #include "../../../common/keymap.c" */
+
+enum custom_keycodes {
+                      RGB_SLD = SAFE_RANGE,
+                      /* RGB_SLD = EZ_SAFE_RANGE, */
+                      EMACS_ACE_WINDOW_SWAP,
+                      EMACS_BUFFER_REVERT,
+                      EMACS_INSERT_GET_FEED,
+                      EMACS_KILL_PROCESS,
+                      EMACS_OTHER_WINDOW,
+                      EMACS_WINDOW_CLOSE,
+                      EMACS_YAS_C,
+                      EMACS_YAS_DOC,
+                      EMACS_YAS_MAP_ANON,
+                      EMACS_YAS_TF,
+                      EMACS_YAS_TL,
+                      ESC_THEN_BASE_LAYER,
+                      FISH_ACCEPT_SEND,
+                      LAYER_LOWER_HOLD,
+                      LAYER_RAISE_HOLD,
+                      MUSIC_LAYER_ACTIVATE,
+                      SHIFTLOK_LAYER_ACTIVATE,
+                      SHIFTLOK_LAYER_DEACTIVATE,
+                      SYSTEM_LAYER_ACTIVATE,
+                      SYSTEM_LAYER_DEACTIVATE,
+                      TMUX_COPY_MODE,
+};
+
 
 enum preonic_layers {
   _BASE,
@@ -17,31 +45,33 @@ enum preonic_layers {
   _EDITING,
 };
 
-enum preonic_keycodes {
-  QWERTY = SAFE_RANGE,
-  LOWER,
-  RAISE,
-  BACKLIT,
-  ST_MACRO_0,
-  ST_MACRO_1,
-  ST_MACRO_2,
-  MACRO_DOC,
-  ST_MACRO_4,
-  MACRO_THREAD_LAST,
-  ST_MACRO_6,
-  MACRO_MAP_ANON,
-  CTRL_W_CTRL_W,
-  ST_MACRO_9,
-  ST_MACRO_10,
-  ACE_SWAP,
-  ST_MACRO_12,
-  ST_MACRO_13,
-  GET_FEED_MACRO,
-  ESC_THEN_LAYER_0,
-  SYSTEM_LAYER_ACTIVATE,
-  RAISE_LAYER_HOLD,
-  LOWER_LAYER_HOLD,
-};
+#include "../../../common/keymap.c"
+
+/* enum preonic_keycodes { */
+/*   QWERTY = SAFE_RANGE, */
+/*   LOWER, */
+/*   RAISE, */
+/*   BACKLIT, */
+/*   ST_MACRO_0, */
+/*   ST_MACRO_1, */
+/*   ST_MACRO_2, */
+/*   MACRO_DOC, */
+/*   ST_MACRO_4, */
+/*   MACRO_THREAD_LAST, */
+/*   ST_MACRO_6, */
+/*   MACRO_MAP_ANON, */
+/*   CTRL_W_CTRL_W, */
+/*   ST_MACRO_9, */
+/*   ST_MACRO_10, */
+/*   ACE_SWAP, */
+/*   ST_MACRO_12, */
+/*   ST_MACRO_13, */
+/*   GET_FEED_MACRO, */
+/*   ESC_THEN_LAYER_0, */
+/*   SYSTEM_LAYER_ACTIVATE, */
+/*   LAYER_RAISE_HOLD, */
+/*   LAYER_LOWER_HOLD, */
+/* }; */
 
 enum tap_dance_codes {
                       DANCE_0,
@@ -184,10 +214,10 @@ _______, KC_F5,          KC_F6,          KC_F7,          KC_F8,          KC_SCRO
 
 
 [_RAISE] = LAYOUT_preonic_grid(
-                               _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
- TD(DANCE_32),   KC_NO,          ST_MACRO_0,     KC_END,         ST_MACRO_1,     KC_NO,          _______, KC_7,           KC_8,           KC_9,           KC_0,           KC_EQUAL,
+_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+TD(DANCE_32),   KC_NO,         EMACS_OTHER_WINDOW,     KC_END,         EMACS_BUFFER_REVERT,     KC_NO,          _______, KC_7,           KC_8,           KC_9,           KC_0,           KC_EQUAL,
  _______, DYN_REC_START1, DYN_MACRO_PLAY1,KC_NO,          RALT(KC_ENTER), OSL(7),         KC_BSPACE,      KC_4,           KC_5,           KC_6,           KC_LBRACKET,    KC_RBRACKET,
- _______, DYN_REC_START2, DYN_MACRO_PLAY2,DYN_REC_STOP,   KC_NO,          ST_MACRO_2,     KC_0,           KC_1,           KC_2,           KC_3,           KC_BSLASH,      _______,
+_______, DYN_REC_START2, DYN_MACRO_PLAY2,DYN_REC_STOP,   KC_NO,          FISH_ACCEPT_SEND,     KC_0,           KC_1,           KC_2,           KC_3,           KC_BSLASH,      _______,
  _______, _______, KC_LGUI,        KC_LALT,        _______, _______, KC_NO,          KC_ENTER,       KC_0,           KC_DOT,         KC_NO,          _______
 ),
 
@@ -225,15 +255,15 @@ _______, KC_F5,          KC_F6,          KC_F7,          KC_F8,          KC_SCRO
   [_EMACS_MACROS] = LAYOUT_preonic_grid(
                                  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
     TD(DANCE_51),   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-    _______, _______, _______, MACRO_DOC,     ST_MACRO_4,     GET_FEED_MACRO, _______, _______, _______, MACRO_THREAD_LAST,     _______, _______,
-    _______, _______, _______, ST_MACRO_6,     _______, _______, _______, MACRO_MAP_ANON,     _______, _______, _______, _______,
+                                 _______, _______, _______, EMACS_YAS_DOC,     EMACS_YAS_TF,     EMACS_INSERT_GET_FEED, _______, _______, _______, EMACS_YAS_TL,     _______, _______,
+                                 _______, _______, _______, EMACS_YAS_C,     _______, _______, _______, EMACS_YAS_MAP_ANON,     _______, _______, _______, _______,
     _______, _______, _______, _______, _______, _______, KC_NO,          _______, _______, _______, _______, _______
   ),
 
   [_SHIFTLOK] = LAYOUT_preonic_grid(
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
     TD(DANCE_52),   RSFT(KC_Q),     RSFT(KC_W),     RSFT(KC_E),     RSFT(KC_R),     RSFT(KC_T),     RSFT(KC_Y),     RSFT(KC_U),     RSFT(KC_I),     RSFT(KC_O),     RSFT(KC_P),     TD(DANCE_53),
-    ESC_THEN_LAYER_0, RSFT(KC_A),     RSFT(KC_S),     RSFT(KC_D),     RSFT(KC_F),     RSFT(KC_G),     RSFT(KC_H),     my_J,     my_K,     RSFT(KC_L),     TD(DANCE_54),   TD(DANCE_55),
+    ESC_THEN_BASE_LAYER, RSFT(KC_A),     RSFT(KC_S),     RSFT(KC_D),     RSFT(KC_F),     RSFT(KC_G),     RSFT(KC_H),     my_J,     my_K,     RSFT(KC_L),     TD(DANCE_54),   TD(DANCE_55),
     TO(0),          RSFT(KC_Z),     RSFT(KC_X),     RSFT(KC_C),     RSFT(KC_V),     RSFT(KC_B),     RSFT(KC_N),     RSFT(KC_M),     KC_LABK,        KC_RABK,        KC_QUES,        TO(0),
     _______, _______, _______, _______, _______,  TO(0),   _______,       _______, _______, _______, _______, _______
   ),
@@ -264,9 +294,9 @@ _______, KC_F5,          KC_F6,          KC_F7,          KC_F8,          KC_SCRO
 
   [_EDITING] = LAYOUT_preonic_grid(
    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-   _______, _______, CTRL_W_CTRL_W,     _______, ST_MACRO_9,     _______, _______, LCTL(KC_7),     _______, CTRL_W_CTRL_W, _______, _______,
+   _______, _______, EMACS_OTHER_WINDOW,     _______, EMACS_BUFFER_REVERT,     _______, _______, LCTL(KC_7),     _______, EMACS_OTHER_WINDOW, _______, _______,
    _______, _______, _______, _______, RALT(KC_ENTER), _______, RALT(RSFT(KC_H)),RALT(RSFT(KC_J)),RALT(RSFT(KC_K)),RALT(RSFT(KC_L)),RCTL(KC_SCOLON),RCTL(KC_QUOTE),
-   _______, _______, _______, ST_MACRO_10,    _______, ST_MACRO_13, RALT(RSFT(KC_N)), ACE_SWAP,    _______, _______, ST_MACRO_12,    _______,
+   _______, _______, _______, EMACS_WINDOW_CLOSE,    _______, _______, RALT(RSFT(KC_N)), EMACS_ACE_WINDOW_SWAP,    _______, _______, EMACS_WINDOW_CLOSE,    _______,
     _______, _______, _______, _______, _______, _______, KC_NO,          RALT(KC_ENTER), _______, _______, _______, _______
   ),
 
@@ -275,181 +305,128 @@ _______, KC_F5,          KC_F6,          KC_F7,          KC_F8,          KC_SCRO
 
 };
 
-float zelda_puzzle[][2] =  SONG(ZELDA_PUZZLE);
-float old_spice[][2] =  SONG(OLD_SPICE);
 
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  switch (keycode) {
-  case SYSTEM_LAYER_ACTIVATE:
-    PLAY_SONG(zelda_puzzle);
-    layer_on(_SYSTEM);
-    return false;
+/* bool process_record_user(uint16_t keycode, keyrecord_t *record) { */
+/*   switch (keycode) { */
+/*   case SYSTEM_LAYER_ACTIVATE: */
+/*     PLAY_SONG(zelda_puzzle); */
+/*     layer_on(_SYSTEM); */
+/*     return false; */
 
-  case RAISE_LAYER_HOLD:
-    PLAY_SONG(old_spice);
-    layer_on(_RAISE);
-    return false;
+/*   case LAYER_RAISE_HOLD: */
+/*     PLAY_SONG(old_spice); */
+/*     layer_on(_RAISE); */
+/*     return false; */
 
-  case LOWER_LAYER_HOLD:
-    PLAY_SONG(old_spice);
-    layer_on(_LOWER);
-    return false;
+/*   case LAYER_LOWER_HOLD: */
+/*     PLAY_SONG(old_spice); */
+/*     layer_on(_LOWER); */
+/*     return false; */
 
 
-        case ST_MACRO_0:
-    if (record->event.pressed) {
-      SEND_STRING(SS_RCTL(SS_TAP(X_W)) SS_DELAY(10) SS_RCTL(SS_TAP(X_W)));
+/*   case EMACS_OTHER_WINDOW: */
+/*     if (record->event.pressed) { */
+/*       SEND_STRING(SS_RCTL(SS_TAP(X_W)) SS_DELAY(10) SS_RCTL(SS_TAP(X_W))); */
 
-    }
-    break;
-    case ST_MACRO_1:
-    if (record->event.pressed) {
-      SEND_STRING(SS_RCTL(SS_TAP(X_C)) SS_DELAY(10) SS_TAP(X_R));
+/*     } */
+/*     break; */
+/*   case EMACS_BUFFER_REVERT: */
+/*     if (record->event.pressed) { */
+/*       SEND_STRING(SS_RCTL(SS_TAP(X_C)) SS_DELAY(10) SS_TAP(X_R)); */
 
-    }
-    break;
-    case ST_MACRO_2:
-    if (record->event.pressed) {
-      SEND_STRING(SS_RALT(SS_RSFT(SS_TAP(X_L))) SS_DELAY(10) SS_TAP(X_ENTER));
+/*     } */
+/*     break; */
+/*   case FISH_ACCEPT_SEND: */
+/*     if (record->event.pressed) { */
+/*       SEND_STRING(SS_RALT(SS_RSFT(SS_TAP(X_L))) SS_DELAY(10) SS_TAP(X_ENTER)); */
 
-    }
-    break;
-    case MACRO_DOC:
-    if (record->event.pressed) {
-      SEND_STRING("doc"  SS_RALT(SS_TAP(X_SLASH)));
+/*     } */
+/*     break; */
+/*     case EMACS_YAS_DOC: */
+/*     if (record->event.pressed) { */
+/*       SEND_STRING("doc"  SS_RALT(SS_TAP(X_SLASH))); */
 
-    }
-    break;
+/*     } */
+/*     break; */
 
-    case ST_MACRO_4:
-    if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_T) SS_DELAY(10) SS_TAP(X_F) SS_DELAY(10) SS_RALT(SS_TAP(X_SLASH)));
+/*     case EMACS_YAS_TF: */
+/*     if (record->event.pressed) { */
+/*       SEND_STRING(SS_TAP(X_T) SS_DELAY(10) SS_TAP(X_F) SS_DELAY(10) SS_RALT(SS_TAP(X_SLASH))); */
 
-    }
-    break;
-  case MACRO_THREAD_LAST:
-    if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_ESC) "itl" SS_RALT(SS_TAP(X_SLASH)));
+/*     } */
+/*     break; */
+/*   case EMACS_YAS_TL: */
+/*     if (record->event.pressed) { */
+/*       SEND_STRING(SS_TAP(X_ESC) "itl" SS_RALT(SS_TAP(X_SLASH))); */
 
-    }
-    break;
+/*     } */
+/*     break; */
 
-    case ST_MACRO_6:
-    if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_C) SS_DELAY(10) SS_RALT(SS_TAP(X_SLASH)));
+/*   case EMACS_YAS_C: */
+/*     if (record->event.pressed) { */
+/*       SEND_STRING(SS_TAP(X_C) SS_DELAY(10) SS_RALT(SS_TAP(X_SLASH))); */
 
-    }
-    break;
+/*     } */
+/*     break; */
 
-    case MACRO_MAP_ANON:
-    if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_ESC) "imapa" macro_alt_slash);
+/*   case EMACS_YAS_MAP_ANON: */
+/*     if (record->event.pressed) { */
+/*       SEND_STRING(SS_TAP(X_ESC) "imapa" macro_alt_slash); */
 
 
-    }
-    break;
+/*     } */
+/*     break; */
 
-    case CTRL_W_CTRL_W:
-    if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_ESCAPE) SS_DELAY(10) SS_RCTL(SS_TAP(X_W)) SS_DELAY(10) SS_RCTL(SS_TAP(X_W)));
+/*   case EMACS_OTHER_WINDOW: */
+/*     if (record->event.pressed) { */
+/*       SEND_STRING(SS_TAP(X_ESCAPE) SS_DELAY(10) SS_RCTL(SS_TAP(X_W)) SS_DELAY(10) SS_RCTL(SS_TAP(X_W))); */
 
-    }
-    break;
-    case ST_MACRO_9:
-    if (record->event.pressed) {
-      SEND_STRING(SS_RCTL(SS_TAP(X_C)) SS_DELAY(10) SS_TAP(X_R)  SS_DELAY(10) SS_TAP(X_ENTER));
+/*     } */
+/*     break; */
+/*     case EMACS_BUFFER_REVERT: */
+/*     if (record->event.pressed) { */
+/*       SEND_STRING(SS_RCTL(SS_TAP(X_C)) SS_DELAY(10) SS_TAP(X_R)  SS_DELAY(10) SS_TAP(X_ENTER)); */
 
-    }
-    break;
-    case ST_MACRO_10:
-    if (record->event.pressed) {
-      SEND_STRING(SS_RALT(SS_TAP(X_M)) SS_DELAY(10) SS_TAP(X_W) SS_DELAY(10) SS_TAP(X_C)  SS_DELAY(10) SS_TAP(X_ENTER));
+/*     } */
+/*     break; */
+/*     case EMACS_ACE_WINDOW_SWAP: */
+/*     if (record->event.pressed) { */
+/*       SEND_STRING(SS_RALT(SS_TAP(X_M)) SS_DELAY(10) SS_TAP(X_W) SS_DELAY(10) SS_RSFT(SS_TAP(X_M))); */
 
-    }
-    break;
-    case ACE_SWAP:
-    if (record->event.pressed) {
-      SEND_STRING(SS_RALT(SS_TAP(X_M)) SS_DELAY(10) SS_TAP(X_W) SS_DELAY(10) SS_RSFT(SS_TAP(X_M)));
+/*     } */
+/*     break; */
+/*   case EMACS_WINDOW_CLOSE: */
+/*     if (record->event.pressed) { */
+/*       SEND_STRING(SS_LALT(SS_TAP(X_M)) SS_DELAY(10) SS_TAP(X_W) SS_DELAY(10) SS_TAP(X_C)); */
+/*     } */
+/*     break; */
 
-    }
-    break;
-    case ST_MACRO_12:
-    if (record->event.pressed) {
-      SEND_STRING(SS_LALT(SS_TAP(X_M)) SS_DELAY(10) SS_TAP(X_W) SS_DELAY(10) SS_TAP(X_C));
-    }
-    break;
+/*   case EMACS_KILL_PROCESS: */
+/*     if (record->event.pressed) { */
+/*       SEND_STRING(SS_RCTL(SS_TAP(X_C)) SS_RCTL(SS_TAP(X_B))); */
+/*     } */
+/*     break; */
 
-  case ST_MACRO_13:
-    if (record->event.pressed) {
-      SEND_STRING(SS_RCTL(SS_TAP(X_C)) SS_RCTL(SS_TAP(X_B)));
-    }
-    break;
+/*   case GET_FEED_MACRO: */
+/*     if (record->event.pressed) { */
+/*       SEND_STRING("(def xs (get-feed))"); */
+/*     } */
+/*     break; */
 
-  case GET_FEED_MACRO:
-    if (record->event.pressed) {
-      SEND_STRING("(def xs (get-feed))");
-    }
-    break;
+/*   case ESC_THEN_BASE_LAYER: */
+/*     if (record->event.pressed) { */
+/*       /\* move_layer(0); *\/ */
+/*       /\* SONG(ALL_STAR); *\/ */
+/*       /\* SEND_STRING("buttman ttt"); *\/ */
 
-  case ESC_THEN_LAYER_0:
-    if (record->event.pressed) {
-      /* move_layer(0); */
-      /* SONG(ALL_STAR); */
-      /* SEND_STRING("buttman ttt"); */
+/*          SEND_STRING(SS_TAP(X_ESCAPE)); */
+/*          move_layer(_BASE); */
 
-         SEND_STRING(SS_TAP(X_ESCAPE));
-    }
-    break;
+/*     } */
+/*     break; */
 
-        case QWERTY:
-          if (record->event.pressed) {
-            set_single_persistent_default_layer(_BASE);
-          }
-          return false;
-          break;
-        case LOWER:
-          if (record->event.pressed) {
-            layer_on(_LOWER);
-            update_tri_layer(_LOWER, _RAISE, _ADJUST);
-          } else {
-            layer_off(_LOWER);
-            update_tri_layer(_LOWER, _RAISE, _ADJUST);
-          }
-          return false;
-          break;
-        case RAISE:
-          if (record->event.pressed) {
-            layer_on(_RAISE);
-            update_tri_layer(_LOWER, _RAISE, _ADJUST);
-          } else {
-            layer_off(_RAISE);
-            update_tri_layer(_LOWER, _RAISE, _ADJUST);
-          }
-          return false;
-          break;
-        case BACKLIT:
-          if (record->event.pressed) {
-            register_code(KC_RSFT);
-            #ifdef BACKLIGHT_ENABLE
-              backlight_step();
-            #endif
-            #ifdef RGBLIGHT_ENABLE
-              rgblight_step();
-            #endif
-            #ifdef __AVR__
-            writePinLow(E6);
-            #endif
-          } else {
-            unregister_code(KC_RSFT);
-            #ifdef __AVR__
-            writePinHigh(E6);
-            #endif
-          }
-          return false;
-          break;
-      }
-    return true;
-};
+/*     return true; */
+/* }; */
 
 bool muse_mode = false;
 uint8_t last_muse_note = 0;
@@ -2818,165 +2795,4 @@ void matrix_scan_user(void) {
   }
 }
 
-/* bool did_leader_succeed; */
-/* #ifdef AUDIO_ENABLE */
-/* float play_leader_start[][2] = SONG(ONE_UP_SOUND ); */
-/* float play_leader_succeed[][2] = SONG(ALL_STAR); */
-/* float play_leader_fail[][2] = SONG(RICK_ROLL); */
-/* #endif */
-/* LEADER_EXTERNS(); */
-
-/* void matrix_scan_user(void) { */
-/*   LEADER_DICTIONARY() { */
-/*     did_leader_succeed = leading = false; */
-
-/*     SEQ_ONE_KEY(KC_E) { */
-/*       // Anything you can do in my_a macro. */
-/*       /\* SEND_STRING(SS_LCTL(SS_LSFT("my_t"))); *\/ */
-/*       SEND_STRING("buttman-success"); */
-/*       did_leader_succeed = true; */
-/*     } else */
-/*         SEQ_TWO_KEYS(KC_E, KC_D) { */
-/*           SEND_STRING("buttman-success69"); */
-/*           /\* SEND_STRING(SS_LGUI("my_r") "cmd\my_n" SS_LCTL("my_c")); *\/ */
-/*           did_leader_succeed = true; */
-/*         } */
-/*     leader_end(); */
-/*   } */
-/* } */
-
-/* void leader_start(void) { */
-/* #ifdef AUDIO_ENABLE */
-/*   PLAY_SONG(play_leader_start); */
-/* #endif */
-/* } */
-
-/* void leader_end(void) { */
-/*   if (did_leader_succeed) { */
-/* #ifdef AUDIO_ENABLE */
-/*     PLAY_SONG(play_leader_succeed); */
-/* #endif */
-/*   } else { */
-/* #ifdef AUDIO_ENABLE */
-/*     PLAY_SONG(play_leader_fail); */
-/* #endif */
-/*   } */
-/* } */
-
-
-const uint16_t PROGMEM combo_lprn[] = {my_space, my_o, COMBO_END};
-const uint16_t PROGMEM combo_lprn_n[] = {my_space, my_n, COMBO_END};
-const uint16_t PROGMEM combo_rprn[] = {my_space, my_p, COMBO_END};
-const uint16_t PROGMEM combo_exlm[] = {my_space, my_m, COMBO_END};
-const uint16_t PROGMEM combo_at[] =   {my_space, my_comma, COMBO_END};
-const uint16_t PROGMEM combo_hash[] = {my_space, my_period, COMBO_END};
-const uint16_t PROGMEM combo_dlr[] =  {my_space, my_j, COMBO_END};
-const uint16_t PROGMEM combo_perc[] = {my_space, my_k, COMBO_END};
-const uint16_t PROGMEM combo_circ[] = {my_space, my_l, COMBO_END};
-const uint16_t PROGMEM combo_ampr[] = {my_space, my_u, COMBO_END};
-const uint16_t PROGMEM combo_astr[] = {my_space,  my_i, COMBO_END};
-const uint16_t PROGMEM combo_osl_symbols[] = {my_j, my_l, COMBO_END};
-
-
-
-
-const uint16_t PROGMEM combo_lctl_f[] = {my_ctl_esc, my_f, COMBO_END};
-const uint16_t PROGMEM combo_j_k[] = {my_j, my_k, COMBO_END};
-const uint16_t PROGMEM combo_J_K[] = {my_J, my_K, COMBO_END};
-const uint16_t PROGMEM combo_osl_windows[] = {my_s, my_d, COMBO_END};
-const uint16_t PROGMEM combo_osl_windows_2[] = {my_f, my_d, COMBO_END};
-const uint16_t PROGMEM combo_osl_editor[] = {my_k, my_l, COMBO_END};
-const uint16_t PROGMEM combo_backspace[] = {my_h, my_j, COMBO_END};
-const uint16_t PROGMEM combo_spc_h[] = {my_h, my_space, COMBO_END};
-const uint16_t PROGMEM combo_jo[] = {my_o, my_j, COMBO_END};
-const uint16_t PROGMEM combo_jp[] = {my_p, my_j, COMBO_END};
-const uint16_t PROGMEM combo_opening_paren[] = {my_u,  my_i, COMBO_END};
-const uint16_t PROGMEM combo_closing_paren[] = { my_i, my_o, COMBO_END};
-const uint16_t PROGMEM combo_max[] = {my_k, my_m, COMBO_END};
-const uint16_t PROGMEM combo_min[] = {my_j, my_n, COMBO_END};
-const uint16_t PROGMEM combo_win_right[] = {my_w, my_l, COMBO_END};
-const uint16_t PROGMEM combo_win_left[] = {my_w, my_h, COMBO_END};
-const uint16_t PROGMEM combo_osl_win_move[] = {my_w, my_e, COMBO_END};
-const uint16_t PROGMEM combo_hyper_clear[] = {my_k,my_semicolon, my_l, COMBO_END};
-const uint16_t PROGMEM combo_shiftlok[] = {my_left_shift, my_right_shift, COMBO_END};
-const uint16_t PROGMEM combo_opening_square[] = {my_l, my_semicolon, COMBO_END};
-const uint16_t PROGMEM combo_closing_square[] = {my_single_quote, my_semicolon, COMBO_END};
-const uint16_t PROGMEM combo_opening_curly[] = {my_o, my_p, COMBO_END};
-
-const uint16_t PROGMEM combo_l_semicolon[] = {my_l, my_semicolon, COMBO_END}; // [
-const uint16_t PROGMEM combo_comma_m[] = {my_m, my_comma, COMBO_END}; // [
-const uint16_t PROGMEM combo_l_semicolon_k[] = {my_k, my_l, my_semicolon, COMBO_END}; // {
-const uint16_t PROGMEM combo_period_comma_m[] = {my_period, my_m, my_comma, COMBO_END}; // {
-
-const uint16_t PROGMEM combo_semicolon_singlequote[] = {my_semicolon, my_single_quote, COMBO_END}; // ]
-const uint16_t PROGMEM combo_comma_period[] = {my_comma, my_period, COMBO_END}; // ]
-const uint16_t PROGMEM combo_l_singlequote_semicolon[] = {my_l, my_single_quote, my_semicolon, COMBO_END}; // }
-const uint16_t PROGMEM combo_comma_period_forward_slash[] = {my_forward_slash, my_comma, my_period, COMBO_END}; // ]
-
-const uint16_t PROGMEM combo_p_minus[] = {my_p, my_minus, COMBO_END}; // underscore
-const uint16_t PROGMEM combo_p_minus_o[] = {my_p, my_o, my_minus, COMBO_END}; // equal
-
-const uint16_t PROGMEM combo_lower_right_of_lower[] = {my_lower, my_right_of_lower, COMBO_END}; // equal
-
-/* OSL ctrl, my_raise, */
-/* TO low */
-/*   er */
-
-
-
-combo_t key_combos[COMBO_COUNT] = {COMBO(combo_osl_windows, OSL(_WINDOWS)),
-                                   COMBO(combo_osl_windows_2, OSL(_WINDOWS)),
-                                   COMBO(combo_osl_win_move, OSL(_WINMOVE)),
-                                   COMBO(combo_backspace, KC_BSPC),
-                                   COMBO(combo_spc_h, KC_BSPC),
-
-                                   COMBO(combo_lprn_n, KC_LPRN),
-                                   COMBO(combo_lprn, KC_LPRN),
-                                   COMBO(combo_rprn, KC_RPRN),
-                                   COMBO(combo_exlm, KC_EXLM),
-                                   COMBO(combo_at, KC_AT),
-                                   COMBO(combo_hash, KC_HASH),
-                                   COMBO(combo_dlr, KC_DLR),
-                                   COMBO(combo_perc, KC_PERC),
-                                   COMBO(combo_circ, KC_CIRC),
-                                   COMBO(combo_ampr, KC_AMPR),
-                                   COMBO(combo_astr, KC_ASTR),
-
-                                   COMBO(combo_jo, KC_LSPO),
-                                   COMBO(combo_jp, KC_RPRN),
-                                   COMBO(combo_osl_symbols, RCTL(KC_SCLN)),
-                                   COMBO(combo_osl_editor, OSL(_EDITING)),
-                                   COMBO(combo_max, RGUI(RSFT(KC_K))),
-                                   COMBO(combo_min, RGUI(RSFT(KC_J))),
-                                   COMBO(combo_shiftlok, TO(_SHIFTLOK)),
-                                   COMBO(combo_opening_paren, KC_LPRN),
-                                   COMBO(combo_closing_paren, KC_RPRN),
-                                   COMBO(combo_comma_m, KC_LBRACKET),
-                                   COMBO(combo_l_semicolon, KC_LBRACKET),
-
-                                   COMBO(combo_period_comma_m, KC_LCBR),
-                                   COMBO(combo_l_semicolon_k, KC_LCBR),
-
-                                   /* COMBO(combo_ou, KC_LPRN), */
-                                   /* COMBO(combo_bm, KC_EXLM), */
-                                   /* COMBO(combo_comman, KC_AT), */
-                                   /* COMBO(combo_periodm, KC_HASH), */
-                                   /* COMBO(combo_jg, KC_DLR), */
-                                   /* COMBO(combo_kh, KC_PERC), */
-                                   /* COMBO(combo_lj, KC_CIRC), */
-                                   /* COMBO(combo_ut, KC_AMPR), */
-                                   /* COMBO(combo_iy, KC_ASTR), */
-
-                                   COMBO(combo_lctl_f, OSM(KC_RCTL)),
-
-
-                                   COMBO(combo_comma_period, KC_RBRACKET),
-                                   COMBO(combo_semicolon_singlequote, KC_RBRACKET),
-                                   COMBO(combo_l_singlequote_semicolon, KC_RCBR),
-                                   COMBO(combo_comma_period_forward_slash, KC_RCBR),
-
-                                   COMBO(combo_lower_right_of_lower, TO(_LOWER)),
-                                   COMBO(combo_p_minus, KC_UNDS),
-                                   COMBO(combo_p_minus_o, KC_EQL),
-                                   COMBO(combo_j_k, KC_ENTER),
-                                   COMBO(combo_J_K, KC_ENTER)};
+#include "../../../common/combos.c"

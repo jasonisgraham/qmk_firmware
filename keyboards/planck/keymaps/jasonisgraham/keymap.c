@@ -19,29 +19,25 @@
 #define BP_NDSH_MAC ALGR(KC_8)
 #define SE_SECT_MAC ALGR(KC_6)
 
-enum planck_keycodes {
-  RGB_SLD = EZ_SAFE_RANGE,
-  ST_MACRO_0,
-  ST_MACRO_1,
-  ST_MACRO_2,
-  ST_MACRO_3,
-  ST_MACRO_4,
-  ST_MACRO_5,
-  ST_MACRO_6,
-  ST_MACRO_7,
-  ST_MACRO_8,
-  ST_MACRO_9,
-  ST_MACRO_10,
-  ST_MACRO_11,
-  ST_MACRO_12,
-  ST_MACRO_13,
-  ST_MACRO_14,
-  ST_MACRO_15,
-  GET_FEED_MACRO,
-  SYSTEM_LAYER_ACTIVATE,
-  RAISE_LAYER_HOLD,
-  LOWER_LAYER_HOLD,
-};
+/* enum planck_keycodes { */
+/*   RGB_SLD = EZ_SAFE_RANGE, */
+/*   EMACS_OTHER_WINDOW, */
+/*   EMACS_BUFFER_REVERT, */
+/*   FISH_ACCEPT_SEND, */
+/*   EMACS_YAS_DOC, */
+/*   EMACS_YAS_TF, */
+/*   EMACS_YAS_TL, */
+/*   EMACS_YAS_C, */
+/*   EMACS_YAS_MAP_ANON, */
+/*   EMACS_OTHER_WINDOW, */
+/*   EMACS_BUFFER_REVERT, */
+/*   EMACS_WINDOW_CLOSE, */
+/*   EMACS_WINDOW_CLOSE, */
+/*   GET_FEED_MACRO, */
+/*   SYSTEM_LAYER_ACTIVATE, */
+/*   LAYER_RAISE_HOLD, */
+/*   LAYER_LOWER_HOLD, */
+/* }; */
 
 enum tap_dance_codes {
   DANCE_0,
@@ -135,61 +131,95 @@ enum planck_layers {
   _LAYER16,
 };
 
+
+#include "../../../common/keycodes.c"
+
+
+
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
 
 
-#define my_comma TD(DANCE_23)
+#define my_a TD(DANCE_11)
 #define my_b KC_B
+#define my_c KC_C
+#define my_comma TD(DANCE_23)
+/* #define my_comma TD(T_COMMA_H_LTHAN_TH_AT) */
+/* #define my_d KC_D */
 #define my_d TD(DANCE_13)
+/* #define my_e KC_E */
 #define my_e TD(DANCE_3)
-#define my_h KC_H
+/* #define my_f KC_F */
 #define my_f TD(DANCE_14)
+#define my_forward_slash TD(DANCE_25)
 #define my_g TD(DANCE_15)
+#define my_grave TD(DANCE_0)
+#define my_h KC_H
+/* #define my_h KC_H */
 #define my_i TD(DANCE_7)
+/* #define my_i TD(T_I_TH_ASTR) */
 #define my_j TD(DANCE_16)
+/* #define my_j TD(T_J_TH_DLR) */
 #define my_k TD(DANCE_17)
+/* #define my_k TD(T_K_TH_AMP) */
 #define my_l TD(DANCE_18)
+/* #define my_l TD(T_L_TH_CIRC) */
+/* #define my_left_shift KC_LSPO */
 #define my_left_shift KC_LSFT
+#define my_lower MO(_LOWER)
 #define my_m TD(DANCE_22)
+/* #define my_m TD(T_M_TH_EXLAM) */
 #define my_minus TD(DANCE_10)
+/* #define my_n KC_N */
 #define my_n TD(DANCE_21)
 #define my_o TD(DANCE_8)
+/* #define my_o TD(T_O_TH_LPRN) */
 #define my_p TD(DANCE_9)
+/* #define my_p TD(T_P_TH_RPRN) */
 #define my_period TD(DANCE_24)
-#define my_right_shift KC_RSFT
-#define my_s TD(DANCE_12)
-#define my_t TD(DANCE_5)
-#define my_semicolon TD(DANCE_19)
-#define my_single_quote TD(DANCE_20)
-/* #define my_space LT(6,KC_SPACE) */
-#define my_space KC_SPACE
-#define my_u TD(DANCE_6)
-#define my_w TD(DANCE_2)
+/* #define my_period TD(T_PERIOD_H_GTHAN_TH_HASH) */
 #define my_q TD(DANCE_1)
+#define my_right_of_lower KC_BSPACE
+#define my_right_shift KC_RSFT
+/* #define my_right_shift KC_RSPC */
+/* #define my_s KC_S */
+#define my_s TD(DANCE_12)
+#define my_semicolon TD(DANCE_19)
+/* #define my_semicolon TD(T_SEMI_H_COLON_DT_LSBR_TH_LCBR) */
+#define my_single_quote TD(DANCE_20)
+/* #define my_single_quote TD(T_SQUOTE_H_DQUOTE_DT_RSBR_TH_RCBR) */
+#define my_space KC_SPACE
+/* #define my_space KC_SPACE */
+#define my_t TD(DANCE_5)
+#define my_u TD(DANCE_6)
+/* #define my_u TD(T_U_TH_AMPR) */
+/* #define my_w KC_W */
+#define my_w TD(DANCE_2)
+#define my_x KC_X
 #define my_y KC_Y
-#define my_grave TD(DANCE_0)
+#define my_z KC_Z
+/* #define my_space LT(6,KC_SPACE) */
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_BASE] = LAYOUT_planck_grid(
     my_grave,    my_q,    my_w,    my_e,    TD(DANCE_4),    my_t,    my_y,           my_u,    my_i,    my_o,    my_p,    my_minus,
-    MT(MOD_RCTL, KC_ESCAPE),TD(DANCE_11),   my_s,   my_d,   my_f,   my_g,   my_h,           my_j,   my_k,   my_l,   my_semicolon,   my_single_quote,
-    my_left_shift,        KC_Z,           KC_X,           KC_C,           KC_V,           my_b,           my_n,   my_m,   my_comma,   my_period,   TD(DANCE_25),   my_right_shift,
-    MT(MOD_LCTL, KC_LBRACKET), SYSTEM_LAYER_ACTIVATE,          KC_RGUI, KC_LALT, RAISE,          my_space, KC_NO,          LOWER,          KC_BSPACE,      RAISE_LAYER_HOLD,          LOWER_LAYER_HOLD,          KC_ENTER
+    MT(MOD_RCTL, KC_ESCAPE),my_a,   my_s,   my_d,   my_f,   my_g,   my_h,           my_j,   my_k,   my_l,   my_semicolon,   my_single_quote,
+    my_left_shift,        my_z,           my_x,           my_c,           KC_V,           my_b,           my_n,   my_m,   my_comma,   my_period,   my_forward_slash,   my_right_shift,
+    MT(MOD_LCTL, KC_LBRACKET), SYSTEM_LAYER_ACTIVATE,          KC_RGUI, KC_LALT, RAISE,          my_space, KC_NO,          LOWER,          KC_BSPACE,      LAYER_RAISE_HOLD,          LAYER_LOWER_HOLD,          KC_ENTER
   ),
 
   [_LOWER] = LAYOUT_planck_grid(
     TD(DANCE_26),   KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_PSCREEN,     KC_HOME,        KC_PGUP,        KC_PGDOWN,      KC_END,         KC_TRANSPARENT, TD(DANCE_27),
     KC_TRANSPARENT, KC_F5,          KC_F6,          KC_F7,          KC_F8,          KC_SCROLLLOCK,  KC_LEFT,        KC_DOWN,        KC_UP,          KC_RIGHT,       KC_TRANSPARENT, KC_TRANSPARENT,
-    TD(DANCE_28),   KC_F9,          KC_F10,         KC_F11,         KC_F12,         KC_APPLICATION, KC_TRANSPARENT, KC_TRANSPARENT, TD(DANCE_29),   TD(DANCE_30),   KC_DELETE,      TO(_SHIFTLOK),
+    TD(DANCE_28),   KC_F9,          KC_F10,         KC_F11,         KC_F12,         KC_APPLICATION, KC_TRANSPARENT, KC_TRANSPARENT, TD(DANCE_29),   TD(DANCE_30),   KC_DELETE,      SHIFTLOK_LAYER_ACTIVATE,
     KC_TRANSPARENT, KC_NO, KC_LGUI,        KC_LALT,        MO(4),          TO(4),          KC_NO,          KC_TRANSPARENT, KC_NO,          KC_NO,          KC_TRANSPARENT, KC_TRANSPARENT
   ),
 
   [_RAISE] = LAYOUT_planck_grid(
-    TD(DANCE_32),   KC_NO,          ST_MACRO_0,     KC_END,         ST_MACRO_1,     KC_NO,          KC_TRANSPARENT, KC_7,           KC_8,           KC_9,           KC_0,           KC_UNDS,
+    TD(DANCE_32),   KC_NO,          EMACS_OTHER_WINDOW,     KC_END,         EMACS_BUFFER_REVERT,     KC_NO,          KC_TRANSPARENT, KC_7,           KC_8,           KC_9,           KC_0,           KC_UNDS,
     KC_TRANSPARENT, DYN_REC_START1, DYN_MACRO_PLAY1,KC_NO,          TD(DANCE_33),   OSL(7),         KC_BSPACE,      KC_4,           KC_5,           KC_6,           KC_LBRACKET,    KC_RBRACKET,
-    KC_TRANSPARENT, DYN_REC_START2, DYN_MACRO_PLAY2,DYN_REC_STOP,   KC_NO,          ST_MACRO_2,     KC_0,           KC_1,           KC_2,           KC_3,           KC_BSLASH,      KC_TRANSPARENT,
+    KC_TRANSPARENT, DYN_REC_START2, DYN_MACRO_PLAY2,DYN_REC_STOP,   KC_NO,          FISH_ACCEPT_SEND,     KC_0,           KC_1,           KC_2,           KC_3,           KC_BSLASH,      KC_TRANSPARENT,
     KC_TRANSPARENT, KC_NO, KC_LGUI,        KC_LALT,        KC_TRANSPARENT, KC_TRANSPARENT, KC_NO,          KC_ENTER,       KC_0,           KC_DOT,         KC_NO,          KC_TRANSPARENT
   ),
 
@@ -220,23 +250,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_WINDOWS] = LAYOUT_planck_grid(
    TO(_BASE), TD(DANCE_38),   TD(DANCE_39),   LGUI(KC_E),     TD(DANCE_40),   LGUI(KC_T),     TD(DANCE_41),   LGUI(KC_7),     LGUI(KC_8),     LGUI(KC_9),     LGUI(KC_0),     LGUI(KC_MINUS),
     RGUI(KC_ESCAPE),LGUI(KC_A),     LGUI(KC_S),     LALT(LGUI(LCTL(KC_D))),LGUI(KC_F),     TD(DANCE_42),   LGUI(KC_H),     TD(DANCE_43),   TD(DANCE_44),   TD(DANCE_45),   KC_TRANSPARENT, KC_TRANSPARENT,
-   KC_TRANSPARENT, LGUI(KC_Z),     LGUI(KC_X),     LGUI(KC_C),     RGUI(KC_V),     KC_TRANSPARENT, TD(DANCE_46),   LGUI(KC_M),     TD(DANCE_47),   KC_TRANSPARENT, RSFT(LGUI(KC_K)), TO(_SHIFTLOK),
+   KC_TRANSPARENT, LGUI(KC_Z),     LGUI(KC_X),     LGUI(KC_C),     RGUI(KC_V),     KC_TRANSPARENT, TD(DANCE_46),   LGUI(KC_M),     TD(DANCE_47),   KC_TRANSPARENT, RSFT(LGUI(KC_K)), SHIFTLOK_LAYER_ACTIVATE,
     KC_TRANSPARENT, KC_TRANSPARENT, TO(14),         TT(12),         TT(9),          LGUI(KC_SPACE), KC_NO,          TD(DANCE_48),   TD(DANCE_49),   TD(DANCE_50),   RGUI(KC_ESCAPE),TD(DANCE_51)
   ),
 
   // 7
   [_MACROS] = LAYOUT_planck_grid(
     TD(DANCE_52),   KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, ST_MACRO_3,     ST_MACRO_4,     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, ST_MACRO_5,     KC_TRANSPARENT, KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, ST_MACRO_6,     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, ST_MACRO_7,     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, EMACS_YAS_DOC,     EMACS_YAS_TF,     EMACS_INSERT_GET_FEED, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, EMACS_YAS_TL,     KC_TRANSPARENT, KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, EMACS_YAS_C,     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, EMACS_YAS_MAP_ANON,     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_NO,          KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
   ),
 
   // 8
   [_SHIFTLOK] = LAYOUT_planck_grid(
     TD(DANCE_53),   RSFT(KC_Q),     RSFT(KC_W),     RSFT(KC_E),     RSFT(KC_R),     RSFT(KC_T),     RSFT(KC_Y),     RSFT(KC_U),     RSFT(KC_I),     RSFT(KC_O),     RSFT(KC_P),     TD(DANCE_54),
-    TO(0),          RSFT(KC_A),     RSFT(KC_S),     RSFT(KC_D),     RSFT(KC_F),     RSFT(KC_G),     RSFT(KC_H),     RSFT(KC_J),     RSFT(KC_K),     RSFT(KC_L),     TD(DANCE_55),   TD(DANCE_56),
-    TO(0),          RSFT(KC_Z),     RSFT(KC_X),     RSFT(KC_C),     RSFT(KC_V),     RSFT(KC_B),     RSFT(KC_N),     RSFT(KC_M),     KC_LABK,        KC_RABK,        KC_QUES,        TO(0),
+    ESC_THEN_BASE_LAYER,          RSFT(KC_A),     RSFT(KC_S),     RSFT(KC_D),     RSFT(KC_F),     RSFT(KC_G),     RSFT(KC_H),     RSFT(KC_J),     RSFT(KC_K),     RSFT(KC_L),     TD(DANCE_55),   TD(DANCE_56),
+    SYSTEM_LAYER_DEACTIVATE,          RSFT(KC_Z),     RSFT(KC_X),     RSFT(KC_C),     RSFT(KC_V),     RSFT(KC_B),     RSFT(KC_N),     RSFT(KC_M),     KC_LABK,        KC_RABK,        KC_QUES,        SYSTEM_LAYER_DEACTIVATE,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_NO,          KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
   ),
 
@@ -266,9 +296,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   // 12
   [_EDITING] = LAYOUT_planck_grid(
-    TO(_BASE), KC_TRANSPARENT, ST_MACRO_8,     KC_TRANSPARENT, ST_MACRO_9,     KC_TRANSPARENT, KC_TRANSPARENT, LCTL(KC_7),     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+    TO(_BASE), KC_TRANSPARENT, EMACS_OTHER_WINDOW,     KC_TRANSPARENT, EMACS_BUFFER_REVERT,     KC_TRANSPARENT, KC_TRANSPARENT, LCTL(KC_7),     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, RALT(KC_ENTER), KC_TRANSPARENT, RALT(RSFT(KC_H)),RALT(RSFT(KC_J)),RALT(RSFT(KC_K)),RALT(RSFT(KC_L)),RCTL(KC_SCOLON),RCTL(KC_QUOTE),
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, ST_MACRO_10,    KC_TRANSPARENT, KC_TRANSPARENT, RALT(RSFT(KC_N)), ST_MACRO_11,    KC_TRANSPARENT, KC_TRANSPARENT, ST_MACRO_12,    KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, EMACS_WINDOW_CLOSE,    KC_TRANSPARENT, KC_TRANSPARENT, RALT(RSFT(KC_N)), KC_TRANSPARENT,    KC_TRANSPARENT, KC_TRANSPARENT, EMACS_WINDOW_CLOSE,    KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_NO,          RALT(KC_ENTER), KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
   ),
 
@@ -287,7 +317,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [_LAYER15] = LAYOUT_planck_grid(
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, ST_MACRO_13,    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+                                  KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, TD(DANCE_68),   KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_NO,          KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
@@ -295,7 +325,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_LAYER16] = LAYOUT_planck_grid(
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, ST_MACRO_14,    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, ST_MACRO_15,    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_NO,          KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
   ),
@@ -408,132 +438,6 @@ void rgb_matrix_indicators_user(void) {
       rgb_matrix_set_color_all(0, 0, 0);
     break;
   }
-}
-
-float zelda_puzzle[][2] =  SONG(ZELDA_PUZZLE);
-float old_spice[][2] =  SONG(OLD_SPICE);
-
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  switch (keycode) {
-  case SYSTEM_LAYER_ACTIVATE:
-    PLAY_SONG(zelda_puzzle);
-    layer_on(_SYSTEM);
-    return false;
-
-  case RAISE_LAYER_HOLD:
-    PLAY_SONG(old_spice);
-    layer_on(_RAISE);
-    return false;
-
-  case LOWER_LAYER_HOLD:
-    PLAY_SONG(old_spice);
-    layer_on(_LOWER);
-    return false;
-
-  case ST_MACRO_0:
-      if (record->event.pressed) {
-        SEND_STRING(SS_RCTL(SS_TAP(X_W)) SS_DELAY(100) SS_RCTL(SS_TAP(X_W)));
-
-      }
-    break;
-
-  case ST_MACRO_1:
-    if (record->event.pressed) {
-      SEND_STRING(SS_RCTL(SS_TAP(X_C)) SS_DELAY(100) SS_TAP(X_R));
-
-    }
-    break;
-  case ST_MACRO_2:
-    if (record->event.pressed) {
-      SEND_STRING(SS_RALT(SS_RSFT(SS_TAP(X_L))) SS_DELAY(100) SS_TAP(X_ENTER));
-
-    }
-    break;
-  case ST_MACRO_3:
-    if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_D) SS_DELAY(100) SS_TAP(X_O) SS_DELAY(100) SS_TAP(X_C) SS_DELAY(100) SS_RALT(SS_TAP(X_SLASH)));
-
-    }
-    break;
-  case ST_MACRO_4:
-    if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_T) SS_DELAY(100) SS_TAP(X_F) SS_DELAY(100) SS_RALT(SS_TAP(X_SLASH)));
-
-    }
-    break;
-  case ST_MACRO_5:
-    if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_T) SS_DELAY(100) SS_TAP(X_L) SS_DELAY(100) SS_RALT(SS_TAP(X_SLASH)));
-
-    }
-    break;
-  case ST_MACRO_6:
-    if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_C) SS_DELAY(100) SS_RALT(SS_TAP(X_SLASH)));
-
-    }
-    break;
-  case ST_MACRO_7:
-    if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_M) SS_DELAY(100) SS_TAP(X_A) SS_DELAY(100) SS_TAP(X_P) SS_DELAY(100) SS_TAP(X_A) SS_DELAY(100) SS_RALT(SS_TAP(X_SLASH)));
-
-    }
-    break;
-  case ST_MACRO_8:
-    if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_ESCAPE) SS_DELAY(100) SS_RCTL(SS_TAP(X_W)) SS_DELAY(100) SS_RCTL(SS_TAP(X_W)));
-
-    }
-    break;
-  case ST_MACRO_9:
-    if (record->event.pressed) {
-      SEND_STRING(SS_RCTL(SS_TAP(X_C)) SS_DELAY(100) SS_TAP(X_R)  SS_DELAY(100) SS_TAP(X_ENTER));
-
-    }
-    break;
-  case ST_MACRO_10:
-    if (record->event.pressed) {
-      SEND_STRING(SS_RALT(SS_TAP(X_M)) SS_DELAY(100) SS_TAP(X_W) SS_DELAY(100) SS_TAP(X_C)  SS_DELAY(100) SS_TAP(X_ENTER));
-
-    }
-    break;
-  case ST_MACRO_11:
-    if (record->event.pressed) {
-      SEND_STRING(SS_RALT(SS_TAP(X_M)) SS_DELAY(100) SS_TAP(X_W) SS_DELAY(100) SS_RSFT(SS_TAP(X_M)));
-
-    }
-    break;
-  case ST_MACRO_12:
-    if (record->event.pressed) {
-      SEND_STRING(SS_LALT(SS_TAP(X_M)) SS_DELAY(100) SS_TAP(X_W) SS_DELAY(100) SS_TAP(X_C));
-
-    }
-    break;
-  case ST_MACRO_13:
-    if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_ESCAPE) SS_DELAY(100) SS_TAP(X_T));
-
-    }
-    break;
-  case ST_MACRO_14:
-    if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_HOME) SS_DELAY(100) SS_LSFT(SS_TAP(X_END)) SS_DELAY(100) SS_RCTL(SS_TAP(X_X)));
-
-    }
-    break;
-  case ST_MACRO_15:
-    if (record->event.pressed) {
-      SEND_STRING(SS_RSFT(SS_TAP(X_END)) SS_DELAY(100) SS_RCTL(SS_TAP(X_X)));
-
-    }
-    break;
-  case RGB_SLD:
-    if (record->event.pressed) {
-      rgblight_mode(1);
-    }
-    return false;
-  }
-  return true;
 }
 
 #ifdef AUDIO_ENABLE
@@ -3156,114 +3060,118 @@ qk_tap_dance_action_t tap_dance_actions[] = {
         [DANCE_68] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_68, dance_68_finished, dance_68_reset),
 };
 
-
-const uint16_t PROGMEM combo_grave_q[] = {my_grave, my_q, COMBO_END};
-
-const uint16_t PROGMEM combo_esc[] = {my_m, my_comma, COMBO_END};
-const uint16_t PROGMEM combo_newline[] = {my_j, my_k, COMBO_END};
-const uint16_t PROGMEM combo_osl_windows_2[] = {my_f, my_d, COMBO_END};
-const uint16_t PROGMEM combo_osl_windows[] = {my_s, my_d, COMBO_END};
-const uint16_t PROGMEM combo_osl_windows_3[] = {my_f, my_s, my_d, COMBO_END};
-const uint16_t PROGMEM combo_osl_editor[] = {my_k, my_l, COMBO_END};
-const uint16_t PROGMEM combo_backspace[] = {my_h, my_j, COMBO_END};
-const uint16_t PROGMEM combo_spc_h[] = {my_h, my_space, COMBO_END};
-const uint16_t PROGMEM combo_jo[] = {my_o, my_j, COMBO_END};
-const uint16_t PROGMEM combo_jp[] = {my_p, my_j, COMBO_END};
-const uint16_t PROGMEM combo_opening_paren[] = {my_u, my_i, COMBO_END};
-const uint16_t PROGMEM combo_closing_paren[] = {my_i, my_o, COMBO_END};
-const uint16_t PROGMEM combo_max[] = {my_k, my_m, COMBO_END};
-const uint16_t PROGMEM combo_min[] = {my_j, my_n, COMBO_END};
-const uint16_t PROGMEM combo_osl_win_move[] = {my_w, my_e, COMBO_END};
-
-const uint16_t PROGMEM combo_hyper_clear[] = {my_k,my_semicolon, my_l, COMBO_END};
-const uint16_t PROGMEM combo_shiftlok[] = {my_left_shift, my_right_shift, COMBO_END};
-
-const uint16_t PROGMEM combo_l_semicolon[] = {my_l, my_semicolon, COMBO_END}; // [
-const uint16_t PROGMEM combo_l_semicolon_k[] = {my_k, my_l, my_semicolon, COMBO_END}; // {
-
-const uint16_t PROGMEM combo_semicolon_singlequote[] = {my_semicolon, my_single_quote, COMBO_END}; // ]
-const uint16_t PROGMEM combo_l_singlequote_semicolon[] = {my_l, my_single_quote, my_semicolon, COMBO_END}; // }
-
-const uint16_t PROGMEM combo_p_minus[] = {my_p, my_minus, COMBO_END}; // underscore
-const uint16_t PROGMEM combo_p_minus_o[] = {my_p, my_o, my_minus, COMBO_END}; // equal
-
-const uint16_t PROGMEM combo_osl_symbols[] = {my_j, my_l, COMBO_END};
-
-const uint16_t PROGMEM combo_lprn[] = {my_space, my_o, COMBO_END};
-const uint16_t PROGMEM combo_lprn_n[] = {my_space, my_n, COMBO_END};
-const uint16_t PROGMEM combo_rprn[] = {my_space, my_p, COMBO_END};
-const uint16_t PROGMEM combo_exlm[] = {my_space, my_m, COMBO_END};
-const uint16_t PROGMEM combo_at[] =   {my_space, my_comma, COMBO_END};
-const uint16_t PROGMEM combo_hash[] = {my_space, my_period, COMBO_END};
-const uint16_t PROGMEM combo_dlr[] =  {my_space, my_j, COMBO_END};
-const uint16_t PROGMEM combo_perc[] = {my_space, my_k, COMBO_END};
-const uint16_t PROGMEM combo_circ[] = {my_space, my_l, COMBO_END};
-const uint16_t PROGMEM combo_ampr[] = {my_space, my_u, COMBO_END};
-const uint16_t PROGMEM combo_astr[] = {my_space, my_i, COMBO_END};
+#include "../../../common/combos.c"
 
 
-const uint16_t PROGMEM combo_bm[] = {my_b, my_m, COMBO_END};
-const uint16_t PROGMEM combo_comman[] = {my_comma, my_n, COMBO_END};
-const uint16_t PROGMEM combo_periodm[] = {my_period, my_m, COMBO_END};
-const uint16_t PROGMEM combo_jg[] =  {my_g, my_j, COMBO_END};
-const uint16_t PROGMEM combo_kh[] = {my_h, my_k, COMBO_END};
-const uint16_t PROGMEM combo_lj[] = {my_j, my_l, COMBO_END};
-const uint16_t PROGMEM combo_ut[] = {my_t, my_u, COMBO_END};
-const uint16_t PROGMEM combo_iy[] = {my_y, my_i, COMBO_END};
-const uint16_t PROGMEM combo_ou[] = {my_o, my_u, COMBO_END};
 
 
-combo_t key_combos[COMBO_COUNT] = {COMBO(combo_esc, KC_ESC),
-                                   COMBO(combo_osl_windows, OSL(_WINDOWS)),
-                                   COMBO(combo_osl_windows_2, OSL(_WINDOWS)),
-                                   COMBO(combo_osl_windows_3, OSL(_WINDOWS)),
-                                   COMBO(combo_osl_win_move, OSL(_WINMOVE)),
-                                   COMBO(combo_backspace, KC_BSPC),
-                                   COMBO(combo_spc_h, KC_BSPC),
+/* const uint16_t PROGMEM combo_grave_q[] = {my_grave, my_q, COMBO_END}; */
 
-                                   COMBO(combo_lprn_n, KC_LPRN),
-                                   COMBO(combo_lprn, KC_LPRN),
-                                   COMBO(combo_rprn, KC_RPRN),
-                                   COMBO(combo_exlm, KC_EXLM),
-                                   COMBO(combo_at, KC_AT),
-                                   COMBO(combo_hash, KC_HASH),
-                                   COMBO(combo_dlr, KC_DLR),
-                                   COMBO(combo_perc, KC_PERC),
-                                   COMBO(combo_circ, KC_CIRC),
-                                   COMBO(combo_ampr, KC_AMPR),
-                                   COMBO(combo_astr, KC_ASTR),
+/* const uint16_t PROGMEM combo_esc[] = {my_m, my_comma, COMBO_END}; */
+/* const uint16_t PROGMEM combo_newline[] = {my_j, my_k, COMBO_END}; */
+/* const uint16_t PROGMEM combo_osl_windows_2[] = {my_f, my_d, COMBO_END}; */
+/* const uint16_t PROGMEM combo_osl_windows[] = {my_s, my_d, COMBO_END}; */
+/* const uint16_t PROGMEM combo_osl_windows_3[] = {my_f, my_s, my_d, COMBO_END}; */
+/* const uint16_t PROGMEM combo_osl_editor[] = {my_k, my_l, COMBO_END}; */
+/* const uint16_t PROGMEM combo_backspace[] = {my_h, my_j, COMBO_END}; */
+/* const uint16_t PROGMEM combo_spc_h[] = {my_h, my_space, COMBO_END}; */
+/* const uint16_t PROGMEM combo_jo[] = {my_o, my_j, COMBO_END}; */
+/* const uint16_t PROGMEM combo_jp[] = {my_p, my_j, COMBO_END}; */
+/* const uint16_t PROGMEM combo_opening_paren[] = {my_u, my_i, COMBO_END}; */
+/* const uint16_t PROGMEM combo_closing_paren[] = {my_i, my_o, COMBO_END}; */
+/* const uint16_t PROGMEM combo_max[] = {my_k, my_m, COMBO_END}; */
+/* const uint16_t PROGMEM combo_min[] = {my_j, my_n, COMBO_END}; */
+/* const uint16_t PROGMEM combo_osl_win_move[] = {my_w, my_e, COMBO_END}; */
 
-                                   COMBO(combo_grave_q, KC_ASTG),
+/* const uint16_t PROGMEM combo_hyper_clear[] = {my_k,my_semicolon, my_l, COMBO_END}; */
+/* const uint16_t PROGMEM combo_shiftlok[] = {my_left_shift, my_right_shift, COMBO_END}; */
 
-                                   COMBO(combo_jo, KC_LSPO),
-                                   COMBO(combo_jp, KC_RPRN),
-                                   COMBO(combo_osl_symbols, RCTL(KC_SCLN)),
-                                   COMBO(combo_osl_editor, OSL(_EDITING)),
-                                   COMBO(combo_max, RGUI(RSFT(KC_K))),
-                                   COMBO(combo_min, RGUI(RSFT(KC_J))),
-                                   COMBO(combo_shiftlok, TO(_SHIFTLOK)),
-                                   COMBO(combo_opening_paren, KC_LPRN),
-                                   COMBO(combo_closing_paren, KC_RPRN),
-                                   COMBO(combo_l_semicolon, KC_LBRACKET),
-                                   COMBO(combo_l_semicolon_k, KC_LCBR),
+/* const uint16_t PROGMEM combo_l_semicolon[] = {my_l, my_semicolon, COMBO_END}; // [ */
+/* const uint16_t PROGMEM combo_l_semicolon_k[] = {my_k, my_l, my_semicolon, COMBO_END}; // { */
+
+/* const uint16_t PROGMEM combo_semicolon_singlequote[] = {my_semicolon, my_single_quote, COMBO_END}; // ] */
+/* const uint16_t PROGMEM combo_l_singlequote_semicolon[] = {my_l, my_single_quote, my_semicolon, COMBO_END}; // } */
+
+/* const uint16_t PROGMEM combo_p_minus[] = {my_p, my_minus, COMBO_END}; // underscore */
+/* const uint16_t PROGMEM combo_p_minus_o[] = {my_p, my_o, my_minus, COMBO_END}; // equal */
+
+/* const uint16_t PROGMEM combo_osl_symbols[] = {my_j, my_l, COMBO_END}; */
+
+/* const uint16_t PROGMEM combo_lprn[] = {my_space, my_o, COMBO_END}; */
+/* const uint16_t PROGMEM combo_lprn_n[] = {my_space, my_n, COMBO_END}; */
+/* const uint16_t PROGMEM combo_rprn[] = {my_space, my_p, COMBO_END}; */
+/* const uint16_t PROGMEM combo_exlm[] = {my_space, my_m, COMBO_END}; */
+/* const uint16_t PROGMEM combo_at[] =   {my_space, my_comma, COMBO_END}; */
+/* const uint16_t PROGMEM combo_hash[] = {my_space, my_period, COMBO_END}; */
+/* const uint16_t PROGMEM combo_dlr[] =  {my_space, my_j, COMBO_END}; */
+/* const uint16_t PROGMEM combo_perc[] = {my_space, my_k, COMBO_END}; */
+/* const uint16_t PROGMEM combo_circ[] = {my_space, my_l, COMBO_END}; */
+/* const uint16_t PROGMEM combo_ampr[] = {my_space, my_u, COMBO_END}; */
+/* const uint16_t PROGMEM combo_astr[] = {my_space, my_i, COMBO_END}; */
 
 
-                                   /* COMBO(combo_ou, KC_LPRN), */
-                                   COMBO(combo_bm, KC_EXLM),
-                                   COMBO(combo_comman, KC_AT),
-                                   COMBO(combo_periodm, KC_HASH),
-                                   COMBO(combo_jg, KC_DLR),
-                                   COMBO(combo_kh, KC_PERC),
-                                   COMBO(combo_lj, KC_CIRC),
-                                   COMBO(combo_ut, KC_AMPR),
-                                   COMBO(combo_iy, KC_ASTR),
+/* const uint16_t PROGMEM combo_bm[] = {my_b, my_m, COMBO_END}; */
+/* const uint16_t PROGMEM combo_comman[] = {my_comma, my_n, COMBO_END}; */
+/* const uint16_t PROGMEM combo_periodm[] = {my_period, my_m, COMBO_END}; */
+/* const uint16_t PROGMEM combo_jg[] =  {my_g, my_j, COMBO_END}; */
+/* const uint16_t PROGMEM combo_kh[] = {my_h, my_k, COMBO_END}; */
+/* const uint16_t PROGMEM combo_lj[] = {my_j, my_l, COMBO_END}; */
+/* const uint16_t PROGMEM combo_ut[] = {my_t, my_u, COMBO_END}; */
+/* const uint16_t PROGMEM combo_iy[] = {my_y, my_i, COMBO_END}; */
+/* const uint16_t PROGMEM combo_ou[] = {my_o, my_u, COMBO_END}; */
 
 
-                                   COMBO(combo_semicolon_singlequote, KC_RBRACKET),
-                                   COMBO(combo_l_singlequote_semicolon, KC_RCBR),
+/* combo_t key_combos[COMBO_COUNT] = {COMBO(combo_esc, KC_ESC), */
+/*                                    COMBO(combo_osl_windows, OSL(_WINDOWS)), */
+/*                                    COMBO(combo_osl_windows_2, OSL(_WINDOWS)), */
+/*                                    COMBO(combo_osl_windows_3, OSL(_WINDOWS)), */
+/*                                    COMBO(combo_osl_win_move, OSL(_WINMOVE)), */
+/*                                    COMBO(combo_backspace, KC_BSPC), */
+/*                                    COMBO(combo_spc_h, KC_BSPC), */
 
-                                   COMBO(combo_p_minus, KC_UNDS),
-                                   COMBO(combo_p_minus_o, KC_EQL),
-                                   /* COMBO(combo_win_left, RGUI(RSFT(KC_H))), */
-                                   /* COMBO(combo_win_right, RGUI(RSFT(KC_L))), */
-                                   COMBO(combo_newline, KC_ENTER)};
+/*                                    COMBO(combo_lprn_n, KC_LPRN), */
+/*                                    COMBO(combo_lprn, KC_LPRN), */
+/*                                    COMBO(combo_rprn, KC_RPRN), */
+/*                                    COMBO(combo_exlm, KC_EXLM), */
+/*                                    COMBO(combo_at, KC_AT), */
+/*                                    COMBO(combo_hash, KC_HASH), */
+/*                                    COMBO(combo_dlr, KC_DLR), */
+/*                                    COMBO(combo_perc, KC_PERC), */
+/*                                    COMBO(combo_circ, KC_CIRC), */
+/*                                    COMBO(combo_ampr, KC_AMPR), */
+/*                                    COMBO(combo_astr, KC_ASTR), */
+
+/*                                    COMBO(combo_grave_q, KC_ASTG), */
+
+/*                                    COMBO(combo_jo, KC_LSPO), */
+/*                                    COMBO(combo_jp, KC_RPRN), */
+/*                                    COMBO(combo_osl_symbols, RCTL(KC_SCLN)), */
+/*                                    COMBO(combo_osl_editor, OSL(_EDITING)), */
+/*                                    COMBO(combo_max, RGUI(RSFT(KC_K))), */
+/*                                    COMBO(combo_min, RGUI(RSFT(KC_J))), */
+/*                                    COMBO(combo_shiftlok, TO(_SHIFTLOK)), */
+/*                                    COMBO(combo_opening_paren, KC_LPRN), */
+/*                                    COMBO(combo_closing_paren, KC_RPRN), */
+/*                                    COMBO(combo_l_semicolon, KC_LBRACKET), */
+/*                                    COMBO(combo_l_semicolon_k, KC_LCBR), */
+
+
+/*                                    /\* COMBO(combo_ou, KC_LPRN), *\/ */
+/*                                    COMBO(combo_bm, KC_EXLM), */
+/*                                    COMBO(combo_comman, KC_AT), */
+/*                                    COMBO(combo_periodm, KC_HASH), */
+/*                                    COMBO(combo_jg, KC_DLR), */
+/*                                    COMBO(combo_kh, KC_PERC), */
+/*                                    COMBO(combo_lj, KC_CIRC), */
+/*                                    COMBO(combo_ut, KC_AMPR), */
+/*                                    COMBO(combo_iy, KC_ASTR), */
+
+
+/*                                    COMBO(combo_semicolon_singlequote, KC_RBRACKET), */
+/*                                    COMBO(combo_l_singlequote_semicolon, KC_RCBR), */
+
+/*                                    COMBO(combo_p_minus, KC_UNDS), */
+/*                                    COMBO(combo_p_minus_o, KC_EQL), */
+/*                                    /\* COMBO(combo_win_left, RGUI(RSFT(KC_H))), *\/ */
+/*                                    /\* COMBO(combo_win_right, RGUI(RSFT(KC_L))), *\/ */
+/*                                    COMBO(combo_newline, KC_ENTER)}; */
