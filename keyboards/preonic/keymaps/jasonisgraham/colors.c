@@ -1,0 +1,74 @@
+layer_state_t layer_state_set_user(layer_state_t state) {
+  float x[][2] = SONG(zelda);
+  rgblight_config_t rgblight_config;
+
+  switch(biton32(state)) {
+  case 0:
+    // Green
+    rgblight_sethsv_at(HSV_WHITE, 0); // led 0
+    rgblight_sethsv_at(HSV_RED,   1); // led 1
+    rgblight_sethsv_at(HSV_GREEN, 2); // led 2
+    rgblight_sethsv_at(HSV_PURPLE, 3); // led 2
+    rgblight_sethsv_at(HSV_YELLOW, 4); // led 2
+    rgblight_sethsv_at(HSV_BLUE, 5); // led 2
+    rgblight_sethsv_at(HSV_WHITE, 6); // led 2
+    rgblight_sethsv_at(HSV_PURPLE, 7); // led 2
+    break;
+
+  case 1:
+    // Green
+
+    rgblight_enable_noeeprom();
+    rgblight_sethsv_noeeprom(HSV_GREEN);
+    break;
+  case 2:
+    // Red
+    /* float x[][2] = SONG(ROCK_A_BYE_BABY); */
+    /* PLAY_SONG(x);             /\*  *\/ */
+    rgblight_enable_noeeprom();
+    rgblight_sethsv_noeeprom(HSV_RED);
+    break;
+  case 3:
+    // Blue
+    rgblight_enable_noeeprom();
+    rgblight_sethsv_noeeprom(HSV_BLUE);
+    break;
+  case 4:
+    // Orange
+    rgblight_enable_noeeprom();
+    rgblight_sethsv_noeeprom(HSV_PURPLE);
+    break;
+
+  case 5:
+    // system stuff
+    PLAY_SONG(x);             /*  */
+    rgblight_enable_noeeprom();
+    rgblight_sethsv_noeeprom(HSV_YELLOW);
+    break;
+
+  case 6:
+    // windows
+    rgblight_enable_noeeprom();
+    rgblight_sethsv_noeeprom(HSV_BLUE);
+    break;
+
+  case 8:
+    // shiftlok
+    rgblight_enable_noeeprom();
+    rgblight_sethsv_noeeprom(HSV_RED);
+    break;
+
+  default:
+    // White
+    //Read RGB Light State
+    rgblight_config.raw = eeconfig_read_rgblight();
+    //If enabled, set white
+    if (rgblight_config.enable) {
+      rgblight_sethsv_noeeprom(HSV_WHITE);
+    } else { //Otherwise go back to disabled
+      rgblight_disable_noeeprom();
+    }
+    break;
+  }
+  return state;
+}

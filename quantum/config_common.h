@@ -31,8 +31,12 @@
   See config.h options at https://docs.qmk.fm/#/config_options?id=the-configh-file
 */
 
-#define COMBO_COUNT 50
-#define COMBO_TERM 20  // default is 50.  50ms produces false positives when typing kinda fast
+#define COMBO_TERM 30  // default is 50.  50ms produces false positives when typing kinda fast
+
+#define echo false
+#define COMBO_COUNT 100
+/* #define RGBLIGHT_LAYER_BLINK 1 */
+/* #define RGBLIGHT_LAYERS_OVERRIDE_RGB_OFF */
 
 #define FORCE_NKRO
 
@@ -61,3 +65,9 @@
 
 
 #define BUTTMAN 69
+
+#ifndef WEBUSB_ENABLE
+#    define WEBUSB_PAIR KC_NO
+#endif
+
+#define LEADER_TIMEOUT 300

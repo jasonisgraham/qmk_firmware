@@ -3,86 +3,152 @@
 #include "version.h"
 #include "muse.h"
 
+#include "../../quantum/hacks.c"
 
-/* enum custom_keycodes { */
-/*                       RGB_SLD = SAFE_RANGE, */
-/*                       /\* RGB_SLD = EZ_SAFE_RANGE, *\/ */
-/*                       EMACS_ACE_WINDOW_SWAP, */
-/*                       EMACS_BUFFER_REVERT, */
-/*                       EMACS_INSERT_GET_FEED, */
-/*                       EMACS_KILL_PROCESS, */
-/*                       EMACS_OTHER_WINDOW, */
-/*                       EMACS_WINDOW_CLOSE, */
-/*                       EMACS_YAS_C, */
-/*                       EMACS_YAS_DOC, */
-/*                       EMACS_YAS_MAP_ANON, */
-/*                       EMACS_YAS_TF, */
-/*                       EMACS_YAS_TL, */
-/*                       ESC_THEN_BASE_LAYER, */
-/*                       FISH_ACCEPT_SEND, */
-/*                       LAYER_LOWER_HOLD, */
-/*                       LAYER_RAISE_HOLD, */
-/*                       MUSIC_LAYER_ACTIVATE, */
-/*                       SHIFTLOK_LAYER_ACTIVATE, */
-/*                       SHIFTLOK_LAYER_DEACTIVATE, */
-/*                       SYSTEM_LAYER_ACTIVATE, */
-/*                       SYSTEM_LAYER_DEACTIVATE, */
-/*                       TMUX_COPY_MODE, */
-/* }; */
+#define LOWER MO(_LOWER)
+#define RAISE MO(_RAISE)
+
+enum custom_keycodes {
+                      /* RGB_SLD = SAFE_RANGE, */
+                      /* RGB_SLD = EZ_SAFE_RANGE, */
+                      FIRST = SAFE_RANGE,
+                      EMACS_SEL_0,
+                      EMACS_SEL_1,
+                      EMACS_SEL_2,
+                      EMACS_SEL_3,
+                      EMACS_SEL_4,
+                      EMACS_SEL_5,
+                      EMACS_SEL_6,
+                      EMACS_SEL_7,
+                      EMACS_SEL_8,
+                      EMACS_SEL_9,
+                      TMUX_SPLIT_WINDOW,
+                      CYCLE_FAVE_ANIMATIONS,
+                      ALT_TAB,
+                      EMACS_ACE_WINDOW_SWAP,
+                      EMACS_BUFFER_REVERT,
+                      EMACS_INSERT_GET_FEED,
+                      EMACS_KILL_PROCESS,
+                      EMACS_OTHER_WINDOW,
+                      EMACS_WINDOW_CLOSE,
+                      EMACS_COPY_FILE_PATH,
+                      EMACS_YAS_C,
+                      EMACS_YAS_DOC,
+                      EMACS_YAS_MAP_ANON,
+                      EMACS_YAS_TF,
+                      EMACS_YAS_TL,
+                      ESC_THEN_BASE_LAYER,
+                      FISH_ACCEPT_SEND,
+                      LAYER_LOWER_HOLD,
+                      LAYER_RAISE_HOLD,
+                      MUSIC_LAYER_ACTIVATE,
+                      WINDOWS_LAYER_ACTIVATE,
+                      SHIFTLOCK_LAYER_ACTIVATE,
+                      SHIFTLOCK_LAYER_DEACTIVATE,
+                      SYSTEM_LAYER_ACTIVATE,
+                      SYSTEM_LAYER_DEACTIVATE,
+                      RGBLIGHT_STEP,
+                      RGBLIGHT_TOGGLE,
+                      TMUX_COPY_MODE,
+};
 
 #define max_buffer RALT(KC_ENTER)
-#define close_x_window RSFT(RGUI(KC_Q))
+#define close_x_window RCTL(RGUI(KC_Q))
 #define macro_alt_slash SS_RALT(SS_TAP(X_SLASH))
 
-/* #define my_comma TD(T_COMMA_H_LTHAN_TH_AT) */
-/* #define my_d KC_D */
-/* #define my_e KC_E */
-/* #define my_f KC_F */
-/* #define my_forward_slash TD(T_FS_H_QU_DT_BS_TH_PIPE) */
-/* #define my_h KC_H */
-/* #define my_i TD(T_I_TH_ASTR) */
-/* #define my_j TD(T_J_TH_DLR) */
-/* #define my_k TD(T_K_TH_AMP) */
-/* #define my_l TD(T_L_TH_CIRC) */
-/* #define my_left_shift KC_LSFT */
-/* #define my_lower MO(_LOWER) */
-/* #define my_m TD(T_M_TH_EXLAM) */
-/* /\* #define my_minus TD(T_MINUS_TH_PLUS) *\/ */
-/* #define my_n KC_N */
-/* #define my_o TD(T_O_TH_LPRN) */
-/* #define my_p TD(T_P_TH_RPRN) */
-/* #define my_period TD(T_PERIOD_H_GTHAN_TH_HASH) */
-/* #define my_right_of_lower KC_BSPACE */
-/* #define my_right_shift KC_RSFT */
-/* #define my_s KC_S */
-/* #define my_semicolon TD(T_SEMI_H_COLON_DT_LSBR_TH_LCBR) */
-/* #define my_single_quote TD(T_SQUOTE_H_DQUOTE_DT_RSBR_TH_RCBR) */
-/* #define my_space KC_SPACE */
-/* #define my_u TD(T_U_TH_AMPR) */
-/* #define my_w KC_W */
+bool is_alt_tab_active = false;
+uint16_t alt_tab_timer = 0;
+
+void matrix_scan_user(void) {
+  if (is_alt_tab_active) {
+    if (timer_elapsed(alt_tab_timer) > 250) {
+      unregister_code(KC_LGUI);
+      is_alt_tab_active = false;
+    }
+  }
+}
+
+int8_t m;
+char b[3];
+int i = 0;
+const uint8_t fireworks = 42;
+const uint8_t faves[7] = {fireworks, 15, 16, 17, 20, 22, 41};
+void cycle_fave_animations(void) {
+  i++;
+  if (i >= 7) {
+    i = 0;
+  }
+  rgblight_mode(faves[i]);
+}
+
+void apply_fave_animation(void) {
+  rgblight_mode(faves[i]);
+}
+
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
 
-  case SYSTEM_LAYER_ACTIVATE:
-    PLAY_SONG(zelda_puzzle);
-    layer_on(_SYSTEM);
-    return false;
+  case RGBLIGHT_TOGGLE:
+    rgblight_toggle();
+    break;
+  case RGBLIGHT_STEP:
+    rgblight_step();
+    break;
+  case CYCLE_FAVE_ANIMATIONS:
+    cycle_fave_animations();
+    break;
 
-  case SHIFTLOK_LAYER_ACTIVATE:
+  case ALT_TAB:
     if (record->event.pressed) {
-      layer_move(_SHIFTLOK);
-      /* PLAY_SONG(caps_lock_on_sound); */
-      PLAY_SONG(coin_sound);
+      if (!is_alt_tab_active) {
+        is_alt_tab_active = true;
+        register_code(KC_LGUI);
+      }
+      alt_tab_timer = timer_read();
+      register_code(KC_TAB);
+    } else {
+      unregister_code(KC_TAB);
+    }
+    break;
+
+  case SYSTEM_LAYER_ACTIVATE:
+    if (record->event.pressed) {
+      PLAY_SONG(zelda_puzzle);
+      layer_move(_SYSTEM);
       return false;
     }
     break;
 
   case SYSTEM_LAYER_DEACTIVATE:
     if (record->event.pressed) {
+      PLAY_SONG(one_up_sound);
+      layer_move(_BASE);
+      return false;
+    }
+    break;
+
+  case SHIFTLOCK_LAYER_ACTIVATE:
+    if (record->event.pressed) {
+      /* rgblight_mode(42); */
+      layer_move(_SHIFTLOCK);
+      PLAY_SONG(caps_lock_on_sound);
+      /* PLAY_SONG(coin_sound); */
+#undef use_only_base_layer_combos
+#define use_only_base_layer_combos 1
+
+
+
+      /* rgblight_mode(42); */
+      return true;
+    }
+    break;
+
+  case SHIFTLOCK_LAYER_DEACTIVATE:
+    if (record->event.pressed) {
       layer_move(_BASE);
       PLAY_SONG(caps_lock_off_sound);
-      return false;
+      return true;
     }
     break;
 
@@ -136,14 +202,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   case EMACS_ACE_WINDOW_SWAP:
     if (record->event.pressed) {
-      SEND_STRING(SS_RALT(SS_TAP(X_M)) SS_DELAY(10) SS_TAP(X_W) SS_DELAY(10) SS_RSFT(SS_TAP(X_M)));
+      SEND_STRING(SS_RGUI(SS_TAP(X_E)) SS_DELAY(100) SS_RALT(SS_TAP(X_M)) SS_DELAY(10) SS_TAP(X_W) SS_DELAY(10) SS_RSFT(SS_TAP(X_M)));
 
     }
     break;
 
   case EMACS_WINDOW_CLOSE:
     if (record->event.pressed) {
-      SEND_STRING(SS_RALT(SS_TAP(X_M))  SS_TAP(X_W)  SS_TAP(X_C));
+      SEND_STRING(SS_RGUI(SS_TAP(X_E)) SS_DELAY(100) SS_RALT(SS_TAP(X_M))  SS_TAP(X_W)  SS_TAP(X_C));
 
     }
     break;
@@ -177,7 +243,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   case LAYER_RAISE_HOLD:
     if (record->event.pressed) {
-      PLAY_SONG(major_sound);
+      /* PLAY_SONG(major_sound); */
       layer_move(_RAISE);
 
     }
@@ -185,11 +251,119 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   case LAYER_LOWER_HOLD:
     if (record->event.pressed) {
-      PLAY_SONG(old_spice);
+      /* PLAY_SONG(old_spice); */
       layer_move(_LOWER);
 
     }
     break;
+
+  case TMUX_SPLIT_WINDOW:
+    if (record->event.pressed) {
+      SEND_STRING(SS_RCTL(SS_TAP(X_V)) SS_TAP(X_MINUS));
+
+    }
+    break;
+
+  case EMACS_SEL_0:
+    if (record->event.pressed) {
+      SEND_STRING(SS_RGUI(SS_TAP(X_E)) SS_DELAY(100) SS_RALT(SS_TAP(X_M)) SS_TAP(X_0));
+      layer_move(_BASE);
+    }
+    break;
+
+  case EMACS_SEL_1:
+    if (record->event.pressed) {
+      SEND_STRING(SS_RGUI(SS_TAP(X_E)) SS_DELAY(100) SS_RALT(SS_TAP(X_M)) SS_TAP(X_1));
+      layer_move(_BASE);
+    }
+    break;
+
+  case EMACS_SEL_2:
+    if (record->event.pressed) {
+      SEND_STRING(SS_RGUI(SS_TAP(X_E)) SS_DELAY(100) SS_RALT(SS_TAP(X_M)) SS_TAP(X_2));
+      layer_move(_BASE);
+    }
+    break;
+
+  case EMACS_SEL_3:
+    if (record->event.pressed) {
+      SEND_STRING(SS_RGUI(SS_TAP(X_E)) SS_DELAY(100) SS_RALT(SS_TAP(X_M)) SS_TAP(X_3));
+      layer_move(_BASE);
+    }
+    break;
+
+  case EMACS_SEL_4:
+    if (record->event.pressed) {
+      SEND_STRING(SS_RGUI(SS_TAP(X_E)) SS_DELAY(100) SS_RALT(SS_TAP(X_M)) SS_TAP(X_4));
+      layer_move(_BASE);
+    }
+    return true;
+    break;
+
+  case EMACS_SEL_5:
+    if (record->event.pressed) {
+      SEND_STRING(SS_RGUI(SS_TAP(X_E)) SS_DELAY(100) SS_RALT(SS_TAP(X_M)) SS_TAP(X_5));
+      layer_move(_BASE);
+    }
+    break;
+
+  case EMACS_SEL_6:
+    if (record->event.pressed) {
+      SEND_STRING(SS_RGUI(SS_TAP(X_E)) SS_DELAY(100) SS_RALT(SS_TAP(X_M)) SS_TAP(X_6));
+      layer_move(_BASE);
+    }
+    break;
+
+  case EMACS_SEL_7:
+    if (record->event.pressed) {
+      SEND_STRING(SS_RGUI(SS_TAP(X_E)) SS_DELAY(100) SS_RALT(SS_TAP(X_M)) SS_TAP(X_7));
+      layer_move(_BASE);
+    }
+    break;
+
+  case EMACS_SEL_8:
+    if (record->event.pressed) {
+      SEND_STRING(SS_RGUI(SS_TAP(X_E)) SS_DELAY(100) SS_RALT(SS_TAP(X_M)) SS_TAP(X_8));
+      layer_move(_BASE);
+    }
+    break;
+
+  case EMACS_SEL_9:
+    if (record->event.pressed) {
+      SEND_STRING(SS_RGUI(SS_TAP(X_E)) SS_DELAY(100) SS_RALT(SS_TAP(X_M)) SS_TAP(X_9));
+      layer_move(_BASE);
+    }
+    break;
+
+    case EMACS_COPY_FILE_PATH:
+      if (record->event.pressed) {
+        SEND_STRING(SS_RGUI(SS_TAP(X_E)) SS_DELAY(100) SS_LSFT(SS_RALT(SS_TAP(X_G))) SS_DELAY(100) SS_TAP(X_D) SS_DELAY(100) SS_TAP(X_W) SS_DELAY(100) SS_TAP(X_F));
+      }
+
   }
+
+
   return true;
+
 }
+
+/* bool echo = false; */
+/* void toggle_echo(void) { */
+/*   if (echo) { */
+/*     echo = false; */
+/*   } else { */
+/*     echo = true; */
+/*   } */
+/* } */
+
+
+char * int2str(uint8_t i) {
+  static char s[10];
+  itoa(i, s, 10);
+  return s;
+
+
+}
+
+/* SS_RGUI(SS_TAP(X_E)) SS_DELAY(100) SS_RALT(SS_TAP(X_M)) */
+/* SS_RGUI(SS_TAP(X_E)) SS_DELAY(100) SS_RGUI(SS_TAP(X_E)) SS_DELAY(100) SS_RALT(SS_TAP(X_M)) */
