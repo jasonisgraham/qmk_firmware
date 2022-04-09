@@ -95,6 +95,8 @@ enum planck_layers {
 #define my_lower_i KC_PGDOWN
 #define my_lower_k KC_UP
 #define my_lower_o KC_END
+#define my_lower_n TD(DANCE_69)
+
 #define my_lower_m TD(DANCE_29)
 #define my_lower_k KC_UP
 
@@ -165,6 +167,7 @@ enum planck_layers {
 #define my_lower_d KC_F7
 #define my_lower_f KC_F8
 
+/* #include "../../../common/keymaps.c" */
 #include "keymaps.c"
 #include "colors.c"
 

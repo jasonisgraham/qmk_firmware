@@ -7,10 +7,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [_LOWER] = LAYOUT_planck_grid(
+                                /* _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, */
+                                /* _______, _______, _______, _______,    _______, _______, _______, _______,    _______, _______, _______, _______, */
+                                /* _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, */
+                                /* _______, _______, _______, _______, _______, _______, KC_NO,          _______, _______, _______, _______, _______ */
+
     TD(DANCE_26),   KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_PSCREEN,     KC_HOME,        KC_PGUP,        my_lower_i,      my_lower_o,         _______, TD(DANCE_27),
     _______, KC_F5,          KC_F6,          KC_F7,          KC_F8,          KC_SCROLLLOCK,  KC_LEFT,        my_lower_j,        my_lower_k,          KC_RIGHT,       KC_LCBR,        KC_RCBR,
-    _______,   KC_F9,          KC_F10,         KC_F11,         KC_F12,         KC_APPLICATION, ONLY_N, my_lower_m, TD(DANCE_29),   TD(DANCE_30),   KC_DELETE,      SHIFTLOCK_LAYER_ACTIVATE,
+    _______,   KC_F9,          KC_F10,         KC_F11,         KC_F12,         KC_APPLICATION, my_lower_n, my_lower_m, TD(DANCE_29),   TD(DANCE_30),   KC_DELETE,      SHIFTLOCK_LAYER_ACTIVATE,
     _______, KC_NO, KC_LGUI,        KC_LALT,        MO(4),          TO(4),          KC_NO,          _______, KC_NO,          KC_NO,          _______, _______
+
   ),
 
   [_RAISE] = LAYOUT_planck_grid(
@@ -93,11 +99,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   // 12
   [_EDITING] = LAYOUT_planck_grid(
-
-                                  TO(_BASE), _______, EMACS_OTHER_WINDOW,     _______, EMACS_BUFFER_REVERT,     _______, EMACS_COPY_FILE_PATH, LCTL(KC_7),     _______, EMACS_OTHER_WINDOW, _______, TMUX_SPLIT_WINDOW,
-    _______, _______, _______, _______, RALT(KC_ENTER), _______, RALT(RSFT(KC_H)),RALT(RSFT(KC_J)),RALT(RSFT(KC_K)),RALT(RSFT(KC_L)),RCTL(KC_SCOLON),RCTL(KC_QUOTE),
-                                  _______, _______, _______, EMACS_WINDOW_CLOSE,    _______, _______, RALT(RSFT(KC_N)), EMACS_ACE_WINDOW_SWAP,    _______, _______, EMACS_WINDOW_CLOSE,    _______,
-                                  _______, _______, _______, _______, OSL(18), _______, KC_NO,          RALT(KC_ENTER), _______, _______, _______, _______
+TO(_BASE), _______, EMACS_OTHER_WINDOW,     _______, EMACS_BUFFER_REVERT,     _______, EMACS_COPY_FILE_PATH, LCTL(KC_7),     _______, EMACS_OTHER_WINDOW, _______, TMUX_SPLIT_WINDOW,
+_______, _______, _______, _______, RALT(KC_ENTER), _______, RALT(RSFT(KC_H)),RALT(RSFT(KC_J)),RALT(RSFT(KC_K)),RALT(RSFT(KC_L)),RCTL(KC_SCOLON),RCTL(KC_QUOTE),
+_______, _______, _______, EMACS_WINDOW_CLOSE,    _______, _______, RALT(RSFT(KC_N)), EMACS_ACE_WINDOW_SWAP,    _______, _______, EMACS_WINDOW_CLOSE,    _______,
+_______, _______, _______, _______, OSL(18), _______, KC_NO,          RALT(KC_ENTER), _______, _______, _______, _______
   ),
 
   [_LAYER13] = LAYOUT_planck_grid(

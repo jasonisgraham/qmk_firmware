@@ -97,18 +97,32 @@ void rgb_matrix_indicators_user(void) {
 
     break;
   case 1:
+
+    /* rgblight_sethsv_at(HSV_WHITE, 0); // led 0 */
+    /* rgblight_sethsv_at(HSV_RED,   1); // led 1 */
+    /* rgblight_sethsv_at(HSV_GREEN, 2); // led 2 */
+    /* rgblight_sethsv_at(HSV_PURPLE, 3); // led 2 */
+    /* rgblight_sethsv_at(HSV_YELLOW, 4); // led 2 */
+    /* rgblight_sethsv_at(HSV_BLUE, 5); // led 2 */
+    /* rgblight_sethsv_at(HSV_WHITE, 6); // led 2 */
+    /* rgblight_sethsv_at(HSV_PURPLE, 7); // led 2 */
+
     set_layer_color(1);
     break;
   case 2:
+    /* planck_ez_left_led_level(1); */
     set_layer_color(2);
     break;
   case 3:
+    /* planck_ez_left_led_level(2); */
     set_layer_color(3);
     break;
   case 4:
     set_layer_color(4);
     break;
   case 5:
+    planck_ez_right_led_on();
+    planck_ez_left_led_on();
     set_layer_color(5);
     break;
   case 6:
@@ -130,6 +144,8 @@ void rgb_matrix_indicators_user(void) {
     set_layer_color(11);
     break;
   case _EDITING:
+    planck_ez_left_led_level(50);
+    /* planck_ez_right_led_on(); */
     set_layer_color(_EDITING);
     break;
   case 14:
@@ -139,6 +155,7 @@ void rgb_matrix_indicators_user(void) {
     set_layer_color(15);
     break;
   case 18:
+    planck_ez_left_led_on();
     set_layer_color(18);
     break;
   default:

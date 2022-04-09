@@ -13,7 +13,8 @@
 
 /* #define BACKLIGHT_LEVELS 31 */
 /* #define BACKLIGHT_BREATHING */
-/* #define RGBLIGHT_LAYERS */
+#define RGBLIGHT_LAYERS
+#define RGBLIGHT_LAYER_BLINK
 
 
 #define LEADER_TIMEOUT 300

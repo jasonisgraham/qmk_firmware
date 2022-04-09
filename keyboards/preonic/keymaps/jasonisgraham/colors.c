@@ -5,14 +5,17 @@ layer_state_t layer_state_set_user(layer_state_t state) {
   switch(biton32(state)) {
   case 0:
     // Green
-    rgblight_sethsv_at(HSV_WHITE, 0); // led 0
-    rgblight_sethsv_at(HSV_RED,   1); // led 1
-    rgblight_sethsv_at(HSV_GREEN, 2); // led 2
-    rgblight_sethsv_at(HSV_PURPLE, 3); // led 2
-    rgblight_sethsv_at(HSV_YELLOW, 4); // led 2
-    rgblight_sethsv_at(HSV_BLUE, 5); // led 2
-    rgblight_sethsv_at(HSV_WHITE, 6); // led 2
-    rgblight_sethsv_at(HSV_PURPLE, 7); // led 2
+    /* rgblight_sethsv_at(HSV_WHITE, 0); // led 0 */
+    /* rgblight_sethsv_at(HSV_RED,   1); // led 1 */
+    /* rgblight_sethsv_at(HSV_GREEN, 2); // led 2 */
+    /* rgblight_sethsv_at(HSV_PURPLE, 3); // led 2 */
+    /* rgblight_sethsv_at(HSV_YELLOW, 4); // led 2 */
+    /* rgblight_sethsv_at(HSV_BLUE, 5); // led 2 */
+    /* rgblight_sethsv_at(HSV_WHITE, 6); // led 2 */
+    /* rgblight_sethsv_at(HSV_PURPLE, 7); // led 2 */
+    rgblight_enable_noeeprom();
+    rgblight_sethsv_noeeprom(HSV_BLACK);
+    rgblight_mode(RGBLIGHT_MODE_STATIC_LIGHT);
     break;
 
   case 1:
@@ -26,7 +29,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     /* float x[][2] = SONG(ROCK_A_BYE_BABY); */
     /* PLAY_SONG(x);             /\*  *\/ */
     rgblight_enable_noeeprom();
-    rgblight_sethsv_noeeprom(HSV_RED);
+    rgblight_sethsv_noeeprom(HSV_BLUE);
     break;
   case 3:
     // Blue
@@ -36,7 +39,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
   case 4:
     // Orange
     rgblight_enable_noeeprom();
-    rgblight_sethsv_noeeprom(HSV_PURPLE);
+    rgblight_sethsv_noeeprom(HSV_GREEN);
     break;
 
   case 5:
@@ -49,13 +52,34 @@ layer_state_t layer_state_set_user(layer_state_t state) {
   case 6:
     // windows
     rgblight_enable_noeeprom();
-    rgblight_sethsv_noeeprom(HSV_BLUE);
+    rgblight_sethsv_noeeprom(HSV_ORANGE);
+    break;
+
+
+  case 7:
+    rgblight_enable_noeeprom();
+    rgblight_sethsv_noeeprom(HSV_PINK);
     break;
 
   case 8:
     // shiftlok
+    rgblight_mode(RGBLIGHT_MODE_SNAKE);
     rgblight_enable_noeeprom();
     rgblight_sethsv_noeeprom(HSV_RED);
+    break;
+
+  case 16:
+    rgblight_enable_noeeprom();
+    rgblight_sethsv_noeeprom(HSV_PURPLE);
+    break;
+
+  case 12:
+    rgblight_enable_noeeprom();
+    rgblight_sethsv_noeeprom(HSV_BLUE);
+    break;
+  case 9:
+    rgblight_enable_noeeprom();
+    rgblight_sethsv_noeeprom(HSV_GREEN);
     break;
 
   default:

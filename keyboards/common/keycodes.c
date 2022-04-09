@@ -12,6 +12,7 @@ enum custom_keycodes {
                       /* RGB_SLD = SAFE_RANGE, */
                       /* RGB_SLD = EZ_SAFE_RANGE, */
                       FIRST = SAFE_RANGE,
+                      LPRN_LIT,
                       EMACS_SEL_0,
                       EMACS_SEL_1,
                       EMACS_SEL_2,
@@ -40,6 +41,7 @@ enum custom_keycodes {
                       ESC_THEN_BASE_LAYER,
                       FISH_ACCEPT_SEND,
                       LAYER_LOWER_HOLD,
+                      LAYER_COLORS_HOLD,
                       LAYER_RAISE_HOLD,
                       MUSIC_LAYER_ACTIVATE,
                       WINDOWS_LAYER_ACTIVATE,
@@ -122,7 +124,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   case SYSTEM_LAYER_DEACTIVATE:
     if (record->event.pressed) {
-      PLAY_SONG(one_up_sound);
+      /* PLAY_SONG(one_up_sound); */
       layer_move(_BASE);
       return false;
     }
@@ -134,13 +136,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       layer_move(_SHIFTLOCK);
       PLAY_SONG(caps_lock_on_sound);
       /* PLAY_SONG(coin_sound); */
-#undef use_only_base_layer_combos
-#define use_only_base_layer_combos 1
-
-
-
       /* rgblight_mode(42); */
-      return true;
+      /* return true; */
     }
     break;
 
@@ -148,7 +145,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
       layer_move(_BASE);
       PLAY_SONG(caps_lock_off_sound);
-      return true;
+      /* return true; */
     }
     break;
 
@@ -243,7 +240,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   case LAYER_RAISE_HOLD:
     if (record->event.pressed) {
-      /* PLAY_SONG(major_sound); */
+      PLAY_SONG(major_sound);
       layer_move(_RAISE);
 
     }
@@ -251,8 +248,27 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   case LAYER_LOWER_HOLD:
     if (record->event.pressed) {
+      PLAY_SONG(minor_sound);
       /* PLAY_SONG(old_spice); */
       layer_move(_LOWER);
+
+    }
+    break;
+
+  case LPRN_LIT :
+    if (record->event.pressed) {
+      rgblight_enable_noeeprom();
+      rgblight_sethsv_noeeprom(HSV_GREEN);
+      SEND_STRING("(");
+      rgblight_sethsv_noeeprom(HSV_WHITE);
+      return true;
+    }
+    break;
+
+  case LAYER_COLORS_HOLD:
+    if (record->event.pressed) {
+      layer_move(_COLORS);
+      PLAY_SONG(num_lock_on_sound);
 
     }
     break;
