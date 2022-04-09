@@ -17,25 +17,31 @@ enum preonic_layers {
   _EDITING,
 };
 
-/* enum preonic_keycodes { */
-/*   QWERTY = SAFE_RANGE, */
-/*   LOWER, */
-/*   RAISE, */
-/*   BACKLIT, */
-/*   RO_0, */
-/* OTHER_WINDOW_1, */
-/*   FISH_ACCEPT_SEND, */
-/*   EMACS_YAS_DOC, */
-/*   EMACS_YAS_TF, */
-/*   EMACS_YAS_TL, */
-/*   EMACS_YAS_C, */
-/*   EMACS_YAS_MAP_ANONMACRO_MAP_ANON, */
-/*   EMACS_OTHER_WINDOWST_MACRO_8, */
-/*   EMACS_OTHER_WINDOW, */
-/*   EMACS_WINDOW_CLOSE, */
-/*   EMACS_WINDOW_CLOSE, */
-/*   ESC_THEN_BASE_LAYER, */
-/* }; */
+#define my_cap_l RSFT(KC_L)
+#define my_cap_k RSFT(KC_K)
+#define my_cap_j RSFT(KC_J)
+
+#define my_raise_j KC_4
+#define my_raise_i KC_8
+#define my_raise_k KC_5
+#define my_raise_o KC_9
+#define my_raise_m KC_1
+#define my_raise_u  KC_7
+#define my_raise_h KC_BSPACE
+
+
+
+#define my_raise_comma KC_2
+#define my_raise_l KC_6
+#define  my_lower_o KC_END
+#define my_lower_m TD(DANCE_29)
+#define  my_lower_f  KC_F8
+#define  my_lower_k KC_UP
+#define  my_lower_j KC_DOWN
+#define my_lower_i KC_PGDOWN
+#define my_lower_d KC_F7
+#define my_space KC_SPACE
+#define my_lower MO(_LOWER)
 
 #include "../../../common/keycodes.c"
 #include "tapdance.c"
@@ -79,7 +85,7 @@ enum preonic_layers {
 #define backspace KC_BSPACE
 #define my_minus TD(DANCE_10)
 #define topright my_minus
-#define right_of_lower backspace
+#define right_of_lower MT(MOD_RCTL, KC_ESCAPE) //backspace
 #define my_semicolon TD(DANCE_19)
 #define my_singlequote TD(DANCE_20)
 #define my_space KC_SPACE
@@ -99,20 +105,20 @@ enum preonic_layers {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_BASE] = LAYOUT_preonic_grid(
- my_grave,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    topright,
- my_grave,    my_q,    my_w,    my_e,    my_r,    my_t,    my_y, my_u,  my_i, my_o, my_p,     topright,
- MT(MOD_RCTL, KC_ESCAPE), my_a,   my_s,   my_d,   my_f,   my_g,   my_h,           my_j,   my_k,   my_l,   my_semicolon,   my_singlequote,
- my_left_shift,        my_z,           my_x,           my_c,           my_v,           my_b,           my_n,   my_m,   my_comma,   my_period,   my_forward_slash,   my_right_shift,
- MT(MOD_LCTL, KC_LBRACKET),TT(5), KC_LGUI, KC_LALT, RAISE,    LM(6,MOD_LGUI),      my_space,           my_lower,          right_of_lower,      KC_LEAD,  RGBLIGHT_TOGGLE, RGBLIGHT_STEP
+                              TO(0), KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0, _______,
+                              my_q,    my_w,    my_e,    my_r,    my_t,   _______,_______, my_y, my_u,  my_i, my_o, my_p,
+                              my_a,   my_s,   my_d,   my_f,   my_g,  _______,_______, my_h,           my_j,   my_k,   my_l,   my_semicolon,
+                              my_z,           my_x,           my_c,           my_v,           my_b,    _______,_______,       my_n,   my_m,   my_comma,   my_period,   my_forward_slash,
+                              MT(MOD_LCTL, KC_LBRACKET),TT(5), KC_LGUI, KC_LALT, RAISE,    LM(6,MOD_LGUI),      my_space,           my_lower,          right_of_lower,      LAYER_LOWER_HOLD, LAYER_RAISE_HOLD, CYCLE_FAVE_ANIMATIONS
 ),
 
 // _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
 
 [_LOWER] = LAYOUT_preonic_grid(
-                               _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,  TD(DANCE_27),
-TD(DANCE_26),   KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_PSCREEN,     KC_HOME,        KC_PGUP,        KC_PGDOWN,      KC_END,         _______, TD(DANCE_27),
-_______, KC_F5,          KC_F6,          KC_F7,          KC_F8,          KC_SCROLLLOCK,  KC_LEFT,        KC_DOWN,        KC_UP,          KC_RIGHT,       _______, _______,
-TD(DANCE_28),   KC_F9,          KC_F10,         KC_F11,         KC_F12,         KC_APPLICATION, _______, _______, TD(DANCE_29),   TD(DANCE_30),   KC_DELETE,      TD(DANCE_31),
+_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,  TD(DANCE_27),
+TD(DANCE_26),   KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_PSCREEN,     KC_HOME,        KC_PGUP,        KC_PGDOWN,      my_lower_o,         _______, TD(DANCE_27),
+_______, KC_F5,          KC_F6,          KC_F7,          my_lower_f,          KC_SCROLLLOCK,  KC_LEFT,        my_lower_j,        my_lower_k,          KC_RIGHT,       _______, _______,
+TD(DANCE_28),   KC_F9,          KC_F10,         KC_F11,         KC_F12,         KC_APPLICATION, _______, my_lower_m,TD(DANCE_29),   TD(DANCE_30),   KC_DELETE,       SHIFTLOCK_LAYER_ACTIVATE,
 _______, _______, KC_LGUI,        KC_LALT,        MO(4),         TO(8) ,        TO(4),          _______, KC_NO,          KC_NO,          _______, _______
 
 ),
@@ -120,9 +126,10 @@ _______, _______, KC_LGUI,        KC_LALT,        MO(4),         TO(8) ,        
 
 [_RAISE] = LAYOUT_preonic_grid(
                                _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
- TD(DANCE_32),   KC_NO,          EMACS_OTHER_WINDOW, KC_END,         EMACS_BUFFER_REVERT,     KC_NO,          _______, KC_7,           KC_8,           KC_9,           KC_0,           KC_EQUAL,
- _______, DYN_REC_START1, DYN_MACRO_PLAY1,KC_NO,          RALT(KC_ENTER), OSL(7),         KC_BSPACE,      KC_4,           KC_5,           KC_6,           KC_LBRACKET,    KC_RBRACKET,
- _______, DYN_REC_START2, DYN_MACRO_PLAY2,DYN_REC_STOP,   KC_NO,          FISH_ACCEPT_SEND,     KC_0,           KC_1,           KC_2,           KC_3,           KC_BSLASH,      _______,
+                               KC_NO,          EMACS_OTHER_WINDOW, KC_END,         EMACS_BUFFER_REVERT,     KC_NO,  _______,_______,        _______, KC_7,           KC_8,           KC_9,           KC_0,
+                               DYN_REC_START1, DYN_MACRO_PLAY1,KC_NO,          RALT(KC_ENTER), OSL(7), _______, _______,         KC_BSPACE,      KC_4,           KC_5,           KC_6,           KC_LBRACKET,
+                               DYN_REC_START2, DYN_MACRO_PLAY2,DYN_REC_STOP,   KC_NO,          FISH_ACCEPT_SEND,  _______,_______,   KC_0,           KC_1,           KC_2,           KC_3,           KC_BSLASH,
+
  _______, _______, KC_LGUI,        KC_LALT,        _______, _______, KC_NO,          KC_ENTER,       KC_0,           KC_DOT,         KC_NO,          _______
 ),
 

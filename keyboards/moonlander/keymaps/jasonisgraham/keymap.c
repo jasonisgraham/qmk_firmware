@@ -104,7 +104,10 @@
 #define select_slack LGUI(KC_S)
 #define show_desktop LALT(LGUI(LCTL(KC_D)))
 
+#define my_grave TD(T_TAB_H_WINDOWS_DT_TIC_TH_TILDE)
 
+#define my_raise_comma KC_2
+#define my_raise_l KC_6
 
 // #include "../../../common/keymap.c"
 
@@ -131,10 +134,10 @@
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_BASE] = LAYOUT_moonlander(
                               RCTL(KC_LBRACKET),my_1,           my_2,           my_3,           my_4,           my_5,           MUSIC_LAYER_ACTIVATE,                                 _______, my_6,           my_7,           my_8,           my_9,           my_0,           SHIFTLOCK_LAYER_ACTIVATE,
-    TD(T_TAB_H_WINDOWS_DT_TIC_TH_TILDE),    my_q,           my_w,           my_e,           my_r,           my_t,           _______,                                 _______, my_y,           my_u,    my_i,    my_o,    my_p,    my_minus,
+    my_grave,    my_q,           my_w,           my_e,           my_r,           my_t,           _______,                                 _______, my_y,           my_u,    my_i,    my_o,    my_p,    my_minus,
     MT(MOD_RCTL, KC_ESCAPE), my_a,           my_s,           my_d,           my_f,           my_g,           OSL(1),                                                                         KC_BSPACE,      my_h,           my_j,    my_k,    my_l,    my_semicolon,    my_singlequote,
     my_left_shift,        my_z,           my_x,           my_c,           my_v,           my_b,                                           my_n,           my_m,   my_comma,   my_period,   my_forward_slash,   my_right_shift,
-                              MT(MOD_LCTL, KC_LBRACKET), SYSTEM_LAYER_ACTIVATE,          KC_LGUI,KC_LALT, MO(_RAISE),          KC_RCTRL,                                                                                                       KC_BSPACE,      LOWER,         my_right_of_lower,      LAYER_RAISE_HOLD,          LAYER_LOWER_HOLD,          CYCLE_FAVE_ANIMATIONS,
+    MT(MOD_LCTL, KC_LBRACKET), SYSTEM_LAYER_ACTIVATE,          KC_LGUI,KC_LALT, MO(_RAISE),          KC_RCTRL,                                                                                                       KC_BSPACE,      LOWER,         my_right_of_lower,      LAYER_RAISE_HOLD,          LAYER_LOWER_HOLD,          CYCLE_FAVE_ANIMATIONS,
     KC_BSPACE,      LM(_SUPER,MOD_LGUI),KC_ENTER,                       LM(9,MOD_LALT), LM(_WINDOWS, MOD_LGUI), my_space
   ),
   // lower
@@ -150,8 +153,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_RAISE] = LAYOUT_moonlander(
     KC_TILD,        KC_EXLM,        KC_AT,          KC_HASH,        KC_DLR,         KC_PERC,        _______,                                 _______, KC_CIRC,        KC_AMPR,        KC_ASTR,        KC_LPRN,        KC_RPRN,        _______,
     TD(T_EMACS_COMPLETE_H_BASE),   _______, EMACS_OTHER_WINDOW,     KC_END,         EMACS_BUFFER_REVERT,     _______, _______,                                 _______, _______, my_raise_u,           my_raise_i,           my_raise_o,           KC_0,           _______,
-    _______, DYN_REC_START1, DYN_MACRO_PLAY1,_______, RALT(KC_ENTER), OSL(6),         _______,                                                                 _______, my_raise_h,      my_raise_j,           my_raise_k,           KC_6,           KC_LBRACKET,    KC_RBRACKET,
-    _______, DYN_REC_START2, DYN_MACRO_PLAY2,DYN_REC_STOP,   _______, FISH_ACCEPT_SEND,                                     KC_0,           KC_1,           KC_2,           KC_3,           KC_BSLASH,      _______,
+    _______, DYN_REC_START1, DYN_MACRO_PLAY1,_______, RALT(KC_ENTER), OSL(6),         _______,                                                                 _______, my_raise_h,      my_raise_j,           my_raise_k,           my_raise_l,           KC_LBRACKET,    KC_RBRACKET,
+    _______, DYN_REC_START2, DYN_MACRO_PLAY2,DYN_REC_STOP,   _______, FISH_ACCEPT_SEND,                                     KC_0,           KC_1,           my_raise_comma,           KC_3,           KC_QUES,      _______,
     _______, _______, KC_LGUI,        KC_LALT,        _______, _______,                                                                                                 _______, KC_ENTER,       KC_0,           KC_DOT,         _______, _______,
     _______, _______, _______,                 _______, _______, _______
   ),
