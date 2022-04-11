@@ -88,6 +88,7 @@ enum preonic_layers {
 #define my_y KC_Y
 #define my_z KC_Z
 #define my_lower_n TD(DANCE_69)
+#define hyper KC_LCTL
 
 #define below_v MT(MOD_RCTL, KC_ESCAPE)
 #define below_m MT(MOD_RCTL, KC_ESCAPE)
@@ -98,7 +99,7 @@ enum preonic_layers {
 /* #define my_left_shift KC_LSPO */
 #define my_left_shift KC_LSFT
 /* #define my_right_shift KC_RSPC */
-#define my_right_shift KC_RSFT
+#define my_right_shift KC_ENTER
 #define my_grave TD(DANCE_0)
 #define backspace KC_BSPACE
 #define my_minus TD(DANCE_10)

@@ -4,8 +4,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     my_lctl ,my_a,   my_s,   my_d,   my_f,   my_g,   my_h,           my_j,   my_k,   my_l,   my_semicolon,   my_singlequote,
     my_left_shift,        my_z,           my_x,           my_c,           my_v,           my_b,           my_n,   my_m,   my_comma,   my_period,   my_forward_slash,   my_right_shift,
     /* my_left_shift,     TO(_LAYER13),           _______,           _______,          below_v, below_b,  below_n, below_m, KC_LEFT, KC_DOWN, KC_UP, KC_RIGHT, */
-    MT(MOD_LCTL, KC_LBRACKET),  SYSTEM_LAYER_ACTIVATE, KC_LGUI, KC_LALT, RAISE,    my_split_left, /* LM(6,MOD_LGUI),  */     my_space,           my_lower,           right_of_lower,   LAYER_RAISE_HOLD,          LAYER_LOWER_HOLD, SHIFTLOCK_LAYER_ACTIVATE,
-    _______,_______,_______,_______, my_lctl,  KC_LCTL,      my_right_shift,         KC_RALT,         KC_LEFT, KC_DOWN, KC_UP, KC_RIGHT
+    MT(MOD_LCTL, KC_LBRACKET),  _______, KC_LGUI, KC_LALT, RAISE,    my_split_left, /* LM(6,MOD_LGUI),  */     my_space,           my_lower,           right_of_lower,   LAYER_RAISE_HOLD,          LAYER_LOWER_HOLD, SHIFTLOCK_LAYER_ACTIVATE,
+    _______,SYSTEM_LAYER_ACTIVATE,_______,_______, hyper,  my_lctl,     my_left_shift,         KC_LALT,         KC_LEFT, KC_DOWN, KC_UP, KC_RIGHT
     /* _______,_______,_______,_______, my_lctl,  MT(MOD_LCTL, KC_LBRACKET),      KC_LSPO,         TD(T_LCRB_H_ALT),         KC_LEFT, KC_DOWN, KC_UP, KC_RIGHT */
     /* MT(MOD_LCTL, KC_LBRACKET),  SYSTEM_LAYER_ACTIVATE, KC_LGUI, _______,  */
 

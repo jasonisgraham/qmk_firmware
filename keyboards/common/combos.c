@@ -11,6 +11,19 @@ const uint16_t PROGMEM combo_ampr[] = {my_space, my_u, COMBO_END};
 const uint16_t PROGMEM combo_astr[] = {my_space,  my_i, COMBO_END};
 const uint16_t PROGMEM combo_osl_symbols[] = {my_j, my_l, COMBO_END};
 
+
+const uint16_t PROGMEM combo_lower_lprn[] = {my_lower, my_o, COMBO_END};
+const uint16_t PROGMEM combo_lower_rprn[] = {my_lower, my_p, COMBO_END};
+const uint16_t PROGMEM combo_lower_exlm[] = {my_lower, my_m, COMBO_END};
+const uint16_t PROGMEM combo_lower_at[] =   {my_lower, my_comma, COMBO_END};
+const uint16_t PROGMEM combo_lower_hash[] = {my_lower, my_period, COMBO_END};
+const uint16_t PROGMEM combo_lower_dlr[] =  {my_lower, my_j, COMBO_END};
+const uint16_t PROGMEM combo_lower_perc[] = {my_lower, my_k, COMBO_END};
+const uint16_t PROGMEM combo_lower_circ[] = {my_lower, my_l, COMBO_END};
+const uint16_t PROGMEM combo_lower_ampr[] = {my_lower, my_u, COMBO_END};
+const uint16_t PROGMEM combo_lower_astr[] = {my_lower,  my_i, COMBO_END};
+
+
 const uint16_t PROGMEM combo_raise_h_raise_u[] = {my_raise_h,  my_raise_u, COMBO_END};
 const uint16_t PROGMEM combo_h_u[] = {my_h,  my_u, COMBO_END};
 
@@ -211,6 +224,19 @@ combo_t key_combos[COMBO_COUNT] = {COMBO(combo_k_semicolon, KC_COLN),
                                    COMBO(combo_circ, KC_CIRC),
                                    COMBO(combo_ampr, KC_AMPR),
                                    COMBO(combo_astr, KC_ASTR),
+
+
+                                   COMBO(combo_lower_lprn, KC_LPRN),
+                                   COMBO(combo_lower_rprn, KC_RPRN),
+                                   COMBO(combo_lower_exlm, KC_EXLM),
+                                   COMBO(combo_lower_at, KC_AT),
+                                   COMBO(combo_lower_hash, KC_HASH),
+                                   COMBO(combo_lower_dlr, KC_DLR),
+                                   COMBO(combo_lower_perc, KC_PERC),
+                                   COMBO(combo_lower_circ, KC_CIRC),
+                                   COMBO(combo_lower_ampr, KC_AMPR),
+                                   COMBO(combo_lower_astr, KC_ASTR),
+
 
 
                                    /* COMBO(combo_spc_q, LGUI(KC_Q)), */
