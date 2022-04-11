@@ -222,6 +222,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       SEND_STRING("(def xs (get-feed))");
     }
     break;
+
   case TMUX_COPY_MODE:
     if (record->event.pressed) {
       SEND_STRING(SS_LCTL(SS_TAP(X_V)) SS_TAP(X_LBRACKET));

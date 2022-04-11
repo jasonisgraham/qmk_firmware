@@ -11,6 +11,19 @@ const uint16_t PROGMEM combo_ampr[] = {my_space, my_u, COMBO_END};
 const uint16_t PROGMEM combo_astr[] = {my_space,  my_i, COMBO_END};
 const uint16_t PROGMEM combo_osl_symbols[] = {my_j, my_l, COMBO_END};
 
+
+const uint16_t PROGMEM combo_lower_lprn[] = {my_lower, my_o, COMBO_END};
+const uint16_t PROGMEM combo_lower_rprn[] = {my_lower, my_p, COMBO_END};
+const uint16_t PROGMEM combo_lower_exlm[] = {my_lower, my_m, COMBO_END};
+const uint16_t PROGMEM combo_lower_at[] =   {my_lower, my_comma, COMBO_END};
+const uint16_t PROGMEM combo_lower_hash[] = {my_lower, my_period, COMBO_END};
+const uint16_t PROGMEM combo_lower_dlr[] =  {my_lower, my_j, COMBO_END};
+const uint16_t PROGMEM combo_lower_perc[] = {my_lower, my_k, COMBO_END};
+const uint16_t PROGMEM combo_lower_circ[] = {my_lower, my_l, COMBO_END};
+const uint16_t PROGMEM combo_lower_ampr[] = {my_lower, my_u, COMBO_END};
+const uint16_t PROGMEM combo_lower_astr[] = {my_lower,  my_i, COMBO_END};
+
+
 const uint16_t PROGMEM combo_raise_h_raise_u[] = {my_raise_h,  my_raise_u, COMBO_END};
 const uint16_t PROGMEM combo_h_u[] = {my_h,  my_u, COMBO_END};
 
@@ -72,6 +85,8 @@ const uint16_t PROGMEM combo_j_singlequote[] = {my_j, my_singlequote, COMBO_END}
 
 const uint16_t PROGMEM combo_comma_l[] = {my_l, my_comma, COMBO_END};
 const uint16_t PROGMEM combo_raise_comma_raise_l[] = {my_raise_l, my_raise_comma, COMBO_END};
+const uint16_t PROGMEM combo_lower_comma_lower_l[] = {my_lower_l, my_lower_comma, COMBO_END};
+
 const uint16_t PROGMEM combo_comma_semicolon[] = {my_semicolon, my_comma, COMBO_END};
 
 const uint16_t PROGMEM combo_semicolon_singlequote[] = {my_semicolon, my_singlequote, COMBO_END}; // ]
@@ -103,6 +118,7 @@ const uint16_t PROGMEM combo_j_k_o[] = {my_j, my_k, my_o, COMBO_END};
 const uint16_t PROGMEM combo_k_p[] = {my_k, my_p, COMBO_END};
 const uint16_t PROGMEM combo_w_r[] = {my_w, my_r, COMBO_END};
 const uint16_t PROGMEM combo_q_e[] = {my_q, my_e, COMBO_END};
+const uint16_t PROGMEM combo_q_w[] = {my_q, my_w, COMBO_END};
 const uint16_t PROGMEM combo_g_y[] = {my_g, my_y, COMBO_END};
 
 
@@ -157,6 +173,7 @@ combo_t key_combos[COMBO_COUNT] = {COMBO(combo_k_semicolon, KC_COLN),
                                    COMBO(combo_raise_u_raise_i, KC_DQUO),
                                    COMBO(combo_topright_l, RCTL(KC_L)),
                                    COMBO(combo_topright_p_l, LCTL(KC_L)),
+                                   COMBO(combo_q_w, KC_TAB),
                                    // COMBO(combo_o_p, KC_PIPE),
                                    COMBO(combo_v_d, RCTL(RSFT(KC_V))), // shell paste
                                    COMBO(combo_v_c, LALT(RSFT(KC_LBRACKET))), // shell copy mode
@@ -213,6 +230,19 @@ combo_t key_combos[COMBO_COUNT] = {COMBO(combo_k_semicolon, KC_COLN),
                                    COMBO(combo_astr, KC_ASTR),
 
 
+                                   COMBO(combo_lower_lprn, KC_LPRN),
+                                   COMBO(combo_lower_rprn, KC_RPRN),
+                                   COMBO(combo_lower_exlm, KC_EXLM),
+                                   COMBO(combo_lower_at, KC_AT),
+                                   COMBO(combo_lower_hash, KC_HASH),
+                                   COMBO(combo_lower_dlr, KC_DLR),
+                                   COMBO(combo_lower_perc, KC_PERC),
+                                   COMBO(combo_lower_circ, KC_CIRC),
+                                   COMBO(combo_lower_ampr, KC_AMPR),
+                                   COMBO(combo_lower_astr, KC_ASTR),
+
+
+
                                    /* COMBO(combo_spc_q, LGUI(KC_Q)), */
                                    /* COMBO(combo_spc_w, LGUI(KC_W)), */
                                    /* COMBO(combo_spc_e, LGUI(KC_E)), */
@@ -256,6 +286,7 @@ combo_t key_combos[COMBO_COUNT] = {COMBO(combo_k_semicolon, KC_COLN),
                                    COMBO(combo_i_l, KC_RCBR),
                                    COMBO(combo_lower_k_lower_o, KC_RCBR),
                                    COMBO(combo_raise_comma_raise_l, KC_RCBR),
+                                   COMBO(combo_lower_comma_lower_l, KC_RCBR),
                                    COMBO(combo_k_o, KC_LCBR),
                                    COMBO(combo_raise_k_raise_o, KC_RCBR),
 

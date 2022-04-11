@@ -44,6 +44,9 @@ enum preonic_layers {
 
 #define my_raise_comma KC_2
 #define my_raise_l KC_6
+#define  my_lower_comma TD(DANCE_29)
+#define  my_lower_l KC_RIGHT
+
 #define  my_lower_o KC_END
 #define my_lower_m TD(DANCE_29)
 #define  my_lower_f  KC_F8
@@ -88,6 +91,7 @@ enum preonic_layers {
 #define my_y KC_Y
 #define my_z KC_Z
 #define my_lower_n TD(DANCE_69)
+#define hyper KC_LCTL
 
 #define below_v MT(MOD_RCTL, KC_ESCAPE)
 #define below_m MT(MOD_RCTL, KC_ESCAPE)
@@ -97,8 +101,8 @@ enum preonic_layers {
 #define my_lower MO(_LOWER)
 /* #define my_left_shift KC_LSPO */
 #define my_left_shift KC_LSFT
-/* #define my_right_shift KC_RSPC */
-#define my_right_shift KC_RSFT
+#define my_right_shift KC_RSPC
+/* #define my_right_shift KC_ENTER */
 #define my_grave TD(DANCE_0)
 #define backspace KC_BSPACE
 #define my_minus TD(DANCE_10)

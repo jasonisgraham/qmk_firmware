@@ -3,18 +3,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     my_grave,    my_q,    my_w,    my_e,    my_r,    my_t,    my_y,           my_u,    my_i,    my_o,    my_p,    topright,
     my_lctl ,my_a,   my_s,   my_d,   my_f,   my_g,   my_h,           my_j,   my_k,   my_l,   my_semicolon,   my_singlequote,
     my_left_shift,        my_z,           my_x,           my_c,           my_v,           my_b,           my_n,   my_m,   my_comma,   my_period,   my_forward_slash,   my_right_shift,
-    /* my_left_shift,     TO(_LAYER13),           _______,           _______,          below_v, below_b,  below_n, below_m, KC_LEFT, KC_DOWN, KC_UP, KC_RIGHT, */
-    MT(MOD_LCTL, KC_LBRACKET),  SYSTEM_LAYER_ACTIVATE, KC_LGUI, KC_LALT, RAISE,    my_split_left, /* LM(6,MOD_LGUI),  */     my_space,           my_lower,           right_of_lower,   LAYER_RAISE_HOLD,          LAYER_LOWER_HOLD, SHIFTLOCK_LAYER_ACTIVATE,
-    _______,_______,_______,_______, my_lctl,  KC_LCTL,      my_right_shift,         KC_RALT,         KC_LEFT, KC_DOWN, KC_UP, KC_RIGHT
+    MT(MOD_LCTL, KC_LBRACKET),  _______, KC_LGUI, KC_LALT, RAISE,    my_split_left, /* LM(6,MOD_LGUI),  */     my_space,           my_lower,           right_of_lower,   LAYER_RAISE_HOLD,          LAYER_LOWER_HOLD, SHIFTLOCK_LAYER_ACTIVATE,
+    _______,SYSTEM_LAYER_ACTIVATE,_______,_______, hyper,  my_lctl,     my_left_shift,         KC_LALT,         KC_LEFT, KC_DOWN, KC_UP, KC_RIGHT
     /* _______,_______,_______,_______, my_lctl,  MT(MOD_LCTL, KC_LBRACKET),      KC_LSPO,         TD(T_LCRB_H_ALT),         KC_LEFT, KC_DOWN, KC_UP, KC_RIGHT */
     /* MT(MOD_LCTL, KC_LBRACKET),  SYSTEM_LAYER_ACTIVATE, KC_LGUI, _______,  */
+
 
   ),
 
   [_LOWER] = LAYOUT_preonic_grid(
     TD(DANCE_26),   KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_PSCREEN,     KC_HOME,        KC_PGUP,        my_lower_i,      my_lower_o,         _______, TD(DANCE_27),
-    _______, KC_F5,          KC_F6,          KC_F7,          KC_F8,          KC_SCROLLLOCK,  KC_LEFT,        my_lower_j,        my_lower_k,          KC_RIGHT,       KC_LCBR,        KC_RCBR,
-    SHIFTLOCK_LAYER_ACTIVATE,   KC_F9,          KC_F10,         KC_F11,         KC_F12,         KC_APPLICATION, my_lower_n, my_lower_m, TD(DANCE_29),   TD(DANCE_30),   KC_DELETE,      SHIFTLOCK_LAYER_ACTIVATE,
+    _______, KC_F5,          KC_F6,          KC_F7,          KC_F8,          KC_SCROLLLOCK,  KC_LEFT,        my_lower_j,        my_lower_k,          my_lower_l,       KC_LCBR,        KC_RCBR,
+    SHIFTLOCK_LAYER_ACTIVATE,   KC_F9,          KC_F10,         KC_F11,         KC_F12,         KC_APPLICATION, my_lower_n, my_lower_m, my_lower_comma,   TD(DANCE_30),   KC_DELETE,      SHIFTLOCK_LAYER_ACTIVATE,
     _______, KC_NO, KC_LGUI,        KC_LALT,        MO(4),          TO(4),          KC_NO,          _______, KC_NO,          KC_NO,          _______, _______,
     _______, _______, _______, _______,    _______, _______, _______, _______ ,   _______, _______, _______, _______
 
