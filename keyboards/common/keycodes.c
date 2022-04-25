@@ -7,12 +7,14 @@
 
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
+#define MO_HYPER MO(KC_LCTL)
 
 enum custom_keycodes {
                       /* RGB_SLD = SAFE_RANGE, */
                       /* RGB_SLD = EZ_SAFE_RANGE, */
                       FIRST = SAFE_RANGE,
                       LPRN_LIT,
+                      CD_CSV,
                       EMACS_SEL_0,
                       EMACS_SEL_1,
                       EMACS_SEL_2,
@@ -36,8 +38,11 @@ enum custom_keycodes {
                       EMACS_YAS_C,
                       EMACS_YAS_DOC,
                       EMACS_YAS_MAP_ANON,
+                      EMACS_YAS_FILTER_ANON,
+                      EMACS_YAS_REMOVE_ANON,
                       EMACS_YAS_TF,
                       EMACS_YAS_TL,
+                      EMACS_YAS_KEYS_DESCRUCTURE,
                       ESC_THEN_BASE_LAYER,
                       FISH_ACCEPT_SEND,
                       LAYER_LOWER_HOLD,
@@ -116,7 +121,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   case SYSTEM_LAYER_ACTIVATE:
     if (record->event.pressed) {
-      PLAY_SONG(zelda_puzzle);
+      PLAY_SONG(scroll_lock_on_sound);
       layer_move(_SYSTEM);
       return false;
     }
@@ -125,6 +130,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case SYSTEM_LAYER_DEACTIVATE:
     if (record->event.pressed) {
       /* PLAY_SONG(one_up_sound); */
+      PLAY_SONG(scroll_lock_off_sound);
       layer_move(_BASE);
       return false;
     }
@@ -151,7 +157,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   case EMACS_OTHER_WINDOW:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_ESCAPE)  SS_RCTL(SS_TAP(X_W))  SS_RCTL(SS_TAP(X_W)));
+      SEND_STRING( SS_RCTL(SS_TAP(X_X))  SS_TAP(X_O));
 
     }
     break;
@@ -190,12 +196,32 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       SEND_STRING(SS_TAP(X_ESC) "itl" macro_alt_slash);
     }
     break;
+
+  case EMACS_YAS_REMOVE_ANON:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_ESC) "ira" macro_alt_slash);
+    }
+    break;
+
+  case EMACS_YAS_FILTER_ANON:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_ESC) "ifa" macro_alt_slash);
+    }
+    break;
+
   case EMACS_YAS_MAP_ANON:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_ESC) "imapa" macro_alt_slash);
-
     }
     break;
+
+  case EMACS_YAS_KEYS_DESCRUCTURE:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_ESC) "ikd" macro_alt_slash);
+    }
+    break;
+
+
 
   case EMACS_ACE_WINDOW_SWAP:
     if (record->event.pressed) {
@@ -243,6 +269,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
       PLAY_SONG(major_sound);
       layer_move(_RAISE);
+      return false;
 
     }
     break;
@@ -252,6 +279,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       PLAY_SONG(minor_sound);
       /* PLAY_SONG(old_spice); */
       layer_move(_LOWER);
+      return false;
 
     }
     break;
@@ -261,18 +289,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       rgblight_enable_noeeprom();
       rgblight_sethsv_noeeprom(HSV_GREEN);
       SEND_STRING("(");
-      rgblight_sethsv_noeeprom(HSV_WHITE);
+      rgblight_sethsv_noeeprom(HSV_BLACK);
       return true;
     }
     break;
 
-  case LAYER_COLORS_HOLD:
-    if (record->event.pressed) {
-      layer_move(_COLORS);
-      PLAY_SONG(num_lock_on_sound);
+    /* case LAYER_COLORS_HOLD: */
+    /*   if (record->event.pressed) { */
+    /*     layer_move(_COLORS); */
+    /*     PLAY_SONG(num_lock_on_sound); */
 
-    }
-    break;
+    /*   } */
+    /*   break; */
 
   case TMUX_SPLIT_WINDOW:
     if (record->event.pressed) {
@@ -352,12 +380,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     break;
 
-    case EMACS_COPY_FILE_PATH:
-      if (record->event.pressed) {
-        SEND_STRING(SS_RGUI(SS_TAP(X_E)) SS_DELAY(100) SS_LSFT(SS_RALT(SS_TAP(X_G))) SS_DELAY(100) SS_TAP(X_D) SS_DELAY(100) SS_TAP(X_W) SS_DELAY(100) SS_TAP(X_F));
-      }
-
+  case EMACS_COPY_FILE_PATH:
+    if (record->event.pressed) {
+      SEND_STRING(SS_RGUI(SS_TAP(X_E)) SS_DELAY(100) SS_LSFT(SS_RALT(SS_TAP(X_G))) SS_DELAY(100) SS_TAP(X_D) SS_DELAY(100) SS_TAP(X_W) SS_DELAY(100) SS_TAP(X_F));
+    }
+    break;
+  case CD_CSV:
+    if (record->event.pressed) {
+      SEND_STRING(SS_RGUI(SS_TAP(X_T)) SS_DELAY(100) "cdcsv" SS_TAP(X_ENTER));
+    }
+    break;
   }
+
+
 
 
   return true;

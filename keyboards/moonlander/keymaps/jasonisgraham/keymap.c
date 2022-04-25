@@ -3,6 +3,19 @@
 #include "muse.h"
 #include "user_song_list.h"
 
+#define esc_ctrl MT(MOD_RCTL, KC_ESCAPE)
+#define my_cap_h RSFT(KC_H)
+#define my_lower_comma TD(T_PREV_TAB_TH_MOVE_TAB_LEFT)
+#define my_lower_l KC_RIGHT
+#define my_lower_r KC_F4
+#define my_lower_g KC_SCROLLLOCK
+
+#define my_raise MO(_RAISE)
+
+#define lower_grave TD(T_TAB_H_BASE_DT_TIC_TH_TILDE)
+
+
+
 #define KC_MAC_UNDO LGUI(KC_Z)
 #define KC_MAC_CUT LGUI(KC_X)
 #define KC_MAC_COPY LGUI(KC_C)
@@ -47,8 +60,10 @@
 #define my_raise_k KC_5
 #define my_raise_o KC_9
 #define my_raise_m KC_1
+#define my_raise_n KC_0
 #define my_raise_u  KC_7
 #define my_raise_h KC_BSPACE
+#define my_raise_y KC_DOT
 
 
 #define my_a KC_A
@@ -58,7 +73,7 @@
 #define my_d KC_D
 #define my_e KC_E
 #define my_f KC_F
-#define my_forward_slash TD(T_FS_H_QU_DT_BS_TH_PIPE)
+#define my_forward_slash KC_SLASH //TD(T_FS_H_QU_DT_BS_TH_PIPE)
 #define my_g KC_G
 #define my_h KC_H
 #define my_i TD(T_I_TH_ASTR)
@@ -68,7 +83,7 @@
 #define my_left_shift KC_LSFT
 #define my_lower MO(_LOWER)
 #define my_m TD(T_M_TH_EXLAM)
-#define my_minus TD(T_MINUS_TH_PLUS)
+#define my_minus KC_MINUS //TD(T_MINUS_TH_PLUS)
 #define my_n KC_N
 #define my_o TD(T_O_TH_LPRN)
 #define my_p TD(T_P_TH_RPRN)
@@ -82,8 +97,8 @@
 #define my_r KC_R
 #define my_s KC_S
 #define my_t KC_T
-#define my_semicolon TD(T_SEMI_H_COLON_DT_LSBR_TH_LCBR)
-#define my_singlequote TD(T_SQUOTE_H_DQUOTE_DT_RSBR_TH_RCBR)
+#define my_semicolon KC_SCOLON //TD(T_SEMI_H_COLON_DT_LSBR_TH_LCBR)
+#define my_singlequote KC_QUOTE // TD(T_SQUOTE_H_DQUOTE_DT_RSBR_TH_RCBR)
 #define my_space KC_SPACE
 #define my_u TD(T_U_TH_AMPR)
   #define my_v KC_V
@@ -134,27 +149,27 @@
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_BASE] = LAYOUT_moonlander(
                               RCTL(KC_LBRACKET),my_1,           my_2,           my_3,           my_4,           my_5,           MUSIC_LAYER_ACTIVATE,                                 _______, my_6,           my_7,           my_8,           my_9,           my_0,           SHIFTLOCK_LAYER_ACTIVATE,
-    my_grave,    my_q,           my_w,           my_e,           my_r,           my_t,           _______,                                 _______, my_y,           my_u,    my_i,    my_o,    my_p,    my_minus,
-    MT(MOD_RCTL, KC_ESCAPE), my_a,           my_s,           my_d,           my_f,           my_g,           OSL(1),                                                                         KC_BSPACE,      my_h,           my_j,    my_k,    my_l,    my_semicolon,    my_singlequote,
+                             my_grave,    my_q,           my_w,           my_e,           my_r,           my_t,           _______,                                 _______, my_y,           my_u,    my_i,    my_o,    my_p,    my_minus,
+    esc_ctrl, my_a,           my_s,           my_d,           my_f,           my_g,           OSL(1),                                                                         KC_BSPACE,      my_h,           my_j,    my_k,    my_l,    my_semicolon,    my_singlequote,
     my_left_shift,        my_z,           my_x,           my_c,           my_v,           my_b,                                           my_n,           my_m,   my_comma,   my_period,   my_forward_slash,   my_right_shift,
-    MT(MOD_LCTL, KC_LBRACKET), SYSTEM_LAYER_ACTIVATE,          KC_LGUI,KC_LALT, MO(_RAISE),          KC_RCTRL,                                                                                                       KC_BSPACE,      LOWER,         my_right_of_lower,      LAYER_RAISE_HOLD,          LAYER_LOWER_HOLD,          CYCLE_FAVE_ANIMATIONS,
+                              MT(MOD_LCTL, KC_LBRACKET), MO(_SYSTEM),          KC_LGUI,KC_LALT, my_raise,          KC_RCTRL,                                                                                                       KC_BSPACE,      LOWER,         my_right_of_lower,      LAYER_RAISE_HOLD,          LAYER_LOWER_HOLD,          CYCLE_FAVE_ANIMATIONS,
     KC_BSPACE,      LM(_SUPER,MOD_LGUI),KC_ENTER,                       LM(9,MOD_LALT), LM(_WINDOWS, MOD_LGUI), my_space
   ),
   // lower
   [_LOWER] = LAYOUT_moonlander(
     _______, RCTL(KC_1),     RCTL(KC_2),     RCTL(KC_3),     RCTL(KC_4),     RCTL(KC_5),     TG(3),                                          _______, _______, _______, _______, _______, _______, TD(T_WWW_BACK_TH_WWW_FOR),
-    TD(T_TAB_H_BASE_DT_TIC_TH_TILDE),   KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_PSCREEN,     _______,                                 _______, KC_HOME,        my_lower_o,        my_lower_i,      KC_END,         _______, TD(T_WWW_BACK_TH_WWW_FOR),
-    _______, KC_F5,          KC_F6,          my_lower_d,          my_lower_f,          KC_SCROLLLOCK,  TO(0),                                                                          _______, KC_LEFT,        my_lower_j,        my_lower_k,          KC_RIGHT,       _______, _______,
-    _______,   KC_F9,          KC_F10,         KC_F11,         KC_F12,         KC_APPLICATION,                                 TD(T_N_ALWAYS_LC),   my_lower_m, TD(T_PREV_TAB_TH_MOVE_TAB_LEFT),   TD(T_NEXT_TAB_TH_MOVE_TAB_RIGHT),   KC_DELETE,    SHIFTLOCK_LAYER_ACTIVATE,
+    lower_grave,   KC_F1,          KC_F2,          KC_F3,          my_lower_r,          KC_PSCREEN,     _______,                                 _______, KC_HOME,        my_lower_o,        my_lower_i,      KC_END,         _______, TD(T_WWW_BACK_TH_WWW_FOR),
+    _______, KC_F5,          KC_F6,          my_lower_d,          my_lower_f,          my_lower_g,  TO(0),                                                                          _______, KC_LEFT,        my_lower_j,        my_lower_k,          my_lower_l,       _______, _______,
+    _______,   KC_F9,          KC_F10,         KC_F11,         KC_F12,         KC_APPLICATION,                                 TD(T_N_ALWAYS_LC),   my_lower_m, my_lower_comma,   TD(T_NEXT_TAB_TH_MOVE_TAB_RIGHT),   KC_DELETE,    SHIFTLOCK_LAYER_ACTIVATE,
     _______, _______, KC_LGUI,        KC_LALT,        TT(3),          _______,                                                                                                 _______, _______, KC_NO,          _______, _______, _______,
     _______, _______, _______,                 _______, _______, TT(3)
   ),
   // raise
   [_RAISE] = LAYOUT_moonlander(
     KC_TILD,        KC_EXLM,        KC_AT,          KC_HASH,        KC_DLR,         KC_PERC,        _______,                                 _______, KC_CIRC,        KC_AMPR,        KC_ASTR,        KC_LPRN,        KC_RPRN,        _______,
-    TD(T_EMACS_COMPLETE_H_BASE),   _______, EMACS_OTHER_WINDOW,     KC_END,         EMACS_BUFFER_REVERT,     _______, _______,                                 _______, _______, my_raise_u,           my_raise_i,           my_raise_o,           KC_0,           _______,
+    TD(T_TAB_H_BASE_DT_TIC_TH_TILDE),   _______, EMACS_OTHER_WINDOW,     KC_END,         EMACS_BUFFER_REVERT,     _______, _______,                                 _______, my_raise_y, my_raise_u,           my_raise_i,           my_raise_o,           KC_0,           _______,
     _______, DYN_REC_START1, DYN_MACRO_PLAY1,_______, RALT(KC_ENTER), OSL(6),         _______,                                                                 _______, my_raise_h,      my_raise_j,           my_raise_k,           my_raise_l,           KC_LBRACKET,    KC_RBRACKET,
-    _______, DYN_REC_START2, DYN_MACRO_PLAY2,DYN_REC_STOP,   _______, FISH_ACCEPT_SEND,                                     KC_0,           KC_1,           my_raise_comma,           KC_3,           KC_QUES,      _______,
+    _______, DYN_REC_START2, DYN_MACRO_PLAY2,DYN_REC_STOP,   _______, FISH_ACCEPT_SEND,                                     my_raise_n,           KC_1,           my_raise_comma,           KC_3,           KC_QUES,      _______,
     _______, _______, KC_LGUI,        KC_LALT,        _______, _______,                                                                                                 _______, KC_ENTER,       KC_0,           KC_DOT,         _______, _______,
     _______, _______, _______,                 _______, _______, _______
   ),
@@ -176,8 +191,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______, _______,                 KC_ASTG,        KC_ASDN,        KC_ASUP
   ),
   // windows
-  [_WINDOWS] = LAYOUT_moonlander(KC_GRAVE,       _______, _______, _______, _______, _______, _______,                                 _______, _______, _______, _______, _______, _______, _______,
-    KC_TAB,         TD(WIN_ADHOC_Q),   TD(WIN_ADHOC_W),   RGUI(KC_E),     TD(WIN_ADHOC_R),   RGUI(KC_T),     _______,                                 _______, TD(WIN_ADHOC_Y),   RGUI(KC_7),     RGUI(KC_8),     RGUI(KC_9),     RGUI(KC_0),     RGUI(KC_MINUS),
+  [_WINDOWS] = LAYOUT_moonlander(
+    KC_GRAVE,       _______, _______, _______, _______, _______, _______,                                 _______, _______, _______, _______, _______, _______, _______,
+    TO(_BASE),         TD(WIN_ADHOC_Q),   TD(WIN_ADHOC_W),   RGUI(KC_E),     TD(WIN_ADHOC_R),   RGUI(KC_T),     _______,                                 _______, TD(WIN_ADHOC_Y),   RGUI(KC_7),     RGUI(KC_8),     RGUI(KC_9),     RGUI(KC_0),     RGUI(KC_MINUS),
     RGUI(KC_ESCAPE),RGUI(KC_A),     select_slack,     show_desktop,RGUI(KC_F),     TD(WIN_ADHOC_G),   _______,                                                                 _______, RGUI(KC_H),     TD(WIN_ADHOC_J),   TD(WIN_ADHOC_K),   TD(WIN_ADHOC_L),   _______, _______,
                                  _______, RGUI(KC_Z),     RGUI(KC_X),     RGUI(KC_C),     RGUI(KC_V),     _______,                                 TD(WIN_ADHOC_N),   RGUI(KC_M),     TD(T_UP_MON_TH_MAXIMIZE),   _______, KC_GRAVE,       RGUI(RSFT(KC_J)),
     _______, _______, _______, MO(11),         MO(8),          _______,                                                                                                 _______, TD(T_LEFT_MON_TH_TILE_LEFT),   TD(T_DOWN_MON_TH_MINIMIZE),   TD(T_RIGHT_MON_TH_TILE_RIGHT),   KC_TAB,         close_x_window,
@@ -196,7 +212,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_SHIFTLOCK] = LAYOUT_moonlander(
                                    _______, KC_EXLM,        KC_AT,          KC_HASH,        KC_DLR,         KC_PERC,        _______,                                 _______, KC_CIRC,        KC_AMPR,        KC_ASTR,        KC_LPRN,        KC_RPRN,        SHIFTLOCK_LAYER_DEACTIVATE,
     TD(BASE_RETURN_TAP_DANCE),   RSFT(KC_Q),     RSFT(KC_W),     RSFT(KC_E),     RSFT(KC_R),     RSFT(KC_T),     _______,                                 _______, RSFT(KC_Y),     RSFT(KC_U),     RSFT(KC_I),     RSFT(KC_O),     RSFT(KC_P),     TD(T_COMMA_H_LCPR),
-    _______, RSFT(KC_A),     RSFT(KC_S),     RSFT(KC_D),     RSFT(KC_F),     RSFT(KC_G),     _______,                                                                 _______, RSFT(KC_H),     RSFT(KC_J),     RSFT(KC_K),     RSFT(KC_L),     TD(T_COL_H_LCB),   TD(T_DQT_H_RCB),
+    _______, RSFT(KC_A),     RSFT(KC_S),     RSFT(KC_D),     RSFT(KC_F),     RSFT(KC_G),     _______,                                                                 _______, my_cap_h,     RSFT(KC_J),     RSFT(KC_K),     RSFT(KC_L),     TD(T_COL_H_LCB),   TD(T_DQT_H_RCB),
                                    SHIFTLOCK_LAYER_DEACTIVATE,          RSFT(KC_Z),     RSFT(KC_X),     RSFT(KC_C),     RSFT(KC_V),     RSFT(KC_B),                                     RSFT(KC_N),     RSFT(KC_M),     KC_LABK,        KC_RABK,        KC_QUES,        SHIFTLOCK_LAYER_DEACTIVATE,
     _______, _______, _______, _______, _______, _______,                                                                                                 _______, _______, _______, _______, _______, _______,
     _______, _______, _______,                 _______, _______, _______
@@ -230,7 +246,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // editing
   [_EDITING] = LAYOUT_moonlander(
     _______, _______, _______, _______, _______, _______, _______,                                 _______, _______, _______, _______, _______, _______, _______,
-    _______, _______, EMACS_OTHER_WINDOW,     _______, EMACS_BUFFER_REVERT,    _______, _______,                                 _______, EMACS_COPY_FILE_PATH, LCTL(KC_7),     _______, EMACS_OTHER_WINDOW,  _______, _______,
+    EMACS_OTHER_WINDOW, _______, EMACS_OTHER_WINDOW,     _______, EMACS_BUFFER_REVERT,    _______, _______,                                 _______, EMACS_COPY_FILE_PATH, LCTL(KC_7),     _______, EMACS_OTHER_WINDOW,  _______, _______,
     _______, _______, _______, _______, max_buffer, _______, _______,                                                                 _______, LALT(LSFT(KC_H)),LALT(LSFT(KC_J)),LALT(LSFT(KC_K)),LALT(LSFT(KC_L)),RCTL(KC_SCOLON),RCTL(KC_QUOTE),
     _______, _______, _______, EMACS_WINDOW_CLOSE,    _______, _______,                                 RALT(RSFT(KC_N)), EMACS_ACE_WINDOW_SWAP, OSL(_SYMBOLS), _______, EMACS_WINDOW_CLOSE,    _______,
     _______, _______, _______, _______, OSL(_EMACS_SEL_BUFFER),_______,                                                                                                  _______, _______, _______, _______, _______, _______,

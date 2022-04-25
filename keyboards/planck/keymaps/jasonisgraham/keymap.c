@@ -56,6 +56,7 @@ enum planck_layers {
 
 #include "../../../common/keycodes.c"
 
+#define esc_ctrl MT(MOD_RCTL, KC_ESCAPE)
 #define my_grave TD(DANCE_0)
 #define my_0 KC_0
 #define my_1 KC_1
@@ -68,6 +69,11 @@ enum planck_layers {
 #define my_8 KC_8
 #define my_9 KC_9
 
+#define emacs_f EMACS_YAS_FILTER_ANON
+#define emacs_r EMACS_YAS_REMOVE_ANON
+#define emacs_a _______
+#define emacs_m EMACS_YAS_MAP_ANON
+#define my_cap_h RSFT(KC_H)
 #define my_cap_l RSFT(KC_L)
 #define my_cap_k RSFT(KC_K)
 #define my_cap_j RSFT(KC_J)
@@ -83,7 +89,7 @@ enum planck_layers {
 #define my_e TD(DANCE_3)
 /* #define my_f KC_F */
 #define my_f TD(DANCE_14)
-#define my_forward_slash TD(DANCE_25)
+#define my_forward_slash KC_SLASH // TD(DANCE_25)
 #define my_g TD(DANCE_15)
 #define my_h KC_H
 /* #define my_h KC_H */
@@ -91,6 +97,11 @@ enum planck_layers {
 /* #define my_i TD(T_I_TH_ASTR) */
 #define my_j TD(DANCE_16)
 
+#define my_lower_a KC_F5
+#define my_lower_r KC_F4
+#define my_lower_g KC_SCROLLLOCK
+#define my_lower_comma TD(DANCE_29)
+#define my_lower_l KC_RIGHT
 #define my_lower_j KC_DOWN
 #define my_lower_i KC_PGDOWN
 #define my_lower_k KC_UP
@@ -100,6 +111,7 @@ enum planck_layers {
 #define my_lower_m TD(DANCE_29)
 #define my_lower_k KC_UP
 
+#define my_raise RAISE
 #define my_raise_j KC_4
 #define my_raise_i KC_8
 #define my_raise_k KC_5
@@ -107,6 +119,7 @@ enum planck_layers {
 #define my_raise_m KC_1
 #define my_raise_u  KC_7
 #define my_raise_h KC_BSPACE
+#define my_raise_n KC_0
 
 
 
@@ -134,7 +147,7 @@ enum planck_layers {
 /* #define my_period TD(T_PERIOD_H_GTHAN_TH_HASH) */
 #define my_q TD(DANCE_1)
 #define my_r TD(DANCE_4)
-#define my_minus TD(DANCE_10)
+#define my_minus KC_MINUS // TD(DANCE_10)
 #define backspace KC_BSPACE
 #define my_backspace backspace
 #define topright my_minus
@@ -148,9 +161,9 @@ enum planck_layers {
 #define my_right_shift KC_RSFT
 /* #define my_s KC_S */
 #define my_s TD(DANCE_12)
-#define my_semicolon TD(DANCE_19)
+#define my_semicolon KC_SCOLON //TD(DANCE_19)
 /* #define my_semicolon TD(T_SEMI_H_COLON_DT_LSBR_TH_LCBR) */
-#define my_singlequote TD(DANCE_20)
+#define my_singlequote  KC_QUOTE //TD(DANCE_20)
 /* #define my_singlequote TD(T_SQUOTE_H_DQUOTE_DT_RSBR_TH_RCBR) */
 /* #define my_space KC_SPACE */
 #define my_t TD(DANCE_5)
