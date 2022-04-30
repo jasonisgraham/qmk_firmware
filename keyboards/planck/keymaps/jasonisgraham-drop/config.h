@@ -1,5 +1,4 @@
 /* #pragma once */
-#define RGBLIGHT_ANIMATIONS
 
 /* #include "song_list.h" */
 /* #include "config_common.h" */

@@ -8,11 +8,34 @@
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
 #define MO_HYPER MO(KC_LCTL)
+#define CTRL_P RCTL(KC_P)
+#define CTRL_L RCTL(KC_P)
+#define HYPER_L LCTL(KC_L)
+#define CTRL_SEMICOLON RCTL(KC_SCOLON)
+
+bool do_echo = false;
+void toggle_echo(void) {
+  if (do_echo) {
+    do_echo = false;
+  } else {
+    do_echo = true;
+  }
+}
+
+char * int2str(uint8_t i) {
+  static char s[10];
+  itoa(i, s, 10);
+  return s;
+}
+
 
 enum custom_keycodes {
                       /* RGB_SLD = SAFE_RANGE, */
                       /* RGB_SLD = EZ_SAFE_RANGE, */
                       FIRST = SAFE_RANGE,
+                      TOGGLE_ECHO,
+                      TOGGLE_BREATHING,
+                      COLORS_LAYER_ACTIVATE,
                       LPRN_LIT,
                       CD_CSV,
                       EMACS_SEL_0,
@@ -27,6 +50,7 @@ enum custom_keycodes {
                       EMACS_SEL_9,
                       TMUX_SPLIT_WINDOW,
                       CYCLE_FAVE_ANIMATIONS,
+                      CYCLE_RGBLIGHT_STEP,
                       ALT_TAB,
                       EMACS_ACE_WINDOW_SWAP,
                       EMACS_BUFFER_REVERT,
@@ -57,6 +81,7 @@ enum custom_keycodes {
                       RGBLIGHT_STEP,
                       RGBLIGHT_TOGGLE,
                       TMUX_COPY_MODE,
+                      TMUX_CLOSE,
 };
 
 #define max_buffer RALT(KC_ENTER)
@@ -92,16 +117,55 @@ void apply_fave_animation(void) {
   rgblight_mode(faves[i]);
 }
 
+int k = 0;
+void cycle_rgblight_step(void) {
+  k++;
+  if (k >= 42) {
+    k = 0;
+  }
+  if (do_echo) {
+    static char s[10];
+    itoa(k, s, 10);
+    SEND_STRING(s);
+  }
+  rgblight_mode(k);
+}
+
+
+
+
+bool do_breathing = false;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
 
+
+  case TOGGLE_BREATHING:
+  if (do_breathing) {
+                     do_breathing = false;
+  } else {
+          do_breathing = true;
+  }
+  break;
+
+  case TOGGLE_ECHO:
+    toggle_echo();
+    break;
   case RGBLIGHT_TOGGLE:
     rgblight_toggle();
     break;
   case RGBLIGHT_STEP:
     rgblight_step();
     break;
+
+  case CYCLE_RGBLIGHT_STEP:
+    PLAY_SONG(scroll_lock_on_sound);
+    cycle_rgblight_step();
+    /* static char s[10]; */
+    /* itoa(k, s, 10); */
+    /* SEND_STRING(s); */
+    break;
+
   case CYCLE_FAVE_ANIMATIONS:
     cycle_fave_animations();
     break;
@@ -121,8 +185,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   case SYSTEM_LAYER_ACTIVATE:
     if (record->event.pressed) {
+      rgblight_enable();
+      rgblight_enable_noeeprom();
       PLAY_SONG(scroll_lock_on_sound);
       layer_move(_SYSTEM);
+      return false;
+    }
+    break;
+
+  case COLORS_LAYER_ACTIVATE:
+    if (record->event.pressed) {
+      PLAY_SONG(one_up_sound);
+      /* PLAY_SONG(zelda); */
+      layer_move(_COLORS);
       return false;
     }
     break;
@@ -252,6 +327,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case TMUX_COPY_MODE:
     if (record->event.pressed) {
       SEND_STRING(SS_LCTL(SS_TAP(X_V)) SS_TAP(X_LBRACKET));
+    }
+    break;
+
+  case TMUX_CLOSE:
+    if (record->event.pressed) {
+      SEND_STRING(SS_LCTL(SS_TAP(X_V)) SS_TAP(X_X));
     }
     break;
 
@@ -399,23 +480,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 }
 
-/* bool echo = false; */
-/* void toggle_echo(void) { */
-/*   if (echo) { */
-/*     echo = false; */
-/*   } else { */
-/*     echo = true; */
-/*   } */
-/* } */
-
-
-char * int2str(uint8_t i) {
-  static char s[10];
-  itoa(i, s, 10);
-  return s;
-
-
-}
 
 /* SS_RGUI(SS_TAP(X_E)) SS_DELAY(100) SS_RALT(SS_TAP(X_M)) */
 /* SS_RGUI(SS_TAP(X_E)) SS_DELAY(100) SS_RGUI(SS_TAP(X_E)) SS_DELAY(100) SS_RALT(SS_TAP(X_M)) */

@@ -124,6 +124,7 @@ enum planck_layers {
 
 
 #define my_raise_comma KC_2
+#define my_raise_period KC_3
 #define my_raise_l KC_6
 /* kmdd */
 
@@ -150,13 +151,14 @@ enum planck_layers {
 #define my_minus KC_MINUS // TD(DANCE_10)
 #define backspace KC_BSPACE
 #define my_backspace backspace
-#define topright my_minus
+/* #define topright my_minus */
+#define topright backspace
 
-
+#define my_split_left OSL(_WINDOWS)
 #define select_slack LGUI(KC_S)
 #define show_desktop LALT(LGUI(LCTL(KC_D)))
 
-#define right_of_lower backspace
+#define right_of_lower esc_ctrl
 /* #define my_right_shift KC_RSPC */
 #define my_right_shift KC_RSFT
 /* #define my_s KC_S */

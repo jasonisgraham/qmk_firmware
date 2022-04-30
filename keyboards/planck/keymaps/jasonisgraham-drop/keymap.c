@@ -1,7 +1,7 @@
 #include QMK_KEYBOARD_H
 #include "muse.h"
 
-enum preonic_layers {
+enum planck_layers {
   _BASE,
   _LOWER,
   _RAISE,
@@ -110,10 +110,10 @@ enum preonic_layers {
 #define my_grave TD(DANCE_0)
 #define backspace KC_BSPACE
 #define my_minus TD(DANCE_10)
-#define topright my_minus
+#define topright backspace
 #define right_of_lower esc_ctrl// MT(MOD_RCTL, KC_ESCAPE)
-#define my_semicolon TD(DANCE_19)
-#define my_singlequote TD(DANCE_20)
+#define my_semicolon KC_SCOLON
+#define my_singlequote KC_QUOTE
 #define my_space KC_SPACE
 #define select_slack LGUI(KC_S)
 #define show_desktop LALT(LGUI(LCTL(KC_D)))
