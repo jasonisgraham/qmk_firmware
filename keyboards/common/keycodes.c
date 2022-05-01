@@ -13,6 +13,7 @@
 #define HYPER_L LCTL(KC_L)
 #define CTRL_SEMICOLON RCTL(KC_SCOLON)
 
+
 bool do_echo = false;
 void toggle_echo(void) {
   if (do_echo) {
@@ -33,9 +34,11 @@ enum custom_keycodes {
                       /* RGB_SLD = SAFE_RANGE, */
                       /* RGB_SLD = EZ_SAFE_RANGE, */
                       FIRST = SAFE_RANGE,
+                      CYCLE_DROP_COLORS,
                       TOGGLE_ECHO,
                       TOGGLE_BREATHING,
-                      COLORS_LAYER_ACTIVATE,
+                      EMACS_ACE_WINDOW,
+                      TERM_HOME,
                       LPRN_LIT,
                       CD_CSV,
                       EMACS_SEL_0,
@@ -50,6 +53,7 @@ enum custom_keycodes {
                       EMACS_SEL_9,
                       TMUX_SPLIT_WINDOW,
                       CYCLE_FAVE_ANIMATIONS,
+                      CYCLE_DROP_ANIMATIONS,
                       CYCLE_RGBLIGHT_STEP,
                       ALT_TAB,
                       EMACS_ACE_WINDOW_SWAP,
@@ -82,6 +86,7 @@ enum custom_keycodes {
                       RGBLIGHT_TOGGLE,
                       TMUX_COPY_MODE,
                       TMUX_CLOSE,
+                      TERM_CD_UP_DIR
 };
 
 #define max_buffer RALT(KC_ENTER)
@@ -91,13 +96,37 @@ enum custom_keycodes {
 bool is_alt_tab_active = false;
 uint16_t alt_tab_timer = 0;
 
+LEADER_EXTERNS();
 void matrix_scan_user(void) {
+  /* LEADER_DICTIONARY() { */
+  /*   leading = false; */
+  /*   leader_end(); */
+
+  /*   SEQ_ONE_KEY(KC_F) { */
+  /*     // Anything you can do in a macro. */
+  /*     SEND_STRING("QMK is awesome."); */
+  /*   } */
+  /*   SEQ_TWO_KEYS(KC_D, KC_D) { */
+  /*     SEND_STRING(SS_LCTL("a") SS_LCTL("c")); */
+  /*   } */
+  /*   SEQ_THREE_KEYS(KC_D, KC_D, KC_S) { */
+  /*     SEND_STRING("https://start.duckduckgo.com\n"); */
+  /*   } */
+  /*   SEQ_TWO_KEYS(KC_A, KC_S) { */
+  /*     register_code(KC_LGUI); */
+  /*     register_code(KC_S); */
+  /*     unregister_code(KC_S); */
+  /*     unregister_code(KC_LGUI); */
+  /*   } */
+  /* } */
+
   if (is_alt_tab_active) {
     if (timer_elapsed(alt_tab_timer) > 250) {
       unregister_code(KC_LGUI);
       is_alt_tab_active = false;
     }
   }
+
 }
 
 int8_t m;
@@ -115,6 +144,33 @@ void cycle_fave_animations(void) {
 
 void apply_fave_animation(void) {
   rgblight_mode(faves[i]);
+}
+
+int DROP_LAYER_0_ANIMATION = RGBLIGHT_MODE_STATIC_LIGHT;
+int DROP_LAYER_0_COLOR = 0;
+
+void cycle_drop_animations(void) {
+  i++;
+  if (i >= 43) {
+    i = 0;
+  }
+  DROP_LAYER_0_ANIMATION = i;
+  rgblight_mode(DROP_LAYER_0_ANIMATION);
+}
+
+/* enum colors { */
+/*              RGB_AZURE, */
+/*              RGB_BLUE */
+/* } */
+
+void cycle_drop_color(void) {
+  rgblight_increase_hue();
+  /* DROP_LAYER_0_COLOR = colors[0]; */
+  /* int step = 10; */
+  /* DROP_LAYER_0_COLOR -= step; */
+  /* if (DROP_LAYER_0_COLOR > 255) { */
+  /*   DROP_LAYER_0_COLOR = 0; */
+  /* } */
 }
 
 int k = 0;
@@ -141,12 +197,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 
   case TOGGLE_BREATHING:
-  if (do_breathing) {
-                     do_breathing = false;
-  } else {
-          do_breathing = true;
-  }
-  break;
+    if (do_breathing) {
+      do_breathing = false;
+    } else {
+      do_breathing = true;
+    }
+    break;
 
   case TOGGLE_ECHO:
     toggle_echo();
@@ -170,6 +226,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     cycle_fave_animations();
     break;
 
+  case CYCLE_DROP_COLORS:
+    cycle_drop_color();
+    break;
+
+  case CYCLE_DROP_ANIMATIONS:
+    cycle_drop_animations();
+    break;
+
   case ALT_TAB:
     if (record->event.pressed) {
       if (!is_alt_tab_active) {
@@ -189,15 +253,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       rgblight_enable_noeeprom();
       PLAY_SONG(scroll_lock_on_sound);
       layer_move(_SYSTEM);
-      return false;
-    }
-    break;
-
-  case COLORS_LAYER_ACTIVATE:
-    if (record->event.pressed) {
-      PLAY_SONG(one_up_sound);
-      /* PLAY_SONG(zelda); */
-      layer_move(_COLORS);
       return false;
     }
     break;
@@ -227,6 +282,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       layer_move(_BASE);
       PLAY_SONG(caps_lock_off_sound);
       /* return true; */
+    }
+    break;
+
+  case TERM_CD_UP_DIR:
+    if (record->event.pressed) {
+      SEND_STRING("cd ../" SS_TAP(X_ENTER));
+    }
+    break;
+
+  case TERM_HOME:
+    if (record->event.pressed) {
+      SEND_STRING("~/");
     }
     break;
 
@@ -297,6 +364,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     break;
 
 
+  case EMACS_ACE_WINDOW:
+    if (record->event.pressed) {
+      SEND_STRING(SS_RGUI(SS_TAP(X_E)) SS_DELAY(150) SS_RALT(SS_TAP(X_M)) SS_DELAY(10) SS_TAP(X_W) SS_DELAY(10) SS_RSFT(SS_TAP(X_W)));
+
+    }
+    break;
 
   case EMACS_ACE_WINDOW_SWAP:
     if (record->event.pressed) {

@@ -8,6 +8,9 @@
 #define RGBLIGHT_ANIMATIONS
 
 
+#define COMBO_STRICT_TIMER
+#define COMBO_TERM 1  // default is 50.  50ms produces false positives when typing kinda fast
+
 /* #define echo false */
 /* #define COMBO_COUNT 100 */
 /* #define RGBLIGHT_LAYER_BLINK 1 */
@@ -30,7 +33,9 @@
 #define RGBLIGHT_EFFECT_TWINKLE
 
 
-#define LEADER_TIMEOUT 300
+/* #define LEADER_TIMEOUT 1000 */
+#define LEADER_NO_TIMEOUT
+
 
 #ifdef AUDIO_ENABLE
 #    define STARTUP_SONG SONG(PREONIC_SOUND)
@@ -54,7 +59,7 @@
 */
 #define ORYX_CONFIGURATOR
 #undef TAPPING_TERM
-#define TAPPING_TERM 195
+/* #define TAPPING_TERM 195 */
 
 #define PERMISSIVE_HOLD
 

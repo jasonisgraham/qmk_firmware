@@ -27,8 +27,11 @@ enum planck_layers {
 
 #define my_cap_l RSFT(KC_L)
 #define my_cap_k RSFT(KC_K)
+#define my_cap_i RSFT(KC_I)
+#define my_cap_o RSFT(KC_O)
 #define my_cap_j RSFT(KC_J)
 #define my_cap_h RSFT(KC_H)
+#define my_cap_m RSFT(KC_M)
 
 #define my_raise_j KC_4
 #define my_raise_i KC_8
@@ -38,9 +41,10 @@ enum planck_layers {
 #define my_raise_u  KC_7
 #define my_raise_h KC_BSPACE
 #define my_raise_n KC_0
+#define my_raise_p KC_0
 
 
-#define my_split_left OSL(_WINDOWS)
+#define my_split_left KC_LGUI // OSL(_WINDOWS)
 #define my_split_left_windows ALT_TAB
 #define esc_ctrl MT(MOD_RCTL, KC_ESCAPE)
 #define my_raise_period KC_3
@@ -80,7 +84,7 @@ enum planck_layers {
 #define my_k TD(DANCE_17)
 #define my_l TD(DANCE_18)
 #define my_m TD(DANCE_22)
-#define my_n TD(DANCE_21)
+#define my_n KC_N
 #define my_o TD(DANCE_8)
 #define my_p TD(DANCE_9)
 #define my_q TD(DANCE_1)
@@ -101,19 +105,30 @@ enum planck_layers {
 #define below_b KC_RALT
 #define below_n KC_RALT
 
+
 #define my_lower MO(_LOWER)
 #define my_raise RAISE
 /* #define my_left_shift KC_LSPO */
 #define my_left_shift KC_LSFT
-#define my_right_shift KC_RSPC
+#define my_right_shift KC_RSFT
 /* #define my_right_shift KC_ENTER */
 #define my_grave TD(DANCE_0)
 #define backspace KC_BSPACE
 #define my_minus TD(DANCE_10)
-#define topright backspace
+#define topright TD(DANCE_10)
+#define key_0_0 KC_LCTL
+#define key_0_1 RCTL(RALT(KC_RSFT))
+/* #define key_4_12 KC_LCTL */
+#define key_4_12 KC_ENTER
+#define key_4_11 CYCLE_DROP_COLORS // LAYER_LOWER_HOLD
+#define emacs_r EMACS_YAS_REMOVE_ANON
+#define emacs_a _______
+#define emacs_m EMACS_YAS_MAP_ANON
+#define emacs_f EMACS_YAS_FILTER_ANON
+
 #define right_of_lower esc_ctrl// MT(MOD_RCTL, KC_ESCAPE)
-#define my_semicolon KC_SCOLON
-#define my_singlequote KC_QUOTE
+#define my_semicolon TD(DANCE_19)
+#define my_singlequote TD(DANCE_20)
 #define my_space KC_SPACE
 #define select_slack LGUI(KC_S)
 #define show_desktop LALT(LGUI(LCTL(KC_D)))
@@ -121,7 +136,6 @@ enum planck_layers {
 
 #define my_comma TD(DANCE_23)
 #define my_period TD(DANCE_24)
-
 
 #include "user_song_list.h"
 
@@ -198,7 +212,7 @@ void leader_matrix_scan_user(void) {
       SEND_STRING("QMK is awesome.");
     }
     SEQ_TWO_KEYS(TD_D, TD_D) {
-      SEND_STRING(SS_LCTL("a") SS_LCTL("c"));
+      SEND_STRING(SS_LCTL("k") SS_LCTL("c"));
     }
     SEQ_THREE_KEYS(KC_D, KC_D, KC_S) {
       SEND_STRING("https://start.duckduckgo.com\n");
@@ -211,6 +225,5 @@ void leader_matrix_scan_user(void) {
     }
   }
 }
-
 
 #include "../../../common/combos.c"

@@ -1,17 +1,24 @@
+int default_rgblight_mode = RGBLIGHT_MODE_BREATHING;
+
 layer_state_t layer_state_set_user(layer_state_t state) {
   float x[][2] = SONG(zelda);
+
   /* rgblight_config_t rgblight_config; */
 
-  if (do_breathing) {
-    rgblight_mode(RGBLIGHT_MODE_BREATHING);
-  } else {
-    rgblight_mode(RGBLIGHT_MODE_STATIC_LIGHT);
-  }
+  /* if (do_breathing) { */
+    /* rgblight_mode(RGBLIGHT_MODE_BREATHING); */
+  /* } else { */
+    /* rgblight_mode(RGBLIGHT_MODE_STATIC_LIGHT); */
+  /* } */
 
   switch(biton32(state)) {
   case 0:
-    // Green
     rgblight_enable_noeeprom();
+    /* rgblight_sethsv_noeeprom(DROP_LAYER_0_COLOR); */
+    /* rgblight_sethsv(); */
+    /* rgblight_set_mode(DROP_LAYER_0_COLOR) */
+    rgblight_mode(DROP_LAYER_0_ANIMATION);
+
     /* rgblight_sethsv_at(HSV_WHITE, 0); // led 0 */
     /* rgblight_sethsv_at(HSV_RED,   1); // led 1 */
     /* rgblight_sethsv_at(HSV_GREEN, 2); // led 2 */
@@ -20,13 +27,18 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     /* rgblight_sethsv_at(HSV_BLUE, 5); // led 2 */
     /* rgblight_sethsv_at(HSV_WHITE, 6); // led 2 */
     /* rgblight_sethsv_at(HSV_PURPLE, 7); // led 2 */
-    rgblight_sethsv_noeeprom(HSV_BLACK);
-    /* rgblight_mode(RGBLIGHT_MODE_STATIC_LIGHT); */
+    /* rgblight_sethsv_noeeprom(HSV_WHITE); */
+
+    /* rgblight_mode(RGBLIGHT_MODE_RAINBOW_MOOD); */
+    /* rgblight_mode(RGBLIGHT_MODE_STATIC_GRADIENT); */
+    /* rgblight_mode(RGBLIGHT_MODE_RAINBOW_SWIRL); */
+    /* rgblight_sethsv_noeeprom(DROP_LAYER_0_COLOR); */
+    /* rgblight_mode(default_rgblight_mode); */
     break;
 
   case 1:
     rgblight_enable_noeeprom();
-    /* rgblight_mode(RGBLIGHT_MODE_BREATHING); */
+    rgblight_mode(default_rgblight_mode);
     rgblight_sethsv_noeeprom(HSV_RED);
     /* rgblight_mode(RGBLIGHT_MODE_KNIGHT); */
     break;
@@ -34,11 +46,13 @@ layer_state_t layer_state_set_user(layer_state_t state) {
   case 2:
     /* float x[][2] = SONG(ROCK_A_BYE_BABY); */
     /* PLAY_SONG(x);             /\*  *\/ */
+    rgblight_mode(default_rgblight_mode);
     rgblight_enable_noeeprom();
     rgblight_sethsv_noeeprom(HSV_BLUE);
     break;
   case 3:
     rgblight_enable_noeeprom();
+    rgblight_mode(default_rgblight_mode);
     /* rgblight_mode(RGBLIGHT_MODE_BREATHING); */
     rgblight_sethsv_noeeprom(HSV_GREEN);
     break;
@@ -46,6 +60,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
   case 4:
     /* rgblight_mode(RGBLIGHT_MODE_BREATHING); */
     rgblight_enable_noeeprom();
+    rgblight_mode(default_rgblight_mode);
     rgblight_sethsv_noeeprom(HSV_GREEN);
     break;
 
@@ -53,6 +68,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     // system stuff
     PLAY_SONG(x);             /*  */
     rgblight_enable_noeeprom();
+    rgblight_mode(default_rgblight_mode);
     rgblight_sethsv_noeeprom(HSV_YELLOW);
     rgblight_mode(RGBLIGHT_MODE_RAINBOW_SWIRL);
     break;
@@ -60,6 +76,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
   case 6:
     // windows
     rgblight_enable_noeeprom();
+    rgblight_mode(default_rgblight_mode);
     /* rgblight_mode(RGBLIGHT_MODE_BREATHING); */
     rgblight_sethsv_noeeprom(HSV_SPRINGGREEN);
     break;
@@ -67,6 +84,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
   case 7:
     rgblight_enable_noeeprom();
+    rgblight_mode(default_rgblight_mode);
     /* rgblight_mode(RGBLIGHT_MODE_BREATHING); */
     rgblight_sethsv_noeeprom(HSV_PINK);
     break;
@@ -74,26 +92,37 @@ layer_state_t layer_state_set_user(layer_state_t state) {
   case 8:
     // shiftlok
     rgblight_mode(RGBLIGHT_MODE_SNAKE);
+    rgblight_mode(default_rgblight_mode);
     /* rgblight_mode(RGBLIGHT_MODE_BREATHING); */
     rgblight_enable_noeeprom();
     rgblight_sethsv_noeeprom(HSV_RED);
     break;
 
-  case 16:
-    rgblight_enable_noeeprom();
-    /* rgblight_mode(RGBLIGHT_MODE_BREATHING); */
-    rgblight_sethsv_noeeprom(HSV_PURPLE);
-    break;
+  /* case 16: */
+  /*   rgblight_enable_noeeprom(); */
+    /* rgblight_mode(default_rgblight_mode); */
+  /*   /\* rgblight_mode(RGBLIGHT_MODE_BREATHING); *\/ */
+  /*   rgblight_sethsv_noeeprom(HSV_PURPLE); */
+  /*   break; */
 
   case 12:
     rgblight_enable_noeeprom();
     /* rgblight_mode(RGBLIGHT_MODE_BREATHING); */
+    rgblight_mode(default_rgblight_mode);
     rgblight_sethsv_noeeprom(HSV_BLUE);
     break;
   case 9:
     rgblight_enable_noeeprom();
+    rgblight_mode(default_rgblight_mode);
     /* rgblight_mode(RGBLIGHT_MODE_BREATHING); */
     rgblight_sethsv_noeeprom(HSV_GREEN);
+    break;
+
+  case 16:
+    rgblight_mode(default_rgblight_mode);
+    rgblight_enable_noeeprom();
+    /* rgblight_mode(RGBLIGHT_MODE_BREATHING); */
+    /* rgblight_sethsv_noeeprom(HSV_GREEN); */
     break;
 
   default:

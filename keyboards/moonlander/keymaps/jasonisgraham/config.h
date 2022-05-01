@@ -1,6 +1,10 @@
 #ifdef AUDIO_ENABLE
 #define STARTUP_SONG SONG(OLD_SPICE)
 #endif
+
+#undef COMBO_TERM
+#define COMBO_TERM 25  // default is 50.  50ms produces false positives when typing kinda fast
+
 /*
   Set any config.h overrides for your specific keymap here.
   See config.h options at https://docs.qmk.fm/#/config_options?id=the-configh-file
@@ -10,7 +14,7 @@
 /* #include "user_song_list.h" */
 
 /* #define COMBO_COUNT 50 */
-/* #define COMBO_TERM 20  // default is 50.  50ms produces false positives when typing kinda fast */
+/* #define COMBO_TERM 200  // default is 50.  50ms produces false positives when typing kinda fast */
 
 /* #define FORCE_NKRO */
 

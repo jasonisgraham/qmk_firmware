@@ -3,7 +3,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     my_grave,    my_q,    my_w,    my_e,    my_r,    my_t,    my_y,           my_u,    my_i,    my_o,    my_p,    topright,
     esc_ctrl ,my_a,   my_s,   my_d,   my_f,   my_g,   my_h,           my_j,   my_k,   my_l,   my_semicolon,   my_singlequote,
     my_left_shift,        my_z,           my_x,           my_c,           my_v,           my_b,           my_n,   my_m,   my_comma,   my_period,   my_forward_slash,   my_right_shift,
-    MT(MOD_LCTL, KC_LBRACKET), MO(_SYSTEM),          KC_RGUI, KC_LALT, my_raise,          my_space, KC_NO,          LOWER,          right_of_lower,      LAYER_RAISE_HOLD,          LAYER_LOWER_HOLD, CYCLE_FAVE_ANIMATIONS
+    MT(MOD_LCTL, KC_LBRACKET), _______,          _______, KC_LALT, my_raise,          my_space, KC_NO,          LOWER,          right_of_lower,      LAYER_RAISE_HOLD,          LAYER_LOWER_HOLD, CYCLE_FAVE_ANIMATIONS
   ),
 
   [_LOWER] = LAYOUT_planck_grid(
