@@ -146,7 +146,7 @@ void apply_fave_animation(void) {
   rgblight_mode(faves[i]);
 }
 
-int DROP_LAYER_0_ANIMATION = RGBLIGHT_MODE_STATIC_LIGHT;
+int DROP_LAYER_0_ANIMATION = 0;//RGBLIGHT_MODE_STATIC_LIGHT;
 int DROP_LAYER_0_COLOR = 0;
 
 void cycle_drop_animations(void) {

@@ -166,8 +166,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                               my_grave,    my_q,           my_w,           my_e,           my_r,           my_t,           _______,                                 _______, my_y,           my_u,    my_i,    my_o,    my_p,    topright,
     esc_ctrl, my_a,           my_s,           my_d,           my_f,           my_g,           OSL(1),                                                                         KC_BSPACE,      my_h,           my_j,    my_k,    my_l,    my_semicolon,    my_singlequote,
     my_left_shift,        my_z,           my_x,           my_c,           my_v,           my_b,                                           my_n,           my_m,   my_comma,   my_period,   my_forward_slash,   my_right_shift,
-                              key_0_0, key_0_1,          KC_LGUI,KC_LALT, RAISE,          KC_RCTRL,                                                                                                       KC_BSPACE,      LOWER,         my_right_of_lower,      _______,          key_4_11,          key_4_12,
-                              LM(_SUPER,MOD_LGUI),  KC_BSPACE, KC_ENTER,                       LM(9,MOD_LALT), LM(_SUPER,MOD_LGUI), my_space
+                              key_0_0, key_0_1,          KC_LGUI, KC_LALT, RAISE,          KC_RCTRL,                                                                                                       KC_BSPACE,      LOWER,         my_right_of_lower,      _______,          key_4_11,          key_4_12,
+                              LM(_SUPER,MOD_LGUI),  key_0_0, KC_LALT,                       LM(_SUPER,MOD_LGUI), key_0_0, my_space
   ),
   // lower
   [_LOWER] = LAYOUT_moonlander(

@@ -162,6 +162,7 @@ const uint16_t PROGMEM combo_q_w[] = {my_q, my_w, COMBO_END};
 
 const uint16_t PROGMEM combo_grave_q[] = {my_grave, my_q, COMBO_END};
 const uint16_t PROGMEM combo_grave_topright[] = {my_grave, topright, COMBO_END};
+const uint16_t PROGMEM combo_grave_p[] = {my_grave, my_p, COMBO_END};
 const uint16_t PROGMEM combo_k_semicolon[] = {my_k, my_semicolon, COMBO_END};
 const uint16_t PROGMEM combo_space_semicolon[] = {my_space, my_semicolon, COMBO_END};
 const uint16_t PROGMEM combo_space_singlequote[] = {my_space, my_singlequote, COMBO_END};
@@ -235,8 +236,7 @@ const uint16_t PROGMEM combo_lower_semicolon[] = {my_semicolon, LOWER, COMBO_END
 combo_t key_combos[COMBO_COUNT] = {
                                    COMBO(combo_lower_semicolon, RCTL(KC_SCOLON)),
                                    COMBO(combo_my_raise_g, OSL(_MACROS)),
-                                   COMBO(combo_m_period, KC_GT),
-                                   COMBO(combo_raise_m_raise_period, KC_LT),
+                                   COMBO(combo_m_period, KC_COLN),
                                    /* COMBO(combo_raise_m_raise_period, KC_LT), */
                                    // layers
                                    COMBO(combo_r_g, KC_F5),
@@ -259,6 +259,7 @@ combo_t key_combos[COMBO_COUNT] = {
                                    COMBO(combo_raise_m_raise_comma, KC_QUOT),
                                    COMBO(combo_m_comma, KC_DQUO),
                                    COMBO(combo_grave_topright, SYSTEM_LAYER_ACTIVATE),
+                                   COMBO(combo_grave_p, SYSTEM_LAYER_ACTIVATE),
 
                                    // braces
                                    COMBO(combo_cap_j_cap_i, KC_LPRN),
@@ -410,7 +411,7 @@ combo_t key_combos[COMBO_COUNT] = {
                                    /* COMBO(combo_raise_h_raise_u, KC_TILD), */
 
                                    COMBO(combo_p_topright, CTRL_P),
-                                   COMBO(combo_o_p, KC_0),
+                                   COMBO(combo_o_p, CTRL_P),
                                    COMBO(combo_raise_o_raise_p, KC_0),
                                    COMBO(combo_shiftlok, SHIFTLOCK_LAYER_ACTIVATE),
 

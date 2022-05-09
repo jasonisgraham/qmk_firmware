@@ -44,8 +44,9 @@ enum planck_layers {
 #define my_raise_p KC_0
 
 
-#define my_split_left KC_LGUI // OSL(_WINDOWS)
-#define my_split_left_windows ALT_TAB
+#define super KC_LGUI
+#define hyper KC_LCTL // OSL(_WINDOWS)
+#define alt_tab ALT_TAB
 #define esc_ctrl MT(MOD_RCTL, KC_ESCAPE)
 #define my_raise_period KC_3
 
@@ -78,7 +79,7 @@ enum planck_layers {
 #define my_f TD(DANCE_14)
 #define my_forward_slash TD(DANCE_25)
 #define my_g TD(DANCE_15)
-#define my_h KC_H
+#define my_h TD(DANCE_72)
 #define my_i TD(DANCE_7)
 #define my_j TD(DANCE_16)
 #define my_k TD(DANCE_17)
@@ -98,7 +99,7 @@ enum planck_layers {
 #define my_y KC_Y
 #define my_z KC_Z
 #define my_lower_n TD(DANCE_69)
-#define hyper KC_LCTL
+/* #define hyper KC_LCTL */
 
 #define below_v MT(MOD_RCTL, KC_ESCAPE)
 #define below_m MT(MOD_RCTL, KC_ESCAPE)
