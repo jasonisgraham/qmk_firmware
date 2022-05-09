@@ -1,25 +1,25 @@
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_BASE] = LAYOUT_planck_grid(
-    my_grave,    my_q,    my_w,    my_e,    my_r,    my_t,    my_y,           my_u,    my_i,    my_o,    my_p,    topright,
-    my_lctl ,my_a,   my_s,   my_d,   my_f,   my_g,   my_h,           my_j,   my_k,   my_l,   my_semicolon,   my_singlequote,
-    my_left_shift,        my_z,           my_x,           my_c,           my_v,           my_b,           my_n,   my_m,   my_comma,   my_period,   my_forward_slash,   my_right_shift,
-    key_0_0,  key_0_1, KC_LGUI, KC_LALT, RAISE,    my_split_left, my_space,           LOWER,           right_of_lower,   CYCLE_DROP_ANIMATIONS,          CYCLE_DROP_COLORS,  key_4_12
+   my_grave,    my_q,    my_w,    my_e,    my_r,    my_t,   _______, my_y,           my_u,    my_i,    my_o,     my_p,
+   my_lctl ,my_a,   my_s,   my_d,   my_f,   my_g,  KC_BSPACE, my_h,           my_j,   my_k,   my_l,   my_semicolon,
+   my_left_shift,        my_z,           my_x,           my_c,           my_v,           my_b,   _______,        my_n,   my_m,   my_comma,   my_period,   my_forward_slash,
+    _______,  _______, _______,  KC_LALT, RAISE,  super,  hyper, my_space,           LOWER,           right_of_lower,   _______,  _______
   ),
 
   [_LOWER] = LAYOUT_planck_grid(
-                                TD(DANCE_26),   KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_PSCREEN,     KC_HOME,        KC_PGUP,        my_lower_i,      my_lower_o,         _______, TD(DANCE_27),
-    _______, KC_F5,          KC_F6,          KC_F7,          KC_F8,          KC_SCROLLLOCK,  KC_LEFT,        my_lower_j,        my_lower_k,          my_lower_l,       KC_LCBR,        KC_RCBR,
-    _______,   KC_F9,          KC_F10,         KC_F11,         KC_F12,         KC_APPLICATION, my_lower_n, my_lower_m, my_lower_comma,   TD(DANCE_30),   KC_DELETE,      SHIFTLOCK_LAYER_ACTIVATE,
-    _______, KC_NO, KC_LGUI,        KC_LALT,        MO(4),          TO(4),          KC_NO,          _______, KC_NO,          KC_NO,          _______, _______
+                                TD(DANCE_26),   KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_PSCREEN,   _______,  KC_HOME,        KC_PGUP,        my_lower_i,      my_lower_o,         TD(DANCE_27),
+                                _______, KC_F5,          KC_F6,          KC_F7,          KC_F8,          KC_SCROLLLOCK,     KC_BSPACE, KC_LEFT,        my_lower_j,        my_lower_k,          my_lower_l,       _______,
+                                SHIFTLOCK_LAYER_ACTIVATE,   KC_F9,          KC_F10,         KC_F11,         KC_F12,         KC_APPLICATION, _______, my_lower_n, my_lower_m, my_lower_comma,   TD(DANCE_30),   KC_DELETE,
+                                _______, _______, _______, _______,        MO(4),          TO(4),          _______,          _______, _______,          _______,          _______, _______
 
 
   ),
 
   [_RAISE] = LAYOUT_planck_grid(
-                                TD(DANCE_32),   OSL(_EDITING),          EMACS_OTHER_WINDOW,     KC_END,         EMACS_BUFFER_REVERT,     KC_NO,          _______, my_raise_u,           my_raise_i,           my_raise_o,           my_raise_p,           KC_UNDS,
-    _______, DYN_REC_START1, DYN_MACRO_PLAY1,KC_NO,          TD(DANCE_33),   OSL(7),         my_raise_h,         my_raise_j,           my_raise_k,           my_raise_l,           KC_LBRACKET,    KC_RBRACKET,
-    _______, DYN_REC_START2, DYN_MACRO_PLAY2,DYN_REC_STOP,   KC_NO,          FISH_ACCEPT_SEND,     KC_0,           my_raise_m,           my_raise_comma,         KC_3,           KC_QUES,      _______,
-    _______, KC_NO, KC_LGUI,        KC_LALT,        _______, _______, KC_NO,          KC_ENTER,       KC_0,           KC_DOT,         KC_NO,          _______
+   TD(DANCE_32),   OSL(_EDITING),          EMACS_OTHER_WINDOW,     KC_END,         EMACS_BUFFER_REVERT,     _______, _______,          _______, my_raise_u,           my_raise_i,           my_raise_o,           my_raise_p,
+   _______, DYN_REC_START1, DYN_MACRO_PLAY1,KC_NO,          TD(DANCE_33),   OSL(7),    _______,     my_raise_h,         my_raise_j,           my_raise_k,           my_raise_l,           _______,
+   SHIFTLOCK_LAYER_ACTIVATE, DYN_REC_START2, DYN_MACRO_PLAY2,DYN_REC_STOP,   KC_NO,          FISH_ACCEPT_SEND,  _______,   KC_0,           my_raise_m,           my_raise_comma,         KC_3,           KC_QUES,
+   _______, _______, _______,        _______,        _______, _______, _______,       _______,   KC_ENTER,       KC_0,  _______,         _______
   ),
 
   [_ADJUST] = LAYOUT_planck_grid(
@@ -31,10 +31,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   // 4
   [_MOUSE] = LAYOUT_planck_grid(
-    TD(DANCE_34),   _______, _______, KC_MS_UP,       _______, _______, KC_HOME,        KC_PGUP,        KC_PGDOWN,      KC_END,         _______, _______,
-    _______, _______, KC_MS_LEFT,     KC_MS_DOWN,     KC_MS_RIGHT,    _______, KC_MS_BTN1,     KC_MS_WH_DOWN,  KC_MS_WH_UP,    KC_MS_BTN2,     _______, _______,
-    _______, _______, _______, _______, _______, _______, _______, KC_MS_BTN3,     TD(DANCE_35),   TD(DANCE_36),   _______, _______,
-    _______, KC_NO, _______, _______, _______, TO(_BASE),     KC_NO,          _______, _______, _______, _______, _______
+                                TD(DANCE_34),   _______, _______, KC_MS_UP,       _______, _______, _______, KC_HOME,        KC_PGUP,        KC_PGDOWN,      KC_END,         _______,
+                                _______, _______, KC_MS_LEFT,     KC_MS_DOWN,     KC_MS_RIGHT,    _______, _______, KC_MS_BTN1,     KC_MS_WH_DOWN,  KC_MS_WH_UP,    KC_MS_BTN2,     _______,
+                                _______, _______, _______, _______, _______, _______, _______, _______, KC_MS_BTN3,     TD(DANCE_35),   TD(DANCE_36),   _______,
+                                _______, KC_NO, _______, _______, _______, TO(_BASE), _______, _______,          _______, _______, _______, _______
   ),
 
   // 5
@@ -63,18 +63,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   // 8
   [_SHIFTLOCK] = LAYOUT_planck_grid(
-
-    TO(_BASE),   RSFT(KC_Q),     RSFT(KC_W),     RSFT(KC_E),     RSFT(KC_R),     RSFT(KC_T),     RSFT(KC_Y),     RSFT(KC_U),     my_cap_i,     my_cap_o,     RSFT(KC_P),     TD(DANCE_54),
-    ESC_THEN_BASE_LAYER,          RSFT(KC_A),     RSFT(KC_S),     RSFT(KC_D),     RSFT(KC_F),     RSFT(KC_G),     my_cap_h,     my_cap_j,     my_cap_k,     my_cap_l,     TD(DANCE_55),   TD(DANCE_56),
-    SHIFTLOCK_LAYER_DEACTIVATE,          RSFT(KC_Z),     RSFT(KC_X),     RSFT(KC_C),     RSFT(KC_V),     RSFT(KC_B),     RSFT(KC_N),     my_cap_m,     KC_LABK,        KC_RABK,        KC_QUES,        SHIFTLOCK_LAYER_DEACTIVATE,
-    _______, _______, _______, _______, _______, KC_SPACE, KC_SPACE,          my_lower, _______, _______, _______, _______
+                                    TO(_BASE),   RSFT(KC_Q),     RSFT(KC_W),     RSFT(KC_E),     RSFT(KC_R),     RSFT(KC_T),   _______,  RSFT(KC_Y),     RSFT(KC_U),     my_cap_i,     my_cap_o,     RSFT(KC_P),
+                                    ESC_THEN_BASE_LAYER,          RSFT(KC_A),     RSFT(KC_S),     RSFT(KC_D),     RSFT(KC_F),     RSFT(KC_G),  _______,   my_cap_h,     my_cap_j,     my_cap_k,     my_cap_l,     TD(DANCE_55),
+                                    SHIFTLOCK_LAYER_DEACTIVATE,          RSFT(KC_Z),     RSFT(KC_X),     RSFT(KC_C),     RSFT(KC_V),     RSFT(KC_B),   _______,  RSFT(KC_N),     my_cap_m,     KC_LABK,        KC_RABK,        KC_QUES,
+                                    _______, _______, _______, _______, _______, _______, KC_NO,          _______, _______, _______, _______, _______
   ),
 
   // 9
   [_WINMOVE] = LAYOUT_planck_grid(
-    TO(_BASE),   _______, _______, _______, _______, _______, RGUI(RSFT(KC_Y)),_______, _______, RGUI(RSFT(KC_O)),_______, _______,
-    _______, _______, _______, LALT(LGUI(LCTL(KC_D))),_______, _______, TD(DANCE_58),   RGUI(RSFT(KC_J)),TD(DANCE_59),   TD(DANCE_60),   _______, _______,
-    _______, _______, _______, _______, _______, _______, RGUI(RSFT(KC_N)),_______, _______, RGUI(RSFT(KC_DOT)),_______, _______,
+                                  TO(_BASE),   _______, _______, _______, _______, _______, _______, RGUI(RSFT(KC_Y)),_______, _______, RGUI(RSFT(KC_O)),_______,
+                                  _______, _______, _______, LALT(LGUI(LCTL(KC_D))),_______, _______, _______, TD(DANCE_58),   RGUI(RSFT(KC_J)),TD(DANCE_59),   TD(DANCE_60),   _______,
+                                  _______, _______, _______, _______, _______, _______, _______, RGUI(RSFT(KC_N)),_______, _______, RGUI(RSFT(KC_DOT)),_______,
     _______, _______, _______, _______, TO(0),          _______, KC_NO,          _______, _______, _______, _______, _______
   ),
 
@@ -96,10 +95,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   // 12
   [_EDITING] = LAYOUT_planck_grid(
-TO(_BASE), _______, EMACS_OTHER_WINDOW,     _______, EMACS_BUFFER_REVERT,     _______, EMACS_COPY_FILE_PATH, LCTL(KC_7),     _______, EMACS_OTHER_WINDOW, _______, TMUX_SPLIT_WINDOW,
-_______, _______, _______, _______, RALT(KC_ENTER), _______, RALT(RSFT(KC_H)),RALT(RSFT(KC_J)),RALT(RSFT(KC_K)),RALT(RSFT(KC_L)),RCTL(KC_SCOLON),RCTL(KC_QUOTE),
-_______, _______, _______, EMACS_WINDOW_CLOSE,    _______, _______, RALT(RSFT(KC_N)), EMACS_ACE_WINDOW_SWAP,  _______, _______, TERM_CD_UP_DIR,    _______,
-_______, _______, _______, _______, OSL(18), _______, KC_NO,          RALT(KC_ENTER), _______, _______, _______, _______
+                                  TO(_BASE), _______, EMACS_OTHER_WINDOW,     _______, EMACS_BUFFER_REVERT,     _______, _______, EMACS_COPY_FILE_PATH, LCTL(KC_7),     _______, EMACS_OTHER_WINDOW, _______,
+                                  _______, _______, _______, _______, RALT(KC_ENTER), _______,RCTL(KC_QUOTE), RALT(RSFT(KC_H)),RALT(RSFT(KC_J)),RALT(RSFT(KC_K)),RALT(RSFT(KC_L)),RCTL(KC_SCOLON),
+                                  _______, _______, _______, EMACS_WINDOW_CLOSE,    _______, _______,  _______, RALT(RSFT(KC_N)), EMACS_ACE_WINDOW_SWAP,  _______, _______, TERM_CD_UP_DIR,
+                                  _______, _______, _______, _______, OSL(18), _______, _______, KC_NO,          RALT(KC_ENTER), _______, _______, _______
+
   ),
 
   [_LAYER13] = LAYOUT_planck_grid(
@@ -110,9 +110,9 @@ _______, _______, _______, _______, OSL(18), _______, KC_NO,          RALT(KC_EN
   ),
 
   [_VIM_CMDS] = LAYOUT_planck_grid(
-    TO(0), _______, LALT(KC_F),     _______, _______, _______, RCTL(KC_Y),     _______, TO(0),          _______, RCTL(KC_V),     _______,
-    _______,          _______, _______, _______, _______, OSL(15),        TD(DANCE_62),   TD(DANCE_63),   TD(DANCE_64),   TD(DANCE_65),   KC_LCBR,        KC_RCBR,
-    _______, _______, TD(DANCE_66),   _______, _______, LALT(KC_B),     TD(DANCE_67),   _______, _______, _______, _______, _______,
+                                   TO(0), _______, LALT(KC_F),     _______, _______, _______, _______, RCTL(KC_Y),     _______, TO(0),          _______, RCTL(KC_V),
+                                   _______,          _______, _______, _______, _______, OSL(15),        TD(DANCE_62),  _______, TD(DANCE_63),   TD(DANCE_64),   TD(DANCE_65),   KC_LCBR,
+                                   _______, _______, TD(DANCE_66),   _______, _______, LALT(KC_B),     _______, TD(DANCE_67),    _______, _______, _______, _______,
     _______, _______, _______, _______,    _______, _______, _______, _______,    _______, _______, _______, _______
   ),
 
@@ -133,15 +133,15 @@ _______, _______, _______, _______, OSL(18), _______, KC_NO,          RALT(KC_EN
 
 
   [_LAYER17] = LAYOUT_planck_grid(
-                                  TO(0), KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_AMPR,        KC_ASTR,        KC_LPRN,        KC_RPRN,        KC_TRANSPARENT,
-                                  KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_DLR,         KC_PERC,        KC_CIRC,        KC_TRANSPARENT, KC_TRANSPARENT,
-                                  KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_RPRN,        KC_EXLM,        KC_AT,          KC_HASH,        KC_TRANSPARENT, KC_TRANSPARENT,
-                                  KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_NO,          KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
+                                  TO(0), KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_AMPR,        KC_ASTR,        KC_LPRN,        KC_RPRN,
+                                  KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_DLR,         KC_PERC,        KC_CIRC,        KC_TRANSPARENT,
+                                  KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_RPRN,        KC_EXLM,        KC_AT,          KC_HASH,        KC_TRANSPARENT,
+                                  KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_NO,          KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
                                   ),
   [_LAYER18] = LAYOUT_planck_grid(
-                                  TO(0), KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, EMACS_SEL_7,    EMACS_SEL_8,           EMACS_SEL_9,           EMACS_SEL_0,           KC_TRANSPARENT,
-                                  KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, EMACS_SEL_4,           EMACS_SEL_5,           EMACS_SEL_6,           KC_TRANSPARENT, KC_TRANSPARENT,
-                                  KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, EMACS_SEL_0,           EMACS_SEL_1,           EMACS_SEL_2,           EMACS_SEL_3,           KC_TRANSPARENT, KC_TRANSPARENT,
+                                  TO(0), KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, EMACS_SEL_7,    EMACS_SEL_8,           EMACS_SEL_9,           EMACS_SEL_0,
+                                  KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, EMACS_SEL_4,           EMACS_SEL_5,           EMACS_SEL_6,           KC_TRANSPARENT,
+                                  KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, EMACS_SEL_0,           EMACS_SEL_1,           EMACS_SEL_2,           EMACS_SEL_3,           KC_TRANSPARENT,
                                   KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_NO,          KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
                                   ),
 };

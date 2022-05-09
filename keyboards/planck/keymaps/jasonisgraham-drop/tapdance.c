@@ -72,6 +72,7 @@ enum tap_dance_codes {
                       T_LCRB_H_ALT,
                       ONLY_N,
                       T_ALT_TAB_H_BASE,
+                      DANCE_72,
 };
 
 typedef struct {
@@ -88,7 +89,7 @@ enum {
     MORE_TAPS
 };
 
-static tap dance_state[72];
+static tap dance_state[73];
 
 uint8_t dance_step(qk_tap_dance_state_t *state);
 
@@ -2682,6 +2683,44 @@ void t_lbrc_h_alt_reset(qk_tap_dance_state_t *state, void *user_data) {
 }
 
 
+void on_dance_72(qk_tap_dance_state_t *state, void *user_data);
+void dance_72_finished(qk_tap_dance_state_t *state, void *user_data);
+void dance_72_reset(qk_tap_dance_state_t *state, void *user_data);
+
+void on_dance_72(qk_tap_dance_state_t *state, void *user_data) {
+    if(state->count == 3) {
+        tap_code16(KC_H);
+        tap_code16(KC_H);
+        tap_code16(KC_H);
+    }
+    if(state->count > 3) {
+        tap_code16(KC_H);
+    }
+}
+
+void dance_72_finished(qk_tap_dance_state_t *state, void *user_data) {
+    dance_state[72].step = dance_step(state);
+    switch (dance_state[72].step) {
+        case SINGLE_TAP: register_code16(KC_H); break;
+        case SINGLE_HOLD: register_code16(KC_H); break;
+        case DOUBLE_TAP: register_code16(KC_H); register_code16(KC_H); break;
+        case DOUBLE_HOLD: register_code16(KC_0); break;
+        case DOUBLE_SINGLE_TAP: tap_code16(KC_H); register_code16(KC_H);
+    }
+}
+
+void dance_72_reset(qk_tap_dance_state_t *state, void *user_data) {
+    wait_ms(10);
+    switch (dance_state[72].step) {
+        case SINGLE_TAP: unregister_code16(KC_H); break;
+        case SINGLE_HOLD: unregister_code16(KC_H); break;
+        case DOUBLE_TAP: unregister_code16(KC_H); break;
+        case DOUBLE_HOLD: unregister_code16(KC_0); break;
+        case DOUBLE_SINGLE_TAP: unregister_code16(KC_H); break;
+    }
+    dance_state[72].step = 0;
+}
+
 qk_tap_dance_action_t tap_dance_actions[] = {
         [DANCE_0] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_0, dance_0_finished, dance_0_reset),
         [DANCE_1] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_1, dance_1_finished, dance_1_reset),
@@ -2756,4 +2795,5 @@ qk_tap_dance_action_t tap_dance_actions[] = {
         [ONLY_N] = ACTION_TAP_DANCE_FN_ADVANCED(on_only_n, only_n_finished, only_n_reset),
         [T_LCRB_H_ALT]  = ACTION_TAP_DANCE_FN_ADVANCED(on_t_lbrc_h_alt, t_lbrc_h_alt_finished, t_lbrc_h_alt_reset),
         [T_ALT_TAB_H_BASE] = ACTION_TAP_DANCE_FN_ADVANCED(on_t_alt_tab_h_base, t_alt_tab_h_base_finished, t_alt_tab_h_base_reset),
+        [DANCE_72] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_72, dance_72_finished, dance_72_reset),
 };

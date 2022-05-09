@@ -56,6 +56,10 @@ enum planck_layers {
 
 #include "../../../common/keycodes.c"
 
+#define key_4_11 CYCLE_DROP_COLORS // LAYER_LOWER_HOLD
+#define key_4_12 KC_ENTER
+
+
 #define esc_ctrl MT(MOD_RCTL, KC_ESCAPE)
 #define my_grave TD(DANCE_0)
 #define my_0 KC_0
@@ -73,10 +77,25 @@ enum planck_layers {
 #define emacs_r EMACS_YAS_REMOVE_ANON
 #define emacs_a _______
 #define emacs_m EMACS_YAS_MAP_ANON
-#define my_cap_h RSFT(KC_H)
+
 #define my_cap_l RSFT(KC_L)
 #define my_cap_k RSFT(KC_K)
+#define my_cap_i RSFT(KC_I)
+#define my_cap_o RSFT(KC_O)
 #define my_cap_j RSFT(KC_J)
+#define my_cap_h RSFT(KC_H)
+#define my_cap_m RSFT(KC_M)
+
+#define my_raise_j KC_4
+#define my_raise_i KC_8
+#define my_raise_k KC_5
+#define my_raise_o KC_9
+#define my_raise_m KC_1
+#define my_raise_u  KC_7
+#define my_raise_h KC_BSPACE
+#define my_raise_n KC_0
+#define my_raise_p KC_0
+
 
 #define my_a TD(DANCE_11)
 #define my_b KC_B
