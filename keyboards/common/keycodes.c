@@ -14,11 +14,12 @@
 #define CTRL_SEMICOLON RCTL(KC_SCOLON)
 
 
-bool do_echo = false;
+static bool do_echo = false;
 void toggle_echo(void) {
   if (do_echo) {
     do_echo = false;
   } else {
+    SEND_STRING("echo on");
     do_echo = true;
   }
 }
@@ -29,12 +30,30 @@ char * int2str(uint8_t i) {
   return s;
 }
 
-
 enum custom_keycodes {
                       /* RGB_SLD = SAFE_RANGE, */
                       /* RGB_SLD = EZ_SAFE_RANGE, */
                       FIRST = SAFE_RANGE,
+                      EMACS_RE_FIND,
+                      EMACS_BACKWARD_UP,
+                      RESET_ANIMATION,
+                      GAUTH_LAYER_ACTIVATE,
+                      EMACS_COMMENT_READER,
+                      EMACS_ANON_FN,
+                      CLJ_REGEX,
+                      CLJ_ANON_FN,
+                      CLJ_SET,
+                      EMACS_YANK_TO,
+                      gauth_fb,
+                      gauth_gh,
+                      gauth_plex,
+                      gauth_hb,
+                      gauth_lp,
+                      AUDIO_LAYER_HOLD,
                       CYCLE_DROP_COLORS,
+                      EMACS_GOTO_GET_FEED,
+                      EMACS_GOTO_SYNC_FEED,
+                      EMACS_GOTO_PARSE_ITEM,
                       TOGGLE_ECHO,
                       TOGGLE_BREATHING,
                       EMACS_ACE_WINDOW,
@@ -134,6 +153,7 @@ char b[3];
 int i = 0;
 const uint8_t fireworks = 42;
 const uint8_t faves[7] = {fireworks, 15, 16, 17, 20, 22, 41};
+/* const uint8_t faves[7] = {fireworks, 15, 16, 17, 20, 22, 41}; */
 void cycle_fave_animations(void) {
   i++;
   if (i >= 7) {
@@ -149,12 +169,27 @@ void apply_fave_animation(void) {
 int DROP_LAYER_0_ANIMATION = 0;//RGBLIGHT_MODE_STATIC_LIGHT;
 int DROP_LAYER_0_COLOR = 0;
 
+/* const uint8_t faves[7] = {2, // breathe */
+/*                           14, // rainbow */
+/*                           18, // snake */
+/*                           24, // xmas */
+/*                           29, // gradient */
+/*                           35, // test blinks */
+
+/* }; */
 void cycle_drop_animations(void) {
-  i++;
-  if (i >= 43) {
+  i = i + 1;
+  if (i >= 42) {
     i = 0;
   }
+
   DROP_LAYER_0_ANIMATION = i;
+  if (do_echo) {
+    static char s[10];
+    itoa(i, s, 10);
+    SEND_STRING("");
+    SEND_STRING(s);
+  }
   rgblight_mode(DROP_LAYER_0_ANIMATION);
 }
 
@@ -190,6 +225,7 @@ void cycle_rgblight_step(void) {
 
 
 
+
 bool do_breathing = false;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -197,45 +233,73 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 
   case TOGGLE_BREATHING:
-    if (do_breathing) {
-      do_breathing = false;
-    } else {
-      do_breathing = true;
+    if (record->event.pressed) {
+      if (do_breathing) {
+        do_breathing = false;
+      } else {
+        do_breathing = true;
+      }
     }
     break;
 
   case TOGGLE_ECHO:
-    toggle_echo();
-    break;
-  case RGBLIGHT_TOGGLE:
-    rgblight_toggle();
-    break;
-  case RGBLIGHT_STEP:
-    rgblight_step();
+    if (record->event.pressed) {
+      toggle_echo();
+    }
     break;
 
+  case RGBLIGHT_TOGGLE:
+    if (record->event.pressed) {
+      rgblight_toggle();
+    }
+    break;
+
+  case RESET_ANIMATION:
+    if (record->event.pressed) {
+      DROP_LAYER_0_ANIMATION = 0;
+      rgblight_mode(DROP_LAYER_0_ANIMATION);
+    }
+    break;
+
+  case RGBLIGHT_STEP:
+    if (record->event.pressed) {
+      rgblight_step();
+    }
+    break;
+
+
   case CYCLE_RGBLIGHT_STEP:
-    PLAY_SONG(scroll_lock_on_sound);
-    cycle_rgblight_step();
-    /* static char s[10]; */
-    /* itoa(k, s, 10); */
-    /* SEND_STRING(s); */
+    if (record->event.pressed) {
+      PLAY_SONG(scroll_lock_on_sound);
+      cycle_rgblight_step();
+      /* static char s[10]; */
+      /* itoa(k, s, 10); */
+      /* SEND_STRING(s); */
+    }
     break;
 
   case CYCLE_FAVE_ANIMATIONS:
-    cycle_fave_animations();
+    if (record->event.pressed) {
+      cycle_fave_animations();
+    }
     break;
 
   case CYCLE_DROP_COLORS:
-    cycle_drop_color();
+    if (record->event.pressed) {
+      cycle_drop_color();
+    }
     break;
 
   case CYCLE_DROP_ANIMATIONS:
-    cycle_drop_animations();
+    if (record->event.pressed) {
+      cycle_drop_animations();
+    }
     break;
 
   case ALT_TAB:
     if (record->event.pressed) {
+
+      rgblight_mode(RGBLIGHT_MODE_RAINBOW_SWIRL);
       if (!is_alt_tab_active) {
         is_alt_tab_active = true;
         register_code(KC_LGUI);
@@ -243,16 +307,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       alt_tab_timer = timer_read();
       register_code(KC_TAB);
     } else {
+      rgblight_disable();
       unregister_code(KC_TAB);
+
     }
     break;
 
   case SYSTEM_LAYER_ACTIVATE:
     if (record->event.pressed) {
-      rgblight_enable();
-      rgblight_enable_noeeprom();
-      PLAY_SONG(scroll_lock_on_sound);
       layer_move(_SYSTEM);
+      PLAY_SONG(scroll_lock_on_sound);
+      /* rgblight_mode(RGBLIGHT_MODE_RAINBOW_SWIRL); */
+
       return false;
     }
     break;
@@ -271,9 +337,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       /* rgblight_mode(42); */
       layer_move(_SHIFTLOCK);
       PLAY_SONG(caps_lock_on_sound);
-      /* PLAY_SONG(coin_sound); */
-      /* rgblight_mode(42); */
-      /* return true; */
+      /* rgblight_mode(RGBLIGHT_MODE_RAINBOW_SWIRL); */
+      return false;
     }
     break;
 
@@ -281,6 +346,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
       layer_move(_BASE);
       PLAY_SONG(caps_lock_off_sound);
+      /* rgblight_mode(RGBLIGHT_MODE_RAINBOW_SWIRL); */
+
       /* return true; */
     }
     break;
@@ -299,10 +366,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   case EMACS_OTHER_WINDOW:
     if (record->event.pressed) {
-      SEND_STRING( SS_RCTL(SS_TAP(X_X))  SS_TAP(X_O));
-
+      SEND_STRING(SS_RGUI(SS_TAP(X_E)) SS_DELAY(150) SS_RCTL(SS_TAP(X_X))  SS_TAP(X_O));
     }
     break;
+
   case EMACS_BUFFER_REVERT:
     if (record->event.pressed) {
       SEND_STRING(SS_RCTL(SS_TAP(X_C))  SS_TAP(X_R));
@@ -363,6 +430,56 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     break;
 
+  case EMACS_COMMENT_READER:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_ESC) "i#_");
+    }
+    break;
+
+  case CLJ_REGEX:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_ESC) "irx" macro_alt_slash);
+    }
+    break;
+
+
+  case EMACS_BACKWARD_UP:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_ESC) "99" SS_RALT(SS_RCTL(SS_TAP(X_U))));
+    }
+    break;
+
+
+
+  case CLJ_SET:
+    if (record->event.pressed) {
+      SEND_STRING("#{");
+    }
+    break;
+
+  case CLJ_ANON_FN:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_ESC) "ianon" macro_alt_slash);
+    }
+    break;
+
+  case EMACS_ANON_FN:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_ESC) "ianon" macro_alt_slash);
+    }
+    break;
+
+  case EMACS_YANK_TO:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_ESC) "yt");
+    }
+    break;
+
+  case EMACS_RE_FIND:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_ESC) "irf" macro_alt_slash);
+    }
+    break;
 
   case EMACS_ACE_WINDOW:
     if (record->event.pressed) {
@@ -423,6 +540,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
       PLAY_SONG(major_sound);
       layer_move(_RAISE);
+      /* rgblight_mode(RGBLIGHT_MODE_SNAKE); */
+      rgblight_mode(18);
+      rgblight_enable_noeeprom();
+      rgblight_sethsv_noeeprom(HSV_BLUE);
       return false;
 
     }
@@ -431,8 +552,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case LAYER_LOWER_HOLD:
     if (record->event.pressed) {
       PLAY_SONG(minor_sound);
-      /* PLAY_SONG(old_spice); */
       layer_move(_LOWER);
+
+      /* rgblight_mode(RGBLIGHT_MODE_SNAKE); */
+      rgblight_mode(18);
+      rgblight_enable_noeeprom();
+      rgblight_sethsv_noeeprom(HSV_RED);
+
       return false;
 
     }
@@ -542,6 +668,68 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case CD_CSV:
     if (record->event.pressed) {
       SEND_STRING(SS_RGUI(SS_TAP(X_T)) SS_DELAY(100) "cdcsv" SS_TAP(X_ENTER));
+    }
+    break;
+
+  case gauth_fb:
+    if (record->event.pressed) {
+      SEND_STRING(SS_RGUI(SS_TAP(X_T)) SS_DELAY(100) SS_RCTL(SS_TAP(X_V)) SS_TAP(X_C) SS_DELAY(100) "ga-cmd fb  | to-clipboard"  SS_DELAY(100) SS_TAP(X_ENTER) SS_DELAY(100) SS_RCTL(SS_TAP(X_V)) SS_TAP(X_X));
+      layer_move(_BASE);
+    }
+    break;
+
+  case gauth_gh:
+    if (record->event.pressed) {
+      SEND_STRING(SS_RGUI(SS_TAP(X_T)) SS_DELAY(100) SS_RCTL(SS_TAP(X_V)) SS_TAP(X_C) SS_DELAY(100) "ga-cmd gh  | to-clipboard"  SS_DELAY(100) SS_TAP(X_ENTER) SS_DELAY(100) SS_RCTL(SS_TAP(X_V)) SS_TAP(X_X));
+      layer_move(_BASE);
+    }
+    break;
+
+  case gauth_hb:
+    if (record->event.pressed) {
+      SEND_STRING(SS_RGUI(SS_TAP(X_T)) SS_DELAY(100) SS_RCTL(SS_TAP(X_V)) SS_TAP(X_C) SS_DELAY(100) "ga-cmd hb  | to-clipboard"  SS_DELAY(100) SS_TAP(X_ENTER) SS_DELAY(100) SS_RCTL(SS_TAP(X_V)) SS_TAP(X_X));
+      layer_move(_BASE);
+    }
+    break;
+
+  case gauth_lp:
+    if (record->event.pressed) {
+      SEND_STRING(SS_RGUI(SS_TAP(X_T)) SS_DELAY(100) SS_RCTL(SS_TAP(X_V)) SS_TAP(X_C) SS_DELAY(100) "ga-cmd lp  | to-clipboard"  SS_DELAY(100) SS_TAP(X_ENTER) SS_DELAY(100) SS_RCTL(SS_TAP(X_V)) SS_TAP(X_X));
+      layer_move(_BASE);
+    }
+    break;
+
+  case gauth_plex:
+    if (record->event.pressed) {
+      SEND_STRING(SS_RGUI(SS_TAP(X_T)) SS_DELAY(100) SS_RCTL(SS_TAP(X_V)) SS_TAP(X_C) SS_DELAY(100) "ga-cmd plex  | to-clipboard"  SS_DELAY(100) SS_TAP(X_ENTER) SS_DELAY(100) SS_RCTL(SS_TAP(X_V)) SS_TAP(X_X));
+      layer_move(_BASE);
+    }
+    break;
+
+
+    /* case AUDIO_LAYER_HOLD: */
+    /*   if (record->event.pressed) { */
+    /*     layer_move(_AUDIO); */
+    /*   } */
+    /*   break; */
+
+
+  case EMACS_GOTO_PARSE_ITEM:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_ESC) "go" SS_DELAY(250) "parse-item" SS_DELAY(500) SS_TAP(X_ENTER));
+    }
+    break;
+
+
+  case EMACS_GOTO_GET_FEED:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_ESC) "go" SS_DELAY(250) "get-feed" SS_DELAY(500) SS_TAP(X_ENTER));
+    }
+    break;
+
+  case EMACS_GOTO_SYNC_FEED:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_ESC) "go" SS_DELAY(250) "sync-feed" SS_DELAY(500) SS_TAP(X_ENTER));
     }
     break;
   }

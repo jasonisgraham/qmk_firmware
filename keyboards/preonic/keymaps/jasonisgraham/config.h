@@ -1,9 +1,9 @@
 /* #pragma once */
-#define RGBLIGHT_ANIMATIONS
 
 /* #include "song_list.h" */
 /* #include "config_common.h" */
 
+#define MOUSEKEY_MAX_SPEED 2
 /* #define COMBO_COUNT 50 */
 
 /* /\* #define BACKLIGHT_LEVELS 31 *\/ */

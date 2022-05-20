@@ -80,7 +80,7 @@
 #define my_f KC_F
 #define my_forward_slash KC_SLASH //TD(T_FS_H_QU_DT_BS_TH_PIPE)
 #define my_g KC_G
-#define my_h KC_H
+#define my_h TD(DANCE_62)
 #define my_i TD(T_I_TH_ASTR)
 #define my_j TD(T_J_TH_DLR)
 #define my_k TD(T_K_TH_AMP)
@@ -89,7 +89,7 @@
 #define LOWER MO(_LOWER)
 #define my_m TD(T_M_TH_EXLAM)
 #define my_minus KC_MINUS //TD(T_MINUS_TH_PLUS)
-#define my_n KC_N
+#define my_n TD(T_N_ALWAYS_LC)
 #define my_o TD(T_O_TH_LPRN)
 #define my_p TD(T_P_TH_RPRN)
 #define my_period TD(T_PERIOD_H_GTHAN_TH_HASH)
@@ -244,7 +244,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______, _______, LALT(LGUI(LCTL(KC_D))),_______, _______, _______,                                                                 _______, TD(T_TILE_LEFT_TH_MON_LEFT),   LGUI(LSFT(KC_J)),TD(T_WIN_MAX_TH_F11),   TD(T_TILE_RIGHT_TH_MON_RIGHT),   _______, _______,
     _______, _______, _______, _______, _______, _______,                                 LGUI(LSFT(KC_N)),_______, TD(T_UP_MON_TH_MAXIMIZE), LGUI(LSFT(KC_DOT)),_______, _______,
 
-    _______, _______, _______, _______, TO(0),          _______,                                                                                                 TD(T_LEFT_MON_TH_TILE_LEFT),   TD(T_DOWN_MON_TH_MINIMIZE),   TD(T_RIGHT_MON_TH_TILE_RIGHT), _______, _______, _______,
+    _______, _______, _______, _______, KC_F11,          _______,                                                                                                 TD(T_LEFT_MON_TH_TILE_LEFT),   TD(T_DOWN_MON_TH_MINIMIZE),   TD(T_RIGHT_MON_TH_TILE_RIGHT), _______, _______, _______,
     _______, _______, _______,                 _______, _______, _______
                                  ),
   [_META] = LAYOUT_moonlander(
