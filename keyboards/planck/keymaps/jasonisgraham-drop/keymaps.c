@@ -1,17 +1,17 @@
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_BASE] = LAYOUT_planck_grid(
-   my_grave,    my_q,    my_w,    my_e,    my_r,    my_t,   KC_UP, my_y,           my_u,    my_i,    my_o,     my_p,
-   my_lctl ,my_a,   my_s,   my_d,   my_f,   my_g,  KC_RIGHT, my_h,           my_j,   my_k,   my_l,   my_semicolon,
-   my_left_shift,        my_z,           my_x,           my_c,           my_v,           my_b,   KC_LEFT,        my_n,   my_m,   my_comma,   my_period,   my_forward_slash,
-   hyper, KC_HYPR, LGUI(LCTL(KC_LALT)), KC_LALT, RAISE,  super,  KC_DOWN, my_space,           LOWER,           right_of_lower,   key_4_11,  key_4_12
+   my_grave,    my_q,    my_w,    my_e,    my_r,    my_t,   _______, my_y,           my_u,    my_i,    my_o,     my_p,
+   my_lctl ,my_a,   my_s,   my_d,   my_f,   my_g,  _______, my_h,           my_j,   my_k,   my_l,   my_semicolon,
+   my_left_shift,        my_z,           my_x,           my_c,           my_v,           my_b,   _______,        my_n,   my_m,   my_comma,   my_period,   my_forward_slash,
+   hyper, hyper, LGUI(LCTL(KC_LALT)), KC_LALT, RAISE,  super,  my_left_shift, my_space,           LOWER,           right_of_lower,   key_4_11,  key_4_12
   ),
 
+
   [_LOWER] = LAYOUT_planck_grid(
-                                TD(DANCE_26),   KC_F1,          KC_F2,          KC_F3,          KC_F4,          TD(DANCE_73),   _______,  KC_HOME,        KC_PGUP,
-                                my_lower_i,      my_lower_o,         my_lower_p,
+                                TD(DANCE_26),   KC_F1,          KC_F2,          KC_F3,          KC_F4,          TD(DANCE_73),   _______,  KC_HOME,        KC_PGUP, my_lower_i,      my_lower_o,         my_lower_p,
                                 _______, KC_F5,          KC_F6,          KC_F7,          KC_F8,          _______,     _______, KC_LEFT,        my_lower_j,        my_lower_k,          my_lower_l,       my_lower_semi,
                                 _______,   KC_F9,          KC_F10,         KC_F11,         KC_F12,         KC_APPLICATION, _______, my_lower_n, my_lower_m, my_lower_comma,   my_lower_period, my_lower_slash,
-                                _______, _______, _______, _______,        MO(4),          _______,          _______,         TO(4), _______,          _______,          _______, _______
+                                _______, KC_F13, KC_F14, KC_F15, KC_F16,          _______,          _______,         TO(4), lower_LOWER,          lower_right_of_lower, lower_key_4_11, lower_key_4_12
 
 
   ),
@@ -42,11 +42,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                 _______, KC_NO, _______, _______, _______, TO(_BASE), _______, _______,          _______, _______, _______, _______
   ),
 
+
   // 5
-  [_SYSTEM] = LAYOUT_planck_grid(
-                                 SYSTEM_LAYER_DEACTIVATE, _______, _______, _______, _______, _______,    _______, _______, _______, TOGGLE_ECHO, RESET_ANIMATION, RESET,
+[_SYSTEM] = LAYOUT_planck_grid(
+                                 SYSTEM_LAYER_DEACTIVATE, _______, _______, _______, _______, _______,    _______, KC_PSTE, KC_AGIN, DEBUG, RESET_ANIMATION, RESET,
                                  _______, MO(_AUDIO),_______, _______, _______, _______,   _______, _______, _______, _______, _______, _______,
-                                 _______, _______ , _______, _______, _______, MO(_BRIGHTNESS), _______, _______, _______, _______, _______, _______,
+                                 KC_ASTG, _______ , _______, _______, _______, MO(_BRIGHTNESS), _______, _______, _______, _______, _______, _______,
                                  _______, _______, _______, _______,    _______, _______, _______, _______,    _______, _______, _______, _______
 
     /* SYSTEM_LAYER_DEACTIVATE,   AU_TOG,         MU_MOD,         MU_TOG,         _______, RGB_SPD,        RGB_SPI,        RGB_SAD,        RGB_SAI,        _______, WEBUSB_PAIR,    RESET, */
@@ -57,9 +58,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   // 6
   [_WINDOWS] = LAYOUT_planck_grid(
-                                  TO(_BASE), TD(DANCE_38),   TD(DANCE_39),   LGUI(KC_E),     TD(DANCE_40),   LGUI(KC_T),   _______,  TD(DANCE_41),        LGUI(KC_8),     LGUI(KC_9),     LGUI(KC_0),     LGUI(KC_MINUS),
-                                  RGUI(KC_ESCAPE),LGUI(KC_A), select_slack, show_desktop     ,LGUI(KC_F),     TD(DANCE_42), _______,  LGUI(KC_H),     TD(DANCE_43),   TD(DANCE_44),   TD(DANCE_45),   _______,
-                                   TO(_BASE), LGUI(KC_Z),     LGUI(KC_X),     LGUI(KC_C),     RGUI(KC_V),     _______,  _______, TD(DANCE_46),   LGUI(KC_M),  _______, RSFT(LGUI(KC_K)), RCTL(RGUI(KC_Q)),
+                                  TO(_BASE), WINDOWS_Q,   TD(DANCE_39),   LGUI(KC_E),     TD(DANCE_40),   LGUI(KC_T),   _______,  LGUI(KC_MINUS),  LGUI(KC_7),        LGUI(KC_8),     LGUI(KC_9),     LGUI(KC_0),
+                                  RGUI(KC_ESCAPE), LGUI(KC_A),  select_slack, show_desktop     ,LGUI(KC_F),     TD(DANCE_42), _______,  LGUI(KC_H),     TD(DANCE_43),   TD(DANCE_44),   TD(DANCE_45),   _______,
+                                  TO(_BASE), LGUI(KC_Z),     LGUI(KC_X),     LGUI(KC_C),     RGUI(KC_V),     _______,  _______, TD(DANCE_46),   LGUI(KC_M),  _______, RSFT(LGUI(KC_K)), RCTL(RGUI(KC_Q)),
                                   _______, _______, _______,         LALT(KC_6),        _______,      ALT_TAB , _______,  LALT(KC_8),      _______,  OSL(_ADHOC_SET_HOTKEY), _______, _______
   ),
 
@@ -76,14 +77,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                     TO(_BASE),   RSFT(KC_Q),     RSFT(KC_W),     RSFT(KC_E),     RSFT(KC_R),     RSFT(KC_T),   _______,  RSFT(KC_Y),     RSFT(KC_U),     my_cap_i,     my_cap_o,     RSFT(KC_P),
                                     ESC_THEN_BASE_LAYER,          RSFT(KC_A),     RSFT(KC_S),     RSFT(KC_D),     RSFT(KC_F),     RSFT(KC_G),  _______,   my_cap_h,     my_cap_j,     my_cap_k,     my_cap_l,     TD(DANCE_55),
                                     SHIFTLOCK_LAYER_DEACTIVATE,          RSFT(KC_Z),     RSFT(KC_X),     RSFT(KC_C),     RSFT(KC_V),     RSFT(KC_B),   _______,  RSFT(KC_N),     my_cap_m,     KC_LABK,        KC_RABK,        KC_QUES,
-                                    _______, _______, _______, _______, _______, _______, KC_NO,          _______, _______, _______, _______, _______
+                                    _______, _______, _______, _______, _______, _______, KC_NO,      _______,    LOWER,  _______, _______, _______
   ),
 
   // 9
   [_WINMOVE] = LAYOUT_planck_grid(
                                   TO(_BASE),   _______, _______, _______, _______, _______, _______, RGUI(RSFT(KC_Y)),_______, _______, RGUI(RSFT(KC_O)),_______,
                                   _______, _______, _______, LALT(LGUI(LCTL(KC_D))),_______, _______, _______, TD(DANCE_58),   RGUI(RSFT(KC_J)),TD(DANCE_59),   TD(DANCE_60),   _______,
-                                  _______, _______, _______, _______, _______, _______, _______, RGUI(RSFT(KC_N)), TD(DANCE_47), _______, RGUI(RSFT(KC_DOT)),_______,
+                                  _______, _______, _______, KC_F11, _______, _______, _______, RGUI(RSFT(KC_N)), TD(DANCE_47), _______, RGUI(RSFT(KC_DOT)),_______,
                                   _______, _______, _______, _______, TO(0),          _______, KC_NO,        TD(DANCE_48),   TD(DANCE_49),   TD(DANCE_50),    _______, _______
   ),
 
@@ -121,7 +122,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_VIM_CMDS] = LAYOUT_planck_grid(
                                    TO(0), _______, LALT(KC_F),     _______, _______, _______, _______, RCTL(KC_Y),     _______, TO(0),          _______, RCTL(KC_V),
-                                   _______,          _______, _______, _______, _______, OSL(15),        TD(DANCE_62),  _______, TD(DANCE_63),   TD(DANCE_64),   TD(DANCE_65),   KC_LCBR,
+                                   _______,          _______, _______, _______, _______, OSL(15),        TD(DANCE_H),  _______, TD(DANCE_J),   TD(DANCE_64),   TD(DANCE_65),   KC_LCBR,
                                    _______, _______, TD(DANCE_66),   _______, _______, LALT(KC_B),     _______, TD(DANCE_67),    _______, _______, _______, _______,
     _______, _______, _______, _______,    _______, _______, _______, _______,    _______, _______, _______, _______
   ),

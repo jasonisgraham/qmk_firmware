@@ -54,9 +54,6 @@ enum planck_layers {
 #define key_4_11 KC_BSPACE //CYCLE_DROP_COLORS // LAYER_LOWER_HOLD
 #define key_4_12 KC_ENTER
 #define macro_alt_slash SS_RALT(SS_TAP(X_SLASH))
-#define my_a TD(DANCE_11)
-#define my_b KC_B
-#define my_c KC_C
 #define my_cap_h RSFT(KC_H)
 #define my_cap_i RSFT(KC_I)
 #define my_cap_j RSFT(KC_J)
@@ -64,20 +61,10 @@ enum planck_layers {
 #define my_cap_l RSFT(KC_L)
 #define my_cap_m RSFT(KC_M)
 #define my_cap_o RSFT(KC_O)
-#define my_comma TD(DANCE_23)
-#define my_d KC_D
-#define my_e TD(DANCE_3)
-#define my_f TD(DANCE_14)
+#define my_comma KC_COMMA // TD(DANCE_23)
 #define my_forward_slash TD(DANCE_25)
-#define my_g TD(DANCE_15)
-#define my_grave TD(DANCE_0)
-#define my_h KC_H
-#define my_i TD(DANCE_7)
-#define my_j TD(DANCE_16)
-#define my_k TD(DANCE_17)
-#define my_l TD(DANCE_18)
-#define my_lctl MT(MOD_RCTL, KC_ESCAPE)
 #define my_left_shift KC_LSFT
+#define my_lctl MT(MOD_RCTL, KC_ESCAPE)
 #define my_lower MO(_LOWER)
 #define my_lower MO(_LOWER)
 #define my_lower_comma TD(DANCE_29)
@@ -94,14 +81,10 @@ enum planck_layers {
 #define my_lower_period TD(DANCE_30)
 #define my_lower_semi esc_ctrl
 #define my_lower_slash SHIFTLOCK_LAYER_ACTIVATE
-#define my_m TD(DANCE_22)
-#define my_minus TD(DANCE_10)
-#define my_n TD(DANCE_21)
-#define my_o TD(DANCE_8)
-#define my_p TD(DANCE_9)
-#define my_period TD(DANCE_24)
-#define my_q TD(DANCE_1)
-#define my_r TD(DANCE_4)
+#define lower_LOWER TO(_BASE)
+#define lower_right_of_lower _______
+#define lower_key_4_11 _______
+#define lower_key_4_12 _______
 #define my_raise RAISE
 #define my_raise_comma KC_2
 #define my_raise_h KC_BSPACE
@@ -116,23 +99,52 @@ enum planck_layers {
 #define my_raise_period KC_3
 #define my_raise_u  KC_7
 #define my_right_shift KC_RSFT
-#define my_s TD(DANCE_12)
+
 #define my_semicolon TD(DANCE_19)
 #define my_singlequote TD(DANCE_20)
 #define my_space KC_SPACE
-#define my_space KC_SPACE
-#define my_t TD(DANCE_5)
-#define my_u TD(DANCE_6)
-#define my_v TD(DANCE_74)
-#define my_w TD(DANCE_2)
-#define my_x KC_X
-#define my_y KC_Y
-#define my_z KC_Z
+
+#define my_period KC_DOT
+#define my_minus _______
+#define my_grave TD(DANCE_0)
+
+#define WINDOWS_Q TD(DANCE_38)
+
+#define my_a TD(DANCE_A)
+#define my_b TD(DANCE_B)
+#define my_c TD(DANCE_C)
+#define my_d TD(DANCE_D)
+#define my_e TD(DANCE_E)
+#define my_f TD(DANCE_F)
+#define my_g TD(DANCE_G)
+#define my_h TD(DANCE_H)
+#define my_i TD(DANCE_I)
+#define my_j TD(DANCE_J)
+#define my_k TD(DANCE_K)
+#define my_l TD(DANCE_L)
+#define my_m TD(DANCE_M)
+#define my_n TD(DANCE_N)
+#define my_o TD(DANCE_O)
+#define my_p TD(DANCE_P)
+#define my_q TD(DANCE_Q)
+#define my_r TD(DANCE_R)
+#define my_s TD(DANCE_S)
+#define my_t TD(DANCE_T)
+#define my_u TD(DANCE_U)
+#define my_v TD(DANCE_V)
+#define my_w TD(DANCE_W)
+#define my_x TD(DANCE_X)
+#define my_y TD(DANCE_Y)
+#define my_z TD(Z_OR_SHIFT)
+
 #define right_of_lower esc_ctrl ///hyper // / MT(MOD_RCTL, KC_ESCAPE)
 #define select_slack LGUI(KC_S)
 #define show_desktop LALT(LGUI(LCTL(KC_D)))
-#define super KC_LGUI //TD(SUPER_WINDOWS)
-#define topright TD(DANCE_10)
+#define below_m MT(MOD_RCTL, KC_ESCAPE)
+/* #define super MT(MOD_LGUI, OSL(_WINDOWS)) //TD(SUPER_WINDOWS) */
+#define super KC_LGUI
+/* #define super TD(SUPER_WINDOWS) */
+#define topright _______
 #include "user_song_list.h"
 /* #define hyper KC_LCTL */
 /* #define key_4_12 KC_LCTL */
@@ -140,7 +152,6 @@ enum planck_layers {
 /* #define my_right_shift KC_ENTER */
 
 #include "keymaps.c"
-
 
 bool muse_mode = false;
 uint8_t last_muse_note = 0;
@@ -224,3 +235,66 @@ void leader_matrix_scan_user(void) {
 }
 
 #include "../../../common/combos.c"
+
+bool get_custom_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
+    switch(keycode) {
+        case KC_LPRN:
+            return true;
+        case KC_LCBR:
+            return true;
+        default:
+            return false;
+    }
+}
+
+void autoshift_press_user(uint16_t keycode, bool shifted, keyrecord_t *record) {
+    switch(keycode) {
+        case KC_LPRN:
+            register_code16((!shifted) ? KC_LPRN : KC_RPRN);
+            break;
+
+      case KC_LCBR:
+        register_code16((!shifted) ? KC_LCBR : KC_RCBR);
+        break;
+
+    case KC_LBRACKET:
+        register_code16((!shifted) ? KC_LBRACKET : KC_RBRACKET);
+        break;
+
+    case KC_TAB:
+      register_code16((!shifted) ? KC_TAB : RALT(KC_SLASH));
+      break;
+
+        default:
+            if (shifted) {
+                add_weak_mods(MOD_BIT(KC_LSFT));
+            }
+            // & 0xFF gets the Tap key for Tap Holds, required when using Retro Shift
+            register_code16((IS_RETRO(keycode)) ? keycode & 0xFF : keycode);
+    }
+}
+
+void autoshift_release_user(uint16_t keycode, bool shifted, keyrecord_t *record) {
+    switch(keycode) {
+        case KC_LPRN:
+            unregister_code16((!shifted) ? KC_LPRN : KC_RPRN);
+            break;
+        case KC_LCBR:
+          unregister_code16((!shifted) ? KC_LCBR : KC_RCBR);
+          break;
+
+    case KC_LBRACKET:
+      unregister_code16((!shifted) ? KC_LBRACKET : KC_RBRACKET);
+      break;
+
+    case KC_TAB:
+      unregister_code16((!shifted) ? KC_TAB : RALT(KC_SLASH));
+      break;
+
+        default:
+            // & 0xFF gets the Tap key for Tap Holds, required when using Retro Shift
+            // The IS_RETRO check isn't really necessary here, always using
+            // keycode & 0xFF would be fine.
+            unregister_code16((IS_RETRO(keycode)) ? keycode & 0xFF : keycode);
+    }
+}
