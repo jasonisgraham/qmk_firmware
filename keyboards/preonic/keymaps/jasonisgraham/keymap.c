@@ -5,7 +5,7 @@ enum planck_layers {
                     _BASE,
                     _LOWER,
                     _RAISE,
-                    _ADJUST,
+                    _HYPER,
                     _MOUSE,
                     _SYSTEM,
                     _WINDOWS,
@@ -32,6 +32,7 @@ enum planck_layers {
 
 #include "../../../common/keycodes.c"
 #include "../../../common/drop_tapdance.c"
+#include "../../../common/drop_colors.c"
 
 #define test KC_ASTR
 #define LOWER MO(_LOWER)
@@ -48,7 +49,7 @@ enum planck_layers {
 #define emacs_m EMACS_YAS_MAP_ANON
 #define emacs_r EMACS_YAS_REMOVE_ANON
 #define esc_ctrl MT(MOD_RCTL, KC_ESCAPE)
-#define hyper KC_LCTL // OSL(_WINDOWS)
+#define hyper LM(_HYPER, MOD_LCTL) //KC_LCTL // OSL(_WINDOWS)
 #define key_0_0 KC_LCTL
 #define key_0_1 RCTL(RALT(KC_RSFT))
 #define key_4_11 KC_BSPACE //CYCLE_DROP_COLORS // LAYER_LOWER_HOLD
@@ -63,7 +64,8 @@ enum planck_layers {
 #define my_cap_o RSFT(KC_O)
 #define my_comma KC_COMMA // TD(DANCE_23)
 #define my_forward_slash TD(DANCE_25)
-#define my_left_shift KC_LSFT
+#define my_left_shift KC_LSFT //  LM(_SHIFTLOCK, MOD_LSFT)
+
 #define my_lctl MT(MOD_RCTL, KC_ESCAPE)
 #define my_lower MO(_LOWER)
 #define my_lower MO(_LOWER)
@@ -98,7 +100,8 @@ enum planck_layers {
 #define my_raise_p KC_0
 #define my_raise_period KC_3
 #define my_raise_u  KC_7
-#define my_right_shift KC_RSFT
+#define my_right_shift KC_RSFT // shift LM(_ALT, MOD_LSFT)
+#define raise_semi KC_MINUS
 
 #define my_semicolon TD(DANCE_19)
 #define my_singlequote TD(DANCE_20)
@@ -111,6 +114,8 @@ enum planck_layers {
 #define WINDOWS_Q TD(DANCE_38)
 
 #define my_a TD(DANCE_A)
+#define preonic_a TD(PREONIC_A)
+#define preonic_z TD(PREONIC_Z)
 #define my_b TD(DANCE_B)
 #define my_c TD(DANCE_C)
 #define my_d TD(DANCE_D)
@@ -135,14 +140,16 @@ enum planck_layers {
 #define my_w TD(DANCE_W)
 #define my_x TD(DANCE_X)
 #define my_y TD(DANCE_Y)
-#define my_z TD(Z_OR_SHIFT)
+#define my_z TD(DANCE_Z)
 
-#define right_of_lower esc_ctrl ///hyper // / MT(MOD_RCTL, KC_ESCAPE)
+#define right_of_lower esc_ctrl  // my_left_shift ///hyper // / MT(MOD_RCTL, KC_ESCAPE)
 #define select_slack LGUI(KC_S)
 #define show_desktop LALT(LGUI(LCTL(KC_D)))
 #define below_m MT(MOD_RCTL, KC_ESCAPE)
-/* #define super MT(MOD_LGUI, OSL(_WINDOWS)) //TD(SUPER_WINDOWS) */
-#define super KC_LGUI
+#define super LM(_SUPER, MOD_LGUI) //TD(SUPER_WINDOWS)
+/* #define super KC_LGUI */
+/* #define alt  KC_LALT */
+#define alt LM(_ALT, MOD_LALT)
 /* #define super TD(SUPER_WINDOWS) */
 #define topright _______
 #include "user_song_list.h"
@@ -151,7 +158,7 @@ enum planck_layers {
 /* #define my_left_shift KC_LSPO */
 /* #define my_right_shift KC_ENTER */
 
-#include "keymaps.c"
+  #include "keymaps.c"
 
   bool muse_mode = false;
 uint8_t last_muse_note = 0;
@@ -186,27 +193,26 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
   return true;
 }
 
-bool dip_switch_update_user(uint8_t index, bool active) {
-  switch (index) {
-  case 0:
-    if (active) {
-      layer_on(_ADJUST);
-    } else {
-      layer_off(_ADJUST);
-    }
-    break;
-  case 1:
-    if (active) {
-      muse_mode = true;
-    } else {
-      muse_mode = false;
-    }
-  }
-  return true;
-}
+/* bool dip_switch_update_user(uint8_t index, bool active) { */
+/*     switch (index) { */
+/*         case 0: */
+/*             if (active) { */
+/*                 layer_on(_ADJUST); */
+/*             } else { */
+/*                 layer_off(_ADJUST); */
+/*             } */
+/*             break; */
+/*         case 1: */
+/*             if (active) { */
+/*                 muse_mode = true; */
+/*             } else { */
+/*                 muse_mode = false; */
+/*             } */
+/*     } */
+/*     return true; */
+/* } */
 
 
-#include "colors.c"
 
 LEADER_EXTERNS();
 
@@ -252,11 +258,140 @@ void autoshift_press_user(uint16_t keycode, bool shifted, keyrecord_t *record) {
   case KC_LPRN:
     register_code16((!shifted) ? KC_LPRN : KC_RPRN);
     break;
-  }
 
-  void autoshift_release_user(uint16_t keycode, bool shifted, keyrecord_t *record) {
-    switch(keycode) {
-    case KC_LPRN:
-      unregister_code16((!shifted) ? KC_LPRN : KC_RPRN);
-      break;
+  case KC_LCBR:
+    register_code16((!shifted) ? KC_LCBR : KC_RCBR);
+    break;
+
+  case KC_LBRACKET:
+    register_code16((!shifted) ? KC_LBRACKET : KC_RBRACKET);
+    break;
+
+  case KC_EXLM:
+    register_code16((!shifted) ? KC_EXLM : KC_1 );
+    break;
+
+  case KC_AT:
+    register_code16((!shifted) ? KC_AT : KC_2 );
+    break;
+
+  case KC_HASH:
+    register_code16((!shifted) ? KC_HASH : KC_3 );
+    break;
+
+  case KC_DLR:
+    register_code16((!shifted) ? KC_DLR : KC_4 );
+    break;
+
+  case KC_PERC:
+    register_code16((!shifted) ? KC_PERC : KC_5 );
+    break;
+
+  case KC_CIRC:
+    register_code16((!shifted) ? KC_CIRC : KC_6 );
+    break;
+
+  case KC_AMPR:
+    register_code16((!shifted) ? KC_AMPR : KC_7 );
+    break;
+
+  case KC_ASTR:
+    register_code16((!shifted) ? KC_ASTR : KC_8 );
+    break;
+
+  case KC_RPRN:
+    register_code16((!shifted) ? KC_RPRN : KC_0 );
+    break;
+
+
+  case KC_TAB:
+    register_code16((!shifted) ? KC_TAB : RALT(KC_SLASH));
+    break;
+
+  default:
+    if (shifted) {
+      add_weak_mods(MOD_BIT(KC_LSFT));
     }
+    // & 0xFF gets the Tap key for Tap Holds, required when using Retro Shift
+    register_code16((IS_RETRO(keycode)) ? keycode & 0xFF : keycode);
+  }
+}
+
+void autoshift_release_user(uint16_t keycode, bool shifted, keyrecord_t *record) {
+  switch(keycode) {
+  case KC_LPRN:
+    unregister_code16((!shifted) ? KC_LPRN : KC_RPRN);
+    break;
+  case KC_LCBR:
+    unregister_code16((!shifted) ? KC_LCBR : KC_RCBR);
+    break;
+
+  case KC_LBRACKET:
+    unregister_code16((!shifted) ? KC_LBRACKET : KC_RBRACKET);
+    break;
+
+  case KC_TAB:
+    unregister_code16((!shifted) ? KC_TAB : RALT(KC_SLASH));
+    break;
+
+  case KC_EXLM:
+    unregister_code16((!shifted) ? KC_EXLM : KC_1 );
+    break;
+
+  case KC_AT:
+    unregister_code16((!shifted) ? KC_AT : KC_4 );
+    break;
+
+  case KC_HASH:
+    unregister_code16((!shifted) ? KC_HASH : KC_3 );
+    break;
+
+  case KC_DLR:
+    unregister_code16((!shifted) ? KC_DLR : KC_4 );
+    break;
+
+  case KC_PERC:
+    unregister_code16((!shifted) ? KC_PERC : KC_5 );
+    break;
+
+  case KC_CIRC:
+    unregister_code16((!shifted) ? KC_CIRC : KC_6 );
+    break;
+
+  case KC_AMPR:
+    unregister_code16((!shifted) ? KC_AMPR : KC_7 );
+    break;
+
+  case KC_ASTR:
+    unregister_code16((!shifted) ? KC_ASTR : KC_8 );
+    break;
+
+  case KC_RPRN:
+    unregister_code16((!shifted) ? KC_RPRN : KC_0 );
+    break;
+
+  default:
+    // & 0xFF gets the Tap key for Tap Holds, required when using Retro Shift
+    // The IS_RETRO check isn't really necessary here, always using
+    // keycode & 0xFF would be fine.
+    unregister_code16((IS_RETRO(keycode)) ? keycode & 0xFF : keycode);
+  }
+}
+
+void oneshot_mods_changed_user(uint8_t mods) {
+  if (mods & MOD_MASK_SHIFT) {
+    println("Oneshot mods SHIFT");
+  }
+  if (mods & MOD_MASK_CTRL) {
+    println("Oneshot mods CTRL");
+  }
+  if (mods & MOD_MASK_ALT) {
+    println("Oneshot mods ALT");
+  }
+  if (mods & MOD_MASK_GUI) {
+    println("Oneshot mods GUI");
+  }
+  if (!mods) {
+    println("Oneshot mods off");
+  }
+}
