@@ -1,7 +1,12 @@
 SRC += muse.c
 
+
+UNICODE_ENABLE = yes
+# UCIS_ENABLE = yes
+# UNICODEMAP_ENABLE = yes
+
 AUDIO_ENABLE = yes
-CAPS_WORD_ENABLE = yes
+# CAPS_WORD_ENABLE = yes
 
 KEY_OVERRIDE_ENABLE = yes
 

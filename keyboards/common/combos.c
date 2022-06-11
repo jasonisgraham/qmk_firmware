@@ -3,6 +3,7 @@
 
 #include QMK_KEYBOARD_H
 
+const uint16_t PROGMEM combo_raise_lower_i[] = {raise_key_4_9, my_raise_i, COMBO_END};
 
 const uint16_t PROGMEM combo_period_semicolon[] = {my_period, my_semicolon, COMBO_END};
 
@@ -22,7 +23,7 @@ const uint16_t PROGMEM combo_perc[] = {my_space, my_k, COMBO_END};
 const uint16_t PROGMEM combo_circ[] = {my_space, my_l, COMBO_END};
 const uint16_t PROGMEM combo_ampr[] = {my_space, my_u, COMBO_END};
 const uint16_t PROGMEM combo_astr[] = {my_space,  my_i, COMBO_END};
-const uint16_t PROGMEM combo_osl_symbols[] = {my_j, my_l, COMBO_END};
+const uint16_t PROGMEM combo_osl_extended[] = {my_j, my_l, COMBO_END};
 const uint16_t PROGMEM combo_rofi_run_modal[] = {my_s,  my_d, my_f, COMBO_END};
 
 const uint16_t PROGMEM combo_lower_lprn[] = {LOWER, my_o, COMBO_END};
@@ -88,6 +89,7 @@ const uint16_t PROGMEM combo_f_d[] = {my_f, my_d, COMBO_END};
 const uint16_t PROGMEM combo_k_o[] = {my_k, my_o, COMBO_END};
 const uint16_t PROGMEM combo_k_l[] = {my_k, my_l, COMBO_END};
 const uint16_t PROGMEM combo_K_L[] = {my_cap_k, my_cap_l, COMBO_END};
+const uint16_t PROGMEM combo_windows_k_l[] = {windows_k, windows_l, COMBO_END};
 const uint16_t PROGMEM combo_raise_k_raise_l[] = {my_raise_k, my_raise_l, COMBO_END};
 const uint16_t PROGMEM combo_cap_j_cap_k_cap_l[] = {my_cap_j, my_cap_k, my_cap_l, COMBO_END};
 
@@ -214,6 +216,7 @@ const uint16_t PROGMEM combo_slack_show_desktop[] = {show_desktop, select_slack,
 
 const uint16_t PROGMEM combo_w_d[] = {my_w, my_d, COMBO_END};
 const uint16_t PROGMEM combo_r_g[] = {my_r, my_g, COMBO_END};
+const uint16_t PROGMEM combo_e_r[] = {my_e, my_r, COMBO_END};
 
 
 const uint16_t PROGMEM combo_raise_j_raise_i[] = {my_raise_j, my_raise_i, COMBO_END};
@@ -262,8 +265,8 @@ const uint16_t PROGMEM combo_hyper_slash[] = {LOWER, right_of_lower, my_forward_
 /* const combo_t  = COMBO(combo_topright_p_l, LCTL(KC_L)); */
 
 
-
 combo_t key_combos[COMBO_COUNT] = {
+                                   COMBO(combo_w_d, TO(_GAUTH)),
                                    COMBO(combo_r_t, KC_AGIN),
                                    COMBO(combo_lower_semicolon, RCTL(KC_C)),
 
@@ -288,7 +291,9 @@ combo_t key_combos[COMBO_COUNT] = {
                                    COMBO(combo_s_d, OSL(_WINDOWS)),
                                    COMBO(combo_w_e, OSL(_WINMOVE)),
 
+                                   COMBO(combo_windows_k_l, ALT_TAB),
                                    COMBO(combo_slack_show_desktop, ALT_TAB), // only active in WINDOWS layer. bad name.  alt-tab tho
+
                                      COMBO(combo_e_f, ALT_TAB),
 
                                    // emacs paste
@@ -429,7 +434,8 @@ combo_t key_combos[COMBO_COUNT] = {
                                    COMBO(combo_j_k, KC_ENTER),
                                    COMBO(combo_J_K, KC_ENTER),
 
-                                   COMBO(combo_period_semicolon, EMACS_COMMENT_READER)
+                                   COMBO(combo_period_semicolon, EMACS_COMMENT_READER),
+                                   COMBO(combo_e_r, MO(_ROFI)),
 
                                    /* COMBO(combo_windows_tab_q, RGUI(KC_ESCAPE)) */
                                    /* , */

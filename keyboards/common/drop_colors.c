@@ -65,6 +65,10 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     /* rgblight_mode(RGBLIGHT_MODE_KNIGHT); */
     break;
 
+  case _ROFI:
+    static_kinda_dim(HSV_BLUE);
+    break;
+
   case _RAISE:
     /* float x[][2] = SONG(ROCK_A_BYE_BABY); */
     /* PLAY_SONG(x);             /\*  *\/ */

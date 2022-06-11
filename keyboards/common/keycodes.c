@@ -34,6 +34,7 @@ enum custom_keycodes {
                       /* RGB_SLD = SAFE_RANGE, */
                       /* RGB_SLD = EZ_SAFE_RANGE, */
                       FIRST = SAFE_RANGE,
+                      EMACS_PROJECTILE_FIND_FILE,
                       EMACS_RE_FIND,
                       EMACS_BACKWARD_UP,
                       RESET_ANIMATION,
@@ -207,6 +208,20 @@ void cycle_rgblight_step(void) {
 bool do_breathing = false;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+#ifdef CONSOLE_ENABLE
+  if (record->event.pressed) {
+    uprintf("0x%04X,%u,%u,%u,%b,0x%02X,0x%02X,%u\n",
+            keycode,
+            record->event.key.row,
+            record->event.key.col,
+            get_highest_layer(layer_state),
+            record->event.pressed,
+            get_mods(),
+            get_oneshot_mods(),
+            record->tap.count
+            );
+  }
+#endif
   switch (keycode) {
 
 
@@ -450,6 +465,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case EMACS_YANK_TO:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_ESC) "yt");
+    }
+    break;
+
+  case EMACS_PROJECTILE_FIND_FILE:
+    if (record->event.pressed) {
+      SEND_STRING(SS_LALT(SS_TAP(X_M)) "pf");
     }
     break;
 
