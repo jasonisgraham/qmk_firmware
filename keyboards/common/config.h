@@ -1,5 +1,8 @@
 #pragma once
 
+#undef UNICODE_SELECTED_MODES
+#define UNICODE_SELECTED_MODES UC_LNX
+
 #include "song_list.h"
 #include "config_common.h"
 
