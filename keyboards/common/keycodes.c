@@ -9,6 +9,7 @@
 #define RAISE MO(_RAISE)
 #define MO_HYPER MO(KC_LCTL)
 #define CTRL_P RCTL(KC_P)
+#define CTRL_N RCTL(KC_N)
 #define CTRL_L RCTL(KC_P)
 #define HYPER_L LCTL(KC_L)
 #define CTRL_SEMICOLON RCTL(KC_SCOLON)
@@ -106,7 +107,8 @@ enum custom_keycodes {
                       RGBLIGHT_TOGGLE,
                       TMUX_COPY_MODE,
                       TMUX_CLOSE,
-                      TERM_CD_UP_DIR
+                      TERM_CD_UP_DIR,
+                      CLEAR_THAT_REPL,
 };
 
 #define max_buffer RALT(KC_ENTER)
@@ -260,6 +262,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     break;
 
+
+  case CLEAR_THAT_REPL:
+    if (record->event.pressed) {
+      SEND_STRING(SS_RCTL(SS_TAP(X_A)) SS_RCTL(SS_TAP(X_K)) SS_RCTL(SS_TAP(X_L)));
+    }
+    break;
 
   case CYCLE_RGBLIGHT_STEP:
     if (record->event.pressed) {
@@ -556,7 +564,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       /* rgblight_mode(RGBLIGHT_MODE_SNAKE); */
       rgblight_mode(18);
       rgblight_enable_noeeprom();
-      rgblight_sethsv_noeeprom(HSV_RED);
+      rgblight_sethsv_noeeprom(HSV_PURPLE);
 
       return false;
 

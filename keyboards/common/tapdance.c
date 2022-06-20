@@ -95,7 +95,7 @@ void t_tab_h_windows_dt_tic_th_tilde_finished(qk_tap_dance_state_t *state, void 
     switch (dance_state[0].step) {
         case SINGLE_TAP: register_code16(KC_TAB); break;
         case SINGLE_HOLD: layer_on(5); break;
-        case DOUBLE_TAP: register_code16(KC_GRAVE); break;
+    case DOUBLE_TAP: register_code16(KC_GRAVE); break;
         case DOUBLE_HOLD: register_code16(KC_TILD); break;
         case DOUBLE_SINGLE_TAP: tap_code16(KC_TAB); register_code16(KC_TAB);
     }

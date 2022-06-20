@@ -92,6 +92,10 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     static_kinda_dim(HSV_YELLOW);
     break;
 
+  case _DIAMOND:
+    static_kinda_dim(HSV_PINK);
+    break;
+
 
   case _ALT:
     static_kinda_dim(HSV_GREEN);
@@ -152,7 +156,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
   /*   break; */
 
   case _EDITING:
-    static_kinda_dim(HSV_BLUE);
+    static_kinda_dim(HSV_WHITE);
     break;
 
   case _WINMOVE:
