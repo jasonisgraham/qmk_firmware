@@ -1,4 +1,4 @@
-#include "muse.h"
+/* #include "muse.h" */
 
 
 #include QMK_KEYBOARD_H
@@ -125,6 +125,7 @@ const uint16_t PROGMEM combo_shiftlok[] = {my_left_shift, my_forward_slash, COMB
 /* const uint16_t PROGMEM combo_opening_curly[] = {my_o, my_p, COMBO_END}; */
 
 const uint16_t PROGMEM combo_l_semicolon[] = {my_l, my_semicolon, COMBO_END}; // [
+
 const uint16_t PROGMEM combo_l_p[] = {my_l, my_p, COMBO_END}; // [
 const uint16_t PROGMEM combo_comma_m[] = {my_m, my_comma, COMBO_END}; // [
 const uint16_t PROGMEM combo_l_semicolon_k[] = {my_k, my_l, my_semicolon, COMBO_END}; // {
@@ -162,6 +163,11 @@ const uint16_t PROGMEM combo_u_i[] = {my_u, my_i, COMBO_END};
 const uint16_t PROGMEM combo_raise_u_raise_i[] = {my_raise_i, my_raise_u, COMBO_END};
 
 const uint16_t PROGMEM combo_4_11_4_12[] = {key_4_11, key_4_12, COMBO_END};
+const uint16_t PROGMEM combo_4_10_4_12[] = {key_4_10, key_4_12, COMBO_END};
+const uint16_t PROGMEM combo_4_10_4_11[] = {key_4_10, key_4_11, COMBO_END};
+const uint16_t PROGMEM combo_4_10_4_11_4_12[] = {key_4_10, key_4_11, key_4_12, COMBO_END};
+
+
 
 
 const uint16_t PROGMEM combo_u_o[] = {my_u, my_o, COMBO_END};
@@ -208,6 +214,9 @@ const uint16_t PROGMEM combo_m_comma[] = {my_m, my_comma, COMBO_END};
 const uint16_t PROGMEM combo_v_d[] = {my_v, my_d, COMBO_END};
 const uint16_t PROGMEM combo_v_c[] = {my_v, my_c, COMBO_END};
 const uint16_t PROGMEM combo_d_f[] = {my_d, my_f, COMBO_END};
+const uint16_t PROGMEM combo_raise_d_raise_f[] = {my_raise_d, my_raise_f, COMBO_END};
+
+
 
 const uint16_t PROGMEM combo_topright_l[] = {topright, my_l, COMBO_END};
 const uint16_t PROGMEM combo_topright_p_l[] = {topright, my_l, my_p, COMBO_END};
@@ -272,6 +281,11 @@ const uint16_t PROGMEM combo_hyper_slash[] = {LOWER, right_of_lower, my_forward_
 
 
 combo_t key_combos[COMBO_COUNT] = {
+                                   COMBO(combo_4_10_4_12, KC_RIGHT),
+                                   COMBO(combo_4_11_4_12, KC_RIGHT),
+                                   COMBO(combo_4_10_4_11, KC_LEFT),
+                                   COMBO(combo_4_10_4_11_4_12, RCTL(KC_C)),
+                                   COMBO(combo_l_semicolon, RCTL(KC_C)),
                                    COMBO(combo_l_p, CLEAR_THAT_REPL),
 
                                    COMBO(combo_w_d, TO(_GAUTH)),
@@ -282,14 +296,15 @@ combo_t key_combos[COMBO_COUNT] = {
 
                                    /* COMBO(combo_shift_alt, AUDIO_LAYER_HOLD), */
                                    COMBO(combo_LOWER_o_p, SYSTEM_LAYER_ACTIVATE),
-                                   COMBO(combo_LOWER_m_comma, TO(_MOUSE)),
+                                   COMBO(combo_LOWER_m_comma, LAYER_MOUSE_HOLD),
                                    COMBO(combo_LOWER_l_semi, LAYER_RAISE_HOLD),
                                    COMBO(combo_LOWER_period_slash, LAYER_LOWER_HOLD),
                                    COMBO(combo_LOWER_lower_lower_period_lower_slash, TO(_BASE)),
 
 
-                                   COMBO(combo_h_u, RCTL(KC_QUOT)),
-                                   COMBO(combo_j_n, KC_ESC),
+                                   COMBO(combo_h_u, TD(DANCE_SAVE_LOAD_NS_SWITCH)),
+                                   // COMBO(combo_j_n, KC_GRV),
+                                   COMBO(combo_j_n, KC_GRV),
                                    COMBO(combo_raise_h_raise_j, KC_DELETE),
                                    /* COMBO(combo_lower_semicolon, RCTL(KC_SCOLON)), */
                                    COMBO(combo_my_raise_g, OSL(_MACROS)),
@@ -314,6 +329,7 @@ combo_t key_combos[COMBO_COUNT] = {
                                    //
                                    /* COMBO(combo_e_f, KC_TAB), */
                                    COMBO(combo_d_f, KC_TAB),
+                                   COMBO(combo_raise_d_raise_f, LSFT(KC_TAB)),
                                    /* COMBO(combo_topright_p_l, CTRL_P), */
 
                                    COMBO(combo_raise_u_raise_i, KC_DQUO),
@@ -336,7 +352,9 @@ combo_t key_combos[COMBO_COUNT] = {
 
 
                                    COMBO(combo_lower__j_i, KC_F),
+                                   // COMBO(combo_lower__j_i, EMACS_EVIL_FIND),
                                    COMBO(combo_lower_comma_l, KC_TILD),
+                                   /* COMBO(combo_lower_comma_l, KC_TILD), */
                                    COMBO(combo_lower__comma_l, TERM_HOME),
                                    COMBO(combo_lower_k_raise_l, KC_UNDS),
 
@@ -375,7 +393,7 @@ combo_t key_combos[COMBO_COUNT] = {
                                   COMBO(combo_raise_j_raise_k, FISH_ACCEPT_SEND),
 
                                    COMBO(combo_lower_lprn, KC_LPRN),
-                                   COMBO(combo_lower_rprn, ALT_TAB),
+                                   /* COMBO(combo_lower_rprn, ALT_TAB), */
                                    COMBO(combo_lower_exlm, KC_EXLM),
                                    COMBO(combo_lower_at, KC_AT),
                                    COMBO(combo_lower_hash, KC_HASH),
@@ -399,7 +417,6 @@ combo_t key_combos[COMBO_COUNT] = {
                                    COMBO(combo_o_p, CTRL_P),
                                    COMBO(combo_shiftlok, CAPS_WORD),
 
-                                   /* COMBO(combo_4_11_4_12, RBG_HUI), */
 
                                    COMBO(combo_raise_d_f, ALT_TAB),
 

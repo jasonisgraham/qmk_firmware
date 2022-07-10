@@ -61,7 +61,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
   case _LOWER:
     rgblight_enable_noeeprom();
     rgblight_mode(default_rgblight_mode);
-    rgblight_sethsv_noeeprom(HSV_PURPLE);
+    rgblight_sethsv_noeeprom(HSV_RED);
     /* rgblight_mode(RGBLIGHT_MODE_KNIGHT); */
     break;
 
@@ -92,7 +92,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     static_kinda_dim(HSV_YELLOW);
     break;
 
-  case _DIAMOND:
+  case _MENU:
     static_kinda_dim(HSV_PINK);
     break;
 
@@ -122,11 +122,11 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     break;
 
 
-  case 7:
+  case _MACROS:
     static_kinda_dim(HSV_PINK);
     break;
 
-  case 8:
+  case _SHIFTLOCK:
     // shiftlok
     rgblight_enable_noeeprom();
     rgblight_mode(RGBLIGHT_MODE_STATIC_LIGHT);
@@ -163,14 +163,14 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     static_kinda_dim(HSV_SPRINGGREEN);
     break;
 
-  case 16:
+  case _COLORS:
     rgblight_mode(default_rgblight_mode);
     rgblight_enable_noeeprom();
     /* rgblight_mode(RGBLIGHT_MODE_BREATHING); */
     /* rgblight_sethsv_noeeprom(HSV_GREEN); */
     break;
 
-  case 19:
+  case _LAYER19:
     rgblight_mode(RGBLIGHT_MODE_SNAKE);
     rgblight_enable_noeeprom();
     rgblight_sethsv_noeeprom(HSV_CORAL);
@@ -178,19 +178,19 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     /* rgblight_sethsv_noeeprom(HSV_GREEN); */
     break;
 
-  case 20:
+  case _EMACS_SEL_WINDOW:
     rgblight_mode(RGBLIGHT_MODE_SNAKE);
     rgblight_enable_noeeprom();
     rgblight_sethsv_noeeprom(HSV_AZURE);
     break;
 
-  case 21:
+  case _GAUTH:
     rgblight_mode(RGBLIGHT_MODE_SNAKE);
     rgblight_enable_noeeprom();
     rgblight_sethsv_noeeprom(HSV_WHITE);
     break;
 
-  case 22:
+  case _AUDIO:
     rgblight_enable_noeeprom();
     rgblight_mode(RGBLIGHT_MODE_SNAKE);
     rgblight_sethsv_noeeprom(HSV_GREEN);

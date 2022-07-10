@@ -1,7 +1,7 @@
 #include QMK_KEYBOARD_H
 #include "user_song_list.c"
 #include "version.h"
-#include "muse.h"
+/* #include "muse.h" */
 
 #include "../../quantum/hacks.c"
 
@@ -35,6 +35,7 @@ enum custom_keycodes {
                       /* RGB_SLD = SAFE_RANGE, */
                       /* RGB_SLD = EZ_SAFE_RANGE, */
                       FIRST = SAFE_RANGE,
+                      EMACS_EVIL_FIND,
                       EMACS_PROJECTILE_FIND_FILE,
                       EMACS_RE_FIND,
                       EMACS_BACKWARD_UP,
@@ -69,6 +70,7 @@ enum custom_keycodes {
                       EMACS_SEL_4,
                       EMACS_SEL_5,
                       EMACS_SEL_6,
+                      LAYER_MOUSE_HOLD,
                       EMACS_SEL_7,
                       EMACS_SEL_8,
                       EMACS_SEL_9,
@@ -265,7 +267,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   case CLEAR_THAT_REPL:
     if (record->event.pressed) {
-      SEND_STRING(SS_RCTL(SS_TAP(X_A)) SS_RCTL(SS_TAP(X_K)) SS_RCTL(SS_TAP(X_L)));
+      /* SEND_STRING(SS_RCTL(SS_TAP(X_A)) SS_RCTL(SS_TAP(X_K)) SS_RCTL(SS_TAP(X_L))); */
+      SEND_STRING(SS_RCTL(SS_TAP(X_L)));
     }
     break;
 
@@ -476,6 +479,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     break;
 
+
+  case EMACS_EVIL_FIND:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_ESC) "f");
+    }
+    break;
+
+
   case EMACS_PROJECTILE_FIND_FILE:
     if (record->event.pressed) {
       SEND_STRING(SS_LALT(SS_TAP(X_M)) "pf");
@@ -570,6 +581,22 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     }
     break;
+
+  case LAYER_MOUSE_HOLD:
+    if (record->event.pressed) {
+      /* PLAY_SONG(minor_sound); */
+      layer_move(_MOUSE);
+
+      /* rgblight_mode(RGBLIGHT_MODE_SNAKE); */
+      rgblight_mode(18);
+      rgblight_enable_noeeprom();
+      rgblight_sethsv_noeeprom(HSV_GREEN);
+
+      return false;
+
+    }
+    break;
+
 
   case LPRN_LIT :
     if (record->event.pressed) {

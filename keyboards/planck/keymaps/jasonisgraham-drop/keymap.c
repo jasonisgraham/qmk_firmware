@@ -1,6 +1,6 @@
 #include QMK_KEYBOARD_H
-#include "muse.h"
-#include "keymap_us_extended.h"
+/* #include "muse.h" */
+/* #include "keymap_us_extended.h" */
 
 enum planck_layers {
                     _BASE,
@@ -8,6 +8,8 @@ enum planck_layers {
                     _RAISE,
                     _HYPER,
                     _BOTH,
+                    _MENU,
+                    _DIAMOND,
                     _SYSTEM,
                     _WINDOWS,
                     _MACROS,
@@ -17,7 +19,7 @@ enum planck_layers {
                     _SUPER,
                     _EDITING,
                     _LAYER13,
-                    _VIM_CMDS,
+                    _CTRL,
                     _MOUSE,
                     _COLORS,
                     _LAYER17,
@@ -31,8 +33,6 @@ enum planck_layers {
                     _ADHOC_SET_HOTKEY,
                     _ROFI,
                     _EXTENDED,
-                    _MENU,
-                    _DIAMOND
 };
 
 /* #include "../../../common/config.h" */
@@ -41,7 +41,7 @@ enum planck_layers {
 #include "../../../common/keycodes.c"
 #include "../../../common/key_overrides.c"
 #include "../../../common/drop_tapdance.c"
-#include "../../../common/drop_colors.c"
+/* #include "../../../common/drop_colors.c" */
 
 #define test KC_ASTR
 #define LOWER MO(_LOWER)
@@ -60,6 +60,7 @@ enum planck_layers {
 #define hyper LM(_HYPER, MOD_LCTL) //KC_LCTL // OSL(_WINDOWS)
 #define key_0_0 KC_LCTL
 #define key_0_1 RCTL(RALT(KC_RSFT))
+#define key_4_10 OSL(_EDITING)
 #define key_4_11 KC_DOWN //CYCLE_DROP_COLORS // LAYER_LOWER_HOLD
 #define key_4_12 KC_UP
 #define macro_alt_slash SS_RALT(SS_TAP(X_SLASH))
@@ -70,7 +71,7 @@ enum planck_layers {
 #define my_cap_l RSFT(KC_L)
 #define my_cap_m RSFT(KC_M)
 #define my_cap_o RSFT(KC_O)
-#define my_comma KC_COMMA //
+#define my_comma TD(DANCE_COMMA) //KC_COMMA //
 #define my_forward_slash TD(DANCE_25)
 #define my_left_shift KC_LSFT //  LM(_SHIFTLOCK, MOD_LSFT)
 
@@ -92,7 +93,7 @@ enum planck_layers {
 #define my_lower_p TD(WWW_BACK_FORWARD)
 #define my_lower_bs KC_DEL
 #define my_lower_period TD(DANCE_30)
-#define my_lower_semi KC_PLUS //esc_ctrl
+#define my_lower_semi esc_ctrl
 #define my_lower_slash SHIFTLOCK_LAYER_ACTIVATE
 #define lower_LOWER TO(_BASE)
 #define lower_right_of_lower _______
@@ -103,6 +104,8 @@ enum planck_layers {
 #define my_raise RAISE
 #define my_raise_top_right KC_DEL // TD(WWW_BACK_FORWARD)
 #define my_raise_comma KC_2
+#define my_raise_d _______ //kc_bspace
+#define my_raise_f RALT(KC_ENTER)
 #define my_raise_h KC_MINUS //KC_BSPACE
 #define my_raise_i KC_8
 #define my_raise_j KC_4
@@ -188,9 +191,14 @@ const uint32_t PROGMEM unicode_map[] = {
 
 #define snek X(SNEK)
 
-#define super_meta_hyper LGUI(LALT(KC_LCTL))
+#define super_meta_hyper LM(_MENU, MOD_LGUI | MOD_LCTL | MOD_LALT)
 
 #define all_mods LM(_BOTH, MOD_LGUI | MOD_LCTL | MOD_LALT | MOD_RCTL | MOD_LSFT)
+
+#define scroll_next my_lower_u
+#define scroll_prev my_lower_i
+#define next_win_or_frame RALT(RSFT(KC_N))
+#define prev_win_or_frame RALT(RSFT(KC_P))
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -198,7 +206,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                              my_grave,    my_q,    my_w,    my_e,    my_r,    my_t, KC_MINUS,    my_y,           my_u,    my_i,    my_o,     my_p,
                              my_lctl , my_a,   my_s,   my_d,   my_f,   my_g, KC_BSPACE,  my_h,         my_j,   my_k,   my_l,   my_semicolon,
                              my_left_shift,        my_z,           my_x,           my_c,           my_v,           my_b, KC_QUOT,     my_n,   my_m,   my_comma,   my_period,   my_forward_slash,
-                             hyper, super_meta_hyper , all_mods , alt, RAISE,  super, alt,  my_space,           LOWER,          OSL(_EDITING),   key_4_11,  key_4_12
+                             hyper, super_meta_hyper , all_mods , alt, RAISE,  super, my_lctl,  my_space,           LOWER,          key_4_10,   key_4_11,  key_4_12
                               ),
 
 
@@ -212,8 +220,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                               ),
 
 [_RAISE] = LAYOUT_planck_grid(
-                              _______,   _______,          EMACS_OTHER_WINDOW,     KC_END,         EMACS_BUFFER_REVERT,      _______,  KC_EQL,          my_raise_y, my_raise_u,           my_raise_i,           my_raise_o,           my_raise_p,
-                              _______, _______, _______,  _______, RALT(KC_ENTER),  OSL(7), KC_DEL,       my_raise_h,         my_raise_j,           my_raise_k,           my_raise_l,           raise_semi,
+                              LSFT(KC_TAB),    _______,          EMACS_OTHER_WINDOW,     KC_END,         EMACS_BUFFER_REVERT,      _______,  KC_EQL,          my_raise_y, my_raise_u,           my_raise_i,           my_raise_o,           my_raise_p,
+                              _______, _______, _______,  my_raise_d, my_raise_f,  OSL(_MACROS), KC_DEL,       my_raise_h,         my_raise_j,           my_raise_k,           my_raise_l,           raise_semi,
                               _______, _______, _______,_______,   _______,          FISH_ACCEPT_SEND, KC_GRV,     my_raise_n,           my_raise_m,           my_raise_comma,         KC_3,           KC_QUES,
                               _______, _______, _______,        _______,        _______, _______,  MO(_ROFI) ,       KC_BSPACE,   raise_key_4_9,       KC_0,  _______,         TO(_BASE)
 
@@ -264,7 +272,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                 _______, WINDOWS_Q,   TD(DANCE_39),   LGUI(KC_E),     TD(DANCE_40),   LGUI(KC_T), LGUI(KC_MINUS),  LGUI(KC_Y),   LGUI(KC_7),        LGUI(KC_8),     LGUI(KC_9),     LGUI(KC_0),
                                 RGUI(KC_ESCAPE), LGUI(KC_A),  select_slack, show_desktop     ,LGUI(KC_F),      _______, TD(DANCE_42),  LGUI(KC_H),     TD(DANCE_43),   windows_k,   windows_l,   _______,
                                 TO(_BASE), LGUI(KC_Z),     LGUI(KC_X),     LGUI(KC_C),     RGUI(KC_V),    _______, LGUI(KC_MINUS), TD(DANCE_46),   LGUI(KC_M),  _______, RSFT(LGUI(KC_K)), RCTL(RGUI(KC_Q)),
-                                _______, _______, _______,         LALT(KC_6),        _______,     _______,   ALT_TAB , LALT(KC_8),      _______,  ALT_TAB, _______, _______
+                                _______, _______, _______,         _______,        _______,     _______,   ALT_TAB , LALT(KC_8),      _______,  ALT_TAB, _______, _______
                                 ),
 
 // 7
@@ -303,9 +311,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // 11
 [_SUPER] = LAYOUT_planck_grid(
-                              _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
-                              _______, _______, _______, _______, _______, _______,   _______, _______, _______, _______, _______, _______,
-                              _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+                              _______, _______, _______, _______, _______, _______,    KC_TILD, KC_GRV,  _______, _______, _______, _______,
+                              _______, _______, _______, _______, _______, _______,    LSFT(KC_TAB), KC_TAB,  _______, _______, _______, _______,
+                              _______, _______, _______, _______,    _______, _______, _______, _______,    _______, _______, _______, _______,
                               _______, _______, _______, _______,    _______, _______, _______, _______,    _______, _______, _______, _______
 
                               ),
@@ -313,10 +321,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // 12
 [_EDITING] = LAYOUT_planck_grid(
-                                _______, _______, EMACS_OTHER_WINDOW,     LCTL(KC_E), EMACS_BUFFER_REVERT,     _______, _______, EMACS_COPY_FILE_PATH, my_lower_u,     my_lower_i, EMACS_OTHER_WINDOW, EMACS_PROJECTILE_FIND_FILE,
-                                _______, _______, _______, _______, RALT(KC_ENTER), _______, RCTL(KC_QUOTE), RALT(RSFT(KC_H)),RALT(RSFT(KC_J)),RALT(RSFT(KC_K)),RALT(RSFT(KC_L)), LCTL(KC_L),
-                                _______, _______, _______, EMACS_WINDOW_CLOSE,    KC_F12, _______, _______,  RALT(RSFT(KC_N)), EMACS_ACE_WINDOW_SWAP,  LCTL(RALT(KC_H)), LCTL(RALT(KC_L)), TERM_CD_UP_DIR,
-                                _______, _______, _______, _______, KC_HYPR,  _______, _______,  KC_NO,          RALT(KC_ENTER), _______, _______, _______
+                                _______, _______, EMACS_OTHER_WINDOW,     _______, EMACS_BUFFER_REVERT,     _______, _______, EMACS_COPY_FILE_PATH, scroll_next,     scroll_prev, EMACS_OTHER_WINDOW, EMACS_PROJECTILE_FIND_FILE,
+                                _______, _______, _______, _______, RALT(KC_ENTER), _______, _______, RALT(RSFT(KC_H)), RALT(RSFT(KC_J)),RALT(RSFT(KC_K)),RALT(RSFT(KC_L)), EMACS_COMMENT_READER,
+                                _______, _______, _______, EMACS_WINDOW_CLOSE,    KC_F12, _______, _______,  next_win_or_frame, EMACS_ACE_WINDOW_SWAP,  _______, _______, TERM_CD_UP_DIR,
+                                _______, _______, _______, _______, KC_HYPR,  _______, _______,  KC_NO,          KC_LCTL, _______, _______, _______
 
                                 ),
 
@@ -324,10 +332,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                              _______, _______, _______, _______, _______,    _______, _______, _______, LALT(KC_7), LALT(KC_8), LALT(KC_9), _______,
                              _______, _______, _______, _______, _______,   _______, _______, _______, LALT(KC_4), LALT(KC_5), LALT(KC_6),_______,
                              _______, _______, _______, _______, _______, _______, _______, _______, LALT(KC_1), LALT(KC_2), LALT(KC_3),_______,
-                             _______, _______, _______,    _______, _______, _______, TO(_BASE), RGUI(KC_SPC),    _______, _______, _______,_______
+                             _______, _______, _______,    _______, _______, _______, TO(_BASE), RALT(RGUI(KC_SPC)),    _______, _______, _______,_______
                              ),
 
-[_DIAMOND] = LAYOUT_planck_grid(
+[_MENU] = LAYOUT_planck_grid(
                                 _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
                                 _______, _______, _______, _______, _______, _______,   _______, _______, _______, _______, _______, _______,
                                 _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
@@ -335,11 +343,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                 ),
 
 
-[_VIM_CMDS] = LAYOUT_planck_grid(
-                                 _______, _______, LALT(KC_F),     _______, _______, _______, _______, RCTL(KC_Y),     _______, TO(0),          _______, RCTL(KC_V),
-                                 _______,          _______, _______, _______, _______, OSL(15),        TD(DANCE_H),  _______, TD(DANCE_J),   TD(DANCE_64),   TD(DANCE_65),   KC_LCBR,
-                                 _______, _______, TD(DANCE_66),   _______, _______, LALT(KC_B),     _______, TD(DANCE_67),    _______, _______, _______, _______,
-                                 _______, _______, _______, _______,    _______, _______, _______, _______,    _______, _______, _______, _______
+[_CTRL] = LAYOUT_planck_grid(
+                             _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
+                             _______, _______, _______, _______, _______, _______,   _______, _______, _______, _______, _______, _______,
+                             _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+                             _______, _______, _______, _______,    _______, _______, _______, _______,    _______, _______, _______, _______
                                  ),
 
 [_MOUSE] = LAYOUT_planck_grid(
@@ -376,8 +384,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_GAUTH] = LAYOUT_planck_grid(
                                  TO(_BASE), _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
-                                 _______, US_AE, US_SECT, _______, _______, _______,   _______, _______, US_QRTR, _______, _______, US_NOT,
-                                 _______, _______, _______, US_CENT, _______, _______, _______, _______, US_IEXL, US_HALF, US_TQTR, US_IQUE,
+                                 _______, _______, _______, _______,    _______, _______, _______, _______,    _______, _______, _______, _______,
+                                 _______, _______, _______, _______,    _______, _______, _______, _______,    _______, _______, _______, _______,
                                  _______, _______, _______, _______,    _______, _______, _______, _______,    _______, _______, _______, _______
                                  ),
 
@@ -407,7 +415,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                          _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
                                          _______, _______, _______, _______,    _______, _______, _______, LCTL(RALT(RGUI(KC_N))),    _______, _______, _______,  _______
                                          ),
-[_MENU] = LAYOUT_planck_grid(
+[_DIAMOND] = LAYOUT_planck_grid(
                               _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
                               _______, _______, _______, _______, _______, _______,   _______, _______, _______, _______, _______, _______,
                               _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
@@ -421,38 +429,38 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 
-bool muse_mode = false;
-uint8_t last_muse_note = 0;
-uint16_t muse_counter = 0;
-uint8_t muse_offset = 70;
-uint16_t muse_tempo = 50;
+/* bool muse_mode = false; */
+/* uint8_t last_muse_note = 0; */
+/* uint16_t muse_counter = 0; */
+/* uint8_t muse_offset = 70; */
+/* uint16_t muse_tempo = 50; */
 
-bool encoder_update_user(uint8_t index, bool clockwise) {
-  if (muse_mode) {
-    if (IS_LAYER_ON(_RAISE)) {
-      if (clockwise) {
-        muse_offset++;
-      } else {
-        muse_offset--;
-      }
-    } else {
-      if (clockwise) {
-        muse_tempo+=1;
-      } else {
-        muse_tempo-=1;
-      }
-    }
-  } else {
-    if (clockwise) {
-      register_code(KC_PGDN);
-      unregister_code(KC_PGDN);
-    } else {
-      register_code(KC_PGUP);
-      unregister_code(KC_PGUP);
-    }
-  }
-  return true;
-}
+/* bool encoder_update_user(uint8_t index, bool clockwise) { */
+/*   if (muse_mode) { */
+/*     if (IS_LAYER_ON(_RAISE)) { */
+/*       if (clockwise) { */
+/*         muse_offset++; */
+/*       } else { */
+/*         muse_offset--; */
+/*       } */
+/*     } else { */
+/*       if (clockwise) { */
+/*         muse_tempo+=1; */
+/*       } else { */
+/*         muse_tempo-=1; */
+/*       } */
+/*     } */
+/*   } else { */
+/*     if (clockwise) { */
+/*       register_code(KC_PGDN); */
+/*       unregister_code(KC_PGDN); */
+/*     } else { */
+/*       register_code(KC_PGUP); */
+/*       unregister_code(KC_PGUP); */
+/*     } */
+/*   } */
+/*   return true; */
+/* } */
 
 
 
@@ -487,18 +495,6 @@ void autoshift_press_user(uint16_t keycode, bool shifted, keyrecord_t *record) {
     register_code16((!shifted) ? KC_TAB : RALT(KC_SLASH));
     break;
 
-  case US_HALF:
-    register_code16((!shifted) ? US_HALF : US_LDAQ);
-    break;
-
-  case US_TQTR:
-    register_code16((!shifted) ? US_TQTR : US_RDAQ);
-    break;
-
-  case US_IQUE:
-    register_code16((!shifted) ? US_IQUE : US_BRKP);
-    break;
-
 
   default:
     if (shifted) {
@@ -517,9 +513,6 @@ void autoshift_release_user(uint16_t keycode, bool shifted, keyrecord_t *record)
   case KC_LCBR:
     unregister_code16((!shifted) ? KC_LCBR : KC_RCBR);
     break;
-  case US_IQUE:
-    unregister_code16((!shifted) ? US_IQUE : US_BRKP);
-    break;
 
   case KC_LBRACKET:
     unregister_code16((!shifted) ? KC_LBRACKET : KC_RBRACKET);
@@ -527,14 +520,6 @@ void autoshift_release_user(uint16_t keycode, bool shifted, keyrecord_t *record)
 
   case KC_TAB:
     unregister_code16((!shifted) ? KC_TAB : RALT(KC_SLASH));
-    break;
-
-  case US_HALF:
-    unregister_code16((!shifted) ? US_HALF : US_LDAQ);
-    break;
-
-  case US_TQTR:
-    unregister_code16((!shifted) ? US_TQTR : US_RDAQ);
     break;
 
   default:
@@ -545,20 +530,25 @@ void autoshift_release_user(uint16_t keycode, bool shifted, keyrecord_t *record)
   }
 }
 
-void oneshot_mods_changed_user(uint8_t mods) {
-  if (mods & MOD_MASK_SHIFT) {
-    println("Oneshot mods SHIFT");
-  }
-  if (mods & MOD_MASK_CTRL) {
-    println("Oneshot mods CTRL");
-  }
-  if (mods & MOD_MASK_ALT) {
-    println("Oneshot mods ALT");
-  }
-  if (mods & MOD_MASK_GUI) {
-    println("Oneshot mods GUI");
-  }
-  if (!mods) {
-    println("Oneshot mods off");
-  }
-}
+/* void oneshot_mods_changed_user(uint8_t mods) { */
+/*   if (mods & MOD_MASK_SHIFT) { */
+/*     /\* println("Oneshot mods SHIFT"); *\/ */
+/*     static_kinda_dim(HSV_RED); */
+/*   } */
+/*   if (mods & MOD_MASK_CTRL) { */
+/*     static_kinda_dim(HSV_YELLOW); */
+
+/*     println("Oneshot mods CTRL"); */
+/*   } */
+/*   if (mods & MOD_MASK_ALT) { */
+/*     println("Oneshot mods ALT"); */
+/*   } */
+/*   if (mods & MOD_MASK_GUI) { */
+/*     println("Oneshot mods GUI"); */
+/*   } */
+/*   if (!mods) { */
+/*     rgblight_disable(); */
+
+/*     println("Oneshot mods off"); */
+/*   } */
+/* } */
