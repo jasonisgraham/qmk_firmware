@@ -69,7 +69,6 @@ enum custom_keycodes {
                       TOGGLE_BREATHING,
                       EMACS_ACE_WINDOW,
                       TERM_HOME,
-                      LPRN_LIT,
                       CD_CSV,
                       EMACS_SEL_0,
                       EMACS_SEL_1,
@@ -128,6 +127,7 @@ enum custom_keycodes {
 bool is_alt_tab_active = false;
 uint16_t alt_tab_timer = 0;
 
+#ifdef LEADER_ENABLE
 LEADER_EXTERNS();
 void matrix_scan_user(void) {
   if (is_alt_tab_active) {
@@ -138,6 +138,9 @@ void matrix_scan_user(void) {
   }
 
 }
+#endif
+
+#ifdef RGBLIGHT_ENABLE
 
 int8_t m;
 char b[3];
@@ -219,6 +222,8 @@ void cycle_rgblight_step(void) {
 
 bool do_breathing = false;
 
+#endif
+
 #include "autocorrection.h"
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -239,6 +244,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
 
 
+#ifdef RGBLIGHT_ENABLE
   case TOGGLE_BREATHING:
     if (record->event.pressed) {
       if (do_breathing) {
@@ -249,11 +255,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     break;
 
-  case TOGGLE_ECHO:
-    if (record->event.pressed) {
-      toggle_echo();
-    }
-    break;
 
   case RGBLIGHT_TOGGLE:
     if (record->event.pressed) {
@@ -274,17 +275,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     break;
 
-
-  case CLEAR_THAT_REPL:
-    if (record->event.pressed) {
-      /* SEND_STRING(SS_RCTL(SS_TAP(X_A)) SS_RCTL(SS_TAP(X_K)) SS_RCTL(SS_TAP(X_L))); */
-      SEND_STRING(SS_RCTL(SS_TAP(X_L)));
-    }
-    break;
-
   case CYCLE_RGBLIGHT_STEP:
     if (record->event.pressed) {
+#ifdef AUDIO_ENABLE
       PLAY_SONG(scroll_lock_on_sound);
+#endif
       cycle_rgblight_step();
       /* static char s[10]; */
       /* itoa(k, s, 10); */
@@ -309,11 +304,25 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       cycle_drop_animations();
     }
     break;
+    #endif
+
+  case TOGGLE_ECHO:
+    if (record->event.pressed) {
+      toggle_echo();
+    }
+    break;
+
+  case CLEAR_THAT_REPL:
+    if (record->event.pressed) {
+      /* SEND_STRING(SS_RCTL(SS_TAP(X_A)) SS_RCTL(SS_TAP(X_K)) SS_RCTL(SS_TAP(X_L))); */
+      SEND_STRING(SS_RCTL(SS_TAP(X_L)));
+    }
+    break;
+
 
   case ALT_TAB:
     if (record->event.pressed) {
 
-      rgblight_mode(RGBLIGHT_MODE_RAINBOW_SWIRL);
       if (!is_alt_tab_active) {
         is_alt_tab_active = true;
         register_code(KC_LGUI);
@@ -321,7 +330,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       alt_tab_timer = timer_read();
       register_code(KC_TAB);
     } else {
-      rgblight_disable();
       unregister_code(KC_TAB);
 
     }
@@ -350,7 +358,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
       /* rgblight_mode(42); */
       layer_move(_SHIFTLOCK);
+      #ifdef AUDIO_ENABLE
       PLAY_SONG(caps_lock_on_sound);
+      #endif
       /* rgblight_mode(RGBLIGHT_MODE_RAINBOW_SWIRL); */
       return false;
     }
@@ -359,7 +369,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case SHIFTLOCK_LAYER_DEACTIVATE:
     if (record->event.pressed) {
       layer_move(_BASE);
+#ifdef AUDIO_ENABLE
       PLAY_SONG(caps_lock_off_sound);
+#endif
       /* rgblight_mode(RGBLIGHT_MODE_RAINBOW_SWIRL); */
 
       /* return true; */
@@ -557,7 +569,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case ESC_THEN_BASE_LAYER:
     if (record->event.pressed) {
       // only used when returning from shiftlok
+#ifdef AUDIO_ENABLE
       PLAY_SONG(caps_lock_off_sound);
+#endif
       SEND_STRING(SS_TAP(X_ESCAPE));
       layer_move(_BASE);
 
@@ -566,12 +580,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   case LAYER_RAISE_HOLD:
     if (record->event.pressed) {
+#ifdef AUDIO_ENABLE
       PLAY_SONG(major_sound);
+#endif
       layer_move(_RAISE);
       /* rgblight_mode(RGBLIGHT_MODE_SNAKE); */
+#ifdef RGBLIGHT_MODE
       rgblight_mode(18);
       rgblight_enable_noeeprom();
       rgblight_sethsv_noeeprom(HSV_BLUE);
+      #endif
+
       return false;
 
     }
@@ -579,13 +598,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   case LAYER_LOWER_HOLD:
     if (record->event.pressed) {
+#ifdef AUDIO_ENABLE
       PLAY_SONG(minor_sound);
+#endif
       layer_move(_LOWER);
 
+#ifdef RGBLIGHT_MODE
       /* rgblight_mode(RGBLIGHT_MODE_SNAKE); */
       rgblight_mode(18);
       rgblight_enable_noeeprom();
       rgblight_sethsv_noeeprom(HSV_PURPLE);
+      #endif
 
       return false;
 
@@ -597,10 +620,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       /* PLAY_SONG(minor_sound); */
       layer_move(_MOUSE);
 
+#ifdef RGBLIGHT_MODE
       /* rgblight_mode(RGBLIGHT_MODE_SNAKE); */
       rgblight_mode(18);
       rgblight_enable_noeeprom();
       rgblight_sethsv_noeeprom(HSV_GREEN);
+      #endif
 
       return false;
 
@@ -608,15 +633,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     break;
 
 
-  case LPRN_LIT :
-    if (record->event.pressed) {
-      rgblight_enable_noeeprom();
-      rgblight_sethsv_noeeprom(HSV_GREEN);
-      SEND_STRING("(");
-      rgblight_sethsv_noeeprom(HSV_BLACK);
-      return true;
-    }
-    break;
 
     /* case LAYER_COLORS_HOLD: */
     /*   if (record->event.pressed) { */
