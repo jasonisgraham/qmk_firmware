@@ -43,6 +43,9 @@ enum preonic_layers {
 #include "../../../common/drop_tapdance.c"
 #include "../../../common/drop_colors.c"
 
+#include "../../../common/encoder.c"
+#include "encoder.h"
+
 #define test KC_ASTR
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
@@ -77,7 +80,7 @@ enum preonic_layers {
 #define my_lctl MT(MOD_RCTL, KC_ESCAPE)
 #define my_lower MO(_LOWER)
 #define my_lower MO(_LOWER)
-#define my_lower_comma TD(DANCE_29)
+#define my_lower_comma BROWSER_TAB_PREV
 #define my_lower_d KC_F7
 #define my_lower_f  KC_F8
 #define my_lower_h  KC_MINUS
@@ -91,7 +94,7 @@ enum preonic_layers {
 #define my_lower_o KC_END
 #define my_lower_p TD(WWW_BACK_FORWARD)
 #define my_lower_bs KC_DEL
-#define my_lower_period TD(DANCE_30)
+#define my_lower_period BROWSER_TAB_NEXT
 #define my_lower_semi esc_ctrl
 #define my_lower_slash SHIFTLOCK_LAYER_ACTIVATE
 #define lower_LOWER TO(_BASE)
@@ -106,7 +109,7 @@ enum preonic_layers {
 #define my_raise_comma KC_2
 #define my_raise_d _______ //kc_bspace
 #define my_raise_f RALT(KC_ENTER)
-#define my_raise_h KC_MINUS //KC_BSPACE
+#define my_raise_h KC_BSPACE
 #define my_raise_i KC_8
 #define my_raise_j KC_4
 #define my_raise_k KC_5
@@ -128,6 +131,7 @@ enum preonic_layers {
 #define my_period KC_DOT
 #define my_minus _______
 #define my_grave TD(DANCE_0)
+#define top_left TD(DANCE_MIC)
 
 #define WINDOWS_Q TD(DANCE_38)
 
@@ -177,6 +181,8 @@ enum preonic_layers {
 /* #define my_left_shift KC_LSPO */
 /* #define my_right_shift KC_ENTER */
 
+
+
 enum unicode_names {
                     BANG,
                     IRONY,
@@ -203,16 +209,16 @@ const uint32_t PROGMEM unicode_map[] = {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_BASE] = LAYOUT_preonic_grid(
-                              my_grave, KC_1 , KC_2 ,KC_3 ,KC_4 ,KC_5 , my_lctl, KC_6 ,KC_7 ,KC_8 ,KC_9 ,KC_0,
+                              top_left, KC_1 , KC_2 ,KC_3 ,KC_4 ,KC_5 , my_lctl, KC_6 ,KC_7 ,KC_8 ,KC_9 ,KC_0,
                              my_grave,    my_q,    my_w,    my_e,    my_r,    my_t, KC_MINUS,    my_y,           my_u,    my_i,    my_o,     my_p,
                              my_lctl , my_a,   my_s,   my_d,   my_f,   my_g, KC_BSPACE,  my_h,         my_j,   my_k,   my_l,   my_semicolon,
                              my_left_shift,        my_z,           my_x,           my_c,           my_v,           my_b, KC_QUOT,     my_n,   my_m,   my_comma,   my_period,   my_forward_slash,
-                              hyper, super_meta_hyper , all_mods , alt, RAISE,  super, my_lctl,  my_space,           LOWER,          key_4_10,   key_4_11,  key_4_12
+                              hyper, super_meta_hyper , all_mods , alt, RAISE,  super, OSL(_EDITING ),  my_space,           LOWER,          key_4_10,   key_4_11,  key_4_12
                               ),
 
 
 [_LOWER] = LAYOUT_preonic_grid(
-                              _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
+                               KC_AUDIO_MUTE, KC_F1 , KC_F2 ,KC_F3 ,KC_F4 ,KC_F5 , KC_F11, KC_F6 ,KC_F7 ,KC_F8 ,KC_F9 ,KC_F10,
                               _______,   KC_F1,          KC_F2,          KC_F3,          KC_F4,          TD(DANCE_73),   KC_EQL,  KC_HOME,     my_lower_u,    my_lower_i,      my_lower_o,         my_lower_p,
                               _______, KC_F5,          KC_F6,          KC_F7,          KC_F8,          _______, KC_DEL,      KC_LEFT,        my_lower_j,        my_lower_k,          my_lower_l,       my_lower_semi,
                               _______,   KC_F9,          KC_F10,         KC_F11,         KC_F12,         KC_APPLICATION, KC_GRV,  my_lower_n, my_lower_m, my_lower_comma,   my_lower_period, my_lower_slash,
@@ -222,13 +228,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                               ),
 
 [_RAISE] = LAYOUT_preonic_grid(
-                              _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
-                              LSFT(KC_TAB),    _______,          EMACS_OTHER_WINDOW,     KC_END,         EMACS_BUFFER_REVERT,      _______,  KC_EQL,          my_raise_y, my_raise_u,           my_raise_i,           my_raise_o,           my_raise_p,
+                               _______, KC_F1 , KC_F2 ,KC_F3 ,KC_F4 ,KC_F5 , KC_F11, KC_F6 ,KC_F7 ,KC_F8 ,KC_F9 ,KC_F10,
+                              LALT(KC_D),    _______,          EMACS_OTHER_WINDOW,     KC_END,         EMACS_BUFFER_REVERT,      _______,  KC_EQL,          my_raise_y, my_raise_u,           my_raise_i,           my_raise_o,           my_raise_p,
                               _______, _______, _______,  my_raise_d, my_raise_f,  OSL(_MACROS), KC_DEL,       my_raise_h,         my_raise_j,           my_raise_k,           my_raise_l,           raise_semi,
                               _______, _______, _______,_______,   _______,          FISH_ACCEPT_SEND, KC_GRV,     my_raise_n,           my_raise_m,           my_raise_comma,         KC_3,           KC_QUES,
                               _______, _______, _______,        _______,        _______, _______,  MO(_ROFI) ,       KC_BSPACE,   raise_key_4_9,       KC_0,  _______,         TO(_BASE)
 
-                              ),
+                               ),
 
 [_HYPER] = LAYOUT_preonic_grid(
                               _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
@@ -263,9 +269,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_SYSTEM] = LAYOUT_preonic_grid(
                                _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
                                SYSTEM_LAYER_DEACTIVATE, _______, _______, _______, _______,     _______, _______, KC_PSTE, KC_AGIN, DEBUG, RESET_ANIMATION, RESET,
-                               _______, MO(_AUDIO),_______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+                               SYSTEM_LAYER_DEACTIVATE, MO(_AUDIO),_______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
                                KC_ASTG, _______ , _______, _______, _______, MO(_BRIGHTNESS),   _______, _______, _______, _______, _______, _______,
-                               _______, _______, _______, _______,    _______, _______, _______, _______,    _______, _______, _______, _______
+                               _______, _______, _______, _______,  SYSTEM_LAYER_DEACTIVATE, _______, _______, _______,   SYSTEM_LAYER_DEACTIVATE, _______, _______, _______
 
                                /* SYSTEM_LAYER_DEACTIVATE,   AU_TOG,         MU_MOD,         MU_TOG,         _______, RGB_SPD,        RGB_SPI,        RGB_SAD,        RGB_SAI,        _______, WEBUSB_PAIR,    RESET, */
                                /* RGB_MODE_PLAIN, RGB_MODE_SNAKE,  RGB_MODE_BREATHE, RGB_MODE_RAINBOW, _______, RGB_HUD,        RGB_HUI,        RGB_VAD,        RGB_VAI,        _______, KC_MEDIA_STOP,  _______, */
@@ -322,7 +328,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // 11
 [_SUPER] = LAYOUT_preonic_grid(
-                              _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
+                               RCTL(RSFT(RALT(KC_UP))), _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
                               _______, _______, _______, _______, _______, _______,    KC_TILD, KC_GRV,  _______, _______, _______, _______,
                               _______, _______, _______, _______, _______, _______,    LSFT(KC_TAB), KC_TAB,  _______, _______, _______, _______,
                               _______, _______, _______, _______,    _______, _______, _______, _______,    _______, _______, _______, _______,
@@ -459,34 +465,6 @@ uint8_t last_muse_note = 0;
 uint16_t muse_counter = 0;
 uint8_t muse_offset = 70;
 uint16_t muse_tempo = 50;
-
-bool encoder_update_user(uint8_t index, bool clockwise) {
-  if (muse_mode) {
-    if (IS_LAYER_ON(_RAISE)) {
-      if (clockwise) {
-        muse_offset++;
-      } else {
-        muse_offset--;
-      }
-    } else {
-      if (clockwise) {
-        muse_tempo+=1;
-      } else {
-        muse_tempo-=1;
-      }
-    }
-  } else {
-    if (clockwise) {
-      register_code(KC_PGDN);
-      unregister_code(KC_PGDN);
-    } else {
-      register_code(KC_PGUP);
-      unregister_code(KC_PGUP);
-    }
-  }
-  return true;
-}
-
 
 
 #include "../../../common/combos.c"

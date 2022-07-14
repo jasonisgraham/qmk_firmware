@@ -15,6 +15,14 @@
 #define CTRL_SEMICOLON RCTL(KC_SCOLON)
 
 
+#define EMACS_OTHER_WINDOW_NEXT RCTL(RALT(KC_PGUP))
+#define EMACS_OTHER_WINDOW_PREV RCTL(RALT(KC_PGDOWN))
+#define EMACS_NUMBER_INC LCTL(KC_PLUS)
+#define EMACS_NUMBER_DEC LCTL(KC_UNDS)
+
+#define BROWSER_TAB_NEXT TD(DANCE_30)
+#define BROWSER_TAB_PREV TD(DANCE_29)
+
 static bool do_echo = false;
 void toggle_echo(void) {
   if (do_echo) {
@@ -320,7 +328,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case SYSTEM_LAYER_ACTIVATE:
     if (record->event.pressed) {
       layer_move(_SYSTEM);
-      PLAY_SONG(scroll_lock_on_sound);
+      /* PLAY_SONG(scroll_lock_on_sound); */
       /* rgblight_mode(RGBLIGHT_MODE_RAINBOW_SWIRL); */
 
       return false;
@@ -330,7 +338,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case SYSTEM_LAYER_DEACTIVATE:
     if (record->event.pressed) {
       /* PLAY_SONG(one_up_sound); */
-      PLAY_SONG(scroll_lock_off_sound);
+      /* PLAY_SONG(scroll_lock_off_sound); */
       layer_move(_BASE);
       return false;
     }
