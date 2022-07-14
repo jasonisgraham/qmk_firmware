@@ -1,6 +1,7 @@
 enum tap_dance_codes {
                       DANCE_0,
                       DANCE_Q,
+                      DANCE_MIC,
                       DANCE_W,
                       DANCE_E,
                       DANCE_R,
@@ -3470,6 +3471,31 @@ void preonic_Z_reset(qk_tap_dance_state_t *state, void *user_data) {
   dance_state[82].step = 0;
 }
 
+
+void on_dance_mic(qk_tap_dance_state_t *state, void *user_data);
+void dance_mic_finished(qk_tap_dance_state_t *state, void *user_data);
+void dance_mic_reset(qk_tap_dance_state_t *state, void *user_data);
+
+void on_dance_mic(qk_tap_dance_state_t *state, void *user_data) {
+}
+
+void dance_mic_finished(qk_tap_dance_state_t *state, void *user_data) {
+  dance_state[84].step = dance_step(state);
+  switch (dance_state[84].step) {
+  case SINGLE_TAP:
+    tap_code16(RCTL(RALT(RGUI(KC_DOWN))));
+    break;
+  case SINGLE_HOLD:
+    tap_code16(RCTL(RALT(RGUI(KC_UP))));
+ break;
+  }
+}
+
+void dance_mic_reset(qk_tap_dance_state_t *state, void *user_data) {
+  wait_ms(10);
+  dance_state[84].step = 0;
+}
+
 qk_tap_dance_action_t tap_dance_actions[] = {
                                              [DANCE_0] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_0, dance_0_finished, dance_0_reset),
                                              [DANCE_Q] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_Q, dance_Q_finished, dance_Q_reset),
@@ -3555,5 +3581,6 @@ qk_tap_dance_action_t tap_dance_actions[] = {
 
                                              [DANCE_MIN_OR_EXIT] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_min_or_exit, dance_min_or_exit_finished, dance_min_or_exit_reset),
                                              [DANCE_SAVE_LOAD_NS_SWITCH] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_save_load_ns_switch, dance_save_load_ns_switch_finished, dance_save_load_ns_switch_reset),
+                                             [DANCE_MIC] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_mic, dance_mic_finished, dance_mic_reset),
 
 };

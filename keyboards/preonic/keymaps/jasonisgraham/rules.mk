@@ -28,6 +28,14 @@ NKRO_ENABLE = yes
 
 RGB_ANIMATIONS = yes
 
+# SRC += encoder_update_user.c
+
+EXTRAKEY_ENABLE = yes
+
+# ENCODER_ENABLE = yes
+
+ENCODER_MAP_ENABLE = yes
+
 # SEQUENCER_ENABLE = yes
 # BACKLIGHT_ENABLE = yes
 

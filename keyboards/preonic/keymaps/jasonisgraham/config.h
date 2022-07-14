@@ -3,6 +3,10 @@
 /* #include "song_list.h" */
 /* #include "config_common.h" */
 
+#define ENCODERS_PAD_A { B12 }
+#define ENCODERS_PAD_B { B13 }
+
+
 #define MOUSEKEY_MAX_SPEED 2
 /* #define COMBO_COUNT 50 */
 
