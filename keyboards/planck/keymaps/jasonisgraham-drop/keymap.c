@@ -207,9 +207,9 @@ const uint32_t PROGMEM unicode_map[] = {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_BASE] = LAYOUT_planck_grid(
-                             top_left,    my_q,    my_w,    my_e,    my_r,    my_t, KC_MINUS,    my_y,           my_u,    my_i,    my_o,     my_p,
+                             top_left,    my_q,    my_w,    my_e,    my_r,    my_t, KC_TAB,    my_y,           my_u,    my_i,    my_o,     my_p,
                              my_lctl , my_a,   my_s,   my_d,   my_f,   my_g, KC_BSPACE,  my_h,         my_j,   my_k,   my_l,   my_semicolon,
-                             my_left_shift,        my_z,           my_x,           my_c,           my_v,           my_b, KC_QUOT,     my_n,   my_m,   my_comma,   my_period,   my_forward_slash,
+                             my_left_shift,        my_z,           my_x,           my_c,           my_v,           my_b, esc_ctrl,     my_n,   my_m,   my_comma,   my_period,   my_forward_slash,
                              hyper, super_meta_hyper , all_mods , alt, RAISE,  super, OSL(_EDITING ),  my_space,           LOWER,          key_4_10,   key_4_11,  key_4_12
                               ),
 
