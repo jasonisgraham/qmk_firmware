@@ -7,6 +7,8 @@
 #define ENCODERS_PAD_B { B13 }
 
 
+#define UNICODE_SELECTED_MODES UC_LNX
+
 #define MOUSEKEY_MAX_SPEED 2
 /* #define COMBO_COUNT 50 */
 
