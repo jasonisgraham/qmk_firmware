@@ -356,7 +356,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   case SHIFTLOCK_LAYER_ACTIVATE:
     if (record->event.pressed) {
-      /* rgblight_mode(42); */
+      rgblight_mode(42);
       layer_move(_SHIFTLOCK);
       #ifdef AUDIO_ENABLE
       PLAY_SONG(caps_lock_on_sound);

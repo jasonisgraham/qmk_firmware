@@ -19,6 +19,7 @@ enum preonic_layers {
                     _SUPER,
                     _EDITING,
                     _LAYER13,
+                    _CTRL,
                     _VIM_CMDS,
                     _MOUSE,
                     _COLORS,
@@ -61,7 +62,6 @@ enum preonic_layers {
 #define emacs_f EMACS_YAS_FILTER_ANON
 #define emacs_m EMACS_YAS_MAP_ANON
 #define emacs_r EMACS_YAS_REMOVE_ANON
-#define esc_ctrl MT(MOD_RCTL, KC_ESCAPE)
 #define hyper LM(_HYPER, MOD_LCTL) //KC_LCTL // OSL(_WINDOWS)
 #define key_0_0 KC_LCTL
 #define key_0_1 RCTL(RALT(KC_RSFT))
@@ -79,6 +79,7 @@ enum preonic_layers {
 #define my_forward_slash TD(DANCE_25)
 #define my_left_shift KC_LSFT //  LM(_SHIFTLOCK, MOD_LSFT)
 
+#define esc_ctrl MT(MOD_RCTL, KC_ESCAPE)
 #define my_lctl MT(MOD_RCTL, KC_ESCAPE)
 #define my_lower MO(_LOWER)
 #define my_lower MO(_LOWER)
@@ -175,6 +176,8 @@ enum preonic_layers {
 /* #define super KC_LGUI */
 /* #define alt  KC_LALT */
 #define alt LM(_ALT, MOD_LALT)
+#define lm_ctrl LM(_CTRL, MOD_RCTL)
+
 /* #define super TD(SUPER_WINDOWS) */
 #define topright _______
 #include "user_song_list.h"
@@ -214,8 +217,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                               top_left, KC_1 , KC_2 ,KC_3 ,KC_4 ,KC_5 , SHIFTLOCK_LAYER_ACTIVATE, KC_6 ,KC_7 ,KC_8 ,KC_9 ,KC_0,
                               my_grave,    my_q,    my_w,    my_e,    my_r,    my_t, SHIFTLOCK_LAYER_ACTIVATE,    my_y,           my_u,    my_i,    my_o,     my_p,
                              my_lctl , my_a,   my_s,   my_d,   my_f,   my_g, KC_BSPACE,  my_h,         my_j,   my_k,   my_l,   my_semicolon,
-                             my_left_shift,        my_z,           my_x,           my_c,           my_v,           my_b, esc_ctrl,     my_n,   my_m,   my_comma,   my_period,   my_forward_slash,
-                              hyper, super_meta_hyper , all_mods , alt, RAISE,  super, OSL(_EDITING ),  my_space,           LOWER,          key_4_10,   key_4_11,  key_4_12
+                              my_left_shift,        my_z,           my_x,           my_c,           my_v,           my_b, OSL(_EDITING),     my_n,   my_m,   my_comma,   my_period,   my_forward_slash,
+                              hyper, super_meta_hyper , all_mods , alt, RAISE,  super, esc_ctrl,  my_space,           LOWER,          key_4_10,   key_4_11,  key_4_12
                               ),
 
 
@@ -245,6 +248,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                               _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
                               _______, _______, _______, _______,    _______, _______, _______, _______,    _______, _______, _______, _______
 ),
+
+[_CTRL] = LAYOUT_preonic_grid(
+                             _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
+                             _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
+                             _______, _______, _______, _______, _______, _______,   _______, _______, _______, _______, _______, _______,
+                             _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+                             _______, _______, _______, _______,    _______, _______, _______, _______,    _______, _______, _______, _______
+                             ),
+
 
 /* _______, _______, _______, KC_MS_UP,       _______, _______, _______, _______, KC_ASRP,        KC_ASDN,        KC_ASUP,        KC_ASTG, */
 /* _______, _______, KC_MS_LEFT,     KC_MS_DOWN,     KC_MS_RIGHT,    GAUTH_LAYER_ACTIVATE, KC_MS_BTN1,     KC_MS_WH_DOWN,  KC_MS_WH_UP,    KC_MS_BTN2,     _______, _______, */
