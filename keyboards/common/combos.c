@@ -275,20 +275,20 @@ const uint16_t PROGMEM combo_LOWER_lower_lower_period_lower_slash[] = {lower_LOW
 
 
 const uint16_t PROGMEM combo_shift_alt[] = {LOWER, my_left_shift, KC_LALT, COMBO_END};
-const uint16_t PROGMEM combo_hyper_slash[] = {LOWER, right_of_lower, my_forward_slash, COMBO_END};
 
 /* const combo_t  = COMBO(combo_topright_p_l, LCTL(KC_L)); */
 
 
 combo_t key_combos[COMBO_COUNT] = {
-                                   COMBO(combo_4_10_4_12, KC_RIGHT),
+
+                                   /* COMBO(combo_4_10_4_12, KC_RIGHT), */
                                    COMBO(combo_4_11_4_12, KC_RIGHT),
                                    COMBO(combo_4_10_4_11, KC_LEFT),
                                    COMBO(combo_4_10_4_11_4_12, RCTL(KC_C)),
                                    COMBO(combo_l_semicolon, RCTL(KC_C)),
-                                   COMBO(combo_l_p, CLEAR_THAT_REPL),
+                                   COMBO(combo_l_p, RCTL(KC_L)),
 
-                                   COMBO(combo_w_d, TO(_GAUTH)),
+                                   /* COMBO(combo_w_d, TO(_GAUTH)), */
                                    COMBO(combo_r_t, KC_AGIN),
                                    COMBO(combo_lower_semicolon, RCTL(KC_C)),
 
@@ -425,22 +425,4 @@ combo_t key_combos[COMBO_COUNT] = {
 
                                    COMBO(combo_period_semicolon, EMACS_COMMENT_READER),
                                    COMBO(combo_e_r, MO(_ROFI)),
-
-                                   /* COMBO(combo_windows_tab_q, RGUI(KC_ESCAPE)) */
-                                   /* , */
-
-
-                                                                      /* COMBO(combo_spc_x, RGUI(KC_X)), */
-                                                                      /* COMBO(combo_spc_h, RGUI(KC_H)), */
-                                                                      /* COMBO(combo_spc_w, RGUI(KC_W)), */
-                                                                      /* COMBO(combo_spc_q, RGUI(KC_Q)), */
-                                                                      /* COMBO(combo_spc_n, RGUI(KC_N)), */
-                                                                      /* COMBO(combo_spc_e, RGUI(KC_E)), */
-                                                                      /* COMBO(combo_spc_a, RGUI(KC_A)), */
-                                                                      /* COMBO(combo_spc_s, RGUI(KC_S)), */
-                                                                      /* COMBO(combo_spc_t, RGUI(KC_T)), */
-                                                                      /* COMBO(combo_spc_p, RGUI(KC_0)), */
-                                                                      /* COMBO(combo_spc_u, RGUI(KC_7)), */
-                                                                      /* COMBO(combo_spc_i, RGUI(KC_8)), */
-                                                                      /* COMBO(combo_spc_o, RGUI(KC_9)) */
 };

@@ -21,10 +21,10 @@
 #endif
 
 /* diode directions */
-#define COL2ROW 0
-#define ROW2COL 1
+/* #define COL2ROW 0 */
+/* #define ROW2COL 1 */
 
-#include "song_list.h"
+/* #include "song_list.h" */
 
 /*
   Set any config.h overrides for your specific keymap here.
@@ -33,15 +33,15 @@
 
 #define COMBO_TERM 30  // default is 50.  50ms produces false positives when typing kinda fast
 
-#define echo false
-#define COMBO_COUNT 100
+/* #define echo false */
+/* #define COMBO_COUNT 100 */
 /* #define RGBLIGHT_LAYER_BLINK 1 */
 /* #define RGBLIGHT_LAYERS_OVERRIDE_RGB_OFF */
 
 #define FORCE_NKRO
 
 
-#define ORYX_CONFIGURATOR
+/* #define ORYX_CONFIGURATOR */
 #undef DEBOUNCE
 #define DEBOUNCE 6
 
@@ -52,9 +52,9 @@
 
 #undef IGNORE_MOD_TAP_INTERRUPT
 
-#define USB_SUSPEND_WAKEUP_DELAY 0
-#undef MOUSEKEY_INTERVAL
-#define MOUSEKEY_INTERVAL 13
+/* #define USB_SUSPEND_WAKEUP_DELAY 0 */
+/* #undef MOUSEKEY_INTERVAL */
+/* #define MOUSEKEY_INTERVAL 13 */
 
 #define AUTO_SHIFT_TIMEOUT 150
 #define NO_AUTO_SHIFT_TAB
@@ -64,10 +64,8 @@
 #define RGB_MATRIX_STARTUP_SPD 60
 
 
-#define BUTTMAN 69
+/* #ifndef WEBUSB_ENABLE */
+/* #    define WEBUSB_PAIR KC_NO */
+/* #endif */
 
-#ifndef WEBUSB_ENABLE
-#    define WEBUSB_PAIR KC_NO
-#endif
-
-#define LEADER_TIMEOUT 300
+/* #define LEADER_TIMEOUT 300 */
