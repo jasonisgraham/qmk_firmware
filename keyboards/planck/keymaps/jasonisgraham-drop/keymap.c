@@ -210,7 +210,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                              top_left,    my_q,    my_w,    my_e,    my_r,    my_t, KC_TAB,    my_y,           my_u,    my_i,    my_o,     my_p,
                              my_lctl , my_a,   my_s,   my_d,   my_f,   my_g, KC_BSPACE,  my_h,         my_j,   my_k,   my_l,   my_semicolon,
                              my_left_shift,        my_z,           my_x,           my_c,           my_v,           my_b, esc_ctrl,     my_n,   my_m,   my_comma,   my_period,   my_forward_slash,
-                             hyper, super_meta_hyper , all_mods , alt, RAISE,  super, OSL(_EDITING ),  my_space,           LOWER,          key_4_10,   key_4_11,  key_4_12
+                             hyper, super_meta_hyper , all_mods , alt, RAISE,  super, LM(_CTRL, MOD_RALT),  my_space,           LOWER,          key_4_10,   key_4_11,  key_4_12
                               ),
 
 
@@ -285,7 +285,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                _______, emacs_a, _______, EMACS_YAS_DOC,     emacs_f,     EMACS_INSERT_GET_FEED, EMACS_GOTO_GET_FEED,  _______, _______, EMACS_YAS_KEYS_DESCRUCTURE, EMACS_YAS_TL,     EMACS_COMMENT_READER,
                                _______, _______, _______, EMACS_YAS_C,     _______, _______, EMACS_GOTO_SYNC_FEED, _______, emacs_m,     _______, _______, TERM_CD_UP_DIR,
                                _______, _______, _______, _______, _______, _______, KC_NO,          _______, _______, _______, _______, _______
-                               ),
+                              ),
 
 // 8
 [_SHIFTLOCK] = LAYOUT_planck_grid(

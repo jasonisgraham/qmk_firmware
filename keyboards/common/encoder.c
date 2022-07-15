@@ -20,6 +20,6 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
                                                          [_MOUSE] =  { ENCODER_CCW_CW(RGB_HUD, RGB_HUI) },
                                                          [_RAISE] =  { ENCODER_CCW_CW(BROWSER_TAB_NEXT, BROWSER_TAB_PREV) },
                                                          [_BRIGHTNESS] =  { ENCODER_CCW_CW(KC_BRIGHTNESS_UP, KC_BRIGHTNESS_DOWN) },
-                                                         /* [_ALT] =  { ENCODER_CCW_CW(TD(DANCE_29), TD(DANCE_30)) }, */
+                                                         [_CTRL] =  { ENCODER_CCW_CW(C(KC_U), C(KC_D)) },
                                                          [_SUPER] =  { ENCODER_CCW_CW(KC_TAB, LSFT(KC_TAB)) },
 };

@@ -32,8 +32,11 @@ layer_state_t layer_state_set_user(layer_state_t state) {
   /* } */
 
   switch(biton32(state)) {
+  case _CTRL:
+    static_kinda_dim(HSV_CHARTREUSE);
+    break;
+
   case 0:
-    /* rgblight_enable_noeeprom(); */
     rgblight_disable();
     /* rgblight_sethsv_noeeprom(DROP_LAYER_0_COLOR); */
     /* rgblight_sethsv(); */

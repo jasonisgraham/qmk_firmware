@@ -185,6 +185,7 @@ enum planck_layers {
 #define next_win_or_frame RALT(RSFT(KC_N))
 #define prev_win_or_frame RALT(RSFT(KC_P))
 
+  set_single_persistent_default_layer(_BASE);
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_BASE] = LAYOUT_planck_grid(
@@ -244,7 +245,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                SYSTEM_LAYER_DEACTIVATE, _______, _______, _______, _______,     _______, _______, KC_PSTE, KC_AGIN, DEBUG, _______, RESET,
                                _______, MO(_AUDIO),_______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
                                KC_ASTG, _______ , _______, _______, _______, MO(_BRIGHTNESS),   _______, _______, _______, _______, _______, _______,
-                               _______, _______, _______, _______,    _______, _______, _______, _______,    _______, _______, _______, _______
+                               _______, _______, _______, _______,    _______, _______, _______, _______,    _______, _______, _______, EEP_RST
 
                                /* SYSTEM_LAYER_DEACTIVATE,   AU_TOG,         MU_MOD,         MU_TOG,         _______, RGB_SPD,        RGB_SPI,        RGB_SAD,        RGB_SAI,        _______, WEBUSB_PAIR,    RESET, */
                                /* RGB_MODE_PLAIN, RGB_MODE_SNAKE,  RGB_MODE_BREATHE, RGB_MODE_RAINBOW, _______, RGB_HUD,        RGB_HUI,        RGB_VAD,        RGB_VAI,        _______, KC_MEDIA_STOP,  _______, */
