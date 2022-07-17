@@ -60,7 +60,7 @@ enum planck_layers {
 #define hyper LM(_HYPER, MOD_LCTL) //KC_LCTL // OSL(_WINDOWS)
 #define key_0_0 KC_LCTL
 #define key_0_1 RCTL(RALT(KC_RSFT))
-#define key_4_10 OSL(_EDITING)
+#define my_right_of_lower OSL(_EDITING)
 #define key_4_11 KC_DOWN //CYCLE_DROP_COLORS // LAYER_LOWER_HOLD
 #define key_4_12 KC_UP
 #define macro_alt_slash SS_RALT(SS_TAP(X_SLASH))
@@ -192,7 +192,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                              my_grave,    my_q,    my_w,    my_e,    my_r,    my_t, KC_MINUS,    my_y,           my_u,    my_i,    my_o,     my_p,
                              my_lctl , my_a,   my_s,   my_d,   my_f,   my_g, KC_BSPACE,  my_h,         my_j,   my_k,   my_l,   my_semicolon,
                              my_left_shift,        my_z,           my_x,           my_c,           my_v,           my_b, KC_QUOT,     my_n,   my_m,   my_comma,   my_period,   my_forward_slash,
-                             hyper, super_meta_hyper , all_mods , alt, RAISE,  super, my_lctl,  my_space,           LOWER,          key_4_10,   key_4_11,  key_4_12
+                             hyper, super_meta_hyper , all_mods , alt, RAISE,  super, my_lctl,  my_space,           LOWER,          my_right_of_lower,   key_4_11,  key_4_12
                               ),
 
 

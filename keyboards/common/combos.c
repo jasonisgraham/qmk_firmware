@@ -163,9 +163,9 @@ const uint16_t PROGMEM combo_u_i[] = {my_u, my_i, COMBO_END};
 const uint16_t PROGMEM combo_raise_u_raise_i[] = {my_raise_i, my_raise_u, COMBO_END};
 
 const uint16_t PROGMEM combo_4_11_4_12[] = {key_4_11, key_4_12, COMBO_END};
-const uint16_t PROGMEM combo_4_10_4_12[] = {key_4_10, key_4_12, COMBO_END};
-const uint16_t PROGMEM combo_4_10_4_11[] = {key_4_10, key_4_11, COMBO_END};
-const uint16_t PROGMEM combo_4_10_4_11_4_12[] = {key_4_10, key_4_11, key_4_12, COMBO_END};
+const uint16_t PROGMEM combo_4_10_4_12[] = {my_right_of_lower, key_4_12, COMBO_END};
+const uint16_t PROGMEM combo_4_10_4_11[] = {my_right_of_lower, key_4_11, COMBO_END};
+const uint16_t PROGMEM combo_4_10_4_11_4_12[] = {my_right_of_lower, key_4_11, key_4_12, COMBO_END};
 
 
 
