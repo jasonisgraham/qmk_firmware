@@ -128,7 +128,7 @@ enum planck_layers {
 #define my_singlequote TD(DANCE_20)
 #define my_space TD(DANCE_SPACE)
 
-#define my_period KC_DOT
+#define my_period TD(DANCE_DOT)
 #define my_minus _______
 #define my_grave TD(DANCE_0)
 
@@ -210,12 +210,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                              top_left,    my_q,    my_w,    my_e,    my_r,    my_t, KC_TAB,    my_y,           my_u,    my_i,    my_o,     my_p,
                              my_lctl , my_a,   my_s,   my_d,   my_f,   my_g, KC_BSPACE,  my_h,         my_j,   my_k,   my_l,   my_semicolon,
                              my_left_shift,        my_z,           my_x,           my_c,           my_v,           my_b, esc_ctrl,     my_n,   my_m,   my_comma,   my_period,   my_forward_slash,
-                             hyper, super_meta_hyper , all_mods , alt, RAISE,  super, LM(_CTRL, MOD_RALT),  my_space,           LOWER,          key_4_10,   key_4_11,  key_4_12
+                             hyper, super_meta_hyper , all_mods , alt, RAISE,  super, esc_ctrl,   my_space,           LOWER,          key_4_10,   key_4_11,  key_4_12
                               ),
 
 
 [_LOWER] = LAYOUT_planck_grid(
-                              KC_AUDIO_MUTE,   KC_F1,          KC_F2,          KC_F3,          KC_F4,          TD(DANCE_73),   KC_EQL,  KC_HOME,     my_lower_u,    my_lower_i,      my_lower_o,         my_lower_p,
+                              KC_AUDIO_MUTE,   KC_F1,          KC_F2,          KC_F3,          KC_F4,          TD(DANCE_73),   _______,  KC_HOME,     my_lower_u,    my_lower_i,      my_lower_o,         my_lower_p,
                               _______, KC_F5,          KC_F6,          KC_F7,          KC_F8,          _______, KC_DEL,      KC_LEFT,        my_lower_j,        my_lower_k,          my_lower_l,       my_lower_semi,
                               _______,   KC_F9,          KC_F10,         KC_F11,         KC_F12,         KC_APPLICATION, KC_GRV,  my_lower_n, my_lower_m, my_lower_comma,   my_lower_period, my_lower_slash,
                               _______, _______, _______ , _______, MO(_MOUSE),  _______ ,           _______,         _______, lower_LOWER,          lower_right_of_lower, lower_key_4_11, lower_key_4_12
