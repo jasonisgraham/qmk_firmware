@@ -1,5 +1,7 @@
 SRC += muse.c
 
+SRC += ../../../common/layer_lock.c
+
 AUTO_SHIFT_MODIFIERS = yes
 
 UNICODE_ENABLE = yes
