@@ -1,6 +1,6 @@
 #include QMK_KEYBOARD_H
 #include "muse.h"
-#include "keymap_us_extended.h"
+/* #include "keymap_us_extended.h" */
 
 enum preonic_layers {
                     _BASE,

@@ -30,8 +30,8 @@ void autoshift_press_user(uint16_t keycode, bool shifted, keyrecord_t *record) {
     register_code16((!shifted) ? KC_TAB : RALT(KC_SLASH));
     break;
 
-  case US_HALF:
-    register_code16((!shifted) ? US_HALF : US_LDAQ);
+  case US_PLUS:
+    register_code16((!shifted) ? US_PLUS : US_EQL);
     break;
 
   case US_TQTR:
@@ -75,8 +75,8 @@ void autoshift_release_user(uint16_t keycode, bool shifted, keyrecord_t *record)
     unregister_code16((!shifted) ? KC_TAB : RALT(KC_SLASH));
     break;
 
-  case US_HALF:
-    unregister_code16((!shifted) ? US_HALF : US_LDAQ);
+  case US_PLUS:
+    unregister_code16((!shifted) ? US_PLUS : US_EQL);
     break;
 
   case US_TQTR:

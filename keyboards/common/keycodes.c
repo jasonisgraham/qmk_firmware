@@ -5,32 +5,14 @@
 
 #include "../../quantum/hacks.c"
 
-#define my_0 KC_0
-#define my_1 KC_1
-#define my_2 KC_2
-#define my_3 KC_3
-#define my_4 KC_4
-#define my_5 KC_5
-#define my_6 KC_6
-#define my_7 KC_7
-#define my_8 KC_8
-#define my_9 KC_9
-
-
-#define esc_ctrl MT(MOD_RCTL, KC_ESCAPE)
-#define my_cap_h RSFT(KC_H)
-#define my_lower_comma BROWSER_TAB_PREV
-#define my_lower_l KC_RIGHT
-#define my_lower_r KC_F4
-#define my_lower_g KC_SCROLLLOCK
-
-#define LOWER MO(_LOWER)
-#define RAISE MO(_RAISE)
-#define MO_HYPER MO(KC_LCTL)
-#define CTRL_P RCTL(KC_P)
-#define CTRL_N RCTL(KC_N)
+#define EMACS_LOCCUR LCTL(RCTL(LGUI(LALT(KC_O))))
+#define BROWSER_TAB_NEXT TD(DANCE_30)
+#define BROWSER_TAB_PREV TD(DANCE_29)
 #define CTRL_L RCTL(KC_P)
-#define HYPER_L LCTL(KC_L)
+#define CTRL_N RCTL(KC_N)
+#define ALT_N RALT(KC_N)
+#define CTRL_P RCTL(KC_P)
+#define ALT_P RALT(KC_P)
 #define CTRL_SEMICOLON RCTL(KC_SCOLON)
 
 #define topright _______
@@ -80,17 +62,21 @@
 #define my_cap_o RSFT(KC_O)
 #define my_comma TD(DANCE_COMMA) //KC_COMMA //
 #define my_forward_slash TD(DANCE_25)
-#define my_left_shift KC_LSFT //  LM(_SHIFTLOCK, MOD_LSFT)
-
-#define esc_ctrl MT(MOD_RCTL, KC_ESCAPE)
+#define my_g TD(DANCE_G)
+#define my_grave TD(DANCE_0)
+#define my_h TD(DANCE_H)
+#define my_i TD(DANCE_I)
+#define my_j TD(DANCE_J)
+#define my_k TD(DANCE_K)
+#define my_l TD(DANCE_L)
 #define my_lctl MT(MOD_RCTL, KC_ESCAPE)
+#define my_left_shift TD(DANCE_SHIFT)
 #define my_lower MO(_LOWER)
 #define my_lower MO(_LOWER)
 #define my_lower_comma BROWSER_TAB_PREV
 #define my_lower_d KC_F7
 #define my_lower_f  KC_F8
-#define my_lower_h  KC_MINUS
-#define my_lower_u KC_PGDOWN
+#define my_lower_g KC_SCROLLLOCK
 #define my_lower_i KC_PGUP
 #define my_lower_j KC_DOWN
 #define my_lower_k KC_UP
@@ -98,10 +84,10 @@
 #define my_lower_m TD(DANCE_29)
 #define my_lower_n TD(DANCE_69)
 #define my_lower_o KC_END
-#define my_lower_p TD(WWW_BACK_FORWARD)
-#define my_lower_bs KC_DEL
+#define my_lower_p KC_BSPACE
 #define my_lower_period BROWSER_TAB_NEXT
-#define my_lower_semi esc_ctrl
+#define my_lower_r KC_F4
+#define my_lower_semi KC_MINUS
 #define my_lower_slash SHIFTLOCK_LAYER_ACTIVATE
 #define lower_LOWER TO(_BASE)
 #define lower_right_of_lower _______
@@ -115,18 +101,19 @@
 #define my_raise_comma KC_2
 #define my_raise_d _______ //kc_bspace
 #define my_raise_f RALT(KC_ENTER)
-#define my_raise_h KC_BSPACE
+#define my_raise_h KC_MINUS
 #define my_raise_i KC_8
 #define my_raise_j KC_4
 #define my_raise_k KC_5
 #define my_raise_l KC_6
 #define my_raise_m KC_1
-#define my_raise_n KC_DQUO
+#define my_raise_n KC_PLUS
 #define my_raise_o KC_9
 #define my_raise_p KC_0
 #define my_raise_period KC_3
 #define my_raise_u  KC_7
-#define my_raise_y  KC_QUOT
+#define my_raise_y  KC_EQL
+#define my_right_of_lower OSL(_EDITING)
 #define my_right_shift KC_RSFT // shift LM(_ALT, MOD_LSFT)
 #define raise_semi KC_PLUS
 
@@ -170,17 +157,23 @@
 #define my_x TD(DANCE_X)
 #define my_y TD(DANCE_Y)
 #define my_z TD(DANCE_Z)
-
+#define next_win_or_frame RALT(RSFT(KC_N))
+#define prev_win_or_frame RALT(RSFT(KC_P))
+#define raise_space KC_UNDS
+#define raise_key_4_9 KC_ENTER // KC_BSPC
+#define raise_semi KC_QUOTE
 #define right_of_lower  esc_ctrl  // my_left_shift ///hyper // / MT(MOD_RCTL, KC_ESCAPE)
 #define select_slack LGUI(KC_S)
 #define show_desktop LALT(LGUI(LCTL(KC_D)))
 #define below_m MT(MOD_RCTL, KC_ESCAPE)
 #define super LM(_SUPER, MOD_LGUI) //TD(SUPER_WINDOWS)
-/* #define super KC_LGUI */
-/* #define alt  KC_LALT */
-#define alt LM(_ALT, MOD_LALT)
-#define lm_ctrl LM(_CTRL, MOD_RCTL)
-
+#define super_meta_hyper LM(_MENU, MOD_LGUI | MOD_LCTL | MOD_LALT)
+#define top_left TD(DANCE_0)
+#define topright _______
+#define windows_k TD(DANCE_43)
+#define windows_l TD(DANCE_44)
+#define emacs_buffer_stack_down LCTL(LALT(KC_H))
+#define emacs_buffer_stack_up LCTL(LALT(KC_L))
 
 
 static bool do_echo = false;
@@ -203,6 +196,12 @@ enum custom_keycodes {
                       /* RGB_SLD = SAFE_RANGE, */
                       /* RGB_SLD = EZ_SAFE_RANGE, */
                       FIRST = SAFE_RANGE,
+                      BACKWARD_KILL_LINE,
+                      LAYER_LOCK,
+                      EMACS_INSIDE_YANK,
+                      EMACS_INSIDE_DELETE,
+                      EMACS_TO_YANK,
+                      EMACS_TO_DELETE,
                       EMACS_EVIL_FIND,
                       EMACS_PROJECTILE_FIND_FILE,
                       EMACS_RE_FIND,
@@ -401,6 +400,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             );
   }
 #endif
+  if (!process_layer_lock(keycode, record, LAYER_LOCK)) {
+#ifdef AUDIO_ENABLE
+    PLAY_SONG(zelda_treasure);
+#endif
+    return false;
+  }
+
   switch (keycode) {
 
 
@@ -464,7 +470,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       cycle_drop_animations();
     }
     break;
-    #endif
+#endif
 
   case TOGGLE_ECHO:
     if (record->event.pressed) {
@@ -498,8 +504,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case SYSTEM_LAYER_ACTIVATE:
     if (record->event.pressed) {
       layer_move(_SYSTEM);
-      /* PLAY_SONG(scroll_lock_on_sound); */
-      /* rgblight_mode(RGBLIGHT_MODE_RAINBOW_SWIRL); */
+      PLAY_SONG(scroll_lock_on_sound);
+      rgblight_mode(RGBLIGHT_MODE_RAINBOW_SWIRL);
 
       return false;
     }
@@ -507,8 +513,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   case SYSTEM_LAYER_DEACTIVATE:
     if (record->event.pressed) {
-      /* PLAY_SONG(one_up_sound); */
-      /* PLAY_SONG(scroll_lock_off_sound); */
+      PLAY_SONG(one_up_sound);
+      PLAY_SONG(scroll_lock_off_sound);
       layer_move(_BASE);
       return false;
     }
@@ -516,11 +522,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   case SHIFTLOCK_LAYER_ACTIVATE:
     if (record->event.pressed) {
+#ifdef RGBLIGHT_ENABLE
       rgblight_mode(42);
+#endif
       layer_move(_SHIFTLOCK);
-      #ifdef AUDIO_ENABLE
+#ifdef AUDIO_ENABLE
       PLAY_SONG(caps_lock_on_sound);
-      #endif
+#endif
       /* rgblight_mode(RGBLIGHT_MODE_RAINBOW_SWIRL); */
       return false;
     }
@@ -749,7 +757,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       rgblight_mode(18);
       rgblight_enable_noeeprom();
       rgblight_sethsv_noeeprom(HSV_BLUE);
-      #endif
+#endif
 
       return false;
 
@@ -768,7 +776,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       rgblight_mode(18);
       rgblight_enable_noeeprom();
       rgblight_sethsv_noeeprom(HSV_PURPLE);
-      #endif
+#endif
 
       return false;
 
@@ -785,7 +793,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       rgblight_mode(18);
       rgblight_enable_noeeprom();
       rgblight_sethsv_noeeprom(HSV_GREEN);
-      #endif
+#endif
 
       return false;
 
