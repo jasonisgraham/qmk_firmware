@@ -255,7 +255,7 @@ const uint16_t PROGMEM combo_lower__comma_l[] = {LOWER, my_comma, my_l, COMBO_EN
 const uint16_t PROGMEM combo_raise_k_raise_o[] = {my_raise_k, my_raise_o, COMBO_END};
 const uint16_t PROGMEM combo_raise_m_raise_k[] = {my_raise_m, my_raise_k, COMBO_END};
 
-const uint16_t PROGMEM combo_lower_j_i[] = {my_lower_j, my_lower_i, COMBO_END};
+const uint16_t PROGMEM combo_lower_j_i[] = {LOWER, my_j, my_i, COMBO_END};
 const uint16_t PROGMEM combo_lower_k_lower_o[] = {my_lower_k, my_lower_o, COMBO_END};
 const uint16_t PROGMEM combo_lower_m_lower_k[] = {my_lower_m, my_lower_k, COMBO_END};
 const uint16_t PROGMEM combo_lower_k_lower_l[] = {my_lower_k, my_lower_l, COMBO_END};
@@ -291,6 +291,7 @@ combo_t key_combos[COMBO_COUNT] = {
                                    COMBO(combo_y_t,EMACS_TO_YANK),
                                    COMBO(combo_d_t,EMACS_TO_DELETE),
 
+                                   COMBO(combo_lower__j_i, EMACS_FASD),
 
                                    COMBO(combo_4_10_4_12, KC_RIGHT),
                                    COMBO(combo_4_11_4_12, KC_RIGHT),
@@ -365,7 +366,7 @@ combo_t key_combos[COMBO_COUNT] = {
                                    COMBO(combo_j_o, KC_LBRACKET),
 
 
-                                   COMBO(combo_lower__j_i, KC_F),
+                                   /* COMBO(combo_lower__j_i, KC_F), */
                                    // COMBO(combo_lower__j_i, EMACS_EVIL_FIND),
                                    COMBO(combo_lower_comma_l, KC_TILD),
                                    /* COMBO(combo_lower_comma_l, KC_TILD), */

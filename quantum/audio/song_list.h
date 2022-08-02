@@ -20,6 +20,10 @@
 
 #define NO_SOUND
 
+#define __E6 ED_NOTE(_E6)
+#define __G6 ED_NOTE(_G6)
+#define __A6 ED_NOTE(_A6)
+
 #define LP_NUMB	\
   H__NOTE(_CS5), H__NOTE(_E5), H__NOTE(_CS5), WD_NOTE(_FS5), \
   WD_NOTE(_A5), WD_NOTE(_GS5),   WD_NOTE(_REST),  H__NOTE(_CS5), H__NOTE(_E5), \

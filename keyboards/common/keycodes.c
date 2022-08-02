@@ -6,6 +6,10 @@
 #include "layer_lock.h"
 #include "../../quantum/hacks.c"
 
+#define EMACS_FASD_PROJECT_CURR_EXT LCTL(KC_F12)
+#define EMACS_FASD_PROJECT_NO_EXT KC_F12
+#define EMACS_FASD_GLOBAL_NO_EXT RCTL(LCTL(KC_F12))
+
 #define EMACS_LOCCUR LCTL(RCTL(LGUI(LALT(KC_O))))
 #define BROWSER_TAB_NEXT TD(DANCE_30)
 #define BROWSER_TAB_PREV TD(DANCE_29)
@@ -197,6 +201,7 @@ enum custom_keycodes {
                       EMACS_TO_DELETE,
                       EMACS_EVIL_FIND,
                       EMACS_PROJECTILE_FIND_FILE,
+                      EMACS_FASD,
                       EMACS_RE_FIND,
                       EMACS_BACKWARD_UP,
                       RESET_ANIMATION,
@@ -279,9 +284,36 @@ enum custom_keycodes {
 bool is_alt_tab_active = false;
 uint16_t alt_tab_timer = 0;
 
-#ifdef LEADER_ENABLE
-LEADER_EXTERNS();
+bool fasd_timer_active = false;
+uint16_t fasd_timer = 0;
+int fasd_level = -1;
+int fasd_level_duration = 400;
+
 void matrix_scan_user(void) {
+  if (fasd_timer_active) {
+    if (timer_elapsed(fasd_timer) > (fasd_level_duration * 2)) {
+      // global no ext
+      if (fasd_level < 2) {
+        PLAY_SONG(__a6);
+        fasd_level++;
+      }
+
+    } else if (timer_elapsed(fasd_timer) > (fasd_level_duration * 1)) {
+      if (fasd_level < 1) {
+        PLAY_SONG(__g6);
+        fasd_level++;
+      }
+
+    } else {
+      if (fasd_level < 0) {
+        // project level current ext
+        PLAY_SONG(__e6);
+        fasd_level++;
+      }
+      return;
+    }
+  }
+
   if (is_alt_tab_active) {
     if (timer_elapsed(alt_tab_timer) > 250) {
       unregister_code(KC_LGUI);
@@ -290,6 +322,9 @@ void matrix_scan_user(void) {
   }
 
 }
+
+#ifdef LEADER_ENABLE
+LEADER_EXTERNS();
 #endif
 
 #ifdef RGBLIGHT_ENABLE
@@ -377,8 +412,10 @@ bool do_breathing = false;
 #endif
 
 #include "autocorrection.h"
+/* #include "musical_notes.h" */
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+
 #ifdef CONSOLE_ENABLE
   if (record->event.pressed) {
     uprintf("0x%04X,%u,%u,%u,%b,0x%02X,0x%02X,%u\n",
@@ -393,14 +430,36 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             );
   }
 #endif
+
   if (!process_layer_lock(keycode, record, LAYER_LOCK)) {
+    if (biton32(layer_state) != _BASE) {
 #ifdef AUDIO_ENABLE
     PLAY_SONG(zelda_treasure);
 #endif
+    }
     return false;
   }
 
   switch (keycode) {
+
+  case EMACS_FASD:
+    if (record->event.pressed) {
+      fasd_timer = timer_read();
+      fasd_timer_active = true;
+      fasd_level = -1;
+      return false;
+    } else {
+      if (fasd_level >= 3) {
+        tap_code16(EMACS_FASD_GLOBAL_NO_EXT);
+      } else if (fasd_level >= 2) {
+        tap_code16(EMACS_FASD_PROJECT_NO_EXT);
+      } else {
+        tap_code16(EMACS_FASD_PROJECT_CURR_EXT);
+      }
+      fasd_timer_active = false;
+      fasd_timer = 0;
+    }
+    break;
 
 
 #ifdef RGBLIGHT_ENABLE
