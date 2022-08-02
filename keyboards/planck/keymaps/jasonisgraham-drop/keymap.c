@@ -52,8 +52,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_BASE] = LAYOUT_planck_grid(
                              top_left,    my_q,    my_w,    my_e,    my_r,    my_t, LAYER_LOCK,    my_y,           my_u,    my_i,    my_o,     my_p,
-                             my_lctl , my_a,   my_s,   my_d,   my_f,   my_g, KC_BSPACE,  my_h,         my_j,   my_k,   my_l,   my_semicolon,
-                             my_left_shift,        my_z,           my_x,           my_c,           my_v,           my_b, esc_ctrl,     my_n,   my_m,   my_comma,   my_period,   my_forward_slash,
+                             my_lctl , my_a,   my_s,   my_d,   my_f,   my_g, backspace,  my_h,         my_j,   my_k,   my_l,   my_semicolon,
+                             my_left_shift,        my_z,           my_x,           my_c,           my_v,           my_b, KC_ENTER,     my_n,   my_m,   my_comma,   my_period,   my_forward_slash,
                              hyper, super_meta_hyper , all_mods , alt, RAISE,  super, right_of_super,   my_space,           LOWER,          my_right_of_lower,   key_4_11,  key_4_12
                               ),
 
@@ -61,17 +61,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_LOWER] = LAYOUT_planck_grid(
                               KC_AUDIO_MUTE,   KC_F1,          KC_F2,          KC_F3,          KC_F4,          TD(DANCE_73),   _______,  KC_HOME,     my_lower_u,    my_lower_i,      my_lower_o,         my_lower_p,
                               _______, KC_F5,          KC_F6,          KC_F7,          KC_F8,          _______, TD(WWW_BACK_FORWARD),      KC_LEFT,        my_lower_j,        my_lower_k,          my_lower_l,       my_lower_semi,
-                                _______,   KC_F9,          KC_F10,         KC_F11,         KC_F12,         KC_APPLICATION, KC_GRV,  my_lower_n, my_lower_m, my_lower_comma,   my_lower_period, my_lower_slash,
+                              _______,   KC_F9,          KC_F10,         KC_F11,         KC_F12,         KC_APPLICATION, KC_GRV,  my_lower_n, my_lower_m, my_lower_comma,   my_lower_period, my_lower_slash,
                               _______, _______, _______ , _______, MO(_MOUSE),  _______ ,           _______,         _______, lower_LOWER,          lower_right_of_lower, lower_key_4_11, lower_key_4_12
 
 
                               ),
 
 [_RAISE] = LAYOUT_planck_grid(
-                              LALT(KC_D),    _______,          EMACS_OTHER_WINDOW,     KC_END,         EMACS_BUFFER_REVERT,      _______,  KC_EQL,          my_raise_y, my_raise_u,           my_raise_i,           my_raise_o,           my_raise_p,
+                              LALT(KC_D),    _______,          EMACS_OTHER_WINDOW,     KC_END,         EMACS_BUFFER_REVERT,      _______,  KC_INSERT,          my_raise_y, my_raise_u,           my_raise_i,           my_raise_o,           my_raise_p,
                               _______, _______, _______,  my_raise_d, my_raise_f,  OSL(_MACROS), KC_DEL,       my_raise_h,         my_raise_j,           my_raise_k,           my_raise_l,           raise_semi,
                               _______, _______, _______,_______,   _______,          FISH_ACCEPT_SEND, KC_GRV,     my_raise_n,           my_raise_m,           my_raise_comma,         KC_3,           KC_QUES,
-                              _______, _______, _______,        _______,        _______, _______,  MO(_ROFI) ,       KC_BSPACE,   raise_key_4_9,       KC_0,  _______,         TO(_BASE)
+                              _______, _______, _______,        _______,        _______, _______,  MO(_ROFI) ,       KC_UNDS,   raise_key_4_9,       KC_0,  _______,         TO(_BASE)
 
                               ),
 
@@ -159,29 +159,30 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // 11
 [_SUPER] = LAYOUT_planck_grid(
-                              _______, _______, _______, _______, _______, _______,    KC_TILD, KC_GRV,  _______, _______, _______, _______,
-                              _______, _______, _______, _______, _______, _______,    LSFT(KC_TAB), KC_TAB,  _______, _______, _______, _______,
+                              _______, _______, _______, _______, _______, _______,    _______, _______,  _______, _______, _______, _______,
+                              _______, _______, _______, _______, _______, _______,    _______, _______,  _______, _______, _______, _______,
                               _______, _______, _______, _______,    _______, _______, _______, _______,    _______, _______, _______, _______,
                               _______, _______, _______, _______,    _______, _______, _______, _______,    _______, _______, _______, _______
 
                               ),
-
-
-// 12
-[_EDITING] = LAYOUT_planck_grid(
-                                _______, _______, EMACS_OTHER_WINDOW,     LCTL(KC_E), EMACS_BUFFER_REVERT,     _______, _______, EMACS_COPY_FILE_PATH, scroll_next,     scroll_prev, EMACS_OTHER_WINDOW, EMACS_PROJECTILE_FIND_FILE,
-                                _______, _______, _______, _______, RALT(KC_ENTER), _______, _______, RALT(RSFT(KC_H)), RALT(RSFT(KC_J)),RALT(RSFT(KC_K)),RALT(RSFT(KC_L)), EMACS_COMMENT_READER,
-                                _______, _______, _______, EMACS_WINDOW_CLOSE,    KC_F12, _______, _______,  next_win_or_frame, EMACS_ACE_WINDOW_SWAP,  _______, _______, TERM_CD_UP_DIR,
-                                _______, _______, _______, _______, KC_HYPR,  _______, _______,  KC_NO,          KC_LCTL, _______, _______, _______
-
-                                ),
-
 [_ROFI] = LAYOUT_planck_grid(
                              _______, _______, _______, _______, _______,    _______, _______, _______, LALT(KC_7), LALT(KC_8), LALT(KC_9), _______,
                              _______, _______, _______, _______, _______,   _______, _______, _______, LALT(KC_4), LALT(KC_5), LALT(KC_6),_______,
                              _______, _______, _______, _______, _______, _______, _______, _______, LALT(KC_1), LALT(KC_2), LALT(KC_3),_______,
                              _______, _______, _______,    _______, _______, _______, TO(_BASE), RALT(RGUI(KC_SPC)),    _______, _______, _______,_______
                              ),
+
+
+
+
+// 12
+[_EDITING] = LAYOUT_planck_grid(
+                                _______, _______, LCTL(KC_7),     LCTL(KC_E), EMACS_BUFFER_REVERT,     _______, _______, EMACS_COPY_FILE_PATH, scroll_next,     scroll_prev, EMACS_OTHER_WINDOW, EMACS_PROJECTILE_FIND_FILE,
+                                _______,  _______,EMACS_LOCCUR, _______, RALT(KC_ENTER), LCTL(KC_G), _______, RALT(RSFT(KC_H)), RALT(RSFT(KC_J)),RALT(RSFT(KC_K)),RALT(RSFT(KC_L)), EMACS_COMMENT_READER,
+                                _______, _______, _______, EMACS_WINDOW_CLOSE,    KC_F12, _______, _______,  next_win_or_frame, EMACS_ACE_WINDOW_SWAP,  emacs_buffer_stack_down, emacs_buffer_stack_up, TERM_CD_UP_DIR,
+                                _______, _______, _______, _______, KC_HYPR,  _______, _______,  _______,          KC_LCTL, _______, _______, _______
+
+                                ),
 
 [_MENU] = LAYOUT_planck_grid(
                                 _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
@@ -202,7 +203,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                               TO(_BASE),   _______, _______, KC_MS_UP,       _______, _______, _______,  KC_HOME,        KC_PGUP,        KC_PGDOWN,      KC_END,         _______,
                               _______, _______, KC_MS_LEFT,     KC_MS_DOWN,     KC_MS_RIGHT,    TO(_GAUTH), _______,  KC_MS_BTN1,     KC_MS_WH_DOWN,  KC_MS_WH_UP,    KC_MS_BTN2,     _______,
                               SHIFTLOCK_LAYER_ACTIVATE, _______, _______, _______, _______, _______, _______,  LALT(LGUI(KC_N)), KC_MS_BTN3,     TD(DANCE_35),   TD(DANCE_36),   TO(_BOTH),
-                              _______, _______, _______, _______, MO(_EXTENDED), _______,  _______,  _______, TO(_BASE),          _______, _______, _______
+                              _______, _______, _______, _______, MO(_EXTENDED), _______,  _______,  _______, RGUI(LCTL(KC_M)),          _______, _______, _______
 
                                 ),
 

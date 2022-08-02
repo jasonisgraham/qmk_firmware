@@ -69,7 +69,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     break;
 
   case _ROFI:
-    static_kinda_dim(HSV_BLUE);
+    static_kinda_dim(HSV_PURPLE);
     break;
 
   case _RAISE:
@@ -159,7 +159,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
   /*   break; */
 
   case _EDITING:
-    static_kinda_dim(HSV_WHITE);
+    static_kinda_dim(HSV_BLUE);
     break;
 
   case _WINMOVE:
