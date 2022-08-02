@@ -3166,16 +3166,7 @@ void on_dance_E(qk_tap_dance_state_t *state, void *user_data);
 void dance_E_finished(qk_tap_dance_state_t *state, void *user_data);
 void dance_E_reset(qk_tap_dance_state_t *state, void *user_data);
 
-void on_dance_E(qk_tap_dance_state_t *state, void *user_data) {
-  if(state->count == 3) {
-    tap_code16(KC_E);
-    tap_code16(KC_E);
-    tap_code16(KC_E);
-  }
-  if(state->count > 3) {
-    tap_code16(KC_E);
-  }
-}
+void on_dance_E(qk_tap_dance_state_t *state, void *user_data) {}
 
 void dance_E_finished(qk_tap_dance_state_t *state, void *user_data) {
   dance_state[3].step = dance_step(state);

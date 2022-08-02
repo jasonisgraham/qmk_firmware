@@ -26,19 +26,57 @@
 
 #define NO_SOUND
 
-/* Ode to Joy
- * Author: Friedrich Schiller
- + License: Public Domain
- */
-#define ODE_TO_JOY Q__NOTE(_E4), Q__NOTE(_E4), Q__NOTE(_F4), Q__NOTE(_G4), Q__NOTE(_G4), Q__NOTE(_F4), Q__NOTE(_E4), Q__NOTE(_D4), Q__NOTE(_C4), Q__NOTE(_C4), Q__NOTE(_D4), Q__NOTE(_E4), QD_NOTE(_E4), E__NOTE(_D4), H__NOTE(_D4),
+#define __E6 ED_NOTE(_E6)
+#define __G6 ED_NOTE(_G6)
+#define __A6 ED_NOTE(_A6)
 
-/* Rock-a-bye Baby
- * Author: Unknown
- + License: Public Domain
- */
-#define ROCK_A_BYE_BABY QD_NOTE(_B4), E__NOTE(_D4), Q__NOTE(_B5), H__NOTE(_A5), Q__NOTE(_G5), QD_NOTE(_B4), E__NOTE(_D5), Q__NOTE(_G5), H__NOTE(_FS5),
+#define LP_NUMB	\
+  H__NOTE(_CS5), H__NOTE(_E5), H__NOTE(_CS5), WD_NOTE(_FS5), \
+  WD_NOTE(_A5), WD_NOTE(_GS5),   WD_NOTE(_REST),  H__NOTE(_CS5), H__NOTE(_E5), \
+  H__NOTE(_CS5), WD_NOTE(_A5), WD_NOTE(_GS5), WD_NOTE(_E5),
 
-#define CLUEBOARD_SOUND HD_NOTE(_C3), HD_NOTE(_D3), HD_NOTE(_E3), HD_NOTE(_F3), HD_NOTE(_G3), HD_NOTE(_A4), HD_NOTE(_B4), HD_NOTE(_C4)
+
+#define ODE_TO_JOY                                          \
+    Q__NOTE(_E4), Q__NOTE(_E4), Q__NOTE(_F4), Q__NOTE(_G4), \
+    Q__NOTE(_G4), Q__NOTE(_F4), Q__NOTE(_E4), Q__NOTE(_D4), \
+    Q__NOTE(_C4), Q__NOTE(_C4), Q__NOTE(_D4), Q__NOTE(_E4), \
+    QD_NOTE(_E4), E__NOTE(_D4), H__NOTE(_D4),
+
+#define ROCK_A_BYE_BABY                            \
+    QD_NOTE(_B4), E__NOTE(_D4), Q__NOTE(_B5),      \
+    H__NOTE(_A5), Q__NOTE(_G5),                    \
+    QD_NOTE(_B4), E__NOTE(_D5), Q__NOTE(_G5),      \
+    H__NOTE(_FS5),
+
+#define CLOSE_ENCOUNTERS_5_NOTE  \
+  Q__NOTE(_D5),                \
+  Q__NOTE(_E5),                \
+  Q__NOTE(_C5),                \
+  Q__NOTE(_C4),                \
+  Q__NOTE(_G4),
+
+#define DOE_A_DEER              \
+  QD_NOTE(_C4), E__NOTE(_D4), \
+  QD_NOTE(_E4), E__NOTE(_C4), \
+  Q__NOTE(_E4), Q__NOTE(_C4), \
+  Q__NOTE(_E4),
+
+/* Requires: PLAY_NOTE_ARRAY(..., ..., STACCATO); */
+#define IN_LIKE_FLINT \
+    E__NOTE(_AS4), E__NOTE(_AS4), QD_NOTE(_B4),  \
+    E__NOTE(_AS4), E__NOTE(_B4),  QD_NOTE(_CS4), \
+    E__NOTE(_B4),  E__NOTE(_CS4), QD_NOTE(_DS4), \
+    E__NOTE(_CS4), E__NOTE(_B4),  QD_NOTE(_AS4), \
+    E__NOTE(_AS4), E__NOTE(_AS4), QD_NOTE(_B4),
+
+#define IMPERIAL_MARCH \
+  HD_NOTE(_A4), HD_NOTE(_A4), HD_NOTE(_A4), QD_NOTE(_F4), QD_NOTE(_C5), \
+  HD_NOTE(_A4), QD_NOTE(_F4),  QD_NOTE(_C5), WD_NOTE(_A4), \
+  HD_NOTE(_E5), HD_NOTE(_E5), HD_NOTE(_E5), QD_NOTE(_F5), QD_NOTE(_C5), \
+  HD_NOTE(_A4), QD_NOTE(_F4),  QD_NOTE(_C5), WD_NOTE(_A4)
+
+#define CLUEBOARD_SOUND \
+    HD_NOTE(_C3), HD_NOTE(_D3), HD_NOTE(_E3), HD_NOTE(_F3), HD_NOTE(_G3), HD_NOTE(_A4), HD_NOTE(_B4), HD_NOTE(_C4)
 /*
     HD_NOTE(_G3), HD_NOTE(_E3), HD_NOTE(_C3), \
     Q__NOTE(_E3), Q__NOTE(_C3), Q__NOTE(_G3), \

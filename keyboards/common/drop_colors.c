@@ -166,12 +166,6 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     static_kinda_dim(HSV_SPRINGGREEN);
     break;
 
-  case _COLORS:
-    rgblight_mode(default_rgblight_mode);
-    rgblight_enable_noeeprom();
-    /* rgblight_mode(RGBLIGHT_MODE_BREATHING); */
-    /* rgblight_sethsv_noeeprom(HSV_GREEN); */
-    break;
 
   case _LAYER19:
     rgblight_mode(RGBLIGHT_MODE_SNAKE);

@@ -59,3 +59,7 @@ float all_star[][2] =  SONG(ALL_STAR);
 float rick_roll[][2] =  SONG(RICK_ROLL);
 float ff_prelude[][2] =  SONG(FF_PRELUDE);
 float to_boldly_go[][2] =  SONG(TO_BOLDLY_GO);
+
+float __e6[][2] = SONG(__E6);
+float __g6[][2] = SONG(__G6);
+float __a6[][2] = SONG(__A6);

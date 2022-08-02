@@ -1,4 +1,5 @@
 SRC += muse.c
+SRC += ../../../common/layer_lock.c
 
 AUDIO_ENABLE = yes
 CAPS_WORD_ENABLE = yes
