@@ -3,6 +3,7 @@
 /* #include "song_list.h" */
 /* #include "config_common.h" */
 
+#define AUTO_SHIFT_REPEAT
 #define MOUSEKEY_MAX_SPEED 2
 /* #define COMBO_COUNT 50 */
 

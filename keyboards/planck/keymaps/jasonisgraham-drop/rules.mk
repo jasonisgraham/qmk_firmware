@@ -1,6 +1,7 @@
 SRC += muse.c
 
 SRC += ../../../common/layer_lock.c
+SRC += ../../../common/caps_word.c
 
 AUTO_SHIFT_MODIFIERS = yes
 
@@ -9,7 +10,7 @@ UNICODE_ENABLE = yes
 # UNICODEMAP_ENABLE = yes
 
 AUDIO_ENABLE = yes
-# CAPS_WORD_ENABLE = yes
+CAPS_WORD_ENABLE = NO
 
 KEY_OVERRIDE_ENABLE = yes
 

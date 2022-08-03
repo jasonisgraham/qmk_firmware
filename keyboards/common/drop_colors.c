@@ -5,17 +5,17 @@ void static_kinda_dim(uint8_t hue, uint8_t sat, uint8_t val);
 void static_kinda_dim(uint8_t hue, uint8_t sat, uint8_t val) {
   rgblight_enable_noeeprom();
   rgblight_mode(RGBLIGHT_MODE_STATIC_LIGHT);
-  rgblight_sethsv_noeeprom(HSV_OFF);
+  rgblight_sethsv_noeeprom(hue, sat, val);
 
-  rgblight_sethsv_range(HSV_OFF, 6, 0);
-  rgblight_sethsv_range(HSV_OFF,   5, 0);
-  rgblight_sethsv_range(hue, sat, val, 4, 6);
-  rgblight_sethsv_range(hue, sat, val, 3, 0);
-  rgblight_sethsv_range(hue, sat, val,   2, 1);
-  rgblight_sethsv_range(hue, sat, val, 1, 10);
-  rgblight_sethsv_range(HSV_OFF, 8, 5);
-  rgblight_sethsv_range(HSV_OFF,   7, 11);
-  rgblight_sethsv_range(hue, sat, val,   0, 0);
+  /* rgblight_sethsv_range(HSV_OFF, 6, 0); */
+  /* rgblight_sethsv_range(HSV_OFF,   5, 0); */
+  /* rgblight_sethsv_range(hue, sat, val, 4, 6); */
+  /* rgblight_sethsv_range(hue, sat, val, 3, 0); */
+  /* rgblight_sethsv_range(hue, sat, val,   2, 1); */
+  /* rgblight_sethsv_range(hue, sat, val, 1, 10); */
+  /* rgblight_sethsv_range(HSV_OFF, 8, 5); */
+  /* rgblight_sethsv_range(HSV_OFF,   7, 11); */
+  /* rgblight_sethsv_range(hue, sat, val,   0, 0); */
 
 }
 
@@ -91,7 +91,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     break;
 
 
-  case _BOTH:
+  case _ALL_MODS:
     static_kinda_dim(HSV_YELLOW);
     break;
 
@@ -146,7 +146,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
     rgblight_mode(RGBLIGHT_MODE_SNAKE);
     rgblight_enable_noeeprom();
-    rgblight_sethsv_noeeprom(HSV_RED);
+    rgblight_sethsv_noeeprom(HSV_PINK);
 
     /* rgblight_mode(RGBLIGHT_MODE_RAINBOW_SWIRL); */
     break;
@@ -159,7 +159,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
   /*   break; */
 
   case _EDITING:
-    static_kinda_dim(HSV_BLUE);
+    static_kinda_dim(HSV_PLUM);
     break;
 
   case _WINMOVE:
