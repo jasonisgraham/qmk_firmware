@@ -5,10 +5,26 @@
 
 #include "../../quantum/hacks.c"
 
-#define EMACS_FASD_PROJECT_CURR_EXT LCTL(KC_F12)
-#define EMACS_FASD_PROJECT_NO_EXT KC_F12
-#define EMACS_FASD_GLOBAL_NO_EXT RCTL(LCTL(KC_F12))
+#define EMACS_FASD_DEFAULT RCTL(KC_ASTR)
+#define EMACS_FASD_GLOBAL_NO_EXT KC_F12
+#define EMACS_FASD_PROJECT_NO_EXT LCTL(KC_F12)
+#define EMACS_FASD_PROJECT_CURR_EXT RCTL(KC_F12)
 
+#define WINDOW_ALWAYS_ON_TOP RCTL(LGUI(LALT(KC_UP)))
+
+#define winmove_mon_up LGUI(LSFT(KC_UP))
+#define winmove_mon_left LGUI(LSFT(KC_LEFT))
+#define winmove_mon_right LGUI(LSFT(KC_RIGHT))
+#define winmove_mon_down LGUI(LSFT(KC_DOWN))
+
+#define winmove_tile_up RGUI(RSFT(KC_K))
+#define winmove_tile_left RGUI(RSFT(KC_H))
+#define winmove_tile_right RGUI(RSFT(KC_L))
+#define winmove_tile_down RGUI(RSFT(KC_J))
+
+#define editing_j RALT(RSFT(KC_J))
+#define editing_k RALT(RSFT(KC_K))
+#define editing_l RALT(RSFT(KC_L))
 #define EMACS_LOCCUR LCTL(RCTL(LGUI(LALT(KC_O))))
 #define BROWSER_TAB_NEXT TD(DANCE_30)
 #define BROWSER_TAB_PREV TD(DANCE_29)
@@ -18,29 +34,15 @@
 #define CTRL_P RCTL(KC_P)
 #define ALT_P RALT(KC_P)
 #define CTRL_SEMICOLON RCTL(KC_SCOLON)
+/* H-M-s-d */
+#define EMACS_KILL_IN_SEXP LCTL(LALT(LGUI(KC_D)))
+#define EMACS_YANK_IN_SEXP LCTL(LALT(LGUI(KC_I)))
 
-#define topright _______
-
-#define EMACS_OTHER_WINDOW_NEXT RCTL(RALT(KC_PGUP))
-#define EMACS_OTHER_WINDOW_PREV RCTL(RALT(KC_PGDOWN))
-#define EMACS_NUMBER_INC LCTL(KC_PLUS)
 #define EMACS_NUMBER_DEC LCTL(KC_UNDS)
-
-#define BROWSER_TAB_NEXT TD(DANCE_30)
-#define BROWSER_TAB_PREV TD(DANCE_29)
-
-#define super_meta_hyper LM(_MENU, MOD_LGUI | MOD_LCTL | MOD_LALT)
-
-#define all_mods LM(_BOTH, MOD_LGUI | MOD_LCTL | MOD_LALT | MOD_RCTL | MOD_LSFT)
-
-#define scroll_next my_lower_u
-#define scroll_prev my_lower_i
-#define next_win_or_frame RALT(RSFT(KC_N))
-#define prev_win_or_frame RALT(RSFT(KC_P))
-
-
-#define LOWER MO(_LOWER)
-#define RAISE MO(_RAISE)
+#define EMACS_NUMBER_INC LCTL(KC_PLUS)
+#define WINDOWS_Q TD(DANCE_38)
+#define all_mods LM(_ALL_MODS, MOD_LGUI | MOD_LCTL | MOD_LALT | MOD_RCTL | MOD_LSFT)
+#define alt LM(_ALT, MOD_LALT)
 #define alt_tab ALT_TAB
 #define backspace KC_BSPACE
 #define below_b KC_RALT
@@ -56,6 +58,13 @@
 #define key_0_1 RCTL(RALT(KC_RSFT))
 #define key_4_11 KC_DOWN //CYCLE_DROP_COLORS // LAYER_LOWER_HOLD
 #define key_4_12 KC_UP
+#define key_left KC_LEFT
+#define key_right KC_RIGHT
+#define lm_ctrl LM(_CTRL, MOD_RCTL)
+#define lower_LOWER TO(_BASE)
+#define lower_key_4_11 KC_LEFT
+#define lower_key_4_12 KC_RIGHT
+#define lower_right_of_lower KC_DELETE
 #define macro_alt_slash SS_RALT(SS_TAP(X_SLASH))
 #define my_cap_h RSFT(KC_H)
 #define my_cap_i RSFT(KC_I)
@@ -80,7 +89,7 @@
 #define my_lower_comma BROWSER_TAB_PREV
 #define my_lower_d KC_F7
 #define my_lower_f  KC_F8
-#define my_lower_g KC_SCROLLLOCK
+#define my_lower_g KC_DELETE
 #define my_lower_i KC_PGUP
 #define my_lower_j KC_DOWN
 #define my_lower_k KC_UP
@@ -91,19 +100,24 @@
 #define my_lower_p KC_BSPACE
 #define my_lower_period BROWSER_TAB_NEXT
 #define my_lower_r KC_F4
-#define my_lower_semi KC_MINUS
-#define my_lower_slash SHIFTLOCK_LAYER_ACTIVATE
-#define lower_LOWER TO(_BASE)
-#define lower_right_of_lower _______
-#define my_right_of_lower OSL(_EDITING)
-#define lower_key_4_11 KC_LEFT
-#define lower_key_4_12 KC_RIGHT
-#define raise_key_4_9 KC_ENTER // KC_BSPC
-
+#define my_lower_semi KC_QUOTE
+#define my_lower_slash KC_BSLASH
+#define my_lower_u KC_PGDOWN
+#define my_m TD(DANCE_M)
+#define my_minus _______
+#define my_n TD(DANCE_N)
+#define my_o TD(DANCE_O)
+#define my_p TD(DANCE_P)
+#define my_period KC_DOT
+#define my_q TD(DANCE_Q)
+#define my_r TD(DANCE_R)
 #define my_raise RAISE
 #define my_raise_top_right KC_DEL // TD(WWW_BACK_FORWARD)
 #define my_raise_comma KC_2
-#define my_raise_d _______ //kc_bspace
+#define my_raise_d KC_RIGHT
+#define my_raise_a KC_LEFT
+#define my_raise_s KC_DOWN
+#define my_raise_w KC_UP
 #define my_raise_f RALT(KC_ENTER)
 #define my_raise_h KC_MINUS
 #define my_raise_i KC_8
@@ -111,12 +125,12 @@
 #define my_raise_k KC_5
 #define my_raise_l KC_6
 #define my_raise_m KC_1
-#define my_raise_n KC_PLUS
+#define my_raise_n KC_UNDS
 #define my_raise_o KC_9
 #define my_raise_p KC_0
 #define my_raise_period KC_3
 #define my_raise_u  KC_7
-#define my_raise_y  KC_EQL
+#define my_raise_y  KC_PLUS
 #define my_right_of_lower OSL(_EDITING)
 #define my_right_shift KC_RSFT // shift LM(_ALT, MOD_LSFT)
 #define raise_semi KC_PLUS
@@ -165,11 +179,15 @@
 #define prev_win_or_frame RALT(RSFT(KC_P))
 #define raise_space KC_UNDS
 #define raise_key_4_9 KC_ENTER // KC_BSPC
-#define raise_semi KC_QUOTE
+#define raise_semi  KC_QUOTE
+#define raise_slash KC_MINUS
 #define right_of_lower  esc_ctrl  // my_left_shift ///hyper // / MT(MOD_RCTL, KC_ESCAPE)
+#define right_of_super  all_mods
+#define lower_right_of_super CLOSED_PAREN
+#define scroll_next RCTL(KC_D)
+#define scroll_prev RCTL(KC_U)
 #define select_slack LGUI(KC_S)
-#define show_desktop LALT(LGUI(LCTL(KC_D)))
-#define below_m MT(MOD_RCTL, KC_ESCAPE)
+#define show_desktop LALT(LGUI(LCTL(KC_F3)))
 #define super LM(_SUPER, MOD_LGUI) //TD(SUPER_WINDOWS)
 #define super_meta_hyper LM(_MENU, MOD_LGUI | MOD_LCTL | MOD_LALT)
 #define top_left TD(DANCE_0)
@@ -179,6 +197,11 @@
 #define emacs_buffer_stack_down LCTL(LALT(KC_H))
 #define emacs_buffer_stack_up LCTL(LALT(KC_L))
 
+#define EMACS_SELECT_WINDOW SS_RGUI(SS_TAP(X_E)) SS_DELAY(150)
+#define EMACS_SCROLL_DOWN RCTL(RGUI(KC_Y))
+#define EMACS_SCROLL_UP RCTL(KC_Y)
+
+#define BRACKET_PAREN TD(DANCE_PAREN_BRACKET)
 
 static bool do_echo = false;
 void toggle_echo(void) {
@@ -200,8 +223,17 @@ enum custom_keycodes {
                       /* RGB_SLD = SAFE_RANGE, */
                       /* RGB_SLD = EZ_SAFE_RANGE, */
                       FIRST = SAFE_RANGE,
+                      AUTOSHIFT_TOGGLE,
+                      CAPS_WORD_TOGGLE,
                       BACKWARD_KILL_LINE,
+                      EMACS_TRANSPOSE,
+                      OPEN_PAREN,
+                      CLOSED_PAREN,
                       LAYER_LOCK,
+                      CIDER_RUN_PREV_COMMAND,
+                      EMACS_DESC_KEY,
+                      EMACS_HELM_OCCUR,
+                      EMACS_HELM_MARK_RINGS,
                       EMACS_INSIDE_YANK,
                       EMACS_INSIDE_DELETE,
                       EMACS_TO_YANK,
@@ -265,6 +297,7 @@ enum custom_keycodes {
                       EMACS_YAS_TF,
                       EMACS_YAS_TL,
                       EMACS_YAS_KEYS_DESCRUCTURE,
+                      EMACS_FRAME_FULL_SCREEN,
                       ESC_THEN_BASE_LAYER,
                       FISH_ACCEPT_SEND,
                       LAYER_LOWER_HOLD,
@@ -282,6 +315,7 @@ enum custom_keycodes {
                       TMUX_CLOSE,
                       TERM_CD_UP_DIR,
                       CLEAR_THAT_REPL,
+                      THREAD_LAST,
 };
 
 #define max_buffer RALT(KC_ENTER)
@@ -291,34 +325,100 @@ enum custom_keycodes {
 bool is_alt_tab_active = false;
 uint16_t alt_tab_timer = 0;
 
+const int timer_default = 400;
+
 bool fasd_timer_active = false;
 uint16_t fasd_timer = 0;
-int fasd_level = -1;
-int fasd_level_duration = 400;
+int fasd_level = 0;
+int fasd_level_duration = timer_default;
+
+bool open_paren_timer_active = false;
+uint16_t open_paren_timer = 0;
+int open_paren_level = 0;
+int open_paren_level_duration = timer_default;
+
+bool closed_paren_timer_active = false;
+uint16_t closed_paren_timer = 0;
+int closed_paren_level = 0;
+int closed_paren_level_duration = timer_default;
 
 void matrix_scan_user(void) {
-  if (fasd_timer_active) {
-    if (timer_elapsed(fasd_timer) > (fasd_level_duration * 2)) {
+  // open paren
+  if (open_paren_timer_active) {
+    if (timer_elapsed(open_paren_timer) > (open_paren_level_duration * 2)) {
       // global no ext
-      if (fasd_level < 2) {
+      if (open_paren_level <= 2) {
+        open_paren_level++;
         PLAY_SONG(__a6);
-        fasd_level++;
       }
 
-    } else if (timer_elapsed(fasd_timer) > (fasd_level_duration * 1)) {
-      if (fasd_level < 1) {
+    } else if (timer_elapsed(open_paren_timer) > (open_paren_level_duration * 1)) {
+      if (open_paren_level <= 1) {
+        open_paren_level++;
         PLAY_SONG(__g6);
-        fasd_level++;
       }
 
     } else {
-      if (fasd_level < 0) {
-        // project level current ext
-        PLAY_SONG(__e6);
-        fasd_level++;
+      if (open_paren_level <= 0) {
+        open_paren_level++;
       }
-      return;
     }
+    return;
+  }
+
+
+  // closed paren
+  if (closed_paren_timer_active) {
+    if (timer_elapsed(closed_paren_timer) > (closed_paren_level_duration * 2)) {
+      // global no ext
+      if (closed_paren_level <= 2) {
+        closed_paren_level++;
+        PLAY_SONG(__a6);
+      }
+
+    } else if (timer_elapsed(closed_paren_timer) > (closed_paren_level_duration * 1)) {
+      if (closed_paren_level <= 1) {
+        closed_paren_level++;
+        PLAY_SONG(__g6);
+      }
+
+    } else {
+      if (closed_paren_level <= 0) {
+        closed_paren_level++;
+      }
+    }
+    return;
+  }
+
+  // fasd
+  if (fasd_timer_active) {
+    if (timer_elapsed(fasd_timer) > (fasd_level_duration * 3)) {
+      if (fasd_level <= 3) {
+        fasd_level++;
+        PLAY_SONG(__as6);
+      }
+
+    } else if (timer_elapsed(fasd_timer) > (fasd_level_duration * 2)) {
+      // global no ext
+      if (fasd_level <= 2) {
+        fasd_level++;
+        PLAY_SONG(__a6);
+      }
+
+    } else if (timer_elapsed(fasd_timer) > (fasd_level_duration * 1)) {
+      if (fasd_level <= 1) {
+        fasd_level++;
+        PLAY_SONG(__g6);
+      }
+
+    } else {
+      if (fasd_level <= 0) {
+        // project level current ext
+        fasd_level++;
+        /* PLAY_SONG(__e6); */
+      }
+    }
+    return;
   }
 
   if (is_alt_tab_active) {
@@ -418,10 +518,12 @@ bool do_breathing = false;
 
 #endif
 
+#include "caps_word.h"
 #include "autocorrection.h"
 /* #include "musical_notes.h" */
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  if (!process_caps_word(keycode, record)) { return false; }
 
 #ifdef CONSOLE_ENABLE
   if (record->event.pressed) {
@@ -440,9 +542,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   if (!process_layer_lock(keycode, record, LAYER_LOCK)) {
     if (biton32(layer_state) != _BASE) {
-#ifdef AUDIO_ENABLE
-    PLAY_SONG(zelda_treasure);
+#ifdef RGBLIGHT_MODE
+      rgblight_mode(RGBLIGHT_MODE_SNAKE);
 #endif
+
+
+/* #ifdef AUDIO_ENABLE */
+/*     PLAY_SONG(caps_lock_on_sound); */
+/* #endif */
     }
     return false;
   }
@@ -453,10 +560,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
       fasd_timer = timer_read();
       fasd_timer_active = true;
-      fasd_level = -1;
+      fasd_level = 0;
       return false;
     } else {
-      if (fasd_level >= 3) {
+      if (fasd_level >= 4) {
+        tap_code16(EMACS_FASD_DEFAULT);
+      } else if (fasd_level >= 3) {
         tap_code16(EMACS_FASD_GLOBAL_NO_EXT);
       } else if (fasd_level >= 2) {
         tap_code16(EMACS_FASD_PROJECT_NO_EXT);
@@ -465,6 +574,55 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       fasd_timer_active = false;
       fasd_timer = 0;
+    }
+    break;
+
+
+  case OPEN_PAREN:
+    if (record->event.pressed) {
+      open_paren_timer = timer_read();
+      open_paren_timer_active = true;
+      open_paren_level = 0;
+      return false;
+    } else {
+      if (open_paren_level >= 3) {
+        tap_code16(KC_LCBR);
+      } else if (open_paren_level >= 2) {
+        tap_code16(KC_LBRACKET);
+      } else {
+        tap_code16(KC_LPRN);
+      }
+      open_paren_timer_active = false;
+      open_paren_timer = 0;
+    }
+    break;
+
+  case CLOSED_PAREN:
+    if (record->event.pressed) {
+      closed_paren_timer = timer_read();
+      closed_paren_timer_active = true;
+      closed_paren_level = 0;
+      return false;
+    } else {
+      if (closed_paren_level >= 3) {
+        tap_code16(KC_RCBR);
+      } else if (closed_paren_level >= 2) {
+        tap_code16(KC_RBRACKET);
+      } else {
+        tap_code16(KC_RPRN);
+      }
+      closed_paren_timer_active = false;
+      closed_paren_timer = 0;
+    }
+    break;
+
+
+  case EMACS_FRAME_FULL_SCREEN:
+    if (record->event.pressed) {
+      tap_code16(winmove_mon_up);
+      tap_code16(winmove_mon_left);
+      tap_code16(KC_F11);
+      tap_code16(LCTL(KC_C));
     }
     break;
 
@@ -564,7 +722,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
       layer_move(_SYSTEM);
       PLAY_SONG(scroll_lock_on_sound);
+#ifdef RGBLIGHT_MODE
       rgblight_mode(RGBLIGHT_MODE_RAINBOW_SWIRL);
+#endif
 
       return false;
     }
@@ -659,6 +819,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     break;
 
+  case THREAD_LAST:
+    if (record->event.pressed) {
+      SEND_STRING("->>");
+    }
+    break;
+
   case EMACS_YAS_REMOVE_ANON:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_ESC) "ira" macro_alt_slash);
@@ -683,9 +849,33 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     break;
 
+   case EMACS_HELM_OCCUR:
+     if (record->event.pressed) {
+       SEND_STRING(SS_RALT(SS_TAP(X_M)) "so");
+     break;
+     }
+
+   case EMACS_HELM_MARK_RINGS:
+     if (record->event.pressed) {
+       SEND_STRING(SS_RALT(SS_TAP(X_M)) "rm");
+       break;
+     }
+
+  case CIDER_RUN_PREV_COMMAND:
+     if (record->event.pressed) {
+       SEND_STRING(SS_RCTL(SS_TAP(X_P)) SS_TAP(X_ENTER));
+       break;
+     }
+
+  case EMACS_DESC_KEY:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_F1) "k");
+    }
+    break;
+
   case EMACS_COMMENT_READER:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_ESC) "i#_");
+      SEND_STRING(SS_TAP(X_ESC) "i#_" SS_TAP(X_ESC));
     }
     break;
 
@@ -735,6 +925,38 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     break;
 
+    
+  case CAPS_WORD_TOGGLE:
+    if (record->event.pressed) {
+      caps_word_on();
+      PLAY_SONG(caps_lock_on_sound);
+    }
+    break;
+
+  case AUTOSHIFT_TOGGLE:
+    if (record->event.pressed) {
+
+      /* tap_code16(KC_ASTG); */
+      if (get_autoshift_state()) {
+        autoshift_disable();
+#ifdef AUDIO_ENABLE
+        PLAY_SONG(caps_lock_on_sound);
+#endif
+      } else {
+        autoshift_enable();
+#ifdef AUDIO_ENABLE
+        PLAY_SONG(caps_lock_off_sound);
+#endif
+      }
+      /* layer_move(_BASE); */
+    }
+    break;
+
+  case EMACS_TRANSPOSE:
+    if (record->event.pressed) {
+      SEND_STRING(SS_LALT(SS_TAP(X_M)) "xt");
+    }
+    break;
 
   case EMACS_PROJECTILE_FIND_FILE:
     if (record->event.pressed) {
@@ -826,17 +1048,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case LAYER_LOWER_HOLD:
     if (record->event.pressed) {
 #ifdef AUDIO_ENABLE
-      PLAY_SONG(minor_sound);
+      /* PLAY_SONG(minor_sound); */
+      PLAY_SONG(caps_lock_on_sound);
 #endif
       layer_move(_LOWER);
 
 #ifdef RGBLIGHT_MODE
       /* rgblight_mode(RGBLIGHT_MODE_SNAKE); */
-      rgblight_mode(18);
-      rgblight_enable_noeeprom();
-      rgblight_sethsv_noeeprom(HSV_PURPLE);
-#endif
+      rgblight_mode(RGB_MODE_RAINBOW);
+      /* rgblight_mode(18); */
+      rgblight_mode(RGBLIGHT_MODE_SNAKE);
+      /* rgblight_sethsv_noeeprom(HSV_PURPLE); */
 
+#endif
       return false;
 
     }
