@@ -49,7 +49,12 @@
 #define MO_HYPER MO(KC_LCTL)
 #define RAISE MO(_RAISE)
 #define RAISE MO(_RAISE)
+#define set_window_w LALT(LCTL(LGUI(KC_W)))
+#define set_window_q LALT(LCTL(LGUI(KC_Q)))
+#define set_window_n LALT(LCTL(LGUI(KC_N)))
 #define WINDOWS_Q TD(DANCE_38)
+#define WINDOWS_W TD(DANCE_39)
+#define WINDOWS_N TD(DANCE_WINDOWS_N)
 #define all_mods LM(_ALL_MODS, MOD_LGUI | MOD_LCTL | MOD_LALT | MOD_RCTL | MOD_LSFT)
 #define alt LM(_ALT, MOD_LALT)
 #define alt_tab ALT_TAB
@@ -182,7 +187,6 @@
 #define raise_semi  KC_QUOTE
 #define raise_slash KC_MINUS
 #define right_of_lower  esc_ctrl  // my_left_shift ///hyper // / MT(MOD_RCTL, KC_ESCAPE)
-#define right_of_super esc_ctrl //  BRACKET_PAREN //all_mods
 #define lower_right_of_super CLOSED_PAREN
 #define scroll_next RCTL(KC_D)
 #define scroll_prev RCTL(KC_U)
@@ -316,6 +320,88 @@ enum custom_keycodes {
                       TERM_CD_UP_DIR,
                       CLEAR_THAT_REPL,
                       THREAD_LAST,
+
+  APL_DIAMOND,
+  APL_QUAD_DIAMOND,
+  APL_DIAERESIS,
+  APL_IBEAM,
+  APL_MACRON,
+  APL_DEL_TILDE,
+  APL_LESS,
+  APL_DEL_STILE,
+  APL_LESS_EQUAL,
+  APL_DELTA_STILE,
+  APL_EQUALS,
+  APL_CIRCLE_STILE,
+  APL_GREATER_EQUAL,
+  APL_CIRCLE_BACKSLASH,
+  APL_GREATER,
+  APL_CIRCLED_MINUS,
+  APL_NOT_EQUAL,
+  APL_CIRCLE_STAR,
+  APL_OR,
+  APL_DOWN_CARET_TILDE,
+  APL_AND,
+  APL_UP_CARET_TILDE,
+  APL_MULT,
+  APL_EXCL,
+  APL_DIVISION,
+  APL_QUAD_DIVIDE,
+  APL_QUESTION_MARK,
+  APL_OMEGA,
+  APL_OMEGA_UNDERBAR,
+  APL_EPSILON,
+  APL_SMALL_ELEMENT,
+  APL_EPSILON_UNDERBAR,
+  APL_RHO,
+  APL_TILDE,
+  APL_TILDE_DIAERESIS,
+  APL_UPWARDS_ARROW,
+  APL_DOWNWARDS_ARROW,
+  APL_IOTA,
+  APL_IOTA_UNDERBAR,
+  APL_WHITE_CIRCLE,
+  APL_CIRCLE_DIAERESIS,
+  APL_STAR_OPERATOR,
+  APL_STAR_DIAERESIS,
+  APL_LEFT_ARROW,
+  APL_QUOTE_QUAD,
+  APL_RIGHT_ARROW,
+  APL_ZILDE,
+  APL_ALPHA,
+  APL_ALPHA_UNDERBAR,
+  APL_LEFT_CEILING,
+  APL_LEFT_FLOOR,
+  APL_LOW_LINE,
+  APL_NABLA,
+  APL_INCREMENT,
+  APL_DELTA_UNDERBAR,
+  APL_RING_OPERATOR,
+  APL_JOT_DIAERESIS,
+  APL_APOSTROPHE,
+  APL_QUAD_EQUAL,
+  APL_QUAD,
+  APL_SQUISH_QUAD,
+  APL_DOWN_TACK_JOT,
+  APL_IDENTICAL,
+  APL_UP_TACK_JOT,
+  APL_NOT_IDENTICAL,
+  APL_RIGHT_TACK,
+  APL_LEFT_TACK,
+  APL_SUBSET,
+  APL_SUPERSET,
+  APL_CHI,
+  APL_INTERSECTION,
+  APL_UNION,
+  APL_UP_TACK,
+  APL_DOWN_TACK,
+  APL_VERTICAL_LINE,
+  APL_UP_SHOE_JOT,
+  APL_COMMA_BAR,
+  APL_BACKSLASH_BAR,
+  APL_SLASH_BAR,
+  APL_QUAD_COLON,
+
 };
 
 #define max_buffer RALT(KC_ENTER)
@@ -523,7 +609,7 @@ bool do_breathing = false;
 /* #include "musical_notes.h" */
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  if (!process_caps_word(keycode, record)) { return false; }
+  /* if (!process_caps_word(keycode, record)) { return false; } */
 
 #ifdef CONSOLE_ENABLE
   if (record->event.pressed) {
@@ -576,6 +662,961 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       fasd_timer = 0;
     }
     break;
+    
+
+    // ------
+  case APL_ALPHA:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_A);
+      tap_code16(KC_L);
+      return false;
+
+    }
+break;
+
+  case APL_AND:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_A);
+      tap_code16(KC_N);
+      return false;
+
+
+    }
+break;
+
+  case APL_APOSTROPHE:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_A);
+      tap_code16(KC_P);
+      return false;
+
+
+    }
+break;
+
+  case APL_ALPHA_UNDERBAR:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_A);
+      tap_code16(KC_U);
+      return false;
+
+
+    }
+break;
+
+  case APL_BACKSLASH_BAR:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_B);
+      tap_code16(KC_B);
+      return false;
+
+
+    }
+break;
+
+  case APL_COMMA_BAR:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_C);
+      tap_code16(KC_B);
+      return false;
+
+
+    }
+break;
+
+  case APL_CIRCLE_DIAERESIS:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_C);
+      tap_code16(KC_D);
+      return false;
+
+
+    }
+break;
+
+  case APL_CHI:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_C);
+      tap_code16(KC_H);
+      return false;
+
+
+    }
+break;
+
+  case APL_CIRCLE_BACKSLASH:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_C);
+      tap_code16(KC_I);
+      return false;
+
+
+    }
+break;
+
+  case APL_CIRCLE_STILE:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_C);
+      tap_code16(KC_L);
+      return false;
+
+
+    }
+break;
+
+  case APL_CIRCLED_MINUS:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_C);
+      tap_code16(KC_M);
+      return false;
+
+
+    }
+break;
+
+  case APL_CIRCLE_STAR:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_C);
+      tap_code16(KC_S);
+      return false;
+
+
+    }
+break;
+
+  case APL_DOWNWARDS_ARROW:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_D);
+      tap_code16(KC_A);
+      return false;
+
+
+    }
+break;
+ 
+
+
+  case APL_DOWN_CARET_TILDE:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_D);
+      tap_code16(KC_C);
+      return false;
+
+
+    }
+    break;
+
+  case APL_DIAERESIS:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_D);
+      tap_code16(KC_I);
+      return false;
+
+
+    }
+    break;
+
+  case APL_DOWN_TACK_JOT:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_D);
+      tap_code16(KC_J);
+      return false;
+
+
+    }
+    break;
+
+  case APL_DEL_STILE:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_D);
+      tap_code16(KC_L);
+      return false;
+
+
+    }
+    break;
+
+  case APL_DIAMOND:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_D);
+      tap_code16(KC_M);
+      return false;
+
+
+    }
+    break;
+
+  case APL_DELTA_STILE:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_D);
+      tap_code16(KC_S);
+      return false;
+
+
+    }
+    break;
+
+  case APL_DELTA_UNDERBAR:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_D);
+      tap_code16(KC_U);
+      return false;
+
+
+    }
+    break;
+
+  case APL_DIVISION:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_D);
+      tap_code16(KC_V);
+      return false;
+
+
+    }
+    break;
+
+  case APL_EPSILON:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_E);
+      tap_code16(KC_P);
+      return false;
+
+
+    }
+    break;
+
+  case APL_EQUALS:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_E);
+      tap_code16(KC_Q);
+      return false;
+
+
+    }
+    break;
+
+  case APL_EPSILON_UNDERBAR:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_E);
+      tap_code16(KC_U);
+      return false;
+
+
+    }
+    break;
+
+  case APL_GREATER_EQUAL:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_G);
+      tap_code16(KC_E);
+      return false;
+
+
+    }
+    break;
+
+  case APL_GREATER:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_G);
+      tap_code16(KC_R);
+      return false;
+
+
+    }
+    break;
+
+  case APL_IBEAM:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_I);
+      tap_code16(KC_B);
+      return false;
+
+
+    }
+    break;
+
+  case APL_INCREMENT:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_I);
+      tap_code16(KC_C);
+      return false;
+
+
+    }
+    break;
+
+  case APL_IDENTICAL:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_I);
+      tap_code16(KC_D);
+      return false;
+
+
+    }
+    break;
+
+  case APL_INTERSECTION:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_I);
+      tap_code16(KC_N);
+      return false;
+
+
+    }
+    break;
+
+  case APL_IOTA:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_I);
+      tap_code16(KC_O);
+      return false;
+
+
+    }
+    break;
+
+  case APL_IOTA_UNDERBAR:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_I);
+      tap_code16(KC_U);
+      return false;
+
+
+    }
+    break;
+
+  case APL_JOT_DIAERESIS:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_J);
+      tap_code16(KC_D);
+      return false;
+
+
+    }
+    break;
+
+  case APL_LEFT_ARROW:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_L);
+      tap_code16(KC_A);
+      return false;
+
+
+    }
+    break;
+
+  case APL_LEFT_CEILING:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_L);
+      tap_code16(KC_C);
+      return false;
+
+
+    }
+    break;
+
+  case APL_LESS_EQUAL:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_L);
+      tap_code16(KC_E);
+      return false;
+
+
+    }
+    break;
+
+  case APL_LEFT_FLOOR:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_L);
+      tap_code16(KC_F);
+      return false;
+
+
+    }
+    break;
+
+  case APL_LOW_LINE:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_L);
+      tap_code16(KC_L);
+      return false;
+
+
+    }
+    break;
+
+  case APL_LESS:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_L);
+      tap_code16(KC_S);
+      return false;
+
+
+    }
+    break;
+
+  case APL_LEFT_TACK:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_L);
+      tap_code16(KC_T);
+      return false;
+
+
+    }
+    break;
+
+  case APL_MACRON:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_M);
+      tap_code16(KC_C);
+      return false;
+
+
+    }
+    break;
+
+  case APL_MULT:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_M);
+      tap_code16(KC_U);
+      return false;
+
+
+    }
+    break;
+
+  case APL_NABLA:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_N);
+      tap_code16(KC_A);
+      return false;
+
+
+    }
+    break;
+
+  case APL_NOT_EQUAL:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_N);
+      tap_code16(KC_E);
+      return false;
+
+
+    }
+    break;
+
+  case APL_NOT_IDENTICAL:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_N);
+      tap_code16(KC_I);
+      return false;
+
+
+    }
+    break;
+
+  case APL_OMEGA:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_O);
+      tap_code16(KC_M);
+      return false;
+
+
+    }
+    break;
+
+  case APL_OR:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_O);
+      tap_code16(KC_R);
+      return false;
+
+
+    }
+    break;
+
+  case APL_OMEGA_UNDERBAR:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_O);
+      tap_code16(KC_U);
+      return false;
+
+
+    }
+    break;
+
+  case APL_WHITE_CIRCLE:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_P);
+      tap_code16(KC_I);
+      return false;
+
+
+    }
+    break;
+
+  case APL_QUAD_COLON:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_Q);
+      tap_code16(KC_C);
+      return false;
+
+
+    }
+    break;
+
+  case APL_QUAD_DIVIDE:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_Q);
+      tap_code16(KC_D);
+      return false;
+
+
+    }
+    break;
+
+  case APL_QUAD_EQUAL:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_Q);
+      tap_code16(KC_E);
+      return false;
+
+
+    }
+    break;
+
+  case APL_QUESTION_MARK:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_Q);
+      tap_code16(KC_M);
+      return false;
+
+
+    }
+    break;
+
+  case APL_QUOTE_QUAD:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_Q);
+      tap_code16(KC_Q);
+      return false;
+
+
+    }
+    break;
+
+  case APL_QUAD:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_Q);
+      tap_code16(KC_U);
+      return false;
+
+
+    }
+    break;
+
+  case APL_RIGHT_ARROW:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_R);
+      tap_code16(KC_A);
+      return false;
+
+
+    }
+    break;
+
+  case APL_RHO:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_R);
+      tap_code16(KC_H);
+      return false;
+
+
+    }
+    break;
+
+  case APL_RING_OPERATOR:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_R);
+      tap_code16(KC_I);
+      return false;
+
+
+    }
+    break;
+
+  case APL_RIGHT_TACK:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_R);
+      tap_code16(KC_T);
+      return false;
+
+
+    }
+    break;
+
+  case APL_SLASH_BAR:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_S);
+      tap_code16(KC_B);
+      return false;
+
+
+    }
+    break;
+
+  case APL_STAR_DIAERESIS:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_S);
+      tap_code16(KC_D);
+      return false;
+
+
+    }
+    break;
+
+  case APL_SMALL_ELEMENT:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_S);
+      tap_code16(KC_E);
+      return false;
+
+
+    }
+    break;
+
+  case APL_STAR_OPERATOR:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_S);
+      tap_code16(KC_O);
+      return false;
+
+
+    }
+    break;
+
+  case APL_SUPERSET:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_S);
+      tap_code16(KC_P);
+      return false;
+
+
+    }
+    break;
+
+  case APL_SQUISH_QUAD:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_S);
+      tap_code16(KC_Q);
+      return false;
+
+
+    }
+    break;
+
+  case APL_TILDE_DIAERESIS:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_T);
+      tap_code16(KC_D);
+      return false;
+
+
+    }
+    break;
+
+  case APL_TILDE:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_T);
+      tap_code16(KC_I);
+      return false;
+
+
+    }
+    break;
+
+  case APL_UPWARDS_ARROW:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_U);
+      tap_code16(KC_A);
+      return false;
+
+
+    }
+    break;
+
+  case APL_UP_CARET_TILDE:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_U);
+      tap_code16(KC_C);
+      return false;
+
+
+    }
+    break;
+
+  case APL_UNION:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_U);
+      tap_code16(KC_N);
+      return false;
+
+
+    }
+    break;
+
+  case APL_UP_TACK:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_U);
+      tap_code16(KC_T);
+      return false;
+
+
+    }
+    break;
+
+  case APL_VERTICAL_LINE:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_V);
+      tap_code16(KC_L);
+      return false;
+
+
+    }
+    break;
+
+  case APL_ZILDE:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_Z);
+      tap_code16(KC_I);
+      return false;
+
+
+    }
+    break;
+
+  case APL_DEL_TILDE:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_D);
+      tap_code16(KC_T);
+      tap_code16(KC_I);
+      return false;
+
+
+    }
+    break;
+
+  case APL_DOWN_TACK:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_D);
+      tap_code16(KC_T);
+      tap_code16(KC_K);
+      return false;
+
+
+    }
+    break;
+
+  case APL_QUAD_DIAMOND:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_Q);
+      tap_code16(KC_D);
+      tap_code16(KC_I);
+      return false;
+
+
+    }
+    break;
+
+  case APL_SUBSET:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_S);
+      tap_code16(KC_U);
+      tap_code16(KC_B);
+      return false;
+
+
+    }
+    break;
+
+  case APL_UP_SHOE_JOT:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_U);
+      tap_code16(KC_S);
+      tap_code16(KC_J);
+      return false;
+
+
+    }
+    break;
+
+  case APL_UP_TACK_JOT:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_U);
+      tap_code16(KC_T);
+      tap_code16(KC_J);
+      return false;
+
+
+    }
+    break;
+
+
+    // ----
+
 
 
   case OPEN_PAREN:
@@ -959,10 +2000,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     
   case CAPS_WORD_TOGGLE:
-    if (record->event.pressed) {
-      caps_word_on();
-      PLAY_SONG(caps_lock_on_sound);
-    }
+    /* if (record->event.pressed) { */
+    /*   caps_word_on(); */
+    /*   PLAY_SONG(caps_lock_on_sound); */
+    /* } */
     break;
 
   case AUTOSHIFT_TOGGLE:
@@ -1287,3 +2328,5 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 /* SS_RGUI(SS_TAP(X_E)) SS_DELAY(100) SS_RALT(SS_TAP(X_M)) */
 /* SS_RGUI(SS_TAP(X_E)) SS_DELAY(100) SS_RGUI(SS_TAP(X_E)) SS_DELAY(100) SS_RALT(SS_TAP(X_M)) */
+
+#define right_of_super MO(_APL)  // X(BANG) // esc_ctrl //  BRACKET_PAREN //all_mods

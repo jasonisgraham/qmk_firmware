@@ -288,12 +288,16 @@ const uint16_t PROGMEM combo_shift_alt[] = {LOWER, my_left_shift, KC_LALT, COMBO
 const uint16_t PROGMEM combo_hyper_slash[] = {LOWER, right_of_lower, my_forward_slash, COMBO_END};
 const uint16_t PROGMEM combo_lower_j_k_l[] = {LOWER, my_j, my_k, my_l, COMBO_END};
 
+const uint16_t PROGMEM combo_apl_mutl[] = {APL_QUAD, APL_APOSTROPHE, COMBO_END};
+const uint16_t PROGMEM combo_apl_division[] = {APL_UP_SHOE_JOT, APL_BACKSLASH_BAR, COMBO_END};
 
 const uint16_t PROGMEM combo_editing_j_editing_k[] = {editing_j, editing_k, COMBO_END};
 
 /* const combo_t  = COMBO(combo_topright_p_l, LCTL(KC_L)); */
 
 combo_t key_combos[COMBO_COUNT] = {
+                                   COMBO(combo_apl_mutl, APL_MULT),
+                                   COMBO(combo_apl_division, APL_DIVISION),
                                    COMBO(combo_lower_bottom_right_2, KC_DELETE),
                                    COMBO(combo_y_i,EMACS_INSIDE_YANK),
                                    COMBO(combo_d_i,EMACS_INSIDE_DELETE),
@@ -312,7 +316,7 @@ combo_t key_combos[COMBO_COUNT] = {
 
                                    COMBO(combo_left_to_down, KC_DOWN),
                                          COMBO(combo_right_to_up, KC_UP),
-                                   COMBO(combo_w_d, TO(_GAUTH)),
+                                   /* COMBO(combo_w_d, TO(_GAUTH)), */
                                    COMBO(combo_r_t, KC_AGIN),
                                    COMBO(combo_lower_semicolon, RCTL(KC_C)),
 
