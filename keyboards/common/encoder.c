@@ -13,6 +13,7 @@
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
                                                          /* [_BASE] =   { ENCODER_CCW_CW(KC_MS_WH_UP, KC_MS_WH_DOWN) }, */
                                                          [_BASE] =   { ENCODER_CCW_CW(KC_PGUP, KC_PGDOWN) },
+                                                         [_BASE] =   { ENCODER_CCW_CW(KC_PGUP, KC_PGDOWN) },
                                                          /* [_EDITING] =   { ENCODER_CCW_CW(EMACS_OTHER_WINDOW_NEXT, EMACS_OTHER_WINDOW_PREV) }, */
                                                          [_EDITING] =   { ENCODER_CCW_CW(EMACS_NUMBER_INC, EMACS_NUMBER_DEC) },
                                                          [_SYSTEM] =   { ENCODER_CCW_CW(KC_AUDIO_VOL_UP, KC_AUDIO_VOL_DOWN ) },

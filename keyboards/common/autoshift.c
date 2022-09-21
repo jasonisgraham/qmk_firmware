@@ -14,6 +14,14 @@ bool get_custom_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
 
 void autoshift_press_user(uint16_t keycode, bool shifted, keyrecord_t *record) {
   switch(keycode) {
+  case APL_DIAERESIS:
+    register_code16((!shifted) ? APL_DIAERESIS : APL_IBEAM);
+    break;
+
+  case APL_EPSILON:
+    register_code16((!shifted) ? APL_EPSILON : APL_EPSILON_UNDERBAR);
+    break;
+
   case KC_LPRN:
     register_code16((!shifted) ? KC_LPRN : KC_RPRN);
     break;
@@ -57,6 +65,14 @@ void autoshift_press_user(uint16_t keycode, bool shifted, keyrecord_t *record) {
 
 void autoshift_release_user(uint16_t keycode, bool shifted, keyrecord_t *record) {
   switch(keycode) {
+  case APL_DIAERESIS:
+    unregister_code16((!shifted) ? APL_DIAERESIS : APL_IBEAM);
+    break;
+
+  case APL_EPSILON:
+    unregister_code16((!shifted) ? APL_EPSILON : APL_EPSILON_UNDERBAR);
+    break;
+
   case KC_LPRN:
     unregister_code16((!shifted) ? KC_LPRN : KC_RPRN);
     break;

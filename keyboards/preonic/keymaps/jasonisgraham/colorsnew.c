@@ -38,14 +38,14 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     /* rgblight_mode(default_rgblight_mode); */
     break;
 
-  case 1:
+  case _LOWER:
     rgblight_enable_noeeprom();
     rgblight_mode(default_rgblight_mode);
     rgblight_sethsv_noeeprom(HSV_PINK);
     /* rgblight_mode(RGBLIGHT_MODE_KNIGHT); */
     break;
 
-  case 2:
+  case _RAISE:
     /* float x[][2] = SONG(ROCK_A_BYE_BABY); */
     /* PLAY_SONG(x);             /\*  *\/ */
     rgblight_enable_noeeprom();
@@ -53,14 +53,14 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     rgblight_sethsv_noeeprom(HSV_BLUE);
     break;
 
-  case 3:
+  case _MOUSE:
     rgblight_enable_noeeprom();
     rgblight_mode(default_rgblight_mode);
     /* rgblight_mode(RGBLIGHT_MODE_BREATHING); */
     rgblight_sethsv_noeeprom(HSV_GREEN);
     break;
 
-  case 4:
+  case _APL:
 
     /* rgblight_mode(RGBLIGHT_MODE_BREATHING); */
     rgblight_enable_noeeprom();
@@ -68,20 +68,10 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     rgblight_sethsv_noeeprom(HSV_GREEN);
     break;
 
-  case 10:
+  case _WINMOVE:
     rgblight_enable_noeeprom();
     rgblight_mode(RGBLIGHT_MODE_STATIC_LIGHT);
     rgblight_sethsv_noeeprom(HSV_BLACK);
-
-    /* rgblight_sethsv_at(HSV_GREEN, 6); */
-    /* rgblight_sethsv_at(HSV_GREEN,   5); */
-    /* rgblight_sethsv_at(HSV_BLACK, 4); */
-    /* rgblight_sethsv_at(HSV_BLACK, 3); */
-    /* rgblight_sethsv_at(HSV_BLACK,   2); */
-    /* rgblight_sethsv_at(HSV_BLACK, 1); */
-    /* rgblight_sethsv_at(HSV_GREEN, 8); */
-    /* rgblight_sethsv_at(HSV_GREEN,   7); */
-    /* rgblight_sethsv_at(HSV_GREEN,   0); */
 
 
     rgblight_sethsv_range(HSV_BLACK, 6, 0);
@@ -112,7 +102,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     /* rgblight_sethsv_at(HSV_BLACK,   0); */
 
 
-  case 11:
+  case _SUPER:
     rgblight_enable_noeeprom();
     rgblight_mode(RGBLIGHT_MODE_STATIC_LIGHT);
     rgblight_sethsv_noeeprom(HSV_BLACK);
@@ -144,7 +134,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     /* rgblight_sethsv_noeeprom(HSV_GREEN); */
     break;
 
-  case 5:
+  case _SYSTEM:
     // system stuff
     /* PLAY_SONG(x);             /\*  *\/ */
     /* rgblight_mode(RGBLIGHT_MODE_RAINBOW_SWIRL); */
@@ -158,7 +148,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     rgblight_sethsv_noeeprom(HSV_YELLOW);
     break;
 
-  case 6:
+  case _WINDOWS:
     // windows
     rgblight_enable_noeeprom();
     /* rgblight_mode(default_rgblight_mode); */
@@ -168,14 +158,14 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     break;
 
 
-  case 7:
+  case _MACROS:
     rgblight_enable_noeeprom();
     rgblight_mode(default_rgblight_mode);
     /* rgblight_mode(RGBLIGHT_MODE_BREATHING); */
     rgblight_sethsv_noeeprom(HSV_PINK);
     break;
 
-  case 8:
+  case _SHIFTLOCK:
     // shiftlok
     rgblight_enable_noeeprom();
     rgblight_mode(RGBLIGHT_MODE_STATIC_LIGHT);
@@ -204,14 +194,14 @@ layer_state_t layer_state_set_user(layer_state_t state) {
   /*   rgblight_sethsv_noeeprom(HSV_PURPLE); */
   /*   break; */
 
-  case 12:
+  case _EDITING:
     rgblight_enable_noeeprom();
     /* rgblight_mode(RGBLIGHT_MODE_BREATHING); */
     rgblight_mode(default_rgblight_mode);
     rgblight_sethsv_noeeprom(HSV_BLUE);
     break;
 
-  case 9:
+  case _WINMOVE:
     rgblight_enable_noeeprom();
     rgblight_mode(default_rgblight_mode);
     /* rgblight_mode(RGBLIGHT_MODE_BREATHING); */
@@ -250,6 +240,19 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     rgblight_mode(RGBLIGHT_MODE_SNAKE);
     rgblight_sethsv_noeeprom(HSV_GREEN);
     break;
+
+  case 23:
+    rgblight_enable_noeeprom();
+    rgblight_mode(RGBLIGHT_MODE_SNAKE);
+    rgblight_sethsv_noeeprom(HSV_WHITE);
+    break;
+
+  case _APL:
+    rgblight_enable_noeeprom();
+    rgblight_mode(RGBLIGHT_MODE_SNAKE);
+    rgblight_sethsv_noeeprom(HSV_WHITE);
+    break;
+
 
   default:
     // White
