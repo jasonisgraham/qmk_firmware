@@ -110,7 +110,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // 6
 [_WINDOWS] = LAYOUT_planck_grid(
                                 _______, WINDOWS_Q,   TD(DANCE_39),   LGUI(KC_E),     TD(DANCE_40),   LGUI(KC_T), LGUI(KC_MINUS),  LGUI(KC_Y),   LGUI(KC_7),        LGUI(KC_8),     LGUI(KC_9),     LGUI(KC_0),
-                                RGUI(KC_ESCAPE), LGUI(KC_A),  select_slack, show_desktop     ,LGUI(KC_F),      _______, TD(DANCE_42),  LGUI(KC_H),     TD(DANCE_43),   windows_k,   windows_l,   _______,
+                                RALT(RGUI(KC_ESCAPE)), LGUI(KC_A),  select_slack, show_desktop     ,LGUI(KC_F),      _______, TD(DANCE_42),  LGUI(KC_H),     TD(DANCE_43),   windows_k,   windows_l,   _______,
                                 TO(_BASE), LGUI(KC_Z),     LGUI(KC_X),     LGUI(KC_C),     RGUI(KC_V),    _______, LGUI(KC_MINUS), TD(DANCE_46),   LGUI(KC_M),  _______, RSFT(LGUI(KC_K)), RCTL(RGUI(KC_Q)),
                                 _______, _______, _______,         _______,        _______,     LSFT(RCTL(KC_UNDS)),   ALT_TAB , LALT(KC_8),      _______,  ALT_TAB, _______, _______
                                 ),
@@ -168,34 +168,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // 12
 [_EDITING] = LAYOUT_planck_grid(
-                                _______, EMACS_DESC_KEY, LCTL(KC_7),     LCTL(KC_E), EMACS_HELM_MARK_RINGS,     EMACS_TRANSPOSE, EMACS_BACKWARD_UP, EMACS_YANK_IN_SEXP  , scroll_next,     scroll_prev, EMACS_HELM_OCCUR, EMACS_PROJECTILE_FIND_FILE,
-                                _______, _______, EMACS_LOCCUR, EMACS_KILL_IN_SEXP, RALT(KC_ENTER), EMACS_COPY_FILE_PATH, EMACS_SCROLL_UP, RALT(RSFT(KC_H)), editing_j, editing_k, editing_l, EMACS_COMMENT_READER,
-                                _______, _______, _______, EMACS_WINDOW_CLOSE,    KC_F12, _______, EMACS_SCROLL_DOWN,  next_win_or_frame, EMACS_ACE_WINDOW_SWAP,  emacs_buffer_stack_down, emacs_buffer_stack_up, TERM_CD_UP_DIR,
-                                _______, _______, _______, _______, KC_HYPR,  _______, _______,  _______,          all_mods, _______, _______, _______
+                                _______, EMACS_DESC_KEY, LCTL(KC_7),     LCTL(KC_E), EMACS_HELM_MARK_RINGS,     EMACS_TRANSPOSE,        EMACS_BACKWARD_UP, EMACS_YANK_IN_SEXP  , scroll_next,     scroll_prev, EMACS_HELM_OCCUR, EMACS_PROJECTILE_FIND_FILE,
+                                _______, _______, EMACS_LOCCUR, EMACS_KILL_IN_SEXP, RALT(KC_ENTER), EMACS_COPY_FILE_PATH,               EMACS_SCROLL_UP, RALT(RSFT(KC_H)), editing_j, editing_k, editing_l, EMACS_COMMENT_READER,
+                                _______, _______, _______, EMACS_WINDOW_CLOSE,    KC_F12, _______,                                      _______, next_win_or_frame, EMACS_ACE_WINDOW_SWAP,  emacs_buffer_stack_down, emacs_buffer_stack_up, TERM_CD_UP_DIR,
+                                _______, _______, _______, _______, KC_HYPR,  _______,                                                  _______, all_mods, _______, _______, _______, _______,
 
                                 ),
-
-
-[_MENU] = LAYOUT_planck_grid(
-                             _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
-                             _______, _______, _______, _______, _______, _______,   _______, _______, _______, _______, _______, _______,
-                             _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-                             _______, _______, _______, _______,    _______, _______, _______, _______,    _______, _______, _______, _______
-                             ),
-
-
-[_CTRL] = LAYOUT_planck_grid(
-                             _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
-                             _______, _______, _______, _______, _______, _______,   _______, _______, _______, _______, _______, _______,
-                             _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-                             _______, _______, _______, _______,    _______, _______, _______, _______,    _______, _______, _______, _______
-                                 ),
 
 [_MOUSE] = LAYOUT_planck_grid(
                               TO(_BASE),   _______, _______, KC_MS_UP,       _______, _______, _______,  KC_HOME,        KC_PGUP,        KC_PGDOWN,      KC_END,         _______,
                               _______, _______, KC_MS_LEFT,     KC_MS_DOWN,     KC_MS_RIGHT,    TO(_GAUTH), _______,  KC_MS_BTN1,     KC_MS_WH_DOWN,  KC_MS_WH_UP,    KC_MS_BTN2,     _______,
                               _______, _______, _______, _______, _______, _______, _______,  LALT(LGUI(KC_N)), KC_MS_BTN3,     TD(DANCE_35),   TD(DANCE_36),   TO(_ALL_MODS),
                               _______, _______, _______, _______, MO(_EXTENDED), _______,  _______,  _______, RGUI(LCTL(KC_M)),          _______, _______, _______
+
+
 
                                 ),
 

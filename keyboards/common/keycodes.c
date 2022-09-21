@@ -182,7 +182,7 @@
 #define raise_semi  KC_QUOTE
 #define raise_slash KC_MINUS
 #define right_of_lower  esc_ctrl  // my_left_shift ///hyper // / MT(MOD_RCTL, KC_ESCAPE)
-#define right_of_super  all_mods
+#define right_of_super esc_ctrl //  BRACKET_PAREN //all_mods
 #define lower_right_of_super CLOSED_PAREN
 #define scroll_next RCTL(KC_D)
 #define scroll_prev RCTL(KC_U)
@@ -540,19 +540,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   }
 #endif
 
-  if (!process_layer_lock(keycode, record, LAYER_LOCK)) {
-    if (biton32(layer_state) != _BASE) {
-#ifdef RGBLIGHT_MODE
-      rgblight_mode(RGBLIGHT_MODE_SNAKE);
-#endif
-
-
-/* #ifdef AUDIO_ENABLE */
-/*     PLAY_SONG(caps_lock_on_sound); */
+/*   if (!process_layer_lock(keycode, record, LAYER_LOCK)) { */
+/*     if (biton32(layer_state) != _BASE) { */
+/* #ifdef RGBLIGHT_MODE */
+/*       rgblight_mode(RGBLIGHT_MODE_SNAKE); */
 /* #endif */
-    }
-    return false;
-  }
+
+
+/* /\* #ifdef AUDIO_ENABLE *\/ */
+/* /\*     PLAY_SONG(caps_lock_on_sound); *\/ */
+/* /\* #endif *\/ */
+/*     } */
+/*     return false; */
+/*   } */
 
   switch (keycode) {
 

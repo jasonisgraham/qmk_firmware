@@ -409,6 +409,7 @@ combo_t key_combos[COMBO_COUNT] = {
                                    COMBO(combo_raise_j_raise_k, FISH_ACCEPT_SEND),
 
                                    COMBO(combo_lower_lprn, KC_LPRN),
+                                   COMBO(combo_lower_rprn, KC_RPRN),
                                    /* COMBO(combo_lower_rprn, ALT_TAB), */
                                    COMBO(combo_lower_exlm, KC_EXLM),
                                    COMBO(combo_lower_at, KC_AT),
