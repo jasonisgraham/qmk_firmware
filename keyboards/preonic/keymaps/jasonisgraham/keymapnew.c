@@ -23,9 +23,6 @@ enum preonic_layers {
                     _BRIGHTNESS,
                     _ADHOC_SET_HOTKEY,
                     _ALL_MODS,
-                    _CTRL,
-                    _MENU,
-                    _DIAMOND,
 };
 
 #undef UNICODE_SELECTED_MODES
@@ -53,10 +50,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_BASE] = LAYOUT_preonic_grid(
                               top_left, KC_1 , KC_2 ,KC_3 ,KC_4 ,KC_5 , _______, KC_6 ,KC_7 ,KC_8 ,KC_9 ,KC_0,
-                              top_left,    my_q,    my_w,    my_e,    my_r,    my_t, LAYER_LOCK,    my_y,           my_u,    my_i,    my_o,     my_p,
-                              my_lctl , my_a,   my_s,   my_d,   my_f,   my_g, backspace,  my_h,         my_j,   my_k,   my_l,   my_semicolon,
-                              my_left_shift,        my_z,           my_x,           my_c,           my_v,           my_b, KC_ENTER,     my_n,   my_m,   my_comma,   my_period,   my_forward_slash,
-                              hyper, super_meta_hyper , all_mods , alt, RAISE,  super, right_of_super,   my_space,           LOWER,          my_right_of_lower,   key_4_11,  key_4_12
+                             top_left,    my_q,    my_w,    my_e,    my_r,    my_t, LAYER_LOCK,    my_y,           my_u,    my_i,    my_o,     my_p,
+                             my_lctl , my_a,   my_s,   my_d,   my_f,   my_g, backspace,  my_h,         my_j,   my_k,   my_l,   my_semicolon,
+                             my_left_shift,        my_z,           my_x,           my_c,           my_v,           my_b, KC_ENTER,     my_n,   my_m,   my_comma,   my_period,   my_forward_slash,
+                             hyper, super_meta_hyper , all_mods , alt, RAISE,  super, right_of_super,   my_space,           LOWER,          my_right_of_lower,   key_4_11,  key_4_12
                               ),
 
 
@@ -99,7 +96,7 @@ TO(_BASE), APL_QUESTION_MARK, APL_OMEGA, APL_EPSILON, APL_RHO, APL_TILDE,    ___
 [_APL_RHS] = LAYOUT_preonic_grid(
                                  _______, APL_IBEAM, APL_DEL_TILDE, APL_DEL_STILE, APL_DELTA_STILE, APL_CIRCLE_STILE, APL_ZILDE, APL_CIRCLE_BACKSLASH, APL_CIRCLED_MINUS, APL_CIRCLE_STAR, APL_DOWN_CARET_TILDE, APL_UP_CARET_TILDE,
                                  _______, _______, APL_OMEGA_UNDERBAR, APL_EPSILON_UNDERBAR, _______, APL_TILDE_DIAERESIS, _______,     APL_LEFT_ARROW,  APL_RIGHT_ARROW,  APL_IOTA_UNDERBAR, APL_CIRCLE_DIAERESIS, APL_STAR_DIAERESIS,
-                                 _______, APL_ALPHA_UNDERBAR, _______, _______, _______, _______,   _______, _______, APL_JOT_DIAERESIS, APL_QUAD_EQUAL, APL_SQUISH_QUAD, APL_IDENTICAL,
+                                 _______, APL_ALPHA_UNDERBAR, _______, _______, _______, _______,   _______, _______, APL_JOT_DIAERESIS, _______, APL_SQUISH_QUAD, APL_IDENTICAL,
                                  APL_LEFT_TACK, _______, _______, _______, _______, _______, _______, _______, _______, APL_COMMA_BAR, APL_DELTA_UNDERBAR, APL_QUAD_COLON,
                                  APL_NOT_IDENTICAL, _______, _______, _______,    _______, _______, _______, _______,    _______, _______, _______, APL_QUAD_DIVIDE
                                   ),
@@ -189,7 +186,7 @@ TO(_BASE), APL_QUESTION_MARK, APL_OMEGA, APL_EPSILON, APL_RHO, APL_TILDE,    ___
 [_MOUSE] = LAYOUT_preonic_grid(
                                _______, KC_1 , KC_2 ,KC_3 ,KC_4 ,KC_5 , _______, KC_6 ,KC_7 ,KC_8 ,KC_9 ,KC_0,
                               TO(_BASE),   _______, _______, KC_MS_UP,       _______, _______, _______,  KC_HOME,        KC_PGUP,        KC_PGDOWN,      KC_END,         _______,
-                              _______, _______, KC_MS_LEFT,     KC_MS_DOWN,     KC_MS_RIGHT,    _______, _______,  KC_MS_BTN1,     KC_MS_WH_DOWN,  KC_MS_WH_UP,    KC_MS_BTN2,     _______,
+                              _______, _______, KC_MS_LEFT,     KC_MS_DOWN,     KC_MS_RIGHT,    TO(_GAUTH), _______,  KC_MS_BTN1,     KC_MS_WH_DOWN,  KC_MS_WH_UP,    KC_MS_BTN2,     _______,
                               _______, _______, _______, _______, _______, _______, _______,  LALT(LGUI(KC_N)), KC_MS_BTN3,     TD(DANCE_35),   TD(DANCE_36),   _______,
                               _______, _______, _______, _______, _______, _______,  _______,  _______, RGUI(LCTL(KC_M)),          _______, _______, _______
 

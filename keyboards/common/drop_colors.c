@@ -6,59 +6,14 @@ void static_kinda_dim(uint8_t hue, uint8_t sat, uint8_t val) {
   rgblight_enable_noeeprom();
   rgblight_mode(RGBLIGHT_MODE_STATIC_LIGHT);
   rgblight_sethsv_noeeprom(hue, sat, val);
-
-  /* rgblight_sethsv_range(HSV_OFF, 6, 0); */
-  /* rgblight_sethsv_range(HSV_OFF,   5, 0); */
-  /* rgblight_sethsv_range(hue, sat, val, 4, 6); */
-  /* rgblight_sethsv_range(hue, sat, val, 3, 0); */
-  /* rgblight_sethsv_range(hue, sat, val,   2, 1); */
-  /* rgblight_sethsv_range(hue, sat, val, 1, 10); */
-  /* rgblight_sethsv_range(HSV_OFF, 8, 5); */
-  /* rgblight_sethsv_range(HSV_OFF,   7, 11); */
-  /* rgblight_sethsv_range(hue, sat, val,   0, 0); */
-
 }
 
 
 layer_state_t layer_state_set_user(layer_state_t state) {
-  /* float x[][2] = SONG(zelda); */
-
-  /* rgblight_config_t rgblight_config; */
-
-  /* if (do_breathing) { */
-    /* rgblight_mode(RGBLIGHT_MODE_BREATHING); */
-  /* } else { */
-    /* rgblight_mode(RGBLIGHT_MODE_STATIC_LIGHT); */
-  /* } */
-
   switch(biton32(state)) {
-  case _CTRL:
-    static_kinda_dim(HSV_CHARTREUSE);
-    break;
 
   case 0:
     rgblight_disable();
-    /* rgblight_sethsv_noeeprom(DROP_LAYER_0_COLOR); */
-    /* rgblight_sethsv(); */
-    /* rgblight_set_mode(DROP_LAYER_0_COLOR) */
-    /* rgblight_mode(DROP_LAYER_0_ANIMATION); */
-    /* rgblight_mode(RGBLIGHT_MODE_BREATHING); */
-
-    /* rgblight_sethsv_at(HSV_WHITE, 0); // led 0 */
-    /* rgblight_sethsv_at(HSV_RED,   1); // led 1 */
-    /* rgblight_sethsv_at(HSV_GREEN, 2); // led 2 */
-    /* rgblight_sethsv_at(HSV_PURPLE, 3); // led 2 */
-    /* rgblight_sethsv_at(HSV_YELLOW, 4); // led 2 */
-    /* rgblight_sethsv_at(HSV_BLUE, 5); // led 2 */
-    /* rgblight_sethsv_at(HSV_WHITE, 6); // led 2 */
-    /* rgblight_sethsv_at(HSV_PURPLE, 7); // led 2 */
-    /* rgblight_sethsv_noeeprom(HSV_WHITE); */
-
-    /* rgblight_mode(RGBLIGHT_MODE_RAINBOW_MOOD); */
-    /* rgblight_mode(RGBLIGHT_MODE_STATIC_GRADIENT); */
-    /* rgblight_mode(RGBLIGHT_MODE_RAINBOW_SWIRL); */
-    /* rgblight_sethsv_noeeprom(HSV_OFF); */
-    /* rgblight_mode(default_rgblight_mode); */
     break;
 
   case _LOWER:
@@ -95,9 +50,6 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     static_kinda_dim(HSV_YELLOW);
     break;
 
-  case _MENU:
-    static_kinda_dim(HSV_PINK);
-    break;
 
 
   case _ALT:
@@ -167,7 +119,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     break;
 
 
-  case _LAYER19:
+  case _APL:
     rgblight_mode(RGBLIGHT_MODE_SNAKE);
     rgblight_enable_noeeprom();
     rgblight_sethsv_noeeprom(HSV_CORAL);
@@ -175,22 +127,22 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     /* rgblight_sethsv_noeeprom(HSV_GREEN); */
     break;
 
-  case _EMACS_SEL_WINDOW:
+  case _APL_RHS:
     rgblight_mode(RGBLIGHT_MODE_SNAKE);
     rgblight_enable_noeeprom();
     rgblight_sethsv_noeeprom(HSV_AZURE);
-    break;
-
-  case _GAUTH:
-    rgblight_mode(RGBLIGHT_MODE_SNAKE);
-    rgblight_enable_noeeprom();
-    rgblight_sethsv_noeeprom(HSV_WHITE);
     break;
 
   case _AUDIO:
     rgblight_enable_noeeprom();
     rgblight_mode(RGBLIGHT_MODE_SNAKE);
     rgblight_sethsv_noeeprom(HSV_GREEN);
+    break;
+
+  case _BRIGHTNESS:
+    rgblight_enable_noeeprom();
+    rgblight_mode(RGBLIGHT_MODE_SNAKE);
+    rgblight_sethsv_noeeprom(HSV_BLUE);
     break;
 
   default:
