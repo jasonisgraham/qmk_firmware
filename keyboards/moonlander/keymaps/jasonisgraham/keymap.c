@@ -19,6 +19,8 @@ enum planck_layers {
                     _AUDIO,
                     _MENU,
                     _BRIGHTNESS,
+                    _APL,
+                    _APL_RHS,
 
 };
 
@@ -31,7 +33,7 @@ enum planck_layers {
 #include "../../../common/layer_lock.h"
 
 #include "muse.h"
-#include "user_song_list.h"
+/* #include "muse.h"user_song_list.h" */
 #include "keymap_us_international_linux.h"
 
 
@@ -66,7 +68,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     my_lctl, my_a,           my_s,           my_d,           my_f,           my_g,           _______,                                                                         backspace,      my_h,           my_j,    my_k,    my_l,    my_semicolon,    my_singlequote,
                               my_left_shift,        my_z,           my_x,           my_c,           my_v,           my_b,                                          my_n,           my_m,   my_comma,   my_period,   my_forward_slash,   KC_ENTER, // KC_RSFT,
                               hyper, super_meta_hyper ,      all_mods,   alt,  RAISE,          OSL(_WINDOWS), OSL(_WINDOWS), LOWER,         KC_LEFT,   KC_DOWN,          KC_UP, KC_RIGHT,
-                              super,  right_of_super, RGB_MODE_FORWARD,                       CYCLE_FAVE_ANIMATIONS, OSL(_EDITING), my_space
+                              super,  right_of_super, MO(_APL),                       RGB_MODE_FORWARD, OSL(_EDITING), my_space
     ),
 
     // lower
@@ -232,8 +234,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                _______, _______, _______,                 _______, _______, _______
                              ),
 
-
-
  [_BRIGHTNESS] = LAYOUT_moonlander(
                                _______, _______, _______, _______, _______, _______, _______,                                 _______, _______, _______, _______, _______, _______, _______,
                                _______, _______, _______, _______, _______, _______, _______,                                 _______, _______, _______, _______, _______, _______, _______,
@@ -243,8 +243,39 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                _______, _______, _______,                 _______, _______, _______
                              ),
 
+ /* [_layer] = LAYOUT_moonlander( */
+ /*                               _______, _______, _______, _______, _______, _______, _______,                                 _______, _______, _______, _______, _______, _______, _______, */
+ /*                               _______, _______, _______, _______, _______, _______, _______,                                 _______, _______, _______, _______, _______, _______, _______, */
+ /*                               _______, _______, _______, _______, _______, _______, _______,                                 _______, _______, _______, _______, _______, _______, _______, */
+ /*                               _______, _______, _______, _______, _______, _______,                                                   _______, _______, _______, _______, _______, _______, */
+ /*                               _______, _______, _______, _______, _______,                   _______,               _______,                 _______, _______, _______, _______, _______, */
+ /*                                                                            _______, _______, _______,               _______, _______, _______ */
+ /*                             ), */
+
+  // 14
+  // 14
+  // 14
+  // 12
+  // 12
+  // 6
 
 
+[_APL] = LAYOUT_moonlander(
+                             TO(_BASE)  , APL_DIAERESIS, APL_MACRON, APL_LESS, APL_LESS_EQUAL,APL_EQUALS, _______,                                 _______,  APL_GREATER_EQUAL, APL_GREATER, APL_NOT_EQUAL, APL_OR, APL_AND, _______,
+                             TO(_BASE), APL_QUESTION_MARK, APL_OMEGA, APL_EPSILON, APL_RHO, APL_TILDE, _______,                                  _______, APL_UPWARDS_ARROW, APL_DOWNWARDS_ARROW, APL_IOTA, APL_WHITE_CIRCLE, APL_STAR_OPERATOR, _______,
+                             _______, APL_ALPHA, APL_LEFT_CEILING, APL_LEFT_FLOOR, APL_LOW_LINE, APL_NABLA,  _______,                               _______,    APL_INCREMENT, APL_RING_OPERATOR, APL_APOSTROPHE, APL_QUAD, APL_DOWN_TACK_JOT, _______,
+                             APL_RIGHT_TACK, APL_SUBSET, APL_SUPERSET, APL_INTERSECTION, APL_UNION, APL_UP_TACK,                                          APL_DOWN_TACK, APL_VERTICAL_LINE, APL_UP_SHOE_JOT, APL_BACKSLASH_BAR, APL_SLASH_BAR, _______,
+                             APL_UP_TACK_JOT, _______, _______, _______, _______,                   _______,                                   _______,                 MO(_APL_RHS), _______, _______, _______, _______,
+                             _______, _______, _______,               _______, _______, _______),
+
+ [_APL_RHS] = LAYOUT_moonlander(
+                                _______, APL_IBEAM, APL_DEL_TILDE, APL_DEL_STILE, APL_DELTA_STILE, APL_CIRCLE_STILE, _______,                                 _______, APL_CIRCLE_BACKSLASH, APL_CIRCLED_MINUS, APL_CIRCLE_STAR, APL_DOWN_CARET_TILDE, APL_UP_CARET_TILDE, _______,
+                                _______, _______, APL_OMEGA_UNDERBAR, APL_EPSILON_UNDERBAR, _______, APL_TILDE_DIAERESIS, _______,                                 _______, APL_LEFT_ARROW,  APL_RIGHT_ARROW,  APL_IOTA_UNDERBAR, APL_CIRCLE_DIAERESIS, APL_STAR_DIAERESIS,_______,
+                                _______, APL_ALPHA_UNDERBAR, _______, _______, _______, _______, _______,                                 _______, _______, APL_JOT_DIAERESIS, APL_QUAD_EQUAL, APL_SQUISH_QUAD, APL_IDENTICAL, _______,
+                                APL_LEFT_TACK, _______, _______, _______, _______, _______, _______, _______, APL_COMMA_BAR, APL_DELTA_UNDERBAR, APL_QUAD_COLON, _______,
+                                APL_NOT_IDENTICAL, _______, _______, _______, _______,                   _______,               _______,                 _______, _______, _______, _______, APL_QUAD_DIVIDE,
+                                                                            _______, _______, _______,               _______, _______, _______
+                             ),
 
 
 };
