@@ -75,7 +75,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_LOWER] = LAYOUT_moonlander(
                                KC_TILD,        KC_EXLM,        KC_AT,          KC_HASH,        KC_DLR,         KC_PERC,        _______,                                 _______, KC_CIRC,        KC_AMPR,        KC_ASTR,        KC_LPRN,        KC_RPRN,        _______,
                                KC_AUDIO_MUTE,   KC_F1,          KC_F2,          KC_F3,          my_lower_r,          TD(DANCE_73),     _______,                                 _______,  KC_HOME,        my_lower_u,        my_lower_i,      my_lower_o,         my_lower_p, _______,
-                               _______, KC_F5,          KC_F6,          my_lower_d,          my_lower_f,          my_lower_g,  _______,                                                                          _______, KC_LEFT,        my_lower_j,        my_lower_k,          my_lower_l,       my_lower_semi, _______,
+                               _______, KC_F5,          KC_F6,          my_lower_d,          my_lower_f,          my_lower_g,  _______,                                                                          TD(WWW_BACK_FORWARD), KC_LEFT,        my_lower_j,        my_lower_k,          my_lower_l,       my_lower_semi, _______,
                                _______,   KC_F9, KC_F10, KC_F11, KC_F12, KC_APPLICATION,                                my_lower_n,   my_lower_m, my_lower_comma,   my_lower_period,   my_lower_slash,    _______,
                                SYSTEM_LAYER_ACTIVATE, _______, _______ , alt,   MO(_EDITING), MO(_MOUSE),           _______,         lower_LOWER,          lower_right_of_lower, lower_key_4_11, lower_key_4_12, _______,
                                MO(_MOUSE), lower_right_of_super, MO(_MOUSE),                                               _______, lower_right_of_super, _______
@@ -262,14 +262,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_APL] = LAYOUT_moonlander(
                              TO(_BASE)  , APL_DIAERESIS, APL_MACRON, APL_LESS, APL_LESS_EQUAL,APL_EQUALS, _______,                                 _______,  APL_GREATER_EQUAL, APL_GREATER, APL_NOT_EQUAL, APL_OR, APL_AND, _______,
-                             TO(_BASE), APL_QUESTION_MARK, APL_OMEGA, APL_EPSILON, APL_RHO, APL_TILDE, _______,                                  _______, APL_UPWARDS_ARROW, APL_DOWNWARDS_ARROW, APL_IOTA, APL_WHITE_CIRCLE, APL_STAR_OPERATOR, _______,
+                             TO(_BASE), APL_QUESTION_MARK, APL_OMEGA, APL_EPSILON, APL_RHO, APL_TILDE, _______,                                  _______, APL_UPWARDS_ARROW, APL_DOWNWARDS_ARROW, APL_IOTA, APL_WHITE_CIRCLE, APL_STAR_OPERATOR, APL_LEFT_ARROW,
                              _______, APL_ALPHA, APL_LEFT_CEILING, APL_LEFT_FLOOR, APL_LOW_LINE, APL_NABLA,  _______,                               _______,    APL_INCREMENT, APL_RING_OPERATOR, APL_APOSTROPHE, APL_QUAD, APL_DOWN_TACK_JOT, _______,
                              APL_RIGHT_TACK, APL_SUBSET, APL_SUPERSET, APL_INTERSECTION, APL_UNION, APL_UP_TACK,                                          APL_DOWN_TACK, APL_VERTICAL_LINE, APL_UP_SHOE_JOT, APL_BACKSLASH_BAR, APL_SLASH_BAR, _______,
                              APL_UP_TACK_JOT, _______, _______, _______, _______,                   _______,                                   _______,                 MO(_APL_RHS), _______, _______, _______, _______,
                              _______, _______, _______,               _______, _______, _______),
 
  [_APL_RHS] = LAYOUT_moonlander(
-                                _______, APL_IBEAM, APL_DEL_TILDE, APL_DEL_STILE, APL_DELTA_STILE, APL_CIRCLE_STILE, _______,                                 _______, APL_CIRCLE_BACKSLASH, APL_CIRCLED_MINUS, APL_CIRCLE_STAR, APL_DOWN_CARET_TILDE, APL_UP_CARET_TILDE, _______,
+                                _______, APL_IBEAM, APL_DEL_TILDE, APL_DEL_STILE, APL_DELTA_STILE, APL_CIRCLE_STILE, _______,                                 _______, APL_CIRCLE_BACKSLASH, APL_CIRCLED_MINUS, APL_CIRCLE_STAR, APL_DOWN_CARET_TILDE, APL_UP_CARET_TILDE, APL_RIGHT_ARROW,
                                 _______, _______, APL_OMEGA_UNDERBAR, APL_EPSILON_UNDERBAR, _______, APL_TILDE_DIAERESIS, _______,                                 _______, APL_LEFT_ARROW,  APL_RIGHT_ARROW,  APL_IOTA_UNDERBAR, APL_CIRCLE_DIAERESIS, APL_STAR_DIAERESIS,_______,
                                 _______, APL_ALPHA_UNDERBAR, _______, _______, _______, _______, _______,                                 _______, _______, APL_JOT_DIAERESIS, APL_QUAD_EQUAL, APL_SQUISH_QUAD, APL_IDENTICAL, _______,
                                 APL_LEFT_TACK, _______, _______, _______, _______, _______, _______, _______, APL_COMMA_BAR, APL_DELTA_UNDERBAR, APL_QUAD_COLON, _______,
