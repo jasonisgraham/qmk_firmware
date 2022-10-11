@@ -36,6 +36,7 @@ enum planck_layers {
                     _ADHOC_SET_HOTKEY,
                     _ROFI,
                     _APL,
+                    _APL_RHS,
 };
 
 /* #include "../../../common/config.h" */
@@ -58,13 +59,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                              top_left,    my_q,    my_w,    my_e,    my_r,    my_t, LAYER_LOCK,    my_y,           my_u,    my_i,    my_o,     my_p,
                              my_lctl , my_a,   my_s,   my_d,   my_f,   my_g, backspace,  my_h,         my_j,   my_k,   my_l,   my_semicolon,
                              my_left_shift,        my_z,           my_x,           my_c,           my_v,           my_b, KC_ENTER,     my_n,   my_m,   my_comma,   my_period,   my_forward_slash,
-                             hyper, super_meta_hyper , all_mods , alt, RAISE,  super, right_of_super,   my_space,           LOWER,          my_right_of_lower,   key_4_11,  key_4_12
+                             hyper, super_meta_hyper , all_mods , alt, RAISE,  super, DANCE_PAREN_BRACKET,   my_space,           LOWER,          my_right_of_lower,   key_4_11,  key_4_12
                               ),
 
 [_LOWER] = LAYOUT_planck_grid(
                               KC_AUDIO_MUTE,   KC_F1,          KC_F2,          KC_F3,          KC_F4,          TD(DANCE_73),   _______,  KC_HOME,     my_lower_u,    my_lower_i,      my_lower_o,         my_lower_p,
                               _______, KC_F5,          KC_F6,          KC_F7,          KC_F8,          my_lower_g, TD(WWW_BACK_FORWARD),      KC_LEFT,        my_lower_j,        my_lower_k,          my_lower_l,       my_lower_semi,
-                              _______,   KC_F9,         KC_F10,         KC_F11,         KC_F12,         KC_APPLICATION, _______,  my_lower_n, my_lower_m, my_lower_comma,   my_lower_period, my_lower_slash,
+                              _______,   KC_F9,         KC_F10,         KC_F11,         KC_F12,         KC_APPLICATION, KC_SCROLL_LOCK,  my_lower_n, my_lower_m, my_lower_comma,   my_lower_period, my_lower_slash,
                               SYSTEM_LAYER_ACTIVATE, _______, _______ , alt,   MO(_EDITING), MO(_MOUSE),           lower_right_of_super,         MO(_EXTENDED), lower_LOWER,          lower_right_of_lower, lower_key_4_11, lower_key_4_12
 
 
@@ -236,7 +237,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                               _______, _______, _______, _______,    _______, _______,  _______, KC_MEDIA_PLAY_PAUSE,    _______, _______, _______,   _______
                               ),
 [_BRIGHTNESS] = LAYOUT_planck_grid(
-                                   _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
+                                   _______, _______, _______, _______, _______, _______,    _______, _______, _______, APL_IOTA_UNDERBAR, _______, _______,
                                    _______, _______, _______, _______, _______, _______, _______,  _______, KC_BRIGHTNESS_DOWN,KC_BRIGHTNESS_UP, _______,   _______,
                                    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
                                    _______, _______, _______, _______,    _______, _______, _______, _______,    _______, _______, _______, _______
