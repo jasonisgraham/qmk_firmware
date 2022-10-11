@@ -59,7 +59,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                              top_left,    my_q,    my_w,    my_e,    my_r,    my_t, LAYER_LOCK,    my_y,           my_u,    my_i,    my_o,     my_p,
                              my_lctl , my_a,   my_s,   my_d,   my_f,   my_g, backspace,  my_h,         my_j,   my_k,   my_l,   my_semicolon,
                              my_left_shift,        my_z,           my_x,           my_c,           my_v,           my_b, KC_ENTER,     my_n,   my_m,   my_comma,   my_period,   my_forward_slash,
-                             hyper, super_meta_hyper , all_mods , alt, RAISE,  super, DANCE_PAREN_BRACKET,   my_space,           LOWER,          my_right_of_lower,   key_4_11,  key_4_12
+                             hyper, super_meta_hyper , all_mods , alt, RAISE,  super, esc_ctrl,   my_space,           LOWER,          my_right_of_lower,   key_4_11,  key_4_12
                               ),
 
 [_LOWER] = LAYOUT_planck_grid(
@@ -124,7 +124,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // 7
 [_MACROS] = LAYOUT_planck_grid(
-                               _______,   _______, _______, _______, emacs_r, _______, EMACS_GOTO_GET_FEED, _______, EMACS_BACKWARD_UP, _______, _______, _______,
+                               _______,   _______, _______, _______, emacs_r, _______, EMACS_GOTO_GET_FEED, EMACS_COPY_FILE_PATH, EMACS_BACKWARD_UP, _______, _______, _______,
                                _______, emacs_a, _______, EMACS_YAS_DOC,     emacs_f,     EMACS_INSERT_GET_FEED, EMACS_GOTO_PARSE_ITEM,  _______, _______, EMACS_YAS_KEYS_DESCRUCTURE, EMACS_YAS_TL,     EMACS_COMMENT_READER,
                                _______, _______, _______, EMACS_YAS_C,     _______, _______, EMACS_GOTO_SYNC_FEED, _______, emacs_m,     _______, _______, TERM_CD_UP_DIR,
                                _______, _______, _______, _______, _______, _______, KC_NO,          _______, _______, _______, _______, _______
