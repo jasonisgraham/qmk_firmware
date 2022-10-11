@@ -1,4 +1,5 @@
 #include QMK_KEYBOARD_H
+#include "colors.c"
 
 enum planck_layers {
                     _BASE,
@@ -63,12 +64,12 @@ enum planck_layers {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_BASE] = LAYOUT_moonlander(
-                              KC_GRV, KC_F1,           KC_F2,           KC_F3,           KC_F4,           KC_F5,                                            KC_F11, KC_F12, KC_F6,           KC_F7,           KC_F8,           KC_F9,           KC_F10,         backspace,
-                              top_left,    my_q,           my_w,           my_e,           my_r,           my_t,           LAYER_LOCK,                                 CAPS_WORD, my_y,           my_u,    my_i,    my_o,    my_p,    KC_MINUS,
-    my_lctl, my_a,           my_s,           my_d,           my_f,           my_g,           _______,                                                                         backspace,      my_h,           my_j,    my_k,    my_l,    my_semicolon,    my_singlequote,
+                              KC_GRV, KC_1,           KC_2,           KC_3,           KC_4,           KC_5,                                            _______, _______, KC_6,           KC_7,           KC_8,           KC_9,           KC_0,       KC_MINUS  ,
+                              TD(DANCE_TAB),    my_q,           my_w,           my_e,           my_r,           my_t,           LAYER_LOCK,                                 CAPS_WORD, my_y,           my_u,    my_i,    my_o,    my_p,    backspace,
+                              my_lctl, my_a,           my_s,           my_d,           my_f,           my_g,           KC_SCROLLLOCK,                                                                         backspace,      my_h,           my_j,    my_k,    my_l,    my_semicolon,    my_singlequote,
                               my_left_shift,        my_z,           my_x,           my_c,           my_v,           my_b,                                          my_n,           my_m,   my_comma,   my_period,   my_forward_slash,   KC_ENTER, // KC_RSFT,
-                              hyper, super_meta_hyper ,      all_mods,   alt,  RAISE,          OSL(_WINDOWS), OSL(_WINDOWS), LOWER,         KC_LEFT,   KC_DOWN,          KC_UP, KC_RIGHT,
-                              super,  right_of_super, MO(_APL),                       RGB_MODE_FORWARD, OSL(_EDITING), my_space
+                              hyper, super_meta_hyper ,      all_mods,   alt,  RAISE,          MO(_APL), MO(_APL), LOWER,         KC_LEFT,   KC_DOWN,          KC_UP, KC_RIGHT,
+                              super,  alt, MO(_SYSTEM),                       RGB_MODE_FORWARD, OSL(_EDITING), my_space
     ),
 
     // lower
@@ -124,7 +125,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_MACROS] = LAYOUT_moonlander(
     _______, _______, _______, _______, _______, _______, _______,                                 _______, _______, _______, _______, _______, _______, _______,
-    _______,   EMACS_RE_FIND, _______, _______, emacs_r, _______, EMACS_GOTO_GET_FEED,                                 _______, _______, EMACS_BACKWARD_UP, _______, _______, EMACS_ANON_FN, _______,
+    _______,   EMACS_RE_FIND, _______, _______, emacs_r, _______, EMACS_GOTO_GET_FEED,                                 _______, EMACS_COPY_FILE_PATH, EMACS_BACKWARD_UP, _______, _______, EMACS_ANON_FN, _______,
     _______, emacs_a, CD_CSV, EMACS_YAS_DOC,     emacs_f,     EMACS_INSERT_GET_FEED, EMACS_GOTO_PARSE_ITEM,_______, _______, _______, EMACS_YAS_KEYS_DESCRUCTURE, EMACS_YAS_TL,    EMACS_COMMENT_READER, _______,
     _______, _______, _______, EMACS_YAS_C,     _______, _______,                                 _______, EMACS_YAS_MAP_ANON,     _______, _______, TERM_CD_UP_DIR, _______,
     _______, _______, _______, _______, _______, EMACS_GOTO_SYNC_FEED,                                                                                                 _______, _______, _______, _______, _______, _______,
@@ -168,9 +169,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_SUPER] = LAYOUT_moonlander(
                                _______, _______, _______, _______, _______, _______, _______,                                 _______, _______, _______, _______, _______, _______, _______,
-                               _______, WINDOWS_Q, WINDOWS_W, _______, _______, _______, _______,                                 _______, _______, _______, _______, _______, _______, _______,
+                               top_left, WINDOWS_Q, WINDOWS_W, _______, _______, _______, _______,                                 _______, _______, _______, _______, _______, _______, _______,
                                _______, _______, _______, _______, _______, _______, _______,                                                                 _______, WINDOWS_N, _______, _______, _______, _______, _______,
-                               _______, _______, _______, _______, _______, _______,                                 _______, _______, _______, _______, _______, _______,
+                               _______, _______, _______, _______, _______, _______,                                 _______, _______, LSFT(KC_TAB), KC_TAB, _______, _______,
                                _______, _______, _______, _______, _______, _______,                                                                                                 _______, _______, _______, _______, LSFT(KC_TAB), KC_TAB,
                                _______, _______, _______,                 _______, _______, _______
                                ),
@@ -179,7 +180,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_EDITING] = LAYOUT_moonlander(
     _______, _______, _______, _______, _______, _______, _______,                                                                     _______, _______, _______, _______, _______, _______, _______,
     _______, EMACS_DESC_KEY, LCTL(KC_7),     LCTL(KC_E), EMACS_HELM_MARK_RINGS,     EMACS_TRANSPOSE, _______,                          EMACS_BACKWARD_UP, EMACS_YANK_IN_SEXP  , scroll_next,     scroll_prev, EMACS_HELM_OCCUR, EMACS_PROJECTILE_FIND_FILE, _______,
-    _______, _______, EMACS_LOCCUR, EMACS_KILL_IN_SEXP, RALT(KC_ENTER), EMACS_COPY_FILE_PATH, _______,                                 EMACS_SCROLL_UP, RALT(RSFT(KC_H)), editing_j, editing_k, editing_l, EMACS_COMMENT_READER, _______,
+    _______, _______, EMACS_LOCCUR, EMACS_KILL_IN_SEXP, RALT(KC_ENTER), _______, _______,                                 EMACS_SCROLL_UP, RALT(RSFT(KC_H)), editing_j, editing_k, editing_l, EMACS_COMMENT_READER, _______,
     _______, _______, _______, EMACS_WINDOW_CLOSE,    KC_F12, _______,                                                                 next_win_or_frame, EMACS_ACE_WINDOW_SWAP,  emacs_buffer_stack_down, emacs_buffer_stack_up, TERM_CD_UP_DIR, _______,
     _______, _______, _______, _______, KC_HYPR,  _______,                                                                             all_mods, _______, _______,  _______, _______, _______,
     _______, _______, _______,                                                                                                         _______, _______, _______
@@ -266,7 +267,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                              _______, APL_ALPHA, APL_LEFT_CEILING, APL_LEFT_FLOOR, APL_LOW_LINE, APL_NABLA,  _______,                               _______,    APL_INCREMENT, APL_RING_OPERATOR, APL_APOSTROPHE, APL_QUAD, APL_DOWN_TACK_JOT, _______,
                              APL_RIGHT_TACK, APL_SUBSET, APL_SUPERSET, APL_INTERSECTION, APL_UNION, APL_UP_TACK,                                          APL_DOWN_TACK, APL_VERTICAL_LINE, APL_UP_SHOE_JOT, APL_BACKSLASH_BAR, APL_SLASH_BAR, _______,
                              APL_UP_TACK_JOT, _______, _______, _______, _______,                   _______,                                   _______,                 MO(_APL_RHS), _______, _______, _______, _______,
-                             _______, _______, _______,               _______, _______, _______),
+                             _______, _______, _______,               _______, _______, UP_TWO),
 
  [_APL_RHS] = LAYOUT_moonlander(
                                 _______, APL_IBEAM, APL_DEL_TILDE, APL_DEL_STILE, APL_DELTA_STILE, APL_CIRCLE_STILE, _______,                                 _______, APL_CIRCLE_BACKSLASH, APL_CIRCLED_MINUS, APL_CIRCLE_STAR, APL_DOWN_CARET_TILDE, APL_UP_CARET_TILDE, APL_RIGHT_ARROW,
@@ -280,7 +281,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 };
 
-#include "colors.c"
+/* #include "colors.c" */
 
 #include "../../../common/combos.c"
 #include "../../../common/autoshift.c"
