@@ -8,6 +8,8 @@ const uint16_t PROGMEM combo_raise_lower_i[] = {raise_key_4_9, my_raise_i, COMBO
 
 const uint16_t PROGMEM combo_period_semicolon[] = {my_period, my_semicolon, COMBO_END};
 
+const uint16_t PROGMEM combo_backspace_g[] = {my_g, backspace, COMBO_END};
+
 const uint16_t PROGMEM combo_lower_slash[] = {LOWER, my_forward_slash, COMBO_END};
 const uint16_t PROGMEM combo_raise_slash[] = {RAISE, my_forward_slash, COMBO_END};
 const uint16_t PROGMEM combo_raise_d_f[] = {RAISE, my_d , my_f, COMBO_END};
@@ -320,6 +322,7 @@ combo_t key_combos[COMBO_COUNT] = {
                                    COMBO(combo_r_t, KC_AGIN),
                                    COMBO(combo_lower_semicolon, RCTL(KC_C)),
 
+                                   COMBO(combo_backspace_g, KC_DELETE),
                                    /* COMBO(combo_m_period, KC_COLN), */
 
                                    /* COMBO(combo_shift_alt, AUDIO_LAYER_HOLD), */
