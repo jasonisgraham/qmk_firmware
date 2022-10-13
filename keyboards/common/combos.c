@@ -297,7 +297,10 @@ const uint16_t PROGMEM combo_editing_j_editing_k[] = {editing_j, editing_k, COMB
 
 /* const combo_t  = COMBO(combo_topright_p_l, LCTL(KC_L)); */
 
+const uint16_t PROGMEM combo_backspace_y[] = {backspace, my_y, COMBO_END};
+
 combo_t key_combos[COMBO_COUNT] = {
+                                   COMBO(combo_backspace_y, KC_DELETE),
                                    COMBO(combo_apl_mutl, APL_MULT),
                                    COMBO(combo_apl_division, APL_DIVISION),
                                    COMBO(combo_lower_bottom_right_2, KC_DELETE),

@@ -136,7 +136,7 @@
 #define my_lower_p KC_BSPACE
 #define my_lower_period BROWSER_TAB_NEXT
 #define my_lower_r KC_F4
-#define my_lower_semi KC_QUOTE
+#define my_lower_semi KC_QUOTE 
 #define my_lower_slash KC_BSLASH
 #define my_lower_u KC_PGDOWN
 #define my_m TD(DANCE_M)
@@ -187,7 +187,7 @@
 #define raise_semi  KC_QUOTE
 #define raise_slash KC_MINUS
 #define right_of_lower  esc_ctrl  // my_left_shift ///hyper // / MT(MOD_RCTL, KC_ESCAPE)
-#define lower_right_of_super CLOSED_BRACE
+#define lower_right_of_super CLOSED_PAREN
 #define scroll_next RCTL(KC_D)
 #define scroll_prev RCTL(KC_U)
 #define select_slack LGUI(KC_S)
@@ -204,6 +204,8 @@
 #define EMACS_SELECT_WINDOW SS_RGUI(SS_TAP(X_E)) SS_DELAY(150)
 #define EMACS_SCROLL_DOWN RCTL(RGUI(KC_Y))
 #define EMACS_SCROLL_UP RCTL(KC_Y)
+
+
 
 #define BRACKET_PAREN TD(DANCE_PAREN_BRACKET)
 
@@ -227,13 +229,12 @@ enum custom_keycodes {
                       /* RGB_SLD = SAFE_RANGE, */
                       /* RGB_SLD = EZ_SAFE_RANGE, */
                       FIRST = SAFE_RANGE,
-                      UP_TWO,
                       AUTOSHIFT_TOGGLE,
                       CAPS_WORD_TOGGLE,
                       BACKWARD_KILL_LINE,
                       EMACS_TRANSPOSE,
-                      OPEN_BRACE,
-                      CLOSED_BRACE,
+                      OPEN_PAREN,
+                      CLOSED_PAREN,
                       LAYER_LOCK,
                       CIDER_RUN_PREV_COMMAND,
                       EMACS_DESC_KEY,
@@ -419,35 +420,35 @@ uint16_t fasd_timer = 0;
 int fasd_level = 0;
 int fasd_level_duration = timer_default;
 
-bool open_brace_timer_active = false;
-uint16_t open_brace_timer = 0;
-int open_brace_level = 0;
-int open_brace_level_duration = timer_default;
+bool open_paren_timer_active = false;
+uint16_t open_paren_timer = 0;
+int open_paren_level = 0;
+int open_paren_level_duration = timer_default;
 
-bool closed_brace_timer_active = false;
-uint16_t closed_brace_timer = 0;
-int closed_brace_level = 0;
-int closed_brace_level_duration = timer_default;
+bool closed_paren_timer_active = false;
+uint16_t closed_paren_timer = 0;
+int closed_paren_level = 0;
+int closed_paren_level_duration = timer_default;
 
 void matrix_scan_user(void) {
   // open paren
-  if (open_brace_timer_active) {
-    if (timer_elapsed(open_brace_timer) > (open_brace_level_duration * 2)) {
+  if (open_paren_timer_active) {
+    if (timer_elapsed(open_paren_timer) > (open_paren_level_duration * 2)) {
       // global no ext
-      if (open_brace_level <= 2) {
-        open_brace_level++;
+      if (open_paren_level <= 2) {
+        open_paren_level++;
         PLAY_SONG(__a6);
       }
 
-    } else if (timer_elapsed(open_brace_timer) > (open_brace_level_duration * 1)) {
-      if (open_brace_level <= 1) {
-        open_brace_level++;
+    } else if (timer_elapsed(open_paren_timer) > (open_paren_level_duration * 1)) {
+      if (open_paren_level <= 1) {
+        open_paren_level++;
         PLAY_SONG(__g6);
       }
 
     } else {
-      if (open_brace_level <= 0) {
-        open_brace_level++;
+      if (open_paren_level <= 0) {
+        open_paren_level++;
       }
     }
     return;
@@ -455,23 +456,23 @@ void matrix_scan_user(void) {
 
 
   // closed paren
-  if (closed_brace_timer_active) {
-    if (timer_elapsed(closed_brace_timer) > (closed_brace_level_duration * 2)) {
+  if (closed_paren_timer_active) {
+    if (timer_elapsed(closed_paren_timer) > (closed_paren_level_duration * 2)) {
       // global no ext
-      if (closed_brace_level <= 2) {
-        closed_brace_level++;
+      if (closed_paren_level <= 2) {
+        closed_paren_level++;
         PLAY_SONG(__a6);
       }
 
-    } else if (timer_elapsed(closed_brace_timer) > (closed_brace_level_duration * 1)) {
-      if (closed_brace_level <= 1) {
-        closed_brace_level++;
+    } else if (timer_elapsed(closed_paren_timer) > (closed_paren_level_duration * 1)) {
+      if (closed_paren_level <= 1) {
+        closed_paren_level++;
         PLAY_SONG(__g6);
       }
 
     } else {
-      if (closed_brace_level <= 0) {
-        closed_brace_level++;
+      if (closed_paren_level <= 0) {
+        closed_paren_level++;
       }
     }
     return;
@@ -627,43 +628,1034 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   }
 #endif
 
+/*   if (!process_layer_lock(keycode, record, LAYER_LOCK)) { */
+/*     if (biton32(layer_state) != _BASE) { */
+/* #ifdef RGBLIGHT_MODE */
+/*       rgblight_mode(RGBLIGHT_MODE_SNAKE); */
+/* #endif */
+
+
+/* /\* #ifdef AUDIO_ENABLE *\/ */
+/* /\*     PLAY_SONG(caps_lock_on_sound); *\/ */
+/* /\* #endif *\/ */
+/*     } */
+/*     return false; */
+/*   } */
+
   switch (keycode) {
 
-  case OPEN_BRACE:
+  case EMACS_FASD:
     if (record->event.pressed) {
-      open_brace_timer = timer_read();
-      open_brace_timer_active = true;
-      open_brace_level = 0;
+      fasd_timer = timer_read();
+      fasd_timer_active = true;
+      fasd_level = 0;
       return false;
     } else {
-      if (open_brace_level >= 3) {
+      if (fasd_level >= 4) {
+        tap_code16(EMACS_FASD_DEFAULT);
+      } else if (fasd_level >= 3) {
+        tap_code16(EMACS_FASD_GLOBAL_NO_EXT);
+      } else if (fasd_level >= 2) {
+        tap_code16(EMACS_FASD_PROJECT_NO_EXT);
+      } else {
+        tap_code16(EMACS_FASD_PROJECT_CURR_EXT);
+      }
+      fasd_timer_active = false;
+      fasd_timer = 0;
+    }
+    break;
+    
+
+    // ------
+  case APL_ALPHA:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_A);
+      tap_code16(KC_L);
+      return false;
+
+    }
+break;
+
+  case APL_AND:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_A);
+      tap_code16(KC_N);
+      return false;
+
+
+    }
+break;
+
+  case APL_APOSTROPHE:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_A);
+      tap_code16(KC_P);
+      return false;
+
+
+    }
+break;
+
+  case APL_ALPHA_UNDERBAR:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_A);
+      tap_code16(KC_U);
+      return false;
+
+
+    }
+break;
+
+  case APL_BACKSLASH_BAR:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_B);
+      tap_code16(KC_B);
+      return false;
+
+
+    }
+break;
+
+  case APL_COMMA_BAR:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_C);
+      tap_code16(KC_B);
+      return false;
+
+
+    }
+break;
+
+  case APL_CIRCLE_DIAERESIS:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_C);
+      tap_code16(KC_D);
+      return false;
+
+
+    }
+break;
+
+  case APL_CHI:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_C);
+      tap_code16(KC_H);
+      return false;
+
+
+    }
+break;
+
+  case APL_CIRCLE_BACKSLASH:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_C);
+      tap_code16(KC_I);
+      return false;
+
+
+    }
+break;
+
+  case APL_CIRCLE_STILE:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_C);
+      tap_code16(KC_L);
+      return false;
+
+
+    }
+break;
+
+  case APL_CIRCLED_MINUS:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_C);
+      tap_code16(KC_M);
+      return false;
+
+
+    }
+break;
+
+  case APL_CIRCLE_STAR:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_C);
+      tap_code16(KC_S);
+      return false;
+
+
+    }
+break;
+
+  case APL_DOWNWARDS_ARROW:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_D);
+      tap_code16(KC_A);
+      return false;
+
+
+    }
+break;
+ 
+
+
+  case APL_DOWN_CARET_TILDE:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_D);
+      tap_code16(KC_C);
+      return false;
+
+
+    }
+    break;
+
+  case APL_DIAERESIS:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_D);
+      tap_code16(KC_I);
+      return false;
+
+
+    }
+    break;
+
+  case APL_DOWN_TACK_JOT:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_D);
+      tap_code16(KC_J);
+      return false;
+
+
+    }
+    break;
+
+  case APL_DEL_STILE:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_D);
+      tap_code16(KC_L);
+      return false;
+
+
+    }
+    break;
+
+  case APL_DIAMOND:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_D);
+      tap_code16(KC_M);
+      return false;
+
+
+    }
+    break;
+
+  case APL_DELTA_STILE:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_D);
+      tap_code16(KC_S);
+      return false;
+
+
+    }
+    break;
+
+  case APL_DELTA_UNDERBAR:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_D);
+      tap_code16(KC_U);
+      return false;
+
+
+    }
+    break;
+
+  case APL_DIVISION:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_D);
+      tap_code16(KC_V);
+      return false;
+
+
+    }
+    break;
+
+  case APL_EPSILON:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_E);
+      tap_code16(KC_P);
+      return false;
+
+
+    }
+    break;
+
+  case APL_EQUALS:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_E);
+      tap_code16(KC_Q);
+      return false;
+
+
+    }
+    break;
+
+  case APL_EPSILON_UNDERBAR:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_E);
+      tap_code16(KC_U);
+      return false;
+
+
+    }
+    break;
+
+  case APL_GREATER_EQUAL:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_G);
+      tap_code16(KC_E);
+      return false;
+
+
+    }
+    break;
+
+  case APL_GREATER:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_G);
+      tap_code16(KC_R);
+      return false;
+
+
+    }
+    break;
+
+  case APL_IBEAM:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_I);
+      tap_code16(KC_B);
+      return false;
+
+
+    }
+    break;
+
+  case APL_INCREMENT:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_I);
+      tap_code16(KC_C);
+      return false;
+
+
+    }
+    break;
+
+  case APL_IDENTICAL:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_I);
+      tap_code16(KC_D);
+      return false;
+
+
+    }
+    break;
+
+  case APL_INTERSECTION:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_I);
+      tap_code16(KC_N);
+      return false;
+
+
+    }
+    break;
+
+  case APL_IOTA:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_I);
+      tap_code16(KC_O);
+      return false;
+
+
+    }
+    break;
+
+  case APL_IOTA_UNDERBAR:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_I);
+      tap_code16(KC_U);
+      return false;
+
+
+    }
+    break;
+
+  case APL_JOT_DIAERESIS:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_J);
+      tap_code16(KC_D);
+      return false;
+
+
+    }
+    break;
+
+  case APL_LEFT_ARROW:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_L);
+      tap_code16(KC_A);
+      return false;
+
+
+    }
+    break;
+
+  case APL_LEFT_CEILING:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_L);
+      tap_code16(KC_C);
+      return false;
+
+
+    }
+    break;
+
+  case APL_LESS_EQUAL:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_L);
+      tap_code16(KC_E);
+      return false;
+
+
+    }
+    break;
+
+  case APL_LEFT_FLOOR:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_L);
+      tap_code16(KC_F);
+      return false;
+
+
+    }
+    break;
+
+  case APL_LOW_LINE:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_L);
+      tap_code16(KC_L);
+      return false;
+
+
+    }
+    break;
+
+  case APL_LESS:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_L);
+      tap_code16(KC_S);
+      return false;
+
+
+    }
+    break;
+
+  case APL_LEFT_TACK:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_L);
+      tap_code16(KC_T);
+      return false;
+
+
+    }
+    break;
+
+  case APL_MACRON:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_M);
+      tap_code16(KC_C);
+      return false;
+
+
+    }
+    break;
+
+  case APL_MULT:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_M);
+      tap_code16(KC_U);
+      return false;
+
+
+    }
+    break;
+
+  case APL_NABLA:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_N);
+      tap_code16(KC_A);
+      return false;
+
+
+    }
+    break;
+
+  case APL_NOT_EQUAL:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_N);
+      tap_code16(KC_E);
+      return false;
+
+
+    }
+    break;
+
+  case APL_NOT_IDENTICAL:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_N);
+      tap_code16(KC_I);
+      return false;
+
+
+    }
+    break;
+
+  case APL_OMEGA:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_O);
+      tap_code16(KC_M);
+      return false;
+
+
+    }
+    break;
+
+  case APL_OR:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_O);
+      tap_code16(KC_R);
+      return false;
+
+
+    }
+    break;
+
+  case APL_OMEGA_UNDERBAR:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_O);
+      tap_code16(KC_U);
+      return false;
+
+
+    }
+    break;
+
+  case APL_WHITE_CIRCLE:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_P);
+      tap_code16(KC_I);
+      return false;
+
+
+    }
+    break;
+
+  case APL_QUAD_COLON:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_Q);
+      tap_code16(KC_C);
+      return false;
+
+
+    }
+    break;
+
+  case APL_QUAD_DIVIDE:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_Q);
+      tap_code16(KC_D);
+      return false;
+
+
+    }
+    break;
+
+  case APL_QUAD_EQUAL:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_Q);
+      tap_code16(KC_E);
+      return false;
+
+
+    }
+    break;
+
+  case APL_QUESTION_MARK:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_Q);
+      tap_code16(KC_M);
+      return false;
+
+
+    }
+    break;
+
+  case APL_QUOTE_QUAD:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_Q);
+      tap_code16(KC_Q);
+      return false;
+
+
+    }
+    break;
+
+  case APL_QUAD:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_Q);
+      tap_code16(KC_U);
+      return false;
+
+
+    }
+    break;
+
+  case APL_RIGHT_ARROW:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_R);
+      tap_code16(KC_A);
+      return false;
+
+
+    }
+    break;
+
+  case APL_RHO:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_R);
+      tap_code16(KC_H);
+      return false;
+
+
+    }
+    break;
+
+  case APL_RING_OPERATOR:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_R);
+      tap_code16(KC_I);
+      return false;
+
+
+    }
+    break;
+
+  case APL_RIGHT_TACK:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_R);
+      tap_code16(KC_T);
+      return false;
+
+
+    }
+    break;
+
+  case APL_SLASH_BAR:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_S);
+      tap_code16(KC_B);
+      return false;
+
+
+    }
+    break;
+
+  case APL_STAR_DIAERESIS:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_S);
+      tap_code16(KC_D);
+      return false;
+
+
+    }
+    break;
+
+  case APL_SMALL_ELEMENT:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_S);
+      tap_code16(KC_E);
+      return false;
+
+
+    }
+    break;
+
+  case APL_STAR_OPERATOR:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_S);
+      tap_code16(KC_O);
+      return false;
+
+
+    }
+    break;
+
+  case APL_SUPERSET:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_S);
+      tap_code16(KC_P);
+      return false;
+
+
+    }
+    break;
+
+  case APL_SQUISH_QUAD:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_S);
+      tap_code16(KC_Q);
+      return false;
+
+
+    }
+    break;
+
+  case APL_TILDE_DIAERESIS:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_T);
+      tap_code16(KC_D);
+      return false;
+
+
+    }
+    break;
+
+  case APL_TILDE:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_T);
+      tap_code16(KC_I);
+      return false;
+
+
+    }
+    break;
+
+  case APL_UPWARDS_ARROW:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_U);
+      tap_code16(KC_A);
+      return false;
+
+
+    }
+    break;
+
+  case APL_UP_CARET_TILDE:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_U);
+      tap_code16(KC_C);
+      return false;
+
+
+    }
+    break;
+
+  case APL_UNION:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_U);
+      tap_code16(KC_N);
+      return false;
+
+
+    }
+    break;
+
+  case APL_UP_TACK:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_U);
+      tap_code16(KC_T);
+      return false;
+
+
+    }
+    break;
+
+  case APL_VERTICAL_LINE:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_V);
+      tap_code16(KC_L);
+      return false;
+
+
+    }
+    break;
+
+  case APL_ZILDE:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_A);
+      tap_code16(KC_Z);
+      tap_code16(KC_I);
+      return false;
+
+
+    }
+    break;
+
+  case APL_DEL_TILDE:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_D);
+      tap_code16(KC_T);
+      tap_code16(KC_I);
+      return false;
+
+
+    }
+    break;
+
+  case APL_DOWN_TACK:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_D);
+      tap_code16(KC_T);
+      tap_code16(KC_K);
+      return false;
+
+
+    }
+    break;
+
+  case APL_QUAD_DIAMOND:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_Q);
+      tap_code16(KC_D);
+      tap_code16(KC_I);
+      return false;
+
+
+    }
+    break;
+
+  case APL_SUBSET:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_S);
+      tap_code16(KC_U);
+      tap_code16(KC_B);
+      return false;
+
+
+    }
+    break;
+
+  case APL_UP_SHOE_JOT:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_U);
+      tap_code16(KC_S);
+      tap_code16(KC_J);
+      return false;
+
+
+    }
+    break;
+
+  case APL_UP_TACK_JOT:
+    if (record->event.pressed) {
+      tap_code16(KC_SCROLL_LOCK);
+      tap_code16(KC_U);
+      tap_code16(KC_T);
+      tap_code16(KC_J);
+      return false;
+
+
+    }
+    break;
+
+
+    // ----
+
+
+
+  case OPEN_PAREN:
+    if (record->event.pressed) {
+      open_paren_timer = timer_read();
+      open_paren_timer_active = true;
+      open_paren_level = 0;
+      return false;
+    } else {
+      if (open_paren_level >= 3) {
         tap_code16(KC_LCBR);
-      } else if (open_brace_level >= 2) {
+      } else if (open_paren_level >= 2) {
         tap_code16(KC_LBRACKET);
       } else {
         tap_code16(KC_LPRN);
       }
-      open_brace_timer_active = false;
-      open_brace_timer = 0;
+      open_paren_timer_active = false;
+      open_paren_timer = 0;
     }
     break;
 
-  case CLOSED_BRACE:
+  case CLOSED_PAREN:
     if (record->event.pressed) {
-      closed_brace_timer = timer_read();
-      closed_brace_timer_active = true;
-      closed_brace_level = 0;
+      closed_paren_timer = timer_read();
+      closed_paren_timer_active = true;
+      closed_paren_level = 0;
       return false;
     } else {
-      if (closed_brace_level >= 3) {
+      if (closed_paren_level >= 3) {
         tap_code16(KC_RCBR);
-      } else if (closed_brace_level >= 2) {
+      } else if (closed_paren_level >= 2) {
         tap_code16(KC_RBRACKET);
       } else {
         tap_code16(KC_RPRN);
       }
-      closed_brace_timer_active = false;
-      closed_brace_timer = 0;
+      closed_paren_timer_active = false;
+      closed_paren_timer = 0;
     }
     break;
 
@@ -1008,7 +2000,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     break;
 
-
+    
   case CAPS_WORD_TOGGLE:
     /* if (record->event.pressed) { */
     /*   caps_word_on(); */
