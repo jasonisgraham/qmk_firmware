@@ -5,8 +5,7 @@
 enum preonic_layers {
                     _BASE,
                     _LOWER,
-                    _RAISE,
-                    _HYPER,
+                    _RAIER,
                     _APL,
                     _APL_RHS,
                     _SYSTEM,
@@ -56,7 +55,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                               top_left,    my_q,    my_w,    my_e,    my_r,    my_t, LAYER_LOCK,    my_y,           my_u,    my_i,    my_o,     my_p,
                               my_lctl , my_a,   my_s,   my_d,   my_f,   my_g, backspace,  my_h,         my_j,   my_k,   my_l,   my_semicolon,
                               my_left_shift,        my_z,           my_x,           my_c,           my_v,           my_b, KC_ENTER,     my_n,   my_m,   my_comma,   my_period,   my_forward_slash,
-                              hyper, super_meta_hyper , all_mods , alt, RAISE,  super, right_of_super,   my_space,           LOWER,          my_right_of_lower,   key_4_11,  key_4_12
+                              hyper, super_meta_hyper , KC_NO, alt, RAISE,  super, right_of_super,   my_space,           LOWER,          my_right_of_lower,   key_4_11,  key_4_12
                               ),
 
 
