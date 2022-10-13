@@ -137,14 +137,14 @@
 #define my_lower_period BROWSER_TAB_NEXT
 #define my_lower_r KC_F4
 #define my_lower_semi KC_QUOTE 
-#define my_lower_slash KC_BSLASH
+#define my_lower_slash KC_ENTER
 #define my_lower_u KC_PGDOWN
 #define my_m TD(DANCE_M)
 #define my_minus _______
 #define my_n TD(DANCE_N)
 #define my_o TD(DANCE_O)
 #define my_p TD(DANCE_P)
-#define my_period KC_DOT
+#define my_period TD(DANCE_DOT)
 #define my_q TD(DANCE_Q)
 #define my_r TD(DANCE_R)
 #define my_raise RAISE
