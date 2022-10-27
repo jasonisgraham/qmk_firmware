@@ -20,6 +20,7 @@ enum planck_layers {
                     _ALT,
                     _SUPER,
                     _EDITING,
+                    _EMACS,
                     _LAYER13,
                     _CTRL,
                     _MOUSE,
@@ -48,34 +49,35 @@ enum planck_layers {
 #include "../../../common/drop_tapdance.c"
 #include "../../../common/drop_colors.c"
 #include "../../../common/encoder.c"
-#include "../../../common/layer_lock.h"
+/* #include "../../../common/layer_lock.h" */
 
 #include "encoder.h"
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
+                                                              // LAYER_LOCK
 [_BASE] = LAYOUT_planck_grid(
-                             top_left,    my_q,    my_w,    my_e,    my_r,   my_t, LAYER_LOCK,    my_y,           my_u,    my_i,    my_o,     my_p,
-                             my_lctl , my_a,   my_s,   my_d,   my_f,   my_g, backspace,  my_h,         my_j,   my_k,   my_l,   my_semicolon,
-                             my_left_shift,        my_z,           my_x,           my_c,           my_v,           my_b, KC_DELETE,     my_n,   my_m,   my_comma,   my_period,   my_forward_slash,
-                             hyper, super_meta_hyper , KC_NO,  alt, RAISE,  super, esc_ctrl,   my_space,           LOWER,          my_right_of_lower,   key_4_11,  key_4_12
+                             top_left,    my_q,    my_w,    my_e,    my_r,   my_t, backspace ,    my_y,           my_u,    my_i,    my_o,     my_p,
+                             my_lctl , my_a,   my_s,   my_d,   my_f,   my_g, _______,  my_h,         my_j,   my_k,   my_l,   my_semicolon,
+                             my_left_shift,        my_z,           my_x,           my_c,           my_v,           my_b, KC_ENTER,     my_n,   my_m,   my_comma,   my_period,   my_forward_slash,
+                             hyper, super_meta_hyper, LAYER_LOCK,   alt, RAISE,  super, OSL(_EDITING),   my_space,           LOWER,          my_right_of_lower,   key_4_11,  key_4_12
                               ),
 
 [_LOWER] = LAYOUT_planck_grid(
-                              KC_AUDIO_MUTE,   KC_F1,          KC_F2,          KC_F3,          KC_F4,          TD(DANCE_73),   _______,  KC_HOME,     my_lower_u,    my_lower_i,      my_lower_o,         my_lower_p,
-                              _______, KC_F5,          KC_F6,          KC_F7,          KC_F8,          my_lower_g, TD(WWW_BACK_FORWARD),      KC_LEFT,        my_lower_j,        my_lower_k,          my_lower_l,       my_lower_semi,
+                              KC_AUDIO_MUTE,   KC_F1,          KC_F2,          KC_F3,          KC_F4,  TD(DANCE_73),         lower_backspace,    KC_HOME,     my_lower_u,    my_lower_i,      my_lower_o,         my_lower_p,
+                              _______, KC_F5,          KC_F6,          KC_F7,          KC_F8,          my_lower_g, _______,      KC_LEFT,        my_lower_j,        my_lower_k,          my_lower_l,       my_lower_semi,
                               _______,   KC_F9,         KC_F10,         KC_F11,         KC_F12,         KC_APPLICATION, KC_SCROLL_LOCK,  my_lower_n, my_lower_m, my_lower_comma,   my_lower_period, my_lower_slash,
-                              SYSTEM_LAYER_ACTIVATE, _______, _______ , alt,   MO(_EDITING), MO(_MOUSE),           lower_right_of_super,         MO(_EXTENDED), lower_LOWER,          lower_right_of_lower, lower_key_4_11, lower_key_4_12
+                              SYSTEM_LAYER_ACTIVATE, _______, _______ , alt,   MO(_EDITING), MO(_MOUSE),           lower_right_of_super,         MO(_EXTENDED), lower_LOWER,          lower_backspace, lower_key_4_11, lower_key_4_12
 
 
                               ),
 
 [_RAISE] = LAYOUT_planck_grid(
-                              LALT(KC_D),    _______,          my_raise_w,  KC_END,         EMACS_BUFFER_REVERT,       _______, _______,           my_raise_y, my_raise_u,           my_raise_i,           my_raise_o,           my_raise_p,
-                              _______, my_raise_a, my_raise_s,   my_raise_d, my_raise_f,  OSL(_MACROS), KC_DEL,       my_raise_h,         my_raise_j,           my_raise_k,           my_raise_l,           raise_semi,
+                              LALT(KC_D),    _______,          my_raise_w,  KC_END,         EMACS_BUFFER_REVERT,       _______, raise_backspace, my_raise_y, my_raise_u,           my_raise_i,           my_raise_o,           my_raise_p,
+                              _______, my_raise_a, my_raise_s,   my_raise_d, my_raise_f,  OSL(_MACROS), _______,       my_raise_h,         my_raise_j,           my_raise_k,           my_raise_l,           raise_semi,
                               _______, _______, _______,_______,   _______,          _______, KC_INSERT,     my_raise_n,           my_raise_m,           my_raise_comma,         KC_3,           raise_slash,
-                              SYSTEM_LAYER_ACTIVATE, _______, _______,        _______,        _______, _______,  lower_right_of_super,      my_space,   raise_key_4_9,       KC_0,  _______,         TO(_BASE)
+                              SYSTEM_LAYER_ACTIVATE, _______, _______,        _______,        _______, _______,  lower_right_of_super,      my_space,   raise_key_4_9,       raise_backspace,  _______,         TO(_BASE)
 
                               ),
 
@@ -119,12 +121,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                 _______, WINDOWS_Q,   WINDOWS_W,   LGUI(KC_E),     TD(DANCE_40),   LGUI(KC_T), LGUI(KC_MINUS),  LGUI(KC_Y),   LGUI(KC_7),        LGUI(KC_8),     LGUI(KC_9),     LGUI(KC_0),
                                 RALT(RGUI(KC_ESCAPE)), LGUI(KC_A),  select_slack, show_desktop     ,LGUI(KC_F),      _______, TD(DANCE_42),  LGUI(KC_H),     TD(DANCE_43),   windows_k,   windows_l,   RALT(RGUI(KC_N)),
                                 TO(_BASE), LGUI(KC_Z),     LGUI(KC_X),     LGUI(KC_C),     RGUI(KC_V),    _______, LGUI(KC_MINUS), WINDOWS_N,   LGUI(KC_M),  _______, RSFT(LGUI(KC_K)), RCTL(RGUI(KC_Q)),
-                                _______, _______, _______,         _______,        _______,     LSFT(RCTL(KC_UNDS)),   ALT_TAB , LALT(KC_8),      _______,  ALT_TAB, _______, _______
+                                _______, adhoc_set_hotkey, _______,         _______,        _______,     LSFT(RCTL(KC_UNDS)),   ALT_TAB , LALT(KC_8),      _______,  ALT_TAB, _______, _______
                                 ),
 
 // 7
 [_MACROS] = LAYOUT_planck_grid(
-                               _______,   _______, _______, _______, emacs_r, _______, EMACS_GOTO_GET_FEED, EMACS_COPY_FILE_PATH, EMACS_BACKWARD_UP, _______, _______, _______,
+                               _______,   _______, _______, _______, emacs_r, _______, EMACS_GOTO_GET_FEED, EMACS_COPY_FILE_PATH, EMACS_BACKWARD_UP, _______, _______, TEMP_TEXT,
                                _______, emacs_a, _______, EMACS_YAS_DOC,     emacs_f,     EMACS_INSERT_GET_FEED, EMACS_GOTO_PARSE_ITEM,  _______, _______, EMACS_YAS_KEYS_DESCRUCTURE, EMACS_YAS_TL,     EMACS_COMMENT_READER,
                                _______, _______, _______, EMACS_YAS_C,     _______, _______, EMACS_GOTO_SYNC_FEED, _______, emacs_m,     _______, _______, TERM_CD_UP_DIR,
                                _______, _______, _______, _______, _______, _______, KC_NO,          _______, _______, _______, _______, _______
@@ -175,12 +177,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // 12
 [_EDITING] = LAYOUT_planck_grid(
-                                _______, EMACS_DESC_KEY, LCTL(KC_7),     LCTL(KC_E), EMACS_HELM_MARK_RINGS,     EMACS_TRANSPOSE,        EMACS_BACKWARD_UP, EMACS_YANK_IN_SEXP  , scroll_next,     scroll_prev, EMACS_HELM_OCCUR, KC_DELETE,
+                                _______, EMACS_DESC_KEY, LCTL(KC_7),     LCTL(KC_E), EMACS_HELM_MARK_RINGS,     EMACS_TRANSPOSE,        _______, EMACS_YANK_IN_SEXP  , scroll_next,     scroll_prev, EMACS_HELM_OCCUR, KC_DELETE,
                                 _______, _______, EMACS_LOCCUR, EMACS_KILL_IN_SEXP, RALT(KC_ENTER), EMACS_COPY_FILE_PATH,               EMACS_SCROLL_UP, RALT(RSFT(KC_H)), editing_j, editing_k, editing_l, EMACS_COMMENT_READER,
                                 _______, _______, _______, EMACS_WINDOW_CLOSE,    KC_F12, _______,                                      _______, next_win_or_frame, EMACS_ACE_WINDOW_SWAP,  emacs_buffer_stack_down, emacs_buffer_stack_up, TERM_CD_UP_DIR,
-                                _______, _______, _______, _______, KC_HYPR,  _______,                                                  _______, all_mods, _______, _______, _______, _______
+                                _______, _______, _______, _______, KC_HYPR,  _______,                                                  _______, all_mods, MO(_EMACS), _______, _______, _______
 
                                 ),
+
+[_EMACS] = LAYOUT_planck_grid(
+                              _______, EMACS_DESC_KEY, _______, _______, _______, _______,    _______, EMACS_YANK_IN_SEXP  , EMACS_BACKWARD_UP, _______, _______, _______,
+                              _______, _______, _______, _______, EMACS_FINDER_COMMENTARY, _______,   _______, EMACS_SPLIT_WINDOW_RIGHT, EMACS_SPLIT_WINDOW_DOWN, EMACS_SPLIT_WINDOW_UP, EMACS_SPLIT_WINDOW_LEFT,_______,
+                              _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+                              _______, _______, _______, _______,    _______, _______, _______, _______,    _______, _______, _______, _______
+
+                                ),
+
 
 [_MOUSE] = LAYOUT_planck_grid(
                               TO(_BASE),   _______, _______, KC_MS_UP,       _______, _______, _______,  KC_HOME,        KC_PGUP,        KC_PGDOWN,      KC_END,         _______,
@@ -244,7 +255,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                    ),
 
 [_ADHOC_SET_HOTKEY] = LAYOUT_planck_grid(
-                                         _______, LCTL(RALT(RGUI(KC_Y))), LCTL(RALT(RGUI(KC_W))), _______, LCTL(RALT(RGUI(KC_R))), _______, _______,  LCTL(RALT(RGUI(KC_Y))),_______, _______, _______, _______,
+                                         _______, LCTL(RALT(RGUI(KC_Q))), LCTL(RALT(RGUI(KC_W))), _______, LCTL(RALT(RGUI(KC_R))), _______, _______,  LCTL(RALT(RGUI(KC_Y))),_______, _______, _______, _______,
                                          _______, _______, _______, _______, _______, LCTL(RALT(RGUI(KC_G))), _______,  _______, LCTL(RALT(RGUI(KC_J))), LCTL(RALT(RGUI(KC_K))), LCTL(RALT(RGUI(KC_L))), _______,
                                          _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
                                          _______, _______, _______, _______,    _______, _______, _______, LCTL(RALT(RGUI(KC_N))),    _______, _______, _______,  _______
