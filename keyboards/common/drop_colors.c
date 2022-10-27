@@ -36,6 +36,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     break;
 
   case _HYPER:
+  case _EDITING:
     static_kinda_dim(HSV_WHITE);
     break;
 
@@ -110,8 +111,11 @@ layer_state_t layer_state_set_user(layer_state_t state) {
   /*   rgblight_sethsv_noeeprom(HSV_PURPLE); */
   /*   break; */
 
-  case _EDITING:
-    static_kinda_dim(HSV_PLUM);
+
+  case _EMACS:
+    rgblight_mode(RGBLIGHT_MODE_SNAKE);
+    rgblight_enable_noeeprom();
+    rgblight_sethsv_noeeprom(HSV_BLUE);
     break;
 
   case _WINMOVE:

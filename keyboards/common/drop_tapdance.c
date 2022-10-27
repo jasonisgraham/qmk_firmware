@@ -15,7 +15,7 @@ enum tap_dance_codes {
                       DANCE_O,
                       DANCE_P,
                       DANCE_A,
-                      PREONIC_A,
+                      DANCE_EDITING_Q,
                       PREONIC_Z,
                       DANCE_S,
                       DANCE_13,
@@ -689,50 +689,23 @@ void dance_A_reset(qk_tap_dance_state_t *state, void *user_data) {
   dance_state[11].step = 0;
 }
 
-void on_preonic_A(qk_tap_dance_state_t *state, void *user_data);
-void preonic_A_finished(qk_tap_dance_state_t *state, void *user_data);
-void preonic_A_reset(qk_tap_dance_state_t *state, void *user_data);
+void on_dance_editing_q(qk_tap_dance_state_t *state, void *user_data);
+void dance_editing_q_finished(qk_tap_dance_state_t *state, void *user_data);
+void dance_editing_q_reset(qk_tap_dance_state_t *state, void *user_data);
 
-void on_preonic_A(qk_tap_dance_state_t *state, void *user_data) {
-  on_dance_fn(KC_A, state, user_data);
-}
+void on_dance_editing_q(qk_tap_dance_state_t *state, void *user_data) {}
 
-void preonic_A_finished(qk_tap_dance_state_t *state, void *user_data) {
+void dance_editing_q_finished(qk_tap_dance_state_t *state, void *user_data) {
   dance_state[81].step = dance_step(state);
   switch (dance_state[81].step) {
-  case TAP: register_code16(KC_A); break;
-  case HOLD:
-    register_code16(KC_RCTL);
-    break;
 
-  case HOLD2:
-    register_code16(LSFT (KC_A));
-    break;
-
-  case TAP2:
-  case TAP2_INTERRUPTED:
-    register_code16(KC_A);
-    register_code16(KC_A);
-    break;
+  case TAP: tap_code16(EMACS_DESC_KEY); break;
+  case HOLD: tap_code16(EMACS_FINDER_COMMENTARY); break;
   }
 }
 
-void preonic_A_reset(qk_tap_dance_state_t *state, void *user_data) {
+void dance_editing_q_reset(qk_tap_dance_state_t *state, void *user_data) {
   wait_ms(10);
-  switch (dance_state[81].step) {
-  case TAP: unregister_code16(KC_A); break;
-  case HOLD:
-    unregister_code16(KC_RCTL);
-    break;
-  case HOLD2:
-    unregister_code16(LSFT (KC_A));
-    break;
-
-  case TAP2:
-  case TAP2_INTERRUPTED:
-    unregister_code16(KC_A);
-    break;
-  }
   dance_state[81].step = 0;
 }
 
@@ -3538,7 +3511,7 @@ qk_tap_dance_action_t tap_dance_actions[] = {
                                              [DANCE_O] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_O, dance_O_finished, dance_O_reset),
                                              [DANCE_P] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_P, dance_P_finished, dance_P_reset),
                                              [DANCE_A] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_A, dance_A_finished, dance_A_reset),
-                                             [PREONIC_A] = ACTION_TAP_DANCE_FN_ADVANCED(on_preonic_A, preonic_A_finished, preonic_A_reset),
+                                             [DANCE_EDITING_Q] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_editing_q, dance_editing_q_finished, dance_editing_q_reset),
                                              [PREONIC_Z] = ACTION_TAP_DANCE_FN_ADVANCED(on_preonic_Z, preonic_Z_finished, preonic_Z_reset),
                                              [DANCE_S] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_S, dance_S_finished, dance_S_reset),
                                              [DANCE_F] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_F, dance_F_finished, dance_F_reset),
