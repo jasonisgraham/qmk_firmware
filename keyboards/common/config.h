@@ -15,7 +15,7 @@
 #define COMBO_TERM 1  // default is 50.  50ms produces false positives when typing kinda fast
 
 /* #define echo false */
-/* #define COMBO_COUNT 100 */
+#define COMBO_COUNT 100
 /* #define RGBLIGHT_LAYER_BLINK 1 */
 /* #define RGBLIGHT_LAYERS_OVERRIDE_RGB_OFF */
 

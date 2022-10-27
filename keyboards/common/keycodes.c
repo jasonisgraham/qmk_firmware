@@ -3,6 +3,9 @@
 #include "version.h"
 /* #include "muse.h" */
 
+#include "caps_word.h"
+#include "autocorrection.h"
+/* #include "musical_notes.h" */
 #include "layer_lock.h"
 #include "../../quantum/hacks.c"
 
@@ -23,6 +26,7 @@
 #define winmove_tile_right RGUI(RSFT(KC_L))
 #define winmove_tile_down RGUI(RSFT(KC_J))
 
+#define editing_q TD(DANCE_EDITING_Q)
 #define editing_j RALT(RSFT(KC_J))
 #define editing_k RALT(RSFT(KC_K))
 #define editing_l RALT(RSFT(KC_L))
@@ -38,7 +42,6 @@
 /* H-M-s-d */
 #define EMACS_KILL_IN_SEXP LCTL(LALT(LGUI(KC_D)))
 #define EMACS_YANK_IN_SEXP LCTL(LALT(LGUI(KC_I)))
-
 #define EMACS_NUMBER_DEC LCTL(KC_UNDS)
 #define EMACS_NUMBER_INC LCTL(KC_PLUS)
 #define EMACS_OTHER_WINDOW_NEXT RCTL(RALT(KC_PGUP))
@@ -59,6 +62,8 @@
 #define alt LM(_ALT, MOD_LALT)
 #define alt_tab ALT_TAB
 #define backspace KC_BSPACE
+#define lower_backspace TD(WWW_BACK_FORWARD)
+#define raise_backspace KC_DEL
 #define below_b KC_RALT
 #define below_m MT(MOD_RCTL, KC_ESCAPE)
 #define below_m MT(MOD_RCTL, KC_ESCAPE)
@@ -130,13 +135,13 @@
 #define my_lower_j KC_DOWN
 #define my_lower_k KC_UP
 #define my_lower_l KC_RIGHT
-#define my_lower_m TD(DANCE_29)
-#define my_lower_n TD(DANCE_69)
+#define my_lower_m _______
+#define my_lower_n _______
 #define my_lower_o KC_END
 #define my_lower_p KC_BSPACE
 #define my_lower_period BROWSER_TAB_NEXT
 #define my_lower_r KC_F4
-#define my_lower_semi KC_QUOTE 
+#define my_lower_semi KC_QUOTE
 #define my_lower_slash KC_ENTER
 #define my_lower_u KC_PGDOWN
 #define my_m TD(DANCE_M)
@@ -167,7 +172,7 @@
 #define my_raise_top_right KC_DEL // TD(WWW_BACK_FORWARD)
 #define my_raise_u  KC_7
 #define my_raise_y  KC_PLUS
-#define my_right_of_lower OSL(_EDITING)
+#define my_right_of_lower KC_BACKSPACE
 #define my_right_shift KC_RSFT // shift LM(_ALT, MOD_LSFT)
 #define my_s TD(DANCE_S)
 #define my_semicolon KC_SCOLON
@@ -194,6 +199,7 @@
 #define show_desktop LALT(LGUI(LCTL(KC_F3)))
 #define super LM(_SUPER, MOD_LGUI) //TD(SUPER_WINDOWS)
 #define super_meta_hyper LM(_MENU, MOD_LGUI | MOD_LCTL | MOD_LALT)
+#define adhoc_set_hotkey MO(_ADHOC_SET_HOTKEY)
 #define top_left TD(DANCE_TAB)
 #define topright _______
 #define windows_k TD(DANCE_43)
@@ -230,7 +236,9 @@ enum custom_keycodes {
                       /* RGB_SLD = EZ_SAFE_RANGE, */
                       FIRST = SAFE_RANGE,
                       AUTOSHIFT_TOGGLE,
+                      WEB_SAVE_FILE_UNDER_CURSOR,
                       CAPS_WORD_TOGGLE,
+                      TEMP_TEXT,
                       BACKWARD_KILL_LINE,
                       EMACS_TRANSPOSE,
                       OPEN_PAREN,
@@ -238,6 +246,7 @@ enum custom_keycodes {
                       LAYER_LOCK,
                       CIDER_RUN_PREV_COMMAND,
                       EMACS_DESC_KEY,
+                      EMACS_FINDER_COMMENTARY,
                       EMACS_HELM_OCCUR,
                       EMACS_HELM_MARK_RINGS,
                       EMACS_INSIDE_YANK,
@@ -252,6 +261,7 @@ enum custom_keycodes {
                       RESET_ANIMATION,
                       GAUTH_LAYER_ACTIVATE,
                       EMACS_COMMENT_READER,
+                      EMACS_PRIVATE_READER,
                       EMACS_ANON_FN,
                       CLJ_REGEX,
                       CLJ_ANON_FN,
@@ -284,6 +294,10 @@ enum custom_keycodes {
                       EMACS_SEL_8,
                       EMACS_SEL_9,
                       TMUX_SPLIT_WINDOW,
+                      EMACS_SPLIT_WINDOW_UP,
+                      EMACS_SPLIT_WINDOW_DOWN,
+                      EMACS_SPLIT_WINDOW_RIGHT,
+                      EMACS_SPLIT_WINDOW_LEFT,
                       CYCLE_FAVE_ANIMATIONS,
                       CYCLE_DROP_ANIMATIONS,
                       CYCLE_RGBLIGHT_STEP,
@@ -322,6 +336,7 @@ enum custom_keycodes {
                       TERM_CD_UP_DIR,
                       CLEAR_THAT_REPL,
                       THREAD_LAST,
+                      THREAD_FIRST,
 
   APL_DIAMOND,
   APL_QUAD_DIAMOND,
@@ -606,12 +621,10 @@ bool do_breathing = false;
 
 #endif
 
-#include "caps_word.h"
-#include "autocorrection.h"
-/* #include "musical_notes.h" */
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  /* if (!process_caps_word(keycode, record)) { return false; } */
+  /* if (!process_layer_lock(keycode, record, LAYER_LOCK)) { return false; } */
+  if (!process_caps_word(keycode, record)) { return false; }
 
 #ifdef CONSOLE_ENABLE
   if (record->event.pressed) {
@@ -628,21 +641,31 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   }
 #endif
 
-/*   if (!process_layer_lock(keycode, record, LAYER_LOCK)) { */
-/*     if (biton32(layer_state) != _BASE) { */
-/* #ifdef RGBLIGHT_MODE */
-/*       rgblight_mode(RGBLIGHT_MODE_SNAKE); */
+  if (!process_layer_lock(keycode, record, LAYER_LOCK)) {
+    if (biton32(layer_state) != _BASE) {
+#ifdef RGBLIGHT_MODE
+      rgblight_mode(RGBLIGHT_MODE_SNAKE);
+#endif
+
+
+/* #ifdef AUDIO_ENABLE */
+/*     PLAY_SONG(caps_lock_on_sound); */
 /* #endif */
-
-
-/* /\* #ifdef AUDIO_ENABLE *\/ */
-/* /\*     PLAY_SONG(caps_lock_on_sound); *\/ */
-/* /\* #endif *\/ */
-/*     } */
-/*     return false; */
-/*   } */
+    }
+    return false;
+  }
 
   switch (keycode) {
+
+  case WEB_SAVE_FILE_UNDER_CURSOR:
+    if (record->event.pressed) {
+      tap_code16(KC_MS_BTN2);
+      wait_ms(300);
+      tap_code16(KC_V);
+      wait_ms(500);
+      tap_code16(KC_ENTER);
+    }
+    break;
 
   case EMACS_FASD:
     if (record->event.pressed) {
@@ -664,7 +687,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       fasd_timer = 0;
     }
     break;
-    
+
 
     // ------
   case APL_ALPHA:
@@ -821,7 +844,7 @@ break;
 
     }
 break;
- 
+
 
 
   case APL_DOWN_CARET_TILDE:
@@ -1894,9 +1917,16 @@ break;
     }
     break;
 
+  case THREAD_FIRST:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_ESC) "i(some-> ");
+    }
+    break;
+
+
   case THREAD_LAST:
     if (record->event.pressed) {
-      SEND_STRING("->>");
+      SEND_STRING(SS_TAP(X_ESC) "i(some->> ");
     }
     break;
 
@@ -1948,6 +1978,19 @@ break;
     }
     break;
 
+  case EMACS_FINDER_COMMENTARY:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_F1) SS_TAP(X_F8));
+    }
+    break;
+
+  case EMACS_PRIVATE_READER:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_ESC) "i#'" SS_TAP(X_ESC));
+    }
+    break;
+
+
   case EMACS_COMMENT_READER:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_ESC) "i#_" SS_TAP(X_ESC));
@@ -1960,6 +2003,11 @@ break;
     }
     break;
 
+  case TEMP_TEXT:
+      if (record->event.pressed) {
+        SEND_STRING("blsIB3Rx0R2tQmW0b9B9bDu4EOntt1i8%28*uE%OOC8FCfe653xevqd6szziAe$!");
+      }
+      break;
 
   case EMACS_BACKWARD_UP:
     if (record->event.pressed) {
@@ -2000,7 +2048,7 @@ break;
     }
     break;
 
-    
+
   case CAPS_WORD_TOGGLE:
     /* if (record->event.pressed) { */
     /*   caps_word_on(); */
@@ -2171,9 +2219,34 @@ break;
   case TMUX_SPLIT_WINDOW:
     if (record->event.pressed) {
       SEND_STRING(SS_RCTL(SS_TAP(X_V)) SS_TAP(X_MINUS));
-
     }
     break;
+
+  case EMACS_SPLIT_WINDOW_UP:
+    if (record->event.pressed) {
+      SEND_STRING(SS_RALT(SS_TAP(X_M)) SS_TAP(X_W) SS_TAP(X_K));
+    }
+    break;
+
+  case EMACS_SPLIT_WINDOW_DOWN:
+    if (record->event.pressed) {
+      SEND_STRING(SS_RALT(SS_TAP(X_M)) SS_TAP(X_W) SS_TAP(X_J));
+    }
+    break;
+
+  case EMACS_SPLIT_WINDOW_RIGHT:
+    if (record->event.pressed) {
+      SEND_STRING(SS_RALT(SS_TAP(X_M)) SS_TAP(X_W) SS_TAP(X_L));
+    }
+    break;
+
+
+  case EMACS_SPLIT_WINDOW_LEFT:
+    if (record->event.pressed) {
+      SEND_STRING(SS_RALT(SS_TAP(X_M)) SS_TAP(X_W) SS_TAP(X_H));
+    }
+    break;
+
 
   case EMACS_SEL_0:
     if (record->event.pressed) {

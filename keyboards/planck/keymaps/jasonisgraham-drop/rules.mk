@@ -1,12 +1,12 @@
 SRC += muse.c
 
 SRC += ../../../common/layer_lock.c
-# SRC += ../../../common/caps_word.c
+SRC += ../../../common/caps_word.c
 
 AUDIO_ENABLE = yes
 AUTO_SHIFT_ENABLE = yes
 AUTO_SHIFT_MODIFIERS = yes
-CAPS_WORD_ENABLE = yes
+CAPS_WORD_ENABLE = no
 COMBO_ENABLE = yes
 COMMAND_ENABLE = yes
 CONSOLE_ENABLE = yes
