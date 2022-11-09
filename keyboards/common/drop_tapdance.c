@@ -2285,7 +2285,9 @@ void dance_J_finished(qk_tap_dance_state_t *state, void *user_data) {
     register_code(KC_4);
     break;
   case TAP2:
-    register_code(KC_ESC);  break;
+    tap_code16(RCTL(KC_LBRACKET));
+    break;
+
   }
 }
 
@@ -2302,7 +2304,8 @@ void dance_J_reset(qk_tap_dance_state_t *state, void *user_data) {
   case HOLD2:
     unregister_code(KC_4);
     break;
-  case TAP2: unregister_code(KC_ESC);  break;
+  case TAP2:
+     break;
 
   }
   dance_state[63].step = 0;
