@@ -84,8 +84,8 @@
 #define key_right KC_RIGHT
 #define lm_ctrl LM(_CTRL, MOD_RCTL)
 #define lower_LOWER TO(_BASE)
-#define lower_key_4_11 KC_LEFT
-#define lower_key_4_12 KC_RIGHT
+#define lower_key_4_11 KC_MINUS
+#define lower_key_4_12 KC_PLUS
 #define lower_right_of_lower KC_DELETE
 #define macro_alt_slash SS_RALT(SS_TAP(X_SLASH))
 #define my_0 KC_0
@@ -139,10 +139,11 @@
 #define my_lower_n _______
 #define my_lower_o KC_END
 #define my_lower_p KC_BSPACE
+/* #define my_lower_p KC_MINUS */
 #define my_lower_period BROWSER_TAB_NEXT
 #define my_lower_r KC_F4
 #define my_lower_semi KC_QUOTE
-#define my_lower_slash KC_ENTER
+#define my_lower_slash KC_MINUS
 #define my_lower_u KC_PGDOWN
 #define my_m TD(DANCE_M)
 #define my_minus _______
@@ -198,7 +199,7 @@
 #define select_slack LGUI(KC_S)
 #define show_desktop LALT(LGUI(LCTL(KC_F3)))
 #define super LM(_SUPER, MOD_LGUI) //TD(SUPER_WINDOWS)
-#define super_meta_hyper LM(_MENU, MOD_LGUI | MOD_LCTL | MOD_LALT)
+#define super_meta_hyper LM(_ADHOC_SET_HOTKEY, MOD_LGUI | MOD_LCTL | MOD_LALT)
 #define adhoc_set_hotkey MO(_ADHOC_SET_HOTKEY)
 #define top_left TD(DANCE_TAB)
 #define topright _______
@@ -235,6 +236,8 @@ enum custom_keycodes {
                       /* RGB_SLD = SAFE_RANGE, */
                       /* RGB_SLD = EZ_SAFE_RANGE, */
                       FIRST = SAFE_RANGE,
+                      EMACS_NEXT_SEXP,
+                      EMACS_PREV_SEXP,
                       AUTOSHIFT_TOGGLE,
                       WEB_SAVE_FILE_UNDER_CURSOR,
                       CAPS_WORD_TOGGLE,
@@ -274,9 +277,11 @@ enum custom_keycodes {
                       gauth_lp,
                       AUDIO_LAYER_HOLD,
                       CYCLE_DROP_COLORS,
+                      EMACS_GOTO_REMOTEID,
                       EMACS_GOTO_GET_FEED,
                       EMACS_GOTO_SYNC_FEED,
                       EMACS_GOTO_PARSE_ITEM,
+                      EMACS_GOTO_ROLLUP,
                       TOGGLE_ECHO,
                       TOGGLE_BREATHING,
                       EMACS_ACE_WINDOW,
@@ -335,6 +340,7 @@ enum custom_keycodes {
                       TMUX_CLOSE,
                       TERM_CD_UP_DIR,
                       CLEAR_THAT_REPL,
+                      EMACS_WRAP_IN_THREAD_LAST,
                       THREAD_LAST,
                       THREAD_FIRST,
 
@@ -685,6 +691,20 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       fasd_timer_active = false;
       fasd_timer = 0;
+    }
+    break;
+
+  case EMACS_PREV_SEXP:
+    if (record->event.pressed) {
+      tap_code16(KC_RCBR);
+      SEND_STRING(SS_TAP(X_ESC) "zz");
+    }
+    break;
+
+  case EMACS_NEXT_SEXP:
+    if (record->event.pressed) {
+      tap_code16(KC_LCBR);
+      SEND_STRING(SS_TAP(X_ESC) "zz");
     }
     break;
 
@@ -1807,9 +1827,9 @@ break;
 
   case SHIFTLOCK_LAYER_ACTIVATE:
     if (record->event.pressed) {
-#ifdef RGBLIGHT_ENABLE
-      rgblight_mode(42);
-#endif
+/* #ifdef RGBLIGHT_ENABLE */
+/*       rgblight_mode(42); */
+/* #endif */
       layer_move(_SHIFTLOCK);
 #ifdef AUDIO_ENABLE
       PLAY_SONG(caps_lock_on_sound);
@@ -1821,10 +1841,10 @@ break;
 
   case SHIFTLOCK_LAYER_DEACTIVATE:
     if (record->event.pressed) {
-#ifdef RGBLIGHT_ENABLE
-      apply_fave_animation();
-      /* rgblight_mode(42); */
-#endif
+/* #ifdef RGBLIGHT_ENABLE */
+/*       apply_fave_animation(); */
+/*       /\* rgblight_mode(42); *\/ */
+/* #endif */
       layer_move(_BASE);
 #ifdef AUDIO_ENABLE
       PLAY_SONG(caps_lock_off_sound);
@@ -1930,9 +1950,18 @@ break;
     }
     break;
 
-  case EMACS_YAS_REMOVE_ANON:
+  case EMACS_WRAP_IN_THREAD_LAST:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_ESC) "ira" macro_alt_slash);
+      SEND_STRING(SS_TAP(X_ESC) "i");
+      tap_code16(LALT(KC_LPRN));
+
+      SEND_STRING("->> ") ;
+    }
+    break;
+
+  case EMACS_YAS_REMOVE_ANON:
+   if (record->event.pressed) {
+     SEND_STRING(SS_TAP(X_ESC) "i(remove #(->> % ");
     }
     break;
 
@@ -2005,7 +2034,7 @@ break;
 
   case TEMP_TEXT:
       if (record->event.pressed) {
-        SEND_STRING("blsIB3Rx0R2tQmW0b9B9bDu4EOntt1i8%28*uE%OOC8FCfe653xevqd6szziAe$!");
+        /* SEND_STRING("blsIB3Rx0R2tQmW0b9B9bDu4EOntt1i8%28*uE%OOC8FCfe653xevqd6szziAe$!"); */
       }
       break;
 
@@ -2321,7 +2350,7 @@ break;
 
   case EMACS_COPY_FILE_PATH:
     if (record->event.pressed) {
-      SEND_STRING(SS_RGUI(SS_TAP(X_E)) SS_DELAY(100) SS_LSFT(SS_RALT(SS_TAP(X_G))) SS_DELAY(100) SS_TAP(X_D) SS_DELAY(100) SS_TAP(X_W) SS_DELAY(100) SS_TAP(X_F));
+      SEND_STRING(SS_RGUI(SS_TAP(X_E)) SS_DELAY(100) SS_LSFT(SS_RALT(SS_TAP(X_G))) SS_DELAY(100) SS_TAP(X_D) SS_DELAY(100) SS_TAP(X_W) SS_DELAY(100) );
     }
     break;
   case CD_CSV:
@@ -2372,6 +2401,19 @@ break;
     /*   } */
     /*   break; */
 
+
+  case EMACS_GOTO_REMOTEID:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_ESC) "go" SS_DELAY(250) "remote-id" SS_DELAY(500) SS_TAP(X_ENTER));
+    }
+    break;
+
+
+  case EMACS_GOTO_ROLLUP:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_ESC) "go" SS_DELAY(250) "rollup" SS_DELAY(500) SS_TAP(X_ENTER));
+    }
+    break;
 
   case EMACS_GOTO_PARSE_ITEM:
     if (record->event.pressed) {
