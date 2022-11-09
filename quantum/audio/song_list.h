@@ -17,6 +17,7 @@
 
 #ifndef SONG_LIST_H
 #define SONG_LIST_H
+#endif
 
 #define NO_SOUND
 

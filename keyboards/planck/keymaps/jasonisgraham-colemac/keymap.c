@@ -60,6 +60,7 @@ const int row0[] = { top_left, top_left,    my_q,    my_w,    my_e,    my_r,   m
 #define my_1_4 my_f
 #define my_1_5 my_p
 #define my_1_6 my_g
+#define key_1_7 LAYER_LOCK
 #define my_1_8 my_j
 #define my_1_9 my_l
 #define my_1_10 my_u
@@ -67,27 +68,29 @@ const int row0[] = { top_left, top_left,    my_q,    my_w,    my_e,    my_r,   m
 #define my_1_12 my_semicolon
 
 /* #define my_2_ */
-#define my_2_3  my_r
-#define my_2_4 my_s
+#define my_2_3  my_s
+#define my_2_4 my_r
 #define my_2_5 my_t
 #define my_2_6 my_d
-/* #define my_2_ */
+#define key_2_7 backspace
 #define my_2_9 my_n
 #define my_2_10 my_e
 #define my_2_11 my_i
 #define my_2_12 my_o
 
 #define my_3_8 my_k
+#define key_3_7 KC_ENTER
 
+#define key_4_7 OSL(_EDITING)
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
                                                               // LAYER_LOCK
 [_BASE] = LAYOUT_planck_grid(
-                             top_left,    my_q,    my_w,    my_1_4,    my_1_5,   my_1_6, backspace ,    my_1_8,           my_1_9,    my_1_10,    my_1_11,     my_1_12,
-                             my_lctl , my_a,   my_2_3,   my_2_4,   my_2_5,   my_2_6, _______,  my_h,         my_2_9,   my_2_10,   my_2_11,   my_2_12,
-                             my_left_shift,        my_z,           my_x,           my_c,           my_v,           my_b, KC_ENTER,     my_3_8,   my_m,   my_comma,   my_period,   my_forward_slash,
+                             top_left,    my_q,    my_w,    my_1_4,    my_1_5,   my_1_6, key_1_7 ,    my_1_8,           my_1_9,    my_1_10,    my_1_11,     my_1_12,
+                             my_lctl , my_a,   my_2_3,   my_2_4,   my_2_5,   my_2_6, key_2_7,  my_h,         my_2_9,   my_2_10,   my_2_11,   my_2_12,
+                             my_left_shift,        my_z,           my_x,           my_c,           my_v,           my_b, key_3_7,     my_3_8,   my_m,   my_comma,   my_period,   my_forward_slash,
                              hyper, super_meta_hyper, LAYER_LOCK,   alt, RAISE,  super, OSL(_EDITING),   my_space,           LOWER,          my_right_of_lower,   key_4_11,  key_4_12
                               ),
 
