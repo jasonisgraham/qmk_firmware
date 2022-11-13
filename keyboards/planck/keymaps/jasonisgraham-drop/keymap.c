@@ -153,10 +153,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // 9
 [_WINMOVE] = LAYOUT_planck_grid(
-                                _______,   _______, _______, _______, _______, _______,  WINDOW_ALWAYS_ON_TOP, RGUI(RSFT(KC_Y)),_______, _______, RGUI(RSFT(KC_O)),_______,
-                                _______, _______, _______, LALT(LGUI(LCTL(RCTL(KC_D)))),_______, _______, _______, winmove_tile_left,   winmove_tile_down, winmove_tile_up ,   winmove_tile_right,   _______,
-                                _______, _______, _______, EMACS_FRAME_FULL_SCREEN, _______, _______,  _______, RGUI(RSFT(KC_N)), winmove_mon_up, _______, RGUI(RSFT(KC_DOT)),_______,
-                                _______, _______, _______, _______, TO(0),          _______,  _______,         winmove_mon_left,   winmove_mon_down,   winmove_mon_right,    _______, _______
+                                _______,   _______, _______, _______, _______, _______,  WINDOW_ALWAYS_ON_TOP, winmove_tile_top_left ,_______, _______, winmove_tile_top_right ,_______,
+                                TO(0), _______, _______, LALT(LGUI(LCTL(RCTL(KC_D)))),_______, _______, _______, winmove_tile_left,   winmove_tile_down, winmove_tile_up ,   winmove_tile_right,   _______,
+                                _______, _______, _______, EMACS_FRAME_FULL_SCREEN, toggle_vertical_maximation, _______,  _______, winmove_tile_bottom_left , winmove_mon_up, _______, winmove_tile_bottom_right , toggle_shaded_state,
+                                _______, _______, _______, _______, KC_LCTL ,          _______,  _______,         winmove_mon_left,   winmove_mon_down,   winmove_mon_right,    increase_opacity, decrease_opacity
                                 ),
 
 // 10
@@ -188,7 +188,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // 12
 [_EDITING] = LAYOUT_planck_grid(
-                                _______, EMACS_DESC_KEY, LCTL(KC_7),     LCTL(KC_E), EMACS_HELM_MARK_RINGS,     EMACS_TRANSPOSE,        RALT(KC_UNDS), EMACS_YANK_IN_SEXP  , EMACS_NEXT_SEXP ,EMACS_PREV_SEXP ,  EMACS_HELM_OCCUR, _______,
+                                _______, EMACS_DESC_KEY, LCTL(KC_7),     LCTL(KC_E), EMACS_HELM_MARK_RINGS,     EMACS_TRANSPOSE,        RALT(KC_UNDS), EMACS_YANK_IN_SEXP  , EMACS_NEXT_SEXP ,EMACS_PREV_SEXP ,  EMACS_HELM_OCCUR, EMACS_OTHER_WINDOW,
                                 _______, _______, EMACS_LOCCUR, EMACS_KILL_IN_SEXP, RALT(KC_ENTER), EMACS_COPY_FILE_PATH,               EMACS_SCROLL_UP, RALT(RSFT(KC_H)), editing_j, editing_k, editing_l, EMACS_COMMENT_READER,
                                 _______, EMACS_RECENTER_ON_DEFUN, _______, EMACS_WINDOW_CLOSE,    KC_F12, _______,                                      _______, next_win_or_frame, EMACS_ACE_WINDOW_SWAP,  emacs_buffer_stack_down, emacs_buffer_stack_up, TERM_CD_UP_DIR,
                                 _______, _______, _______, _______, KC_HYPR,  _______,                                                  _______, all_mods, MO(_EMACS), _______, _______, _______
@@ -196,9 +196,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                 ),
 
 [_EMACS] = LAYOUT_planck_grid(
-                              _______, EMACS_DESC_KEY, _______, _______, _______, _______,    _______, EMACS_YANK_IN_SEXP  , EMACS_BACKWARD_UP, _______, _______, _______,
-                              _______, _______, _______, _______, EMACS_FINDER_COMMENTARY, _______,   _______, EMACS_SPLIT_WINDOW_RIGHT, EMACS_SPLIT_WINDOW_DOWN, EMACS_SPLIT_WINDOW_UP, EMACS_SPLIT_WINDOW_LEFT,_______,
-                              _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+                              _______, EMACS_DESC_KEY, _______, _______, _______, _______,    _______, EMACS_YANK_IN_SEXP  , PAREDIT_DRAG_SEXP_BACKWARD_UP, _______, PAREDIT_DRAG_SEXP_FORWARD_UP, _______,
+                              _______, _______, _______, _______, EMACS_FINDER_COMMENTARY, _______,   _______, PAREDIT_DRAG_SEXP_BACKWARD, EMACS_BACKWARD_UP, _______, PAREDIT_DRAG_SEXP_FORWARD,  _______,
+                              _______, _______, _______, _______, _______, _______, _______, PAREDIT_DRAG_SEXP_BACKWARD_DOWN, _______, _______, PAREDIT_DRAG_SEXP_FORWARD_DOWN, _______,
                               _______, _______, _______, _______,    _______, _______, _______, _______,    _______, _______, _______, _______
 
                                 ),

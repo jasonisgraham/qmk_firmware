@@ -9,6 +9,16 @@
 #include "layer_lock.h"
 #include "../../quantum/hacks.c"
 
+#define PAREDIT_DRAG_SEXP_FORWARD RCTL(RSFT(RALT(KC_F)))
+#define PAREDIT_DRAG_SEXP_FORWARD_DOWN RCTL(RSFT(RALT(KC_D)))
+#define PAREDIT_DRAG_SEXP_FORWARD_UP RCTL(RSFT(RALT(KC_K)))
+#define PAREDIT_DRAG_SEXP_BACKWARD RCTL(RSFT(RALT(KC_B )))
+#define PAREDIT_DRAG_SEXP_BACKWARD_DOWN RCTL(RSFT(RALT(KC_J)))
+#define PAREDIT_DRAG_SEXP_BACKWARD_UP RCTL(RSFT(RALT(KC_U)))
+
+#define EDITING_PREV_CHANGE RCTL(RALT(RGUI(KC_LEFT)))
+#define EDITING_NEXT_CHANGE RCTL(RALT(RGUI(KC_RIGHT)))
+
 #define EMACS_FASD_DEFAULT RCTL(KC_ASTR)
 #define EMACS_FASD_GLOBAL_NO_EXT KC_F12
 #define EMACS_FASD_PROJECT_NO_EXT LCTL(KC_F12)
@@ -25,6 +35,15 @@
 #define winmove_tile_left RGUI(RSFT(KC_H))
 #define winmove_tile_right RGUI(RSFT(KC_L))
 #define winmove_tile_down RGUI(RSFT(KC_J))
+  #define  winmove_tile_top_right RGUI(RSFT(KC_O))
+  #define  winmove_tile_top_left RGUI(RSFT(KC_Y))
+  #define  winmove_tile_bottom_left  RGUI(RSFT(KC_N))
+  #define  winmove_tile_bottom_right RGUI(RSFT(KC_DOT))
+  #define  increase_opacity RGUI(RSFT(KC_PLUS))
+  #define  decrease_opacity RGUI(RSFT(KC_MINUS))
+  #define  toggle_shaded_state  RGUI(KC_QUES)
+#define  toggle_vertical_maximation RGUI(RSFT (LSFT(KC_V)))
+  #define  toggle_horizontal_maximation RGUI(RSFT (LSFT (KC_H)))
 
 #define editing_q TD(DANCE_EDITING_Q)
 #define editing_j RALT(RSFT(KC_J))
@@ -190,8 +209,8 @@
 #define prev_win_or_frame RALT(RSFT(KC_P))
 #define raise_space KC_UNDS
 #define raise_key_4_9 KC_ENTER // KC_BSPC
-#define raise_semi  KC_QUOTE
-#define raise_slash KC_MINUS
+#define raise_semi  KC_MINUS
+#define raise_slash KC_UNDS
 #define right_of_lower  esc_ctrl  // my_left_shift ///hyper // / MT(MOD_RCTL, KC_ESCAPE)
 #define lower_right_of_super CLOSED_PAREN
 #define scroll_next RCTL(KC_D)
@@ -647,19 +666,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   }
 #endif
 
-  if (!process_layer_lock(keycode, record, LAYER_LOCK)) {
-    if (biton32(layer_state) != _BASE) {
-#ifdef RGBLIGHT_MODE
-      rgblight_mode(RGBLIGHT_MODE_SNAKE);
-#endif
-
-
-/* #ifdef AUDIO_ENABLE */
-/*     PLAY_SONG(caps_lock_on_sound); */
+/*   if (!process_layer_lock(keycode, record, LAYER_LOCK)) { */
+/*     if (biton32(layer_state) != _BASE) { */
+/* #ifdef RGBLIGHT_MODE */
+/*       rgblight_mode(RGBLIGHT_MODE_SNAKE); */
 /* #endif */
-    }
-    return false;
-  }
+
+
+/* /\* #ifdef AUDIO_ENABLE *\/ */
+/* /\*     PLAY_SONG(caps_lock_on_sound); *\/ */
+/* /\* #endif *\/ */
+/*     } */
+/*     return false; */
+/*   } */
 
   switch (keycode) {
 
@@ -1869,7 +1888,7 @@ break;
 
   case EMACS_OTHER_WINDOW:
     if (record->event.pressed) {
-      SEND_STRING(SS_RGUI(SS_TAP(X_E)) SS_DELAY(150) SS_RCTL(SS_TAP(X_X))  SS_TAP(X_O));
+      SEND_STRING(SS_RCTL(SS_TAP(X_X))  SS_TAP(X_O));
     }
     break;
 

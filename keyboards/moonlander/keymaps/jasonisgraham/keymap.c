@@ -5,7 +5,10 @@ enum planck_layers {
                     _BASE,
                     _LOWER,
                     _RAISE,
-                    _MOUSE,
+                    _HYPER,
+                    _ALL_MODS,
+                    _MENU,
+                    _DIAMOND,
                     _SYSTEM,
                     _WINDOWS,
                     _MACROS,
@@ -14,16 +17,30 @@ enum planck_layers {
                     _ALT,
                     _SUPER,
                     _EDITING,
-                    _HYPER,
-                    _ALL_MODS,
-                    _ROFI,
+                    _EMACS,
+                    _LAYER13,
+                    _CTRL,
+                    _MOUSE,
+                    _COLORS,
+                    _LAYER17,
+                    _LAYER18,
+                    _EXTENDED,
+                    _LAYER19,
+                    _EMACS_SEL_WINDOW,
+                    _GAUTH,
                     _AUDIO,
-                    _MENU,
+                    _VOLUME,
                     _BRIGHTNESS,
+                    _ADHOC_SET_HOTKEY,
+                    _ROFI,
                     _APL,
                     _APL_RHS,
-
 };
+
+#define key_1_7 LAYER_LOCK
+#define key_2_7 backspace
+#define key_3_7 KC_ENTER
+#define key_4_7 OSL(_EDITING)
 
 /* #include "../../../common/config.h" */
 #undef UNICODE_SELECTED_MODES
@@ -261,13 +278,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // 6
 
 
-[_APL] = LAYOUT_moonlander(
-                             TO(_BASE)  , APL_DIAERESIS, APL_MACRON, APL_LESS, APL_LESS_EQUAL,APL_EQUALS, _______,                                 _______,  APL_GREATER_EQUAL, APL_GREATER, APL_NOT_EQUAL, APL_OR, APL_AND, _______,
-                             TO(_BASE), APL_QUESTION_MARK, APL_OMEGA, APL_EPSILON, APL_RHO, APL_TILDE, _______,                                  _______, APL_UPWARDS_ARROW, APL_DOWNWARDS_ARROW, APL_IOTA, APL_WHITE_CIRCLE, APL_STAR_OPERATOR, APL_LEFT_ARROW,
-                             _______, APL_ALPHA, APL_LEFT_CEILING, APL_LEFT_FLOOR, APL_LOW_LINE, APL_NABLA,  _______,                               _______,    APL_INCREMENT, APL_RING_OPERATOR, APL_APOSTROPHE, APL_QUAD, APL_DOWN_TACK_JOT, _______,
-                             APL_RIGHT_TACK, APL_SUBSET, APL_SUPERSET, APL_INTERSECTION, APL_UNION, APL_UP_TACK,                                          APL_DOWN_TACK, APL_VERTICAL_LINE, APL_UP_SHOE_JOT, APL_BACKSLASH_BAR, APL_SLASH_BAR, _______,
-                             APL_UP_TACK_JOT, _______, _______, _______, _______,                   _______,                                   _______,                 MO(_APL_RHS), _______, _______, _______, _______,
-                             _______, _______, _______,               _______, _______, UP_TWO),
+/* [_APL] = LAYOUT_moonlander( */
+/*                              TO(_BASE)  , APL_DIAERESIS, APL_MACRON, APL_LESS, APL_LESS_EQUAL,APL_EQUALS, _______,                                 _______,  APL_GREATER_EQUAL, APL_GREATER, APL_NOT_EQUAL, APL_OR, APL_AND, _______, */
+/*                              TO(_BASE), APL_QUESTION_MARK, APL_OMEGA, APL_EPSILON, APL_RHO, APL_TILDE, _______,                                  _______, APL_UPWARDS_ARROW, APL_DOWNWARDS_ARROW, APL_IOTA, APL_WHITE_CIRCLE, APL_STAR_OPERATOR, APL_LEFT_ARROW, */
+/*                              _______, APL_ALPHA, APL_LEFT_CEILING, APL_LEFT_FLOOR, APL_LOW_LINE, APL_NABLA,  _______,                               _______,    APL_INCREMENT, APL_RING_OPERATOR, APL_APOSTROPHE, APL_QUAD, APL_DOWN_TACK_JOT, _______, */
+/*                              APL_RIGHT_TACK, APL_SUBSET, APL_SUPERSET, APL_INTERSECTION, APL_UNION, APL_UP_TACK,                                          APL_DOWN_TACK, APL_VERTICAL_LINE, APL_UP_SHOE_JOT, APL_BACKSLASH_BAR, APL_SLASH_BAR, _______, */
+/*                              APL_UP_TACK_JOT, _______, _______, _______, _______,                   _______,                                   _______,                 MO(_APL_RHS), _______, _______, _______, _______, */
+/*                              _______, _______, _______,               _______, _______, UP_TWO), */
 
  [_APL_RHS] = LAYOUT_moonlander(
                                 _______, APL_IBEAM, APL_DEL_TILDE, APL_DEL_STILE, APL_DELTA_STILE, APL_CIRCLE_STILE, _______,                                 _______, APL_CIRCLE_BACKSLASH, APL_CIRCLED_MINUS, APL_CIRCLE_STAR, APL_DOWN_CARET_TILDE, APL_UP_CARET_TILDE, APL_RIGHT_ARROW,
