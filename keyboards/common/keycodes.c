@@ -19,15 +19,15 @@
 #define winmove_mon_right LGUI(LSFT(KC_RIGHT))
 #define winmove_mon_down LGUI(LSFT(KC_DOWN))
 
-#define winmove_tile_up LGUI(RSFT(KC_K))
-#define winmove_tile_left LGUI(RSFT(KC_H))
-#define winmove_tile_right LGUI(RSFT(KC_L))
-#define winmove_tile_down LGUI(RSFT(KC_J))
+#define winmove_tile_up LGUI(LSFT(KC_K))
+#define winmove_tile_left LGUI(LSFT(KC_H))
+#define winmove_tile_right LGUI(LSFT(KC_L))
+#define winmove_tile_down LGUI(LSFT(KC_J))
 
 #define editing_q TD(DANCE_EDITING_Q)
-#define editing_j LALT(RSFT(KC_J))
-#define editing_k LALT(RSFT(KC_K))
-#define editing_l LALT(RSFT(KC_L))
+#define editing_j LALT(LSFT(KC_J))
+#define editing_k LALT(LSFT(KC_K))
+#define editing_l LALT(LSFT(KC_L))
 #define EMACS_LOCCUR LCTL(RCTL(LGUI(LALT(KC_O))))
 #define BROWSER_TAB_NEXT TD(DANCE_30)
 #define BROWSER_TAB_PREV TD(DANCE_29)
@@ -47,17 +47,11 @@
 #define HYPER_L LCTL(KC_L)
 #define LOWER MO(_LOWER)
 #define LOWER MO(_LOWER)
-#define MO_HYPER MO(KC_LCTL)
 #define RAISE MO(_RAISE)
 #define RAISE MO(_RAISE)
-#define set_window_w LALT(LCTL(LGUI(KC_W)))
-#define set_window_q LALT(LCTL(LGUI(KC_Q)))
-#define set_window_n LALT(LCTL(LGUI(KC_N)))
-#define WINDOWS_Q TD(DANCE_38)
-#define WINDOWS_W TD(DANCE_39)
-#define WINDOWS_N TD(DANCE_WINDOWS_N)
 #define all_mods LM(_ALL_MODS, MOD_LGUI | MOD_LCTL | MOD_LALT | MOD_RCTL | MOD_LSFT)
-#define alt LM(_ALT, MOD_LALT)
+/* #define all_mods TD (DANCE_ALL_MODS) */
+#define alt TD(DANCE_ALT)
 #define alt_tab ALT_TAB
 #define backspace KC_BSPACE
 #define lower_backspace TD(WWW_BACK_FORWARD)
@@ -73,9 +67,10 @@
 #define emacs_r EMACS_YAS_REMOVE_ANON
 #define esc_ctrl MT(MOD_RCTL, KC_ESCAPE)
 #define esc_ctrl MT(MOD_RCTL, KC_ESCAPE)
-#define hyper LM(_HYPER, MOD_LCTL) //KC_LCTL // OSL(_WINDOWS)
+/* #define hyper LM(_HYPER, MOD_LCTL) //KC_LCTL // OSL(_WINDOWS) */
+#define hyper TD(DANCE_HYPER)
 #define key_0_0 KC_LCTL
-#define key_0_1 RCTL(LALT(KC_RSFT))
+#define key_0_1 RCTL(LALT(KC_LSFT))
 #define key_4_11 KC_DOWN //CYCLE_DROP_COLORS // LAYER_LOWER_HOLD
 #define key_4_12 KC_UP
 #define key_left KC_LEFT
@@ -99,15 +94,15 @@
 #define my_a TD(DANCE_A)
 #define my_b KC_B
 #define my_c TD(DANCE_C)
-#define my_cap_h RSFT(KC_H)
-#define my_cap_h RSFT(KC_H)
-#define my_cap_i RSFT(KC_I)
-#define my_cap_j RSFT(KC_J)
-#define my_cap_k RSFT(KC_K)
-#define my_cap_l RSFT(KC_L)
-#define my_cap_m RSFT(KC_M)
-#define my_cap_o RSFT(KC_O)
-#define my_cap_p RSFT(KC_P)
+#define my_cap_h LSFT(KC_H)
+#define my_cap_h LSFT(KC_H)
+#define my_cap_i LSFT(KC_I)
+#define my_cap_j LSFT(KC_J)
+#define my_cap_k LSFT(KC_K)
+#define my_cap_l LSFT(KC_L)
+#define my_cap_m LSFT(KC_M)
+#define my_cap_o LSFT(KC_O)
+#define my_cap_p LSFT(KC_P)
 #define my_comma TD(DANCE_COMMA) //KC_COMMA //
 #define my_d TD(DANCE_D)
 #define my_e TD(DANCE_E)
@@ -185,8 +180,8 @@
 #define my_x TD(DANCE_X)
 #define my_y TD(DANCE_Y)
 #define my_z TD(DANCE_Z)
-#define next_win_or_frame LALT(RSFT(KC_N))
-#define prev_win_or_frame LALT(RSFT(KC_P))
+#define next_win_or_frame LALT(LSFT(KC_N))
+#define prev_win_or_frame LALT(LSFT(KC_P))
 #define raise_space KC_UNDS
 #define raise_key_4_9 KC_ENTER // KC_BSPC
 #define raise_semi  KC_QUOTE
@@ -200,8 +195,9 @@
 #define super LM(_SUPER, MOD_LGUI) //TD(SUPER_WINDOWS)
 /* #define super TD(DANCE_SUPER) //TD(SUPER_WINDOWS) */
 
-#define super_meta_hyper LM(_ADHOC_SET_HOTKEY, MOD_LGUI | MOD_LCTL | MOD_LALT)
-#define adhoc_set_hotkey MO(_ADHOC_SET_HOTKEY)
+#define adhoc_set_hotkey LM(_ADHOC_SET_HOTKEY, MOD_LGUI | MOD_LCTL | MOD_LALT)
+/* #define adhoc_set_hotkey TD(DANCE_ADHOC_SET_HOTKEY) */
+#define super_meta_hyper adhoc_set_hotkey
 #define top_left TD(DANCE_TAB)
 #define topright _______
 #define windows_k TD(DANCE_43)
@@ -240,7 +236,9 @@ enum custom_keycodes {
                       /* RGB_SLD = SAFE_RANGE, */
                       /* RGB_SLD = EZ_SAFE_RANGE, */
                       FIRST = SAFE_RANGE,
+                      ALT,
                       EMACS_NEXT_SEXP,
+                      level3,
                       EMACS_PREV_SEXP,
                       AUTOSHIFT_TOGGLE,
                       WEB_SAVE_FILE_UNDER_CURSOR,
@@ -652,6 +650,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   switch (keycode) {
 
+  case level3:
+    if (record->event.pressed) {
+      rgblight_enable_noeeprom();
+      rgblight_mode(RGBLIGHT_MODE_SNAKE);
+      rgblight_sethsv_noeeprom(HSV_YELLOW);
+      register_code16(KC_KP_ENTER);
+    } else {
+      unregister_code16(KC_KP_ENTER);
+      rgblight_disable();
+
+    }
+
+    break;
   case WEB_SAVE_FILE_UNDER_CURSOR:
     if (record->event.pressed) {
       tap_code16(KC_MS_BTN2);
@@ -661,6 +672,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       tap_code16(KC_ENTER);
     }
     break;
+
 
   case EMACS_FASD:
     if (record->event.pressed) {
@@ -1885,7 +1897,7 @@ break;
 
   case FISH_ACCEPT_SEND:
     if (record->event.pressed) {
-      SEND_STRING(SS_LALT(SS_RSFT(SS_TAP(X_L)))   SS_TAP(X_ENTER));
+      SEND_STRING(SS_LALT(SS_LSFT(SS_TAP(X_L)))   SS_TAP(X_ENTER));
 
     }
     break;
@@ -2127,14 +2139,14 @@ break;
 
   case EMACS_ACE_WINDOW:
     if (record->event.pressed) {
-      SEND_STRING(SS_LGUI(SS_TAP(X_E)) SS_DELAY(150) SS_LALT(SS_TAP(X_M)) SS_DELAY(10) SS_TAP(X_W) SS_DELAY(10) SS_RSFT(SS_TAP(X_W)));
+      SEND_STRING(SS_LGUI(SS_TAP(X_E)) SS_DELAY(150) SS_LALT(SS_TAP(X_M)) SS_DELAY(10) SS_TAP(X_W) SS_DELAY(10) SS_LSFT(SS_TAP(X_W)));
 
     }
     break;
 
   case EMACS_ACE_WINDOW_SWAP:
     if (record->event.pressed) {
-      SEND_STRING(SS_LGUI(SS_TAP(X_E)) SS_DELAY(100) SS_LALT(SS_TAP(X_M)) SS_DELAY(10) SS_TAP(X_W) SS_DELAY(10) SS_RSFT(SS_TAP(X_M)));
+      SEND_STRING(SS_LGUI(SS_TAP(X_E)) SS_DELAY(100) SS_LALT(SS_TAP(X_M)) SS_DELAY(10) SS_TAP(X_W) SS_DELAY(10) SS_LSFT(SS_TAP(X_M)));
 
     }
     break;

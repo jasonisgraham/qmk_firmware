@@ -36,7 +36,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     rgblight_sethsv_noeeprom(HSV_BLUE);
     break;
 
-  case _HYPER:
+  /* case _HYPER: */
   case _EDITING:
     static_kinda_dim(HSV_WHITE);
     break;
@@ -59,9 +59,9 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
 
 
-  case _ALT:
-    static_kinda_dim(HSV_GREEN);
-    break;
+  /* case _ALT: */
+  /*   static_kinda_dim(HSV_GREEN); */
+  /*   break; */
 
   case _SYSTEM:
     rgblight_enable_noeeprom();
