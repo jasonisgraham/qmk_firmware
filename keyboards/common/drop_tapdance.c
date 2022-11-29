@@ -593,7 +593,7 @@ void dance_O_reset(qk_tap_dance_state_t *state, void *user_data) {
 
 
 void on_dance_P(qk_tap_dance_state_t *state, void *user_data) {
-  on_dance_fn(KC_P, state, user_data);
+  on_dance_fn5(KC_P, state, user_data);
 }
 
 void dance_P_finished(qk_tap_dance_state_t *state, void *user_data) {
@@ -3261,6 +3261,10 @@ void DANCE_LEVEL3_APL_reset(qk_tap_dance_state_t *state, void *user_data) {
     break;
   }
   dance_state[84].step = 0;
+  unregister_code16(KC_RGUI);
+  unregister_code16(level3);
+  /* unregister_code16(level3); */
+  rgblight_disable();
 }
 
 
