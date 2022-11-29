@@ -90,9 +90,6 @@ const uint16_t PROGMEM combo_j_comma[] = {my_j, my_comma, COMBO_END};
 const uint16_t PROGMEM combo_c_v[] = {my_c, my_v, COMBO_END};
 
 
-const uint16_t PROGMEM combo_windows_tab_q[] = {ALT_TAB, WINDOWS_Q, COMBO_END};
-
-
 const uint16_t PROGMEM combo_s_c[] = {my_s, my_c, COMBO_END};
 const uint16_t PROGMEM combo_e_f[] = {my_e, my_f, COMBO_END};
 
@@ -287,6 +284,7 @@ const uint16_t PROGMEM combo_raise_esc_ctrl[] = {esc_ctrl, RAISE, COMBO_END};
 
 const uint16_t PROGMEM combo_q_o[] = {my_o, my_q, COMBO_END};
 
+const uint16_t PROGMEM combo_esc_semicolon[] = {my_semicolon, my_lctl, COMBO_END};
 const uint16_t PROGMEM combo_lower_semicolon[] = {my_semicolon, LOWER, COMBO_END};
 
 const uint16_t PROGMEM combo_raise_h_raise_j[] = {my_raise_h, my_raise_j, COMBO_END};
