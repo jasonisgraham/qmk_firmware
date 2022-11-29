@@ -1,11 +1,12 @@
-int default_rgblight_mode = 2; // RGBLIGHT_MODE_BREATHING;
-/* int default_rgblight_mode =  1; */
+static int DROP_DEFAULT_ANIMATION = 0;//RGBLIGHT_MODE_STATIC_LIGHT;
+/* static int DROP_DEFAULT_ANIMATION = DROP_DEFAULT_ANIMATION; // 2; // RGBLIGHT_MODE_BREATHING; */
+/* int DROP_DEFAULT_ANIMATION =  1; */
 
 void static_kinda_dim(uint8_t hue, uint8_t sat, uint8_t val);
 void static_kinda_dim(uint8_t hue, uint8_t sat, uint8_t val) {
   rgblight_enable_noeeprom();
   /* rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT); */
-  rgblight_mode_noeeprom(RGBLIGHT_MODE_BREATHING);
+  rgblight_mode_noeeprom(DROP_DEFAULT_ANIMATION);
   rgblight_sethsv_noeeprom(hue, sat, val);
 }
 
@@ -19,7 +20,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
   case _LOWER:
     rgblight_enable_noeeprom();
-    rgblight_mode(default_rgblight_mode);
+    rgblight_mode(DROP_DEFAULT_ANIMATION);
     rgblight_sethsv_noeeprom(HSV_RED);
     /* rgblight_mode(RGBLIGHT_MODE_KNIGHT); */
     break;
@@ -32,11 +33,11 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     /* float x[][2] = SONG(ROCK_A_BYE_BABY); */
     /* PLAY_SONG(x);             /\*  *\/ */
     rgblight_enable_noeeprom();
-    rgblight_mode(default_rgblight_mode);
+    rgblight_mode(DROP_DEFAULT_ANIMATION);
     rgblight_sethsv_noeeprom(HSV_BLUE);
     break;
 
-  case _HYPER:
+  /* case _HYPER: */
   case _EDITING:
     static_kinda_dim(HSV_WHITE);
     break;
@@ -59,9 +60,9 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
 
 
-  case _ALT:
-    static_kinda_dim(HSV_GREEN);
-    break;
+  /* case _ALT: */
+  /*   static_kinda_dim(HSV_GREEN); */
+  /*   break; */
 
   case _SYSTEM:
     rgblight_enable_noeeprom();
@@ -125,7 +126,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
   /* case 16: */
   /*   rgblight_enable_noeeprom(); */
-    /* rgblight_mode(default_rgblight_mode); */
+    /* rgblight_mode(DROP_DEFAULT_ANIMATION); */
   /*   /\* rgblight_mode(RGBLIGHT_MODE_BREATHING); *\/ */
   /*   rgblight_sethsv_noeeprom(HSV_PURPLE); */
   /*   break; */
