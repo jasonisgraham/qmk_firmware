@@ -44,7 +44,9 @@ combo_t key_combos[COMBO_COUNT] = {
 
                                    COMBO(combo_h_u, TD(DANCE_SAVE_LOAD_NS_SWITCH)),
                                    // COMBO(combo_j_n, KC_GRV),
-                                   COMBO(combo_j_n, KC_GRV),
+                                   COMBO(combo_esc_semicolon, RSFT(KC_LSFT)),
+
+                                   COMBO(combo_j_n, RSFT(KC_LSFT)),
                                    COMBO(combo_raise_h_raise_j, KC_DELETE),
                                    /* COMBO(combo_lower_semicolon, RCTL(KC_SCOLON)), */
                                    COMBO(combo_my_raise_g, OSL(_MACROS)),
@@ -66,7 +68,7 @@ combo_t key_combos[COMBO_COUNT] = {
                                    /* COMBO(combo_y_u, RCTL(KC_Y)), */
                                    // macros n'at
                                    COMBO(combo_v_d, KC_PASTE), // shell paste
-                                   COMBO(combo_v_c, LALT(RSFT(KC_LBRACKET))), // shell copy mode
+                                   COMBO(combo_v_c, LALT(KC_LCBR)), // shell copy mode
 
                                    //
                                    /* COMBO(combo_e_f, KC_TAB), */
@@ -169,7 +171,7 @@ combo_t key_combos[COMBO_COUNT] = {
                                    COMBO(combo_period_semicolon, EMACS_COMMENT_READER),
                                    COMBO(combo_lower_l_semi, EMACS_PRIVATE_READER),
                                    COMBO(combo_bottom_top_mid_column, MO(_SYSTEM)),
-                                   COMBO(combo_super_t, MO(_ADHOC_SET_HOTKEY)),
+                                   COMBO(combo_super_t, adhoc_set_hotkey),
                                    COMBO(combo_raise_r, MO(_MOUSE)),
 
 
