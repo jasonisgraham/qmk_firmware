@@ -19,6 +19,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #pragma once
 
+#undef RGBLIGHT_ENABLE
 /* key matrix size */
 // Rows are doubled-up
 #define MATRIX_ROWS 8
@@ -52,3 +53,34 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* Backlight LEDs */
 #define BACKLIGHT_PIN B6
 #define BACKLIGHT_LEVELS 7
+
+
+
+/* // wiring of each half */
+/* #define MATRIX_ROW_PINS { D4, D7, D8, D9 } */
+/* #define MATRIX_COL_PINS { D0, D29, D26, D22, D26, D23 } */
+/* #define MATRIX_ROW_PINS_RIGHT { D4, D23, D26, D22 } */
+/* #define MATRIX_COL_PINS_RIGHT { D29, D26, D0, D9, D8, D7 } */
+/* #define SPLIT_HAND_PIN D1 */
+
+/* #define DIODE_DIRECTION COL2ROW */
+
+/* /\* Set 0 if debouncing isn't needed *\/ */
+/* #define DEBOUNCE 5 */
+
+/* /\* serial.c configuration for split keyboard *\/ */
+/* #define SOFT_SERIAL_PIN D3 */
+
+/* /\* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap *\/ */
+/* #define LOCKING_SUPPORT_ENABLE */
+/* /\* Locking resynchronize hack *\/ */
+/* #define LOCKING_RESYNC_ENABLE */
+
+/* /\* ws2812 RGB LED *\/ */
+/* #define RGB_DI_PIN D6 */
+/* #define RGBLED_NUM 12    // Number of LEDs */
+/* #define RGBLED_SPLIT { 6, 6 } */
+
+/* /\* Backlight LEDs *\/ */
+/* #define BACKLIGHT_PIN D21 */
+/* #define BACKLIGHT_LEVELS 7 */

@@ -1,5 +1,6 @@
 #include "levinson.h"
 
+#undef RGBLIGHT_ENABLE
 void eeconfig_init_kb(void) {
 #ifdef BACKLIGHT_ENABLE
     backlight_enable();

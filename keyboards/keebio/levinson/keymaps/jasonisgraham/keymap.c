@@ -8,8 +8,6 @@ enum planck_layers {
                     _BASE,
                     _LOWER,
                     _RAISE,
-                    _HYPER,
-                    _ROFI,
                     _WINDOWS,
                     _MACROS,
                     _SHIFTLOCK,
@@ -17,53 +15,42 @@ enum planck_layers {
                     _SUPER,
                     _EDITING,
                     _EMACS,
+                    _SA,
                     _MOUSE,
-                    _ADHOC_SET_HOTKEY,
                     _SYSTEM,
                     _ALL_MODS,
-                    _ALT,
+                    _ADHOC_SET_HOTKEY,
+                    _ROFI,
 };
 
 /* #include "../../../common/config.h" */
 #undef UNICODE_SELECTED_MODES
 #define UNICODE_SELECTED_MODES UC_LNX
+/* #include "../quantum/keymap_extras/keymap_bepo.h" */
 
-#include "../../../../../quantum/rgblight/rgblight.h"
-/* #include "../../../../common/drop_animations.c" */
+/* #include "../../../../../quantum/rgblight/rgblight.h" */
 #include "../../../../common/keycodes.c"
 #include "../../../../common/key_overrides.c"
 #include "../../../../common/drop_tapdance.c"
-/* #include "../../../../common/drop_colors.c" */
-/* #include "../../../../common/encoder.c" */
 #include "../../../../common/layer_lock.h"
-
-/* #include "encoder.h" */
-/* const int row0[10]; */
-/* #define row0  { top_left } */
-/* const int row0[] = { top_left, top_left,    my_q,    my_w,    my_e,    my_r,   my_t, backspace ,    my_y,           my_u,    my_i,    my_o,     my_p}; */
-/* int row0[10] = {}; */
 
 #define key_1_7 top_alpha_mid_column
 #define key_2_7 backspace
 #define key_3_7 KC_ENTER
-#define key_4_7 esc_ctrl
+#define key_4_7  TD(DANCE_LEVEL3)
 
-#define k1_1 top_left
-/* #define k1_1 QK_BOOT */
-#define k2_1 my_lctl
-/* #define k2_1  RESET */
+/* super_meta_hyper */
 
-#define EMACS_RECENTER_ON_DEFUN RCTL(RALT(KC_Z))
+#define EMACS_RECENTER_ON_DEFUN RCTL(LALT(KC_Z))
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
                                                               // LAYER_LOCK
 [_BASE] = LAYOUT_ortho_4x12(
-                             k1_1,    my_q,    my_w,    my_e,    my_r,   my_t, key_1_7,    my_y,           my_u,    my_i,    my_o,     my_p,
-                             k2_1, my_a,   my_s,   my_d,   my_f,   my_g, key_2_7,  my_h,         my_j,   my_k,   my_l,   my_semicolon,
+                             top_left,    my_q,    my_w,    my_e,    my_r,   my_t, key_1_7,    my_y,           my_u,    my_i,    my_o,     my_p,
+                             esc_ctrl , my_a,   my_s,   my_d,   my_f,   my_g, key_2_7,  my_h,         my_j,   my_k,   my_l,   my_semicolon,
                              my_left_shift,        my_z,           my_x,           my_c,           my_v,           my_b, key_3_7,     my_n,   my_m,   my_comma,   my_period,   my_forward_slash,
-                             KC_1, KC_2, KC_3,   KC_4, KC_5,  KC_6, KC_7,   KC_8,           KC_9,          KC_A,   KC_B,  KC_C
-                             /* hyper, super_meta_hyper, all_mods,   alt, RAISE,  super, key_4_7,   my_space,           LOWER,          my_right_of_lower,   key_4_11,  key_4_12 */
+                             hyper, level3, all_mods,      alt, RAISE,  super, key_4_7,   my_space,           LOWER,          my_right_of_lower,   key_4_11,  key_4_12
                               ),
 
 [_LOWER] = LAYOUT_ortho_4x12(
@@ -87,7 +74,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                              _______, _______, _______, _______, _______,    _______, _______, _______, LALT(KC_7), LALT(KC_8), LALT(KC_9), _______,
                              _______, _______, _______, _______, _______,   _______, _______, _______, LALT(KC_4), LALT(KC_5), LALT(KC_6),_______,
                              _______, _______, _______, _______, _______, _______, _______, _______, LALT(KC_1), LALT(KC_2), LALT(KC_3),_______,
-                             _______, _______, _______,    _______, _______, _______, TO(_BASE), RALT(RGUI(KC_SPC)),    _______, _______, _______,_______
+                             _______, _______, _______,    _______, _______, _______, TO(_BASE), LALT(LGUI(KC_SPC)),    _______, _______, _______,_______
                              ),
 
 [_EMACS] = LAYOUT_ortho_4x12(
@@ -98,66 +85,59 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
                                 ),
 
+[_SA] = LAYOUT_ortho_4x12(
+                           SHIFTLOCK_LAYER_DEACTIVATE, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
+                           SHIFTLOCK_LAYER_DEACTIVATE, _______, KC_LEFT, _______, KC_RIGHT, _______,   KC_DELETE, _______, _______, _______, _______, _______,
+                           _______, _______, _______, _______, WEB_SAVE_FILE_UNDER_CURSOR, _______, _______, _______, _______, _______, _______, _______,
+                           _______, _______, _______, _______,    MO(_MOUSE), _______, _______, _______,    _______, _______, _______, _______
+
+                            ),
+
+
 [_MOUSE] = LAYOUT_ortho_4x12(
-                              TO(_BASE),   _______, _______, KC_MS_UP,       _______, _______, _______,  KC_HOME,        KC_PGUP,        KC_PGDOWN,      KC_END,         _______,
+                              TO(_BASE),   _______, KC_MS_BTN1, KC_MS_UP, KC_MS_BTN2, _______, _______,  KC_HOME,        KC_PGUP,        KC_PGDOWN,      KC_END,         _______,
                               _______, _______, KC_MS_LEFT,     KC_MS_DOWN,     KC_MS_RIGHT,    _______, _______,  KC_MS_BTN1,     KC_MS_WH_DOWN,  KC_MS_WH_UP,    KC_MS_BTN2,     _______,
-                              _______, _______, _______, _______, _______, _______, _______,  LALT(LGUI(KC_N)), KC_MS_BTN3,     TD(DANCE_35),   TD(DANCE_36),   TO(_ALL_MODS),
-                              _______, _______, _______, _______, _______, _______,  _______,  _______, RGUI(LCTL(KC_M)),          _______, _______, _______
+                              _______, _______, _______, _______, _______, _______, _______,  LALT(LGUI(KC_N)), KC_MS_BTN3,     TD(DANCE_35),   TD(DANCE_36),   all_mods,
+                              _______, _______, _______, _______, _______, _______,  _______,  _______, LGUI(LCTL(KC_M)),          _______, _______, _______
 
 
 
                               ),
 
 
-// 10
-[_ALT] = LAYOUT_ortho_4x12(
-                            _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
-                            _______, _______, _______, _______, _______, _______,   _______, _______, _______, _______, _______, _______,
-                            _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-                            _______, _______, _______, _______,    _______, _______, _______, _______,    _______, _______, _______, _______
-
-                            ),
-
-
 // 11
 [_SUPER] = LAYOUT_ortho_4x12(
-                              _______, WINDOWS_Q,   WINDOWS_W, _______, _______, _______,    _______, _______,  _______, _______, _______, _______,
+                              _______, _______,   _______, _______, _______, _______,    _______, _______,  _______, _______, _______, _______,
                               _______, _______, _______, _______, _______, _______,    _______, _______,  _______, _______, _______, _______,
-                              _______, _______, _______, _______,    _______, _______, _______, WINDOWS_N,    _______, _______, _______, _______,
+                              _______, _______, _______, _______,    _______, _______, _______, _______,    _______, _______, _______, _______,
                               _______, adhoc_set_hotkey, _______, _______,    _______, _______, _______, _______,    LALT(KC_9), LALT(KC_8), LSFT(KC_TAB), KC_TAB
                               ),
 
 
 
 
-[_HYPER] = LAYOUT_ortho_4x12(
-                              _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
-                              _______, _______, _______, _______, _______, _______,   _______, _______, _______, _______, _______, _______,
-                              _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-                              _______, _______, _______, _______,    _______, _______, _______, _______,    _______, _______, _______, _______
-                              ),
 // 8
 [_SHIFTLOCK] = LAYOUT_ortho_4x12(
-                                  SHIFTLOCK_LAYER_DEACTIVATE,   RSFT(KC_Q),     RSFT(KC_W),     RSFT(KC_E),     RSFT(KC_R),     RSFT(KC_T), _______,    RSFT(KC_Y),     RSFT(KC_U),     my_cap_i,     my_cap_o,     RSFT(KC_P),
-                                  ESC_THEN_BASE_LAYER,          RSFT(KC_A),     RSFT(KC_S),     RSFT(KC_D),     RSFT(KC_F),     RSFT(KC_G), _______,    my_cap_h,     my_cap_j,     my_cap_k,     my_cap_l,     TD(DANCE_55),
-                                  SHIFTLOCK_LAYER_DEACTIVATE,          RSFT(KC_Z),     RSFT(KC_X),     RSFT(KC_C),     RSFT(KC_V),     RSFT(KC_B), _______,   RSFT(KC_N),     my_cap_m,     KC_LABK,        KC_RABK,        KC_QUES,
+                                  SHIFTLOCK_LAYER_DEACTIVATE,   LSFT(KC_Q),     LSFT(KC_W),     LSFT(KC_E),     LSFT(KC_R),     LSFT(KC_T), _______,    LSFT(KC_Y),     LSFT(KC_U),     my_cap_i,     my_cap_o,     my_cap_p,
+                                  ESC_THEN_BASE_LAYER,          LSFT(KC_A),     LSFT(KC_S),     LSFT(KC_D),     LSFT(KC_F),     LSFT(KC_G), _______,    my_cap_h,     my_cap_j,     my_cap_k,     my_cap_l,     TD(DANCE_55),
+                                  SHIFTLOCK_LAYER_DEACTIVATE,          LSFT(KC_Z),     LSFT(KC_X),     LSFT(KC_C),     LSFT(KC_V),     LSFT(KC_B), _______,   LSFT(KC_N),     my_cap_m,     KC_LABK,        KC_RABK,        my_forward_slash,
                                   _______, _______, _______, _______, _______, _______, KC_NO,       _______,    LOWER,  _______, _______, _______
                                   ),
 
 
 // 12
 [_EDITING] = LAYOUT_ortho_4x12(
-                                _______, EMACS_DESC_KEY, LCTL(KC_7),     LCTL(KC_E), EMACS_HELM_MARK_RINGS,     EMACS_TRANSPOSE,        RALT(KC_UNDS), EMACS_YANK_IN_SEXP  , EMACS_NEXT_SEXP ,EMACS_PREV_SEXP ,  EMACS_HELM_OCCUR, _______,
-                                _______, _______, EMACS_LOCCUR, EMACS_KILL_IN_SEXP, RALT(KC_ENTER), EMACS_COPY_FILE_PATH,               EMACS_SCROLL_UP, RALT(RSFT(KC_H)), editing_j, editing_k, editing_l, EMACS_COMMENT_READER,
+                                _______, EMACS_DESC_KEY, LCTL(KC_7),     LCTL(KC_E), EMACS_HELM_MARK_RINGS,     EMACS_TRANSPOSE,        LALT(KC_UNDS), EMACS_YANK_IN_SEXP  , EMACS_NEXT_SEXP ,EMACS_PREV_SEXP ,  EMACS_HELM_OCCUR, _______,
+                                _______, _______, EMACS_LOCCUR, EMACS_KILL_IN_SEXP, LALT(KC_ENTER), EMACS_COPY_FILE_PATH,               EMACS_SCROLL_UP, LALT(LSFT(KC_H)), editing_j, editing_k, editing_l, EMACS_COMMENT_READER,
                                 _______, EMACS_RECENTER_ON_DEFUN, _______, EMACS_WINDOW_CLOSE,    KC_F12, _______,                                      _______, next_win_or_frame, EMACS_ACE_WINDOW_SWAP,  emacs_buffer_stack_down, emacs_buffer_stack_up, TERM_CD_UP_DIR,
                                 _______, _______, _______, _______, KC_HYPR,  _______,                                                  _______, all_mods, MO(_EMACS), _______, _______, _______
 
                                 ),
 // 9
 [_WINMOVE] = LAYOUT_ortho_4x12(
-                                _______,   _______, _______, _______, _______, _______,  WINDOW_ALWAYS_ON_TOP, RGUI(RSFT(KC_Y)),_______, _______, RGUI(RSFT(KC_O)),_______,
+                                _______,   _______, _______, _______, _______, _______,  WINDOW_ALWAYS_ON_TOP, LGUI(LSFT(KC_Y)),_______, _______, LGUI(LSFT(KC_O)),_______,
                                 _______, _______, _______, LALT(LGUI(LCTL(RCTL(KC_D)))),_______, _______, _______, winmove_tile_left,   winmove_tile_down, winmove_tile_up ,   winmove_tile_right,   _______,
-                                _______, _______, _______, EMACS_FRAME_FULL_SCREEN, _______, _______,  _______, RGUI(RSFT(KC_N)), winmove_mon_up, _______, RGUI(RSFT(KC_DOT)),_______,
+                                _______, _______, _______, EMACS_FRAME_FULL_SCREEN, _______, _______,  _______, LGUI(LSFT(KC_N)), winmove_mon_up, _______, LGUI(LSFT(KC_DOT)),_______,
                                 _______, _______, _______, _______, TO(0),          _______,  _______,         winmove_mon_left,   winmove_mon_down,   winmove_mon_right,    _______, _______
                                 ),
 
@@ -178,8 +158,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // 5
 [_SYSTEM] = LAYOUT_ortho_4x12(
-                              SYSTEM_LAYER_DEACTIVATE, _______, _______, _______, _______,     _______, _______, KC_PSTE, KC_AGIN, DEBUG, EEPROM_RESET,  QK_BOOT,
-                               _______, _______,_______, _______, _______, _______, _______, _______, KC_AUDIO_VOL_DOWN, KC_AUDIO_VOL_UP, _______, _______,
+                               SYSTEM_LAYER_DEACTIVATE, _______, _______, _______, _______,     _______, _______, KC_PSTE, KC_AGIN, DEBUG, EEPROM_RESET, QK_BOOT,
+                               _______, _______,_______, _______, _______, _______, _______, _______, KC_AUDIO_VOL_DOWN, KC_AUDIO_VOL_UP, CYCLE_DROP_ANIMATIONS, DB_TOGG,
                                _______, _______ , _______, _______, _______, _______,   _______, _______,  KC_AUDIO_MUTE, _______, _______, _______,
                                SYSTEM_LAYER_DEACTIVATE, _______, _______, _______,  _______, _______, _______, _______,   _______, _______, KC_BRIGHTNESS_DOWN,KC_BRIGHTNESS_UP
 
@@ -191,9 +171,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // 6
 [_WINDOWS] = LAYOUT_ortho_4x12(
-                                _______, WINDOWS_Q,   WINDOWS_W,   LGUI(KC_E),     TD(DANCE_40),   LGUI(KC_T), LGUI(KC_MINUS),  LGUI(KC_Y),   LGUI(KC_7),        LGUI(KC_8),     LGUI(KC_9),     LGUI(KC_0),
-                                RALT(RGUI(KC_ESCAPE)), LGUI(KC_A),  select_slack, show_desktop     ,LGUI(KC_F),      _______, TD(DANCE_42),  LGUI(KC_H),     TD(DANCE_43),   windows_k,   windows_l,   RALT(RGUI(KC_N)),
-                                TO(_BASE), LGUI(KC_Z),     LGUI(KC_X),     LGUI(KC_C),     RGUI(KC_V),    _______, LGUI(KC_MINUS), WINDOWS_N,   LGUI(KC_M),  _______, RSFT(LGUI(KC_K)), RCTL(RGUI(KC_Q)),
+                                _______, LGUI(KC_Q),   LGUI(KC_W),   LGUI(KC_E),     TD(DANCE_40),   LGUI(KC_T), LGUI(KC_MINUS),  LGUI(KC_Y),   LGUI(KC_7),        LGUI(KC_8),     LGUI(KC_9),     LGUI(KC_0),
+                                LALT(LGUI(KC_ESCAPE)), LGUI(KC_A),  select_slack, show_desktop     ,LGUI(KC_F),      _______, TD(DANCE_42),  LGUI(KC_H),     TD(DANCE_43),   windows_k,   windows_l,   LALT(LGUI(KC_N)),
+                                TO(_BASE), LGUI(KC_Z),     LGUI(KC_X),     LGUI(KC_C),     LGUI(KC_V),    _______, LGUI(KC_MINUS), LGUI(KC_N),   LGUI(KC_M),  _______, LSFT(LGUI(KC_K)), RCTL(LALT(KC_Q)),
                                 _______, _______, _______,         _______,        _______,     LSFT(RCTL(KC_UNDS)),   ALT_TAB , LALT(KC_8),      _______,  ALT_TAB, _______, _______
                                 ),
 
@@ -216,6 +196,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
   };
+
+
 
 #include "../../../common/combos.c"
 #include "../../../common/autoshift.c"

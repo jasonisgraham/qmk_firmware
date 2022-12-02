@@ -1,17 +1,17 @@
 {
-  "manufacturer": "Boardsource",
   "keyboard_name": "4x12",
-  "maintainer": "waffle87",
-  "development_board": "promicro",
+    "processor": "RP2040",
+    "bootloader": "rp2040",
   "diode_direction": "COL2ROW",
   "features": {
     "bootmagic": true,
     "extrakey": true,
     "mousekey": true
   },
+
   "matrix_pins": {
-    "cols": ["F4", "F5", "F6", "F7", "B1", "B3", "B2", "B6", "B5", "B4", "E6", "D7"],
-    "rows": ["D2", "D3", "D1", "D0"]
+    "cols": ["GP19", "GP17", "GP28", "GP18", "GP27", "GP26", "GP16", "GP22", "GP9", "GP8", "GP7", "GP6"],
+    "rows": ["GP1", "GP0", "GP3", "GP4"]
   },
   "url": "https://boardsource.xyz/store/5ecb78d286879c9a0c22dafd",
   "usb": {

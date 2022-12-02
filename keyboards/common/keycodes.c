@@ -216,6 +216,8 @@
 
 #define BRACKET_PAREN TD(DANCE_PAREN_BRACKET)
 
+#undef RGBLIGHT_ENABLE
+
 static bool do_echo = false;
 void toggle_echo(void) {
   if (do_echo) {
@@ -461,13 +463,17 @@ void matrix_scan_user(void) {
       // global no ext
       if (open_paren_level <= 2) {
         open_paren_level++;
+        #ifdef AUDIO_ENABLE
         PLAY_SONG(__a6);
+#endif
       }
 
     } else if (timer_elapsed(open_paren_timer) > (open_paren_level_duration * 1)) {
       if (open_paren_level <= 1) {
         open_paren_level++;
+#ifdef AUDIO_ENABLE
         PLAY_SONG(__g6);
+#endif
       }
 
     } else {
@@ -485,13 +491,17 @@ void matrix_scan_user(void) {
       // global no ext
       if (closed_paren_level <= 2) {
         closed_paren_level++;
+#ifdef AUDIO_ENABLE
         PLAY_SONG(__a6);
+#endif
       }
 
     } else if (timer_elapsed(closed_paren_timer) > (closed_paren_level_duration * 1)) {
       if (closed_paren_level <= 1) {
         closed_paren_level++;
+#ifdef AUDIO_ENABLE
         PLAY_SONG(__g6);
+#endif
       }
 
     } else {
@@ -507,27 +517,35 @@ void matrix_scan_user(void) {
     if (timer_elapsed(fasd_timer) > (fasd_level_duration * 3)) {
       if (fasd_level <= 3) {
         fasd_level++;
+#ifdef AUDIO_ENABLE
         PLAY_SONG(__as6);
+#endif
       }
 
     } else if (timer_elapsed(fasd_timer) > (fasd_level_duration * 2)) {
       // global no ext
       if (fasd_level <= 2) {
         fasd_level++;
+#ifdef AUDIO_ENABLE
         PLAY_SONG(__a6);
+#endif
       }
 
     } else if (timer_elapsed(fasd_timer) > (fasd_level_duration * 1)) {
       if (fasd_level <= 1) {
         fasd_level++;
+#ifdef AUDIO_ENABLE
         PLAY_SONG(__g6);
+#endif
       }
 
     } else {
       if (fasd_level <= 0) {
         // project level current ext
         fasd_level++;
+#ifdef AUDIO_ENABLE
         /* PLAY_SONG(__e6); */
+#endif
       }
     }
     return;
@@ -553,18 +571,6 @@ char b[3];
 int i = 0;
 /* const uint8_t fireworks = 42; */
 /* const uint8_t faves[7] = {fireworks, 15, 16, 17, 20, 22, 41}; */
-/* /\* const uint8_t faves[7] = {fireworks, 15, 16, 17, 20, 22, 41}; *\/ */
-/* void cycle_fave_animations(void) { */
-/*   i++; */
-/*   if (i >= 7) { */
-/*     i = 0; */
-/*   } */
-/*   rgblight_mode(faves[i]); */
-/* } */
-
-/* void apply_fave_animation(void) { */
-/*   rgblight_mode(faves[i]); */
-/* } */
 
 /* int DROP_DEFAULT_ANIMATION = 0;//RGBLIGHT_MODE_STATIC_LIGHT; */
 int DROP_LAYER_0_COLOR = 0;
@@ -579,14 +585,16 @@ const uint8_t faves[7] = {1, // static
 };
 
 void cycle_drop_animations(void) {
-  i = i + 1;
-  if (i >= 42) {
-    i = 0;
-  }
+  /* i = i + 1; */
+  /* if (i >= 42) { */
+  /*   i = 0; */
+  /* } */
 
   DROP_DEFAULT_ANIMATION = faves[i];
   dprintf("idx: %u, drop animation: %u\n", i, DROP_DEFAULT_ANIMATION);
+  #ifdef RGBLIGHT_MODE
   rgblight_mode(DROP_DEFAULT_ANIMATION);
+#endif
 }
 
 /* enum colors { */
@@ -595,7 +603,9 @@ void cycle_drop_animations(void) {
 /* } */
 
 void cycle_drop_color(void) {
+#ifdef RGBLIGHT_MODE
   rgblight_increase_hue();
+#endif
   /* DROP_LAYER_0_COLOR = colors[0]; */
   /* int step = 10; */
   /* DROP_LAYER_0_COLOR -= step; */
@@ -606,16 +616,16 @@ void cycle_drop_color(void) {
 
 int k = 0;
 void cycle_rgblight_step(void) {
-  k++;
-  if (k >= 42) {
-    k = 0;
-  }
-  if (do_echo) {
-    static char s[10];
-    itoa(k, s, 10);
-    SEND_STRING(s);
-  }
-  rgblight_mode(k);
+  /* k++; */
+  /* if (k >= 42) { */
+  /*   k = 0; */
+  /* } */
+  /* if (do_echo) { */
+  /*   static char s[10]; */
+  /*   itoa(k, s, 10); */
+  /*   SEND_STRING(s); */
+  /* } */
+  /* rgblight_mode(k); */
 }
 
 
@@ -628,7 +638,7 @@ bool do_breathing = false;
 
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  /* dprintf("KL: kc: 0x%04X, col: %2u, row: %2u, pressed: %u, time: %5u, int: %u, count: %u\n", keycode, record->event.key.col, record->event.key.row, record->event.pressed, record->event.time, record->tap.interrupted, record->tap.count); */
+  uprintf("KL: kc: 0x%04X, col: %2u, row: %2u, pressed: %u, time: %5u, int: %u, count: %u\n", keycode, record->event.key.col, record->event.key.row, record->event.pressed, record->event.time, record->tap.interrupted, record->tap.count);
 
   if (!process_layer_lock(keycode, record, LAYER_LOCK)) { return false; }
 
@@ -650,13 +660,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   case level3:
     if (record->event.pressed) {
+#ifdef RGBLIGHT_MODE
       rgblight_enable_noeeprom();
       rgblight_mode(RGBLIGHT_MODE_SNAKE);
       rgblight_sethsv_noeeprom(HSV_YELLOW);
       register_code16(KC_KP_ENTER);
+#endif
     } else {
       unregister_code16(KC_KP_ENTER);
+#ifdef RGBLIGHT_MODE
       rgblight_disable();
+      #endif
 
     }
 
@@ -1726,7 +1740,9 @@ break;
 
   case RGBLIGHT_TOGGLE:
     if (record->event.pressed) {
+      #ifdef RGBLIGHT_ENABLE
       rgblight_toggle();
+      #endif
     }
     break;
 
@@ -1806,7 +1822,10 @@ break;
   case SA_LAYER_ACTIVATE:
     if (record->event.pressed) {
       layer_move(_SA);
+#ifdef AUDIO_ENABLE
       PLAY_SONG(zelda_treasure);
+      #endif
+
 #ifdef RGBLIGHT_MODE
       rgblight_mode(RGBLIGHT_MODE_RAINBOW_SWIRL);
 #endif
@@ -1820,7 +1839,9 @@ break;
   case SYSTEM_LAYER_ACTIVATE:
     if (record->event.pressed) {
       layer_move(_SYSTEM);
+#ifdef AUDIO_ENABLE
       PLAY_SONG(scroll_lock_on_sound);
+#endif
 #ifdef RGBLIGHT_MODE
       rgblight_mode(RGBLIGHT_MODE_RAINBOW_SWIRL);
 #endif
@@ -1831,8 +1852,10 @@ break;
 
   case SYSTEM_LAYER_DEACTIVATE:
     if (record->event.pressed) {
+#ifdef AUDIO_ENABLE
       PLAY_SONG(one_up_sound);
       PLAY_SONG(scroll_lock_off_sound);
+#endif
       layer_move(_BASE);
       return false;
     }
