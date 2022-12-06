@@ -8,9 +8,9 @@
 #include "config_common.h"
 
 /* #define GOODBYE_SONG SONG(ZELDA_PUZZLE) */
-#ifndef RGBLIGHT_ENABLE
-#define RGBLIGHT_ENABLE
-#endif
+/* #ifndef RGBLIGHT_ENABLE */
+/* #define RGBLIGHT_ENABLE */
+/* #endif */
 /* #define RGBLIGHT_ANIMATIONS */
 
 #undef MAX_LAYER
