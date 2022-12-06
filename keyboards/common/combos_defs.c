@@ -5,6 +5,7 @@
 
 
 const uint16_t PROGMEM combo_super_t[] = {super, my_t, COMBO_END};
+const uint16_t PROGMEM combo_raise_f[] = {RAISE, my_f, COMBO_END};
 const uint16_t PROGMEM combo_raise_r[] = {RAISE, my_r, COMBO_END};
 const uint16_t PROGMEM combo_bottom_top_mid_column[] = {top_alpha_mid_column, key_4_7, COMBO_END};
 const uint16_t PROGMEM combo_s_a[] = {my_a, my_s, COMBO_END};
@@ -53,7 +54,6 @@ const uint16_t PROGMEM combo_lower_ampr[] = {LOWER, my_u, COMBO_END};
 const uint16_t PROGMEM combo_lower_astr[] = {LOWER,  my_i, COMBO_END};
 const uint16_t PROGMEM raise_comma_raise_period[] = {my_raise_comma,  my_raise_period, COMBO_END};
 
-const uint16_t PROGMEM combo_raise_f[] = {RAISE,  my_f, COMBO_END};
 const uint16_t PROGMEM combo_raise_h_raise_u[] = {my_raise_h,  my_raise_u, COMBO_END};
 const uint16_t PROGMEM combo_h_u[] = {my_h,  my_u, COMBO_END};
 
