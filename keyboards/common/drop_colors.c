@@ -1,3 +1,4 @@
+#include "user_song_list.c"
 static int DROP_DEFAULT_ANIMATION = 0;//RGBLIGHT_MODE_STATIC_LIGHT;
 /* static int DROP_DEFAULT_ANIMATION = DROP_DEFAULT_ANIMATION; // 2; // RGBLIGHT_MODE_BREATHING; */
 /* int DROP_DEFAULT_ANIMATION =  1; */
@@ -16,6 +17,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
   case 0:
     rgblight_disable();
+    /* rgblight_mode_noeeprom(0); */
     break;
 
   case _LOWER:
@@ -72,17 +74,21 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
 
   case _ADHOC_SET_HOTKEY:
+    rgblight_disable_noeeprom();
     rgblight_enable_noeeprom();
-    rgblight_mode_noeeprom(RGBLIGHT_MODE_KNIGHT);
-    rgblight_sethsv_at(HSV_WHITE, 0);
-    rgblight_sethsv_at(HSV_WHITE, 1);
-    rgblight_sethsv_at(HSV_WHITE, 2);
-    rgblight_sethsv_at(HSV_WHITE, 3);
-    rgblight_sethsv_at(HSV_WHITE, 4);
-    rgblight_sethsv_at(HSV_RED, 5);
-    rgblight_sethsv_at(HSV_RED, 6);
-    rgblight_sethsv_at(HSV_WHITE, 7);
-    rgblight_sethsv_at(HSV_WHITE, 8);
+    rgblight_mode_noeeprom(0);
+    /* PLAY_SONG(major_sound); */
+    sethsv(HSV_BLUE, (LED_TYPE *)&led[0]);
+    sethsv(HSV_RED, (LED_TYPE *)&led[1]);
+    sethsv(HSV_BLUE, (LED_TYPE *)&led[2]);
+    sethsv(HSV_RED, (LED_TYPE *)&led[3]);
+    sethsv(HSV_BLUE, (LED_TYPE *)&led[4]);
+    sethsv(HSV_RED,   (LED_TYPE *)&led[5]);
+    sethsv(HSV_BLUE,   (LED_TYPE *)&led[6]);
+    sethsv(HSV_RED,   (LED_TYPE *)&led[7]);
+    sethsv(HSV_BLUE,   (LED_TYPE *)&led[8]);
+    rgblight_set();
+    /* rgblight_mode(RGBLIGHT_MODE_BREATHING); */
 
     break;
 
