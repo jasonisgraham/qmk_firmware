@@ -110,22 +110,33 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
   case _SHIFTLOCK:
     // shiftlok
+    rgblight_disable_noeeprom();
     rgblight_enable_noeeprom();
-    rgblight_mode(RGBLIGHT_MODE_STATIC_LIGHT);
-    rgblight_sethsv_noeeprom(HSV_OFF);
-    rgblight_sethsv_range(HSV_OFF, 6, 0);
-    rgblight_sethsv_range(HSV_OFF,   5, 0);
-    rgblight_sethsv_range(HSV_RED, 4, 6);
-    rgblight_sethsv_range(HSV_RED, 3, 0);
-    rgblight_sethsv_range(HSV_RED,   2, 1);
-    rgblight_sethsv_range(HSV_RED, 1, 10);
-    rgblight_sethsv_range(HSV_OFF, 8, 5);
-    rgblight_sethsv_range(HSV_OFF,   7, 11);
-    rgblight_sethsv_range(HSV_RED,   0, 0);
+    rgblight_mode_noeeprom(0);
+    sethsv(HSV_PINK, (LED_TYPE *)&led[0]);
+    sethsv(HSV_RED, (LED_TYPE *)&led[1]);
+    sethsv(HSV_WHITE, (LED_TYPE *)&led[2]);
+    sethsv(HSV_PINK, (LED_TYPE *)&led[3]);
+    sethsv(HSV_WHITE, (LED_TYPE *)&led[4]);
+    sethsv(HSV_RED,   (LED_TYPE *)&led[5]);
+    sethsv(HSV_PINK,   (LED_TYPE *)&led[6]);
+    sethsv(HSV_RED,   (LED_TYPE *)&led[7]);
+    sethsv(HSV_PINK,   (LED_TYPE *)&led[8]);
+    rgblight_set();
+    /* rgblight_mode(RGBLIGHT_MODE_BREATHING); */
+    /* rgblight_sethsv_range(HSV_OFF, 6, 0); */
+    /* rgblight_sethsv_range(HSV_OFF,   5, 0); */
+    /* rgblight_sethsv_range(HSV_RED, 4, 6); */
+    /* rgblight_sethsv_range(HSV_RED, 3, 0); */
+    /* rgblight_sethsv_range(HSV_RED,   2, 1); */
+    /* rgblight_sethsv_range(HSV_RED, 1, 10); */
+    /* rgblight_sethsv_range(HSV_OFF, 8, 5); */
+    /* rgblight_sethsv_range(HSV_OFF,   7, 11); */
+    /* rgblight_sethsv_range(HSV_RED,   0, 0); */
 
-    rgblight_mode(RGBLIGHT_MODE_SNAKE);
-    rgblight_enable_noeeprom();
-    rgblight_sethsv_noeeprom(HSV_RED);
+    /* rgblight_mode(RGBLIGHT_MODE_SNAKE); */
+    /* rgblight_enable_noeeprom(); */
+    /* rgblight_sethsv_noeeprom(HSV_RED); */
 
     /* rgblight_mode(RGBLIGHT_MODE_RAINBOW_SWIRL); */
     break;
