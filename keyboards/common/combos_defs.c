@@ -62,6 +62,7 @@ const uint16_t PROGMEM combo_cap_j_cap_i[] = {my_cap_j, my_cap_i, COMBO_END};
 const uint16_t PROGMEM combo_cap_k_cap_o[] = {my_cap_k, my_cap_o, COMBO_END};
 const uint16_t PROGMEM combo_cap_m_cap_k[] = {my_cap_m, my_cap_k, COMBO_END};
 
+const uint16_t PROGMEM combo_winmove_up_right[] = {winmove_tile_up, winmove_tile_right, COMBO_END};
 const uint16_t PROGMEM combo_spc_q[] = {my_q, my_space, COMBO_END};
 const uint16_t PROGMEM combo_spc_w[] = {my_w, my_space, COMBO_END};
 const uint16_t PROGMEM combo_spc_e[] = {my_e, my_space, COMBO_END};

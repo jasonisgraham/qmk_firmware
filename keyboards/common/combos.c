@@ -172,8 +172,10 @@ combo_t key_combos[COMBO_COUNT] = {
                                    COMBO(combo_lower_l_semi, EMACS_PRIVATE_READER),
                                    COMBO(combo_bottom_top_mid_column, MO(_SYSTEM)),
                                    COMBO(combo_super_t, adhoc_set_hotkey),
-                                   COMBO(combo_raise_f, TO(_SA)),
+                                   COMBO(combo_raise_f, SA_LAYER_ACTIVATE),
                                    COMBO(combo_raise_r, MO(_MOUSE)),
+                                   COMBO(combo_winmove_up_right, WINDOW_TOGGLE_HORIZONTAL_MAX),
+
 
 
 };
