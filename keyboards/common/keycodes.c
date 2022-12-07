@@ -278,6 +278,28 @@ void cycle_active_apl_level3_fn(void) {
 }
 ;
 
+enum col7_row4_fns {
+                    K74_MO_LEVEL3 = SAFE_RANGE,
+                    K74_MO_APL
+};
+
+static int active_k74_fn = K74_MO_LEVEL3;
+
+void cycle_active_k74_fn(void) {
+  dprintf("active_k74_fn: %u", active_k74_fn);
+
+  switch (active_k74_fn) {
+  case K74_MO_LEVEL3:
+    active_k74_fn = K74_MO_APL;
+    break;
+  case K74_MO_APL:
+    active_k74_fn = K74_MO_LEVEL3;
+    break;
+    dprintf("active_k74_fn: %u", active_k74_fn);
+  }
+}
+  ;
+
 static bool do_echo = false;
 void toggle_echo(void) {
   if (do_echo) {
