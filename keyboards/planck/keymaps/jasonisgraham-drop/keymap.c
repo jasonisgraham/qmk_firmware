@@ -45,7 +45,6 @@ enum planck_layers {
 #define key_1_7 top_alpha_mid_column
 #define key_2_7 backspace
 #define key_3_7 KC_ENTER
-#define key_4_7  TD(DANCE_LEVEL3)
 
 /* super_meta_hyper */
 
@@ -61,6 +60,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                              hyper, level3, all_mods,      alt, RAISE,  super, key_4_7,   my_space,           LOWER,          my_right_of_lower,   key_4_11,  key_4_12
                               ),
 
+
 [_LOWER] = LAYOUT_planck_grid(
                               LALT(KC_C),   KC_F1,          KC_F2,          KC_F3,          KC_F4,  TD(DANCE_73),        _______ ,    KC_HOME,     my_lower_u,    my_lower_i,      my_lower_o,         my_lower_p,
                               _______, KC_F5,          KC_F6,          KC_F7,          KC_F8,          my_lower_g, lower_backspace,      KC_LEFT,        my_lower_j,        my_lower_k,          my_lower_l,       my_lower_semi,
@@ -70,10 +70,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
                               ),
 
+// 8
+[_SHIFTLOCK] = LAYOUT_planck_grid(
+                                  SHIFTLOCK_LAYER_DEACTIVATE,   LSFT(KC_Q),     LSFT(KC_W),     LSFT(KC_E),     LSFT(KC_R),     LSFT(KC_T), _______,    LSFT(KC_Y),     LSFT(KC_U),     my_cap_i,     my_cap_o,     my_cap_p,
+                                  ESC_THEN_BASE_LAYER,          LSFT(KC_A),     LSFT(KC_S),     LSFT(KC_D),     LSFT(KC_F),     LSFT(KC_G), _______,    my_cap_h,     my_cap_j,     my_cap_k,     my_cap_l,     TD(DANCE_55),
+                                  SHIFTLOCK_LAYER_DEACTIVATE,          LSFT(KC_Z),     LSFT(KC_X),     LSFT(KC_C),     LSFT(KC_V),     LSFT(KC_B), _______,   LSFT(KC_N),     my_cap_m,     KC_LABK,        KC_RABK,        my_forward_slash,
+                                  _______, _______, _______, _______, MO(_RAISE), _______, KC_NO,       _______,    MO(_LOWER),  _______, _______, _______
+                                  ),
+
+
 [_RAISE] = LAYOUT_planck_grid(
                               LSFT(KC_TAB),    _______,          my_raise_w,  KC_END,         EMACS_BUFFER_REVERT,       _______, _______, my_raise_y, my_raise_u,           my_raise_i,           my_raise_o,           my_raise_p,
                               _______, my_raise_a, my_raise_s,   my_raise_d, my_raise_f,  OSL(_MACROS), raise_backspace,       my_raise_h,         my_raise_j,           my_raise_k,           my_raise_l,           raise_semi,
-                              _______, _______, _______,_______,   _______,          _______, KC_INSERT,     my_raise_n,           my_raise_m,           my_raise_comma,         KC_3,           raise_slash,
+                              SHIFTLOCK_LAYER_ACTIVATE, _______, _______,_______,   _______,          _______, KC_INSERT,     my_raise_n,           my_raise_m,           my_raise_comma,         KC_3,           raise_slash,
                               SYSTEM_LAYER_ACTIVATE, _______, _______,        _______,        _______, _______,  lower_right_of_super,      my_space,   raise_key_4_9,       raise_backspace,  _______,         TO(_BASE)
 
                               ),
@@ -94,8 +103,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                 ),
 
 [_SA] = LAYOUT_planck_grid(
-                           SHIFTLOCK_LAYER_DEACTIVATE, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
-                           SHIFTLOCK_LAYER_DEACTIVATE, _______, KC_LEFT, _______, KC_RIGHT, _______,   KC_DELETE, _______, _______, _______, _______, _______,
+                           ESC_THEN_BASE_LAYER, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
+                           ESC_THEN_BASE_LAYER, _______, KC_LEFT, _______, KC_RIGHT, _______,   KC_DELETE, _______, _______, _______, _______, _______,
                            _______, _______, _______, _______, WEB_SAVE_FILE_UNDER_CURSOR, _______, _______, _______, _______, _______, _______, _______,
                            _______, _______, _______, _______,    MO(_MOUSE), _______, _______, _______,    _______, _______, _______, _______
 
@@ -121,16 +130,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                               _______, adhoc_set_hotkey, _______, _______,    _______, _______, _______, _______,    LALT(KC_9), LALT(KC_8), LSFT(KC_TAB), KC_TAB
                               ),
 
-
-
-
-// 8
-[_SHIFTLOCK] = LAYOUT_planck_grid(
-                                  SHIFTLOCK_LAYER_DEACTIVATE,   LSFT(KC_Q),     LSFT(KC_W),     LSFT(KC_E),     LSFT(KC_R),     LSFT(KC_T), _______,    LSFT(KC_Y),     LSFT(KC_U),     my_cap_i,     my_cap_o,     my_cap_p,
-                                  ESC_THEN_BASE_LAYER,          LSFT(KC_A),     LSFT(KC_S),     LSFT(KC_D),     LSFT(KC_F),     LSFT(KC_G), _______,    my_cap_h,     my_cap_j,     my_cap_k,     my_cap_l,     TD(DANCE_55),
-                                  SHIFTLOCK_LAYER_DEACTIVATE,          LSFT(KC_Z),     LSFT(KC_X),     LSFT(KC_C),     LSFT(KC_V),     LSFT(KC_B), _______,   LSFT(KC_N),     my_cap_m,     KC_LABK,        KC_RABK,        my_forward_slash,
-                                  _______, _______, _______, _______, _______, _______, KC_NO,       _______,    LOWER,  _______, _______, _______
-                                  ),
 
 
 // 12
@@ -166,7 +165,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // 5
 [_SYSTEM] = LAYOUT_planck_grid(
-                               SYSTEM_LAYER_DEACTIVATE, _______, _______, _______, _______,     _______, _______, KC_PSTE, KC_AGIN, DEBUG, EEPROM_RESET, RESET,
+                               SYSTEM_LAYER_DEACTIVATE, _______, _______, _______, _______,     _______, CYCLE_ACTIVE_K74_FN, KC_PSTE, KC_AGIN, DEBUG, EEPROM_RESET, RESET,
                                _______, _______,_______, _______, _______, _______, _______, _______, KC_AUDIO_VOL_DOWN, KC_AUDIO_VOL_UP, CYCLE_DROP_ANIMATIONS, DB_TOGG,
                                _______, _______ , _______, _______, _______, _______,   _______, _______,  KC_AUDIO_MUTE, _______, _______, _______,
                                SYSTEM_LAYER_DEACTIVATE, _______, _______, _______,  _______, _______, _______, _______,   _______, _______, KC_BRIGHTNESS_DOWN,KC_BRIGHTNESS_UP
@@ -194,7 +193,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                               ),
 
 [_ADHOC_SET_HOTKEY] = LAYOUT_planck_grid(
-                              _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
+                              _______, _______, _______, _______, _______, _______,    WINDOW_ALWAYS_ON_TOP, _______, _______, _______, _______, _______,
                               _______, _______, _______, _______, _______, _______,   _______, _______, _______, _______, _______, _______,
                               _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
                               _______, _______, _______, _______,    _______, _______, _______, _______,    _______, _______, _______, _______
