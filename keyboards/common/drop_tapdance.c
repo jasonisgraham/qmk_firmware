@@ -5,7 +5,7 @@ enum tap_dance_codes {
                       DANCE_TAB,
                       DANCE_Q,
                       DANCE_SUPER,
-                      DANCE_LEVEL3,
+                      dance_k74,
                       DANCE_SHIFT,
                       DANCE_W,
                       DANCE_E,
@@ -3222,13 +3222,13 @@ void alt_reset(qk_tap_dance_state_t *state, void *user_data) {
 }
 
 
-void on_dance_level3(qk_tap_dance_state_t *state, void *user_data);
-void dance_level3_finished(qk_tap_dance_state_t *state, void *user_data);
-void dance_level3_reset(qk_tap_dance_state_t *state, void *user_data);
+void on_dance_k74(qk_tap_dance_state_t *state, void *user_data);
+void dance_k74_finished(qk_tap_dance_state_t *state, void *user_data);
+void dance_k74_reset(qk_tap_dance_state_t *state, void *user_data);
 
-void on_dance_level3(qk_tap_dance_state_t *state, void *user_data) {}
+void on_dance_k74(qk_tap_dance_state_t *state, void *user_data) {}
 
-void dance_level3_finished(qk_tap_dance_state_t *state, void *user_data) {
+void dance_k74_finished(qk_tap_dance_state_t *state, void *user_data) {
   dance_state[84].step = dance_step(state);
   switch (dance_state[84].step) {
   case TAP2:
@@ -3237,19 +3237,27 @@ void dance_level3_finished(qk_tap_dance_state_t *state, void *user_data) {
   default:
     rgblight_enable_noeeprom();
     rgblight_mode(RGBLIGHT_MODE_SNAKE);
-    rgblight_sethsv_noeeprom(HSV_PURPLE);
-    register_code16(KC_RGUI);
+
+    switch (active_k74_fn) {
+    case K74_MO_LEVEL3:
+      register_code16(level3);
+      break;
+    case K74_MO_APL:
+      rgblight_sethsv_noeeprom(HSV_PURPLE);
+      register_code16(KEYBOARD_LAYOUT_HOLD_KEY);
+      break;
+
+    }
     break;
 
   }
 }
 
-void dance_level3_reset(qk_tap_dance_state_t *state, void *user_data) {
+void dance_k74_reset(qk_tap_dance_state_t *state, void *user_data) {
   wait_ms(10);
   dance_state[84].step = 0;
   unregister_code16(KC_RGUI);
   unregister_code16(level3);
-  /* unregister_code16(level3); */
   rgblight_disable();
 }
 
@@ -3563,7 +3571,7 @@ qk_tap_dance_action_t tap_dance_actions[] = {
                                              [DANCE_MIN_OR_EXIT] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_min_or_exit, dance_min_or_exit_finished, dance_min_or_exit_reset),
                                              [DANCE_SAVE_LOAD_NS_SWITCH] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_save_load_ns_switch, dance_save_load_ns_switch_finished, dance_save_load_ns_switch_reset),
                                              [DANCE_F5] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_f5, dance_f5_finished, dance_f5_reset),
-                                             [DANCE_LEVEL3] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_level3, dance_level3_finished, dance_level3_reset),
+                                             [dance_k74] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_k74, dance_k74_finished, dance_k74_reset),
                                              [DANCE_SHIFT] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_shift, dance_shift_finished, dance_shift_reset),
                                              [DANCE_SUPER] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_super, dance_super_finished, dance_super_reset),
 

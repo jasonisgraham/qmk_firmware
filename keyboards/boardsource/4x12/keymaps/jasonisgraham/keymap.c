@@ -45,7 +45,7 @@ enum planck_layers {
 #define key_1_7 top_alpha_mid_column
 #define key_2_7 backspace
 #define key_3_7 KC_ENTER
-#define key_4_7  TD(DANCE_LEVEL3)
+#define key_4_7  TD(dance_k74)
 
 /* super_meta_hyper */
 
