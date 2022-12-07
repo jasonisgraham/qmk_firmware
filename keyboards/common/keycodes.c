@@ -12,7 +12,8 @@
 #define EMACS_FASD_PROJECT_NO_EXT LCTL(KC_F12)
 #define EMACS_FASD_PROJECT_CURR_EXT RCTL(KC_F12)
 
-#define WINDOW_ALWAYS_ON_TOP RCTL(LGUI(LALT(KC_UP)))
+#define WINDOW_ALWAYS_ON_TOP LCTL(LSFT(LGUI(RCTL(KC_UP))))
+#define WINDOW_TOGGLE_HORIZONTAL_MAX LSFT(LGUI(RCTL(KC_MINUS)))
 
 #define winmove_mon_up LGUI(LSFT(KC_UP))
 #define winmove_mon_left LGUI(LSFT(KC_LEFT))
@@ -45,7 +46,6 @@
 #define EMACS_OTHER_WINDOW_NEXT RCTL(LALT(KC_PGUP))
 #define EMACS_OTHER_WINDOW_PREV RCTL(LALT(KC_PGDOWN))
 #define HYPER_L LCTL(KC_L)
-#define LOWER MO(_LOWER)
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
 #define RAISE MO(_RAISE)
@@ -213,8 +213,32 @@
 #define top_alpha_mid_column LAYER_LOCK
 
 
+#define KEYBOARD_LAYOUT_HOLD_KEY KC_RGUI
+
 
 #define BRACKET_PAREN TD(DANCE_PAREN_BRACKET)
+
+enum col7_row4_fns {
+                    K74_MO_LEVEL3 = SAFE_RANGE,
+                    K74_MO_APL
+};
+
+static int active_k74_fn = K74_MO_LEVEL3;
+
+void cycle_active_k74_fn(void) {
+  dprintf("active_k74_fn: %u", active_k74_fn);
+
+  switch (active_k74_fn) {
+  case K74_MO_LEVEL3:
+    active_k74_fn = K74_MO_APL;
+    break;
+  case K74_MO_APL:
+    active_k74_fn = K74_MO_LEVEL3;
+    break;
+    dprintf("active_k74_fn: %u", active_k74_fn);
+  }
+}
+  ;
 
 static bool do_echo = false;
 void toggle_echo(void) {
@@ -238,7 +262,9 @@ enum custom_keycodes {
                       FIRST = SAFE_RANGE,
                       ALT,
                       EMACS_NEXT_SEXP,
+                      CYCLE_ACTIVE_K74_FN,
                       level3,
+                      key_4_7,
                       EMACS_PREV_SEXP,
                       AUTOSHIFT_TOGGLE,
                       WEB_SAVE_FILE_UNDER_CURSOR,
@@ -585,7 +611,7 @@ void cycle_drop_animations(void) {
   }
 
   DROP_DEFAULT_ANIMATION = faves[i];
-  dprintf("idx: %u, drop animation: %u\n", i, DROP_DEFAULT_ANIMATION);
+  /* dprintf("idx: %u, drop animation: %u\n", i, DROP_DEFAULT_ANIMATION); */
   rgblight_mode(DROP_DEFAULT_ANIMATION);
 }
 
@@ -648,11 +674,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   switch (keycode) {
 
+
   case level3:
     if (record->event.pressed) {
       rgblight_enable_noeeprom();
       rgblight_mode(RGBLIGHT_MODE_SNAKE);
-      rgblight_sethsv_noeeprom(HSV_YELLOW);
+      rgblight_sethsv_noeeprom(HSV_PINK);
       register_code16(KC_KP_ENTER);
     } else {
       unregister_code16(KC_KP_ENTER);
@@ -661,6 +688,32 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
 
     break;
+
+
+  case key_4_7:
+    printf("active_k74_fn: %u, pressed: %u\n", active_k74_fn, record->event.pressed);
+    if (record->event.pressed) {
+      switch (active_k74_fn) {
+      case K74_MO_LEVEL3:
+        rgblight_enable_noeeprom();
+        rgblight_mode(RGBLIGHT_MODE_SNAKE);
+        rgblight_sethsv_noeeprom(HSV_PINK);
+        register_code16(KC_KP_ENTER);
+        break;
+      case K74_MO_APL:
+        rgblight_mode(RGBLIGHT_MODE_SNAKE);
+        rgblight_sethsv_noeeprom(HSV_WHITE);
+        register_code16(KEYBOARD_LAYOUT_HOLD_KEY);
+        break;
+      }
+    } else {
+      unregister_code16(KC_KP_ENTER);
+      unregister_code16(KEYBOARD_LAYOUT_HOLD_KEY);
+      rgblight_disable();
+    }
+
+    break;
+
   case WEB_SAVE_FILE_UNDER_CURSOR:
     if (record->event.pressed) {
       tap_code16(KC_MS_BTN2);
@@ -1773,6 +1826,16 @@ break;
     }
     break;
 #endif
+
+  case CYCLE_ACTIVE_K74_FN:
+    if (record->event.pressed) {
+/* #ifdef AUDIO_ENABLE */
+      PLAY_SONG(mario_mushroom);
+/* #endif */
+      cycle_active_k74_fn();
+    }
+    break;
+
 
   case TOGGLE_ECHO:
     if (record->event.pressed) {
