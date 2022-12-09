@@ -13,6 +13,10 @@
     "cols": ["F4", "F5", "F6", "F7", "B1", "B3", "B2", "B6", "B5", "B4", "E6", "D7"],
     "rows": ["D2", "D3", "D1", "D0"]
   },
+  "elite_pi_matrix_pins": {
+    "cols": ["A3", "A2", "A1", "A0", "D22", "D20", "D23", "D21", "D9", "D8", "D7", "D6"],
+    "rows": ["D1", "D0", "D2", "D3"]
+  },
   "url": "https://boardsource.xyz/store/5ecb78d286879c9a0c22dafd",
   "usb": {
     "device_version": "1.0.0",
