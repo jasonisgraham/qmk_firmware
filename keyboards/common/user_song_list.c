@@ -1,3 +1,4 @@
+#ifdef AUDIO_ENABLE
 #include "muse.h"
 
 #ifndef USER_SONG_LIST_INCLUDED
@@ -76,4 +77,5 @@ float __g6[][2] = SONG(__G6);
 float __gs6[][2] = SONG(__GS6);
 float __a7[][2] = SONG(__A7);
 
+#endif
 #endif
