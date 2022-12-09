@@ -26,14 +26,15 @@ enum planck_layers {
 /* #include "../../../common/config.h" */
 #undef UNICODE_SELECTED_MODES
 #define UNICODE_SELECTED_MODES UC_LNX
+#include "../quantum/keymap_extras/keymap_bepo.h"
 
 #include "../../../../common/key_overrides.c"
-/* #include "../../../common/drop_colors.c" */
 #include "../../../../common/keycodes.c"
 #include "../../../../common/drop_tapdance.c"
-/* #include "../../../common/drop_animations.c" */
-/* #include "../../../common/encoder.c" */
-/* #include "../../../../common/layer_lock.h" */
+#include "../../../../common/tapdance_keycodes.c"
+#include "../../../../common/combos.c"
+#include "../../../../common/autoshift.c"
+#include "../../../../common/layer_lock.h"
 
 /* #include "encoder.h" */
 /* const int row0[10]; */
@@ -41,19 +42,9 @@ enum planck_layers {
 /* const int row0[] = { top_left, top_left,    my_q,    my_w,    my_e,    my_r,   my_t, backspace ,    my_y,           my_u,    my_i,    my_o,     my_p}; */
 /* int row0[10] = {}; */
 
-#define key_1_7 top_alpha_mid_column
-#define key_2_7 backspace
-#define key_3_7 KC_ENTER
-#define key_4_7  TD(dance_k74)
-
-/* super_meta_hyper */
-
-#define EMACS_RECENTER_ON_DEFUN RCTL(LALT(KC_Z))
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-                                                              /* LAYOUT_ortho_4x12 */
-                                                              // LAYER_LOCK
 [_BASE] = LAYOUT_ortho_4x12(
                              top_left,    my_q,    my_w,    my_e,    my_r,   my_t, key_1_7,    my_y,           my_u,    my_i,    my_o,     my_p,
                              esc_ctrl , my_a,   my_s,   my_d,   my_f,   my_g, key_2_7,  my_h,         my_j,   my_k,   my_l,   my_semicolon,
@@ -61,19 +52,29 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                              hyper, level3, all_mods,      alt, RAISE,  super, key_4_7,   my_space,           LOWER,          my_right_of_lower,   key_4_11,  key_4_12
                               ),
 
+
 [_LOWER] = LAYOUT_ortho_4x12(
                               LALT(KC_C),   KC_F1,          KC_F2,          KC_F3,          KC_F4,  TD(DANCE_73),        _______ ,    KC_HOME,     my_lower_u,    my_lower_i,      my_lower_o,         my_lower_p,
-                              _______, KC_F5,          KC_F6,          KC_F7,          KC_F8,          my_lower_g, lower_backspace,      KC_LEFT,        my_lower_j,        my_lower_k,          my_lower_l,       my_lower_semi,
+_______, KC_F5,          KC_F6,          KC_F7,          KC_F8,          my_lower_g, lower_backspace,      my_lower_h,        my_lower_j,        my_lower_k,          my_lower_l,       my_lower_semi,
                               _______,   KC_F9,         KC_F10,         KC_F11,         KC_F12,         KC_APPLICATION, KC_SCROLL_LOCK,  my_lower_n, my_lower_m, my_lower_comma,   my_lower_period, my_lower_slash,
                               SYSTEM_LAYER_ACTIVATE, _______, _______ , alt,   MO(_EDITING), MO(_MOUSE),           lower_right_of_super,         MO(_MOUSE), lower_LOWER,          lower_right_of_lower, lower_key_4_11, lower_key_4_12
 
 
                               ),
 
+// 8
+[_SHIFTLOCK] = LAYOUT_ortho_4x12(
+                                  SHIFTLOCK_LAYER_DEACTIVATE,   LSFT(KC_Q),     LSFT(KC_W),     LSFT(KC_E),     LSFT(KC_R),     LSFT(KC_T), _______,    LSFT(KC_Y),     LSFT(KC_U),     my_cap_i,     my_cap_o,     my_cap_p,
+                                  ESC_THEN_BASE_LAYER,          LSFT(KC_A),     LSFT(KC_S),     LSFT(KC_D),     LSFT(KC_F),     LSFT(KC_G), _______,    my_cap_h,     my_cap_j,     my_cap_k,     my_cap_l,     TD(DANCE_55),
+                                  SHIFTLOCK_LAYER_DEACTIVATE,          LSFT(KC_Z),     LSFT(KC_X),     LSFT(KC_C),     LSFT(KC_V),     LSFT(KC_B), _______,   LSFT(KC_N),     my_cap_m,     KC_LABK,        KC_RABK,        my_forward_slash,
+                                  _______, _______, _______, _______, MO(_RAISE), _______, KC_NO,       _______,    MO(_LOWER),  _______, _______, _______
+                                  ),
+
+
 [_RAISE] = LAYOUT_ortho_4x12(
                               LSFT(KC_TAB),    _______,          my_raise_w,  KC_END,         EMACS_BUFFER_REVERT,       _______, _______, my_raise_y, my_raise_u,           my_raise_i,           my_raise_o,           my_raise_p,
                               _______, my_raise_a, my_raise_s,   my_raise_d, my_raise_f,  OSL(_MACROS), raise_backspace,       my_raise_h,         my_raise_j,           my_raise_k,           my_raise_l,           raise_semi,
-                              _______, _______, _______,_______,   _______,          _______, KC_INSERT,     my_raise_n,           my_raise_m,           my_raise_comma,         KC_3,           raise_slash,
+                              SHIFTLOCK_LAYER_ACTIVATE, _______, _______,_______,   _______,          _______, KC_INSERT,     my_raise_n,           my_raise_m,           my_raise_comma,         KC_3,           raise_slash,
                               SYSTEM_LAYER_ACTIVATE, _______, _______,        _______,        _______, _______,  lower_right_of_super,      my_space,   raise_key_4_9,       raise_backspace,  _______,         TO(_BASE)
 
                               ),
@@ -94,8 +95,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                 ),
 
 [_SA] = LAYOUT_ortho_4x12(
-                           SHIFTLOCK_LAYER_DEACTIVATE, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
-                           SHIFTLOCK_LAYER_DEACTIVATE, _______, KC_LEFT, _______, KC_RIGHT, _______,   KC_DELETE, _______, _______, _______, _______, _______,
+                           ESC_THEN_BASE_LAYER, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
+                           ESC_THEN_BASE_LAYER, _______, KC_LEFT, _______, KC_RIGHT, _______,   KC_DELETE, _______, _______, _______, _______, _______,
                            _______, _______, _______, _______, WEB_SAVE_FILE_UNDER_CURSOR, _______, _______, _______, _______, _______, _______, _______,
                            _______, _______, _______, _______,    MO(_MOUSE), _______, _______, _______,    _______, _______, _______, _______
 
@@ -121,16 +122,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                               _______, adhoc_set_hotkey, _______, _______,    _______, _______, _______, _______,    LALT(KC_9), LALT(KC_8), LSFT(KC_TAB), KC_TAB
                               ),
 
-
-
-
-// 8
-[_SHIFTLOCK] = LAYOUT_ortho_4x12(
-                                  SHIFTLOCK_LAYER_DEACTIVATE,   LSFT(KC_Q),     LSFT(KC_W),     LSFT(KC_E),     LSFT(KC_R),     LSFT(KC_T), _______,    LSFT(KC_Y),     LSFT(KC_U),     my_cap_i,     my_cap_o,     my_cap_p,
-                                  ESC_THEN_BASE_LAYER,          LSFT(KC_A),     LSFT(KC_S),     LSFT(KC_D),     LSFT(KC_F),     LSFT(KC_G), _______,    my_cap_h,     my_cap_j,     my_cap_k,     my_cap_l,     TD(DANCE_55),
-                                  SHIFTLOCK_LAYER_DEACTIVATE,          LSFT(KC_Z),     LSFT(KC_X),     LSFT(KC_C),     LSFT(KC_V),     LSFT(KC_B), _______,   LSFT(KC_N),     my_cap_m,     KC_LABK,        KC_RABK,        my_forward_slash,
-                                  _______, _______, _______, _______, _______, _______, KC_NO,       _______,    LOWER,  _______, _______, _______
-                                  ),
 
 
 // 12
@@ -166,10 +157,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // 5
 [_SYSTEM] = LAYOUT_ortho_4x12(
-                               SYSTEM_LAYER_DEACTIVATE, _______, _______, _______, _______,     _______, _______, KC_PSTE, KC_AGIN, KC_NO, _______, QK_BOOT,
+                               SYSTEM_LAYER_DEACTIVATE, _______, _______, _______, _______,     _______, CYCLE_ACTIVE_K74_FN, KC_PSTE, KC_AGIN, QK_DEBUG_TOGGLE, QK_CLEAR_EEPROM, QK_BOOTLOADER,
                                _______, _______,_______, _______, _______, _______, _______, _______, KC_AUDIO_VOL_DOWN, KC_AUDIO_VOL_UP, CYCLE_DROP_ANIMATIONS, DB_TOGG,
                                _______, _______ , _______, _______, _______, _______,   _______, _______,  KC_AUDIO_MUTE, _______, _______, _______,
                                SYSTEM_LAYER_DEACTIVATE, _______, _______, _______,  _______, _______, _______, _______,   _______, _______, KC_BRIGHTNESS_DOWN,KC_BRIGHTNESS_UP
+
+                               /* SYSTEM_LAYER_DEACTIVATE,   AU_TOG,         MU_MOD,         MU_TOG,         _______, RGB_SPD,        RGB_SPI,        RGB_SAD,        RGB_SAI,        _______, WEBUSB_PAIR,    RESET, */
+                               /* RGB_MODE_PLAIN, RGB_MODE_SNAKE,  RGB_MODE_BREATHE, RGB_MODE_RAINBOW, _______, RGB_HUD,        RGB_HUI,        RGB_VAD,        RGB_VAI,        _______, KC_MEDIA_STOP,  _______, */
+                               /* KC_ASTG, KC_ASON, KC_ASOFF, RGBLIGHT_HUE_STEP, _______, _______,      _______, RGB_MOD,        _______, KC_MEDIA_PREV_TRACK,KC_MEDIA_PLAY_PAUSE,KC_MEDIA_NEXT_TRACK, */
+                               /* CYCLE_FAVE_ANIMATIONS, TO(_LAYER13), TOGGLE_BREATHING, _______, _______, _______, KC_NO,          KC_BRIGHTNESS_DOWN,KC_BRIGHTNESS_UP,KC_AUDIO_VOL_DOWN,KC_AUDIO_VOL_UP,KC_AUDIO_MUTE */
                                ),
 
 // 6
@@ -189,7 +185,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                               ),
 
 [_ADHOC_SET_HOTKEY] = LAYOUT_ortho_4x12(
-                              _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
+                              _______, _______, _______, _______, _______, _______,    WINDOW_ALWAYS_ON_TOP, _______, _______, _______, _______, _______,
                               _______, _______, _______, _______, _______, _______,   _______, _______, _______, _______, _______, _______,
                               _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
                               _______, _______, _______, _______,    _______, _______, _______, _______,    _______, _______, _______, _______
@@ -200,7 +196,32 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   };
 
+#include "oled.c"
 
+/* bool oled_task_user(void) { */
+/*   // Host Keyboard Layer Status */
+/*   oled_write_P(PSTR("Layer: "), false); */
 
-#include "../../../../common/combos.c"
-/* #include "../../../../common/autoshift.c" */
+/*   switch (get_highest_layer(layer_state)) { */
+/*   case _BASE: */
+/*     oled_write_P(PSTR("Default\n"), false); */
+/*     break; */
+/*   case _RAISE: */
+/*     oled_write_P(PSTR("FN\n"), false); */
+/*     break; */
+/*   case _LOWER: */
+/*     oled_write_P(PSTR("ADJ\n"), false); */
+/*     break; */
+/*   default: */
+/*     // Or use the write_ln shortcut over adding '\n' to the end of your string */
+/*     oled_write_ln_P(PSTR("Undefined"), false); */
+/*   } */
+
+/*   // Host Keyboard LED Status */
+/*   led_t led_state = host_keyboard_led_state(); */
+/*   oled_write_P(led_state.num_lock ? PSTR("NUM ") : PSTR("    "), false); */
+/*   oled_write_P(led_state.caps_lock ? PSTR("CAP ") : PSTR("    "), false); */
+/*   oled_write_P(led_state.scroll_lock ? PSTR("SCR ") : PSTR("    "), false); */
+    
+/*   return false; */
+/* } */
