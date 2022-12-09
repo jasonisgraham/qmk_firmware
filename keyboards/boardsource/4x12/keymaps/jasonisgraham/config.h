@@ -1,5 +1,5 @@
 #pragma once
-#define I2C_DRIVER I2CD1
+#define I2C_DRIVER I2CD2
 
 #define AUTO_SHIFT_REPEAT
 #define MOUSEKEY_MAX_SPEED 2
