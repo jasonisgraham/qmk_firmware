@@ -3263,7 +3263,9 @@ void DANCE_LEVEL3_APL_reset(qk_tap_dance_state_t *state, void *user_data) {
   dance_state[84].step = 0;
   unregister_code16(KC_RGUI);
   unregister_code16(level3);
+#ifdef RGBLIGHT_MODE
   rgblight_disable();
+#endif
 }
 
 

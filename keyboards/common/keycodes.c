@@ -298,7 +298,7 @@ void cycle_active_k74_fn(void) {
     dprintf("active_k74_fn: %u", active_k74_fn);
   }
 }
-  ;
+;
 
 static bool do_echo = false;
 void toggle_echo(void) {
