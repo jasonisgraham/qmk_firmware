@@ -26,7 +26,6 @@ enum planck_layers {
 /* #include "../../../common/config.h" */
 #undef UNICODE_SELECTED_MODES
 #define UNICODE_SELECTED_MODES UC_LNX
-#include "../quantum/keymap_extras/keymap_bepo.h"
 
 #include "../../../../common/key_overrides.c"
 /* #include "../../../common/drop_colors.c" */
@@ -34,7 +33,7 @@ enum planck_layers {
 #include "../../../../common/drop_tapdance.c"
 /* #include "../../../common/drop_animations.c" */
 /* #include "../../../common/encoder.c" */
-#include "../../../../common/layer_lock.h"
+/* #include "../../../../common/layer_lock.h" */
 
 /* #include "encoder.h" */
 /* const int row0[10]; */
@@ -167,15 +166,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // 5
 [_SYSTEM] = LAYOUT_ortho_4x12(
-                               SYSTEM_LAYER_DEACTIVATE, _______, _______, _______, _______,     _______, _______, KC_PSTE, KC_AGIN, DEBUG, EEPROM_RESET, RESET,
+                               SYSTEM_LAYER_DEACTIVATE, _______, _______, _______, _______,     _______, _______, KC_PSTE, KC_AGIN, KC_NO, _______, QK_BOOT,
                                _______, _______,_______, _______, _______, _______, _______, _______, KC_AUDIO_VOL_DOWN, KC_AUDIO_VOL_UP, CYCLE_DROP_ANIMATIONS, DB_TOGG,
                                _______, _______ , _______, _______, _______, _______,   _______, _______,  KC_AUDIO_MUTE, _______, _______, _______,
                                SYSTEM_LAYER_DEACTIVATE, _______, _______, _______,  _______, _______, _______, _______,   _______, _______, KC_BRIGHTNESS_DOWN,KC_BRIGHTNESS_UP
-
-                               /* SYSTEM_LAYER_DEACTIVATE,   AU_TOG,         MU_MOD,         MU_TOG,         _______, RGB_SPD,        RGB_SPI,        RGB_SAD,        RGB_SAI,        _______, WEBUSB_PAIR,    RESET, */
-                               /* RGB_MODE_PLAIN, RGB_MODE_SNAKE,  RGB_MODE_BREATHE, RGB_MODE_RAINBOW, _______, RGB_HUD,        RGB_HUI,        RGB_VAD,        RGB_VAI,        _______, KC_MEDIA_STOP,  _______, */
-                               /* KC_ASTG, KC_ASON, KC_ASOFF, RGBLIGHT_HUE_STEP, _______, _______,      _______, RGB_MOD,        _______, KC_MEDIA_PREV_TRACK,KC_MEDIA_PLAY_PAUSE,KC_MEDIA_NEXT_TRACK, */
-                               /* CYCLE_FAVE_ANIMATIONS, TO(_LAYER13), TOGGLE_BREATHING, _______, _______, _______, KC_NO,          KC_BRIGHTNESS_DOWN,KC_BRIGHTNESS_UP,KC_AUDIO_VOL_DOWN,KC_AUDIO_VOL_UP,KC_AUDIO_MUTE */
                                ),
 
 // 6
@@ -209,4 +203,4 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 #include "../../../../common/combos.c"
-#include "../../../../common/autoshift.c"
+/* #include "../../../../common/autoshift.c" */
