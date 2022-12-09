@@ -113,7 +113,6 @@
 #define my_j TD(DANCE_J)
 #define my_k TD(DANCE_K)
 #define my_l TD(DANCE_L)
-/* #define my_lctl TD(DANCE_ESC_CTRL) // MT(MOD_RCTL, KC_ESCAPE) */
 #define my_lctl  MT(MOD_RCTL, KC_ESCAPE)
 #define esc_ctrl my_lctl
 #define my_left_shift TD(DANCE_SHIFT)
@@ -126,9 +125,10 @@
 #define my_lower_f  KC_F8
 #define my_lower_g KC_DELETE
 #define my_lower_i KC_PGUP
+#define my_lower_h KC_LEFT
 #define my_lower_j KC_DOWN
 #define my_lower_k KC_UP
-#define my_lower_l KC_RIGHT
+#define my_lower_l DANCE_RIGHT_OR_END
 #define my_lower_m _______
 #define my_lower_n _______
 #define my_lower_o KC_END
