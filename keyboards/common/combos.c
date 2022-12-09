@@ -32,7 +32,7 @@ combo_t key_combos[COMBO_COUNT] = {
 
                                    COMBO(combo_backspace_g, KC_DELETE),
                                    COMBO(combo_backspace_h, TD(WWW_BACK_FORWARD)),
-                                   /* COMBO(combo_m_period, KC_COLN), */
+                                   COMBO(combo_m_period, KC_COLN),
 
                                    /* COMBO(combo_shift_alt, AUDIO_LAYER_HOLD), */
                                    COMBO(combo_LOWER_o_p, AUTOSHIFT_TOGGLE),
@@ -53,7 +53,7 @@ combo_t key_combos[COMBO_COUNT] = {
 
                                    // layers
                                    COMBO(combo_r_g, TD(DANCE_F5)),
-                                   /* COMBO(combo_grave_q, TO(_AUDIO)), */
+                                   COMBO(combo_grave_q, QK_CAPS_WORD_TOGGLE),
                                    COMBO(combo_f_g, OSL(_MACROS)),
                                    COMBO(combo_s_d, OSL(_WINDOWS)),
                                    COMBO(combo_w_e, OSL(_WINMOVE)),

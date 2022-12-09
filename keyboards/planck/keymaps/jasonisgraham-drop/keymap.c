@@ -26,29 +26,25 @@ enum planck_layers {
 /* #include "../../../common/config.h" */
 #undef UNICODE_SELECTED_MODES
 #define UNICODE_SELECTED_MODES UC_LNX
-#include "../quantum/keymap_extras/keymap_bepo.h"
 
 #include "../../../common/key_overrides.c"
 #include "../../../common/drop_colors.c"
 #include "../../../common/keycodes.c"
 #include "../../../common/drop_tapdance.c"
+#include "../../../common/tapdance_keycodes.c"
+
+#include "../../../common/combos.c"
+#include "../../../common/autoshift.c"
 /* #include "../../../common/drop_animations.c" */
-#include "../../../common/encoder.c"
+/* #include "../../../common/encoder.c" */
 #include "../../../common/layer_lock.h"
 
-#include "encoder.h"
+/* #include "encoder.h" */
 /* const int row0[10]; */
 /* #define row0  { top_left } */
 /* const int row0[] = { top_left, top_left,    my_q,    my_w,    my_e,    my_r,   my_t, backspace ,    my_y,           my_u,    my_i,    my_o,     my_p}; */
 /* int row0[10] = {}; */
 
-#define key_1_7 top_alpha_mid_column
-#define key_2_7 backspace
-#define key_3_7 KC_ENTER
-
-/* super_meta_hyper */
-
-#define EMACS_RECENTER_ON_DEFUN RCTL(LALT(KC_Z))
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -164,7 +160,7 @@ _______, KC_F5,          KC_F6,          KC_F7,          KC_F8,          my_lowe
 
 // 5
 [_SYSTEM] = LAYOUT_planck_grid(
-                               SYSTEM_LAYER_DEACTIVATE, _______, _______, _______, _______,     _______, CYCLE_ACTIVE_K74_FN, KC_PSTE, KC_AGIN, DEBUG, EEPROM_RESET, RESET,
+                               SYSTEM_LAYER_DEACTIVATE, _______, _______, _______, _______,     _______, CYCLE_ACTIVE_K74_FN, KC_PSTE, KC_AGIN, QK_DEBUG_TOGGLE, QK_CLEAR_EEPROM, QK_BOOTLOADER,
                                _______, _______,_______, _______, _______, _______, _______, _______, KC_AUDIO_VOL_DOWN, KC_AUDIO_VOL_UP, CYCLE_DROP_ANIMATIONS, DB_TOGG,
                                _______, _______ , _______, _______, _______, _______,   _______, _______,  KC_AUDIO_MUTE, _______, _______, _______,
                                SYSTEM_LAYER_DEACTIVATE, _______, _______, _______,  _______, _______, _______, _______,   _______, _______, KC_BRIGHTNESS_DOWN,KC_BRIGHTNESS_UP
@@ -204,6 +200,3 @@ _______, KC_F5,          KC_F6,          KC_F7,          KC_F8,          my_lowe
   };
 
 
-
-#include "../../../common/combos.c"
-#include "../../../common/autoshift.c"

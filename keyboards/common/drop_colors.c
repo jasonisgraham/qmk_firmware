@@ -1,3 +1,4 @@
+#ifdef RGBLIGHT_ENABLE
 #include "user_song_list.c"
 static int DROP_DEFAULT_ANIMATION = 0;//RGBLIGHT_MODE_STATIC_LIGHT;
 /* static int DROP_DEFAULT_ANIMATION = DROP_DEFAULT_ANIMATION; // 2; // RGBLIGHT_MODE_BREATHING; */
@@ -200,3 +201,5 @@ layer_state_t layer_state_set_user(layer_state_t state) {
   }
   return state;
 }
+
+#endif
