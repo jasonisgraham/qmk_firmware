@@ -3,6 +3,12 @@
 #include "version.h"
 /* #include "muse.h" */
 
+#define KC_LBRACKET KC_LBRC
+#define KC_RBRACKET KC_RBRC
+#define KC_SCOLON KC_SCLN
+#define KC_PGDOWN KC_PGDN
+#define KC_PSCREEN KC_PSCR
+
 /* #include "musical_notes.h" */
 #include "layer_lock.h"
 #include "../../quantum/hacks.c"
@@ -53,6 +59,8 @@
 /* #define all_mods TD (DANCE_ALL_MODS) */
 #define alt TD(DANCE_ALT)
 #define alt_tab ALT_TAB
+#define KC_BSPACE KC_BACKSPACE
+#define KC_BSLASH KC_BACKSLASH
 #define backspace KC_BSPACE
 #define lower_backspace TD(WWW_BACK_FORWARD)
 #define raise_backspace KC_DEL
@@ -238,7 +246,7 @@ void cycle_active_k74_fn(void) {
     dprintf("active_k74_fn: %u", active_k74_fn);
   }
 }
-  ;
+;
 
 static bool do_echo = false;
 void toggle_echo(void) {
@@ -373,86 +381,86 @@ enum custom_keycodes {
                       SA_LAYER_ACTIVATE,
                       THREAD_FIRST,
 
-  APL_DIAMOND,
-  APL_QUAD_DIAMOND,
-  APL_DIAERESIS,
-  APL_IBEAM,
-  APL_MACRON,
-  APL_DEL_TILDE,
-  APL_LESS,
-  APL_DEL_STILE,
-  APL_LESS_EQUAL,
-  APL_DELTA_STILE,
-  APL_EQUALS,
-  APL_CIRCLE_STILE,
-  APL_GREATER_EQUAL,
-  APL_CIRCLE_BACKSLASH,
-  APL_GREATER,
-  APL_CIRCLED_MINUS,
-  APL_NOT_EQUAL,
-  APL_CIRCLE_STAR,
-  APL_OR,
-  APL_DOWN_CARET_TILDE,
-  APL_AND,
-  APL_UP_CARET_TILDE,
-  APL_MULT,
-  APL_EXCL,
-  APL_DIVISION,
-  APL_QUAD_DIVIDE,
-  APL_QUESTION_MARK,
-  APL_OMEGA,
-  APL_OMEGA_UNDERBAR,
-  APL_EPSILON,
-  APL_SMALL_ELEMENT,
-  APL_EPSILON_UNDERBAR,
-  APL_RHO,
-  APL_TILDE,
-  APL_TILDE_DIAERESIS,
-  APL_UPWARDS_ARROW,
-  APL_DOWNWARDS_ARROW,
-  APL_IOTA,
-  APL_IOTA_UNDERBAR,
-  APL_WHITE_CIRCLE,
-  APL_CIRCLE_DIAERESIS,
-  APL_STAR_OPERATOR,
-  APL_STAR_DIAERESIS,
-  APL_LEFT_ARROW,
-  APL_QUOTE_QUAD,
-  APL_RIGHT_ARROW,
-  APL_ZILDE,
-  APL_ALPHA,
-  APL_ALPHA_UNDERBAR,
-  APL_LEFT_CEILING,
-  APL_LEFT_FLOOR,
-  APL_LOW_LINE,
-  APL_NABLA,
-  APL_INCREMENT,
-  APL_DELTA_UNDERBAR,
-  APL_RING_OPERATOR,
-  APL_JOT_DIAERESIS,
-  APL_APOSTROPHE,
-  APL_QUAD_EQUAL,
-  APL_QUAD,
-  APL_SQUISH_QUAD,
-  APL_DOWN_TACK_JOT,
-  APL_IDENTICAL,
-  APL_UP_TACK_JOT,
-  APL_NOT_IDENTICAL,
-  APL_RIGHT_TACK,
-  APL_LEFT_TACK,
-  APL_SUBSET,
-  APL_SUPERSET,
-  APL_CHI,
-  APL_INTERSECTION,
-  APL_UNION,
-  APL_UP_TACK,
-  APL_DOWN_TACK,
-  APL_VERTICAL_LINE,
-  APL_UP_SHOE_JOT,
-  APL_COMMA_BAR,
-  APL_BACKSLASH_BAR,
-  APL_SLASH_BAR,
-  APL_QUAD_COLON,
+                      APL_DIAMOND,
+                      APL_QUAD_DIAMOND,
+                      APL_DIAERESIS,
+                      APL_IBEAM,
+                      APL_MACRON,
+                      APL_DEL_TILDE,
+                      APL_LESS,
+                      APL_DEL_STILE,
+                      APL_LESS_EQUAL,
+                      APL_DELTA_STILE,
+                      APL_EQUALS,
+                      APL_CIRCLE_STILE,
+                      APL_GREATER_EQUAL,
+                      APL_CIRCLE_BACKSLASH,
+                      APL_GREATER,
+                      APL_CIRCLED_MINUS,
+                      APL_NOT_EQUAL,
+                      APL_CIRCLE_STAR,
+                      APL_OR,
+                      APL_DOWN_CARET_TILDE,
+                      APL_AND,
+                      APL_UP_CARET_TILDE,
+                      APL_MULT,
+                      APL_EXCL,
+                      APL_DIVISION,
+                      APL_QUAD_DIVIDE,
+                      APL_QUESTION_MARK,
+                      APL_OMEGA,
+                      APL_OMEGA_UNDERBAR,
+                      APL_EPSILON,
+                      APL_SMALL_ELEMENT,
+                      APL_EPSILON_UNDERBAR,
+                      APL_RHO,
+                      APL_TILDE,
+                      APL_TILDE_DIAERESIS,
+                      APL_UPWARDS_ARROW,
+                      APL_DOWNWARDS_ARROW,
+                      APL_IOTA,
+                      APL_IOTA_UNDERBAR,
+                      APL_WHITE_CIRCLE,
+                      APL_CIRCLE_DIAERESIS,
+                      APL_STAR_OPERATOR,
+                      APL_STAR_DIAERESIS,
+                      APL_LEFT_ARROW,
+                      APL_QUOTE_QUAD,
+                      APL_RIGHT_ARROW,
+                      APL_ZILDE,
+                      APL_ALPHA,
+                      APL_ALPHA_UNDERBAR,
+                      APL_LEFT_CEILING,
+                      APL_LEFT_FLOOR,
+                      APL_LOW_LINE,
+                      APL_NABLA,
+                      APL_INCREMENT,
+                      APL_DELTA_UNDERBAR,
+                      APL_RING_OPERATOR,
+                      APL_JOT_DIAERESIS,
+                      APL_APOSTROPHE,
+                      APL_QUAD_EQUAL,
+                      APL_QUAD,
+                      APL_SQUISH_QUAD,
+                      APL_DOWN_TACK_JOT,
+                      APL_IDENTICAL,
+                      APL_UP_TACK_JOT,
+                      APL_NOT_IDENTICAL,
+                      APL_RIGHT_TACK,
+                      APL_LEFT_TACK,
+                      APL_SUBSET,
+                      APL_SUPERSET,
+                      APL_CHI,
+                      APL_INTERSECTION,
+                      APL_UNION,
+                      APL_UP_TACK,
+                      APL_DOWN_TACK,
+                      APL_VERTICAL_LINE,
+                      APL_UP_SHOE_JOT,
+                      APL_COMMA_BAR,
+                      APL_BACKSLASH_BAR,
+                      APL_SLASH_BAR,
+                      APL_QUAD_COLON,
 
 };
 
@@ -487,13 +495,17 @@ void matrix_scan_user(void) {
       // global no ext
       if (open_paren_level <= 2) {
         open_paren_level++;
+#ifdef AUDIO_ENABLE
         PLAY_SONG(__a6);
+#endif
       }
 
     } else if (timer_elapsed(open_paren_timer) > (open_paren_level_duration * 1)) {
       if (open_paren_level <= 1) {
         open_paren_level++;
+#ifdef AUDIO_ENABLE
         PLAY_SONG(__g6);
+#endif
       }
 
     } else {
@@ -511,13 +523,17 @@ void matrix_scan_user(void) {
       // global no ext
       if (closed_paren_level <= 2) {
         closed_paren_level++;
+#ifdef AUDIO_ENABLE
         PLAY_SONG(__a6);
+#endif
       }
 
     } else if (timer_elapsed(closed_paren_timer) > (closed_paren_level_duration * 1)) {
       if (closed_paren_level <= 1) {
         closed_paren_level++;
+#ifdef AUDIO_ENABLE
         PLAY_SONG(__g6);
+#endif
       }
 
     } else {
@@ -533,27 +549,35 @@ void matrix_scan_user(void) {
     if (timer_elapsed(fasd_timer) > (fasd_level_duration * 3)) {
       if (fasd_level <= 3) {
         fasd_level++;
+#ifdef AUDIO_ENABLE
         PLAY_SONG(__as6);
+#endif
       }
 
     } else if (timer_elapsed(fasd_timer) > (fasd_level_duration * 2)) {
       // global no ext
       if (fasd_level <= 2) {
         fasd_level++;
+#ifdef AUDIO_ENABLE
         PLAY_SONG(__a6);
+#endif
       }
 
     } else if (timer_elapsed(fasd_timer) > (fasd_level_duration * 1)) {
       if (fasd_level <= 1) {
         fasd_level++;
+#ifdef AUDIO_ENABLE
         PLAY_SONG(__g6);
+#endif
       }
 
     } else {
       if (fasd_level <= 0) {
         // project level current ext
         fasd_level++;
+#ifdef AUDIO_ENABLE
         /* PLAY_SONG(__e6); */
+#endif
       }
     }
     return;
@@ -663,11 +687,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #ifdef RGBLIGHT_MODE
       rgblight_mode(RGBLIGHT_MODE_SNAKE);
 #endif
-
-
-/* #ifdef AUDIO_ENABLE */
-/*     PLAY_SONG(caps_lock_on_sound); */
-/* #endif */
     }
     return false;
   }
@@ -677,13 +696,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   case level3:
     if (record->event.pressed) {
+#ifdef RGBLIGHT_MODE
       rgblight_enable_noeeprom();
       rgblight_mode(RGBLIGHT_MODE_SNAKE);
       rgblight_sethsv_noeeprom(HSV_PINK);
+#endif
       register_code16(KC_KP_ENTER);
     } else {
       unregister_code16(KC_KP_ENTER);
+#ifdef RGBLIGHT_MODE
       rgblight_disable();
+#endif
 
     }
 
@@ -695,21 +718,27 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
       switch (active_k74_fn) {
       case K74_MO_LEVEL3:
+#ifdef RGBLIGHT_MODE
         rgblight_enable_noeeprom();
         rgblight_mode(RGBLIGHT_MODE_SNAKE);
         rgblight_sethsv_noeeprom(HSV_PINK);
+#endif
         register_code16(KC_KP_ENTER);
         break;
       case K74_MO_APL:
+#ifdef RGBLIGHT_MODE
         rgblight_mode(RGBLIGHT_MODE_SNAKE);
         rgblight_sethsv_noeeprom(HSV_WHITE);
+#endif
         register_code16(KEYBOARD_LAYOUT_HOLD_KEY);
         break;
       }
     } else {
       unregister_code16(KC_KP_ENTER);
       unregister_code16(KEYBOARD_LAYOUT_HOLD_KEY);
+#ifdef RGBLIGHT_MODE
       rgblight_disable();
+#endif
     }
 
     break;
@@ -771,7 +800,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       return false;
 
     }
-break;
+    break;
 
   case APL_AND:
     if (record->event.pressed) {
@@ -783,7 +812,7 @@ break;
 
 
     }
-break;
+    break;
 
   case APL_APOSTROPHE:
     if (record->event.pressed) {
@@ -795,7 +824,7 @@ break;
 
 
     }
-break;
+    break;
 
   case APL_ALPHA_UNDERBAR:
     if (record->event.pressed) {
@@ -807,7 +836,7 @@ break;
 
 
     }
-break;
+    break;
 
   case APL_BACKSLASH_BAR:
     if (record->event.pressed) {
@@ -819,7 +848,7 @@ break;
 
 
     }
-break;
+    break;
 
   case APL_COMMA_BAR:
     if (record->event.pressed) {
@@ -831,7 +860,7 @@ break;
 
 
     }
-break;
+    break;
 
   case APL_CIRCLE_DIAERESIS:
     if (record->event.pressed) {
@@ -843,7 +872,7 @@ break;
 
 
     }
-break;
+    break;
 
   case APL_CHI:
     if (record->event.pressed) {
@@ -855,7 +884,7 @@ break;
 
 
     }
-break;
+    break;
 
   case APL_CIRCLE_BACKSLASH:
     if (record->event.pressed) {
@@ -867,7 +896,7 @@ break;
 
 
     }
-break;
+    break;
 
   case APL_CIRCLE_STILE:
     if (record->event.pressed) {
@@ -879,7 +908,7 @@ break;
 
 
     }
-break;
+    break;
 
   case APL_CIRCLED_MINUS:
     if (record->event.pressed) {
@@ -891,7 +920,7 @@ break;
 
 
     }
-break;
+    break;
 
   case APL_CIRCLE_STAR:
     if (record->event.pressed) {
@@ -903,7 +932,7 @@ break;
 
 
     }
-break;
+    break;
 
   case APL_DOWNWARDS_ARROW:
     if (record->event.pressed) {
@@ -915,7 +944,7 @@ break;
 
 
     }
-break;
+    break;
 
 
 
@@ -1726,7 +1755,7 @@ break;
       if (open_paren_level >= 3) {
         tap_code16(KC_LCBR);
       } else if (open_paren_level >= 2) {
-        tap_code16(KC_LBRACKET);
+        tap_code16(KC_LBRC);
       } else {
         tap_code16(KC_LPRN);
       }
@@ -1745,7 +1774,7 @@ break;
       if (closed_paren_level >= 3) {
         tap_code16(KC_RCBR);
       } else if (closed_paren_level >= 2) {
-        tap_code16(KC_RBRACKET);
+        tap_code16(KC_RBRC);
       } else {
         tap_code16(KC_RPRN);
       }
@@ -1765,34 +1794,34 @@ break;
     break;
 
 
-#ifdef RGBLIGHT_ENABLE
   case TOGGLE_BREATHING:
     if (record->event.pressed) {
-      if (do_breathing) {
-        do_breathing = false;
-      } else {
-        do_breathing = true;
-      }
     }
     break;
 
 
   case RGBLIGHT_TOGGLE:
     if (record->event.pressed) {
+#ifdef RGBLIGHT_MODE
       rgblight_toggle();
+#endif
     }
     break;
 
   case RESET_ANIMATION:
     if (record->event.pressed) {
+#ifdef RGBLIGHT_MODE
       DROP_DEFAULT_ANIMATION = 0;
       rgblight_mode(DROP_DEFAULT_ANIMATION);
+#endif
     }
     break;
 
   case RGBLIGHT_STEP:
     if (record->event.pressed) {
+#ifdef RGBLIGHT_MODE
       rgblight_step();
+#endif
     }
     break;
 
@@ -1801,6 +1830,7 @@ break;
 #ifdef AUDIO_ENABLE
       PLAY_SONG(scroll_lock_on_sound);
 #endif
+#ifdef RGBLIGHT_MODE
       cycle_rgblight_step();
       /* static char s[10]; */
       /* itoa(k, s, 10); */
@@ -1829,9 +1859,9 @@ break;
 
   case CYCLE_ACTIVE_K74_FN:
     if (record->event.pressed) {
-/* #ifdef AUDIO_ENABLE */
+#ifdef AUDIO_ENABLE
       PLAY_SONG(mario_mushroom);
-/* #endif */
+#endif
       cycle_active_k74_fn();
     }
     break;
@@ -1869,7 +1899,9 @@ break;
   case SA_LAYER_ACTIVATE:
     if (record->event.pressed) {
       layer_move(_SA);
+#ifdef AUDIO_ENABLE
       PLAY_SONG(zelda_treasure);
+#endif
 #ifdef RGBLIGHT_MODE
       rgblight_mode(RGBLIGHT_MODE_RAINBOW_SWIRL);
 #endif
@@ -1883,7 +1915,9 @@ break;
   case SYSTEM_LAYER_ACTIVATE:
     if (record->event.pressed) {
       layer_move(_SYSTEM);
+#ifdef AUDIO_ENABLE
       PLAY_SONG(scroll_lock_on_sound);
+#endif
 #ifdef RGBLIGHT_MODE
       rgblight_mode(RGBLIGHT_MODE_RAINBOW_SWIRL);
 #endif
@@ -1894,8 +1928,10 @@ break;
 
   case SYSTEM_LAYER_DEACTIVATE:
     if (record->event.pressed) {
+#ifdef AUDIO_ENABLE
       PLAY_SONG(one_up_sound);
       PLAY_SONG(scroll_lock_off_sound);
+#endif
       layer_move(_BASE);
       return false;
     }
@@ -1903,29 +1939,33 @@ break;
 
   case SHIFTLOCK_LAYER_ACTIVATE:
     if (record->event.pressed) {
-/* #ifdef RGBLIGHT_ENABLE */
-/*       rgblight_mode(42); */
-/* #endif */
+      /* #ifdef RGBLIGHT_ENABLE */
+      /*       rgblight_mode(42); */
+      /* #endif */
       layer_move(_SHIFTLOCK);
 #ifdef AUDIO_ENABLE
       PLAY_SONG(caps_lock_on_sound);
 #endif
+#ifdef RGBLIGHT_MODE
       /* rgblight_mode(RGBLIGHT_MODE_RAINBOW_SWIRL); */
+#endif
       return false;
     }
     break;
 
   case SHIFTLOCK_LAYER_DEACTIVATE:
     if (record->event.pressed) {
-/* #ifdef RGBLIGHT_ENABLE */
-/*       apply_fave_animation(); */
-/*       /\* rgblight_mode(42); *\/ */
-/* #endif */
+      /* #ifdef RGBLIGHT_ENABLE */
+      /*       apply_fave_animation(); */
+      /*       /\* rgblight_mode(42); *\/ */
+      /* #endif */
       layer_move(_BASE);
 #ifdef AUDIO_ENABLE
       PLAY_SONG(caps_lock_off_sound);
 #endif
+#ifdef RGBLIGHT_MODE
       /* rgblight_mode(RGBLIGHT_MODE_RAINBOW_SWIRL); */
+#endif
 
       /* return true; */
     }
@@ -2036,8 +2076,8 @@ break;
     break;
 
   case EMACS_YAS_REMOVE_ANON:
-   if (record->event.pressed) {
-     SEND_STRING(SS_TAP(X_ESC) "i(remove #(->> % ");
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_ESC) "i(remove #(->> % ");
     }
     break;
 
@@ -2059,23 +2099,23 @@ break;
     }
     break;
 
-   case EMACS_HELM_OCCUR:
-     if (record->event.pressed) {
-       SEND_STRING(SS_LALT(SS_TAP(X_M)) "so");
-     break;
-     }
+  case EMACS_HELM_OCCUR:
+    if (record->event.pressed) {
+      SEND_STRING(SS_LALT(SS_TAP(X_M)) "so");
+      break;
+    }
 
-   case EMACS_HELM_MARK_RINGS:
-     if (record->event.pressed) {
-       SEND_STRING(SS_LALT(SS_TAP(X_M)) "rm");
-       break;
-     }
+  case EMACS_HELM_MARK_RINGS:
+    if (record->event.pressed) {
+      SEND_STRING(SS_LALT(SS_TAP(X_M)) "rm");
+      break;
+    }
 
   case CIDER_RUN_PREV_COMMAND:
-     if (record->event.pressed) {
-       SEND_STRING(SS_RCTL(SS_TAP(X_P)) SS_TAP(X_ENTER));
-       break;
-     }
+    if (record->event.pressed) {
+      SEND_STRING(SS_RCTL(SS_TAP(X_P)) SS_TAP(X_ENTER));
+      break;
+    }
 
   case EMACS_DESC_KEY:
     if (record->event.pressed) {
@@ -2109,10 +2149,10 @@ break;
     break;
 
   case TEMP_TEXT:
-      if (record->event.pressed) {
-        /* SEND_STRING("blsIB3Rx0R2tQmW0b9B9bDu4EOntt1i8%28*uE%OOC8FCfe653xevqd6szziAe$!"); */
-      }
-      break;
+    if (record->event.pressed) {
+      /* SEND_STRING("blsIB3Rx0R2tQmW0b9B9bDu4EOntt1i8%28*uE%OOC8FCfe653xevqd6szziAe$!"); */
+    }
+    break;
 
   case EMACS_BACKWARD_UP:
     if (record->event.pressed) {
@@ -2155,10 +2195,6 @@ break;
 
 
   case CAPS_WORD_TOGGLE:
-    /* if (record->event.pressed) { */
-    /*   caps_word_on(); */
-    /*   PLAY_SONG(caps_lock_on_sound); */
-    /* } */
     break;
 
   case AUTOSHIFT_TOGGLE:
@@ -2231,12 +2267,6 @@ break;
     }
     break;
 
-  case TMUX_COPY_MODE:
-    if (record->event.pressed) {
-      SEND_STRING(SS_LCTL(SS_TAP(X_V)) SS_TAP(X_LBRACKET));
-    }
-    break;
-
   case TMUX_CLOSE:
     if (record->event.pressed) {
       SEND_STRING(SS_LCTL(SS_TAP(X_V)) SS_TAP(X_X));
@@ -2276,7 +2306,6 @@ break;
   case LAYER_LOWER_HOLD:
     if (record->event.pressed) {
 #ifdef AUDIO_ENABLE
-      /* PLAY_SONG(minor_sound); */
       PLAY_SONG(caps_lock_on_sound);
 #endif
       layer_move(_LOWER);
@@ -2287,7 +2316,6 @@ break;
       /* rgblight_mode(18); */
       rgblight_mode(RGBLIGHT_MODE_SNAKE);
       /* rgblight_sethsv_noeeprom(HSV_PURPLE); */
-
 #endif
       return false;
 
@@ -2296,8 +2324,10 @@ break;
 
   case LAYER_MOUSE_HOLD:
     if (record->event.pressed) {
+#ifdef AUDIO_ENABLE
       /* PLAY_SONG(minor_sound); */
       layer_move(_MOUSE);
+#endif
 
 #ifdef RGBLIGHT_MODE
       /* rgblight_mode(RGBLIGHT_MODE_SNAKE); */
@@ -2316,7 +2346,9 @@ break;
     /* case LAYER_COLORS_HOLD: */
     /*   if (record->event.pressed) { */
     /*     layer_move(_COLORS); */
+#ifdef AUDIO_ENABLE
     /*     PLAY_SONG(num_lock_on_sound); */
+#endif
 
     /*   } */
     /*   break; */

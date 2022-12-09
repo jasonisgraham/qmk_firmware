@@ -3,7 +3,9 @@
 #undef UNICODE_SELECTED_MODES
 #define UNICODE_SELECTED_MODES UC_LNX
 
-#include "song_list.h"
+#ifdef AUDIO_ENABLE
+  #include "song_list.h"
+#endif
 /* #include "user_song_list.c" */
 #include "config_common.h"
 
