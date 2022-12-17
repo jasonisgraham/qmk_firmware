@@ -91,7 +91,7 @@ enum tap_dance_codes {
                       DANCE_WINDOWS_I,
                       DANCE_LEFT_OR_HOME,
                       DANCE_WINDOWS_O,
-                      DANCE_WINDOWS_P,
+                      DANCE_MICROPHONE,
 };
 
 typedef struct {
@@ -3414,22 +3414,32 @@ void dance_windows_o_reset(qk_tap_dance_state_t *state, void *user_data) {
 
 
 
-void on_dance_windows_p(qk_tap_dance_state_t *state, void *user_data) {}
+void on_dance_microphone(qk_tap_dance_state_t *state, void *user_data) {}
 
-void dance_windows_p_finished(qk_tap_dance_state_t *state, void *user_data) {
+void dance_microphone_finished(qk_tap_dance_state_t *state, void *user_data) {
   dance_state[89].step = dance_step(state);
   switch (dance_state[89].step) {
   case HOLD:
-    tap_code16(KC_0);
-    case TAP_INTERRUPTED: case TAP:
-    tap_code16(KC_P);
+    tap_code16(on_microphone);
+    break;
+  default:
+    tap_code16(toggle_microphone);
     break;
   }
 }
 
-void dance_windows_p_reset(qk_tap_dance_state_t *state, void *user_data) {
+void dance_microphone_reset(qk_tap_dance_state_t *state, void *user_data) {
   wait_ms(10);
+  int step = dance_state[89].step;
+  printf("reset count: %u, pressed: %u, interrupted: %u: step: %u\n", state->count, state->pressed, state->interrupted, step);
+  switch (dance_state[89].step) {
+  case HOLD:
+    /* unregister_code16(on_microphone); */
+    tap_code16(off_microphone);
+    break;
+  }
   dance_state[89].step = 0;
+
 }
 
 
@@ -3551,6 +3561,6 @@ qk_tap_dance_action_t tap_dance_actions[] = {
 
                                              [DANCE_WINDOWS_I] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_windows_i, dance_windows_i_finished, dance_windows_i_reset),
                                              [DANCE_WINDOWS_O] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_windows_o, dance_windows_o_finished, dance_windows_o_reset),
-                                             [DANCE_WINDOWS_P] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_windows_p, dance_windows_p_finished, dance_windows_p_reset),
+                                             [DANCE_MICROPHONE] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_microphone, dance_microphone_finished, dance_microphone_reset),
 
 };
