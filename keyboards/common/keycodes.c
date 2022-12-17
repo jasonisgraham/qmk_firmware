@@ -46,7 +46,7 @@
 #define editing_j LALT(LSFT(KC_J))
 #define editing_k LALT(LSFT(KC_K))
 #define editing_l LALT(LSFT(KC_L))
-#define EMACS_LOCCUR RCTL(LALT(LGUI(KC_O)))
+/* #define EMACS_LOCCUR RCTL(LALT(LGUI(KC_O))) */
 #define CTRL_L RCTL(KC_P)
 #define CTRL_N RCTL(KC_N)
 #define ALT_N LALT(KC_N)
@@ -122,7 +122,7 @@
 #define my_lower_comma BROWSER_TAB_PREV
 #define my_lower_d KC_F7
 #define my_lower_f  KC_F8
-#define my_lower_g KC_DELETE
+#define my_lower_g KC_TAB
 #define my_lower_i KC_PGUP
 #define my_lower_j KC_DOWN
 #define my_lower_k KC_UP
@@ -166,8 +166,8 @@
 #define prev_win_or_frame LALT(LSFT(KC_P))
 #define raise_space KC_UNDS
 #define raise_key_4_9 KC_ENTER // KC_BSPC
-#define raise_semi  KC_QUOTE
-#define raise_slash KC_MINUS
+#define raise_semi  KC_MINUS
+#define raise_slash KC_BSLASH
 #define right_of_lower  esc_ctrl  // my_left_shift ///hyper // / MT(MOD_RCTL, KC_ESCAPE)
 #define lower_right_of_super CLOSED_PAREN
 #define scroll_next RCTL(KC_D)
@@ -187,7 +187,11 @@
 #define EMACS_SCROLL_UP RCTL(KC_Y)
 
 
-#define top_alpha_mid_column LAYER_LOCK
+#define toggle_microphone LALT(LGUI(LCTL(KC_F4)))
+#define on_microphone LALT(LGUI(LCTL(KC_F5)))
+#define off_microphone LALT(LGUI(LCTL(KC_F6)))
+
+#define top_alpha_mid_column TD(DANCE_MICROPHONE)
 
 
 #define KEYBOARD_LAYOUT_HOLD_KEY KC_RGUI
@@ -343,6 +347,7 @@ enum custom_keycodes {
                       TMUX_COPY_MODE,
                       TMUX_CLOSE,
                       TERM_CD_UP_DIR,
+                      EMACS_LOCCUR,
                       CLEAR_THAT_REPL,
                       EMACS_WRAP_IN_THREAD_LAST,
                       THREAD_LAST,

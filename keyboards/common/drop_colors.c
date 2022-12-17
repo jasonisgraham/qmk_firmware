@@ -72,6 +72,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     rgblight_enable_noeeprom();
     rgblight_mode(24);
     rgblight_sethsv_noeeprom(HSV_YELLOW);
+    rgblight_mode(RGBLIGHT_MODE_RAINBOW_SWIRL);
     break;
 
 
