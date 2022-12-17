@@ -1292,6 +1292,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     break;
 
+  case EMACS_LOCCUR:
+    if (record->event.pressed) {
+      SEND_STRING(SS_LALT(SS_TAP(X_M)) "no");
+    }
+    break;
+
   case TERM_CD_UP_DIR:
     if (record->event.pressed) {
       SEND_STRING("cd ../" SS_TAP(X_ENTER));

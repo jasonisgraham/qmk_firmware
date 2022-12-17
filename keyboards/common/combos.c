@@ -10,7 +10,7 @@ combo_t key_combos[COMBO_COUNT] = {
                                    COMBO(combo_y_t,EMACS_TO_YANK),
                                    COMBO(combo_d_t,EMACS_TO_DELETE),
 
-                                   COMBO(combo_lower__j_i, EMACS_FASD),
+                                   COMBO(combo_lower__j_i, LALT(KC_7)),
                                    COMBO(combo_lower__j_l, THREAD_LAST),
                                    COMBO(combo_lower_j_i, THREAD_LAST),
                                    COMBO(combo_lower_u_i, THREAD_FIRST),
@@ -170,7 +170,7 @@ combo_t key_combos[COMBO_COUNT] = {
 
                                    COMBO(combo_period_semicolon, EMACS_COMMENT_READER),
                                    COMBO(combo_lower_l_semi, EMACS_PRIVATE_READER),
-                                   /* COMBO(combo_bottom_top_mid_column, MO(_SYSTEM)), */
+                                   COMBO(combo_bottom_top_mid_column, LAYER_LOCK),
                                    COMBO(combo_top_left_hyper, MO(_SYSTEM)),
                                    /* COMBO(combo_top_left_hyper, adhoc_set_hotkey), */
                                    COMBO(combo_k42_k43, adhoc_set_hotkey),
