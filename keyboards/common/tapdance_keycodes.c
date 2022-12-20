@@ -7,11 +7,14 @@
 #define my_c TD(DANCE_C)
 #define BROWSER_TAB_PREV TD(DANCE_29)
 #define my_comma TD(DANCE_COMMA) //KC_COMMA //
-#define my_left_shift MT(MOD_LSFT, KC_MINUS) //TD(DANCE_SHIFT)
+#define my_left_shift TD(DANCE_SHIFT)
 #define my_m TD(DANCE_M)
 #define my_s TD(DANCE_S)
 #define my_w TD(DANCE_W)
 /* #define super TD(DANCE_SUPER) //TD(SUPER_WINDOWS) */
+#define my_lower_j TD(DANCE_DOWN_OR_END)
+#define my_lower_k TD(DANCE_UP_OR_HOME)
+
 #define my_lower_h TD(DANCE_LEFT_OR_HOME)
 #define my_lower_l TD(DANCE_RIGHT_OR_END)
 #define top_left TD(DANCE_TAB)
