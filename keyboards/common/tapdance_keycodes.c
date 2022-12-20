@@ -7,7 +7,7 @@
 #define my_c TD(DANCE_C)
 #define BROWSER_TAB_PREV TD(DANCE_29)
 #define my_comma TD(DANCE_COMMA) //KC_COMMA //
-#define my_left_shift MT(MOD_LSFT, KC_MINUS) //TD(DANCE_SHIFT)
+#define my_left_shift TD(DANCE_SHIFT)
 #define my_m TD(DANCE_M)
 #define my_s TD(DANCE_S)
 #define my_w TD(DANCE_W)

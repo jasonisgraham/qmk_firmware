@@ -1588,6 +1588,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     break;
 
+  case EMACS_INSERT_GI_GET_FEED:
+      if (record->event.pressed) {
+        SEND_STRING("(def xs (gi/get-feed importer-config))");
+      }
+    break;
+
   case EMACS_INSERT_GET_FEED:
     if (record->event.pressed) {
       SEND_STRING("(def xs (get-feed))");
