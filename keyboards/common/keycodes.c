@@ -5,10 +5,6 @@
 #include "layer_lock.h"
 /* #include "../../quantum/hacks.c" */
 
-#define key_1_7 top_alpha_mid_column
-#define key_2_7 backspace
-#define key_3_7 KC_ENTER
-
 /* super_meta_hyper */
 
 #define EMACS_RECENTER_ON_DEFUN RCTL(LALT(KC_Z))
@@ -61,9 +57,10 @@
 #define EMACS_OTHER_WINDOW_NEXT RCTL(LALT(KC_PGUP))
 #define EMACS_OTHER_WINDOW_PREV RCTL(LALT(KC_PGDOWN))
 #define HYPER_L LCTL(KC_L)
-#define LOWER MO(_LOWER)
-#define RAISE MO(_RAISE)
-#define RAISE MO(_RAISE)
+#define LOWER LT(_LOWER, KC_MINUS) //TD(DANCE_SHIFT)
+
+/* #define RAISE MO(_RAISE) */
+#define RAISE  TD(DANCE_RAISE) // LT(_RAISE, KC_PLUS)
 #define all_mods LM(_ALL_MODS, MOD_LGUI | MOD_LCTL | MOD_LALT | MOD_RCTL | MOD_LSFT)
 #define alt_tab ALT_TAB
 #define KC_BSPACE KC_BACKSPACE
@@ -124,8 +121,6 @@
 #define my_lower_f  KC_F8
 #define my_lower_g KC_TAB
 #define my_lower_i KC_PGUP
-#define my_lower_j KC_DOWN
-#define my_lower_k KC_UP
 #define my_lower_m _______
 #define my_lower_n _______
 #define my_lower_o KC_END
@@ -134,7 +129,7 @@
 #define my_lower_period BROWSER_TAB_NEXT
 #define my_lower_r KC_F4
 #define my_lower_semi KC_QUOTE
-#define my_lower_slash KC_ENTER
+#define my_lower_slash KC_GRAVE
 #define my_lower_u KC_PGDOWN
 #define my_minus _______
 #define my_raise RAISE
@@ -157,7 +152,7 @@
 #define my_raise_top_right KC_DEL // TD(WWW_BACK_FORWARD)
 #define my_raise_u  KC_7
 #define my_raise_y  KC_PLUS
-#define my_right_of_lower MO(_EDITING)
+#define my_right_of_lower LT(_EDITING, KC_BSPACE)
 #define my_right_shift KC_RSFT // shift LM(_ALT, MOD_LSFT)
 #define my_semicolon KC_SCOLON
 #define my_singlequote KC_QUOTE
@@ -245,6 +240,7 @@ enum custom_keycodes {
                       CYCLE_ACTIVE_K74_FN,
                       level3,
                       key_4_7,
+                      SSH_CRONJOBS_PROD,
                       EMACS_PREV_SEXP,
                       AUTOSHIFT_TOGGLE,
                       WEB_SAVE_FILE_UNDER_CURSOR,
@@ -318,6 +314,7 @@ enum custom_keycodes {
                       EMACS_ACE_WINDOW_SWAP,
                       EMACS_BUFFER_REVERT,
                       EMACS_INSERT_GET_FEED,
+                      EMACS_INSERT_GI_GET_FEED,
                       EMACS_KILL_PROCESS,
                       EMACS_OTHER_WINDOW,
                       EMACS_WINDOW_CLOSE,

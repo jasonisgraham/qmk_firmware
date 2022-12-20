@@ -49,7 +49,7 @@ combo_t key_combos[COMBO_COUNT] = {
                                    COMBO(combo_j_n, RSFT(KC_LSFT)),
                                    COMBO(combo_raise_h_raise_j, KC_DELETE),
                                    /* COMBO(combo_lower_semicolon, RCTL(KC_SCOLON)), */
-                                   COMBO(combo_my_raise_g, OSL(_MACROS)),
+                                   /* COMBO(combo_my_raise_g, OSL(_MACROS)), */
 
                                    // layers
                                    COMBO(combo_r_g, TD(DANCE_F5)),
@@ -69,6 +69,8 @@ combo_t key_combos[COMBO_COUNT] = {
                                    // macros n'at
                                    COMBO(combo_v_d, KC_PASTE), // shell paste
                                    COMBO(combo_v_c, LALT(KC_LCBR)), // shell copy mode
+
+                                   COMBO(combo_LOWER_SHIFTP, KC_BSPACE),
 
                                    //
                                    /* COMBO(combo_e_f, KC_TAB), */

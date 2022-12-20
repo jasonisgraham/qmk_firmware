@@ -4,13 +4,10 @@
 
 /* #define UNICODE_ENABLE */
 
-enum planck_layers {
+enum preonic_layers {
                     _BASE,
                     _LOWER,
                     _RAISE,
-                    _HYPER,
-                    _ROFI,
-                    _ALT,
                     _WINDOWS,
                     _MACROS,
                     _SHIFTLOCK,
@@ -19,21 +16,34 @@ enum planck_layers {
                     _EDITING,
                     _EMACS,
                     _MOUSE,
-                    _ADHOC_SET_HOTKEY,
                     _SYSTEM,
                     _ALL_MODS,
-                    _APL,
-                    _APL_RHS,
+                    _ADHOC_SET_HOTKEY,
+                    _HYPER,
+                    _SA,
+                    _ROFI,
 };
 
 /* #include "../../../common/config.h" */
 #undef UNICODE_SELECTED_MODES
 #define UNICODE_SELECTED_MODES UC_LNX
 
-#include "../../../common/keycodes.c"
+
+
+#define key_0_7 KC_RIGHT
+#define key_1_7 KC_UP
+#define key_2_7 KC_DOWN
+#define key_3_7 KC_LEFT
+
+
 #include "../../../common/key_overrides.c"
-#include "../../../common/drop_tapdance.c"
 #include "../../../common/drop_colors.c"
+#include "../../../common/keycodes.c"
+#include "../../../common/drop_tapdance.c"
+#include "../../../common/tapdance_keycodes.c"
+
+#include "../../../common/combos.c"
+#include "../../../common/autoshift.c"
 /* #include "../../../common/drop_animations.c" */
 #include "../../../common/encoder.c"
 #include "../../../common/layer_lock.h"
@@ -44,53 +54,56 @@ enum planck_layers {
 /* const int row0[] = { top_left, top_left,    my_q,    my_w,    my_e,    my_r,   my_t, backspace ,    my_y,           my_u,    my_i,    my_o,     my_p}; */
 /* int row0[10] = {}; */
 
-#define key_1_7 LAYER_LOCK
-#define key_2_7 backspace
-#define key_3_7 KC_ENTER
-#define key_4_7 OSL(_EDITING)
-
-#define EMACS_RECENTER_ON_DEFUN RCTL(RALT(KC_Z))
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-                                                              // LAYER_LOCK
 [_BASE] = LAYOUT_preonic_grid(
-                              top_left, KC_1 , KC_2 ,KC_3 ,KC_4 ,KC_5 , _______, KC_6 ,KC_7 ,KC_8 ,KC_9 ,KC_0,
+                              TD(DANCE_MICROPHONE), KC_1 , KC_2 ,KC_3 ,KC_4 ,KC_5 , key_0_7, KC_6 ,KC_7 ,KC_8 ,KC_9 ,KC_0,
                              top_left,    my_q,    my_w,    my_e,    my_r,   my_t, key_1_7,    my_y,           my_u,    my_i,    my_o,     my_p,
-                             my_lctl , my_a,   my_s,   my_d,   my_f,   my_g, key_2_7,  my_h,         my_j,   my_k,   my_l,   my_semicolon,
+                             esc_ctrl , my_a,   my_s,   my_d,   my_f,   my_g, key_2_7,  my_h,         my_j,   my_k,   my_l,   my_semicolon,
                              my_left_shift,        my_z,           my_x,           my_c,           my_v,           my_b, key_3_7,     my_n,   my_m,   my_comma,   my_period,   my_forward_slash,
-                             hyper, super_meta_hyper, KC_NO,   alt, RAISE,  super, key_4_7,   my_space,           LOWER,          my_right_of_lower,   key_4_11,  key_4_12
-                              ),
-
-[_LOWER] = LAYOUT_preonic_grid(
-                               _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
-                              KC_AUDIO_MUTE,   KC_F1,          KC_F2,          KC_F3,          KC_F4,  TD(DANCE_73),        _______ ,    KC_HOME,     my_lower_u,    my_lower_i,      my_lower_o,         my_lower_p,
-                              _______, KC_F5,          KC_F6,          KC_F7,          KC_F8,          my_lower_g, lower_backspace,      KC_LEFT,        my_lower_j,        my_lower_k,          my_lower_l,       my_lower_semi,
-                              _______,   KC_F9,         KC_F10,         KC_F11,         KC_F12,         KC_APPLICATION, KC_SCROLL_LOCK,  my_lower_n, my_lower_m, my_lower_comma,   my_lower_period, my_lower_slash,
-                              SYSTEM_LAYER_ACTIVATE, _______, _______ , alt,   MO(_EDITING), MO(_MOUSE),           lower_right_of_super,         MO(_MOUSE), lower_LOWER,          lower_right_of_lower, lower_key_4_11, lower_key_4_12
-
-
+                             hyper, level3, all_mods,      alt, RAISE,  super, key_4_7,   my_space,           LOWER,          my_right_of_lower,   key_4_11,  key_4_12
                               ),
 
 [_RAISE] = LAYOUT_preonic_grid(
                                _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
-                              LALT(KC_D),    _______,          my_raise_w,  KC_END,         EMACS_BUFFER_REVERT,       _______, _______, my_raise_y, my_raise_u,           my_raise_i,           my_raise_o,           my_raise_p,
-                              _______, my_raise_a, my_raise_s,   my_raise_d, my_raise_f,  OSL(_MACROS), raise_backspace,       my_raise_h,         my_raise_j,           my_raise_k,           my_raise_l,           raise_semi,
-                              _______, _______, _______,_______,   _______,          _______, KC_INSERT,     my_raise_n,           my_raise_m,           my_raise_comma,         KC_3,           raise_slash,
-                              SYSTEM_LAYER_ACTIVATE, _______, _______,        _______,        _______, _______,  lower_right_of_super,      my_space,   raise_key_4_9,       raise_backspace,  _______,         TO(_BASE)
+                              LSFT(KC_TAB),    _______,          my_raise_w,  KC_END,         EMACS_BUFFER_REVERT,       _______, _______, my_raise_y, my_raise_u,           my_raise_i,           my_raise_o,           my_raise_p,
+                              KC_PLUS, my_raise_a, my_raise_s,   my_raise_d, my_raise_f,  OSL(_MACROS), raise_backspace,       my_raise_h,         my_raise_j,           my_raise_k,           my_raise_l,       raise_semi,
+                              SHIFTLOCK_LAYER_ACTIVATE, _______, _______,_______,   _______,          _______, KC_INSERT,     my_raise_n,           my_raise_m,           my_raise_comma,         KC_3,           raise_slash,
+                              MO(_SYSTEM), _______, _______,        _______,        _______, _______,  lower_right_of_super,      my_space,   raise_key_4_9,       raise_backspace,  _______,         TO(_BASE)
+                              ),
+
+// 8
+[_SHIFTLOCK] = LAYOUT_preonic_grid(
+                                   _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
+                                  SHIFTLOCK_LAYER_DEACTIVATE,   LSFT(KC_Q),     LSFT(KC_W),     LSFT(KC_E),     LSFT(KC_R),     LSFT(KC_T), _______,    LSFT(KC_Y),     LSFT(KC_U),     my_cap_i,     my_cap_o,     my_cap_p,
+                                  ESC_THEN_BASE_LAYER,          LSFT(KC_A),     LSFT(KC_S),     LSFT(KC_D),     LSFT(KC_F),     LSFT(KC_G), _______,    my_cap_h,     my_cap_j,     my_cap_k,     my_cap_l,     TD(DANCE_55),
+                                  SHIFTLOCK_LAYER_DEACTIVATE,          LSFT(KC_Z),     LSFT(KC_X),     LSFT(KC_C),     LSFT(KC_V),     LSFT(KC_B), _______,   LSFT(KC_N),     my_cap_m,     KC_LABK,        KC_RABK,        my_forward_slash,
+                                  _______, _______, _______, _______, RAISE, _______, KC_NO,       _______,    LOWER,  _______, _______, _______
+                                  ),
+
+
+[_LOWER] = LAYOUT_preonic_grid(
+                               _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
+                              LALT(KC_C),   KC_F1,          KC_F2,          KC_F3,          KC_F4,  TD(DANCE_73),        _______ ,    KC_HOME,     my_lower_u,    my_lower_i,      my_lower_o,         my_lower_p,
+_______, KC_F5,          KC_F6,          KC_F7,          KC_F8,          my_lower_g, lower_backspace,      my_lower_h,        my_lower_j,        my_lower_k,          my_lower_l,       my_lower_semi,
+                              _______,   KC_F9,         KC_F10,         KC_F11,         KC_F12,         KC_APPLICATION, KC_SCROLL_LOCK,  my_lower_n, my_lower_m, my_lower_comma,   my_lower_period, my_lower_slash,
+                              MO(_SYSTEM), _______, _______ , alt,   MO(_EDITING), MO(_MOUSE),           lower_right_of_super,         _______, lower_LOWER,          lower_right_of_lower, lower_key_4_11, lower_key_4_12
+
 
                               ),
+
+
 
 [_ROFI] = LAYOUT_preonic_grid(
                               _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
                              _______, _______, _______, _______, _______,    _______, _______, _______, LALT(KC_7), LALT(KC_8), LALT(KC_9), _______,
                              _______, _______, _______, _______, _______,   _______, _______, _______, LALT(KC_4), LALT(KC_5), LALT(KC_6),_______,
                              _______, _______, _______, _______, _______, _______, _______, _______, LALT(KC_1), LALT(KC_2), LALT(KC_3),_______,
-                             _______, _______, _______,    _______, _______, _______, TO(_BASE), RALT(RGUI(KC_SPC)),    _______, _______, _______,_______
+                             _______, _______, _______,    _______, _______, _______, TO(_BASE), LALT(LGUI(KC_SPC)),    _______, _______, _______,_______
                              ),
 
 [_EMACS] = LAYOUT_preonic_grid(
-                               _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
+                               _______, KC_F11, KC_F12, KC_F13, KC_F14, KC_F15, _______, KC_F16, KC_F17, KC_F18, KC_F19, KC_F20,
                               _______, EMACS_DESC_KEY, _______, _______, _______, _______,    _______, EMACS_YANK_IN_SEXP  , EMACS_BACKWARD_UP, _______, _______, _______,
                               _______, _______, _______, _______, EMACS_FINDER_COMMENTARY, _______,   _______, EMACS_SPLIT_WINDOW_RIGHT, EMACS_SPLIT_WINDOW_DOWN, EMACS_SPLIT_WINDOW_UP, EMACS_SPLIT_WINDOW_LEFT,_______,
                               _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
@@ -98,63 +111,44 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
                                 ),
 
+[_SA] = LAYOUT_preonic_grid(
+                            _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
+                           ESC_THEN_BASE_LAYER, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
+                           ESC_THEN_BASE_LAYER, _______, KC_LEFT, _______, KC_RIGHT, _______,   KC_DELETE, _______, _______, _______, _______, _______,
+                           _______, _______, _______, _______, WEB_SAVE_FILE_UNDER_CURSOR, _______, _______, _______, _______, _______, _______, _______,
+                           _______, _______, _______, _______,    MO(_MOUSE), _______, _______, _______,    _______, _______, _______, _______
+
+                            ),
+
+
 [_MOUSE] = LAYOUT_preonic_grid(
                                _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
-                              TO(_BASE),   _______, _______, KC_MS_UP,       _______, _______, _______,  KC_HOME,        KC_PGUP,        KC_PGDOWN,      KC_END,         _______,
+                              TO(_BASE),   _______, KC_MS_BTN1, KC_MS_UP, KC_MS_BTN2, _______, _______,  KC_HOME,        KC_PGUP,        KC_PGDOWN,      KC_END,         _______,
                               _______, _______, KC_MS_LEFT,     KC_MS_DOWN,     KC_MS_RIGHT,    _______, _______,  KC_MS_BTN1,     KC_MS_WH_DOWN,  KC_MS_WH_UP,    KC_MS_BTN2,     _______,
-                              _______, _______, _______, _______, _______, _______, _______,  LALT(LGUI(KC_N)), KC_MS_BTN3,     TD(DANCE_35),   TD(DANCE_36),   TO(_ALL_MODS),
-                              _______, _______, _______, _______, _______, _______,  _______,  _______, RGUI(LCTL(KC_M)),          _______, _______, _______
+                              _______, _______, _______, _______, _______, _______, _______,  LALT(LGUI(KC_N)), KC_MS_BTN3,     TD(DANCE_35),   TD(DANCE_36),   all_mods,
+                              _______, _______, _______, _______, _______, _______,  _______,  _______, LGUI(LCTL(KC_M)),          _______, _______, _______
 
 
 
                               ),
-
-
-// 10
-[_ALT] = LAYOUT_preonic_grid(
-                             _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
-                            _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
-                            _______, _______, _______, _______, _______, _______,   _______, _______, _______, _______, _______, _______,
-                            _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-                            _______, _______, _______, _______,    _______, _______, _______, _______,    _______, _______, _______, _______
-
-                            ),
 
 
 // 11
 [_SUPER] = LAYOUT_preonic_grid(
                                _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
-                              _______, WINDOWS_Q,   WINDOWS_W, _______, _______, _______,    _______, _______,  _______, _______, _______, _______,
+                              _______, _______,   _______, _______, _______, _______,    _______, _______,  _______, _______, _______, _______,
                               _______, _______, _______, _______, _______, _______,    _______, _______,  _______, _______, _______, _______,
-                              _______, _______, _______, _______,    _______, _______, _______, WINDOWS_N,    _______, _______, _______, _______,
-                              _______, _______, _______, _______,    _______, _______, _______, _______,    _______, _______, LSFT(KC_TAB), KC_TAB
+                              _______, _______, _______, _______,    _______, _______, LALT(KC_7), _______,    _______, _______, _______, _______,
+                              _______, adhoc_set_hotkey, _______, _______,    _______, _______, LALT(KC_7), _______,    LALT(KC_9), LALT(KC_8), LSFT(KC_TAB), KC_TAB
                               ),
 
-
-
-
-[_HYPER] = LAYOUT_preonic_grid(
-                               _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
-                              _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
-                              _______, _______, _______, _______, _______, _______,   _______, _______, _______, _______, _______, _______,
-                              _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-                              _______, _______, _______, _______,    _______, _______, _______, _______,    _______, _______, _______, _______
-                              ),
-// 8
-[_SHIFTLOCK] = LAYOUT_preonic_grid(
-                                   _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
-                                  _______,   RSFT(KC_Q),     RSFT(KC_W),     RSFT(KC_E),     RSFT(KC_R),     RSFT(KC_T), _______,    RSFT(KC_Y),     RSFT(KC_U),     my_cap_i,     my_cap_o,     RSFT(KC_P),
-                                  ESC_THEN_BASE_LAYER,          RSFT(KC_A),     RSFT(KC_S),     RSFT(KC_D),     RSFT(KC_F),     RSFT(KC_G), _______,    my_cap_h,     my_cap_j,     my_cap_k,     my_cap_l,     TD(DANCE_55),
-                                  SHIFTLOCK_LAYER_DEACTIVATE,          RSFT(KC_Z),     RSFT(KC_X),     RSFT(KC_C),     RSFT(KC_V),     RSFT(KC_B), _______,   RSFT(KC_N),     my_cap_m,     KC_LABK,        KC_RABK,        KC_QUES,
-                                  _______, _______, _______, _______, _______, _______, KC_NO,       _______,    LOWER,  _______, _______, _______
-                                  ),
 
 
 // 12
 [_EDITING] = LAYOUT_preonic_grid(
-                                 _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
-                                _______, EMACS_DESC_KEY, LCTL(KC_7),     LCTL(KC_E), EMACS_HELM_MARK_RINGS,     EMACS_TRANSPOSE,        RALT(KC_UNDS), EMACS_YANK_IN_SEXP  , EMACS_NEXT_SEXP ,EMACS_PREV_SEXP ,  EMACS_HELM_OCCUR, _______,
-                                _______, _______, EMACS_LOCCUR, EMACS_KILL_IN_SEXP, RALT(KC_ENTER), EMACS_COPY_FILE_PATH,               EMACS_SCROLL_UP, RALT(RSFT(KC_H)), editing_j, editing_k, editing_l, EMACS_COMMENT_READER,
+                                 KC_F11, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F12, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10,
+                                CW_TOGG, EMACS_DESC_KEY, LCTL(KC_7),     LCTL(KC_E), EMACS_HELM_MARK_RINGS,     EMACS_TRANSPOSE,        LALT(KC_UNDS), EMACS_YANK_IN_SEXP  , EMACS_NEXT_SEXP ,EMACS_PREV_SEXP ,  EMACS_HELM_OCCUR, KC_DELETE,
+                                _______, _______, EMACS_LOCCUR, EMACS_KILL_IN_SEXP, LALT(KC_ENTER), EMACS_COPY_FILE_PATH,               EMACS_SCROLL_UP, LALT(LSFT(KC_H)), editing_j, editing_k, editing_l, EMACS_COMMENT_READER,
                                 _______, EMACS_RECENTER_ON_DEFUN, _______, EMACS_WINDOW_CLOSE,    KC_F12, _______,                                      _______, next_win_or_frame, EMACS_ACE_WINDOW_SWAP,  emacs_buffer_stack_down, emacs_buffer_stack_up, TERM_CD_UP_DIR,
                                 _______, _______, _______, _______, KC_HYPR,  _______,                                                  _______, all_mods, MO(_EMACS), _______, _______, _______
 
@@ -162,9 +156,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // 9
 [_WINMOVE] = LAYOUT_preonic_grid(
                                  _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
-                                _______,   _______, _______, _______, _______, _______,  WINDOW_ALWAYS_ON_TOP, RGUI(RSFT(KC_Y)),_______, _______, RGUI(RSFT(KC_O)),_______,
+                                _______,   _______, _______, _______, _______, _______,  WINDOW_ALWAYS_ON_TOP, LGUI(LSFT(KC_Y)),_______, _______, LGUI(LSFT(KC_O)),_______,
                                 _______, _______, _______, LALT(LGUI(LCTL(RCTL(KC_D)))),_______, _______, _______, winmove_tile_left,   winmove_tile_down, winmove_tile_up ,   winmove_tile_right,   _______,
-                                _______, _______, _______, EMACS_FRAME_FULL_SCREEN, _______, _______,  _______, RGUI(RSFT(KC_N)), winmove_mon_up, _______, RGUI(RSFT(KC_DOT)),_______,
+                                _______, _______, _______, EMACS_FRAME_FULL_SCREEN, _______, _______,  _______, LGUI(LSFT(KC_N)), winmove_mon_up, _______, LGUI(LSFT(KC_DOT)),_______,
                                 _______, _______, _______, _______, TO(0),          _______,  _______,         winmove_mon_left,   winmove_mon_down,   winmove_mon_right,    _______, _______
                                 ),
 
@@ -187,8 +181,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // 5
 [_SYSTEM] = LAYOUT_preonic_grid(
                                 _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
-                               SYSTEM_LAYER_DEACTIVATE, _______, _______, _______, _______,     _______, _______, KC_PSTE, KC_AGIN, DEBUG, EEPROM_RESET, RESET,
-                               _______, _______,_______, _______, _______, _______, _______, _______, KC_AUDIO_VOL_DOWN, KC_AUDIO_VOL_UP, _______, _______,
+                               SYSTEM_LAYER_DEACTIVATE, _______, _______, _______, _______,     _______, CYCLE_ACTIVE_K74_FN, QK_KEY_OVERRIDE_ON, QK_KEY_OVERRIDE_OFF, QK_DEBUG_TOGGLE, QK_CLEAR_EEPROM, QK_BOOTLOADER,
+                               _______, _______,_______, _______, _______, _______, _______, _______, KC_AUDIO_VOL_DOWN, KC_AUDIO_VOL_UP, QK_AUTOCORRECT_ON, DB_TOGG,
                                _______, _______ , _______, _______, _______, _______,   _______, _______,  KC_AUDIO_MUTE, _______, _______, _______,
                                SYSTEM_LAYER_DEACTIVATE, _______, _______, _______,  _______, _______, _______, _______,   _______, _______, KC_BRIGHTNESS_DOWN,KC_BRIGHTNESS_UP
 
@@ -201,48 +195,39 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // 6
 [_WINDOWS] = LAYOUT_preonic_grid(
                                  _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
-                                _______, WINDOWS_Q,   WINDOWS_W,   LGUI(KC_E),     TD(DANCE_40),   LGUI(KC_T), LGUI(KC_MINUS),  LGUI(KC_Y),   LGUI(KC_7),        LGUI(KC_8),     LGUI(KC_9),     LGUI(KC_0),
-                                RALT(RGUI(KC_ESCAPE)), LGUI(KC_A),  select_slack, show_desktop     ,LGUI(KC_F),      _______, TD(DANCE_42),  LGUI(KC_H),     TD(DANCE_43),   windows_k,   windows_l,   RALT(RGUI(KC_N)),
-                                TO(_BASE), LGUI(KC_Z),     LGUI(KC_X),     LGUI(KC_C),     RGUI(KC_V),    _______, LGUI(KC_MINUS), WINDOWS_N,   LGUI(KC_M),  _______, RSFT(LGUI(KC_K)), RCTL(RGUI(KC_Q)),
-                                _______, adhoc_set_hotkey, _______,         _______,        _______,     LSFT(RCTL(KC_UNDS)),   ALT_TAB , LALT(KC_8),      _______,  ALT_TAB, _______, _______
+                                _______, LGUI(KC_Q),   LGUI(KC_W),   LGUI(KC_E),     TD(DANCE_40),   LGUI(KC_T), LGUI(KC_MINUS),  LGUI(KC_Y),   LGUI(KC_7),        LGUI(KC_8),     LGUI(KC_9),     LGUI(KC_0),
+                                LALT(LGUI(KC_ESCAPE)), LGUI(KC_A),  select_slack, show_desktop     ,LGUI(KC_F),      _______, TD(DANCE_42),  LGUI(KC_H),     TD(DANCE_43),   windows_k,   windows_l,   LGUI(KC_SCLN),
+                                TO(_BASE), LGUI(KC_Z),     LGUI(KC_X),     LGUI(KC_C),     LGUI(KC_V),    _______, LGUI(KC_MINUS), LGUI(KC_N),   LGUI(KC_M),  _______, LSFT(LGUI(KC_K)), LALT(KC_F4),
+                                _______, _______, _______,         _______,        _______,     LSFT(RCTL(KC_UNDS)),   ALT_TAB , LALT(KC_8),      _______,  ALT_TAB, _______, _______
                                 ),
 
 // 7
 [_MACROS] = LAYOUT_preonic_grid(
                                 _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
-                               _______,   _______, _______, _______, emacs_r, _______, EMACS_GOTO_GET_FEED, EMACS_COPY_FILE_PATH, EMACS_BACKWARD_UP, EMACS_GOTO_REMOTEID, _______, _______,
-                               _______, emacs_a, _______, EMACS_YAS_DOC,     emacs_f,     EMACS_INSERT_GET_FEED, EMACS_GOTO_PARSE_ITEM,  _______, _______, EMACS_YAS_KEYS_DESCRUCTURE, EMACS_YAS_TL,     _______,
+                               _______,   _______, _______, _______, emacs_r, _______, EMACS_GOTO_GET_FEED, EMACS_COPY_FILE_PATH, EMACS_BACKWARD_UP, EMACS_INSERT_GI_GET_FEED, _______, _______,
+                               _______, emacs_a, SSH_CRONJOBS_PROD, EMACS_YAS_DOC,     emacs_f,     EMACS_INSERT_GET_FEED, EMACS_GOTO_PARSE_ITEM,  _______, _______, EMACS_YAS_KEYS_DESCRUCTURE, EMACS_YAS_TL,     _______,
                                _______, _______, _______, EMACS_YAS_C,     _______, _______, EMACS_GOTO_SYNC_FEED, _______, emacs_m,     _______, _______, TERM_CD_UP_DIR,
                                _______, _______, _______, _______, _______, _______,EMACS_GOTO_ROLLUP ,          EMACS_GOTO_REMOTEID, _______, _______, _______, _______
                               ),
 
 [_ADHOC_SET_HOTKEY] = LAYOUT_preonic_grid(
                                           _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
-                              _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
-                              _______, _______, _______, _______, _______, _______,   _______, _______, _______, _______, _______, _______,
-                              _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+                                         _______, LCTL(LALT(LGUI(KC_Q))), LCTL(LALT(LGUI(KC_W))), _______,  LCTL(LALT(LGUI(KC_R))), _______,    WINDOW_ALWAYS_ON_TOP, LCTL(LALT(LGUI(KC_Y))), _______, _______, _______, _______,
+                                         _______, _______, _______, _______, _______,    LCTL(LALT(LGUI(KC_G))), _______, _______, LCTL(LALT(LGUI(KC_J))), LCTL(LALT(LGUI(KC_K))), LCTL(LALT(LGUI(KC_L))), _______,
+                                         _______, _______, _______, _______, _______, _______, _______, LCTL(LALT(LGUI(KC_N))), _______, _______, _______, LCTL(LALT(LGUI(KC_SLASH))),
                               _______, _______, _______, _______,    _______, _______, _______, _______,    _______, _______, _______, _______
                               ),
 
+[_HYPER] = LAYOUT_preonic_grid(
+                               _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
+                                         _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
+                                         _______, _______, _______, _______, _______, _______,   _______, _______, _______, _______, _______, _______,
+                                         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+                                         _______, _______, _______, _______,    _______, _______, _______, _______,    _______, _______, _______, _______
+                                         ),
 
-[_APL] = LAYOUT_preonic_grid(
-                             TO(_BASE), APL_DIAERESIS, APL_MACRON, APL_LESS, APL_LESS_EQUAL,APL_EQUALS, APL_QUOTE_QUAD, APL_GREATER_EQUAL, APL_GREATER, APL_NOT_EQUAL, APL_OR, APL_AND,
-TO(_BASE), APL_QUESTION_MARK, APL_OMEGA, APL_EPSILON, APL_RHO, APL_TILDE,    _______, APL_UPWARDS_ARROW, APL_DOWNWARDS_ARROW, APL_IOTA, APL_WHITE_CIRCLE, APL_STAR_OPERATOR,
-                             _______, APL_ALPHA, APL_LEFT_CEILING, APL_LEFT_FLOOR, APL_LOW_LINE, APL_NABLA,   _______, APL_INCREMENT, APL_RING_OPERATOR, APL_APOSTROPHE, APL_QUAD, APL_DOWN_TACK_JOT,
-                             APL_RIGHT_TACK, APL_SUBSET, APL_SUPERSET, APL_INTERSECTION, APL_UNION, APL_UP_TACK, _______, APL_DOWN_TACK, APL_VERTICAL_LINE, APL_UP_SHOE_JOT, APL_BACKSLASH_BAR, APL_SLASH_BAR,
-                             APL_UP_TACK_JOT, _______, _______, _______,    _______, _______, TO(_BASE), _______,    MO(_APL_RHS), _______, APL_MULT, APL_DIVISION
-                                  ),
 
-[_APL_RHS] = LAYOUT_preonic_grid(
-                                 _______, APL_IBEAM, APL_DEL_TILDE, APL_DEL_STILE, APL_DELTA_STILE, APL_CIRCLE_STILE, APL_ZILDE, APL_CIRCLE_BACKSLASH, APL_CIRCLED_MINUS, APL_CIRCLE_STAR, APL_DOWN_CARET_TILDE, APL_UP_CARET_TILDE,
-                                 _______, _______, APL_OMEGA_UNDERBAR, APL_EPSILON_UNDERBAR, _______, APL_TILDE_DIAERESIS, _______,     APL_LEFT_ARROW,  APL_RIGHT_ARROW,  APL_IOTA_UNDERBAR, APL_CIRCLE_DIAERESIS, APL_STAR_DIAERESIS,
-                                 _______, APL_ALPHA_UNDERBAR, _______, _______, _______, _______,   _______, _______, APL_JOT_DIAERESIS, APL_QUAD_EQUAL, APL_SQUISH_QUAD, APL_IDENTICAL,
-                                 APL_LEFT_TACK, _______, _______, _______, _______, _______, _______, _______, _______, APL_COMMA_BAR, APL_DELTA_UNDERBAR, APL_QUAD_COLON,
-                                 APL_NOT_IDENTICAL, _______, _______, _______,    _______, _______, _______, _______,    _______, _______, _______, APL_QUAD_DIVIDE
-                                  ),
 
 
   };
 
-#include "../../../common/combos.c"
-#include "../../../common/autoshift.c"
