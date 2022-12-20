@@ -96,6 +96,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     break;
 
+  case SSH_CRONJOBS_PROD:
+    if (record->event.pressed) {
+      SEND_STRING("ssh cronjobs-prod" SS_TAP(X_ENTER) SS_DELAY(1500));
+      SEND_STRING("su app " SS_TAP(X_ENTER) SS_DELAY(250) "cd " SS_TAP(X_ENTER) "cd collage" SS_TAP(X_ENTER));
+    }
+    break;
+
   case EMACS_PREV_SEXP:
     if (record->event.pressed) {
       tap_code16(KC_RCBR);
@@ -1586,6 +1593,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
       SEND_STRING(SS_RCTL(SS_TAP(X_C)) SS_RCTL(SS_TAP(X_B)));
     }
+    break;
+
+  case EMACS_INSERT_GI_GET_FEED:
+      if (record->event.pressed) {
+        SEND_STRING("(def xs (gi/get-feed importer-config))");
+      }
     break;
 
   case EMACS_INSERT_GET_FEED:
