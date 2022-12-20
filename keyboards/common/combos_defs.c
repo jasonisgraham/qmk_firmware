@@ -4,7 +4,7 @@
 #include QMK_KEYBOARD_H
 
 
-
+const uint16_t PROGMEM combo_LOWER_SHIFTP[] = {LOWER, my_cap_p, COMBO_END};
 const uint16_t PROGMEM combo_k42_k43[] = {level3, all_mods, COMBO_END};
 const uint16_t PROGMEM combo_top_left_hyper[] = {top_left, hyper, COMBO_END};
 const uint16_t PROGMEM combo_super_t[] = {super, my_t, COMBO_END};
