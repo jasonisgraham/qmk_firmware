@@ -6,6 +6,7 @@
 /* #include "../../quantum/hacks.c" */
 
 /* super_meta_hyper */
+#define GUI LGUI
 
 #define EMACS_RECENTER_ON_DEFUN RCTL(LALT(KC_Z))
 
@@ -60,7 +61,7 @@
 #define LOWER LT(_LOWER, KC_MINUS) //TD(DANCE_SHIFT)
 
 /* #define RAISE MO(_RAISE) */
-#define RAISE  TD(DANCE_RAISE) // LT(_RAISE, KC_PLUS)
+#define RAISE TD(DANCE_RAISE) // LT(_RAISE, KC_PLUS)
 #define all_mods LM(_ALL_MODS, MOD_LGUI | MOD_LCTL | MOD_LALT | MOD_RCTL | MOD_LSFT)
 #define alt_tab ALT_TAB
 #define KC_BSPACE KC_BACKSPACE
@@ -88,7 +89,7 @@
 #define lower_LOWER TO(_BASE)
 #define lower_key_4_11 KC_MINUS
 #define lower_key_4_12 KC_PLUS
-#define lower_right_of_lower KC_DELETE
+#define lower_right_of_lower TD(WWW_BACK_FORWARD)
 #define macro_alt_slash SS_LALT(SS_TAP(X_SLASH))
 #define my_0 KC_0
 #define my_1 KC_1
@@ -101,6 +102,8 @@
 #define my_8 KC_8
 #define my_9 KC_9
 #define my_b KC_B
+#define my_cap_d LSFT(KC_D)
+#define my_cap_f LSFT(KC_F)
 #define my_cap_h LSFT(KC_H)
 #define my_cap_h LSFT(KC_H)
 #define my_cap_i LSFT(KC_I)
@@ -129,7 +132,8 @@
 #define my_lower_period BROWSER_TAB_NEXT
 #define my_lower_r KC_F4
 #define my_lower_semi KC_QUOTE
-#define my_lower_slash KC_GRAVE
+/* #define my_lower_slash KC_GRAVE */
+#define my_lower_slash KC_ENTER
 #define my_lower_u KC_PGDOWN
 #define my_minus _______
 #define my_raise RAISE
@@ -192,6 +196,7 @@
 #define KEYBOARD_LAYOUT_HOLD_KEY KC_RGUI
 
 
+/* #define key_4_7 TD(dance_k74) */
 
 enum col7_row4_fns {
                     K74_MO_LEVEL3 = SAFE_RANGE,
@@ -201,13 +206,22 @@ enum col7_row4_fns {
 static int active_k74_fn = K74_MO_LEVEL3;
 
 void cycle_active_k74_fn(void) {
-  dprintf("active_k74_fn: %u", active_k74_fn);
+  dprintf("cycle active_k74_fn: %u", active_k74_fn);
 
   switch (active_k74_fn) {
   case K74_MO_LEVEL3:
+#ifdef AUDIO_ENABLE
+    PLAY_SONG(voice_change_sound);
+#endif
+
     active_k74_fn = K74_MO_APL;
     break;
   case K74_MO_APL:
+#ifdef AUDIO_ENABLE
+    PLAY_SONG(guitar_sound);
+
+#endif
+
     active_k74_fn = K74_MO_LEVEL3;
     break;
     dprintf("active_k74_fn: %u", active_k74_fn);
@@ -239,7 +253,7 @@ enum custom_keycodes {
                       EMACS_NEXT_SEXP,
                       CYCLE_ACTIVE_K74_FN,
                       level3,
-                      key_4_7,
+                      KEY_4_7,
                       SSH_CRONJOBS_PROD,
                       EMACS_PREV_SEXP,
                       AUTOSHIFT_TOGGLE,
@@ -433,6 +447,8 @@ enum custom_keycodes {
                       APL_QUAD_COLON,
 
 };
+
+#define key_4_7 KEY_4_7
 
 #define max_buffer LALT(KC_ENTER)
 #define close_x_window RCTL(LGUI(KC_Q))

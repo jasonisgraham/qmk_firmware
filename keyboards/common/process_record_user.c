@@ -5,7 +5,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   if (!process_layer_lock(keycode, record, LAYER_LOCK)) {
     if (biton32(layer_state) != _BASE) {
-#ifdef RGBLIGHT_MODE
+#ifdef RGBLIGHT_ENABLE
       rgblight_mode(RGBLIGHT_MODE_SNAKE);
 #endif
     }
@@ -17,7 +17,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   case level3:
     if (record->event.pressed) {
-#ifdef RGBLIGHT_MODE
+#ifdef RGBLIGHT_ENABLE
       rgblight_enable_noeeprom();
       rgblight_mode(RGBLIGHT_MODE_SNAKE);
       rgblight_sethsv_noeeprom(HSV_PINK);
@@ -25,7 +25,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       register_code16(KC_KP_ENTER);
     } else {
       unregister_code16(KC_KP_ENTER);
-#ifdef RGBLIGHT_MODE
+#ifdef RGBLIGHT_ENABLE
       rgblight_disable();
 #endif
 
@@ -34,12 +34,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     break;
 
 
-  case key_4_7:
+  case KEY_4_7:
     printf("active_k74_fn: %u, pressed: %u\n", active_k74_fn, record->event.pressed);
     if (record->event.pressed) {
       switch (active_k74_fn) {
       case K74_MO_LEVEL3:
-#ifdef RGBLIGHT_MODE
+#ifdef RGBLIGHT_ENABLE
         rgblight_enable_noeeprom();
         rgblight_mode(RGBLIGHT_MODE_SNAKE);
         rgblight_sethsv_noeeprom(HSV_PINK);
@@ -47,9 +47,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         register_code16(KC_KP_ENTER);
         break;
       case K74_MO_APL:
-#ifdef RGBLIGHT_MODE
-        rgblight_mode(RGBLIGHT_MODE_SNAKE);
-        rgblight_sethsv_noeeprom(HSV_WHITE);
+#ifdef RGBLIGHT_ENABLE
+        rgblight_enable_noeeprom();
+        rgblight_mode(RGBLIGHT_MODE_KNIGHT);
+        rgblight_sethsv_noeeprom(HSV_GREEN);
 #endif
         register_code16(KEYBOARD_LAYOUT_HOLD_KEY);
         break;
@@ -57,7 +58,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     } else {
       unregister_code16(KC_KP_ENTER);
       unregister_code16(KEYBOARD_LAYOUT_HOLD_KEY);
-#ifdef RGBLIGHT_MODE
+#ifdef RGBLIGHT_ENABLE
       rgblight_disable();
 #endif
     }
@@ -1130,7 +1131,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   case RGBLIGHT_TOGGLE:
     if (record->event.pressed) {
-#ifdef RGBLIGHT_MODE
+#ifdef RGBLIGHT_ENABLE
       rgblight_toggle();
 #endif
     }
@@ -1138,7 +1139,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   case RESET_ANIMATION:
     if (record->event.pressed) {
-#ifdef RGBLIGHT_MODE
+#ifdef RGBLIGHT_ENABLE
       DROP_DEFAULT_ANIMATION = 0;
       rgblight_mode(DROP_DEFAULT_ANIMATION);
 #endif
@@ -1147,13 +1148,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   case RGBLIGHT_STEP:
     if (record->event.pressed) {
-#ifdef RGBLIGHT_MODE
+#ifdef RGBLIGHT_ENABLE
       rgblight_step();
 #endif
     }
     break;
 
-#ifdef RGBLIGHT_MODE
+#ifdef RGBLIGHT_ENABLE
   case CYCLE_RGBLIGHT_STEP:
     if (record->event.pressed) {
 #ifdef AUDIO_ENABLE
@@ -1187,9 +1188,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   case CYCLE_ACTIVE_K74_FN:
     if (record->event.pressed) {
-#ifdef AUDIO_ENABLE
-      PLAY_SONG(mario_mushroom);
-#endif
       cycle_active_k74_fn();
     }
     break;
@@ -1230,7 +1228,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #ifdef AUDIO_ENABLE
       PLAY_SONG(zelda_treasure);
 #endif
-#ifdef RGBLIGHT_MODE
+#ifdef RGBLIGHT_ENABLE
       rgblight_mode(RGBLIGHT_MODE_RAINBOW_SWIRL);
 #endif
 
@@ -1246,7 +1244,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #ifdef AUDIO_ENABLE
       PLAY_SONG(scroll_lock_on_sound);
 #endif
-#ifdef RGBLIGHT_MODE
+#ifdef RGBLIGHT_ENABLE
       rgblight_mode(RGBLIGHT_MODE_RAINBOW_SWIRL);
 #endif
 
@@ -1274,8 +1272,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #ifdef AUDIO_ENABLE
       PLAY_SONG(caps_lock_on_sound);
 #endif
-#ifdef RGBLIGHT_MODE
-      /* rgblight_mode(RGBLIGHT_MODE_RAINBOW_SWIRL); */
+#ifdef RGBLIGHT_ENABLE
+      /* rgblight_mode(RGBLIGHT_ENABLE_RAINBOW_SWIRL); */
 #endif
       return false;
     }
@@ -1291,8 +1289,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #ifdef AUDIO_ENABLE
       PLAY_SONG(caps_lock_off_sound);
 #endif
-#ifdef RGBLIGHT_MODE
-      /* rgblight_mode(RGBLIGHT_MODE_RAINBOW_SWIRL); */
+#ifdef RGBLIGHT_ENABLE
+      /* rgblight_mode(RGBLIGHT_ENABLE_RAINBOW_SWIRL); */
 #endif
 
       /* return true; */
@@ -1631,8 +1629,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       PLAY_SONG(major_sound);
 #endif
       layer_move(_RAISE);
-      /* rgblight_mode(RGBLIGHT_MODE_SNAKE); */
-#ifdef RGBLIGHT_MODE
+      /* rgblight_mode(RGBLIGHT_ENABLE_SNAKE); */
+#ifdef RGBLIGHT_ENABLE
       rgblight_mode(18);
       rgblight_enable_noeeprom();
       rgblight_sethsv_noeeprom(HSV_BLUE);
@@ -1650,9 +1648,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #endif
       layer_move(_LOWER);
 
-#ifdef RGBLIGHT_MODE
-      /* rgblight_mode(RGBLIGHT_MODE_SNAKE); */
-      rgblight_mode(RGB_MODE_RAINBOW);
+#ifdef RGBLIGHT_ENABLE
+      /* rgblight_mode(RGBLIGHT_ENABLE_SNAKE); */
+      /* rgblight_mode(RGB_MODE_RAINBOW); */
       /* rgblight_mode(18); */
       rgblight_mode(RGBLIGHT_MODE_SNAKE);
       /* rgblight_sethsv_noeeprom(HSV_PURPLE); */
@@ -1669,8 +1667,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       layer_move(_MOUSE);
 #endif
 
-#ifdef RGBLIGHT_MODE
-      /* rgblight_mode(RGBLIGHT_MODE_SNAKE); */
+#ifdef RGBLIGHT_ENABLE
+      /* rgblight_mode(RGBLIGHT_ENABLE_SNAKE); */
       rgblight_mode(18);
       rgblight_enable_noeeprom();
       rgblight_sethsv_noeeprom(HSV_GREEN);
