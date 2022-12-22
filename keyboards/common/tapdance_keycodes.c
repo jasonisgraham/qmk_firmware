@@ -12,11 +12,22 @@
 #define my_s TD(DANCE_S)
 #define my_w TD(DANCE_W)
 /* #define super TD(DANCE_SUPER) //TD(SUPER_WINDOWS) */
-#define my_lower_j TD(DANCE_DOWN_OR_END)
-#define my_lower_k TD(DANCE_UP_OR_HOME)
 
-#define my_lower_h TD(DANCE_LEFT_OR_HOME)
-#define my_lower_l TD(DANCE_RIGHT_OR_END)
+#define ROFI_CLIPBOARD LALT(KC_9)
+#define ROFI_WINDOWS LALT(KC_8)
+#define ROFI_LOCATE LALT(KC_7)
+#define ROFI_WINDOWS LALT(KC_8)
+#define ROFI_DRUN GUI(KC_SPACE)
+
+#define DOWN_OR_END TD(DANCE_DOWN_OR_END)
+#define my_lower_j DOWN_OR_END
+#define UP_OR_HOME TD(DANCE_UP_OR_HOME)
+#define my_lower_k UP_OR_HOME
+
+#define LEFT_OR_HOME TD(DANCE_LEFT_OR_HOME)
+#define my_lower_h LEFT_OR_HOME
+#define RIGHT_OR_END TD(DANCE_RIGHT_OR_END)
+#define my_lower_l RIGHT_OR_END
 #define top_left TD(DANCE_TAB)
 #define BRACKET_PAREN TD(DANCE_PAREN_BRACKET)
 #define windows_k TD(DANCE_43)

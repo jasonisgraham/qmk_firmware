@@ -74,6 +74,7 @@ combo_t key_combos[COMBO_COUNT] = {
 
                                    //
                                    /* COMBO(combo_e_f, KC_TAB), */
+                                   COMBO(combo_shiftlock_d_shiftlock_f, KC_TAB),
                                    COMBO(combo_d_f, KC_TAB),
                                    COMBO(combo_raise_d_raise_f, LSFT(KC_TAB)),
                                    /* COMBO(combo_topright_p_l, CTRL_P), */

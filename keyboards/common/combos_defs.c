@@ -8,6 +8,7 @@ const uint16_t PROGMEM combo_LOWER_SHIFTP[] = {LOWER, my_cap_p, COMBO_END};
 const uint16_t PROGMEM combo_k42_k43[] = {level3, all_mods, COMBO_END};
 const uint16_t PROGMEM combo_top_left_hyper[] = {top_left, hyper, COMBO_END};
 const uint16_t PROGMEM combo_super_t[] = {super, my_t, COMBO_END};
+
 const uint16_t PROGMEM combo_raise_f[] = {RAISE, my_f, COMBO_END};
 const uint16_t PROGMEM combo_raise_r[] = {RAISE, my_r, COMBO_END};
 const uint16_t PROGMEM combo_bottom_top_mid_column[] = {top_alpha_mid_column, key_4_7, COMBO_END};
@@ -95,6 +96,7 @@ const uint16_t PROGMEM combo_winmove_up_right[] = {winmove_tile_up, winmove_tile
 
 
 const uint16_t PROGMEM combo_s_c[] = {my_s, my_c, COMBO_END};
+const uint16_t PROGMEM combo_shiftlock_d_shiftlock_f[] = {my_cap_d, my_cap_f, COMBO_END};
 const uint16_t PROGMEM combo_e_f[] = {my_e, my_f, COMBO_END};
 
 const uint16_t PROGMEM combo_j_k[] = {my_j, my_k, COMBO_END};
