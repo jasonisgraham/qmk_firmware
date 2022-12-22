@@ -604,7 +604,7 @@ void dance_O_reset(qk_tap_dance_state_t *state, void *user_data) {
 
 
 void on_dance_P(qk_tap_dance_state_t *state, void *user_data) {
-  on_dance_fn5(KC_P, state, user_data);
+  on_dance_fn(KC_P, state, user_data);
 }
 
 void dance_P_finished(qk_tap_dance_state_t *state, void *user_data) {
@@ -614,58 +614,21 @@ void dance_P_finished(qk_tap_dance_state_t *state, void *user_data) {
   case TAP: register_code16(KC_P); break;
   case HOLD:
     register_key(KC_P);
-      break;
+    break;
   case HOLD2:
     register_code16(KC_0);
     break;
-  case TAP3:
-  case HOLD3:
-    tap_code16(KC_P);
-    tap_code16(KC_P);
-    register_code16(KC_P);
-    break;
   case TAP2:
   case TAP2_INTERRUPTED:
-    tap_code16(KC_P);
+    register_code16(KC_P);
     register_code16(KC_P);
     break;
-  case TAP4:
-    layer_move(_SYSTEM);
-#ifdef AUDIO_ENABLE
-    PLAY_SONG(scroll_lock_on_sound);
-#endif
-#ifdef RGBLIGHT_MODE
-    rgblight_mode(RGBLIGHT_MODE_RAINBOW_SWIRL);
-#endif
-    break;
-
-
   }
 }
 
 void dance_P_reset(qk_tap_dance_state_t *state, void *user_data) {
   wait_ms(10);
-  switch (dance_state[9].step) {
-  case TAP_INTERRUPTED:
-  case TAP: unregister_code16(KC_P); break;
-  case HOLD:
-    unregister_key(KC_P);
-
-    break;
-
-  case HOLD2:
-    unregister_code16(KC_0);
-    break;
-  case TAP2:
-  case TAP2_INTERRUPTED:
-    unregister_code16(KC_P);
-    break;
-  default:
-    unregister_code16(LSFT(KC_P));
-    unregister_code16(KC_P);
-
-
-  }
+  unregister_code16(KC_P);
   dance_state[9].step = 0;
 }
 
@@ -3267,28 +3230,36 @@ void alt_reset(qk_tap_dance_state_t *state, void *user_data) {
 void on_dance_k74(qk_tap_dance_state_t *state, void *user_data) {}
 
 void dance_k74_finished(qk_tap_dance_state_t *state, void *user_data) {
+  printf("active_k74_fn: %u\n", active_k74_fn);
   dance_state[84].step = dance_step(state);
   switch (dance_state[84].step) {
   case TAP2:
+    tap_code16(CYCLE_ACTIVE_K74_FN);
+    break;
+
+  case TAP:
     tap_code16(KC_SCROLL_LOCK);
     break;
+
   default:
-#ifdef RGBLIGHT_MODE
-    rgblight_enable_noeeprom();
-    rgblight_mode(RGBLIGHT_MODE_SNAKE);
-#endif
 
     switch (active_k74_fn) {
     case K74_MO_LEVEL3:
+#ifdef RGBLIGHT_ENABLE
+      rgblight_enable_noeeprom();
+      rgblight_mode(RGBLIGHT_MODE_SNAKE);
+      rgblight_sethsv_noeeprom(HSV_PINK);
+#endif
       register_code16(level3);
       break;
     case K74_MO_APL:
-#ifdef RGBLIGHT_MODE
+#ifdef RGBLIGHT_ENABLE
+      rgblight_enable_noeeprom();
+      rgblight_mode(RGBLIGHT_MODE_SNAKE);
       rgblight_sethsv_noeeprom(HSV_PURPLE);
 #endif
       register_code16(KEYBOARD_LAYOUT_HOLD_KEY);
       break;
-
     }
     break;
 
@@ -3298,9 +3269,9 @@ void dance_k74_finished(qk_tap_dance_state_t *state, void *user_data) {
 void dance_k74_reset(qk_tap_dance_state_t *state, void *user_data) {
   wait_ms(10);
   dance_state[84].step = 0;
-  unregister_code16(KC_RGUI);
   unregister_code16(level3);
-#ifdef RGBLIGHT_MODE
+  unregister_code16(KEYBOARD_LAYOUT_HOLD_KEY);
+#ifdef RGBLIGHT_ENABLE
   rgblight_disable();
 #endif
 }
@@ -3456,7 +3427,8 @@ void dance_up_or_home_finished(qk_tap_dance_state_t *state, void *user_data) {
   switch (dance_state[87].step) {
   case TAP_INTERRUPTED: case TAP: tap_code16(KC_UP); break;
   case HOLD: register_code16(KC_UP); break;
-  case TAP2_INTERRUPTED: case TAP2: tap_code16(KC_UP); tap_code16(KC_UP);  break;
+  case TAP2: tap_code16(KC_PGUP);
+  case TAP2_INTERRUPTED:  tap_code16(KC_UP); tap_code16(KC_UP);  break;
   case HOLD2: tap_code16(RCTL(KC_HOME)); break;
     break;
   }
@@ -3482,7 +3454,8 @@ void dance_down_or_end_finished(qk_tap_dance_state_t *state, void *user_data) {
   switch (dance_state[88].step) {
   case TAP_INTERRUPTED: case TAP: tap_code16(KC_DOWN); break;
   case HOLD: register_code16(KC_DOWN); break;
-  case TAP2_INTERRUPTED: case TAP2: tap_code16(KC_DOWN); tap_code16(KC_DOWN);  break;
+  case TAP2: tap_code16(KC_PGDOWN);
+  case TAP2_INTERRUPTED:  tap_code16(KC_DOWN); tap_code16(KC_DOWN);  break;
   case HOLD2: tap_code16(RCTL(KC_END)); break;
   }
 }
