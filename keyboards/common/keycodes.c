@@ -286,13 +286,22 @@ enum col7_row4_fns {
 static int active_k74_fn = K74_MO_LEVEL3;
 
 void cycle_active_k74_fn(void) {
-  dprintf("active_k74_fn: %u", active_k74_fn);
+  dprintf("cycle active_k74_fn: %u", active_k74_fn);
 
   switch (active_k74_fn) {
   case K74_MO_LEVEL3:
+#ifdef AUDIO_ENABLE
+    PLAY_SONG(voice_change_sound);
+#endif
+
     active_k74_fn = K74_MO_APL;
     break;
   case K74_MO_APL:
+#ifdef AUDIO_ENABLE
+    PLAY_SONG(guitar_sound);
+
+#endif
+
     active_k74_fn = K74_MO_LEVEL3;
     break;
     dprintf("active_k74_fn: %u", active_k74_fn);
