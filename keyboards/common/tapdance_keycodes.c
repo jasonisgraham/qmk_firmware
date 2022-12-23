@@ -16,8 +16,18 @@
 #define ROFI_CLIPBOARD LALT(KC_9)
 #define ROFI_WINDOWS LALT(KC_8)
 #define ROFI_LOCATE LALT(KC_7)
-#define ROFI_WINDOWS LALT(KC_8)
 #define ROFI_DRUN GUI(KC_SPACE)
+
+#define EMACS_REPEAT KC_F9
+#define preonic_00 ROFI_DRUN
+#define preonic_01 KC_NO
+#define preonic_02 ALT_TAB
+#define preonic_03 TD(DANCE_PAREN_BRACKET)
+#define preonic_04 KC_LBRACKET
+#define preonic_05 KC_LCBR
+#define preonic_06 EMACS_REPEAT
+#define preonic_011 RIGHT_OR_END
+#define preonic_012 KC_GRAVE
 
 #define DOWN_OR_END TD(DANCE_DOWN_OR_END)
 #define my_lower_j DOWN_OR_END

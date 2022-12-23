@@ -8,16 +8,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 #define LAYOUT_wrapper(...) LAYOUT_preonic_grid(__VA_ARGS__)
 
 [_BASE] = LAYOUT_wrapper(
-                         LAYER_LOCK, KC_F9, KC_NO, OSL(_WINDOWS),   ROFI_DRUN, ROFI_WINDOWS , ROFI_CLIPBOARD, LEFT_OR_HOME, DOWN_OR_END, UP_OR_HOME , RIGHT_OR_END, KC_GRAVE,
+                         preonic_00, preonic_01, preonic_02, preonic_03,   preonic_04, preonic_05, preonic_06, LEFT_OR_HOME, DOWN_OR_END, UP_OR_HOME , preonic_011, preonic_012,
                               planck_base),
 
-[_RAISE] = LAYOUT_wrapper(_______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______, planck_raise),
+
+[_RAISE] = LAYOUT_wrapper(KC_AUDIO_MUTE, _______, _______, KC_LBRACKET, _______, _______,    _______, _______, _______, _______, _______, _______, planck_raise),
 
 [_SHIFTLOCK] = LAYOUT_wrapper(_______, _______, _______, _______, SHIFTLOCK_LAYER_DEACTIVATE, _______,    _______, _______, _______, _______, _______, _______,
                               planck_shiftlock),
 
 
-[_LOWER] = LAYOUT_wrapper(_______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______, planck_lower),
+[_LOWER] = LAYOUT_wrapper(_______, _______, _______, KC_LCBR,  _______, _______,    _______, _______, _______, _______, _______, _______, planck_lower),
 
 
 
@@ -42,15 +43,13 @@ planck_mouse),
 
 
 // 11
-[_SUPER] = LAYOUT_wrapper(
-                          _______, _______, _______, _______, _______, _______,    _______, LSFT(KC_GRAVE), LSFT(KC_TAB),    KC_TAB, KC_GRAVE, _______,
+[_SUPER] = LAYOUT_wrapper(_______, _______, ALT_TAB, OSL(_ROFI), _______, _______,    _______, LSFT(KC_GRAVE), LSFT(KC_TAB),    KC_TAB, KC_GRAVE, _______,
 planck_super                              ),
 
 
 
 // 12
-[_EDITING] = LAYOUT_wrapper(
-                                 KC_F11, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F12, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10,
+[_EDITING] = LAYOUT_wrapper(_______, _______, KC_LBRC, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
 planck_editing
                                 ),
 // 9
@@ -78,7 +77,7 @@ planck_all_mods
 
 // 7
 [_MACROS] = LAYOUT_wrapper(
-                                _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
+                           _______, _______, _______, _______, _______, _______,    _______, SELECT_TO_LINE_HOME, SELECT_TO_DOC_END, SELECT_TO_DOC_HOME, SELECT_TO_LINE_END, _______,
 planck_macros                              ),
 
 [_ADHOC_SET_HOTKEY] = LAYOUT_wrapper(
