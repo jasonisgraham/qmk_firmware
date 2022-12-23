@@ -228,26 +228,12 @@ void dance_tab_finished(qk_tap_dance_state_t *state, void *user_data) {
   switch (dance_state[0].step) {
   case TAP_INTERRUPTED:
   case TAP: tap_code16(KC_TAB); break;
-    /* case HOLD: layer_on(6); break; */
-  case HOLD2:
-    tap_code16(RSFT(KC_TAB));
-    break;
-
   case TAP2: tap_code16(KC_TAB); register_code16(KC_TAB); break;
   case HOLD:
-#ifdef RGBLIGHT_ENABLE
-    rgblight_enable_noeeprom();
-    rgblight_mode_noeeprom(RGBLIGHT_MODE_BREATHING);
-    rgblight_sethsv_noeeprom(HSV_WHITE);
-#endif
-    register_code16(KC_LCTL);
+    layer_on(_EDITING);
     break;
-  case HOLD3:
-    layer_move(_SHIFTLOCK);
-#ifdef AUDIO_ENABLE
-    PLAY_SONG(caps_lock_on_sound);
-#endif
-    /* layer_on(); */
+  case HOLD2:
+    layer_on(_HYPER);
     break;
 
   case TAP2_INTERRUPTED: tap_code16(KC_TAB); register_code16(KC_TAB);
@@ -266,10 +252,13 @@ void dance_tab_reset(qk_tap_dance_state_t *state, void *user_data) {
   case TAP: unregister_code16(KC_TAB); break;
   case HOLD2:
     unregister_code16(RSFT(KC_TAB));
+    layer_off(_HYPER);
  break;
+
   case TAP2: unregister_code16(KC_TAB); break;
+
   case HOLD:
-    unregister_code16(KC_LCTL);
+    layer_off(_EDITING);
 #ifdef RGBLIGHT_ENABLE
     rgblight_disable();
 #endif
@@ -3427,7 +3416,7 @@ void dance_up_or_home_finished(qk_tap_dance_state_t *state, void *user_data) {
   switch (dance_state[87].step) {
   case TAP_INTERRUPTED: case TAP: tap_code16(KC_UP); break;
   case HOLD: register_code16(KC_UP); break;
-  case TAP2: tap_code16(KC_PGUP);
+  case TAP2: tap_code16(KC_UP); tap_code16(KC_UP); break;
   case TAP2_INTERRUPTED:  tap_code16(KC_UP); tap_code16(KC_UP);  break;
   case HOLD2: tap_code16(RCTL(KC_HOME)); break;
     break;
@@ -3454,7 +3443,7 @@ void dance_down_or_end_finished(qk_tap_dance_state_t *state, void *user_data) {
   switch (dance_state[88].step) {
   case TAP_INTERRUPTED: case TAP: tap_code16(KC_DOWN); break;
   case HOLD: register_code16(KC_DOWN); break;
-  case TAP2: tap_code16(KC_PGDOWN);
+  case TAP2: tap_code16(KC_DOWN); tap_code16(KC_DOWN); break;
   case TAP2_INTERRUPTED:  tap_code16(KC_DOWN); tap_code16(KC_DOWN);  break;
   case HOLD2: tap_code16(RCTL(KC_END)); break;
   }

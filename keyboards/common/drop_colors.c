@@ -41,9 +41,15 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     break;
 
   case _HYPER:
+    rgblight_enable_noeeprom();
+    rgblight_mode_noeeprom(RGBLIGHT_MODE_BREATHING);
+    rgblight_sethsv_noeeprom(HSV_WHITE);
+    break;
 
   case _EDITING:
-    static_kinda_dim(HSV_WHITE);
+    rgblight_enable_noeeprom();
+    rgblight_mode_noeeprom(RGBLIGHT_MODE_BREATHING);
+    rgblight_sethsv_noeeprom(HSV_BLUE);
     break;
 
   case _SA:
