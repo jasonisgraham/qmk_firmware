@@ -285,16 +285,27 @@ enum col7_row4_fns {
 
 static int active_k74_fn = K74_MO_LEVEL3;
 
-void cycle_active_k74_fn(void) {
-  dprintf("cycle active_k74_fn: %u", active_k74_fn);
+void clear_modifiers(void) {
+  unregister_code16(KC_LGUI);
+  unregister_code16(KC_RGUI);
+  unregister_code16(KC_RALT);
+  unregister_code16(KC_LALT);
+  unregister_code16(KC_RCTL);
+  unregister_code16(KC_LCTL);
+  unregister_code16(KC_KP_ENTER);
+  unregister_code16(KEYBOARD_LAYOUT_HOLD_KEY);
+}
 
-  switch (active_k74_fn) {
+void cycle_active_apl_level3_fn(void) {
+  dprintf("cycle active_apl_level3_fn: %u", active_apl_level3_fn);
+
+  switch (active_apl_level3_fn) {
   case K74_MO_LEVEL3:
 #ifdef AUDIO_ENABLE
     PLAY_SONG(voice_change_sound);
 #endif
 
-    active_k74_fn = K74_MO_APL;
+    active_apl_level3_fn = K74_MO_APL;
     break;
   case K74_MO_APL:
 #ifdef AUDIO_ENABLE
@@ -302,9 +313,9 @@ void cycle_active_k74_fn(void) {
 
 #endif
 
-    active_k74_fn = K74_MO_LEVEL3;
+    active_apl_level3_fn = K74_MO_LEVEL3;
     break;
-    dprintf("active_k74_fn: %u", active_k74_fn);
+    dprintf("active_apl_level3_fn: %u", active_apl_level3_fn);
   }
 }
 ;

@@ -3264,8 +3264,11 @@ void DANCE_LEVEL3_APL_reset(qk_tap_dance_state_t *state, void *user_data) {
   unregister_code16(level3);
   unregister_code16(KEYBOARD_LAYOUT_HOLD_KEY);
 #ifdef RGBLIGHT_ENABLE
-  rgblight_disable();
+    rgblight_disable();
 #endif
+    break;
+  }
+  dance_state[84].step = 0;
 }
 
 
@@ -3469,6 +3472,16 @@ void dance_microphone_finished(qk_tap_dance_state_t *state, void *user_data) {
   switch (dance_state[89].step) {
   case HOLD:
     tap_code16(on_microphone);
+    break;
+  case HOLD2:
+#ifdef AUDIO_ENABLE
+    PLAY_SONG(caps_lock_on_sound);
+#endif
+#ifdef RGBLIGHT_ENABLE
+    rgblight_enable_noeeprom();
+    rgblight_mode(RGBLIGHT_MODE_RAINBOW_SWIRL);
+#endif
+    layer_move(_LAYER_LOCK);
     break;
   default:
     tap_code16(toggle_microphone);

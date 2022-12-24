@@ -31,13 +31,13 @@
 #define preonic_11 SELECT_HOTKEY_0
 
 #define EMACS_REPEAT KC_F9
-#define preonic_00 ROFI_DRUN
-#define preonic_01 KC_NO
-#define preonic_02 TD(DANCE_ROFI_WINDOWS)
-#define preonic_03 TD(DANCE_PAREN_BRACKET)
-#define preonic_04 KC_LBRACKET
-#define preonic_05 KC_LCBR
-#define preonic_06 EMACS_REPEAT
+#define preonic_00 LLOCK
+#define preonic_01 GUI(KC_Q) //EMACS_REPEAT
+#define preonic_02 GUI(KC_S)// ROFI_LOCATE
+#define preonic_03 GUI(KC_E) // ROFI_WINDOWS
+#define preonic_04 GUI(KC_W) // ROFI_DRUN
+#define preonic_05 GUI(KC_T) // ROFI_CLIPBOARD
+#define preonic_06 LSFT(GUI(KC_J)) // GUI(KC_A) // LLOCK
 #define preonic_011 RIGHT_OR_END
 #define preonic_012 KC_GRAVE
 
