@@ -1,6 +1,6 @@
 SRC += muse.c
 
-SRC += ../../../common/layer_lock.c
+# SRC += ../../../common/layer_lock.c
 
 AUDIO_ENABLE = yes
 AUTO_SHIFT_ENABLE = yes

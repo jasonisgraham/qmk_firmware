@@ -144,7 +144,6 @@ combo_t key_combos[COMBO_COUNT] = {
 
                                    COMBO(combo_lower_lprn, KC_LPRN),
                                    COMBO(combo_lower_rprn, KC_RPRN),
-                                   /* COMBO(combo_lower_rprn, ALT_TAB), */
                                    COMBO(combo_lower_exlm, KC_EXLM),
                                    COMBO(combo_lower_at, KC_AT),
                                    COMBO(combo_lower_hash, KC_HASH),
@@ -153,6 +152,18 @@ combo_t key_combos[COMBO_COUNT] = {
                                    COMBO(combo_lower_circ, KC_CIRC),
                                    COMBO(combo_lower_ampr, KC_AMPR),
                                    COMBO(combo_lower_astr, KC_ASTR),
+
+                                   COMBO(combo_shiftlock_lower_lprn, KC_LPRN),
+                                   COMBO(combo_shiftlock_lower_rprn, KC_RPRN),
+                                   COMBO(combo_shiftlock_lower_exlm, KC_EXLM),
+                                   COMBO(combo_shiftlock_lower_at, KC_AT),
+                                   COMBO(combo_shiftlock_lower_hash, KC_HASH),
+                                   COMBO(combo_shiftlock_lower_dlr, KC_DLR),
+                                   COMBO(combo_shiftlock_lower_perc, KC_PERC),
+                                   COMBO(combo_shiftlock_lower_circ, KC_CIRC),
+                                   COMBO(combo_shiftlock_lower_ampr, KC_AMPR),
+                                   COMBO(combo_shiftlock_lower_astr, KC_ASTR),
+
 
                                    COMBO(combo_k_o, KC_LCBR),
                                    COMBO(combo_j_i_o, KC_LCBR),
@@ -173,7 +184,7 @@ combo_t key_combos[COMBO_COUNT] = {
 
                                    COMBO(combo_period_semicolon, EMACS_COMMENT_READER),
                                    COMBO(combo_lower_l_semi, EMACS_PRIVATE_READER),
-                                   COMBO(combo_bottom_top_mid_column, LAYER_LOCK),
+                                   /* COMBO(combo_bottom_top_mid_column, LLOCK), */
                                    COMBO(combo_top_left_hyper, MO(_SYSTEM)),
                                    /* COMBO(combo_top_left_hyper, adhoc_set_hotkey), */
                                    COMBO(combo_k42_k43, adhoc_set_hotkey),
