@@ -55,7 +55,7 @@ combo_t key_combos[COMBO_COUNT] = {
                                    COMBO(combo_r_g, TD(DANCE_F5)),
                                    COMBO(combo_grave_q, QK_CAPS_WORD_TOGGLE),
                                    COMBO(combo_f_g, OSL(_MACROS)),
-                                   COMBO(combo_s_d, OSL(_WINDOWS)),
+                                   COMBO(combo_s_d, TD(DANCE_SUPER)),
                                    COMBO(combo_w_e, OSL(_WINMOVE)),
 
                                    COMBO(combo_windows_k_l, LGUI(KC_MINUS)),

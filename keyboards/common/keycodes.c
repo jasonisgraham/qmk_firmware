@@ -181,7 +181,6 @@
 #define scroll_prev RCTL(KC_U)
 #define select_slack LGUI(KC_S)
 #define show_desktop LALT(LGUI(LCTL(KC_F3)))
-#define super LM(_SUPER, MOD_LGUI) //TD(SUPER_WINDOWS)
 
 #define adhoc_set_hotkey OSL(_ADHOC_SET_HOTKEY)
 #define super_meta_hyper adhoc_set_hotkey
@@ -258,6 +257,16 @@ enum custom_keycodes {
                       /* RGB_SLD = EZ_SAFE_RANGE, */
                       FIRST = SAFE_RANGE,
                       ALT,
+                      ROFI_CLIPBOARD ,
+                      ROFI_WINDOWS ,
+                      ROFI_LOCATE ,
+                      ROFI_DRUN ,
+                      ROFI_EMOJI ,
+
+                      WINDOWS_Q,
+                      WINDOWS_E,
+
+
                       EMACS_NEXT_SEXP,
                       CYCLE_ACTIVE_K74_FN,
                       level3,

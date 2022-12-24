@@ -22,7 +22,7 @@ enum tap_dance_codes {
                       DANCE_13,
                       DANCE_F,
                       DANCE_G,
-                      DANCE_16,
+                      DANCE_ROFI_WINDOWS,
                       DANCE_K,
                       DANCE_L,
                       DANCE_19,
@@ -792,41 +792,30 @@ void dance_pb_reset(qk_tap_dance_state_t *state, void *user_data) {
 
 
 
-void on_dance_16(qk_tap_dance_state_t *state, void *user_data) {}
 
-void dance_16_finished(qk_tap_dance_state_t *state, void *user_data) {
+void on_dance_rofi_windows(qk_tap_dance_state_t *state, void *user_data) {}
+
+// tap:  drun
+// hold: rofi
+// double-tab: alt_tab
+void dance_rofi_windows_finished(qk_tap_dance_state_t *state, void *user_data) {
   dance_state[16].step = dance_step(state);
   switch (dance_state[16].step) {
   case TAP_INTERRUPTED:
-  case TAP: register_code16(KC_J); break;
-  case HOLD: register_key(KC_J); break;
-  case HOLD2: register_code16(KC_DLR); break;
-
+  case TAP: layer_on(_ROFI); break;
+  case HOLD: tap_code16(GUI(KC_SPACE)); break;
   case TAP2:
-  case TAP2_INTERRUPTED:
-    tap_code16(KC_J);
-    register_code16(KC_J);
+  case HOLD2:
+    layer_on(_SHIFTLOCK);
     break;
   }
 }
 
-void dance_16_reset(qk_tap_dance_state_t *state, void *user_data) {
+void dance_rofi_windows_reset(qk_tap_dance_state_t *state, void *user_data) {
   wait_ms(10);
-  switch (dance_state[16].step) {
-  case TAP_INTERRUPTED:
-  case TAP: unregister_code16(KC_J); break;
-  case HOLD: unregister_key(KC_J); break;
-
-  case HOLD2: unregister_code16(KC_DLR); break;
-  case TAP2:
-  case TAP2_INTERRUPTED:
-    unregister_code16(KC_J); break;
-  }
+  // layer off is handled in process_record_user
   dance_state[16].step = 0;
 }
-
-
-
 
 
 void on_dance_K(qk_tap_dance_state_t *state, void *user_data) {
@@ -3327,51 +3316,48 @@ void dance_shift_reset(qk_tap_dance_state_t *state, void *user_data) {
 
 }
 
-
-
-
-
-
 void on_dance_super(qk_tap_dance_state_t *state, void *user_data) {}
 
 void dance_super_finished(qk_tap_dance_state_t *state, void *user_data) {
   dance_state[85].step = dance_step(state);
   switch (dance_state[85].step) {
-    case TAP_INTERRUPTED: case TAP:
-    /* set_oneshot_layer(_WINDOWS, null); */
-    /* OSL(_WINDOWS); */
+  case TAP:
+    layer_on(_WINDOWS);
     break;
+
+  case TAP2:
   case HOLD2:
-    /* layer_move(_SUPERLOCK); */
-#ifdef AUDIO_ENABLE
-    PLAY_SONG(caps_lock_on_sound);
-#endif
+    layer_on(_ROFI);
     break;
 
-  case TAP3:
-    tap_code16(AUTOSHIFT_TOGGLE);
-    break;
-
+  case HOLD:
   default:
-    /* register_code16(KC_LSFT); */
+    // hold down SUPER cuz i dont wanna explicitly apply SUPER to every key
+    register_code16(KC_LGUI);
+    layer_on(_SUPER);
     break;
   }
 }
 
 void dance_super_reset(qk_tap_dance_state_t *state, void *user_data) {
-  wait_ms(10);
+  // layer_off(_ROFI) and layer_off(_ROFI) are handled by post_process_record_user
+  switch (dance_state[85].step) {
+  case TAP:
+  case TAP2:
+  case HOLD2:
+    break;
+
+  case HOLD:
+  default:
+    unregister_code16(KC_LGUI);
+    layer_off(_SUPER);
+    break;
+  }
   dance_state[85].step = 0;
-  unregister_code16(KC_LSFT);
 }
 
 
-
-
-
-
-
-void on_dance_f5(qk_tap_dance_state_t *state, void *user_data) {
-}
+void on_dance_f5(qk_tap_dance_state_t *state, void *user_data) {}
 
 void dance_f5_finished(qk_tap_dance_state_t *state, void *user_data) {
   dance_state[86].step = dance_step(state);
@@ -3536,7 +3522,7 @@ qk_tap_dance_action_t tap_dance_actions[] = {
                                              [DANCE_S] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_S, dance_S_finished, dance_S_reset),
                                              [DANCE_F] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_F, dance_F_finished, dance_F_reset),
                                              [DANCE_G] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_G, dance_G_finished, dance_G_reset),
-                                             [DANCE_16] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_16, dance_16_finished, dance_16_reset),
+                                             [DANCE_ROFI_WINDOWS] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_rofi_windows, dance_rofi_windows_finished, dance_rofi_windows_reset),
                                              [DANCE_K] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_K, dance_K_finished, dance_K_reset),
                                              [DANCE_L] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_L, dance_L_finished, dance_L_reset),
                                              [DANCE_N] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_N, dance_N_finished, dance_N_reset),

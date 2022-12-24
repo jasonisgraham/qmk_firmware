@@ -1,6 +1,4 @@
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  /* dprintf("KL: kc: 0x%04X, col: %2u, row: %2u, pressed: %u, time: %5u, int: %u, count: %u\n", keycode, record->event.key.col, record->event.key.row, record->event.pressed, record->event.time, record->tap.interrupted, record->tap.count); */
-
   if (!process_layer_lock(keycode, record, LAYER_LOCK)) { return false; }
 
   if (!process_layer_lock(keycode, record, LAYER_LOCK)) {
@@ -1220,6 +1218,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       unregister_code(KC_TAB);
 
     }
+    /* layer_off(_WINDOWS); */
+    // layer_move(_BASE);
     break;
 
   case SA_LAYER_ACTIVATE:
@@ -1594,9 +1594,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     break;
 
   case EMACS_INSERT_GI_GET_FEED:
-      if (record->event.pressed) {
-        SEND_STRING("(def xs (gi/get-feed importer-config))");
-      }
+    if (record->event.pressed) {
+      SEND_STRING("(def xs (gi/get-feed importer-config))");
+    }
     break;
 
   case EMACS_INSERT_GET_FEED:
@@ -1878,11 +1878,81 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       SEND_STRING(SS_TAP(X_ESC) "go" SS_DELAY(250) "sync-feed" SS_DELAY(500) SS_TAP(X_ENTER));
     }
     break;
+
+  case ROFI_CLIPBOARD:
+    if (record->event.pressed) {
+      SEND_STRING(SS_LALT(SS_TAP(X_9)));
+      layer_off(_ROFI);
+    }
+    break;
+
+  case ROFI_WINDOWS:
+    if (record->event.pressed) {
+      SEND_STRING(SS_LALT(SS_TAP(X_8)));
+      layer_off(_ROFI);
+    }
+    break;
+
+  case ROFI_LOCATE:
+    if (record->event.pressed) {
+      SEND_STRING(SS_LALT(SS_TAP(X_7)));
+      layer_off(_ROFI);
+    }
+    break;
+
+  case ROFI_DRUN:
+    if (record->event.pressed) {
+      tap_code16(GUI(KC_SPACE));
+      layer_off(_ROFI);
+    }
+    break;
+
+  case ROFI_EMOJI:
+    if (record->event.pressed) {
+      SEND_STRING(SS_LALT(SS_TAP(X_5)));
+      layer_off(_ROFI);
+    }
+    break;
+
+    case WINDOWS_Q:
+    if (record->event.pressed) {
+      tap_code16(GUI(KC_Q));
+      layer_off(_WINDOWS);
+    }
+    break;
+
+    case WINDOWS_E:
+      if (record->event.pressed) {
+        tap_code16(GUI(KC_E));
+        layer_move(_BASE);
+        /* layer_off(_WINDOWS); */
+      }
+      break;
+
+
+    /* if (rofi_windows_osl_rofi_active) { */
+    /*   printf("KL: kc: 0x%04X, col: %2u, row: %2u, pressed: %u, time: %5u, int: %u, count: %u\n", keycode, record->event.key.col, record->event.key.row, record->event.pressed, record->event.time, record->tap.interrupted, record->tap.count); */
+    /*   return true; */
+    /* } */
+
+    /* if (rofi_windows_osl_windows_active) { */
+    /*   printf("KL: kc: 0x%04X, col: %2u, row: %2u, pressed: %u, time: %5u, int: %u, count: %u\n", keycode, record->event.key.col, record->event.key.row, record->event.pressed, record->event.time, record->tap.interrupted, record->tap.count); */
+    /*   rofi_windows_osl_windows_active = false; */
+    /*   return true; */
+    /* } */
+
+
+      /* if (layer_state_is(_WINDOWS) ||	layer_state_is(_ROFI)) { */
+      /* layer_move} */
+
   }
-
-
-
-
   return true;
+}
 
+void post_process_record_user(uint16_t keycode, keyrecord_t *record) {
+  // i cant think of any use case where id want to keep these layers active after 1st key.
+  // these layers are only used as OSLs
+  if (layer_state_is(_WINDOWS) || layer_state_is(_ROFI)) {
+    layer_move(_BASE);
+  }
 }
