@@ -3341,10 +3341,13 @@ void dance_super_finished(qk_tap_dance_state_t *state, void *user_data) {
     register_code16(KC_LGUI);
     layer_on(_SUPER);
     break;
+
+  case TAP2:
   case HOLD2:
     tap_code16(ALT_TAB);
     break;
 
+  case HOLD:
   default:
     set_oneshot_layer(_WINDOWS, ONESHOT_START);
     break;

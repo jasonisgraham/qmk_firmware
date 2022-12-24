@@ -33,7 +33,7 @@
 #define EMACS_REPEAT KC_F9
 #define preonic_00 ROFI_DRUN
 #define preonic_01 KC_NO
-#define preonic_02 ALT_TAB
+#define preonic_02 TD(DANCE_ROFI_WINDOWS)
 #define preonic_03 TD(DANCE_PAREN_BRACKET)
 #define preonic_04 KC_LBRACKET
 #define preonic_05 KC_LCBR
