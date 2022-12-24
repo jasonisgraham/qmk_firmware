@@ -1,4 +1,6 @@
 
+#define super TD(DANCE_SUPER) // LM(_SUPER, MOD_LGUI) //TD(SUPER_WINDOWS)
+
 #define editing_q TD(DANCE_EDITING_Q)
 #define BROWSER_TAB_NEXT TD(DANCE_30)
 #define alt TD(DANCE_ALT)
@@ -13,15 +15,10 @@
 #define my_w TD(DANCE_W)
 /* #define super TD(DANCE_SUPER) //TD(SUPER_WINDOWS) */
 
-#define ROFI_CLIPBOARD LALT(KC_9)
-#define ROFI_WINDOWS LALT(KC_8)
-#define ROFI_LOCATE LALT(KC_7)
-#define ROFI_DRUN GUI(KC_SPACE)
-
 #define EMACS_REPEAT KC_F9
 #define preonic_00 ROFI_DRUN
 #define preonic_01 KC_NO
-#define preonic_02 ALT_TAB
+#define preonic_02 TD(DANCE_ROFI_WINDOWS)
 #define preonic_03 TD(DANCE_PAREN_BRACKET)
 #define preonic_04 KC_LBRACKET
 #define preonic_05 KC_LCBR
