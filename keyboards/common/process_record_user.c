@@ -1,41 +1,29 @@
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  if (!process_layer_lock(keycode, record, LAYER_LOCK)) { return false; }
+//   if (!process_layer_lock(keycode, record, LAYER_LOCK)) { return false; }
 
-  if (!process_layer_lock(keycode, record, LAYER_LOCK)) {
-    if (biton32(layer_state) != _BASE) {
-#ifdef RGBLIGHT_ENABLE
-      rgblight_mode(RGBLIGHT_MODE_SNAKE);
-#endif
-    }
-    return false;
-  }
+//   if (!process_layer_lock(keycode, record, LAYER_LOCK)) {
+//     if (biton32(layer_state) != _BASE) {
+// #ifdef RGBLIGHT_ENABLE
+//       rgblight_mode(RGBLIGHT_MODE_SNAKE);
+// #endif
+//     }
+//     return false;
+//   }
 
   switch (keycode) {
-
-
-  case level3:
+  case TO_BASE:
     if (record->event.pressed) {
-#ifdef RGBLIGHT_ENABLE
-      rgblight_enable_noeeprom();
-      rgblight_mode(RGBLIGHT_MODE_SNAKE);
-      rgblight_sethsv_noeeprom(HSV_PINK);
-#endif
-      register_code16(KC_KP_ENTER);
-    } else {
-      unregister_code16(KC_KP_ENTER);
-#ifdef RGBLIGHT_ENABLE
-      rgblight_disable();
-#endif
-
+      clear_modifiers();
+      layer_move(_BASE);
     }
-
     break;
 
 
-  case KEY_4_7:
-    printf("active_k74_fn: %u, pressed: %u\n", active_k74_fn, record->event.pressed);
+  case LLOCK_APL:
     if (record->event.pressed) {
-      switch (active_k74_fn) {
+      clear_modifiers();
+      layer_move(_BASE);
+      switch (active_apl_level3_fn) {
       case K74_MO_LEVEL3:
 #ifdef RGBLIGHT_ENABLE
         rgblight_enable_noeeprom();
@@ -53,14 +41,72 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         register_code16(KEYBOARD_LAYOUT_HOLD_KEY);
         break;
       }
+      return false;
+    }
+    break;
+
+  case LLOCK_LOWER:
+#ifdef AUDIO_ENABLE
+    PLAY_SONG(caps_lock_on_sound);
+#endif
+    layer_move(_LOWER);
+    return false;
+    break;
+
+  case LLOCK_EDITING:
+#ifdef AUDIO_ENABLE
+    PLAY_SONG(caps_lock_on_sound);
+#endif
+    layer_move(_EDITING);
+    return false;
+    break;
+
+  case LLOCK_RAISE:
+#ifdef AUDIO_ENABLE
+    PLAY_SONG(caps_lock_on_sound);
+#endif
+    layer_move(_RAISE);
+    return false;
+    break;
+
+  case LLOCK:
+    if (record->event.pressed) {
+#ifdef AUDIO_ENABLE
+    PLAY_SONG(caps_lock_on_sound);
+#endif
+#ifdef RGBLIGHT_ENABLE
+    rgblight_enable_noeeprom();
+    rgblight_mode(RGBLIGHT_MODE_RAINBOW_SWIRL);
+#endif
+      layer_move(_LAYER_LOCK);
+      return false;
+    }
+      break;
+
+
+  case level3:
+    if (record->event.pressed) {
+#ifdef RGBLIGHT_ENABLE
+      rgblight_enable_noeeprom();
+      rgblight_mode(RGBLIGHT_MODE_SNAKE);
+      rgblight_sethsv_noeeprom(HSV_YELLOW);
+#endif
+      register_code16(KC_KP_ENTER);
     } else {
       unregister_code16(KC_KP_ENTER);
-      unregister_code16(KEYBOARD_LAYOUT_HOLD_KEY);
 #ifdef RGBLIGHT_ENABLE
       rgblight_disable();
 #endif
+
     }
 
+    break;
+
+
+  case CLEAR_MODIFIERS:
+    if (record->event.pressed) {
+      clear_modifiers();
+    }
     break;
 
   case WEB_SAVE_FILE_UNDER_CURSOR:
@@ -1184,9 +1230,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     break;
 #endif
 
-  case CYCLE_ACTIVE_K74_FN:
+  case CYCLE_ACTIVE_APL_LEVEL3_FN:
     if (record->event.pressed) {
-      cycle_active_k74_fn();
+      cycle_active_apl_level3_fn();
     }
     break;
 
