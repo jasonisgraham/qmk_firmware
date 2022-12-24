@@ -19,10 +19,10 @@ SHIFTLOCK_LAYER_ACTIVATE, _______, _______,_______,   _______,          _______,
   _______,   KC_F9,         KC_F10,         KC_F11,         KC_F12,         KC_APPLICATION, KC_SCROLL_LOCK,  my_lower_n, my_lower_m, my_lower_comma,   my_lower_period, my_lower_slash, \
   MO(_SYSTEM), _______, _______ , alt,   MO(_EDITING), MO(_MOUSE),           lower_right_of_super,         _______, lower_LOWER,          lower_right_of_lower, lower_key_4_11, lower_key_4_12
 
-#define planck_rofi _______, _______, _______, _______, _______,    _______, _______, _______, ROFI_LOCATE, ROFI_WINDOWS, ROFI_CLIPBOARD, _______, \
-  _______, _______, _______, _______, _______,   _______, _______, _______, LALT(KC_4), LALT(KC_5), LALT(KC_6),_______, \
-  _______, _______, _______, _______, _______, _______, _______, _______, LALT(KC_1), LALT(KC_2), LALT(KC_3),_______, \
-  _______, _______, _______,    _______, _______, _______, TO(_BASE), LALT(LGUI(KC_SPC)),    _______, _______, _______,_______
+#define planck_rofi ESC_THEN_BASE_LAYER, _______, _______, _______, _______,    _______, _______, _______, ROFI_LOCATE, ROFI_WINDOWS, ROFI_CLIPBOARD, _______, \
+    ESC_THEN_BASE_LAYER, _______, _______, _______, _______,   _______, _______, _______, _______, ROFI_EMOJI, _______,_______, \
+    TO(_BASE), _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
+    _______, _______, _______,    _______, _______, _______, TO(_BASE), ROFI_DRUN,    _______, _______, _______,_______
 
 
 #define planck_emacs                                _______, EMACS_DESC_KEY, _______, _______, _______, _______,    _______, EMACS_YANK_IN_SEXP  , EMACS_BACKWARD_UP, _______, _______, _______, \
@@ -73,10 +73,10 @@ SHIFTLOCK_LAYER_ACTIVATE, _______, _______,_______,   _______,          _______,
                                 SYSTEM_LAYER_DEACTIVATE, _______, _______, _______, _______,     _______, CYCLE_ACTIVE_K74_FN, _______, _______, _______, KC_BRIGHTNESS_DOWN,KC_BRIGHTNESS_UP
 
 
-#define planck_windows ALT_TAB, LGUI(KC_Q),   LGUI(KC_W),   LGUI(KC_E),     TD(DANCE_40),   LGUI(KC_T), LGUI(KC_MINUS),  LGUI(KC_Y),   LGUI(KC_7),        LGUI(KC_8),     LGUI(KC_9),     LGUI(KC_0), \
+#define planck_windows ALT_TAB, WINDOWS_Q,   LGUI(KC_W),   WINDOWS_E,     TD(DANCE_40),   LGUI(KC_T), LGUI(KC_MINUS),  LGUI(KC_Y),   LGUI(KC_7),        LGUI(KC_8),     LGUI(KC_9),     LGUI(KC_0), \
                                 LALT(LGUI(KC_ESCAPE)), LGUI(KC_A),  select_slack, show_desktop     ,LGUI(KC_F),      _______, TD(DANCE_42),  LGUI(KC_H),     TD(DANCE_43),   windows_k,   windows_l,   LGUI(KC_SCLN), \
                                    TO(_BASE), LGUI(KC_Z),     LGUI(KC_X),     LGUI(KC_C),     LGUI(KC_V),    _______, _______, LGUI(KC_N),   LGUI(KC_M),  _______, LSFT(LGUI(KC_K)), LALT(KC_F4), \
-    _______, _______, _______,         _______,        _______,     LSFT(RCTL(KC_UNDS)),   ALT_TAB , LALT(KC_8),      GUI(KC_MINUS),  ALT_TAB, _______, _______
+    _______, _______, _______,         _______,        _______,     ALT_TAB ,   ALT_TAB , LALT(KC_8),      GUI(KC_MINUS),  ALT_TAB, _______, _______
 
 
 #define planck_macros                                _______,   _______, _______, _______, emacs_r, _______, EMACS_GOTO_GET_FEED, EMACS_COPY_FILE_PATH, EMACS_BACKWARD_UP, EMACS_INSERT_GI_GET_FEED, _______, _______,\
@@ -86,7 +86,7 @@ SHIFTLOCK_LAYER_ACTIVATE, _______, _______,_______,   _______,          _______,
 
 
 
-#define planck_adhoc_set_key                                          _______, LCTL(LALT(LGUI(KC_Q))), LCTL(LALT(LGUI(KC_W))), _______,  LCTL(LALT(LGUI(KC_R))), _______,    WINDOW_ALWAYS_ON_TOP, LCTL(LALT(LGUI(KC_Y))), _______, _______, _______, _______,\
+#define planck_adhoc_set_key                                          _______, LCTL(LALT(LGUI(KC_Q))), LCTL(LALT(LGUI(KC_W))), _______,  LCTL(LALT(LGUI(KC_R))), _______,    WINDOW_ALWAYS_ON_TOP, LCTL(LALT(LGUI(KC_Y))), _______, _______, _______, _______, \
   _______, _______, _______, _______, _______,    LCTL(LALT(LGUI(KC_G))), _______, _______, LCTL(LALT(LGUI(KC_J))), LCTL(LALT(LGUI(KC_K))), LCTL(LALT(LGUI(KC_L))), _______,\
   _______, _______, _______, _______, _______, _______, _______, LCTL(LALT(LGUI(KC_N))), _______, _______, _______, LCTL(LALT(LGUI(KC_SLASH))),\
   _______, _______, _______, _______,    _______, _______, _______, _______,    _______, _______, _______, _______
