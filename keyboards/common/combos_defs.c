@@ -46,6 +46,17 @@ const uint16_t PROGMEM combo_3_7__2_8[] = {key_3_7, my_h, COMBO_END};
 /* const uint16_t PROGMEM combo_osl_extended[] = {my_j, my_l, COMBO_END}; */
 /* const uint16_t PROGMEM combo_rofi_run_modal[] = {my_s,  my_d, my_f, COMBO_END}; */
 
+const uint16_t PROGMEM combo_shiftlock_lower_lprn[] = {LOWER, my_cap_o, COMBO_END};
+const uint16_t PROGMEM combo_shiftlock_lower_rprn[] = {LOWER, my_cap_p, COMBO_END};
+const uint16_t PROGMEM combo_shiftlock_lower_exlm[] = {LOWER, my_cap_m, COMBO_END};
+const uint16_t PROGMEM combo_shiftlock_lower_at[] =   {LOWER, my_cap_comma, COMBO_END};
+const uint16_t PROGMEM combo_shiftlock_lower_hash[] = {LOWER, my_cap_period, COMBO_END};
+const uint16_t PROGMEM combo_shiftlock_lower_dlr[] =  {LOWER, my_cap_j, COMBO_END};
+const uint16_t PROGMEM combo_shiftlock_lower_perc[] = {LOWER, my_cap_k, COMBO_END};
+const uint16_t PROGMEM combo_shiftlock_lower_circ[] = {LOWER, my_cap_l, COMBO_END};
+const uint16_t PROGMEM combo_shiftlock_lower_ampr[] = {LOWER, my_cap_u, COMBO_END};
+const uint16_t PROGMEM combo_shiftlock_lower_astr[] = {LOWER,  my_cap_i, COMBO_END};
+
 const uint16_t PROGMEM combo_lower_lprn[] = {LOWER, my_o, COMBO_END};
 const uint16_t PROGMEM combo_lower_rprn[] = {LOWER, my_p, COMBO_END};
 const uint16_t PROGMEM combo_lower_exlm[] = {LOWER, my_m, COMBO_END};
