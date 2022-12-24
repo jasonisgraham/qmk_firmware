@@ -2,7 +2,6 @@
 #include "user_song_list.c"
 /* #include "version.h" */
 /* /\* #include "musical_notes.h" *\/ */
-#include "layer_lock.h"
 /* #include "../../quantum/hacks.c" */
 
 /* super_meta_hyper */
@@ -76,7 +75,7 @@
 #define KC_BSLASH KC_BACKSLASH
 #define backspace KC_BSPACE
 #define lower_backspace TD(WWW_BACK_FORWARD)
-#define raise_backspace KC_DEL
+#define raise_backspace TD(WWW_BACK_FORWARD)
 #define below_b KC_LALT
 #define below_m MT(MOD_RCTL, KC_ESCAPE)
 #define below_m MT(MOD_RCTL, KC_ESCAPE)
@@ -110,6 +109,8 @@
 #define my_8 KC_8
 #define my_9 KC_9
 #define my_b KC_B
+#define my_cap_comma KC_LABK
+#define my_cap_period KC_RABK
 #define my_cap_d LSFT(KC_D)
 #define my_cap_f LSFT(KC_F)
 #define my_cap_h LSFT(KC_H)
@@ -119,6 +120,9 @@
 #define my_cap_k LSFT(KC_K)
 #define my_cap_l LSFT(KC_L)
 #define my_cap_m LSFT(KC_M)
+#define my_cap_n LSFT(KC_N)
+#define my_cap_u LSFT(KC_U)
+
 #define my_cap_o LSFT(KC_O)
 #define my_cap_p LSFT(KC_P)
 #define my_lctl  MT(MOD_RCTL, KC_ESCAPE)
@@ -164,7 +168,7 @@
 #define my_raise_top_right KC_DEL // TD(WWW_BACK_FORWARD)
 #define my_raise_u  KC_7
 #define my_raise_y  KC_PLUS
-#define my_right_of_lower LT(_EDITING, KC_BSPACE)
+#define my_right_of_lower editing_and_backspace
 #define my_right_shift KC_RSFT // shift LM(_ALT, MOD_LSFT)
 #define my_semicolon KC_SCOLON
 #define my_singlequote KC_QUOTE
@@ -175,8 +179,8 @@
 #define raise_key_4_9 KC_ENTER // KC_BSPC
 #define raise_semi  KC_MINUS
 #define raise_slash KC_BSLASH
-#define right_of_lower  esc_ctrl  // my_left_shift ///hyper // / MT(MOD_RCTL, KC_ESCAPE)
-#define lower_right_of_super CLOSED_PAREN
+/* #define right_of_lower  esc_ctrl  // my_left_shift ///hyper // / MT(MOD_RCTL, KC_ESCAPE) */
+#define lower_right_of_super TD(WWW_BACK_FORWARD)
 #define scroll_next RCTL(KC_D)
 #define scroll_prev RCTL(KC_U)
 #define select_slack LGUI(KC_S)
@@ -210,18 +214,29 @@ enum col7_row4_fns {
                     K74_MO_APL
 };
 
-static int active_k74_fn = K74_MO_LEVEL3;
+static int active_apl_level3_fn = K74_MO_LEVEL3;
 
-void cycle_active_k74_fn(void) {
-  dprintf("cycle active_k74_fn: %u", active_k74_fn);
+void clear_modifiers(void) {
+  unregister_code16(KC_LGUI);
+  unregister_code16(KC_RGUI);
+  unregister_code16(KC_RALT);
+  unregister_code16(KC_LALT);
+  unregister_code16(KC_RCTL);
+  unregister_code16(KC_LCTL);
+  unregister_code16(KC_KP_ENTER);
+  unregister_code16(KEYBOARD_LAYOUT_HOLD_KEY);
+}
 
-  switch (active_k74_fn) {
+void cycle_active_apl_level3_fn(void) {
+  dprintf("cycle active_apl_level3_fn: %u", active_apl_level3_fn);
+
+  switch (active_apl_level3_fn) {
   case K74_MO_LEVEL3:
 #ifdef AUDIO_ENABLE
     PLAY_SONG(voice_change_sound);
 #endif
 
-    active_k74_fn = K74_MO_APL;
+    active_apl_level3_fn = K74_MO_APL;
     break;
   case K74_MO_APL:
 #ifdef AUDIO_ENABLE
@@ -229,9 +244,9 @@ void cycle_active_k74_fn(void) {
 
 #endif
 
-    active_k74_fn = K74_MO_LEVEL3;
+    active_apl_level3_fn = K74_MO_LEVEL3;
     break;
-    dprintf("active_k74_fn: %u", active_k74_fn);
+    dprintf("active_apl_level3_fn: %u", active_apl_level3_fn);
   }
 }
 ;
@@ -257,6 +272,13 @@ enum custom_keycodes {
                       /* RGB_SLD = EZ_SAFE_RANGE, */
                       FIRST = SAFE_RANGE,
                       ALT,
+                      TO_BASE,
+                      LLOCK,
+                      LLOCK_RAISE,
+                      LLOCK_LOWER,
+                      LLOCK_EDITING,
+                      LLOCK_LEVEL3,
+                      LLOCK_APL,
                       ROFI_CLIPBOARD ,
                       ROFI_WINDOWS ,
                       ROFI_LOCATE ,
@@ -266,11 +288,12 @@ enum custom_keycodes {
                       WINDOWS_Q,
                       WINDOWS_E,
 
+                      CLEAR_MODIFIERS,
+
 
                       EMACS_NEXT_SEXP,
-                      CYCLE_ACTIVE_K74_FN,
+                      CYCLE_ACTIVE_APL_LEVEL3_FN,
                       level3,
-                      KEY_4_7,
                       SSH_CRONJOBS_PROD,
                       EMACS_PREV_SEXP,
                       AUTOSHIFT_TOGGLE,
@@ -281,7 +304,6 @@ enum custom_keycodes {
                       EMACS_TRANSPOSE,
                       OPEN_PAREN,
                       CLOSED_PAREN,
-                      LAYER_LOCK,
                       CIDER_RUN_PREV_COMMAND,
                       EMACS_DESC_KEY,
                       EMACS_FINDER_COMMENTARY,
@@ -465,7 +487,10 @@ enum custom_keycodes {
 
 };
 
-#define key_4_7 KEY_4_7
+
+#define editing_and_backspace LT(_EDITING, KC_BSPACE)
+#define apl_level3_and_osl_rofi TD(DANCE_LEVEL3_APL)
+#define key_4_7 apl_level3_and_osl_rofi
 
 #define max_buffer LALT(KC_ENTER)
 #define close_x_window RCTL(LGUI(KC_Q))

@@ -22,6 +22,7 @@ enum preonic_layers {
                     _HYPER,
                     _SA,
                     _ROFI,
+                    _LAYER_LOCK,
 };
 
 /* #include "../../../common/config.h" */
@@ -46,7 +47,7 @@ enum preonic_layers {
 #include "../../../common/combos.c"
 #include "../../../common/autoshift.c"
 /* #include "../../../common/drop_animations.c" */
-#include "../../../common/layer_lock.h"
+/* #include "../../../common/layer_lock.h" */
 
 #include "../../../common/planck_keymap.h"
 /* const int row0[10]; */

@@ -5,7 +5,7 @@ enum tap_dance_codes {
                       DANCE_TAB,
                       DANCE_Q,
                       DANCE_SUPER,
-                      dance_k74,
+                      DANCE_LEVEL3_APL,
                       DANCE_SHIFT,
                       DANCE_W,
                       DANCE_E,
@@ -3205,53 +3205,62 @@ void alt_reset(qk_tap_dance_state_t *state, void *user_data) {
 
 
 
-void on_dance_k74(qk_tap_dance_state_t *state, void *user_data) {}
+void on_DANCE_LEVEL3_APL(qk_tap_dance_state_t *state, void *user_data) {}
 
-void dance_k74_finished(qk_tap_dance_state_t *state, void *user_data) {
-  printf("active_k74_fn: %u\n", active_k74_fn);
+void DANCE_LEVEL3_APL_finished(qk_tap_dance_state_t *state, void *user_data) {
+  printf("active_apl_level3_fn: %u\n", active_apl_level3_fn);
+  printf("tap: %u, tap_int: %u, hold: %u, hold2: %u, mine: %u", TAP, TAP_INTERRUPTED, HOLD, HOLD2, dance_state[84].step);
   dance_state[84].step = dance_step(state);
   switch (dance_state[84].step) {
-  case TAP2:
-    tap_code16(CYCLE_ACTIVE_K74_FN);
-    break;
 
   case TAP:
-    tap_code16(KC_SCROLL_LOCK);
+  case TAP_INTERRUPTED:
+    set_oneshot_layer(_ROFI, ONESHOT_START);
     break;
 
-  default:
-
-    switch (active_k74_fn) {
+  case HOLD:
+    switch (active_apl_level3_fn) {
     case K74_MO_LEVEL3:
 #ifdef RGBLIGHT_ENABLE
       rgblight_enable_noeeprom();
       rgblight_mode(RGBLIGHT_MODE_SNAKE);
       rgblight_sethsv_noeeprom(HSV_PINK);
 #endif
-      register_code16(level3);
+      register_code16(KC_KP_ENTER);
       break;
     case K74_MO_APL:
 #ifdef RGBLIGHT_ENABLE
       rgblight_enable_noeeprom();
-      rgblight_mode(RGBLIGHT_MODE_SNAKE);
-      rgblight_sethsv_noeeprom(HSV_PURPLE);
+      rgblight_mode(RGBLIGHT_MODE_KNIGHT);
+      rgblight_sethsv_noeeprom(HSV_GREEN);
 #endif
       register_code16(KEYBOARD_LAYOUT_HOLD_KEY);
       break;
     }
     break;
-
+  case HOLD2:
+    cycle_active_apl_level3_fn();
+    break;
   }
 }
 
-void dance_k74_reset(qk_tap_dance_state_t *state, void *user_data) {
+void DANCE_LEVEL3_APL_reset(qk_tap_dance_state_t *state, void *user_data) {
   wait_ms(10);
-  dance_state[84].step = 0;
-  unregister_code16(level3);
-  unregister_code16(KEYBOARD_LAYOUT_HOLD_KEY);
+  switch (dance_state[84].step) {
+  case TAP:
+  case TAP_INTERRUPTED:
+    clear_oneshot_layer_state(ONESHOT_PRESSED);
+    break;
+
+  case HOLD:
+    unregister_code16(KC_KP_ENTER);
+    unregister_code16(KEYBOARD_LAYOUT_HOLD_KEY);
 #ifdef RGBLIGHT_ENABLE
-  rgblight_disable();
+    rgblight_disable();
 #endif
+    break;
+  }
+  dance_state[84].step = 0;
 }
 
 
@@ -3322,12 +3331,16 @@ void dance_super_finished(qk_tap_dance_state_t *state, void *user_data) {
   dance_state[85].step = dance_step(state);
   switch (dance_state[85].step) {
   case TAP:
-    layer_on(_WINDOWS);
+  case TAP_INTERRUPTED:
+    set_oneshot_layer(_WINDOWS, ONESHOT_START);
+    /* layer_on(_WINDOWS); */
     break;
 
   case TAP2:
   case HOLD2:
-    layer_on(_ROFI);
+  case TAP2_INTERRUPTED:
+    set_oneshot_layer(_ROFI, ONESHOT_START);
+    /* layer_on(_ROFI); */
     break;
 
   case HOLD:
@@ -3343,9 +3356,13 @@ void dance_super_reset(qk_tap_dance_state_t *state, void *user_data) {
   // layer_off(_ROFI) and layer_off(_ROFI) are handled by post_process_record_user
   switch (dance_state[85].step) {
   case TAP:
+  case TAP_INTERRUPTED:
   case TAP2:
+  case TAP2_INTERRUPTED:
   case HOLD2:
+    clear_oneshot_layer_state(ONESHOT_PRESSED);
     break;
+
 
   case HOLD:
   default:
@@ -3455,6 +3472,16 @@ void dance_microphone_finished(qk_tap_dance_state_t *state, void *user_data) {
   switch (dance_state[89].step) {
   case HOLD:
     tap_code16(on_microphone);
+    break;
+  case HOLD2:
+#ifdef AUDIO_ENABLE
+    PLAY_SONG(caps_lock_on_sound);
+#endif
+#ifdef RGBLIGHT_ENABLE
+    rgblight_enable_noeeprom();
+    rgblight_mode(RGBLIGHT_MODE_RAINBOW_SWIRL);
+#endif
+    layer_move(_LAYER_LOCK);
     break;
   default:
     tap_code16(toggle_microphone);
@@ -3587,7 +3614,8 @@ qk_tap_dance_action_t tap_dance_actions[] = {
                                              [DANCE_RIGHT_OR_END] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_right_or_end, dance_right_or_end_finished, dance_right_or_end_reset),
                                              [DANCE_SAVE_LOAD_NS_SWITCH] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_save_load_ns_switch, dance_save_load_ns_switch_finished, dance_save_load_ns_switch_reset),
                                              [DANCE_F5] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_f5, dance_f5_finished, dance_f5_reset),
-                                             [dance_k74] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_k74, dance_k74_finished, dance_k74_reset),
+
+                                             [DANCE_LEVEL3_APL] = ACTION_TAP_DANCE_FN_ADVANCED(on_DANCE_LEVEL3_APL, DANCE_LEVEL3_APL_finished, DANCE_LEVEL3_APL_reset),
                                              [DANCE_SHIFT] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_shift, dance_shift_finished, dance_shift_reset),
                                              [DANCE_SUPER] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_super, dance_super_finished, dance_super_reset),
 
