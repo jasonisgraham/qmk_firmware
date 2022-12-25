@@ -22,7 +22,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 [_ROFI] = LAYOUT_wrapper(
-                         _______, _______, _______, _______, _______, _______,    TO_BASE, _______, _______, _______, _______, _______,
+                         _______, _______, ROFI_LOCATE, ROFI_WINDOWS, ROFI_DRUN, ROFI_CLIPBOARD,    TO_BASE, _______, _______, _______, _______, _______,
 planck_rofi                             ),
 
 [_EMACS] = LAYOUT_wrapper(
@@ -69,8 +69,7 @@ planck_all_mods
                                 planck_system),
 
 // 6
-[_WINDOWS] = LAYOUT_wrapper(
-                            _______, _______, ALT_TAB, _______,  _______, _______,    TO_BASE,  GUI(LSFT(KC_GRAVE)), GUI(LSFT(KC_TAB)),    GUI(KC_TAB), GUI(KC_GRAVE), _______,
+[_WINDOWS] = LAYOUT_wrapper(_______, SELECT_ADHOC_0_1, _______, _______, SELECT_ADHOC_0_4, _______, SELECT_ADHOC_0_6,  GUI(LSFT(KC_GRAVE)), GUI(LSFT(KC_TAB)),    GUI(KC_TAB), GUI(KC_GRAVE), _______,
                                  planck_windows
                                 ),
 
@@ -79,8 +78,7 @@ planck_all_mods
                            _______, _______, _______, _______, _______, _______,    TO_BASE, SELECT_TO_LINE_HOME, SELECT_TO_DOC_END, SELECT_TO_DOC_HOME, SELECT_TO_LINE_END, _______,
 planck_macros                              ),
 
-[_ADHOC_SET_HOTKEY] = LAYOUT_wrapper(
-                                     _______, _______, _______, _______, _______, _______,    TO_BASE, _______, _______, _______, _______, _______,
+[_ADHOC_SET_HOTKEY] = LAYOUT_wrapper(_______, SET_ADHOC_0_1, _______, _______, SET_ADHOC_0_4, _______, SET_ADHOC_0_6,     _______, _______, _______, _______, _______,
 planck_adhoc_set_key                              ),
 
 [_HYPER] = LAYOUT_wrapper(

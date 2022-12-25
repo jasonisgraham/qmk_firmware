@@ -8,6 +8,15 @@
 #define GUI LGUI
 
 
+#define SET_ADHOC_0_1 LCTL(LALT(LGUI(KC_F1)))
+#define SET_ADHOC_0_4 LCTL(LALT(LGUI(KC_F4)))
+#define SET_ADHOC_0_6 LCTL(LALT(LGUI(KC_F6)))
+
+#define SELECT_ADHOC_0_1 LALT(LGUI(KC_F1))
+#define SELECT_ADHOC_0_4 LALT(LGUI(KC_F4))
+#define SELECT_ADHOC_0_6 LALT(LGUI(KC_F6))
+
+
 #define SELECT_TO_LINE_HOME LSFT(KC_HOME)
 #define SELECT_TO_DOC_HOME RCTL(LSFT(KC_HOME))
 
@@ -197,9 +206,9 @@
 #define EMACS_SCROLL_UP RCTL(KC_Y)
 
 
-#define toggle_microphone LALT(LGUI(LCTL(KC_F4)))
-#define on_microphone LALT(LGUI(LCTL(KC_F5)))
-#define off_microphone LALT(LGUI(LCTL(KC_F6)))
+#define toggle_microphone RCTL(LALT(LGUI(LCTL(KC_F4))))
+#define on_microphone RCTL(LALT(LGUI(LCTL(KC_F5))))
+#define off_microphone RCTL(LALT(LGUI(LCTL(KC_F6))))
 
 #define top_alpha_mid_column TD(DANCE_MICROPHONE)
 
