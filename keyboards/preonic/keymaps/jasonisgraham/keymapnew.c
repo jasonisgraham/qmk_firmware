@@ -141,9 +141,9 @@ TO(_BASE), APL_QUESTION_MARK, APL_OMEGA, APL_EPSILON, APL_RHO, APL_TILDE,    ___
 [_WINMOVE] = LAYOUT_preonic_grid(
                                  _______, KC_1 , KC_2 ,KC_3 ,KC_4 ,KC_5 , _______, KC_6 ,KC_7 ,KC_8 ,KC_9 ,KC_0,
                                  _______,   _______, _______, _______, _______, _______,  WINDOW_ALWAYS_ON_TOP, RGUI(RSFT(KC_Y)),_______, _______, RGUI(RSFT(KC_O)),_______,
-                                 _______, _______, _______, LALT(LGUI(LCTL(KC_D))),_______, _______, _______, winmove_tile_left,   winmove_tile_down, winmove_tile_up ,   winmove_tile_right,   _______,
-                                 _______, _______, _______, EMACS_FRAME_FULL_SCREEN, _______, _______,  _______, RGUI(RSFT(KC_N)), winmove_mon_up, _______, RGUI(RSFT(KC_DOT)),_______,
-                                 _______, _______, _______, _______, TO(0),          _______,  _______,         winmove_mon_left,   winmove_mon_down,   winmove_mon_right,    _______, _______
+                                 _______, _______, _______, LALT(LGUI(LCTL(KC_D))),_______, _______, _______, winmove_L,   winmove_D, winmove_U ,   winmove_R,   _______,
+                                 _______, _______, _______, EMACS_FRAME_FULL_SCREEN, _______, _______,  _______, RGUI(RSFT(KC_N)), winmove_U_monitor, _______, RGUI(RSFT(KC_DOT)),_______,
+                                 _______, _______, _______, _______, TO(0),          _______,  _______,         winmove_L_monitor,   winmove_D_monitor,   winmove_R_monitor,    _______, _______
                                 ),
 
 [_ALT] = LAYOUT_preonic_grid(

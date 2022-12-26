@@ -31,6 +31,7 @@ combo_t key_combos[COMBO_COUNT] = {
                                    COMBO(combo_lower_semicolon, RCTL(KC_C)),
 
                                    COMBO(combo_backspace_g, KC_DELETE),
+                                   COMBO(combo_k49_k410, KC_DELETE),
                                    COMBO(combo_backspace_h, TD(WWW_BACK_FORWARD)),
                                    COMBO(combo_m_period, KC_COLN),
 
@@ -42,11 +43,14 @@ combo_t key_combos[COMBO_COUNT] = {
                                    COMBO(combo_LOWER_lower_lower_period_lower_slash, TO(_BASE)),
 
 
+                                   COMBO(combo_lower_j_k, EMACS_EVIL_JUMP_ITEM),
+                                   COMBO(combo_raise_j_raise_k, EMACS_EVIL_JUMP_ITEM),
+
                                    COMBO(combo_h_u, TD(DANCE_SAVE_LOAD_NS_SWITCH)),
                                    // COMBO(combo_j_n, KC_GRV),
                                    COMBO(combo_esc_semicolon, RSFT(KC_LSFT)),
 
-                                   COMBO(combo_j_n, RSFT(KC_LSFT)),
+                                   COMBO(combo_j_n, OSL(_ROFI)),
                                    COMBO(combo_raise_h_raise_j, KC_DELETE),
                                    /* COMBO(combo_lower_semicolon, RCTL(KC_SCOLON)), */
                                    /* COMBO(combo_my_raise_g, OSL(_MACROS)), */
@@ -98,7 +102,8 @@ combo_t key_combos[COMBO_COUNT] = {
                                    COMBO(combo_j_o, KC_LBRACKET),
 
 
-                                   COMBO(combo_e_r, MO(_ROFI)),
+                                   COMBO(combo_e_r, OSL(_ROFI)),
+                                   COMBO(combo_r_o, OSL(_ROFI)),
 
                                    /* COMBO(combo_lower__j_i, KC_F), */
                                    // COMBO(combo_lower__j_i, EMACS_EVIL_FIND),
@@ -139,8 +144,6 @@ combo_t key_combos[COMBO_COUNT] = {
                                    COMBO(combo_H_J, KC_BSPC),
 
                                    /* COMBO(combo_lower_slash, TERM_CD_UP_DIR), */
-
-                                   COMBO(combo_raise_j_raise_k, FISH_ACCEPT_SEND),
 
                                    COMBO(combo_lower_lprn, KC_LPRN),
                                    COMBO(combo_lower_rprn, KC_RPRN),
@@ -186,11 +189,23 @@ combo_t key_combos[COMBO_COUNT] = {
                                    COMBO(combo_lower_l_semi, EMACS_PRIVATE_READER),
                                    /* COMBO(combo_bottom_top_mid_column, LLOCK), */
                                    COMBO(combo_top_left_hyper, MO(_SYSTEM)),
-                                   /* COMBO(combo_top_left_hyper, adhoc_set_hotkey), */
-                                   COMBO(combo_k42_k43, adhoc_set_hotkey),
+                                   COMBO(combo_a_s_k, adhoc_set_hotkey),
+                                   COMBO(combo_k42_k43, LLOCK),
                                    COMBO(combo_raise_f, SA_LAYER_ACTIVATE),
                                    COMBO(combo_raise_r, MO(_MOUSE)),
                                    COMBO(combo_winmove_up_right, WINDOW_TOGGLE_HORIZONTAL_MAX),
+                                   COMBO (combo_lower_plus, KC_PLUS),
+/* #ifdef PREONIC_BUILD */
+                                   COMBO(combo_up_left, winmove_UL),
+                                   COMBO(combo_up_right, winmove_UR),
+                                   COMBO(combo_right_zero, winmove_R),
+                                   COMBO(combo_six_left, winmove_L),
+                                   COMBO(combo_down_left, winmove_DL),
+                                   COMBO(combo_down_right, winmove_DR),
+                                   COMBO(combo_left_right, WINDOW_TOGGLE_HORIZONTAL_MAX),
+                                   COMBO(combo_up_down, winmove_U),
+/* #endif */
+
 
 
 

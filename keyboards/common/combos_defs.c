@@ -4,6 +4,10 @@
 #include QMK_KEYBOARD_H
 
 
+
+const uint16_t PROGMEM combo_a_s_k[] = {my_a, my_s, my_k, COMBO_END};
+const uint16_t PROGMEM combo_r_o[] = {my_r, my_o, COMBO_END};
+
 const uint16_t PROGMEM combo_LOWER_SHIFTP[] = {LOWER, my_cap_p, COMBO_END};
 const uint16_t PROGMEM combo_k42_k43[] = {level3, all_mods, COMBO_END};
 const uint16_t PROGMEM combo_top_left_hyper[] = {top_left, hyper, COMBO_END};
@@ -77,7 +81,7 @@ const uint16_t PROGMEM combo_cap_j_cap_i[] = {my_cap_j, my_cap_i, COMBO_END};
 const uint16_t PROGMEM combo_cap_k_cap_o[] = {my_cap_k, my_cap_o, COMBO_END};
 const uint16_t PROGMEM combo_cap_m_cap_k[] = {my_cap_m, my_cap_k, COMBO_END};
 
-const uint16_t PROGMEM combo_winmove_up_right[] = {winmove_tile_up, winmove_tile_right, COMBO_END};
+const uint16_t PROGMEM combo_winmove_up_right[] = {winmove_U, winmove_R, COMBO_END};
 /* const uint16_t PROGMEM combo_spc_q[] = {my_q, my_space, COMBO_END}; */
 /* const uint16_t PROGMEM combo_spc_w[] = {my_w, my_space, COMBO_END}; */
 /* const uint16_t PROGMEM combo_spc_e[] = {my_e, my_space, COMBO_END}; */
@@ -111,12 +115,13 @@ const uint16_t PROGMEM combo_shiftlock_d_shiftlock_f[] = {my_cap_d, my_cap_f, CO
 const uint16_t PROGMEM combo_e_f[] = {my_e, my_f, COMBO_END};
 
 const uint16_t PROGMEM combo_j_k[] = {my_j, my_k, COMBO_END};
-const uint16_t PROGMEM combo_raise_j_raise_k[] = {my_raise_j, my_raise_k, COMBO_END};
 
 const uint16_t PROGMEM combo_s_d[] = {my_s, my_d, COMBO_END};
 /* const uint16_t PROGMEM combo_f_d[] = {my_f, my_d, COMBO_END}; */
 const uint16_t PROGMEM combo_f_g[] = {my_f, my_g, COMBO_END};
 const uint16_t PROGMEM combo_editing_k_editing_l[] = {editing_k, editing_l, COMBO_END};
+
+const uint16_t PROGMEM combo_k49_k410[] =  {LOWER, editing_and_backspace, COMBO_END};
 
 
 const uint16_t PROGMEM combo_k_o[] = {my_k, my_o, COMBO_END};
@@ -259,6 +264,21 @@ const uint16_t PROGMEM combo_raise_d_raise_f[] = {my_raise_d, my_raise_f, COMBO_
 
 const uint16_t PROGMEM combo_slack_show_desktop[] = {show_desktop, select_slack, COMBO_END};
 
+// + : lower+;
+const uint16_t PROGMEM combo_lower_plus[] = {LOWER, my_semicolon, COMBO_END};
+
+/* #ifdef PREONIC_BUILD */
+const uint16_t PROGMEM combo_up_left[] = {preonic_9, preonic_7, COMBO_END};
+const uint16_t PROGMEM combo_up_right[] = {preonic_9, preonic_10, COMBO_END};
+const uint16_t PROGMEM combo_down_left[] = {preonic_8, preonic_7, COMBO_END};
+const uint16_t PROGMEM combo_down_right[] = {preonic_8, preonic_10, COMBO_END};
+const uint16_t PROGMEM combo_six_left[] = {preonic_6, preonic_7, COMBO_END};
+const uint16_t PROGMEM combo_right_zero[] = {preonic_10, preonic_11, COMBO_END};
+const uint16_t PROGMEM combo_up_down[] = {preonic_8, preonic_9, COMBO_END};
+const uint16_t PROGMEM combo_left_right[] = {preonic_7, preonic_10, COMBO_END};
+
+/* #endif */
+
 
 /* const uint16_t PROGMEM combo_w_d[] = {my_w, my_d, COMBO_END}; */
 const uint16_t PROGMEM combo_r_g[] = {my_r, my_g, COMBO_END};
@@ -328,3 +348,6 @@ const uint16_t PROGMEM combo_editing_j_editing_k[] = {editing_j, editing_k, COMB
 /* const combo_t  = COMBO(combo_topright_p_l, LCTL(KC_L)); */
 
 const uint16_t PROGMEM combo_backspace_y[] = {backspace, my_y, COMBO_END};
+
+const uint16_t PROGMEM combo_lower_j_k[] = {LOWER, my_j, my_k, COMBO_END};
+const uint16_t PROGMEM combo_raise_j_raise_k[] = {my_raise_j, my_raise_k, COMBO_END};
