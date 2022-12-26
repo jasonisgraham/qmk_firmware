@@ -9,7 +9,6 @@ enum preonic_layers {
                     _LOWER,
                     _RAISE,
                     _WINDOWS,
-                    _MACROS,
                     _SHIFTLOCK,
                     _WINMOVE,
                     _SUPER,
@@ -22,21 +21,13 @@ enum preonic_layers {
                     _HYPER,
                     _SA,
                     _ROFI,
+                    _MACROS,
                     _LAYER_LOCK,
 };
 
 /* #include "../../../common/config.h" */
 #undef UNICODE_SELECTED_MODES
 #define UNICODE_SELECTED_MODES UC_LNX
-
-
-
-#define key_0_7 KC_GRAVE
-#define key_1_7 top_alpha_mid_column
-#define key_2_7 backspace
-#define key_3_7 KC_ENTER
-/* #define key_4_7 TD(dance_k74) */
-
 
 #include "../../../common/key_overrides.c"
 #include "../../../common/drop_colors.c"
