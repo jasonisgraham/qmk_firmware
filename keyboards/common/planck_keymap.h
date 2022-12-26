@@ -55,10 +55,10 @@ SHIFTLOCK_LAYER_ACTIVATE, _______, _______,_______,   _______,          _______,
     _______, _______, _______, _______, KC_HYPR,  _______,                                                  _______, all_mods, MO(_EMACS), TO(_BASE), _______, _______
 
 
-#define planck_winmove                                 _______,   _______, _______, _______, _______, _______,  WINDOW_ALWAYS_ON_TOP, LGUI(LSFT(KC_Y)),_______, _______, LGUI(LSFT(KC_O)),_______, \
-  _______, _______, _______, LALT(LGUI(LCTL(RCTL(KC_D)))),_______, _______, _______, winmove_tile_left,   winmove_tile_down, winmove_tile_up ,   winmove_tile_right,   _______, \
-  _______, _______, _______, EMACS_FRAME_FULL_SCREEN, _______, _______,  _______, LGUI(LSFT(KC_N)), winmove_mon_up, _______, LGUI(LSFT(KC_DOT)),_______, \
-  _______, _______, _______, _______, TO(0),          _______,  _______,         winmove_mon_left,   winmove_mon_down,   winmove_mon_right,    _______, _______
+#define planck_winmove                                 _______,   _______, _______, _______, _______, _______,  WINDOW_ALWAYS_ON_TOP, winmove_UL,_______, _______, winmove_UR,_______, \
+  _______, _______, _______, LALT(LGUI(LCTL(RCTL(KC_D)))),_______, _______, _______, winmove_L,   winmove_D, winmove_U ,   winmove_R,   _______, \
+  _______, _______, _______, EMACS_FRAME_FULL_SCREEN, _______, _______,  _______, winmove_DL, winmove_U_monitor, _______, winmove_DR,_______, \
+  _______, _______, _______, _______, TO(0),          _______,  _______,         winmove_L_monitor,   winmove_D_monitor,   winmove_R_monitor,    _______, _______
 
 
 #define planck_all_mods                                  _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______, \
@@ -76,7 +76,7 @@ SHIFTLOCK_LAYER_ACTIVATE, _______, _______,_______,   _______,          _______,
 #define planck_windows ALT_TAB, WINDOWS_Q,   LGUI(KC_W),   WINDOWS_E,     TD(DANCE_40),   LGUI(KC_T), LGUI(KC_MINUS),  LGUI(KC_Y),   LGUI(KC_7),        LGUI(KC_8),     LGUI(KC_9),     LGUI(KC_0), \
     LALT(LGUI(KC_ESCAPE)), LGUI(KC_A),  select_slack, show_desktop     ,LGUI(KC_F),      _______, _______,  LGUI(KC_H),     TD(DANCE_43),   windows_k,   windows_l,   LGUI(KC_SCLN), \
                                    TO(_BASE), LGUI(KC_Z),     LGUI(KC_X),     LGUI(KC_C),     LGUI(KC_V),    _______, _______, LGUI(KC_N),   LGUI(KC_M),  _______, LSFT(LGUI(KC_K)), LALT(KC_F4), \
-    _______, _______, _______,         _______,        _______,     ALT_TAB ,   ALT_TAB , LALT(KC_8),      GUI(KC_MINUS),  ALT_TAB, _______, _______
+    _______, _______, _______,         _______,        _______,     ALT_TAB ,   ALT_TAB , ROFI_DRUN,      GUI(KC_MINUS),  ALT_TAB, _______, _______
 
 
 #define planck_macros                                _______,   _______, _______, _______, emacs_r, _______, EMACS_GOTO_GET_FEED, EMACS_COPY_FILE_PATH, EMACS_BACKWARD_UP, EMACS_INSERT_GI_GET_FEED, _______, _______,\

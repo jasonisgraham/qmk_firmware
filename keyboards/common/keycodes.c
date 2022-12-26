@@ -8,13 +8,19 @@
 #define GUI LGUI
 
 
-#define SET_ADHOC_0_1 LCTL(LALT(LGUI(KC_F1)))
-#define SET_ADHOC_0_4 LCTL(LALT(LGUI(KC_F4)))
-#define SET_ADHOC_0_6 LCTL(LALT(LGUI(KC_F6)))
+#define SET_HOTKEY_1 LCTL(LALT(LGUI(KC_F1)))
+#define SET_HOTKEY_2 LCTL(LALT(LGUI(KC_F2)))
+#define SET_HOTKEY_4 LCTL(LALT(LGUI(KC_F4)))
+#define SET_HOTKEY_5 LCTL(LALT(LGUI(KC_F5)))
+#define SET_HOTKEY_6 LCTL(LALT(LGUI(KC_F6)))
+#define SET_HOTKEY_0 LCTL(LALT(LGUI(KC_F12)))
 
-#define SELECT_ADHOC_0_1 LALT(LGUI(KC_F1))
-#define SELECT_ADHOC_0_4 LALT(LGUI(KC_F4))
-#define SELECT_ADHOC_0_6 LALT(LGUI(KC_F6))
+#define SELECT_HOTKEY_1 LALT(LGUI(KC_F1))
+#define SELECT_HOTKEY_2 LALT(LGUI(KC_F2))
+#define SELECT_HOTKEY_4 LALT(LGUI(KC_F4))
+#define SELECT_HOTKEY_5 LALT(LGUI(KC_F5))
+#define SELECT_HOTKEY_6 LALT(LGUI(KC_F6))
+#define SELECT_HOTKEY_0 LALT(LGUI(KC_F12))
 
 
 #define SELECT_TO_LINE_HOME LSFT(KC_HOME)
@@ -46,15 +52,21 @@
 #define WINDOW_ALWAYS_ON_TOP LCTL(LSFT(LGUI(RCTL(KC_UP))))
 #define WINDOW_TOGGLE_HORIZONTAL_MAX LSFT(LGUI(RCTL(KC_MINUS)))
 
-#define winmove_mon_up LGUI(LSFT(KC_UP))
-#define winmove_mon_left LGUI(LSFT(KC_LEFT))
-#define winmove_mon_right LGUI(LSFT(KC_RIGHT))
-#define winmove_mon_down LGUI(LSFT(KC_DOWN))
+#define winmove_U_monitor LGUI(LSFT(KC_UP))
+#define winmove_L_monitor LGUI(LSFT(KC_LEFT))
+#define winmove_R_monitor LGUI(LSFT(KC_RIGHT))
+#define winmove_D_monitor LGUI(LSFT(KC_DOWN))
 
-#define winmove_tile_up LGUI(LSFT(KC_K))
-#define winmove_tile_left LGUI(LSFT(KC_H))
-#define winmove_tile_right LGUI(LSFT(KC_L))
-#define winmove_tile_down LGUI(LSFT(KC_J))
+#define winmove_U LGUI(LSFT(KC_K))
+#define winmove_D LGUI(LSFT(KC_J))
+
+#define winmove_UL LGUI(LSFT(KC_Y))
+#define winmove_UR LGUI(LSFT(KC_O))
+#define winmove_R LGUI(LSFT(KC_L))
+#define winmove_L LGUI(LSFT(KC_H))
+#define winmove_DL LGUI(LSFT(KC_N))
+#define winmove_DR LGUI(LSFT(KC_DOT))
+
 
 #define editing_j LALT(LSFT(KC_J))
 #define editing_k LALT(LSFT(KC_K))
@@ -187,7 +199,7 @@
 #define raise_space KC_UNDS
 #define raise_key_4_9 KC_ENTER // KC_BSPC
 #define raise_semi  KC_MINUS
-#define raise_slash KC_BSLASH
+#define raise_slash KC_UNDS
 /* #define right_of_lower  esc_ctrl  // my_left_shift ///hyper // / MT(MOD_RCTL, KC_ESCAPE) */
 #define lower_right_of_super TD(WWW_BACK_FORWARD)
 #define scroll_next RCTL(KC_D)
@@ -206,9 +218,9 @@
 #define EMACS_SCROLL_UP RCTL(KC_Y)
 
 
-#define toggle_microphone RCTL(LALT(LGUI(LCTL(KC_F4))))
-#define on_microphone RCTL(LALT(LGUI(LCTL(KC_F5))))
-#define off_microphone RCTL(LALT(LGUI(LCTL(KC_F6))))
+#define toggle_microphone LALT(LGUI(KC_F7))
+#define on_microphone LALT(LGUI(KC_F8))
+#define off_microphone LALT(LGUI(KC_F9))
 
 #define top_alpha_mid_column TD(DANCE_MICROPHONE)
 
@@ -720,3 +732,4 @@ bool do_breathing = false;
 /* SS_LGUI(SS_TAP(X_E)) SS_DELAY(100) SS_LGUI(SS_TAP(X_E)) SS_DELAY(100) SS_LALT(SS_TAP(X_M)) */
 
 #define right_of_super MO(_APL)  // X(BANG) // esc_ctrl //  BRACKET_PAREN //all_mods
+

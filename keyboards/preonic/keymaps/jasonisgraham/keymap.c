@@ -7,17 +7,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 #define LAYOUT_wrapper(...) LAYOUT_preonic_grid(__VA_ARGS__)
 
 [_BASE] = LAYOUT_wrapper(
-                         preonic_00, preonic_01, preonic_02, preonic_03,   preonic_04, preonic_05, preonic_06, LEFT_OR_HOME, DOWN_OR_END, UP_OR_HOME , preonic_011, preonic_012,
+                         preonic_00, preonic_1, preonic_2, preonic_3,   preonic_4, preonic_5, preonic_6, preonic_7, preonic_8, preonic_9, preonic_10, preonic_11,
                               planck_base),
 
 
 [_RAISE] = LAYOUT_wrapper(KC_AUDIO_MUTE, KC_1, KC_2, KC_3, KC_4, KC_5,   TO_BASE, KC_6,  KC_7,  KC_8,  KC_9,  KC_0,    planck_raise),
 
-[_SHIFTLOCK] = LAYOUT_wrapper(_______, _______, _______, _______, SHIFTLOCK_LAYER_DEACTIVATE, _______,    _______, _______, _______, _______, _______, _______,
+[_SHIFTLOCK] = LAYOUT_wrapper(ESC_THEN_BASE_LAYER, KC_1, KC_2, KC_3, KC_4, KC_5,   TO_BASE, KC_6,  KC_7,  KC_8,  KC_9,  KC_0,    
                               planck_shiftlock),
 
 
-[_LOWER] = LAYOUT_wrapper(KC_AUDIO_MUTE, KC_1, KC_2, KC_3, KC_4, KC_5,   TO_BASE, KC_6,  KC_7,  KC_8,  KC_9,  KC_0,   planck_lower),
+[_LOWER] = LAYOUT_wrapper(LLOCK, KC_1, KC_2, KC_3, KC_4, KC_5,   TO_BASE, KC_6,  KC_7,  KC_8,  KC_9,  KC_0,   planck_lower),
 
 
 
@@ -42,7 +42,7 @@ planck_mouse),
 
 
 // 11
-[_SUPER] = LAYOUT_wrapper(_______, _______, ALT_TAB, OSL(_ROFI), _______, _______,    TO_BASE, LSFT(KC_GRAVE), LSFT(KC_TAB),    KC_TAB, KC_GRAVE, _______,
+[_SUPER] = LAYOUT_wrapper(_______, _______, ALT_TAB, OSL(_ROFI), _______, _______,    TO_BASE, LSFT(KC_TAB), LSFT(KC_GRAVE),     KC_GRAVE, KC_TAB,  PB_1,
 planck_super                              ),
 
 
@@ -69,23 +69,23 @@ planck_all_mods
                                 planck_system),
 
 // 6
-[_WINDOWS] = LAYOUT_wrapper(_______, SELECT_ADHOC_0_1, _______, _______, SELECT_ADHOC_0_4, _______, SELECT_ADHOC_0_6,  GUI(LSFT(KC_GRAVE)), GUI(LSFT(KC_TAB)),    GUI(KC_TAB), GUI(KC_GRAVE), _______,
+[_WINDOWS] = LAYOUT_wrapper(_______, SELECT_HOTKEY_1, _______, _______, SELECT_HOTKEY_4, _______, SELECT_HOTKEY_6,  GUI(LSFT(KC_GRAVE)), GUI(LSFT(KC_TAB)),    GUI(KC_TAB), GUI(KC_GRAVE), _______,
                                  planck_windows
                                 ),
 
 // 7
 [_MACROS] = LAYOUT_wrapper(
-                           _______, _______, _______, _______, _______, _______,    TO_BASE, SELECT_TO_LINE_HOME, SELECT_TO_DOC_END, SELECT_TO_DOC_HOME, SELECT_TO_LINE_END, _______,
+                           _______, _______, _______, _______, _______, _______,    TO_BASE, SELECT_TO_LINE_HOME, SELECT_TO_DOC_END, SELECT_TO_DOC_HOME, SELECT_TO_LINE_END, PB_1,
 planck_macros                              ),
 
-[_ADHOC_SET_HOTKEY] = LAYOUT_wrapper(_______, SET_ADHOC_0_1, _______, _______, SET_ADHOC_0_4, _______, SET_ADHOC_0_6,     _______, _______, _______, _______, _______,
+[_ADHOC_SET_HOTKEY] = LAYOUT_wrapper(_______, SET_HOTKEY_1, SET_HOTKEY_2, _______, SET_HOTKEY_4, SET_HOTKEY_5 ,  SET_HOTKEY_6,   _______, _______, _______, _______, SET_HOTKEY_0, 
 planck_adhoc_set_key                              ),
 
 [_HYPER] = LAYOUT_wrapper(
                           _______, _______, _______, _______, _______, _______,    TO_BASE, _______, _______, _______, _______, _______,
 planck_hyper                                         ),
 [_LAYER_LOCK] = LAYOUT_wrapper(
-                          _______, _______, _______, _______, _______, _______,    TO_BASE, _______, _______, _______, _______, _______,
+                          TO_BASE, _______, _______, _______, _______, _______,    TO_BASE, _______, _______, _______, _______, _______,
                           planck_layer_lock                                         ),
 
   };

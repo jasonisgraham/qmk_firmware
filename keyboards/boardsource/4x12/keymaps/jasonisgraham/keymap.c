@@ -134,9 +134,9 @@ _______, KC_F5,          KC_F6,          KC_F7,          KC_F8,          my_lowe
 // 9
 [_WINMOVE] = LAYOUT_ortho_4x12(
                                 _______,   _______, _______, _______, _______, _______,  WINDOW_ALWAYS_ON_TOP, LGUI(LSFT(KC_Y)),_______, _______, LGUI(LSFT(KC_O)),_______,
-                                _______, _______, _______, LALT(LGUI(LCTL(RCTL(KC_D)))),_______, _______, _______, winmove_tile_left,   winmove_tile_down, winmove_tile_up ,   winmove_tile_right,   _______,
-                                _______, _______, _______, EMACS_FRAME_FULL_SCREEN, _______, _______,  _______, LGUI(LSFT(KC_N)), winmove_mon_up, _______, LGUI(LSFT(KC_DOT)),_______,
-                                _______, _______, _______, _______, TO(0),          _______,  _______,         winmove_mon_left,   winmove_mon_down,   winmove_mon_right,    _______, _______
+                                _______, _______, _______, LALT(LGUI(LCTL(RCTL(KC_D)))),_______, _______, _______, winmove_L,   winmove_D, winmove_U ,   winmove_R,   _______,
+                                _______, _______, _______, EMACS_FRAME_FULL_SCREEN, _______, _______,  _______, LGUI(LSFT(KC_N)), winmove_U_monitor, _______, LGUI(LSFT(KC_DOT)),_______,
+                                _______, _______, _______, _______, TO(0),          _______,  _______,         winmove_L_monitor,   winmove_D_monitor,   winmove_R_monitor,    _______, _______
                                 ),
 
 // 4

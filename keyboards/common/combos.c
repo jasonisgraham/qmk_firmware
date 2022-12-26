@@ -187,10 +187,22 @@ combo_t key_combos[COMBO_COUNT] = {
                                    /* COMBO(combo_bottom_top_mid_column, LLOCK), */
                                    COMBO(combo_top_left_hyper, MO(_SYSTEM)),
                                    /* COMBO(combo_top_left_hyper, adhoc_set_hotkey), */
-                                   COMBO(combo_k42_k43, adhoc_set_hotkey),
+                                   COMBO(combo_k42_k43, LLOCK),
                                    COMBO(combo_raise_f, SA_LAYER_ACTIVATE),
                                    COMBO(combo_raise_r, MO(_MOUSE)),
                                    COMBO(combo_winmove_up_right, WINDOW_TOGGLE_HORIZONTAL_MAX),
+                                   COMBO (combo_lower_plus, KC_PLUS),
+/* #ifdef PREONIC_BUILD */
+                                   COMBO(combo_up_left, winmove_UL),
+                                   COMBO(combo_up_right, winmove_UR),
+                                   COMBO(combo_right_zero, winmove_R),
+                                   COMBO(combo_six_left, winmove_L),
+                                   COMBO(combo_down_left, winmove_DL),
+                                   COMBO(combo_down_right, winmove_DR),
+                                   COMBO(combo_left_right, WINDOW_TOGGLE_HORIZONTAL_MAX),
+                                   COMBO(combo_up_down, winmove_U),
+/* #endif */
+
 
 
 

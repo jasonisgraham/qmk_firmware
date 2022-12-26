@@ -77,7 +77,7 @@ const uint16_t PROGMEM combo_cap_j_cap_i[] = {my_cap_j, my_cap_i, COMBO_END};
 const uint16_t PROGMEM combo_cap_k_cap_o[] = {my_cap_k, my_cap_o, COMBO_END};
 const uint16_t PROGMEM combo_cap_m_cap_k[] = {my_cap_m, my_cap_k, COMBO_END};
 
-const uint16_t PROGMEM combo_winmove_up_right[] = {winmove_tile_up, winmove_tile_right, COMBO_END};
+const uint16_t PROGMEM combo_winmove_up_right[] = {winmove_U, winmove_R, COMBO_END};
 /* const uint16_t PROGMEM combo_spc_q[] = {my_q, my_space, COMBO_END}; */
 /* const uint16_t PROGMEM combo_spc_w[] = {my_w, my_space, COMBO_END}; */
 /* const uint16_t PROGMEM combo_spc_e[] = {my_e, my_space, COMBO_END}; */
@@ -258,6 +258,21 @@ const uint16_t PROGMEM combo_raise_d_raise_f[] = {my_raise_d, my_raise_f, COMBO_
 /* const uint16_t PROGMEM combo_forward_slash_right_shift[] = {my_forward_slash, my_right_shift, COMBO_END}; */
 
 const uint16_t PROGMEM combo_slack_show_desktop[] = {show_desktop, select_slack, COMBO_END};
+
+// + : lower+;
+const uint16_t PROGMEM combo_lower_plus[] = {LOWER, my_semicolon, COMBO_END};
+
+/* #ifdef PREONIC_BUILD */
+const uint16_t PROGMEM combo_up_left[] = {preonic_9, preonic_7, COMBO_END};
+const uint16_t PROGMEM combo_up_right[] = {preonic_9, preonic_10, COMBO_END};
+const uint16_t PROGMEM combo_down_left[] = {preonic_8, preonic_7, COMBO_END};
+const uint16_t PROGMEM combo_down_right[] = {preonic_8, preonic_10, COMBO_END};
+const uint16_t PROGMEM combo_six_left[] = {preonic_6, preonic_7, COMBO_END};
+const uint16_t PROGMEM combo_right_zero[] = {preonic_10, preonic_11, COMBO_END};
+const uint16_t PROGMEM combo_up_down[] = {preonic_8, preonic_9, COMBO_END};
+const uint16_t PROGMEM combo_left_right[] = {preonic_7, preonic_10, COMBO_END};
+
+/* #endif */
 
 
 /* const uint16_t PROGMEM combo_w_d[] = {my_w, my_d, COMBO_END}; */
