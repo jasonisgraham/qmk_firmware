@@ -3330,24 +3330,18 @@ void on_dance_super(qk_tap_dance_state_t *state, void *user_data) {}
 void dance_super_finished(qk_tap_dance_state_t *state, void *user_data) {
   dance_state[85].step = dance_step(state);
   switch (dance_state[85].step) {
-  case TAP:
-  case TAP_INTERRUPTED:
-    set_oneshot_layer(_WINDOWS, ONESHOT_START);
-    /* layer_on(_WINDOWS); */
-    break;
-
-  case TAP2:
-  case HOLD2:
-  case TAP2_INTERRUPTED:
-    set_oneshot_layer(_ROFI, ONESHOT_START);
-    /* layer_on(_ROFI); */
-    break;
-
   case HOLD:
-  default:
+  case HOLD3:
     // hold down SUPER cuz i dont wanna explicitly apply SUPER to every key
     register_code16(KC_LGUI);
     layer_on(_SUPER);
+    break;
+  case HOLD2:
+    tap_code16(ALT_TAB);
+    break;
+
+  default:
+    set_oneshot_layer(_WINDOWS, ONESHOT_START);
     break;
   }
 }
@@ -3355,19 +3349,14 @@ void dance_super_finished(qk_tap_dance_state_t *state, void *user_data) {
 void dance_super_reset(qk_tap_dance_state_t *state, void *user_data) {
   // layer_off(_ROFI) and layer_off(_ROFI) are handled by post_process_record_user
   switch (dance_state[85].step) {
-  case TAP:
-  case TAP_INTERRUPTED:
-  case TAP2:
-  case TAP2_INTERRUPTED:
-  case HOLD2:
-    clear_oneshot_layer_state(ONESHOT_PRESSED);
-    break;
-
-
   case HOLD:
-  default:
+  case HOLD3:
     unregister_code16(KC_LGUI);
     layer_off(_SUPER);
+    break;
+
+  default:
+    clear_oneshot_layer_state(ONESHOT_PRESSED);
     break;
   }
   dance_state[85].step = 0;
@@ -3472,16 +3461,6 @@ void dance_microphone_finished(qk_tap_dance_state_t *state, void *user_data) {
   switch (dance_state[89].step) {
   case HOLD:
     tap_code16(on_microphone);
-    break;
-  case HOLD2:
-#ifdef AUDIO_ENABLE
-    PLAY_SONG(caps_lock_on_sound);
-#endif
-#ifdef RGBLIGHT_ENABLE
-    rgblight_enable_noeeprom();
-    rgblight_mode(RGBLIGHT_MODE_RAINBOW_SWIRL);
-#endif
-    layer_move(_LAYER_LOCK);
     break;
   default:
     tap_code16(toggle_microphone);
