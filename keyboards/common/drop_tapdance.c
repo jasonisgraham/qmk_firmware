@@ -3354,6 +3354,13 @@ void dance_super_finished(qk_tap_dance_state_t *state, void *user_data) {
   default:
     set_oneshot_layer(_WINDOWS, ONESHOT_START);
     break;
+  case HOLD2:
+    tap_code16(ALT_TAB);
+    break;
+
+  default:
+    set_oneshot_layer(_WINDOWS, ONESHOT_START);
+    break;
   }
 }
 
@@ -3472,16 +3479,6 @@ void dance_microphone_finished(qk_tap_dance_state_t *state, void *user_data) {
   switch (dance_state[89].step) {
   case HOLD:
     tap_code16(on_microphone);
-    break;
-  case HOLD2:
-#ifdef AUDIO_ENABLE
-    PLAY_SONG(caps_lock_on_sound);
-#endif
-#ifdef RGBLIGHT_ENABLE
-    rgblight_enable_noeeprom();
-    rgblight_mode(RGBLIGHT_MODE_RAINBOW_SWIRL);
-#endif
-    layer_move(_LAYER_LOCK);
     break;
   default:
     tap_code16(toggle_microphone);
