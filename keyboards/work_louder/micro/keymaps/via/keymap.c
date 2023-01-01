@@ -64,6 +64,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 layer_state_set_kb(layer_state);
             }
             break;
+        case 0x5000 ... 0x500F:
+            if (record->event.pressed) {
+                layer_move(keycode - 0x5000);
+            }
+            return false; break;
+        case 0x5010 ... 0x501F:
+            if (record->event.pressed) {
+                layer_move(keycode - 0x5010);
+            }
+            return false; break;
     }
     return true;
 }
@@ -163,4 +173,8 @@ void via_custom_value_command_kb(uint8_t *data, uint8_t length) {
         return;
     }
     *command_id = id_unhandled;
+}
+
+void suspend_wakeup_init_user(void) {
+    layer_state_set_user(layer_state);
 }
