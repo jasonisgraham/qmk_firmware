@@ -88,8 +88,8 @@ SHIFTLOCK_LAYER_ACTIVATE, _______, _______,_______,   _______,          _______,
 
 #define planck_adhoc_set_key \
   _______, LCTL(LALT(LGUI(KC_Q))), LCTL(LALT(LGUI(KC_W))), _______,  LCTL(LALT(LGUI(KC_R))), _______,    WINDOW_ALWAYS_ON_TOP, LCTL(LALT(LGUI(KC_Y))), _______, _______, _______, _______, \
-  _______, _______, _______, _______, _______,    LCTL(LALT(LGUI(KC_G))), _______, _______, LCTL(LALT(LGUI(KC_J))), LCTL(LALT(LGUI(KC_K))), LCTL(LALT(LGUI(KC_L))), _______,\
-  _______, _______, _______, _______, _______, _______, _______, LCTL(LALT(LGUI(KC_N))), _______, _______, _______, LCTL(LALT(LGUI(KC_SLASH))),\
+  _______, _______, _______, _______, _______,    LCTL(LALT(LGUI(KC_G))), SELECT_HOTKEY_1, _______, LCTL(LALT(LGUI(KC_J))), LCTL(LALT(LGUI(KC_K))), LCTL(LALT(LGUI(KC_L))), _______,\
+    _______, _______, _______, _______, _______, _______, SELECT_HOTKEY_2, LCTL(LALT(LGUI(KC_N))), _______, _______, _______, LCTL(LALT(LGUI(KC_SLASH))), \
   _______, _______, _______, _______,    _______, _______, _______, _______,    _______, _______, _______, _______
 
 

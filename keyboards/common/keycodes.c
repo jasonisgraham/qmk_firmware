@@ -7,12 +7,6 @@
 /* super_meta_hyper */
 #define GUI LGUI
 
-#define key_0_7 KC_GRAVE
-#define key_1_7 top_alpha_mid_column
-#define key_2_7 backspace
-#define key_3_7 KC_ENTER
-/* #define key_4_7 TD(dance_k74) */
-
 #define SET_HOTKEY_1 LCTL(LALT(LGUI(KC_F1)))
 #define SET_HOTKEY_2 LCTL(LALT(LGUI(KC_F2)))
 #define SET_HOTKEY_4 LCTL(LALT(LGUI(KC_F4)))
@@ -27,6 +21,11 @@
 #define SELECT_HOTKEY_6 LALT(LGUI(KC_F6))
 #define SELECT_HOTKEY_0 LALT(LGUI(KC_F12))
 
+#define key_0_7 KC_GRAVE
+#define key_1_7 top_alpha_mid_column
+#define key_2_7 SELECT_HOTKEY_1
+#define key_3_7 SELECT_HOTKEY_2
+/* #define key_4_7 TD(dance_k74) */
 
 #define SELECT_TO_LINE_HOME LSFT(KC_HOME)
 #define SELECT_TO_DOC_HOME RCTL(LSFT(KC_HOME))
