@@ -7,12 +7,6 @@
 /* super_meta_hyper */
 #define GUI LGUI
 
-#define key_0_7 KC_GRAVE
-#define key_1_7 top_alpha_mid_column
-#define key_2_7 backspace
-#define key_3_7 KC_ENTER
-/* #define key_4_7 TD(dance_k74) */
-
 #define SET_HOTKEY_1 LCTL(LALT(LGUI(KC_F1)))
 #define SET_HOTKEY_2 LCTL(LALT(LGUI(KC_F2)))
 #define SET_HOTKEY_4 LCTL(LALT(LGUI(KC_F4)))
@@ -27,6 +21,11 @@
 #define SELECT_HOTKEY_6 LALT(LGUI(KC_F6))
 #define SELECT_HOTKEY_0 LALT(LGUI(KC_F12))
 
+#define key_0_7 KC_GRAVE
+#define key_1_7 top_alpha_mid_column
+#define key_2_7 SELECT_HOTKEY_1
+#define key_3_7 SELECT_HOTKEY_2
+/* #define key_4_7 TD(dance_k74) */
 
 #define SELECT_TO_LINE_HOME LSFT(KC_HOME)
 #define SELECT_TO_DOC_HOME RCTL(LSFT(KC_HOME))
@@ -527,22 +526,22 @@ enum custom_keycodes {
 bool is_alt_tab_active = false;
 uint16_t alt_tab_timer = 0;
 
-const int timer_default = 400;
+/* const int timer_default = 400; */
 
 bool fasd_timer_active = false;
 uint16_t fasd_timer = 0;
 int fasd_level = 0;
-int fasd_level_duration = timer_default;
+const int fasd_level_duration = 400;
 
 bool open_paren_timer_active = false;
 uint16_t open_paren_timer = 0;
 int open_paren_level = 0;
-int open_paren_level_duration = timer_default;
+int open_paren_level_duration = 400;
 
 bool closed_paren_timer_active = false;
 uint16_t closed_paren_timer = 0;
 int closed_paren_level = 0;
-int closed_paren_level_duration = timer_default;
+int closed_paren_level_duration = 400;
 
 void matrix_scan_user(void) {
   // open paren
