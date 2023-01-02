@@ -1,5 +1,11 @@
+/* printf("drop_colors %u\n", 1); */
 #ifdef RGBLIGHT_ENABLE
+/* printf("rgblight_enabled %u\n", 1); */
+#ifdef AUDIO_ENABLE
 #include "user_song_list.c"
+#endif
+
+
 static int DROP_DEFAULT_ANIMATION = 0;//RGBLIGHT_MODE_STATIC_LIGHT;
 /* static int DROP_DEFAULT_ANIMATION = DROP_DEFAULT_ANIMATION; // 2; // RGBLIGHT_MODE_BREATHING; */
 /* int DROP_DEFAULT_ANIMATION =  1; */
@@ -14,6 +20,8 @@ void static_kinda_dim(uint8_t hue, uint8_t sat, uint8_t val) {
 
 
 layer_state_t layer_state_set_user(layer_state_t state) {
+  printf("layer is %u\n", biton32(state));
+
   switch(biton32(state)) {
 
   case _BASE:
