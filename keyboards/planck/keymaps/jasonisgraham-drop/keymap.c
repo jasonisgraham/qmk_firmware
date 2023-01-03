@@ -60,10 +60,20 @@ planck_all_mods
 // 7
 [_MACROS] = LAYOUT_wrapper(
 planck_macros                              ),
-
+[_DYNAMIC_MACROS] = LAYOUT_wrapper (planck_dynamic_macros),
 [_ADHOC_SET_HOTKEY] = LAYOUT_wrapper(
 planck_adhoc_set_key                              ),
 
 [_HYPER] = LAYOUT_wrapper(
 planck_hyper                                         ),
+
+[_LAYER_LOCK] = LAYOUT_wrapper(planck_layer_lock                                         ),
+
+[_CODE] = LAYOUT_wrapper(planck_code                                         ),
+[_EMACS_SELECT] = LAYOUT_wrapper(planck_emacs_select                                         ),
+
+[_FILES] = LAYOUT_wrapper(planck_files                                         ),
+[_WEB] = LAYOUT_wrapper(planck_web                                         )
+
   };
+

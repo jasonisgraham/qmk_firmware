@@ -1,6 +1,9 @@
 # MCU name
 MCU = STM32F303
 
+REPEAT_KEY_ENABLE = yes
+
+DYNAMIC_MACRO_ENABLE = yes
 # Bootloader selection
 BOOTLOADER = stm32-dfu
 

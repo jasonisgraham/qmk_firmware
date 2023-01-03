@@ -17,7 +17,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_LOWER] = LAYOUT_preonic_grid(
                                  _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
-                                 KC_F1,          KC_F2,          KC_F3,          KC_F4,          TD(DANCE_73), _______,  _______,  KC_HOME,        KC_PGUP, my_lower_i,      my_lower_o,         my_lower_p,
+                                 KC_F1,          KC_F2,          KC_F3,          KC_F4,          TD(DANCE_SCREENSHOT), _______,  _______,  KC_HOME,        KC_PGUP, my_lower_i,      my_lower_o,         my_lower_p,
                                  KC_F5,          KC_F6,          KC_F7,          KC_F8,          _______,    _______, _______, KC_LEFT,        my_lower_j,        my_lower_k,          my_lower_l,       my_lower_semi,
                                  KC_F9,          KC_F10,         KC_F11,         KC_F12,         KC_APPLICATION, _______, _______, my_lower_n, my_lower_m, my_lower_comma,   my_lower_period, my_lower_slash,
                                  KC_F13, KC_F14, KC_F15, MO(_MOUSE),          _______, _______,          _______,         TO(4), lower_LOWER,          lower_right_of_lower, lower_key_4_11, lower_key_4_12
@@ -73,7 +73,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_WINDOWS] = LAYOUT_preonic_grid(
                                    _______, ALT_TAB, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
                                    WINDOWS_Q,   TD(DANCE_39),   LGUI(KC_E),     TD(DANCE_40),   LGUI(KC_T), _______,    LGUI(KC_MINUS), LGUI(KC_Y),   LGUI(KC_7),        LGUI(KC_8),     LGUI(KC_9),     LGUI(KC_0),
-                                   LGUI(KC_A),  select_slack, show_desktop     ,LGUI(KC_F),     TD(DANCE_42), RGUI(KC_ESCAPE), _______,  LGUI(KC_H),     TD(DANCE_43),   TD(DANCE_44),   TD(DANCE_45),   _______,
+                                   LGUI(KC_A),  select_slack, show_desktop     ,LGUI(KC_F),     TD(DANCE_42), RGUI(KC_ESCAPE), _______,  LGUI(KC_H),     TD(DANCE_HOTKEY_OR_COMPOSE),   TD(DANCE_44),   TD(DANCE_45),   _______,
                                    LGUI(KC_Z),     LGUI(KC_X),     LGUI(KC_C),     RGUI(KC_V),     _______, TO(_BASE),  _______, TD(DANCE_46),   LGUI(KC_M),  _______, RSFT(LGUI(KC_K)), RCTL(RGUI(KC_Q)),
                                    _______, _______,         LALT(KC_6),        _______,      ALT_TAB , RGUI(KC_ESCAPE), _______,  LALT(KC_8), RGUI(KC_ESCAPE),  OSL(_ADHOC_SET_HOTKEY), _______, _______
   ),
@@ -82,7 +82,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_MACROS] = LAYOUT_preonic_grid(
                                   _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
                                   EMACS_RE_FIND, _______, _______, emacs_r, _______ ,  _______, EMACS_GOTO_PARSE_ITEM, _______, EMACS_BACKWARD_UP, _______, EMACS_ANON_FN, _______,
-                                  emacs_a, CD_CSV, EMACS_YAS_DOC,     emacs_f,     EMACS_INSERT_GET_FEED, _______, EMACS_GOTO_GET_FEED, _______, _______, EMACS_YAS_KEYS_DESCRUCTURE, EMACS_YAS_TL,     EMACS_COMMENT_READER,
+                                  emacs_a, CD_CSV, EMACS_YAS_DOC,     emacs_f,     EMACS_INSERT_GET_FEED, _______, CLJ_TAP, _______, _______, EMACS_YAS_KEYS_DESCRUCTURE, EMACS_YAS_TL,     EMACS_COMMENT_READER,
                                   _______, _______, EMACS_YAS_C,     _______, _______, _______, EMACS_GOTO_SYNC_FEED, _______, emacs_m,     _______, _______, TERM_CD_UP_DIR,
    _______, _______, _______, _______, _______, _______, KC_NO,          _______, _______, _______, _______, _______
   ),

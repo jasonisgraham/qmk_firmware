@@ -1,7 +1,7 @@
 #pragma once
 
-#undef UNICODE_SELECTED_MODES
-#define UNICODE_SELECTED_MODES UC_LNX
+/* #undef UNICODE_SELECTED_MODES */
+/* #define UNICODE_SELECTED_MODES UC_LINX */
 
 #ifdef AUDIO_ENABLE
   #include "song_list.h"
@@ -21,9 +21,9 @@
 
 #define COMBO_STRICT_TIMER
 #undef COMBO_TERM
-#define COMBO_TERM 25  // default is 50.  50ms produces false positives when typing kinda fast
+#define COMBO_TERM 17  // default is 50.  50ms produces false positives when typing kinda fast
 #undef COMBO_COUNT
-#define COMBO_COUNT 150
+#define COMBO_COUNT 175
 
 /* #define echo false */
 /* #define RGBLIGHT_LAYER_BLINK 1 */
@@ -64,7 +64,7 @@
 
 
 #undef AUTO_SHIFT_TIMEOUT
-#define AUTO_SHIFT_TIMEOUT 130
+#define AUTO_SHIFT_TIMEOUT 150
 /* #define AUTO_SHIFT_SPECIAL */
 
 /*
@@ -73,7 +73,7 @@
 */
 #define ORYX_CONFIGURATOR
 #undef TAPPING_TERM
-/* #define TAPPING_TERM 195 */
+#define TAPPING_TERM 150
 
 #define PERMISSIVE_HOLD
 
