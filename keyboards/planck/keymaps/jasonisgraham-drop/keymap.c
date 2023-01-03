@@ -66,4 +66,8 @@ planck_adhoc_set_key                              ),
 
 [_HYPER] = LAYOUT_wrapper(
 planck_hyper                                         ),
+
+[_LAYER_LOCK] = LAYOUT_wrapper(planck_layer_lock                                         )
+
   };
+

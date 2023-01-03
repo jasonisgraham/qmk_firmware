@@ -27,3 +27,5 @@
 /* #define ENABLE_RGB_MATRIX_DUAL_HUE_STAR_LIGHT */
 
 #include "../../../common/config.h"
+#define LEADER_NO_TIMEOUT
+#define LEADER_TIMEOUT 10000

@@ -349,12 +349,12 @@ combo_t key_combos[COMBO_COUNT] = {
                                    COMBO(combo_j_n, KC_GRV),
                                    COMBO(combo_raise_h_raise_j, KC_DELETE),
                                    /* COMBO(combo_lower_semicolon, RCTL(KC_SCOLON)), */
-                                   COMBO(combo_my_raise_g, OSL(_MACROS)),
+                                   COMBO(combo_my_raise_g, TD(DANCE_MACROS)),
 
                                    // layers
                                    COMBO(combo_r_g, TD(DANCE_F5)),
                                    /* COMBO(combo_grave_q, TO(_AUDIO)), */
-                                   COMBO(combo_f_g, OSL(_MACROS)),
+                                   COMBO(combo_f_g, TD(DANCE_MACROS)),
                                    COMBO(combo_s_d, OSL(_WINDOWS)),
                                    COMBO(combo_w_e, OSL(_WINMOVE)),
 
