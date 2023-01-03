@@ -36,6 +36,17 @@ bool get_custom_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
   case KC_RPRN:
     return true;
 
+  case KC_ENTER:
+    return true;
+
+  case KC_COLN:
+    return true;
+
+  case KC_LEFT_ANGLE_BRACKET:
+  case KC_RIGHT_ANGLE_BRACKET:
+    return true;
+
+
   default:
     return false;
   }
@@ -43,6 +54,21 @@ bool get_custom_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
 
 void autoshift_press_user(uint16_t keycode, bool shifted, keyrecord_t *record) {
   switch(keycode) {
+  case KC_LEFT_ANGLE_BRACKET:
+    register_code16((!shifted) ? KC_LEFT_ANGLE_BRACKET : KC_RIGHT_ANGLE_BRACKET);
+    break;
+
+  case KC_RIGHT_ANGLE_BRACKET:
+    register_code16((!shifted) ? KC_RIGHT_ANGLE_BRACKET : KC_LEFT_ANGLE_BRACKET);
+    break;
+
+    case KC_ENTER:
+    register_code16((!shifted) ? KC_ENTER : RCTL(KC_ENTER));
+    break;
+
+  case KC_COLN:
+    register_code16((!shifted) ? KC_COLN : KC_SCLN);
+    break;
 
   case KC_EXLM:
     register_code16((!shifted) ? KC_EXLM : KC_1);
@@ -93,7 +119,7 @@ void autoshift_press_user(uint16_t keycode, bool shifted, keyrecord_t *record) {
     break;
 
   case KC_TAB:
-    register_code16((!shifted) ? KC_TAB : LALT(KC_SLASH));
+    register_code16((!shifted) ? KC_TAB : RCTL(KC_I));
     break;
 
 
@@ -108,6 +134,24 @@ void autoshift_press_user(uint16_t keycode, bool shifted, keyrecord_t *record) {
 
 void autoshift_release_user(uint16_t keycode, bool shifted, keyrecord_t *record) {
   switch(keycode) {
+  case KC_LEFT_ANGLE_BRACKET:
+    unregister_code16((!shifted) ? KC_LEFT_ANGLE_BRACKET : KC_RIGHT_ANGLE_BRACKET);
+    break;
+
+
+  case KC_RIGHT_ANGLE_BRACKET:
+    unregister_code16((!shifted) ? KC_RIGHT_ANGLE_BRACKET : KC_LEFT_ANGLE_BRACKET);
+    break;
+
+
+    case KC_ENTER:
+  unregister_code16((!shifted) ? KC_ENTER : RCTL(KC_ENTER));
+    break;
+
+  case KC_COLN:
+    unregister_code16((!shifted) ? KC_COLN : KC_SCLN);
+    break;
+
 
   case KC_LCBR:
     unregister_code16((!shifted) ? KC_LCBR : KC_RCBR);
@@ -118,7 +162,7 @@ void autoshift_release_user(uint16_t keycode, bool shifted, keyrecord_t *record)
     break;
 
   case KC_TAB:
-    unregister_code16((!shifted) ? KC_TAB : LALT(KC_SLASH));
+    unregister_code16((!shifted) ? KC_TAB : RCTL(KC_I));
     break;
 
   case KC_EXLM:
