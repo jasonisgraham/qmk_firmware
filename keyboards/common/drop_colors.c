@@ -2,15 +2,20 @@
 #ifdef AUDIO_ENABLE
 #include "user_song_list.c"
 #endif
-static int DROP_DEFAULT_ANIMATION = 0;//RGBLIGHT_MODE_STATIC_LIGHT;
-/* static int DROP_DEFAULT_ANIMATION = DROP_DEFAULT_ANIMATION; // 2; // RGBLIGHT_MODE_BREATHING; */
-/* int DROP_DEFAULT_ANIMATION =  1; */
+
+#ifndef DROP_DEFAULT_ANIMATION
+#define DROP_DEFAULT_ANIMATION 0
+#endif
+
+static int DROP_CURRENT_ANIMATION = DROP_DEFAULT_ANIMATION;//RGBLIGHT_MODE_STATIC_LIGHT;
+/* static int DROP_CURRENT_ANIMATION = DROP_CURRENT_ANIMATION; // 2; // RGBLIGHT_MODE_BREATHING; */
+/* int DROP_CURRENT_ANIMATION =  1; */
 
 void static_kinda_dim(uint8_t hue, uint8_t sat, uint8_t val);
 void static_kinda_dim(uint8_t hue, uint8_t sat, uint8_t val) {
   rgblight_enable_noeeprom();
   /* rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT); */
-  rgblight_mode_noeeprom(DROP_DEFAULT_ANIMATION);
+  rgblight_mode_noeeprom(DROP_CURRENT_ANIMATION);
   rgblight_sethsv_noeeprom(hue, sat, val);
 }
 
@@ -25,12 +30,13 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
   case _LOWER:
     rgblight_enable_noeeprom();
-    rgblight_mode(DROP_DEFAULT_ANIMATION);
+    rgblight_mode(DROP_CURRENT_ANIMATION);
     rgblight_sethsv_noeeprom(HSV_RED);
     /* rgblight_mode(RGBLIGHT_MODE_KNIGHT); */
     break;
 
   case _ROFI:
+    rgblight_mode(DROP_CURRENT_ANIMATION);
     static_kinda_dim(HSV_PURPLE);
     break;
 
@@ -38,19 +44,19 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     /* float x[][2] = SONG(ROCK_A_BYE_BABY); */
     /* PLAY_SONG(x);             /\*  *\/ */
     rgblight_enable_noeeprom();
-    rgblight_mode(DROP_DEFAULT_ANIMATION);
+    rgblight_mode(DROP_CURRENT_ANIMATION);
     rgblight_sethsv_noeeprom(HSV_BLUE);
     break;
 
   case _HYPER:
     rgblight_enable_noeeprom();
-    rgblight_mode_noeeprom(RGBLIGHT_MODE_BREATHING);
+    rgblight_mode_noeeprom(RGBLIGHT_MODE_ALTERNATING);
     rgblight_sethsv_noeeprom(HSV_WHITE);
     break;
 
   case _EDITING:
     rgblight_enable_noeeprom();
-    rgblight_mode_noeeprom(RGBLIGHT_MODE_BREATHING);
+    rgblight_mode_noeeprom(RGBLIGHT_MODE_SNAKE);
     rgblight_sethsv_noeeprom(HSV_BLUE);
     break;
 
@@ -83,14 +89,23 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     rgblight_mode(RGBLIGHT_MODE_RAINBOW_SWIRL);
     break;
 
-
   case _ADHOC_SET_HOTKEY:
     rgblight_disable_noeeprom();
     rgblight_enable_noeeprom();
     rgblight_mode_noeeprom(0);
-    /* #ifdef AUDIO_ENABLE */
-    /* PLAY_SONG(major_sound); */
-    /* #endif */
+
+    #ifdef AUDIO_ENABLE
+    PLAY_SONG(major_sound);
+    #endif
+
+    #ifdef LEVINSON
+    for (int i=0; i< RGBLED_NUM; i=i+2) {
+      sethsv(HSV_BLUE, (LED_TYPE *)&led[i]);
+      sethsv(HSV_RED, (LED_TYPE *)&led[i+1]);
+    }
+    #endif
+
+#ifndef LEVINSON
     sethsv(HSV_BLUE, (LED_TYPE *)&led[0]);
     sethsv(HSV_RED, (LED_TYPE *)&led[1]);
     sethsv(HSV_BLUE, (LED_TYPE *)&led[2]);
@@ -102,6 +117,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     sethsv(HSV_BLUE,   (LED_TYPE *)&led[8]);
     rgblight_set();
     /* rgblight_mode(RGBLIGHT_MODE_BREATHING); */
+    #endif
 
     break;
 
@@ -118,18 +134,38 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
 
   case _MACROS:
+    rgblight_mode(DROP_CURRENT_ANIMATION);
     static_kinda_dim(HSV_PINK);
+    break;
+
+  case _LAYER_LOCK:
+    rgblight_enable_noeeprom();
+    rgblight_mode(RGBLIGHT_MODE_KNIGHT);
+    rgblight_sethsv_noeeprom(HSV_PURPLE);
+
     break;
 
   case _SHIFTLOCK:
     // shiftlok
-/* #ifdef AUDIO_ENABLE */
-/*     PLAY_SONG(caps_lock_on_sound); */
-/* #endif */
+#ifdef AUDIO_ENABLE
+    PLAY_SONG(caps_lock_on_sound);
+#endif
 
     rgblight_disable_noeeprom();
     rgblight_enable_noeeprom();
     rgblight_mode_noeeprom(0);
+    #ifdef LEVINSON
+    for (int i=0; i<26; i=i+3) {
+      sethsv(HSV_PINK, (LED_TYPE *)&led[i]);
+      sethsv(HSV_RED, (LED_TYPE *)&led[i+1]);
+      sethsv(HSV_WHITE, (LED_TYPE *)&led[i+2]);
+    }
+    sethsv(HSV_RED, (LED_TYPE *)&led[25]);
+    /* rgblight_set_clipping_range(12,13); */
+    /* rgblight_mode_noeeprom(RGBLIGHT_MODE_ALTERNATING); */
+    #endif
+
+    #ifndef LEVINSON
     sethsv(HSV_PINK, (LED_TYPE *)&led[0]);
     sethsv(HSV_RED, (LED_TYPE *)&led[1]);
     sethsv(HSV_WHITE, (LED_TYPE *)&led[2]);
@@ -139,24 +175,26 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     sethsv(HSV_PINK,   (LED_TYPE *)&led[6]);
     sethsv(HSV_RED,   (LED_TYPE *)&led[7]);
     sethsv(HSV_PINK,   (LED_TYPE *)&led[8]);
+    #endif
     rgblight_set();
     break;
 
   /* case 16: */
   /*   rgblight_enable_noeeprom(); */
-    /* rgblight_mode(DROP_DEFAULT_ANIMATION); */
+    /* rgblight_mode(DROP_CURRENT_ANIMATION); */
   /*   /\* rgblight_mode(RGBLIGHT_MODE_BREATHING); *\/ */
   /*   rgblight_sethsv_noeeprom(HSV_PURPLE); */
   /*   break; */
 
 
   case _EMACS:
-    rgblight_mode(RGBLIGHT_MODE_SNAKE);
+    rgblight_mode(RGBLIGHT_MODE_ALTERNATING);
     rgblight_enable_noeeprom();
     rgblight_sethsv_noeeprom(HSV_BLUE);
     break;
 
   case _WINMOVE:
+    rgblight_mode(DROP_CURRENT_ANIMATION);
     static_kinda_dim(HSV_SPRINGGREEN);
     break;
 

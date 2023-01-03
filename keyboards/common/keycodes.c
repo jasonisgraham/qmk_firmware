@@ -22,9 +22,9 @@
 #define SELECT_HOTKEY_0 LALT(LGUI(KC_F12))
 
 #define key_0_7 KC_GRAVE
-#define key_1_7 top_alpha_mid_column
-#define key_2_7 SELECT_HOTKEY_1
-#define key_3_7 SELECT_HOTKEY_2
+#define key_1_7 SELECT_HOTKEY_1
+#define key_2_7 SELECT_HOTKEY_2
+#define key_3_7 KC_ENTER
 /* #define key_4_7 TD(dance_k74) */
 
 #define SELECT_TO_LINE_HOME LSFT(KC_HOME)
@@ -75,8 +75,9 @@
 #define editing_j LALT(LSFT(KC_J))
 #define editing_k LALT(LSFT(KC_K))
 #define editing_l LALT(LSFT(KC_L))
-#define next_win_or_frame LALT(RCTL(KC_N))
-#define prev_win_or_frame LALT(RCTL(KC_P))
+#define next_win_or_frame LALT(KC_N)
+#define prev_win_or_frame LALT(KC_P)
+
 
 /* #define EMACS_LOCCUR RCTL(LALT(LGUI(KC_O))) */
 #define CTRL_L RCTL(KC_P)
@@ -114,7 +115,6 @@
 #define emacs_m EMACS_YAS_MAP_ANON
 #define emacs_r EMACS_YAS_REMOVE_ANON
 #define key_0_0 KC_LCTL
-#define hyper LM(_HYPER, MOD_LCTL) //KC_LCTL // OSL(_WINDOWS)
 #define key_0_1 RCTL(LALT(KC_LSFT))
 #define key_4_11 KC_DOWN //CYCLE_DROP_COLORS // LAYER_LOWER_HOLD
 #define key_4_12 KC_UP
@@ -164,7 +164,7 @@
 #define my_lower_f  KC_F8
 #define my_lower_g KC_TAB
 #define my_lower_i KC_PGUP
-#define my_lower_m _______
+#define my_lower_m KC_ENTER
 #define my_lower_n _______
 #define my_lower_o KC_END
 #define my_lower_p KC_BSPACE
@@ -178,6 +178,14 @@
 #define my_minus _______
 #define my_raise RAISE
 #define my_raise_comma KC_2
+
+#define my_raise_z LCTL(KC_Z)
+#define my_raise_x RCTL(KC_X)
+#define my_raise_c RCTL(KC_C)
+#define my_raise_v TD(DANCE_SAVE_LOAD_NS_SWITCH)
+#define my_raise_b _______
+#define my_raise_q KC_HOME
+
 #define my_raise_d KC_RIGHT
 #define my_raise_a KC_LEFT
 #define my_raise_s KC_DOWN
@@ -204,7 +212,7 @@
 #define raise_space KC_UNDS
 #define raise_key_4_9 KC_ENTER // KC_BSPC
 #define raise_semi  KC_MINUS
-#define raise_slash KC_UNDS
+#define raise_slash KC_ENTER
 /* #define right_of_lower  esc_ctrl  // my_left_shift ///hyper // / MT(MOD_RCTL, KC_ESCAPE) */
 #define lower_right_of_super TD(WWW_BACK_FORWARD)
 #define scroll_next RCTL(KC_D)
@@ -240,7 +248,7 @@ enum col7_row4_fns {
                     K74_MO_APL
 };
 
-static int active_apl_level3_fn = K74_MO_LEVEL3;
+static int active_apl_level3_fn = K74_MO_APL;
 
 void clear_modifiers(void) {
   unregister_code16(KC_LGUI);
@@ -297,6 +305,8 @@ enum custom_keycodes {
                       /* RGB_SLD = SAFE_RANGE, */
                       /* RGB_SLD = EZ_SAFE_RANGE, */
                       FIRST = SAFE_RANGE,
+                      EMACS_SYNC_FEED,
+                      COPY_TEXT_OPEN_NEW_TAB_SEARCH,
                       TMPTXT,
                       ALT,
                       TO_BASE,
@@ -306,6 +316,7 @@ enum custom_keycodes {
                       LLOCK_EDITING,
                       LLOCK_LEVEL3,
                       LLOCK_APL,
+                      COPY_LATEST_FILE_TO_CLIPBOARD,
                       ROFI_CLIPBOARD ,
                       ROFI_WINDOWS ,
                       ROFI_LOCATE ,
@@ -331,6 +342,7 @@ enum custom_keycodes {
                       EMACS_TRANSPOSE,
                       OPEN_PAREN,
                       CLOSED_PAREN,
+                      TERM_CD_PREVIOUS,
                       CIDER_RUN_PREV_COMMAND,
                       EMACS_DESC_KEY,
                       EMACS_FINDER_COMMENTARY,
@@ -516,8 +528,8 @@ enum custom_keycodes {
 
 
 #define editing_and_backspace LT(_EDITING, KC_BSPACE)
-#define apl_level3_and_osl_rofi TD(DANCE_LEVEL3_APL)
-#define key_4_7 apl_level3_and_osl_rofi
+#define apl_level3_and_adhoc_hotkey TD(DANCE_LEVEL3_APL)
+#define key_4_7 apl_level3_and_adhoc_hotkey
 
 #define max_buffer LALT(KC_ENTER)
 #define close_x_window RCTL(LGUI(KC_Q))
@@ -671,7 +683,7 @@ int i = 0;
 /*   rgblight_mode(faves[i]); */
 /* } */
 
-/* int DROP_DEFAULT_ANIMATION = 0;//RGBLIGHT_MODE_STATIC_LIGHT; */
+/* int DROP_CURRENT_ANIMATION = 0;//RGBLIGHT_MODE_STATIC_LIGHT; */
 int DROP_LAYER_0_COLOR = 0;
 
 const uint8_t faves[7] = {1, // static
@@ -689,9 +701,9 @@ void cycle_drop_animations(void) {
     i = 0;
   }
 
-  DROP_DEFAULT_ANIMATION = faves[i];
-  /* dprintf("idx: %u, drop animation: %u\n", i, DROP_DEFAULT_ANIMATION); */
-  rgblight_mode(DROP_DEFAULT_ANIMATION);
+  DROP_CURRENT_ANIMATION = faves[i];
+  /* dprintf("idx: %u, drop animation: %u\n", i, DROP_CURRENT_ANIMATION); */
+  rgblight_mode(DROP_CURRENT_ANIMATION);
 }
 
 /* enum colors { */
@@ -739,3 +751,7 @@ bool do_breathing = false;
 
 #define right_of_super MO(_APL)  // X(BANG) // esc_ctrl //  BRACKET_PAREN //all_mods
 
+
+#define editing_comma emacs_buffer_stack_down
+#define editing_period emacs_buffer_stack_up
+#define emacs_indent_buffer RCTL(LALT(KC_BSLASH))

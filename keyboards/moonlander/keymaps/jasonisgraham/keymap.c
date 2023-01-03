@@ -86,7 +86,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_RAISE] = LAYOUT_moonlander(
     KC_TILD,        KC_EXLM,        KC_AT,          KC_HASH,        KC_DLR,         KC_PERC,               _______,                                 _______, KC_CIRC,        KC_AMPR,        KC_ASTR,        KC_LPRN,        KC_RPRN,        _______,
     LALT(KC_D),    _______,          my_raise_w,  KC_END,                                       EMACS_BUFFER_REVERT,       _______, _______, _______,            my_raise_y, my_raise_u,           my_raise_i,           my_raise_o,           my_raise_p, _______,
-    _______, my_raise_a, my_raise_s,   my_raise_d, my_raise_f,  OSL(_MACROS),_______,   KC_DEL,       my_raise_h,         my_raise_j,           my_raise_k,           my_raise_l,           raise_semi, _______,
+    _______, my_raise_a, my_raise_s,   my_raise_d, my_raise_f,  TD(DANCE_MACROS),_______,   KC_DEL,       my_raise_h,         my_raise_j,           my_raise_k,           my_raise_l,           raise_semi, _______,
     _______, _______, _______,_______,   _______,          _______, my_raise_n,           my_raise_m,           my_raise_comma,         KC_3,           raise_slash, _______,
     SYSTEM_LAYER_ACTIVATE, _______, _______,        _______,        _______, _______,  _______,         raise_key_4_9,       KC_0,  _______,         TO(_BASE), _______,
     lower_right_of_super, _______, _______,                 _______, _______, my_space

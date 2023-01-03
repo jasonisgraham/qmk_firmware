@@ -146,6 +146,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
       SEND_STRING("ssh cronjobs-prod" SS_TAP(X_ENTER) SS_DELAY(1500));
       SEND_STRING("su app " SS_TAP(X_ENTER) SS_DELAY(250) "cd " SS_TAP(X_ENTER) "cd collage" SS_TAP(X_ENTER));
+      layer_move(_BASE);
     }
     break;
 
@@ -1185,8 +1186,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case RESET_ANIMATION:
     if (record->event.pressed) {
 #ifdef RGBLIGHT_ENABLE
-      DROP_DEFAULT_ANIMATION = 0;
-      rgblight_mode(DROP_DEFAULT_ANIMATION);
+      DROP_CURRENT_ANIMATION = 0;
+      rgblight_mode(DROP_CURRENT_ANIMATION);
 #endif
     }
     break;
@@ -1350,9 +1351,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     break;
 
+  case TERM_CD_PREVIOUS:
+    if (record->event.pressed) {
+      SEND_STRING("cd - " SS_TAP(X_ENTER));
+      layer_move(_BASE);
+    }
+    break;
+
+
   case TERM_CD_UP_DIR:
     if (record->event.pressed) {
       SEND_STRING("cd ../" SS_TAP(X_ENTER));
+      /* layer_move(_BASE); */
     }
     break;
 
@@ -1385,6 +1395,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case EMACS_YAS_DOC:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_ESC) "idoc" macro_alt_slash);
+      layer_move(_BASE);
     }
     break;
 
@@ -1419,22 +1430,26 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case EMACS_YAS_TF:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_ESC) "itf" macro_alt_slash);
+      layer_move(_BASE);
     }
     break;
   case EMACS_YAS_C:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_ESC) "ic" macro_alt_slash);
+      layer_move(_BASE);
     }
     break;
   case EMACS_YAS_TL:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_ESC) "itl" macro_alt_slash);
+      layer_move(_BASE);
     }
     break;
 
   case THREAD_FIRST:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_ESC) "i(some-> ");
+      layer_move(_BASE);
     }
     break;
 
@@ -1442,6 +1457,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case THREAD_LAST:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_ESC) "i(some->> ");
+      layer_move(_BASE);
     }
     break;
 
@@ -1457,24 +1473,28 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case EMACS_YAS_REMOVE_ANON:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_ESC) "i(remove #(->> % ");
+      layer_move(_BASE);
     }
     break;
 
   case EMACS_YAS_FILTER_ANON:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_ESC) "ifa" macro_alt_slash);
+      layer_move(_BASE);
     }
     break;
 
   case EMACS_YAS_MAP_ANON:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_ESC) "imapa" macro_alt_slash);
+      layer_move(_BASE);
     }
     break;
 
   case EMACS_YAS_KEYS_DESCRUCTURE:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_ESC) "ikd" macro_alt_slash);
+      layer_move(_BASE);
     }
     break;
 
@@ -1640,15 +1660,30 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     break;
 
+  case COPY_TEXT_OPEN_NEW_TAB_SEARCH:
+    if (record->event.pressed) {
+      SEND_STRING(SS_RCTL(SS_TAP(X_C))  SS_RCTL(SS_TAP(X_T))  SS_RCTL(SS_TAP(X_V)) SS_TAP(X_ENTER));
+      layer_move(_BASE);
+    }
+    break;
+
+  case EMACS_SYNC_FEED:
+    if (record->event.pressed) {
+      SEND_STRING("(def _ (sync-feed))" SS_TAP(X_ENTER));
+    }
+    break;
+
   case EMACS_INSERT_GI_GET_FEED:
     if (record->event.pressed) {
-      SEND_STRING("(def xs (gi/get-feed importer-config))");
+      SEND_STRING("(do (collage.importers.framework.devstudio/load-importer importer-config) (def xs (collage.importers.framework.devstudio/get-feed))) (def x (first xs))");
+      layer_move(_BASE);
     }
     break;
 
   case EMACS_INSERT_GET_FEED:
     if (record->event.pressed) {
       SEND_STRING("(def xs (get-feed))");
+      layer_move(_BASE);
     }
     break;
 
@@ -1844,10 +1879,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case EMACS_COPY_FILE_PATH:
     if (record->event.pressed) {
       SEND_STRING( SS_LSFT(SS_LALT(SS_TAP(X_G))) SS_DELAY(100) SS_TAP(X_D) SS_DELAY(100) SS_TAP(X_W) SS_TAP(X_Y) SS_DELAY(100) );}
+    layer_move(_BASE);
     break;
+
   case CD_CSV:
     if (record->event.pressed) {
       SEND_STRING(SS_LGUI(SS_TAP(X_T)) SS_DELAY(100) "cdcsv" SS_TAP(X_ENTER));
+      layer_move(_BASE);
     }
     break;
 
@@ -1897,6 +1935,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case EMACS_GOTO_REMOTEID:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_ESC) "go" SS_DELAY(250) "remote-id" SS_DELAY(500) SS_TAP(X_ENTER));
+      layer_move(_BASE);
     }
     break;
 
@@ -1904,12 +1943,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case EMACS_GOTO_ROLLUP:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_ESC) "go" SS_DELAY(250) "rollup" SS_DELAY(500) SS_TAP(X_ENTER));
+      layer_move(_BASE);
     }
     break;
 
   case EMACS_GOTO_PARSE_ITEM:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_ESC) "go" SS_DELAY(250) "parse-item" SS_DELAY(500) SS_TAP(X_ENTER));
+      layer_move(_BASE);
     }
     break;
 
@@ -1917,47 +1958,56 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case EMACS_GOTO_GET_FEED:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_ESC) "go" SS_DELAY(250) "get-feed" SS_DELAY(500) SS_TAP(X_ENTER));
+      layer_move(_BASE);
     }
     break;
 
   case EMACS_GOTO_SYNC_FEED:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_ESC) "go" SS_DELAY(250) "sync-feed" SS_DELAY(500) SS_TAP(X_ENTER));
+      layer_move(_BASE);
+    }
+    break;
+
+  case COPY_LATEST_FILE_TO_CLIPBOARD:
+    if (record->event.pressed) {
+      SEND_STRING(SS_LALT(SS_TAP(X_6)));
+      layer_move(_BASE);
     }
     break;
 
   case ROFI_CLIPBOARD:
     if (record->event.pressed) {
       SEND_STRING(SS_LALT(SS_TAP(X_9)));
-      layer_off(_ROFI);
+      layer_move(_BASE);
     }
     break;
 
   case ROFI_WINDOWS:
     if (record->event.pressed) {
       SEND_STRING(SS_LALT(SS_TAP(X_8)));
-      layer_off(_ROFI);
+      layer_move(_BASE);
     }
     break;
 
   case ROFI_LOCATE:
     if (record->event.pressed) {
       SEND_STRING(SS_LALT(SS_TAP(X_7)));
-      layer_off(_ROFI);
+      layer_move(_BASE);
     }
     break;
 
   case ROFI_DRUN:
     if (record->event.pressed) {
       tap_code16(GUI(KC_SPACE));
-      layer_off(_ROFI);
+      layer_move(_BASE);
     }
     break;
 
   case ROFI_EMOJI:
     if (record->event.pressed) {
       SEND_STRING(SS_LALT(SS_TAP(X_5)));
-      layer_off(_ROFI);
+      layer_move(_BASE);
     }
     break;
 

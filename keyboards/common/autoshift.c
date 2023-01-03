@@ -93,7 +93,7 @@ void autoshift_press_user(uint16_t keycode, bool shifted, keyrecord_t *record) {
     break;
 
   case KC_TAB:
-    register_code16((!shifted) ? KC_TAB : LALT(KC_SLASH));
+    register_code16((!shifted) ? KC_TAB : RCTL(KC_I));
     break;
 
 
@@ -118,7 +118,7 @@ void autoshift_release_user(uint16_t keycode, bool shifted, keyrecord_t *record)
     break;
 
   case KC_TAB:
-    unregister_code16((!shifted) ? KC_TAB : LALT(KC_SLASH));
+    unregister_code16((!shifted) ? KC_TAB : RCTL(KC_I));
     break;
 
   case KC_EXLM:

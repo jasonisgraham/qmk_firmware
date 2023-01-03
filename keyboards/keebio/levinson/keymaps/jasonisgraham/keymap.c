@@ -65,8 +65,10 @@ planck_macros                              ),
 planck_adhoc_set_key                              ),
 
 [_HYPER] = LAYOUT_wrapper(
-planck_hyper                                         )
-  };
+                          planck_hyper                                         ),
+
+[_LAYER_LOCK] = LAYOUT_wrapper(planck_layer_lock)
+};
 
 
 /* extern bool g_suspend_state; */
