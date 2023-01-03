@@ -22,9 +22,9 @@
 #define SELECT_HOTKEY_0 LALT(LGUI(KC_F12))
 
 #define key_0_7 KC_GRAVE
-#define key_1_7 top_alpha_mid_column
-#define key_2_7 SELECT_HOTKEY_1
-#define key_3_7 SELECT_HOTKEY_2
+#define key_1_7 SELECT_HOTKEY_1
+#define key_2_7 SELECT_HOTKEY_2
+#define key_3_7 SELECT_HOTKEY_4
 /* #define key_4_7 TD(dance_k74) */
 
 #define SELECT_TO_LINE_HOME LSFT(KC_HOME)

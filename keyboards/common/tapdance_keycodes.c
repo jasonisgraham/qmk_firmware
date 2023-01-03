@@ -17,7 +17,7 @@
 
 #define EMACS_EVIL_JUMP_ITEM RCTL(KC_COMMA)
 #define EMACS_REPEAT KC_F9
-#define preonic_00 OSL(_ROFI)
+#define preonic_00 adhoc_set_hotkey
 #define preonic_1 SELECT_HOTKEY_1
 #define preonic_2 SELECT_HOTKEY_2
 #define preonic_3 GUI(KC_E)

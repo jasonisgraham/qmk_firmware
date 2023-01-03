@@ -146,6 +146,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
       SEND_STRING("ssh cronjobs-prod" SS_TAP(X_ENTER) SS_DELAY(1500));
       SEND_STRING("su app " SS_TAP(X_ENTER) SS_DELAY(250) "cd " SS_TAP(X_ENTER) "cd collage" SS_TAP(X_ENTER));
+      layer_move(_BASE);
     }
     break;
 
@@ -1353,6 +1354,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case TERM_CD_UP_DIR:
     if (record->event.pressed) {
       SEND_STRING("cd ../" SS_TAP(X_ENTER));
+      layer_move(_BASE);
     }
     break;
 
@@ -1385,6 +1387,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case EMACS_YAS_DOC:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_ESC) "idoc" macro_alt_slash);
+      layer_move(_BASE);
     }
     break;
 
@@ -1419,22 +1422,26 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case EMACS_YAS_TF:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_ESC) "itf" macro_alt_slash);
+      layer_move(_BASE);
     }
     break;
   case EMACS_YAS_C:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_ESC) "ic" macro_alt_slash);
+      layer_move(_BASE);
     }
     break;
   case EMACS_YAS_TL:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_ESC) "itl" macro_alt_slash);
+      layer_move(_BASE);
     }
     break;
 
   case THREAD_FIRST:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_ESC) "i(some-> ");
+      layer_move(_BASE);
     }
     break;
 
@@ -1442,6 +1449,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case THREAD_LAST:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_ESC) "i(some->> ");
+      layer_move(_BASE);
     }
     break;
 
@@ -1457,24 +1465,28 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case EMACS_YAS_REMOVE_ANON:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_ESC) "i(remove #(->> % ");
+      layer_move(_BASE);
     }
     break;
 
   case EMACS_YAS_FILTER_ANON:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_ESC) "ifa" macro_alt_slash);
+      layer_move(_BASE);
     }
     break;
 
   case EMACS_YAS_MAP_ANON:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_ESC) "imapa" macro_alt_slash);
+      layer_move(_BASE);
     }
     break;
 
   case EMACS_YAS_KEYS_DESCRUCTURE:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_ESC) "ikd" macro_alt_slash);
+      layer_move(_BASE);
     }
     break;
 
@@ -1649,6 +1661,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case EMACS_INSERT_GET_FEED:
     if (record->event.pressed) {
       SEND_STRING("(def xs (get-feed))");
+      layer_move(_BASE);
     }
     break;
 
@@ -1844,10 +1857,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case EMACS_COPY_FILE_PATH:
     if (record->event.pressed) {
       SEND_STRING( SS_LSFT(SS_LALT(SS_TAP(X_G))) SS_DELAY(100) SS_TAP(X_D) SS_DELAY(100) SS_TAP(X_W) SS_TAP(X_Y) SS_DELAY(100) );}
+    layer_move(_BASE);
     break;
+
   case CD_CSV:
     if (record->event.pressed) {
       SEND_STRING(SS_LGUI(SS_TAP(X_T)) SS_DELAY(100) "cdcsv" SS_TAP(X_ENTER));
+      layer_move(_BASE);
     }
     break;
 
@@ -1897,6 +1913,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case EMACS_GOTO_REMOTEID:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_ESC) "go" SS_DELAY(250) "remote-id" SS_DELAY(500) SS_TAP(X_ENTER));
+      layer_move(_BASE);
     }
     break;
 
@@ -1904,12 +1921,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case EMACS_GOTO_ROLLUP:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_ESC) "go" SS_DELAY(250) "rollup" SS_DELAY(500) SS_TAP(X_ENTER));
+      layer_move(_BASE);
     }
     break;
 
   case EMACS_GOTO_PARSE_ITEM:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_ESC) "go" SS_DELAY(250) "parse-item" SS_DELAY(500) SS_TAP(X_ENTER));
+      layer_move(_BASE);
     }
     break;
 
@@ -1917,12 +1936,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case EMACS_GOTO_GET_FEED:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_ESC) "go" SS_DELAY(250) "get-feed" SS_DELAY(500) SS_TAP(X_ENTER));
+      layer_move(_BASE);
     }
     break;
 
   case EMACS_GOTO_SYNC_FEED:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_ESC) "go" SS_DELAY(250) "sync-feed" SS_DELAY(500) SS_TAP(X_ENTER));
+      layer_move(_BASE);
     }
     break;
 

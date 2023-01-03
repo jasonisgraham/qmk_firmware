@@ -50,15 +50,19 @@ combo_t key_combos[COMBO_COUNT] = {
                                    // COMBO(combo_j_n, KC_GRV),
                                    COMBO(combo_esc_semicolon, RSFT(KC_LSFT)),
 
-                                   COMBO(combo_j_n, OSL(_ROFI)),
                                    COMBO(combo_raise_h_raise_j, KC_DELETE),
                                    /* COMBO(combo_lower_semicolon, RCTL(KC_SCOLON)), */
-                                   /* COMBO(combo_my_raise_g, OSL(_MACROS)), */
+                                   /* COMBO(combo_my_raise_g, TD(DANCE_MACROS)), */
 
+                                   COMBO(combo_space_period, ROFI_DRUN),
+                                   COMBO(combo_space_j_k, ROFI_DRUN),
+                                   COMBO(combo_space_u, ROFI_LOCATE),
+                                   COMBO(combo_space_i, ROFI_WINDOWS),
+                                   COMBO(combo_space_o, ROFI_CLIPBOARD),
                                    // layers
                                    COMBO(combo_r_g, TD(DANCE_F5)),
                                    COMBO(combo_grave_q, QK_CAPS_WORD_TOGGLE),
-                                   COMBO(combo_f_g, OSL(_MACROS)),
+                                   COMBO(combo_f_g, TD(DANCE_MACROS)),
                                    COMBO(combo_s_d, TD(DANCE_SUPER)),
                                    COMBO(combo_w_e, OSL(_WINMOVE)),
 
@@ -102,8 +106,7 @@ combo_t key_combos[COMBO_COUNT] = {
                                    COMBO(combo_j_o, KC_LBRACKET),
 
 
-                                   COMBO(combo_e_r, OSL(_ROFI)),
-                                   COMBO(combo_r_o, OSL(_ROFI)),
+                                   COMBO(combo_e_r, TD(DANCE_ROFI)),
 
                                    /* COMBO(combo_lower__j_i, KC_F), */
                                    // COMBO(combo_lower__j_i, EMACS_EVIL_FIND),
@@ -190,6 +193,8 @@ combo_t key_combos[COMBO_COUNT] = {
                                    /* COMBO(combo_bottom_top_mid_column, LLOCK), */
                                    COMBO(combo_top_left_hyper, MO(_SYSTEM)),
                                    COMBO(combo_a_s_k, adhoc_set_hotkey),
+                                   COMBO(combo_w_e_r, adhoc_set_hotkey),
+                                   COMBO(combo_1_7_y, TD(DANCE_MICROPHONE)),
                                    COMBO(combo_k42_k43, LLOCK),
                                    COMBO(combo_raise_f, SA_LAYER_ACTIVATE),
                                    COMBO(combo_raise_r, MO(_MOUSE)),

@@ -1,10 +1,10 @@
 #define planck_base  top_left,    my_q,    my_w,    my_e,    my_r,   my_t, key_1_7,    my_y,           my_u,    my_i,    my_o,     my_p, \
     esc_ctrl , my_a,   my_s,   my_d,   my_f,   my_g, key_2_7,  my_h,         my_j,   my_k,   my_l,   my_semicolon, \
     my_left_shift,        my_z,           my_x,           my_c,           my_v,           my_b, key_3_7,     my_n,   my_m,   my_comma,   my_period,   my_forward_slash, \
-    hyper, level3, all_mods,      alt, RAISE,  super, apl_level3_and_osl_rofi,   my_space,           LOWER,          editing_and_backspace,   key_4_11,  key_4_12
+    hyper, level3, all_mods,      alt, RAISE,  super, key_4_7,   my_space,           LOWER,          editing_and_backspace,   key_4_11,  key_4_12
 
 #define planck_raise LSFT(KC_TAB),    _______,          my_raise_w,  KC_END,         EMACS_BUFFER_REVERT,       _______, _______, my_raise_y, my_raise_u,           my_raise_i,           my_raise_o,           my_raise_p, \
-    _______, my_raise_a, my_raise_s,   my_raise_d, my_raise_f,  OSL(_MACROS), raise_backspace,       my_raise_h,         my_raise_j,           my_raise_k,           my_raise_l,       raise_semi, \
+    _______, my_raise_a, my_raise_s,   my_raise_d, my_raise_f,  TD(DANCE_MACROS), raise_backspace,       my_raise_h,         my_raise_j,           my_raise_k,           my_raise_l,       raise_semi, \
 SHIFTLOCK_LAYER_ACTIVATE, _______, _______,_______,   _______,          _______, KC_INSERT,     my_raise_n,           my_raise_m,           my_raise_comma,         KC_3,           raise_slash, \
     MO(_SYSTEM), _______, _______,        _______,        TO(_BASE), _______,  raise_backspace,      my_space,   raise_key_4_9,       raise_backspace,  _______,         TO(_BASE)
 
@@ -87,10 +87,10 @@ SHIFTLOCK_LAYER_ACTIVATE, _______, _______,_______,   _______,          _______,
 
 
 #define planck_adhoc_set_key \
-  _______, LCTL(LALT(LGUI(KC_Q))), LCTL(LALT(LGUI(KC_W))), _______,  LCTL(LALT(LGUI(KC_R))), _______,    WINDOW_ALWAYS_ON_TOP, LCTL(LALT(LGUI(KC_Y))), _______, _______, _______, _______, \
-  _______, _______, _______, _______, _______,    LCTL(LALT(LGUI(KC_G))), SELECT_HOTKEY_1, _______, LCTL(LALT(LGUI(KC_J))), LCTL(LALT(LGUI(KC_K))), LCTL(LALT(LGUI(KC_L))), _______,\
-    _______, _______, _______, _______, _______, _______, SELECT_HOTKEY_2, LCTL(LALT(LGUI(KC_N))), _______, _______, _______, LCTL(LALT(LGUI(KC_SLASH))), \
-  _______, _______, _______, _______,    _______, _______, _______, _______,    _______, _______, _______, _______
+  _______, LCTL(LALT(LGUI(KC_Q))), LCTL(LALT(LGUI(KC_W))), _______,  LCTL(LALT(LGUI(KC_R))), _______,    SET_HOTKEY_1, LCTL(LALT(LGUI(KC_Y))), _______, _______, _______, _______, \
+  _______, _______, _______, _______, _______,    LCTL(LALT(LGUI(KC_G))), SET_HOTKEY_2, _______, LCTL(LALT(LGUI(KC_J))), LCTL(LALT(LGUI(KC_K))), LCTL(LALT(LGUI(KC_L))), _______,\
+    _______, _______, _______, _______, _______, _______, SET_HOTKEY_4, LCTL(LALT(LGUI(KC_N))), _______, _______, _______, LCTL(LALT(LGUI(KC_SLASH))), \
+  _______, _______, _______, _______,    _______, _______, SET_HOTKEY_5, _______,    _______, _______, _______, _______
 
 
 
