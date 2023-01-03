@@ -1,16 +1,45 @@
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-//   if (!process_layer_lock(keycode, record, LAYER_LOCK)) { return false; }
+  //   if (!process_layer_lock(keycode, record, LAYER_LOCK)) { return false; }
 
-//   if (!process_layer_lock(keycode, record, LAYER_LOCK)) {
-//     if (biton32(layer_state) != _BASE) {
-// #ifdef RGBLIGHT_ENABLE
-//       rgblight_mode(RGBLIGHT_MODE_SNAKE);
-// #endif
-//     }
-//     return false;
-//   }
+  //   if (!process_layer_lock(keycode, record, LAYER_LOCK)) {
+  //     if (biton32(layer_state) != _BASE) {
+  // #ifdef RGBLIGHT_ENABLE
+  //       rgblight_mode(RGBLIGHT_MODE_SNAKE);
+  // #endif
+  //     }
+  //     return false;
+  //   }
 
   switch (keycode) {
+
+    /* case esc_ctrl: */
+    /*   if (record->event.pressed) { */
+    /*     rgblight_blink_layer(1, 500); */
+
+    /*   } */
+    /*   break; */
+
+  case EMACS_WINNER_UNDO:
+    if (record->event.pressed) {
+      tap_code16(LALT(KC_M));
+      SEND_STRING("wu");
+    }
+    break;
+
+  case EMACS_WINNER_REDO:
+    if (record->event.pressed) {
+      tap_code16(LALT(KC_M));
+      SEND_STRING("wU");
+    }
+    break;
+
+
+  case SHRUG:
+    if (record->event.pressed) {
+      SEND_STRING("🤷‍");
+    }
+    break;
+
   case TO_BASE:
     if (record->event.pressed) {
       clear_modifiers();
@@ -72,17 +101,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case LLOCK:
     if (record->event.pressed) {
 #ifdef AUDIO_ENABLE
-    PLAY_SONG(caps_lock_on_sound);
+      PLAY_SONG(caps_lock_on_sound);
 #endif
 #ifdef RGBLIGHT_ENABLE
-    rgblight_enable_noeeprom();
-    rgblight_mode(RGBLIGHT_MODE_SNAKE);
-    rgblight_sethsv_noeeprom(HSV_PURPLE);
+      rgblight_enable_noeeprom();
+      rgblight_mode(RGBLIGHT_MODE_SNAKE);
+      rgblight_sethsv_noeeprom(HSV_PURPLE);
 #endif
       layer_move(_LAYER_LOCK);
       return false;
     }
-      break;
+    break;
 
 
   case level3:
@@ -120,6 +149,44 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     break;
 
+  case REFRAME_DISPATCH:
+    if (record->event.pressed) {
+      SEND_STRING("(");
+      wait_ms(50);
+      SEND_STRING("r");
+      wait_ms(50);
+      SEND_STRING("f");
+      wait_ms(50);
+      SEND_STRING("/");
+      wait_ms(50);
+      SEND_STRING("d");
+      wait_ms(50);
+      SEND_STRING("i");
+      wait_ms(50);
+      SEND_STRING("s");
+      wait_ms(50);
+      SEND_STRING("p");
+      wait_ms(50);
+      SEND_STRING("a");
+      wait_ms(50);
+      SEND_STRING("t");
+      wait_ms(50);
+      SEND_STRING("c");
+      wait_ms(50);
+      SEND_STRING("h");
+      wait_ms(50);
+      SEND_STRING(" ");
+      wait_ms(50);
+      SEND_STRING("[");
+    }
+    break;
+
+
+  case REFRAME_SUBSCRIBE:
+    if (record->event.pressed) {
+      SEND_STRING("@(rf/subscribe [");
+    }
+    break;
 
   case EMACS_FASD:
     if (record->event.pressed) {
@@ -146,19 +213,90 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
       SEND_STRING("ssh cronjobs-prod" SS_TAP(X_ENTER) SS_DELAY(1500));
       SEND_STRING("su app " SS_TAP(X_ENTER) SS_DELAY(250) "cd " SS_TAP(X_ENTER) "cd collage" SS_TAP(X_ENTER));
+      layer_move(_BASE);
     }
     break;
 
+  case SSH_PROD:
+    if (record->event.pressed) {
+      SEND_STRING("ssh prod" SS_TAP(X_ENTER) SS_DELAY(1500));
+      SEND_STRING("su app " SS_TAP(X_ENTER) SS_DELAY(250) "cd " SS_TAP(X_ENTER) "cd collage" SS_TAP(X_ENTER));
+      layer_move(_BASE);
+    }
+    break;
+
+  case CIDER_RUN_TEST:
+    if (record->event.pressed) {
+      tap_code16(LALT(KC_M));
+      SEND_STRING("mtt");
+    }
+    break;
+
+  case EMACS_TOGGLE_REPL:
+    if (record->event.pressed) {
+      tap_code16(LALT(KC_M));
+      SEND_STRING("mss");
+    }
+    break;
+
+  case IMPORTER_RELOAD:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_ESC) SS_DELAY(100));
+      SEND_STRING("i");
+      SEND_STRING(SS_DELAY(100));
+      SEND_STRING("imp-rl");
+      SEND_STRING(SS_DELAY(100));
+      SEND_STRING(macro_alt_slash);
+      layer_move(_BASE);
+    }
+    break;
+
+
+  case EMACS_PF_UP:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_ESC) SS_DELAY(100));
+      SEND_STRING("i");
+      SEND_STRING(SS_DELAY(100));
+      SEND_STRING("pf-up");
+      SEND_STRING(SS_DELAY(100));
+      SEND_STRING(macro_alt_slash);
+      layer_move(_BASE);
+    }
+    break;
+
+
+  case EMACS_JUMP_ITEM:
+    if (record->event.pressed) {
+      tap_code16(RCTL(KC_COMMA));
+    }
+    break;
+
+
+  case EMACS_DEFUN_END:
+    if (record->event.pressed) {
+      tap_code16(LCTL(LALT((KC_E))));
+      SEND_STRING(SS_TAP(X_ESC) "zz");
+    }
+    break;
+
+  case EMACS_DEFUN_BEGIN:
+    if (record->event.pressed) {
+      tap_code16(LCTL(LALT(KC_A)));
+      SEND_STRING(SS_TAP(X_ESC) "zz");
+    }
+    break;
+
+
   case EMACS_PREV_SEXP:
     if (record->event.pressed) {
-      tap_code16(KC_RCBR);
+      tap_code16(KC_LCBR);
       SEND_STRING(SS_TAP(X_ESC) "zz");
     }
     break;
 
   case EMACS_NEXT_SEXP:
     if (record->event.pressed) {
-      tap_code16(KC_LCBR);
+      tap_code16(KC_RCBR);
       SEND_STRING(SS_TAP(X_ESC) "zz");
     }
     break;
@@ -1161,7 +1299,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case EMACS_FRAME_FULL_SCREEN:
     if (record->event.pressed) {
       tap_code16(winmove_U_monitor);
-      tap_code16(winmove_L_monitor);
+      tap_code16(winmove_R_monitor);
       tap_code16(KC_F11);
       tap_code16(LCTL(KC_C));
     }
@@ -1185,8 +1323,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case RESET_ANIMATION:
     if (record->event.pressed) {
 #ifdef RGBLIGHT_ENABLE
-      DROP_DEFAULT_ANIMATION = 0;
-      rgblight_mode(DROP_DEFAULT_ANIMATION);
+      DROP_CURRENT_ANIMATION = 0;
+      rgblight_mode(DROP_CURRENT_ANIMATION);
 #endif
     }
     break;
@@ -1196,6 +1334,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #ifdef RGBLIGHT_ENABLE
       rgblight_step();
 #endif
+    }
+    break;
+
+
+  case CYCLE_FAVE_ANIMATIONS:
+    if (record->event.pressed) {
+      cycle_fave_animations();
     }
     break;
 
@@ -1211,13 +1356,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       /* SEND_STRING(s); */
     }
     break;
-
-  case CYCLE_FAVE_ANIMATIONS:
-    if (record->event.pressed) {
-      /* cycle_fave_animations(); */
-    }
-    break;
-
   case CYCLE_DROP_COLORS:
     if (record->event.pressed) {
       cycle_drop_color();
@@ -1316,13 +1454,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       /*       rgblight_mode(42); */
       /* #endif */
       layer_move(_SHIFTLOCK);
-// #ifdef AUDIO_ENABLE
-//       PLAY_SONG(caps_lock_on_sound);
-// #endif
+#ifdef AUDIO_ENABLE
+      PLAY_SONG(caps_lock_on_sound);
+#endif
 #ifdef RGBLIGHT_ENABLE
       /* rgblight_mode(RGBLIGHT_ENABLE_RAINBOW_SWIRL); */
 #endif
-      return false;
     }
     break;
 
@@ -1333,9 +1470,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       /*       /\* rgblight_mode(42); *\/ */
       /* #endif */
       layer_move(_BASE);
-// #ifdef AUDIO_ENABLE
-//       PLAY_SONG(caps_lock_off_sound);
-// #endif
+      // #ifdef AUDIO_ENABLE
+      //       PLAY_SONG(caps_lock_off_sound);
+      // #endif
 #ifdef RGBLIGHT_ENABLE
       /* rgblight_mode(RGBLIGHT_ENABLE_RAINBOW_SWIRL); */
 #endif
@@ -1350,9 +1487,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     break;
 
+  case TERM_CD_PREVIOUS:
+    if (record->event.pressed) {
+      SEND_STRING("cd - " SS_TAP(X_ENTER));
+      layer_move(_BASE);
+    }
+    break;
+
+
   case TERM_CD_UP_DIR:
     if (record->event.pressed) {
       SEND_STRING("cd ../" SS_TAP(X_ENTER));
+      /* layer_move(_BASE); */
     }
     break;
 
@@ -1364,7 +1510,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   case EMACS_OTHER_WINDOW:
     if (record->event.pressed) {
-      SEND_STRING(SS_LGUI(SS_TAP(X_E)) SS_DELAY(150) SS_RCTL(SS_TAP(X_X))  SS_TAP(X_O));
+      SEND_STRING(SS_RCTL(SS_TAP(X_X))  SS_TAP(X_O));
     }
     break;
 
@@ -1384,7 +1530,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   case EMACS_YAS_DOC:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_ESC) "idoc" macro_alt_slash);
+      SEND_STRING(SS_TAP(X_ESC) SS_DELAY(100));
+      SEND_STRING("i");
+      SEND_STRING(SS_DELAY(100));
+      SEND_STRING("doc" macro_alt_slash);
+      layer_move(_BASE);
     }
     break;
 
@@ -1418,63 +1568,117 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   case EMACS_YAS_TF:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_ESC) "itf" macro_alt_slash);
+      SEND_STRING(SS_TAP(X_ESC) SS_DELAY(100));
+      SEND_STRING("i");
+      SEND_STRING(SS_DELAY(100));
+      SEND_STRING("tf" macro_alt_slash);
+      layer_move(_BASE);
     }
     break;
   case EMACS_YAS_C:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_ESC) "ic" macro_alt_slash);
+      SEND_STRING(SS_TAP(X_ESC) SS_DELAY(100));
+      SEND_STRING("i");
+      SEND_STRING(SS_DELAY(100));
+      SEND_STRING("c" macro_alt_slash);
+      layer_move(_BASE);
     }
     break;
   case EMACS_YAS_TL:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_ESC) "itl" macro_alt_slash);
+      SEND_STRING(SS_TAP(X_ESC) SS_DELAY(100));
+      SEND_STRING("i");
+      SEND_STRING(SS_DELAY(100));
+      SEND_STRING("tl" macro_alt_slash);
+      layer_move(_BASE);
     }
     break;
 
   case THREAD_FIRST:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_ESC) "i(some-> ");
+      SEND_STRING(SS_TAP(X_ESC) SS_DELAY(100));
+      SEND_STRING("i");
+      SEND_STRING(SS_DELAY(100));
+      tap_code16(LALT(KC_LPRN));
+      SEND_STRING("some-> ") ;
+      SEND_STRING(SS_TAP(X_ESC) "F(%i ");
+      layer_move(_BASE);
     }
     break;
 
 
   case THREAD_LAST:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_ESC) "i(some->> ");
+
+      SEND_STRING(SS_TAP(X_ESC) SS_DELAY(100));
+      SEND_STRING("i");
+      SEND_STRING(SS_DELAY(100));
+      SEND_STRING("->> ") ;
+      layer_move(_BASE);
     }
     break;
 
   case EMACS_WRAP_IN_THREAD_LAST:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_ESC) "i");
       tap_code16(LALT(KC_LPRN));
 
+      SEND_STRING(SS_TAP(X_ESC) SS_DELAY(100));
+      SEND_STRING("i");
+      SEND_STRING(SS_DELAY(100));
       SEND_STRING("->> ") ;
+      SEND_STRING(SS_TAP(X_ESC) "F(%i ");
+    }
+    break;
+
+
+  case EMACS_WRAP_IN_THREAD_LAST_SOME:
+    if (record->event.pressed) {
+      /* SEND_STRING(SS_TAP(X_ESC) "i"); */
+      tap_code16(LALT(KC_LPRN));
+      SEND_STRING("some->> ") ;
+      SEND_STRING(SS_TAP(X_ESC) "F(%i ");
     }
     break;
 
   case EMACS_YAS_REMOVE_ANON:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_ESC) "i(remove #(->> % ");
+
+      SEND_STRING(SS_TAP(X_ESC) SS_DELAY(100));
+      SEND_STRING("i");
+      SEND_STRING(SS_DELAY(100));
+      SEND_STRING("(remove #(->> % ");
+      layer_move(_BASE);
     }
     break;
 
   case EMACS_YAS_FILTER_ANON:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_ESC) "ifa" macro_alt_slash);
+
+      SEND_STRING(SS_TAP(X_ESC) SS_DELAY(100));
+      SEND_STRING("i");
+      SEND_STRING(SS_DELAY(100));
+      SEND_STRING("fa" macro_alt_slash);
+      layer_move(_BASE);
     }
     break;
 
   case EMACS_YAS_MAP_ANON:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_ESC) "imapa" macro_alt_slash);
+      SEND_STRING(SS_TAP(X_ESC) SS_DELAY(100));
+      SEND_STRING("i");
+      SEND_STRING(SS_DELAY(100));
+      SEND_STRING("mapa" macro_alt_slash);
+      layer_move(_BASE);
     }
     break;
 
   case EMACS_YAS_KEYS_DESCRUCTURE:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_ESC) "ikd" macro_alt_slash);
+      SEND_STRING(SS_TAP(X_ESC) SS_DELAY(100));
+      SEND_STRING("i");
+      SEND_STRING(SS_DELAY(100));
+      SEND_STRING("kd" macro_alt_slash);
+      layer_move(_BASE);
     }
     break;
 
@@ -1483,6 +1687,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       SEND_STRING(SS_LALT(SS_TAP(X_M)) "so");
       break;
     }
+
+  case EMACS_HELM_KILL_RINGS:
+    if (record->event.pressed) {
+      SEND_STRING(SS_LALT(SS_TAP(X_M)) "ry");
+      break;
+    }
+
 
   case EMACS_HELM_MARK_RINGS:
     if (record->event.pressed) {
@@ -1510,20 +1721,29 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   case EMACS_PRIVATE_READER:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_ESC) "i#'" SS_TAP(X_ESC));
+      SEND_STRING(SS_TAP(X_ESC) SS_DELAY(100));
+      SEND_STRING("i");
+      SEND_STRING(SS_DELAY(100));
+      SEND_STRING("#'");
     }
     break;
 
 
   case EMACS_COMMENT_READER:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_ESC) "i#_" SS_TAP(X_ESC));
+      SEND_STRING(SS_TAP(X_ESC) SS_DELAY(100));
+      SEND_STRING("i");
+      SEND_STRING(SS_DELAY(100));
+      SEND_STRING("#_" SS_TAP(X_ESC));
     }
     break;
 
   case CLJ_REGEX:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_ESC) "irx" macro_alt_slash);
+      SEND_STRING(SS_TAP(X_ESC) SS_DELAY(100));
+      SEND_STRING("i");
+      SEND_STRING(SS_DELAY(100));
+      SEND_STRING("rx" macro_alt_slash);
     }
     break;
 
@@ -1537,6 +1757,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_ESC) "99" SS_LALT(SS_RCTL(SS_TAP(X_U))));
     }
+    layer_move(_BASE);
     break;
 
 
@@ -1549,13 +1770,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   case CLJ_ANON_FN:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_ESC) "ianon" macro_alt_slash);
+      SEND_STRING("#(");
     }
     break;
 
   case EMACS_ANON_FN:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_ESC) "ianon" macro_alt_slash);
+      SEND_STRING(SS_TAP(X_ESC) SS_DELAY(100));
+      SEND_STRING("i");
+      SEND_STRING(SS_DELAY(100));
+      SEND_STRING("anon" macro_alt_slash);
     }
     break;
 
@@ -1609,7 +1833,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   case EMACS_RE_FIND:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_ESC) "irf" macro_alt_slash);
+      SEND_STRING(SS_TAP(X_ESC) SS_DELAY(100));
+      SEND_STRING("i");
+      SEND_STRING(SS_DELAY(100));
+      SEND_STRING("rf" macro_alt_slash);
     }
     break;
 
@@ -1640,15 +1867,35 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     break;
 
+  case COPY_TEXT_OPEN_NEW_TAB_SEARCH:
+    if (record->event.pressed) {
+      SEND_STRING(SS_RCTL(SS_TAP(X_C))  SS_DELAY(10) SS_RCTL(SS_TAP(X_T)) SS_DELAY(100)  SS_RCTL(SS_TAP(X_V)) SS_DELAY(10) SS_TAP(X_ENTER));
+      layer_move(_BASE);
+    }
+    break;
+
+  case EMACS_SYNC_FEED:
+    if (record->event.pressed) {
+      SEND_STRING("(def _ (sync-feed))" SS_TAP(X_ENTER));
+    }
+    break;
+
   case EMACS_INSERT_GI_GET_FEED:
     if (record->event.pressed) {
-      SEND_STRING("(def xs (gi/get-feed importer-config))");
+      SEND_STRING(SS_TAP(X_ESC) SS_DELAY(100));
+      SEND_STRING("i");
+      SEND_STRING(SS_DELAY(100));
+      SEND_STRING("gifeed");
+      SEND_STRING(SS_DELAY(100));
+      SEND_STRING(macro_alt_slash);
+      layer_move(_BASE);
     }
     break;
 
   case EMACS_INSERT_GET_FEED:
     if (record->event.pressed) {
       SEND_STRING("(def xs (get-feed))");
+      layer_move(_BASE);
     }
     break;
 
@@ -1661,9 +1908,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case ESC_THEN_BASE_LAYER:
     if (record->event.pressed) {
       // only used when returning from shiftlok
-#ifdef AUDIO_ENABLE
-      PLAY_SONG(caps_lock_off_sound);
-#endif
+      /* #ifdef AUDIO_ENABLE */
+      /*       PLAY_SONG(caps_lock_off_sound); */
+      /* #endif */
       SEND_STRING(SS_TAP(X_ESCAPE));
       layer_move(_BASE);
 
@@ -1844,10 +2091,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case EMACS_COPY_FILE_PATH:
     if (record->event.pressed) {
       SEND_STRING( SS_LSFT(SS_LALT(SS_TAP(X_G))) SS_DELAY(100) SS_TAP(X_D) SS_DELAY(100) SS_TAP(X_W) SS_TAP(X_Y) SS_DELAY(100) );}
+    layer_move(_BASE);
     break;
+
   case CD_CSV:
     if (record->event.pressed) {
       SEND_STRING(SS_LGUI(SS_TAP(X_T)) SS_DELAY(100) "cdcsv" SS_TAP(X_ENTER));
+      layer_move(_BASE);
     }
     break;
 
@@ -1897,6 +2147,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case EMACS_GOTO_REMOTEID:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_ESC) "go" SS_DELAY(250) "remote-id" SS_DELAY(500) SS_TAP(X_ENTER));
+      layer_move(_BASE);
     }
     break;
 
@@ -1904,12 +2155,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case EMACS_GOTO_ROLLUP:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_ESC) "go" SS_DELAY(250) "rollup" SS_DELAY(500) SS_TAP(X_ENTER));
+      layer_move(_BASE);
     }
     break;
 
   case EMACS_GOTO_PARSE_ITEM:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_ESC) "go" SS_DELAY(250) "parse-item" SS_DELAY(500) SS_TAP(X_ENTER));
+      layer_move(_BASE);
     }
     break;
 
@@ -1917,64 +2170,90 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case EMACS_GOTO_GET_FEED:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_ESC) "go" SS_DELAY(250) "get-feed" SS_DELAY(500) SS_TAP(X_ENTER));
+      layer_move(_BASE);
     }
     break;
 
   case EMACS_GOTO_SYNC_FEED:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_ESC) "go" SS_DELAY(250) "sync-feed" SS_DELAY(500) SS_TAP(X_ENTER));
+      layer_move(_BASE);
+    }
+    break;
+
+  case CD_C9:
+    if (record->event.pressed) {
+      SEND_STRING(SS_LGUI(SS_TAP(X_T)) SS_DELAY(150) "c9" SS_TAP(X_ENTER));
+      layer_move(_BASE);
+    }
+    break;
+
+  case CLJ_REFIND:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_ESC) SS_DELAY(100));
+      SEND_STRING("i");
+      SEND_STRING(SS_DELAY(100));
+      SEND_STRING("(re-find #\"(?i)\"");
+      layer_move(_BASE);
+    }
+    break;
+
+  case COPY_LATEST_FILE_TO_CLIPBOARD:
+    if (record->event.pressed) {
+      SEND_STRING(SS_LALT(SS_TAP(X_6)));
+      layer_move(_BASE);
     }
     break;
 
   case ROFI_CLIPBOARD:
     if (record->event.pressed) {
       SEND_STRING(SS_LALT(SS_TAP(X_9)));
-      layer_off(_ROFI);
+      layer_move(_BASE);
     }
     break;
 
   case ROFI_WINDOWS:
     if (record->event.pressed) {
       SEND_STRING(SS_LALT(SS_TAP(X_8)));
-      layer_off(_ROFI);
+      layer_move(_BASE);
     }
     break;
 
   case ROFI_LOCATE:
     if (record->event.pressed) {
       SEND_STRING(SS_LALT(SS_TAP(X_7)));
-      layer_off(_ROFI);
+      layer_move(_BASE);
     }
     break;
 
   case ROFI_DRUN:
     if (record->event.pressed) {
       tap_code16(GUI(KC_SPACE));
-      layer_off(_ROFI);
+      layer_move(_BASE);
     }
     break;
 
   case ROFI_EMOJI:
     if (record->event.pressed) {
       SEND_STRING(SS_LALT(SS_TAP(X_5)));
-      layer_off(_ROFI);
+      layer_move(_BASE);
     }
     break;
 
-    case WINDOWS_Q:
+  case WINDOWS_Q:
     if (record->event.pressed) {
       tap_code16(GUI(KC_Q));
       layer_off(_WINDOWS);
     }
     break;
 
-    case WINDOWS_E:
-      if (record->event.pressed) {
-        tap_code16(GUI(KC_E));
-        layer_move(_BASE);
-        /* layer_off(_WINDOWS); */
-      }
-      break;
+  case WINDOWS_E:
+    if (record->event.pressed) {
+      tap_code16(GUI(KC_E));
+      layer_move(_BASE);
+      /* layer_off(_WINDOWS); */
+    }
+    break;
 
 
     /* if (rofi_windows_osl_rofi_active) { */
@@ -1989,8 +2268,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     /* } */
 
 
-      /* if (layer_state_is(_WINDOWS) ||	layer_state_is(_ROFI)) { */
-      /* layer_move} */
+    /* if (layer_state_is(_WINDOWS) ||	layer_state_is(_ROFI)) { */
+    /* layer_move} */
 
   }
   return true;
