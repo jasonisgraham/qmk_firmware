@@ -4,28 +4,36 @@
 /* /\* #include "musical_notes.h" *\/ */
 /* #include "../../quantum/hacks.c" */
 
+#define COMPOSE KC_KP_ENTER
 /* super_meta_hyper */
 #define GUI LGUI
 
-#define SET_HOTKEY_1 LCTL(LALT(LGUI(KC_F1)))
-#define SET_HOTKEY_2 LCTL(LALT(LGUI(KC_F2)))
-#define SET_HOTKEY_4 LCTL(LALT(LGUI(KC_F4)))
-#define SET_HOTKEY_5 LCTL(LALT(LGUI(KC_F5)))
-#define SET_HOTKEY_6 LCTL(LALT(LGUI(KC_F6)))
-#define SET_HOTKEY_0 LCTL(LALT(LGUI(KC_F12)))
+#define NOTIFICATIONS LALT(KC_4)
+#define FILE_SEARCH LALT(KC_3)
+#define PLASMA_SEARCH LALT(KC_6)
 
-#define SELECT_HOTKEY_1 LALT(LGUI(KC_F1))
-#define SELECT_HOTKEY_2 LALT(LGUI(KC_F2))
-#define SELECT_HOTKEY_4 LALT(LGUI(KC_F4))
-#define SELECT_HOTKEY_5 LALT(LGUI(KC_F5))
-#define SELECT_HOTKEY_6 LALT(LGUI(KC_F6))
-#define SELECT_HOTKEY_0 LALT(LGUI(KC_F12))
+#define TOGGLE_MENU_BAR LSFT(LGUI(KC_F12))
+#define PAREDIT_BACKWARD_UP LALT(RCTL(KC_U))
+#define SET_HOTKEY_0 LCTL(LALT(LGUI(KC_F1)))
+#define SET_HOTKEY_1 LCTL(LALT(LGUI(KC_F2)))
+#define SET_HOTKEY_2 LCTL(LALT(LGUI(KC_F12)))
+#define SET_HOTKEY_3 LCTL(LALT(LGUI(KC_F4)))
+#define SET_HOTKEY_4 LCTL(LALT(LGUI(KC_F5)))
+#define SET_HOTKEY_5 LCTL(LALT(LGUI(KC_F6)))
 
-#define key_0_7 KC_GRAVE
-#define key_1_7 top_alpha_mid_column
-#define key_2_7 SELECT_HOTKEY_1
-#define key_3_7 SELECT_HOTKEY_2
-/* #define key_4_7 TD(dance_k74) */
+#define SELECT_HOTKEY_0 LALT(LGUI(KC_F1))
+#define SELECT_HOTKEY_1 LALT(LGUI(KC_F2))
+#define SELECT_HOTKEY_2 LALT(LGUI(KC_F12))
+#define SELECT_HOTKEY_3 LALT(LGUI(KC_F4))
+#define SELECT_HOTKEY_4 LALT(LGUI(KC_F5))
+#define SELECT_HOTKEY_5 LALT(LGUI(KC_F6))
+#define mod_r1 SELECT_HOTKEY_1
+#define mod_r2 SELECT_HOTKEY_5
+#define mod_r3 SELECT_HOTKEY_2
+#define mod_r4 SELECT_HOTKEY_3
+/* #define mod_r4 TD(dance_k74) */
+
+
 
 #define SELECT_TO_LINE_HOME LSFT(KC_HOME)
 #define SELECT_TO_DOC_HOME RCTL(LSFT(KC_HOME))
@@ -56,13 +64,13 @@
 #define WINDOW_ALWAYS_ON_TOP LCTL(LSFT(LGUI(RCTL(KC_UP))))
 #define WINDOW_TOGGLE_HORIZONTAL_MAX LSFT(LGUI(RCTL(KC_MINUS)))
 
-#define winmove_U_monitor LGUI(LSFT(KC_UP))
-#define winmove_L_monitor LGUI(LSFT(KC_LEFT))
-#define winmove_R_monitor LGUI(LSFT(KC_RIGHT))
-#define winmove_D_monitor LGUI(LSFT(KC_DOWN))
+#define winmove_U_monitor LGUI(KC_UP)
+#define winmove_L_monitor LGUI(KC_LEFT)
+#define winmove_R_monitor LGUI(KC_RIGHT)
+#define winmove_D_monitor LGUI(KC_DOWN)
 
 #define winmove_U LGUI(LSFT(KC_K))
-#define winmove_D LGUI(LSFT(KC_J))
+#define winmove_D LCTL(LGUI(LSFT(KC_J)))
 
 #define winmove_UL LGUI(LSFT(KC_Y))
 #define winmove_UR LGUI(LSFT(KC_O))
@@ -72,11 +80,13 @@
 #define winmove_DR LGUI(LSFT(KC_DOT))
 
 
+#define editing_h LCTL(KC_H)
 #define editing_j LALT(LSFT(KC_J))
 #define editing_k LALT(LSFT(KC_K))
 #define editing_l LALT(LSFT(KC_L))
-#define next_win_or_frame LALT(RCTL(KC_N))
-#define prev_win_or_frame LALT(RCTL(KC_P))
+#define next_win_or_frame LALT(KC_N)
+#define prev_win_or_frame LALT(KC_P)
+
 
 /* #define EMACS_LOCCUR RCTL(LALT(LGUI(KC_O))) */
 #define CTRL_L RCTL(KC_P)
@@ -86,6 +96,7 @@
 #define ALT_P LALT(KC_P)
 #define CTRL_SEMICOLON RCTL(KC_SCOLON)
 /* H-M-s-d */
+#define EMACS_EVIL_LISP_STATE    LCTL(KC_6)
 #define EMACS_KILL_IN_SEXP LCTL(LALT(LGUI(KC_D)))
 #define EMACS_YANK_IN_SEXP LCTL(LALT(LGUI(KC_I)))
 #define EMACS_NUMBER_DEC LCTL(KC_UNDS)
@@ -96,6 +107,7 @@
 #define LOWER LT(_LOWER, KC_MINUS) //TD(DANCE_SHIFT)
 
 /* #define RAISE MO(_RAISE) */
+#define CINNAMON_MENU_OPEN LALT(LGUI(KC_7))
 #define RAISE TD(DANCE_RAISE) // LT(_RAISE, KC_PLUS)
 #define all_mods LM(_ALL_MODS, MOD_LGUI | MOD_LCTL | MOD_LALT | MOD_RCTL | MOD_LSFT)
 #define alt_tab ALT_TAB
@@ -103,7 +115,7 @@
 #define KC_BSLASH KC_BACKSLASH
 #define backspace KC_BSPACE
 #define lower_backspace TD(WWW_BACK_FORWARD)
-#define raise_backspace TD(WWW_BACK_FORWARD)
+#define raise_backspace LT(_EMACS, KC_DEL)
 #define below_b KC_LALT
 #define below_m MT(MOD_RCTL, KC_ESCAPE)
 #define below_m MT(MOD_RCTL, KC_ESCAPE)
@@ -114,16 +126,15 @@
 #define emacs_m EMACS_YAS_MAP_ANON
 #define emacs_r EMACS_YAS_REMOVE_ANON
 #define key_0_0 KC_LCTL
-#define hyper LM(_HYPER, MOD_LCTL) //KC_LCTL // OSL(_WINDOWS)
 #define key_0_1 RCTL(LALT(KC_LSFT))
-#define key_4_11 KC_DOWN //CYCLE_DROP_COLORS // LAYER_LOWER_HOLD
-#define key_4_12 KC_UP
+#define key_4_11 SELECT_HOTKEY_4  // KC_DOWN //CYCLE_DROP_COLORS // LAYER_LOWER_HOLD
+#define key_4_12 KC_ENTER
 #define key_left KC_LEFT
 #define key_right KC_RIGHT
 #define lm_ctrl LM(_CTRL, MOD_RCTL)
 #define lower_LOWER TO(_BASE)
-#define lower_key_4_11 KC_MINUS
-#define lower_key_4_12 KC_PLUS
+#define lower_key_4_11 KC_LEFT
+#define lower_key_4_12 KC_RIGHT
 #define lower_right_of_lower TD(WWW_BACK_FORWARD)
 #define macro_alt_slash SS_LALT(SS_TAP(X_SLASH))
 #define my_0 KC_0
@@ -137,8 +148,11 @@
 #define my_8 KC_8
 #define my_9 KC_9
 #define my_b KC_B
-#define my_cap_comma KC_LABK
-#define my_cap_period KC_RABK
+
+
+
+#define my_cap_comma KC_COMMA
+#define my_cap_period KC_DOT
 #define my_cap_d LSFT(KC_D)
 #define my_cap_f LSFT(KC_F)
 #define my_cap_h LSFT(KC_H)
@@ -163,21 +177,29 @@
 #define my_lower_d KC_F7
 #define my_lower_f  KC_F8
 #define my_lower_g KC_TAB
-#define my_lower_i KC_PGUP
-#define my_lower_m _______
-#define my_lower_n _______
+#define BROWSER_SEARCH_OPEN_TABS RCTL(LSFT(KC_A))
+#define my_lower_m KC_BSLASH // BROWSER_SEARCH_OPEN_TABS
+#define my_lower_n RCTL(KC_COMMA)
 #define my_lower_o KC_END
 #define my_lower_p KC_BSPACE
 /* #define my_lower_p KC_MINUS */
 #define my_lower_period BROWSER_TAB_NEXT
 #define my_lower_r KC_F4
-#define my_lower_semi KC_QUOTE
+#define my_lower_semi TD(DANCE_QUOTE)
 /* #define my_lower_slash KC_GRAVE */
-#define my_lower_slash KC_ENTER
-#define my_lower_u KC_PGDOWN
+#define my_lower_slash KC_EQUAL
 #define my_minus _______
 #define my_raise RAISE
 #define my_raise_comma KC_2
+
+#define my_raise_z LCTL(KC_Z)
+#define my_raise_x RCTL(KC_X)
+#define my_raise_c RCTL(KC_C)
+#define my_raise_v TD(DANCE_SAVE_LOAD_NS_SWITCH)
+#define my_raise_b _______
+#define my_raise_q KC_HOME
+
+#define my_raise_t _______
 #define my_raise_d KC_RIGHT
 #define my_raise_a KC_LEFT
 #define my_raise_s KC_DOWN
@@ -196,21 +218,24 @@
 #define my_raise_top_right KC_DEL // TD(WWW_BACK_FORWARD)
 #define my_raise_u  KC_7
 #define my_raise_y  KC_PLUS
-#define my_right_of_lower editing_and_backspace
+#define my_right_of_lower emacs_and_backspace
 #define my_right_shift KC_RSFT // shift LM(_ALT, MOD_LSFT)
-#define my_semicolon KC_SCOLON
 #define my_singlequote KC_QUOTE
 #define my_v KC_V
 #define raise_space KC_UNDS
 #define raise_key_4_9 KC_ENTER // KC_BSPC
-#define raise_semi  KC_MINUS
-#define raise_slash KC_UNDS
+#define raise_semi  KC_PLUS
+#define raise_slash KC_BSLASH
+
 /* #define right_of_lower  esc_ctrl  // my_left_shift ///hyper // / MT(MOD_RCTL, KC_ESCAPE) */
 #define lower_right_of_super TD(WWW_BACK_FORWARD)
 #define scroll_next RCTL(KC_D)
 #define scroll_prev RCTL(KC_U)
 #define select_slack LGUI(KC_S)
 #define show_desktop LALT(LGUI(LCTL(KC_F3)))
+
+#define super_backtab LSFT(KC_TAB)
+#define super_tab KC_TAB
 
 #define adhoc_set_hotkey OSL(_ADHOC_SET_HOTKEY)
 #define super_meta_hyper adhoc_set_hotkey
@@ -233,14 +258,20 @@
 #define KEYBOARD_LAYOUT_HOLD_KEY KC_RGUI
 
 
-/* #define key_4_7 TD(dance_k74) */
+/* #define mod_r4 TD(dance_k74) */
 
 enum col7_row4_fns {
                     K74_MO_LEVEL3 = SAFE_RANGE,
                     K74_MO_APL
 };
-
 static int active_apl_level3_fn = K74_MO_LEVEL3;
+
+enum alt_rctrl_fns {
+                    MO_ALT = SAFE_RANGE,
+                    MO_RCTRL
+
+};
+static int active_alt_rctrl_key_fn = MO_ALT;
 
 void clear_modifiers(void) {
   unregister_code16(KC_LGUI);
@@ -249,9 +280,30 @@ void clear_modifiers(void) {
   unregister_code16(KC_LALT);
   unregister_code16(KC_RCTL);
   unregister_code16(KC_LCTL);
-  unregister_code16(KC_KP_ENTER);
+  unregister_code16(COMPOSE);
   unregister_code16(KEYBOARD_LAYOUT_HOLD_KEY);
 }
+
+void cycle_active_key_alt_rctrl_fn(void) {
+  switch (active_alt_rctrl_key_fn) {
+  case MO_ALT:
+#ifdef AUDIO_ENABLE
+    PLAY_SONG(voice_change_sound);
+#endif
+
+    active_alt_rctrl_key_fn = MO_RCTRL;
+    break;
+
+  case MO_RCTRL:
+#ifdef AUDIO_ENABLE
+    PLAY_SONG(guitar_sound);
+#endif
+
+    active_alt_rctrl_key_fn = MO_ALT;
+    break;
+  }
+}
+
 
 void cycle_active_apl_level3_fn(void) {
   dprintf("cycle active_apl_level3_fn: %u", active_apl_level3_fn);
@@ -297,6 +349,18 @@ enum custom_keycodes {
                       /* RGB_SLD = SAFE_RANGE, */
                       /* RGB_SLD = EZ_SAFE_RANGE, */
                       FIRST = SAFE_RANGE,
+                      SHRUG,
+                      REFRAME_SUBSCRIBE,
+                      REFRAME_DISPATCH,
+                      EMACS_WINNER_UNDO,
+                      EMACS_WINNER_REDO,
+                      EMACS_DEFUN_END,
+                      EMACS_DEFUN_BEGIN,
+                      CIDER_RUN_TEST,
+                      EMACS_JUMP_ITEM,
+                      EMACS_SYNC_FEED,
+                      EMACS_PF_UP,
+                      COPY_TEXT_OPEN_NEW_TAB_SEARCH,
                       TMPTXT,
                       ALT,
                       TO_BASE,
@@ -306,6 +370,9 @@ enum custom_keycodes {
                       LLOCK_EDITING,
                       LLOCK_LEVEL3,
                       LLOCK_APL,
+                      COPY_LATEST_FILE_TO_CLIPBOARD,
+                      CLJ_REFIND,
+                      CD_C9,
                       ROFI_CLIPBOARD ,
                       ROFI_WINDOWS ,
                       ROFI_LOCATE ,
@@ -322,6 +389,7 @@ enum custom_keycodes {
                       CYCLE_ACTIVE_APL_LEVEL3_FN,
                       level3,
                       SSH_CRONJOBS_PROD,
+                      SSH_PROD,
                       EMACS_PREV_SEXP,
                       AUTOSHIFT_TOGGLE,
                       WEB_SAVE_FILE_UNDER_CURSOR,
@@ -331,15 +399,18 @@ enum custom_keycodes {
                       EMACS_TRANSPOSE,
                       OPEN_PAREN,
                       CLOSED_PAREN,
+                      TERM_CD_PREVIOUS,
                       CIDER_RUN_PREV_COMMAND,
                       EMACS_DESC_KEY,
                       EMACS_FINDER_COMMENTARY,
                       EMACS_HELM_OCCUR,
                       EMACS_HELM_MARK_RINGS,
+                      EMACS_HELM_KILL_RINGS,
                       EMACS_INSIDE_YANK,
                       EMACS_INSIDE_DELETE,
                       EMACS_TO_YANK,
                       EMACS_TO_DELETE,
+                      CLJ_ANON,
                       EMACS_EVIL_FIND,
                       EMACS_PROJECTILE_FIND_FILE,
                       EMACS_FASD,
@@ -425,8 +496,10 @@ enum custom_keycodes {
                       TMUX_CLOSE,
                       TERM_CD_UP_DIR,
                       EMACS_LOCCUR,
+                      EMACS_TOGGLE_REPL,
                       CLEAR_THAT_REPL,
                       EMACS_WRAP_IN_THREAD_LAST,
+                      EMACS_WRAP_IN_THREAD_LAST_SOME,
                       THREAD_LAST,
                       SA_LAYER_ACTIVATE,
                       THREAD_FIRST,
@@ -515,9 +588,9 @@ enum custom_keycodes {
 };
 
 
-#define editing_and_backspace LT(_EDITING, KC_BSPACE)
-#define apl_level3_and_osl_rofi TD(DANCE_LEVEL3_APL)
-#define key_4_7 apl_level3_and_osl_rofi
+#define emacs_and_backspace LT(_EMACS, KC_BSPACE)
+#define apl_level3_and_adhoc_hotkey TD(DANCE_LEVEL3_APL)
+/* #define mod_r4 apl_level3_and_adhoc_hotkey */
 
 #define max_buffer LALT(KC_ENTER)
 #define close_x_window RCTL(LGUI(KC_Q))
@@ -526,162 +599,57 @@ enum custom_keycodes {
 bool is_alt_tab_active = false;
 uint16_t alt_tab_timer = 0;
 
-const int timer_default = 400;
-
 bool fasd_timer_active = false;
 uint16_t fasd_timer = 0;
 int fasd_level = 0;
-int fasd_level_duration = timer_default;
+int fasd_level_duration = 400;
 
 bool open_paren_timer_active = false;
 uint16_t open_paren_timer = 0;
 int open_paren_level = 0;
-int open_paren_level_duration = timer_default;
+int open_paren_level_duration = 400;
 
 bool closed_paren_timer_active = false;
 uint16_t closed_paren_timer = 0;
 int closed_paren_level = 0;
-int closed_paren_level_duration = timer_default;
-
-void matrix_scan_user(void) {
-  // open paren
-  if (open_paren_timer_active) {
-    if (timer_elapsed(open_paren_timer) > (open_paren_level_duration * 2)) {
-      // global no ext
-      if (open_paren_level <= 2) {
-        open_paren_level++;
-#ifdef AUDIO_ENABLE
-        PLAY_SONG(__a6);
-#endif
-      }
-
-    } else if (timer_elapsed(open_paren_timer) > (open_paren_level_duration * 1)) {
-      if (open_paren_level <= 1) {
-        open_paren_level++;
-#ifdef AUDIO_ENABLE
-        PLAY_SONG(__g6);
-#endif
-      }
-
-    } else {
-      if (open_paren_level <= 0) {
-        open_paren_level++;
-      }
-    }
-    return;
-  }
+int closed_paren_level_duration = 400;
 
 
-  // closed paren
-  if (closed_paren_timer_active) {
-    if (timer_elapsed(closed_paren_timer) > (closed_paren_level_duration * 2)) {
-      // global no ext
-      if (closed_paren_level <= 2) {
-        closed_paren_level++;
-#ifdef AUDIO_ENABLE
-        PLAY_SONG(__a6);
-#endif
-      }
-
-    } else if (timer_elapsed(closed_paren_timer) > (closed_paren_level_duration * 1)) {
-      if (closed_paren_level <= 1) {
-        closed_paren_level++;
-#ifdef AUDIO_ENABLE
-        PLAY_SONG(__g6);
-#endif
-      }
-
-    } else {
-      if (closed_paren_level <= 0) {
-        closed_paren_level++;
-      }
-    }
-    return;
-  }
-
-  // fasd
-  if (fasd_timer_active) {
-    if (timer_elapsed(fasd_timer) > (fasd_level_duration * 3)) {
-      if (fasd_level <= 3) {
-        fasd_level++;
-#ifdef AUDIO_ENABLE
-        PLAY_SONG(__as6);
-#endif
-      }
-
-    } else if (timer_elapsed(fasd_timer) > (fasd_level_duration * 2)) {
-      // global no ext
-      if (fasd_level <= 2) {
-        fasd_level++;
-#ifdef AUDIO_ENABLE
-        PLAY_SONG(__a6);
-#endif
-      }
-
-    } else if (timer_elapsed(fasd_timer) > (fasd_level_duration * 1)) {
-      if (fasd_level <= 1) {
-        fasd_level++;
-#ifdef AUDIO_ENABLE
-        PLAY_SONG(__g6);
-#endif
-      }
-
-    } else {
-      if (fasd_level <= 0) {
-        // project level current ext
-        fasd_level++;
-#ifdef AUDIO_ENABLE
-        /* PLAY_SONG(__e6); */
-#endif
-      }
-    }
-    return;
-  }
-
-  if (is_alt_tab_active) {
-    if (timer_elapsed(alt_tab_timer) > 250) {
-      unregister_code(KC_LGUI);
-      is_alt_tab_active = false;
-    }
-  }
-
-}
-
-#ifdef LEADER_ENABLE
-LEADER_EXTERNS();
-#endif
-
-#ifdef RGBLIGHT_ENABLE
 
 int8_t m;
 char b[3];
 int i = 0;
-/* const uint8_t fireworks = 42; */
+
+const uint8_t fireworks = 42;
+const uint8_t faves[7] = {fireworks, 15, 16, 17, 20, 22, 41};
 /* const uint8_t faves[7] = {fireworks, 15, 16, 17, 20, 22, 41}; */
-/* /\* const uint8_t faves[7] = {fireworks, 15, 16, 17, 20, 22, 41}; *\/ */
-/* void cycle_fave_animations(void) { */
-/*   i++; */
-/*   if (i >= 7) { */
-/*     i = 0; */
-/*   } */
-/*   rgblight_mode(faves[i]); */
-/* } */
+void cycle_fave_animations(void) {
+  i++;
+  if (i >= 47) {
+    i = 0;
+  }
+  /* printf("%i\n", i); */
+  /* printf("mode: %u, hue: %u, sat: %u, val: %u, speed: %u\n", rgb_matrix_get_mode(), rgb_matrix_get_hue(), rgb_matrix_get_sat(), rgb_matrix_get_val(),  rgb_matrix_get_speed()); */
+  rgblight_mode(i);
+}
 
-/* void apply_fave_animation(void) { */
-/*   rgblight_mode(faves[i]); */
-/* } */
+void apply_fave_animation(void) {
+  rgblight_mode(faves[i]);
+}
 
-/* int DROP_DEFAULT_ANIMATION = 0;//RGBLIGHT_MODE_STATIC_LIGHT; */
+#ifdef RGBLIGHT_ENABLE
+
+/* int DROP_CURRENT_ANIMATION = 0;//RGBLIGHT_MODE_STATIC_LIGHT; */
 int DROP_LAYER_0_COLOR = 0;
 
-const uint8_t faves[7] = {1, // static
-                          2, // breathe
-                          14, // rainbow
-                          18, // snake
-                          24, // xmas
-                          29, // gradient
-                          35, // test blinks
-};
+/* const uint8_t faves[7] = {1, // static */
+/*                           2, // breathe */
+/*                           14, // rainbow */
+/*                           18, // snake */
+/*                           24, // xmas */
+/*                           29, // gradient */
+/*                           35, // test blinks */
+/* }; */
 
 void cycle_drop_animations(void) {
   i = i + 1;
@@ -689,9 +657,9 @@ void cycle_drop_animations(void) {
     i = 0;
   }
 
-  DROP_DEFAULT_ANIMATION = faves[i];
-  /* dprintf("idx: %u, drop animation: %u\n", i, DROP_DEFAULT_ANIMATION); */
-  rgblight_mode(DROP_DEFAULT_ANIMATION);
+  DROP_CURRENT_ANIMATION = faves[i];
+  /* dprintf("idx: %u, drop animation: %u\n", i, DROP_CURRENT_ANIMATION); */
+  rgblight_mode(DROP_CURRENT_ANIMATION);
 }
 
 /* enum colors { */
@@ -711,16 +679,16 @@ void cycle_drop_color(void) {
 
 int k = 0;
 void cycle_rgblight_step(void) {
-  k++;
-  if (k >= 42) {
-    k = 0;
-  }
-  if (do_echo) {
-    static char s[10];
-    itoa(k, s, 10);
-    SEND_STRING(s);
-  }
-  rgblight_mode(k);
+  /* k++; */
+  /* if (k >= 42) { */
+  /*   k = 0; */
+  /* } */
+  /* if (do_echo) { */
+  /*   static char s[10]; */
+  /*   itoa(k, s, 10); */
+  /*   SEND_STRING(s); */
+  /* } */
+  /* rgblight_mode(k); */
 }
 
 
@@ -732,10 +700,15 @@ bool do_breathing = false;
 #endif
 
 
-#include "process_record_user.c"
 
 /* SS_LGUI(SS_TAP(X_E)) SS_DELAY(100) SS_LALT(SS_TAP(X_M)) */
 /* SS_LGUI(SS_TAP(X_E)) SS_DELAY(100) SS_LGUI(SS_TAP(X_E)) SS_DELAY(100) SS_LALT(SS_TAP(X_M)) */
 
 #define right_of_super MO(_APL)  // X(BANG) // esc_ctrl //  BRACKET_PAREN //all_mods
 
+
+#define editing_comma emacs_buffer_stack_down
+#define editing_period emacs_buffer_stack_up
+#define emacs_indent_buffer RCTL(LALT(KC_BSLASH))
+
+#define EMACS_EVIL_JUMP_ITEM RCTL(KC_PERC)

@@ -1,6 +1,11 @@
 #ifdef AUDIO_ENABLE
 #define STARTUP_SONG SONG(OLD_SPICE)
 #endif
+#include "../../../common/config.h"
+
+#define MOONLANDER
+
+#define DRIVER_LED_TOTAL 72
 
 #define ORYX_CONFIGURATOR
 #undef DEBOUNCE

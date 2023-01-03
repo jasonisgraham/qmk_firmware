@@ -6,23 +6,25 @@
 
 enum preonic_layers {
                     _BASE,
+/* 1 */                    _SHIFTLOCK,
                     _LOWER,
                     _RAISE,
                     _WINDOWS,
-                    _SHIFTLOCK,
-                    _WINMOVE,
+/* 5 */                    _WINMOVE,
+                    _WINMOVE_MONITOR,
                     _SUPER,
                     _EDITING,
                     _EMACS,
-                    _MOUSE,
+/* 10 */                    _MOUSE,
                     _SYSTEM,
                     _ALL_MODS,
                     _ADHOC_SET_HOTKEY,
                     _HYPER,
-                    _SA,
+/* 15 */                    _SA,
                     _ROFI,
                     _MACROS,
                     _LAYER_LOCK,
+                    _SCRATCH
 };
 
 /* #include "../../../common/config.h" */
@@ -40,7 +42,17 @@ enum preonic_layers {
 /* #include "../../../common/drop_animations.c" */
 /* #include "../../../common/layer_lock.h" */
 
+#if defined(JSG_LHS_MODS)
+#include "../../../common/encoder_column.c"
+#include "../../../common/planck_lhs_keymap.h"
+#include "encoder.h"
+#else
 #include "../../../common/planck_keymap.h"
+#endif
+
+#include "../../../common/matrix_scan_user.c"
+#include "../../../common/process_record_user.c"
+
 /* const int row0[10]; */
 /* #define row0  { top_left } */
 /* const int row0[] = { top_left, top_left,    my_q,    my_w,    my_e,    my_r,   my_t, backspace ,    my_y,           my_u,    my_i,    my_o,     my_p}; */
