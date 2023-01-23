@@ -538,22 +538,20 @@ enum custom_keycodes {
 bool is_alt_tab_active = false;
 uint16_t alt_tab_timer = 0;
 
-const int timer_default = 400;
-
 bool fasd_timer_active = false;
 uint16_t fasd_timer = 0;
 int fasd_level = 0;
-int fasd_level_duration = timer_default;
+int fasd_level_duration = 400;
 
 bool open_paren_timer_active = false;
 uint16_t open_paren_timer = 0;
 int open_paren_level = 0;
-int open_paren_level_duration = timer_default;
+int open_paren_level_duration = 400;
 
 bool closed_paren_timer_active = false;
 uint16_t closed_paren_timer = 0;
 int closed_paren_level = 0;
-int closed_paren_level_duration = timer_default;
+int closed_paren_level_duration = 400;
 
 void matrix_scan_user(void) {
   // open paren
@@ -723,16 +721,16 @@ void cycle_drop_color(void) {
 
 int k = 0;
 void cycle_rgblight_step(void) {
-  k++;
-  if (k >= 42) {
-    k = 0;
-  }
-  if (do_echo) {
-    static char s[10];
-    itoa(k, s, 10);
-    SEND_STRING(s);
-  }
-  rgblight_mode(k);
+  /* k++; */
+  /* if (k >= 42) { */
+  /*   k = 0; */
+  /* } */
+  /* if (do_echo) { */
+  /*   static char s[10]; */
+  /*   itoa(k, s, 10); */
+  /*   SEND_STRING(s); */
+  /* } */
+  /* rgblight_mode(k); */
 }
 
 
