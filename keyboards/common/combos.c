@@ -20,6 +20,7 @@ combo_t key_combos[COMBO_COUNT] = {
                                    COMBO(combo_3_7__2_8, RCTL(KC_Z)),
                                    COMBO(combo_4_10_4_12, KC_RIGHT),
                                    COMBO(combo_4_11_4_12, KC_RIGHT),
+                                   COMBO(combo_space_m, LALT(KC_M)),
                                    COMBO(combo_k47_space, KC_RIGHT),
                                    COMBO(combo_super_space, KC_DOWN),
                                    COMBO(combo_super_space_k47, KC_DOWN),
@@ -89,8 +90,9 @@ combo_t key_combos[COMBO_COUNT] = {
 
                                    //
                                    /* COMBO(combo_e_f, KC_TAB), */
-                                   COMBO(combo_shiftlock_d_shiftlock_f, KC_TAB),
-                                   COMBO(combo_d_f, KC_TAB),
+                                   COMBO(combo_shiftlock_d_shiftlock_f, TD(DANCE_TAB)),
+                                   COMBO(combo_d_f, TD(DANCE_TAB)),
+                                   COMBO(combo_x_c, TD(DANCE_QUOTE)),
                                    COMBO(combo_raise_d_raise_f, LSFT(KC_TAB)),
                                    /* COMBO(combo_topright_p_l, CTRL_P), */
 
@@ -132,8 +134,8 @@ combo_t key_combos[COMBO_COUNT] = {
                                    COMBO(combo_i_o, KC_BSLASH),
                                    COMBO(combo_raise_i_raise_o, KC_PIPE),
 
-                                   COMBO(combo_k_l, KC_MINUS),
-                                   COMBO(combo_K_L, KC_MINUS),
+                                   COMBO(combo_k_l, TD(DANCE_MINUS)),
+                                   COMBO(combo_K_L, TD(DANCE_MINUS)),
                                    COMBO(combo_raise_k_raise_l, KC_UNDS),
                                    COMBO(combo_j_k_l, KC_UNDS),
                                    /* COMBO(combo_lower_j_k_l, KC_UNDS), */
@@ -148,6 +150,7 @@ combo_t key_combos[COMBO_COUNT] = {
                                    COMBO(raise_comma_raise_period, KC_PLUS),
 
                                    /* COMBO(combo_m_k_l, KC_COLN), */
+                                   COMBO(combo_M_cap_semi, KC_COLN),
                                    COMBO(combo_m_l, KC_COLN),
 
                                    COMBO(combo_h_j, KC_BSPC),

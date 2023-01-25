@@ -24,12 +24,15 @@ const uint16_t PROGMEM combo_n_k47[] = {my_n, key_4_7, COMBO_END};
 
 
 
+const uint16_t PROGMEM combo_space_m[] = {my_space, my_m, COMBO_END};
 const uint16_t PROGMEM combo_space_u[] = {my_space, my_u, COMBO_END};
 const uint16_t PROGMEM combo_space_i[] = {my_space, my_i, COMBO_END};
 const uint16_t PROGMEM combo_space_o[] = {my_space, my_o, COMBO_END};
 const uint16_t PROGMEM combo_space_period[] = {my_space, my_period, COMBO_END};
 const uint16_t PROGMEM combo_space_j_k[] = {my_space, my_j, my_k, COMBO_END};
 
+
+const uint16_t PROGMEM combo_x_c[] = {my_x, my_c, COMBO_END};
 const uint16_t PROGMEM combo_raise_f[] = {RAISE, my_f, COMBO_END};
 const uint16_t PROGMEM combo_raise_r[] = {RAISE, my_r, COMBO_END};
 const uint16_t PROGMEM combo_bottom_top_mid_column[] = {top_alpha_mid_column, key_4_7, COMBO_END};
@@ -146,6 +149,7 @@ const uint16_t PROGMEM combo_k_o[] = {my_k, my_o, COMBO_END};
 
 const uint16_t PROGMEM combo_k_l[] = {my_k, my_l, COMBO_END};
 const uint16_t PROGMEM combo_K_L[] = {my_cap_k, my_cap_l, COMBO_END};
+const uint16_t PROGMEM combo_M_cap_semi[] = {my_cap_m, my_cap_semi, COMBO_END};
 const uint16_t PROGMEM combo_windows_k_l[] = {windows_k, windows_l, COMBO_END};
 const uint16_t PROGMEM combo_raise_k_raise_l[] = {my_raise_k, my_raise_l, COMBO_END};
 const uint16_t PROGMEM combo_cap_j_cap_k_cap_l[] = {my_cap_j, my_cap_k, my_cap_l, COMBO_END};

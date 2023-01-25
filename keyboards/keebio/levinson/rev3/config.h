@@ -52,9 +52,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define LEVINSON
 #define RGB_DI_PIN B6
 /* #define RGB_DI_PIN F1 */
-#define RGBLED_NUM 26    // Number of LEDs
-#define RGBLED_SPLIT { 13, 13 }
+#define RGBLED_NUM 31    // Number of LEDs
+#define RGBLED_SPLIT { 18, 13 }
 #define RGBLIGHT_ANIMATIONS
+#define RGBLIGHT_EFFECT_xxxx
+#define RGBLIGHT_EFFECT_TWINKLE
+
 
 /* Backlight LEDs */
 /* #define BACKLIGHT_PIN B6 */

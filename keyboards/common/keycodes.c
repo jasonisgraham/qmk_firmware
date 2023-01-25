@@ -20,12 +20,14 @@
 #define SELECT_HOTKEY_5 LALT(LGUI(KC_F5))
 #define SELECT_HOTKEY_6 LALT(LGUI(KC_F6))
 #define SELECT_HOTKEY_0 LALT(LGUI(KC_F12))
-
 #define key_0_7 KC_GRAVE
 #define key_1_7 SELECT_HOTKEY_1
-#define key_2_7 SELECT_HOTKEY_2
+#define key_2_7 TD(DANCE_QUOTE)
 #define key_3_7 KC_ENTER
+#define key_4_7 TD(DANCE_ALT_OR_RCTRL)
 /* #define key_4_7 TD(dance_k74) */
+
+
 
 #define SELECT_TO_LINE_HOME LSFT(KC_HOME)
 #define SELECT_TO_DOC_HOME RCTL(LSFT(KC_HOME))
@@ -104,7 +106,7 @@
 #define KC_BSLASH KC_BACKSLASH
 #define backspace KC_BSPACE
 #define lower_backspace TD(WWW_BACK_FORWARD)
-#define raise_backspace TD(WWW_BACK_FORWARD)
+#define raise_backspace LT(_EDITING, KC_DEL)
 #define below_b KC_LALT
 #define below_m MT(MOD_RCTL, KC_ESCAPE)
 #define below_m MT(MOD_RCTL, KC_ESCAPE)
@@ -122,8 +124,8 @@
 #define key_right KC_RIGHT
 #define lm_ctrl LM(_CTRL, MOD_RCTL)
 #define lower_LOWER TO(_BASE)
-#define lower_key_4_11 KC_MINUS
-#define lower_key_4_12 KC_PLUS
+#define lower_key_4_11 KC_DOWN
+#define lower_key_4_12 KC_UP
 #define lower_right_of_lower TD(WWW_BACK_FORWARD)
 #define macro_alt_slash SS_LALT(SS_TAP(X_SLASH))
 #define my_0 KC_0
@@ -137,8 +139,8 @@
 #define my_8 KC_8
 #define my_9 KC_9
 #define my_b KC_B
-#define my_cap_comma KC_LABK
-#define my_cap_period KC_RABK
+#define my_cap_comma KC_COMMA
+#define my_cap_period KC_DOT
 #define my_cap_d LSFT(KC_D)
 #define my_cap_f LSFT(KC_F)
 #define my_cap_h LSFT(KC_H)
@@ -164,14 +166,14 @@
 #define my_lower_f  KC_F8
 #define my_lower_g KC_TAB
 #define my_lower_i KC_PGUP
-#define my_lower_m KC_ENTER
+#define my_lower_m LALT(KC_M)
 #define my_lower_n _______
 #define my_lower_o KC_END
 #define my_lower_p KC_BSPACE
 /* #define my_lower_p KC_MINUS */
 #define my_lower_period BROWSER_TAB_NEXT
 #define my_lower_r KC_F4
-#define my_lower_semi KC_QUOTE
+#define my_lower_semi TD(DANCE_QUOTE)
 /* #define my_lower_slash KC_GRAVE */
 #define my_lower_slash KC_ENTER
 #define my_lower_u KC_PGDOWN
@@ -247,8 +249,14 @@ enum col7_row4_fns {
                     K74_MO_LEVEL3 = SAFE_RANGE,
                     K74_MO_APL
 };
-
 static int active_apl_level3_fn = K74_MO_APL;
+
+enum alt_rctrl_fns {
+                    MO_ALT = SAFE_RANGE,
+                    MO_RCTRL
+
+};
+static int active_alt_rctrl_key_fn = MO_ALT;
 
 void clear_modifiers(void) {
   unregister_code16(KC_LGUI);
@@ -260,6 +268,27 @@ void clear_modifiers(void) {
   unregister_code16(KC_KP_ENTER);
   unregister_code16(KEYBOARD_LAYOUT_HOLD_KEY);
 }
+
+void cycle_active_key_alt_rctrl_fn(void) {
+  switch (active_alt_rctrl_key_fn) {
+  case MO_ALT:
+#ifdef AUDIO_ENABLE
+    PLAY_SONG(voice_change_sound);
+#endif
+
+    active_alt_rctrl_key_fn = MO_RCTRL;
+    break;
+
+  case MO_RCTRL:
+#ifdef AUDIO_ENABLE
+    PLAY_SONG(guitar_sound);
+#endif
+
+    active_alt_rctrl_key_fn = MO_ALT;
+    break;
+  }
+}
+
 
 void cycle_active_apl_level3_fn(void) {
   dprintf("cycle active_apl_level3_fn: %u", active_apl_level3_fn);
@@ -317,6 +346,7 @@ enum custom_keycodes {
                       LLOCK_LEVEL3,
                       LLOCK_APL,
                       COPY_LATEST_FILE_TO_CLIPBOARD,
+                      CD_C9,
                       ROFI_CLIPBOARD ,
                       ROFI_WINDOWS ,
                       ROFI_LOCATE ,
@@ -529,7 +559,7 @@ enum custom_keycodes {
 
 #define editing_and_backspace LT(_EDITING, KC_BSPACE)
 #define apl_level3_and_adhoc_hotkey TD(DANCE_LEVEL3_APL)
-#define key_4_7 apl_level3_and_adhoc_hotkey
+/* #define key_4_7 apl_level3_and_adhoc_hotkey */
 
 #define max_buffer LALT(KC_ENTER)
 #define close_x_window RCTL(LGUI(KC_Q))
@@ -742,7 +772,6 @@ bool do_breathing = false;
 #endif
 
 
-#include "process_record_user.c"
 
 /* SS_LGUI(SS_TAP(X_E)) SS_DELAY(100) SS_LALT(SS_TAP(X_M)) */
 /* SS_LGUI(SS_TAP(X_E)) SS_DELAY(100) SS_LGUI(SS_TAP(X_E)) SS_DELAY(100) SS_LALT(SS_TAP(X_M)) */
@@ -753,3 +782,5 @@ bool do_breathing = false;
 #define editing_comma emacs_buffer_stack_down
 #define editing_period emacs_buffer_stack_up
 #define emacs_indent_buffer RCTL(LALT(KC_BSLASH))
+
+#define EMACS_EVIL_JUMP_ITEM RCTL(KC_COMMA)

@@ -50,19 +50,19 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
   case _HYPER:
     rgblight_enable_noeeprom();
-    rgblight_mode_noeeprom(RGBLIGHT_MODE_ALTERNATING);
+    rgblight_mode(DROP_CURRENT_ANIMATION);
     rgblight_sethsv_noeeprom(HSV_WHITE);
     break;
 
   case _EDITING:
     rgblight_enable_noeeprom();
-    rgblight_mode_noeeprom(RGBLIGHT_MODE_SNAKE);
-    rgblight_sethsv_noeeprom(HSV_BLUE);
+    rgblight_mode(RGBLIGHT_MODE_KNIGHT);
+    rgblight_sethsv_noeeprom(180, 255, 255);
     break;
 
   case _SA:
+    rgblight_mode(RGBLIGHT_MODE_KNIGHT);
     static_kinda_dim(HSV_WHITE);
-    rgblight_mode_noeeprom(RGBLIGHT_MODE_KNIGHT);
     break;
 
   case _MOUSE :
@@ -71,6 +71,11 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     rgblight_sethsv_noeeprom(HSV_GREEN);
     break;
 
+  case _CTRL:
+    rgblight_enable_noeeprom();
+    rgblight_mode(RGBLIGHT_MODE_KNIGHT);
+    rgblight_sethsv_noeeprom(HSV_MAGENTA);
+    break;
 
   case _ALL_MODS:
     static_kinda_dim(HSV_YELLOW);
@@ -100,8 +105,8 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
     #ifdef LEVINSON
     for (int i=0; i< RGBLED_NUM; i=i+2) {
-      sethsv(HSV_BLUE, (LED_TYPE *)&led[i]);
-      sethsv(HSV_RED, (LED_TYPE *)&led[i+1]);
+      rgblight_sethsv_at(HSV_BLUE, i);
+      rgblight_sethsv_at(HSV_RED, i+1);
     }
     #endif
 
@@ -155,12 +160,17 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     rgblight_enable_noeeprom();
     rgblight_mode_noeeprom(0);
     #ifdef LEVINSON
-    for (int i=0; i<26; i=i+3) {
-      sethsv(HSV_PINK, (LED_TYPE *)&led[i]);
-      sethsv(HSV_RED, (LED_TYPE *)&led[i+1]);
-      sethsv(HSV_WHITE, (LED_TYPE *)&led[i+2]);
+    for (int i=0; i<RGBLED_NUM; i=i+3) {
+      /* printf("i is %u\n", i); */
+      rgblight_sethsv_at(HSV_PINK, i);
+      if (i+1 < RGBLED_NUM) {
+      rgblight_sethsv_at(HSV_RED, i+1);
+      }
+      if (i+2 < RGBLED_NUM) {
+      rgblight_sethsv_at(HSV_WHITE, i+2);
+      }
     }
-    sethsv(HSV_RED, (LED_TYPE *)&led[25]);
+    /* rgblight_sethsv_at(HSV_RED, (LED_TYPE *)&led[25]); */
     /* rgblight_set_clipping_range(12,13); */
     /* rgblight_mode_noeeprom(RGBLIGHT_MODE_ALTERNATING); */
     #endif
@@ -176,7 +186,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     sethsv(HSV_RED,   (LED_TYPE *)&led[7]);
     sethsv(HSV_PINK,   (LED_TYPE *)&led[8]);
     #endif
-    rgblight_set();
+    /* rgblight_set(); */
     break;
 
   /* case 16: */

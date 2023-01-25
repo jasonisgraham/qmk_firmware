@@ -11,6 +11,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 //   }
 
   switch (keycode) {
+
+  /* case esc_ctrl: */
+  /*   if (record->event.pressed) { */
+  /*     rgblight_blink_layer(1, 500); */
+
+  /*   } */
+  /*   break; */
+
   case TO_BASE:
     if (record->event.pressed) {
       clear_modifiers();
@@ -1162,7 +1170,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case EMACS_FRAME_FULL_SCREEN:
     if (record->event.pressed) {
       tap_code16(winmove_U_monitor);
-      tap_code16(winmove_L_monitor);
+      tap_code16(winmove_R_monitor);
       tap_code16(KC_F11);
       tap_code16(LCTL(KC_C));
     }
@@ -1323,7 +1331,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #ifdef RGBLIGHT_ENABLE
       /* rgblight_mode(RGBLIGHT_ENABLE_RAINBOW_SWIRL); */
 #endif
-      return false;
     }
     break;
 
@@ -1662,7 +1669,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   case COPY_TEXT_OPEN_NEW_TAB_SEARCH:
     if (record->event.pressed) {
-      SEND_STRING(SS_RCTL(SS_TAP(X_C))  SS_RCTL(SS_TAP(X_T))  SS_RCTL(SS_TAP(X_V)) SS_TAP(X_ENTER));
+      SEND_STRING(SS_RCTL(SS_TAP(X_C))  SS_DELAY(10) SS_RCTL(SS_TAP(X_T)) SS_DELAY(100)  SS_RCTL(SS_TAP(X_V)) SS_DELAY(10) SS_TAP(X_ENTER));
       layer_move(_BASE);
     }
     break;
@@ -1965,6 +1972,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case EMACS_GOTO_SYNC_FEED:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_ESC) "go" SS_DELAY(250) "sync-feed" SS_DELAY(500) SS_TAP(X_ENTER));
+      layer_move(_BASE);
+    }
+    break;
+
+  case CD_C9:
+    if (record->event.pressed) {
+      SEND_STRING(SS_LGUI(SS_TAP(X_T)) SS_DELAY(150) "c9" SS_TAP(X_ENTER));
       layer_move(_BASE);
     }
     break;

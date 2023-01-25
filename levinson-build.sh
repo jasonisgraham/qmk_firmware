@@ -1,4 +1,11 @@
 #!/bin/bash
 
+set -x
+km=$1
 
-qmk flash -c -kb keebio/levinson/rev3 -km jasonisgraham -e CONVERT_TO=elite_pi
+if [[ -z $km ]]; then
+    km=jasonisgraham
+fi
+
+
+qmk flash -c -kb keebio/levinson/rev3 -km $km -e CONVERT_TO=elite_pi

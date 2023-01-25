@@ -1,7 +1,11 @@
 #pragma once
 #undef RGBLIGHT_ENABLE
 
+
 #define I2C_DRIVER I2CD1
+
+#define LEVINSON
+
 
 #define AUTO_SHIFT_REPEAT
 #define MOUSEKEY_MAX_SPEED 2
@@ -19,9 +23,9 @@
 
 #define RGBLIGHT_ENABLE
 
-#define C6_AUDIO
+       #define C6_AUDIO
 
 #define RGBLIGHT_LAYERS_RETAIN_VAL
 
-#define RGBLIGHT_LIMIT_VAL 150
+/* #define RGBLIGHT_LIMIT_VAL 150 */
 #define DROP_DEFAULT_ANIMATION RGBLIGHT_MODE_BREATHING

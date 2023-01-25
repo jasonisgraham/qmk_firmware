@@ -6,10 +6,11 @@
 
 enum preonic_layers {
                     _BASE,
+                    _SHIFTLOCK,
+                    _CTRL,
                     _LOWER,
                     _RAISE,
                     _WINDOWS,
-                    _SHIFTLOCK,
                     _WINMOVE,
                     _SUPER,
                     _EDITING,
@@ -41,6 +42,8 @@ enum preonic_layers {
 /* #include "../../../common/layer_lock.h" */
 
 #include "../../../common/planck_keymap.h"
+#include "../../../common/process_record_user.c"
+
 /* const int row0[10]; */
 /* #define row0  { top_left } */
 /* const int row0[] = { top_left, top_left,    my_q,    my_w,    my_e,    my_r,   my_t, backspace ,    my_y,           my_u,    my_i,    my_o,     my_p}; */

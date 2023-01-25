@@ -1,9 +1,11 @@
 
 #define super TD(DANCE_SUPER) // LM(_SUPER, MOD_LGUI) //TD(SUPER_WINDOWS)
 
+#define my_cap_semi KC_SCLN
 #define editing_q TD(DANCE_EDITING_Q)
 #define BROWSER_TAB_NEXT TD(DANCE_30)
 #define alt TD(DANCE_ALT)
+#define alt_or_rctrl TD(DANCE_ALT_OR_RCTRL)
 #define hyper TD(DANCE_HYPER) // LM(_HYPER, MOD_LCTL) //KC_LCTL // OSL(_WINDOWS)
 
 /* #define hyper TD(DANCE_HYPER) */
@@ -17,7 +19,6 @@
 #define my_w TD(DANCE_W)
 /* #define super TD(DANCE_SUPER) //TD(SUPER_WINDOWS) */
 
-#define EMACS_EVIL_JUMP_ITEM RCTL(KC_COMMA)
 #define EMACS_REPEAT KC_F9
 #define preonic_00 adhoc_set_hotkey
 #define preonic_1 SELECT_HOTKEY_1
