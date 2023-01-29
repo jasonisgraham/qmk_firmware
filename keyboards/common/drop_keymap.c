@@ -12,6 +12,7 @@ enum preonic_layers {
                     _RAISE,
                     _WINDOWS,
                     _WINMOVE,
+                    _WINMOVE_MONITOR,
                     _SUPER,
                     _EDITING,
                     _EMACS,

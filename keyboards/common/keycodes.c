@@ -139,6 +139,10 @@
 #define my_8 KC_8
 #define my_9 KC_9
 #define my_b KC_B
+
+
+
+
 #define my_cap_comma KC_COMMA
 #define my_cap_period KC_DOT
 #define my_cap_d LSFT(KC_D)
@@ -165,7 +169,6 @@
 #define my_lower_d KC_F7
 #define my_lower_f  KC_F8
 #define my_lower_g KC_TAB
-#define my_lower_i KC_PGUP
 #define my_lower_m LALT(KC_M)
 #define my_lower_n _______
 #define my_lower_o KC_END
@@ -176,7 +179,6 @@
 #define my_lower_semi TD(DANCE_QUOTE)
 /* #define my_lower_slash KC_GRAVE */
 #define my_lower_slash KC_ENTER
-#define my_lower_u KC_PGDOWN
 #define my_minus _______
 #define my_raise RAISE
 #define my_raise_comma KC_2

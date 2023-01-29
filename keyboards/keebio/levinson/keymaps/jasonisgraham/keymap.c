@@ -45,6 +45,10 @@ planck_editing
 [_WINMOVE] = LAYOUT_wrapper(
 planck_winmove                                ),
 
+[_WINMOVE_MONITOR] = LAYOUT_wrapper(
+                            planck_winmove_monitor                                ),
+
+
 // 4
 [_ALL_MODS] = LAYOUT_wrapper(
 planck_all_mods
