@@ -5,7 +5,7 @@
 
 
 
-#define planck_raise LSFT(KC_TAB),    my_raise_q,          my_raise_w,  KC_END,         EMACS_BUFFER_REVERT,       _______, _______, my_raise_y, my_raise_u,           my_raise_i,           my_raise_o,           my_raise_p, \
+#define planck_raise LSFT(KC_TAB),    my_raise_q,          my_raise_w,  KC_END,         EMACS_BUFFER_REVERT,       QK_CAPS_WORD_TOGGLE, _______, my_raise_y, my_raise_u,           my_raise_i,           my_raise_o,           my_raise_p, \
     _______, my_raise_a, my_raise_s,   my_raise_d, my_raise_f,  TD(DANCE_MACROS), raise_backspace,       my_raise_h,         my_raise_j,           my_raise_k,           my_raise_l,       raise_semi, \
     SHIFTLOCK_LAYER_ACTIVATE, my_raise_z, my_raise_x, my_raise_c,  my_raise_v,      my_raise_b, KC_LEFT,     my_raise_n,           my_raise_m,           my_raise_comma,         KC_3,           raise_slash, \
     MO(_SYSTEM), _______, _______,        _______,        TO(_BASE), _______, OSL(_HYPER),      my_space,   raise_key_4_9,       raise_backspace,  _______,         TO(_BASE)
@@ -61,6 +61,11 @@
     _______, _______, _______, LALT(LGUI(LCTL(RCTL(KC_D)))),_______, _______, _______, winmove_L,   winmove_D, winmove_U ,   winmove_R,   _______, \
     _______, _______, _______, EMACS_FRAME_FULL_SCREEN, _______, _______,  _______, winmove_DL, winmove_U_monitor, _______, winmove_DR,_______, \
     _______, _______, _______, _______, TO(0),          _______,  _______,         winmove_L_monitor,   winmove_D_monitor,   winmove_R_monitor,    _______, _______
+
+#define planck_winmove_monitor _______,   _______, _______, _______, _______, _______, _______,   _______, _______, _______, _______, _______, \
+    _______, _______, _______, _______, _______, _______, _______, winmove_L_monitor,   winmove_D_monitor, winmove_U_monitor, winmove_R_monitor, _______, \
+    _______,   _______, _______, _______, _______, _______, _______,   _______, _______, _______, _______, _______, \
+    _______,   _______, _______, _______, _______, _______, _______,   _______, _______, _______, _______, _______
 
 
 #define planck_all_mods                                  _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______, \

@@ -90,9 +90,9 @@ enum tap_dance_codes {
                       DANCE_F5,
                       DANCE_COMMA,
                       DANCE_DOT,
-                      DANCE_UP_OR_HOME,
+                      DANCE_PAGE_UP_OR_HOME,
                       DANCE_LEFT_OR_HOME,
-                      DANCE_DOWN_OR_END,
+                      DANCE_PAGE_DOWN_OR_END,
                       DANCE_MICROPHONE,
 };
 
@@ -391,7 +391,6 @@ case TAP_INTERRUPTED_HELD:
   case HOLD:
     register_key(KC_R); break;
   case HOLD2:
-    tap_code16(KC_R);
     register_code16(LSFT (KC_R));
     break;
   case TAP2:
@@ -893,7 +892,7 @@ case TAP_INTERRUPTED_HELD:
   case HOLD:
     register_key(KC_K); break;
   case HOLD2:
-    tap_code16(EMACS_EVIL_JUMP_ITEM);
+    tap_code16(KC_5);
     break;
 
   case TAP2: register_code16(RCTL(KC_SCOLON)); break;
@@ -938,7 +937,7 @@ case TAP_INTERRUPTED_HELD:
   case HOLD:
     register_key(KC_L); break;
   case HOLD2:
-    register_code(KC_END);
+    register_code16(KC_6);
     break;
   case TAP2:
   case TAP2_INTERRUPTED:
@@ -2446,7 +2445,7 @@ case TAP_INTERRUPTED_HELD:
   case HOLD:
     register_key(KC_H); break;
   case HOLD2:
-    register_code16(KC_HOME);
+    register_code16(KC_BACKSPACE);
     break;
   case TAP2:
   case TAP2_INTERRUPTED:
@@ -2466,7 +2465,7 @@ void dance_H_reset(qk_tap_dance_state_t *state, void *user_data) {
 case TAP_INTERRUPTED_HELD:
  case TAP: unregister_code16(KC_H); break;
   case HOLD2:
-    unregister_code16(KC_HOME);
+    unregister_code16(KC_BACKSPACE);
   case HOLD:
     unregister_key(KC_H); break;
   case TAP2:
@@ -3822,7 +3821,7 @@ case TAP_INTERRUPTED_HELD:
 
 
 void on_dance_up_or_home(qk_tap_dance_state_t *state, void *user_data) {
-  on_dance_fn(KC_UP, state, user_data);
+  on_dance_fn(KC_PGUP, state, user_data);
 }
 
 void dance_up_or_home_finished(qk_tap_dance_state_t *state, void *user_data) {
@@ -3830,10 +3829,10 @@ void dance_up_or_home_finished(qk_tap_dance_state_t *state, void *user_data) {
   switch (dance_state[87].step) {
   case TAP_INTERRUPTED:
 case TAP_INTERRUPTED_HELD:
- case TAP: tap_code16(KC_UP); break;
-  case HOLD: register_code16(KC_UP); break;
-  case TAP2: tap_code16(KC_UP); tap_code16(KC_UP); break;
-  case TAP2_INTERRUPTED:  tap_code16(KC_UP); tap_code16(KC_UP);  break;
+ case TAP: tap_code16(KC_PGUP); break;
+  case HOLD: register_code16(KC_PGUP); break;
+  case TAP2: tap_code16(KC_PGUP); tap_code16(KC_PGUP); break;
+  case TAP2_INTERRUPTED:  tap_code16(KC_PGUP); tap_code16(KC_PGUP);  break;
   case HOLD2: tap_code16(RCTL(KC_HOME)); break;
     break;
   }
@@ -3841,7 +3840,7 @@ case TAP_INTERRUPTED_HELD:
 
 void dance_up_or_home_reset(qk_tap_dance_state_t *state, void *user_data) {
   wait_ms(10);
-  unregister_code16(KC_UP);
+  unregister_code16(KC_PGUP);
   unregister_code16(RCTL(KC_HOME));
   dance_state[87].step = 0;
 }
@@ -3851,7 +3850,7 @@ void dance_up_or_home_reset(qk_tap_dance_state_t *state, void *user_data) {
 
 
 void on_dance_down_or_end(qk_tap_dance_state_t *state, void *user_data) {
-  on_dance_fn(KC_DOWN, state, user_data);
+  on_dance_fn(KC_PGDOWN, state, user_data);
 }
 
 void dance_down_or_end_finished(qk_tap_dance_state_t *state, void *user_data) {
@@ -3859,17 +3858,17 @@ void dance_down_or_end_finished(qk_tap_dance_state_t *state, void *user_data) {
   switch (dance_state[88].step) {
   case TAP_INTERRUPTED:
 case TAP_INTERRUPTED_HELD:
- case TAP: tap_code16(KC_DOWN); break;
-  case HOLD: register_code16(KC_DOWN); break;
-  case TAP2: tap_code16(KC_DOWN); tap_code16(KC_DOWN); break;
-  case TAP2_INTERRUPTED:  tap_code16(KC_DOWN); tap_code16(KC_DOWN);  break;
+ case TAP: tap_code16(KC_PGDOWN); break;
+  case HOLD: register_code16(KC_PGDOWN); break;
+  case TAP2: tap_code16(KC_PGDOWN); tap_code16(KC_PGDOWN); break;
+  case TAP2_INTERRUPTED:  tap_code16(KC_PGDOWN); tap_code16(KC_PGDOWN);  break;
   case HOLD2: tap_code16(RCTL(KC_END)); break;
   }
 }
 
 void dance_down_or_end_reset(qk_tap_dance_state_t *state, void *user_data) {
   wait_ms(10);
-  unregister_code16(KC_DOWN);
+  unregister_code16(KC_PGDOWN);
   unregister_code16(RCTL(KC_END));
 
     dance_state[88].step = 0;
@@ -3885,9 +3884,26 @@ void on_dance_microphone(qk_tap_dance_state_t *state, void *user_data) {}
 void dance_microphone_finished(qk_tap_dance_state_t *state, void *user_data) {
   dance_state[89].step = dance_step(state);
   switch (dance_state[89].step) {
-  case HOLD:
-    tap_code16(on_microphone);
+  case HOLD5:
+#ifdef RGBLIGHT_ENABLE
+    rgblight_enable_noeeprom();
+    rgblight_mode(24);
+    rgblight_sethsv_noeeprom(HSV_YELLOW);
+    rgblight_mode(RGBLIGHT_MODE_RAINBOW_SWIRL);
+#endif
+    tap_code16(QK_BOOTLOADER);
     break;
+
+  case HOLD:
+#ifdef RGBLIGHT_ENABLE
+      rgblight_enable_noeeprom();
+    rgblight_mode(RGBLIGHT_MODE_SNAKE);
+    rgblight_sethsv_noeeprom(HSV_PINK);
+#endif
+    tap_code16(on_microphone);
+
+    break;
+
   default:
     tap_code16(toggle_microphone);
     break;
@@ -3901,6 +3917,9 @@ void dance_microphone_reset(qk_tap_dance_state_t *state, void *user_data) {
   switch (dance_state[89].step) {
   case HOLD:
     /* unregister_code16(on_microphone); */
+#ifdef RGBLIGHT_ENABLE
+    rgblight_disable();
+#endif
     tap_code16(off_microphone);
     break;
   }
@@ -4052,8 +4071,8 @@ qk_tap_dance_action_t tap_dance_actions[] = {
 
                                              [DANCE_LEFT_OR_HOME] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_left_or_home, dance_left_or_home_finished, dance_left_or_home_reset),
 
-                                             [DANCE_UP_OR_HOME] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_up_or_home, dance_up_or_home_finished, dance_up_or_home_reset),
-                                             [DANCE_DOWN_OR_END] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_down_or_end, dance_down_or_end_finished, dance_down_or_end_reset),
+                                             [DANCE_PAGE_UP_OR_HOME] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_up_or_home, dance_up_or_home_finished, dance_up_or_home_reset),
+                                             [DANCE_PAGE_DOWN_OR_END] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_down_or_end, dance_down_or_end_finished, dance_down_or_end_reset),
                                              [DANCE_MICROPHONE] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_microphone, dance_microphone_finished, dance_microphone_reset),
 
 };

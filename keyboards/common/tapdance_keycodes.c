@@ -28,24 +28,28 @@
 #define preonic_5 SELECT_HOTKEY_5
 #define preonic_6 SELECT_HOTKEY_6
 #define preonic_7 LEFT_OR_HOME
-#define preonic_8 DOWN_OR_END
-#define preonic_9 UP_OR_HOME
+#define preonic_8 PAGE_DOWN_OR_END
+#define preonic_9 PAGE_UP_OR_HOME
 #define preonic_10 RIGHT_OR_END
 #define preonic_11 SELECT_HOTKEY_0
 
-#define DOWN_OR_END TD(DANCE_DOWN_OR_END)
-#define my_lower_j DOWN_OR_END
-#define UP_OR_HOME TD(DANCE_UP_OR_HOME)
-#define my_lower_k UP_OR_HOME
+#define PAGE_DOWN_OR_END TD(DANCE_PAGE_DOWN_OR_END)
+#define my_lower_j KC_DOWN // PAGE_DOWN_OR_END
+#define PAGE_UP_OR_HOME TD(DANCE_PAGE_UP_OR_HOME)
+#define my_lower_k KC_UP // PAGE_UP_OR_HOME
 
 #define LEFT_OR_HOME TD(DANCE_LEFT_OR_HOME)
-#define my_lower_h LEFT_OR_HOME
+#define my_lower_h KC_LEFT // LEFT_OR_HOME
 #define RIGHT_OR_END TD(DANCE_RIGHT_OR_END)
-#define my_lower_l RIGHT_OR_END
+#define my_lower_l KC_RIGHT   // RIGHT_OR_END
 #define top_left TD(DANCE_TAB)
 #define BRACKET_PAREN TD(DANCE_PAREN_BRACKET)
 #define windows_k TD(DANCE_43)
 #define windows_l TD(DANCE_44)
+
+#define my_lower_u PAGE_DOWN_OR_END
+#define my_lower_i PAGE_UP_OR_HOME
+
 /* #define adhoc_set_hotkey TD(DANCE_ADHOC_SET_HOTKEY) */
 #define my_x TD(DANCE_X)
 #define my_y TD(DANCE_Y)

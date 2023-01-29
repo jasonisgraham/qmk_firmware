@@ -196,7 +196,6 @@ layer_state_t layer_state_set_user(layer_state_t state) {
   /*   rgblight_sethsv_noeeprom(HSV_PURPLE); */
   /*   break; */
 
-
   case _EMACS:
     rgblight_mode(RGBLIGHT_MODE_ALTERNATING);
     rgblight_enable_noeeprom();
@@ -207,6 +206,12 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     rgblight_mode(DROP_CURRENT_ANIMATION);
     static_kinda_dim(HSV_SPRINGGREEN);
     break;
+
+  case _WINMOVE_MONITOR:
+    rgblight_mode(RGBLIGHT_MODE_ALTERNATING);
+    static_kinda_dim(HSV_RED);
+    break;
+
 
 
   /* case _APL: */
