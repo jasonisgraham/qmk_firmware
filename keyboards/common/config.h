@@ -1,7 +1,7 @@
 #pragma once
 
-#undef UNICODE_SELECTED_MODES
-#define UNICODE_SELECTED_MODES UC_LNX
+/* #undef UNICODE_SELECTED_MODES */
+/* #define UNICODE_SELECTED_MODES UC_LINX */
 
 #ifdef AUDIO_ENABLE
   #include "song_list.h"

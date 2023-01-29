@@ -6,25 +6,25 @@
 
 enum preonic_layers {
                     _BASE,
-                    _SHIFTLOCK,
-                    _CTRL,
+/* 1 */                    _SHIFTLOCK,
                     _LOWER,
                     _RAISE,
                     _WINDOWS,
-                    _WINMOVE,
+/* 5 */                    _WINMOVE,
                     _WINMOVE_MONITOR,
                     _SUPER,
                     _EDITING,
                     _EMACS,
-                    _MOUSE,
+/* 10 */                    _MOUSE,
                     _SYSTEM,
                     _ALL_MODS,
                     _ADHOC_SET_HOTKEY,
                     _HYPER,
-                    _SA,
+/* 15 */                    _SA,
                     _ROFI,
                     _MACROS,
                     _LAYER_LOCK,
+                    _SCRATCH
 };
 
 /* #include "../../../common/config.h" */
@@ -43,6 +43,7 @@ enum preonic_layers {
 /* #include "../../../common/layer_lock.h" */
 
 #include "../../../common/planck_keymap.h"
+#include "../../../common/matrix_scan_user.c"
 #include "../../../common/process_record_user.c"
 
 /* const int row0[10]; */

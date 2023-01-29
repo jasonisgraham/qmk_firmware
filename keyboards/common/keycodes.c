@@ -4,6 +4,7 @@
 /* /\* #include "musical_notes.h" *\/ */
 /* #include "../../quantum/hacks.c" */
 
+#define COMPOSE KC_KP_ENTER
 /* super_meta_hyper */
 #define GUI LGUI
 
@@ -21,9 +22,9 @@
 #define SELECT_HOTKEY_6 LALT(LGUI(KC_F6))
 #define SELECT_HOTKEY_0 LALT(LGUI(KC_F12))
 #define key_0_7 KC_GRAVE
-#define key_1_7 SELECT_HOTKEY_1
-#define key_2_7 TD(DANCE_QUOTE)
-#define key_3_7 KC_ENTER
+#define key_1_7 SELECT_HOTKEY_2
+#define key_2_7 SELECT_HOTKEY_4
+#define key_3_7 SELECT_HOTKEY_5
 #define key_4_7 TD(DANCE_ALT_OR_RCTRL)
 /* #define key_4_7 TD(dance_k74) */
 
@@ -58,13 +59,13 @@
 #define WINDOW_ALWAYS_ON_TOP LCTL(LSFT(LGUI(RCTL(KC_UP))))
 #define WINDOW_TOGGLE_HORIZONTAL_MAX LSFT(LGUI(RCTL(KC_MINUS)))
 
-#define winmove_U_monitor LGUI(LSFT(KC_UP))
-#define winmove_L_monitor LGUI(LSFT(KC_LEFT))
-#define winmove_R_monitor LGUI(LSFT(KC_RIGHT))
-#define winmove_D_monitor LGUI(LSFT(KC_DOWN))
+#define winmove_U_monitor LGUI(KC_UP)
+#define winmove_L_monitor LGUI(KC_LEFT)
+#define winmove_R_monitor LGUI(KC_RIGHT)
+#define winmove_D_monitor LGUI(KC_DOWN)
 
-#define winmove_U LGUI(LSFT(KC_K))
-#define winmove_D LGUI(LSFT(KC_J))
+#define winmove_U LCTL(LGUI(LSFT(KC_K)))
+#define winmove_D LCTL(LGUI(LSFT(KC_J)))
 
 #define winmove_UL LGUI(LSFT(KC_Y))
 #define winmove_UR LGUI(LSFT(KC_O))
@@ -142,7 +143,6 @@
 
 
 
-
 #define my_cap_comma KC_COMMA
 #define my_cap_period KC_DOT
 #define my_cap_d LSFT(KC_D)
@@ -169,7 +169,8 @@
 #define my_lower_d KC_F7
 #define my_lower_f  KC_F8
 #define my_lower_g KC_TAB
-#define my_lower_m LALT(KC_M)
+#define BROWSER_SEARCH_OPEN_TABS RCTL(LSFT(KC_A))
+#define my_lower_m BROWSER_SEARCH_OPEN_TABS
 #define my_lower_n _______
 #define my_lower_o KC_END
 #define my_lower_p KC_BSPACE
@@ -267,7 +268,7 @@ void clear_modifiers(void) {
   unregister_code16(KC_LALT);
   unregister_code16(KC_RCTL);
   unregister_code16(KC_LCTL);
-  unregister_code16(KC_KP_ENTER);
+  unregister_code16(COMPOSE);
   unregister_code16(KEYBOARD_LAYOUT_HOLD_KEY);
 }
 
@@ -348,6 +349,7 @@ enum custom_keycodes {
                       LLOCK_LEVEL3,
                       LLOCK_APL,
                       COPY_LATEST_FILE_TO_CLIPBOARD,
+                      CLJ_REFIND,
                       CD_C9,
                       ROFI_CLIPBOARD ,
                       ROFI_WINDOWS ,
@@ -585,133 +587,30 @@ uint16_t closed_paren_timer = 0;
 int closed_paren_level = 0;
 int closed_paren_level_duration = 400;
 
-void matrix_scan_user(void) {
-  // open paren
-  if (open_paren_timer_active) {
-    if (timer_elapsed(open_paren_timer) > (open_paren_level_duration * 2)) {
-      // global no ext
-      if (open_paren_level <= 2) {
-        open_paren_level++;
-#ifdef AUDIO_ENABLE
-        PLAY_SONG(__a6);
-#endif
-      }
 
-    } else if (timer_elapsed(open_paren_timer) > (open_paren_level_duration * 1)) {
-      if (open_paren_level <= 1) {
-        open_paren_level++;
-#ifdef AUDIO_ENABLE
-        PLAY_SONG(__g6);
-#endif
-      }
-
-    } else {
-      if (open_paren_level <= 0) {
-        open_paren_level++;
-      }
-    }
-    return;
-  }
-
-
-  // closed paren
-  if (closed_paren_timer_active) {
-    if (timer_elapsed(closed_paren_timer) > (closed_paren_level_duration * 2)) {
-      // global no ext
-      if (closed_paren_level <= 2) {
-        closed_paren_level++;
-#ifdef AUDIO_ENABLE
-        PLAY_SONG(__a6);
-#endif
-      }
-
-    } else if (timer_elapsed(closed_paren_timer) > (closed_paren_level_duration * 1)) {
-      if (closed_paren_level <= 1) {
-        closed_paren_level++;
-#ifdef AUDIO_ENABLE
-        PLAY_SONG(__g6);
-#endif
-      }
-
-    } else {
-      if (closed_paren_level <= 0) {
-        closed_paren_level++;
-      }
-    }
-    return;
-  }
-
-  // fasd
-  if (fasd_timer_active) {
-    if (timer_elapsed(fasd_timer) > (fasd_level_duration * 3)) {
-      if (fasd_level <= 3) {
-        fasd_level++;
-#ifdef AUDIO_ENABLE
-        PLAY_SONG(__as6);
-#endif
-      }
-
-    } else if (timer_elapsed(fasd_timer) > (fasd_level_duration * 2)) {
-      // global no ext
-      if (fasd_level <= 2) {
-        fasd_level++;
-#ifdef AUDIO_ENABLE
-        PLAY_SONG(__a6);
-#endif
-      }
-
-    } else if (timer_elapsed(fasd_timer) > (fasd_level_duration * 1)) {
-      if (fasd_level <= 1) {
-        fasd_level++;
-#ifdef AUDIO_ENABLE
-        PLAY_SONG(__g6);
-#endif
-      }
-
-    } else {
-      if (fasd_level <= 0) {
-        // project level current ext
-        fasd_level++;
-#ifdef AUDIO_ENABLE
-        /* PLAY_SONG(__e6); */
-#endif
-      }
-    }
-    return;
-  }
-
-  if (is_alt_tab_active) {
-    if (timer_elapsed(alt_tab_timer) > 250) {
-      unregister_code(KC_LGUI);
-      is_alt_tab_active = false;
-    }
-  }
-
-}
-
-#ifdef LEADER_ENABLE
-LEADER_EXTERNS();
-#endif
-
-#ifdef RGBLIGHT_ENABLE
 
 int8_t m;
 char b[3];
 int i = 0;
-/* const uint8_t fireworks = 42; */
-/* const uint8_t faves[7] = {fireworks, 15, 16, 17, 20, 22, 41}; */
-/* /\* const uint8_t faves[7] = {fireworks, 15, 16, 17, 20, 22, 41}; *\/ */
-/* void cycle_fave_animations(void) { */
-/*   i++; */
-/*   if (i >= 7) { */
-/*     i = 0; */
-/*   } */
-/*   rgblight_mode(faves[i]); */
-/* } */
 
-/* void apply_fave_animation(void) { */
-/*   rgblight_mode(faves[i]); */
-/* } */
+const uint8_t fireworks = 42;
+const uint8_t faves[7] = {fireworks, 15, 16, 17, 20, 22, 41};
+/* const uint8_t faves[7] = {fireworks, 15, 16, 17, 20, 22, 41}; */
+void cycle_fave_animations(void) {
+  i++;
+  if (i >= 47) {
+    i = 0;
+  }
+  printf("%i\n", i);
+  printf("mode: %u, hue: %u, sat: %u, val: %u, speed: %u\n", rgb_matrix_get_mode(), rgb_matrix_get_hue(), rgb_matrix_get_sat(), rgb_matrix_get_val(),  rgb_matrix_get_speed());
+  rgblight_mode(i);
+}
+
+void apply_fave_animation(void) {
+  rgblight_mode(faves[i]);
+}
+
+#ifdef RGBLIGHT_ENABLE
 
 /* int DROP_CURRENT_ANIMATION = 0;//RGBLIGHT_MODE_STATIC_LIGHT; */
 int DROP_LAYER_0_COLOR = 0;

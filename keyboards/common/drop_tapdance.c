@@ -196,7 +196,7 @@ uint8_t _dance_step(qk_tap_dance_state_t *state) {
 
 uint8_t dance_step(qk_tap_dance_state_t *state) {
   uint8_t step = _dance_step(state);
-  printf("count: %u, pressed: %u, interrupted: %u: step: %u\n", state->count, state->pressed, state->interrupted, step);
+  /* printf("count: %u, pressed: %u, interrupted: %u: step: %u\n", state->count, state->pressed, state->interrupted, step); */
   return step;
 }
 
@@ -655,12 +655,16 @@ case TAP_INTERRUPTED_HELD:
     register_code16(KC_P);
     register_code16(KC_P);
     break;
+  case TAP3:
+    tap_code16(RCTL(KC_0));
+    break;
   }
 }
 
 void dance_P_reset(qk_tap_dance_state_t *state, void *user_data) {
   wait_ms(10);
   unregister_code16(KC_P);
+  unregister_code16(KC_0);
   dance_state[9].step = 0;
 }
 
@@ -1852,6 +1856,7 @@ void dance_raise_finished(qk_tap_dance_state_t *state, void *user_data) {
   switch (dance_state[46].step) {
   case TAP:
   case TAP_INTERRUPTED:
+    /* printf("j4-"); */
     tap_code16(KC_UNDS);
     break;
   case TAP2:
@@ -2630,6 +2635,7 @@ void dance_minus_finished(qk_tap_dance_state_t *state, void *user_data) {
   dance_state[66].step = dance_step(state);
   switch (dance_state[66].step) {
   case HOLD: register_code16(KC_UNDS); break;
+  case TAP2_INTERRUPTED:
   case TAP2: tap_code16(KC_MINUS); tap_code16(KC_MINUS);  break;
   case HOLD2: register_code16(KC_PIPE); break;
   default: register_code16(KC_MINUS); break;
@@ -2863,12 +2869,13 @@ void hyper_finished(qk_tap_dance_state_t *state, void *user_data) {
     break;
 
     default:
-#ifdef RGBLIGHT_ENABLE
-      rgblight_enable_noeeprom();
-      rgblight_mode_noeeprom(RGBLIGHT_MODE_BREATHING);
+/* #ifdef RGBLIGHT_ENABLE */
+      /* rgblight_enable_noeeprom(); */
+      /* rgblight_mode_noeeprom(RGBLIGHT_MODE_BREATHING); */
       rgblight_sethsv_noeeprom(HSV_WHITE);
-#endif
+/* #endif */
       register_code16(KC_LCTL);
+      layer_on(_HYPER);
       break;
     }
 }
@@ -2887,6 +2894,8 @@ void hyper_reset(qk_tap_dance_state_t *state, void *user_data) {
 
   default:
     unregister_code16(KC_LCTL);
+    layer_off(_HYPER);
+
 #ifdef RGBLIGHT_ENABLE
     rgblight_disable();
 #endif
@@ -3117,7 +3126,7 @@ void dance_D_finished(qk_tap_dance_state_t *state, void *user_data) {
   switch (dance_state[78].step) {
     case TAP_INTERRUPTED:
 case TAP_INTERRUPTED_HELD:
- case TAP: register_code16(KC_D); break;
+ case TAP: tap_code16(KC_D); break;
   case HOLD:
     register_key(KC_D); break;
   case HOLD2:
@@ -3137,7 +3146,7 @@ void dance_D_reset(qk_tap_dance_state_t *state, void *user_data) {
   switch (dance_state[78].step) {
     case TAP_INTERRUPTED:
 case TAP_INTERRUPTED_HELD:
- case TAP: unregister_code16(KC_D); break;
+ case TAP:  break;
   case HOLD:
     unregister_key(KC_D); break;
   case HOLD2:
@@ -3228,7 +3237,7 @@ void dance_F_finished(qk_tap_dance_state_t *state, void *user_data) {
   switch (dance_state[14].step) {
     case TAP_INTERRUPTED:
 case TAP_INTERRUPTED_HELD:
- case TAP: register_code16(KC_F); break;
+ case TAP: tap_code16(KC_F); break;
   case HOLD:
     register_key(KC_F); break;
   case HOLD2:
@@ -3247,7 +3256,7 @@ void dance_F_reset(qk_tap_dance_state_t *state, void *user_data) {
   switch (dance_state[14].step) {
     case TAP_INTERRUPTED:
 case TAP_INTERRUPTED_HELD:
- case TAP: unregister_code16(KC_F); break;
+ case TAP:  break;
   case HOLD:
     unregister_key(KC_F); break;
   case HOLD2:
@@ -3491,7 +3500,10 @@ void alt_or_rctrl_finished(qk_tap_dance_state_t *state, void *user_data) {
       break;
 
   case HOLD2:
-    layer_on(_EDITING);
+#ifdef RGBLIGHT_ENABLE
+    rgblight_sethsv_noeeprom(HSV_ORANGE);
+#endif
+    register_code16(COMPOSE);
     break;
 
   case TAP_INTERRUPTED_HELD:
@@ -3535,17 +3547,18 @@ void alt_or_rctrl_finished(qk_tap_dance_state_t *state, void *user_data) {
 
 void alt_or_rctrl_reset(qk_tap_dance_state_t *state, void *user_data) {
   wait_ms(10);
+#ifdef RGBLIGHT_ENABLE
+  rgblight_disable();
+#endif
+
   switch (dance_state[82].step) {
   case HOLD2:
-
-    layer_off(_EDITING);
+    unregister_code16(COMPOSE);
     break;
   default:
     unregister_code16(KC_LALT);
     unregister_code16(KC_RCTL);
-#ifdef RGBLIGHT_ENABLE
-    rgblight_disable();
-#endif
+    unregister_code16(COMPOSE);
   }
 }
 
@@ -3558,36 +3571,50 @@ void on_alt(qk_tap_dance_state_t *state, void *user_data) {
 void alt_finished(qk_tap_dance_state_t *state, void *user_data) {
   dance_state[82].step = dance_step(state);
   switch (dance_state[82].step) {
-    case TAP:
-      tap_code16(KC_DEL);
-      break;
-    case TAP2:
-      tap_code16(KC_DEL);
-      tap_code16(KC_DEL);
-      break;
-    case TAP3:
-      tap_code16(KC_DEL);
-      tap_code16(KC_DEL);
-      tap_code16(KC_DEL);
-      break;
-    case TAP4:
-      tap_code16(KC_DEL);
-      tap_code16(KC_DEL);
-      tap_code16(KC_DEL);
-      tap_code16(KC_DEL);
-      break;
-    case HOLD2:
-      register_code16(KC_DEL);
-      break;
+  case TAP:
+    tap_code16(KC_DEL);
+    break;
+  case TAP2:
+    tap_code16(KC_DEL);
+    tap_code16(KC_DEL);
+    break;
+  case TAP3:
+    tap_code16(KC_DEL);
+    tap_code16(KC_DEL);
+    tap_code16(KC_DEL);
+    break;
+  case TAP4:
+    tap_code16(KC_DEL);
+    tap_code16(KC_DEL);
+    tap_code16(KC_DEL);
+    tap_code16(KC_DEL);
+    break;
+  case HOLD2:
+    register_code16(KC_DEL);
+    break;
 
-    default:
-#ifdef RGBLIGHT_ENABLE
-      rgblight_enable_noeeprom();
-      rgblight_mode_noeeprom(RGBLIGHT_MODE_BREATHING);
-      rgblight_sethsv_noeeprom(HSV_GREEN);
+  default:
+#ifdef MOONLANDER
+    /* RGB_MATRIX_EFFECT(BREATHING); */
+    /* rgblight_mode(0); */
+    /* rgb_matrix_set_color_all(HSV_GREEN); */
+    /* printf("here"); */
+    /* set_layer_color(2); */
+
 #endif
-      register_code16(KC_LALT);
-      break;
+
+/* #ifdef MOONLANDER */
+/*     rgb_matrix_sethsv_noeeprom(HSV_GREEN); */
+/*   #endif */
+
+
+#ifdef RGBLIGHT_ENABLE
+    rgblight_enable_noeeprom();
+    rgblight_mode_noeeprom(RGBLIGHT_MODE_BREATHING);
+    rgblight_sethsv_noeeprom(HSV_GREEN);
+#endif
+    register_code16(KC_LALT);
+    break;
   }
 }
 
@@ -3602,6 +3629,10 @@ void alt_reset(qk_tap_dance_state_t *state, void *user_data) {
     /* PLAY_SONG(caps_lock_on_sound); */
 #endif
     unregister_code16(KC_LALT);
+/* #ifdef MOONLANDER */
+/*     rgb_matrix_sethsv_noeeprom(HSV_BLACK); */
+/* #endif */
+
 #ifdef RGBLIGHT_ENABLE
     rgblight_disable();
 #endif
@@ -3643,7 +3674,7 @@ void DANCE_LEVEL3_APL_finished(qk_tap_dance_state_t *state, void *user_data) {
       rgblight_mode(RGBLIGHT_MODE_SNAKE);
       rgblight_sethsv_noeeprom(HSV_PINK);
 #endif
-      register_code16(KC_KP_ENTER);
+      register_code16(COMPOSE);
       break;
 
     case K74_MO_APL:
@@ -3738,8 +3769,6 @@ void dance_shift_reset(qk_tap_dance_state_t *state, void *user_data) {
 
   }
   dance_state[85].step = 0;
-
-
 }
 
 void on_dance_super(qk_tap_dance_state_t *state, void *user_data) {}
@@ -3913,8 +3942,8 @@ void dance_microphone_finished(qk_tap_dance_state_t *state, void *user_data) {
 void dance_microphone_reset(qk_tap_dance_state_t *state, void *user_data) {
   wait_ms(10);
   int step = dance_state[89].step;
-  printf("reset count: %u, pressed: %u, interrupted: %u: step: %u\n", state->count, state->pressed, state->interrupted, step);
-  switch (dance_state[89].step) {
+  /* printf("reset count: %u, pressed: %u, interrupted: %u: step: %u\n", state->count, state->pressed, state->interrupted, step); */
+  switch (step) {
   case HOLD:
     /* unregister_code16(on_microphone); */
 #ifdef RGBLIGHT_ENABLE

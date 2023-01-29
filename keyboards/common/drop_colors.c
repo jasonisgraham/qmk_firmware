@@ -71,11 +71,11 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     rgblight_sethsv_noeeprom(HSV_GREEN);
     break;
 
-  case _CTRL:
-    rgblight_enable_noeeprom();
-    rgblight_mode(RGBLIGHT_MODE_KNIGHT);
-    rgblight_sethsv_noeeprom(HSV_MAGENTA);
-    break;
+  /* case _CTRL: */
+  /*   rgblight_enable_noeeprom(); */
+  /*   rgblight_mode(RGBLIGHT_MODE_KNIGHT); */
+  /*   rgblight_sethsv_noeeprom(HSV_MAGENTA); */
+  /*   break; */
 
   case _ALL_MODS:
     static_kinda_dim(HSV_YELLOW);
