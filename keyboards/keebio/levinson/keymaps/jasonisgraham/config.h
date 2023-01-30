@@ -33,3 +33,5 @@
 /* #define ENCODERS_PAD_A { F4 } */
 /* #undef NUM_ENCODERMAP_LAYERS */
 /* #define NUM_ENCODERMAP_LAYERS 1 */
+
+#undef BOTH_SHIFTS_TURNS_ON_CAPS_WORD

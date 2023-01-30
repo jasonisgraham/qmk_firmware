@@ -46,8 +46,9 @@
 /* #define RGBLIGHT_EFFECT_TWINKLE */
 
 
-/* #define LEADER_TIMEOUT 1000 */
-#define LEADER_NO_TIMEOUT
+#define LEADER_TIMEOUT 2000
+/* #define LEADER_NO_TIMEOUT */
+/* #define LEADER_TIMEOUT 300 */
 
 
 /* #ifdef AUDIO_ENABLE */
