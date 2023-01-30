@@ -43,6 +43,7 @@ enum preonic_layers {
 /* #include "../../../common/layer_lock.h" */
 
 #include "../../../common/planck_keymap.h"
+#include "../../../common/matrix_scan_user.c"
 #include "../../../common/process_record_user.c"
 
 /* const int row0[10]; */

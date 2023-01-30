@@ -3117,7 +3117,7 @@ void dance_D_finished(qk_tap_dance_state_t *state, void *user_data) {
   switch (dance_state[78].step) {
     case TAP_INTERRUPTED:
 case TAP_INTERRUPTED_HELD:
- case TAP: register_code16(KC_D); break;
+ case TAP: tap_code16(KC_D); break;
   case HOLD:
     register_key(KC_D); break;
   case HOLD2:
@@ -3137,7 +3137,7 @@ void dance_D_reset(qk_tap_dance_state_t *state, void *user_data) {
   switch (dance_state[78].step) {
     case TAP_INTERRUPTED:
 case TAP_INTERRUPTED_HELD:
- case TAP: unregister_code16(KC_D); break;
+ case TAP:  break;
   case HOLD:
     unregister_key(KC_D); break;
   case HOLD2:
@@ -3228,7 +3228,7 @@ void dance_F_finished(qk_tap_dance_state_t *state, void *user_data) {
   switch (dance_state[14].step) {
     case TAP_INTERRUPTED:
 case TAP_INTERRUPTED_HELD:
- case TAP: register_code16(KC_F); break;
+ case TAP: tap_code16(KC_F); break;
   case HOLD:
     register_key(KC_F); break;
   case HOLD2:
@@ -3247,7 +3247,7 @@ void dance_F_reset(qk_tap_dance_state_t *state, void *user_data) {
   switch (dance_state[14].step) {
     case TAP_INTERRUPTED:
 case TAP_INTERRUPTED_HELD:
- case TAP: unregister_code16(KC_F); break;
+ case TAP:  break;
   case HOLD:
     unregister_key(KC_F); break;
   case HOLD2:

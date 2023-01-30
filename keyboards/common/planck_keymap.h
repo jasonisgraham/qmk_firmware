@@ -7,7 +7,7 @@
 
 #define planck_raise LSFT(KC_TAB),    my_raise_q,          my_raise_w,  KC_END,         EMACS_BUFFER_REVERT,       QK_CAPS_WORD_TOGGLE, _______, my_raise_y, my_raise_u,           my_raise_i,           my_raise_o,           my_raise_p, \
     _______, my_raise_a, my_raise_s,   my_raise_d, my_raise_f,  TD(DANCE_MACROS), raise_backspace,       my_raise_h,         my_raise_j,           my_raise_k,           my_raise_l,       raise_semi, \
-    SHIFTLOCK_LAYER_ACTIVATE, my_raise_z, my_raise_x, my_raise_c,  my_raise_v,      my_raise_b, KC_LEFT,     my_raise_n,           my_raise_m,           my_raise_comma,         KC_3,           raise_slash, \
+    SHIFTLOCK_LAYER_ACTIVATE, my_raise_z, my_raise_x, my_raise_c,  my_raise_v,      my_raise_b, _______,     my_raise_n,           my_raise_m,           my_raise_comma,         KC_3,           raise_slash, \
     MO(_SYSTEM), _______, _______,        _______,        TO(_BASE), _______, OSL(_HYPER),      my_space,   raise_key_4_9,       raise_backspace,  _______,         TO(_BASE)
 
 
@@ -18,8 +18,8 @@
 
 #define planck_lower                               LALT(KC_C),   KC_F1,          KC_F2,          KC_F3,          KC_F4,  TD(DANCE_73),        _______ ,    KC_HOME,     my_lower_u,    my_lower_i,      my_lower_o,         my_lower_p, \
     _______, KC_F5,          KC_F6,          KC_F7,          KC_F8,          my_lower_g, lower_backspace,      my_lower_h,        my_lower_j,        my_lower_k,          my_lower_l,       my_lower_semi, \
-    _______,   KC_F9,         KC_F10,         KC_F11,         KC_F12,         KC_APPLICATION, KC_RIGHT,  my_lower_n, my_lower_m, my_lower_comma,   my_lower_period, my_lower_slash, \
-    MO(_SYSTEM), _______, _______ , alt,   MO(_EDITING), MO(_MOUSE),       KC_RIGHT,             _______, lower_LOWER,          lower_right_of_lower, lower_key_4_11, lower_key_4_12
+    _______,   KC_F9,         KC_F10,         KC_F11,         KC_F12,         KC_APPLICATION, _______,  my_lower_n, my_lower_m, my_lower_comma,   my_lower_period, my_lower_slash, \
+    MO(_SYSTEM), _______, _______ , alt,   MO(_EDITING), MO(_MOUSE),       _______,             _______, lower_LOWER,          lower_right_of_lower, lower_key_4_11, lower_key_4_12
 
 #define planck_rofi ESC_THEN_BASE_LAYER, _______, _______, _______, _______,    _______, _______, _______, ROFI_LOCATE, ROFI_WINDOWS, ROFI_CLIPBOARD, COPY_LATEST_FILE_TO_CLIPBOARD, \
     ESC_THEN_BASE_LAYER, _______, _______, _______, _______,   _______, _______, _______, _______, ROFI_EMOJI, _______, _______, \
@@ -39,8 +39,8 @@
     _______, _______, _______, _______,    MO(_MOUSE), _______, _______, _______,    _______, _______, _______, _______
 
 
-#define planck_mouse                               TO(_BASE),   _______, KC_MS_BTN1, KC_MS_UP, KC_MS_BTN2, _______, _______,  KC_HOME,        KC_PGUP,        KC_PGDOWN,      KC_END,         _______, \
-    _______, _______, KC_MS_LEFT,     KC_MS_DOWN,     KC_MS_RIGHT,    _______, _______,  KC_MS_BTN1,     KC_MS_WH_DOWN,  KC_MS_WH_UP,    KC_MS_BTN2,     _______, \
+#define planck_mouse                               TO(_BASE),    KC_MS_BTN1, KC_MS_UP, KC_MS_BTN2, _______, _______, _______,  KC_HOME,        KC_PGUP,        KC_PGDOWN,      KC_END,         _______, \
+    _______,  KC_MS_LEFT,     KC_MS_DOWN,     KC_MS_RIGHT,    _______, _______,  _______, KC_MS_BTN1,     KC_MS_WH_DOWN,  KC_MS_WH_UP,    KC_MS_BTN2,     _______, \
     _______, _______, _______, _______, _______, _______, _______,  LALT(LGUI(KC_N)), KC_MS_BTN3,     TD(DANCE_35),   TD(DANCE_36),   all_mods, \
     _______, _______, _______, _______, _______, _______,  _______,  _______, LGUI(LCTL(KC_M)),          _______, _______, _______
 
