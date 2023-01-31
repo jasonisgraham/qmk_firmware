@@ -8,7 +8,7 @@
 #define planck_raise LSFT(KC_TAB),    my_raise_q,          my_raise_w,  KC_END,         EMACS_BUFFER_REVERT,       QK_CAPS_WORD_TOGGLE, _______, my_raise_y, my_raise_u,           my_raise_i,           my_raise_o,           my_raise_p, \
     _______, my_raise_a, my_raise_s,   my_raise_d, my_raise_f,  TD(DANCE_MACROS), raise_backspace,       my_raise_h,         my_raise_j,           my_raise_k,           my_raise_l,       raise_semi, \
     SHIFTLOCK_LAYER_ACTIVATE, my_raise_z, my_raise_x, my_raise_c,  my_raise_v,      my_raise_b, _______,     my_raise_n,           my_raise_m,           my_raise_comma,         KC_3,           raise_slash, \
-    MO(_SYSTEM), _______, _______,        _______,        TO(_BASE), _______, OSL(_HYPER),      my_space,   raise_key_4_9,       raise_backspace,  _______,         TO(_BASE)
+    MO(_SYSTEM), _______, KC_ENTER,        _______,        TO(_BASE), _______, OSL(_HYPER),      my_space,   raise_key_4_9,       raise_backspace,  _______,         TO(_BASE)
 
 
 #define planck_shiftlock SHIFTLOCK_LAYER_DEACTIVATE,   LSFT(KC_Q),     LSFT(KC_W),     LSFT(KC_E),     LSFT(KC_R),     LSFT(KC_T), _______,    LSFT(KC_Y),     my_cap_u,     my_cap_i,     my_cap_o,     my_cap_p, \
@@ -34,7 +34,7 @@
 
 
 #define planck_sa                            ESC_THEN_BASE_LAYER, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______, \
-    ESC_THEN_BASE_LAYER, _______, KC_LEFT, _______, KC_RIGHT, _______,   KC_DELETE, _______, _______, _______, _______, _______, \
+    ESC_THEN_BASE_LAYER, _______, KC_LEFT, _______, KC_RIGHT,    KC_DELETE, _______, _______, _______, _______, _______, _______, \
     _______, _______, _______, _______, WEB_SAVE_FILE_UNDER_CURSOR, _______, _______, _______, _______, _______, _______, _______, \
     _______, _______, _______, _______,    MO(_MOUSE), _______, _______, _______,    _______, _______, _______, _______
 
@@ -48,7 +48,7 @@
 #define planck_super                              _______, _______,   _______, _______, _______, _______,    _______, _______,  _______, _______, _______, _______, \
     _______, _______, _______, _______, _______, _______,    _______, _______,  _______, _______, _______, _______, \
     _______, _______, _______, _______,    _______, _______, LALT(KC_7), _______,    _______, _______, _______, _______, \
-    _______, adhoc_set_hotkey, _______, _______,    _______, _______, TD(DANCE_ALT_OR_RCTRL), ROFI_DRUN,    ROFI_CLIPBOARD, ROFI_WINDOWS, LSFT(KC_TAB), KC_TAB
+    _______, adhoc_set_hotkey, _______, _______,    _______, _______, TD(DANCE_ALT_OR_RCTRL), ROFI_DRUN,    LM(_LOWER, MOD_LGUI), _______, LSFT(KC_TAB), KC_TAB
 
 
 #define planck_editing EMACS_ACE_WINDOW_SELECT, EMACS_DESC_KEY, LCTL(KC_7),     LCTL(KC_E), _______,     EMACS_TRANSPOSE,        LALT(KC_UNDS), EMACS_YANK_IN_SEXP  , EMACS_NEXT_SEXP ,EMACS_PREV_SEXP ,  EMACS_HELM_OCCUR, KC_DELETE, \
@@ -88,16 +88,16 @@
 
 #define planck_macros                                TO_BASE,   _______, _______, _______, emacs_r, COPY_TEXT_OPEN_NEW_TAB_SEARCH, EMACS_GOTO_GET_FEED, EMACS_COPY_FILE_PATH, EMACS_BACKWARD_UP, EMACS_INSERT_GI_GET_FEED, CD_C9, COPY_LATEST_FILE_TO_CLIPBOARD, \
     TO_BASE, emacs_a, SSH_CRONJOBS_PROD, EMACS_YAS_DOC,     emacs_f,     EMACS_INSERT_GET_FEED, EMACS_GOTO_PARSE_ITEM,  _______, _______, EMACS_YAS_KEYS_DESCRUCTURE, EMACS_YAS_TL,     _______, \
-    _______, _______, _______, EMACS_YAS_C,     _______, _______, EMACS_SYNC_FEED, _______, emacs_m,     _______, _______, TERM_CD_UP_DIR, \
+    _______, _______, CLJ_REFIND, EMACS_YAS_C,     _______, _______, EMACS_SYNC_FEED, _______, emacs_m,     _______, _______, TERM_CD_UP_DIR, \
     _______, _______, _______, _______, _______, _______,EMACS_GOTO_ROLLUP ,          EMACS_GOTO_REMOTEID, _______, _______, _______, _______
 
 
 
 #define planck_adhoc_set_key                                            \
-  _______, LCTL(LALT(LGUI(KC_Q))), LCTL(LALT(LGUI(KC_W))), _______,  LCTL(LALT(LGUI(KC_R))), _______,    SET_HOTKEY_1, LCTL(LALT(LGUI(KC_Y))), _______, _______, _______, _______, \
-    _______, _______, _______, _______, _______,    LCTL(LALT(LGUI(KC_G))), SET_HOTKEY_2, _______, LCTL(LALT(LGUI(KC_J))), LCTL(LALT(LGUI(KC_K))), LCTL(LALT(LGUI(KC_L))), _______, \
-    _______, _______, SET_HOTKEY_6, SET_HOTKEY_6, _______, _______, SET_HOTKEY_4, LCTL(LALT(LGUI(KC_N))), _______, _______, _______, LCTL(LALT(LGUI(KC_SLASH))), \
-    _______, _______, _______, _______,    _______, _______, SET_HOTKEY_5, _______,    _______, _______, _______, _______
+  _______, LCTL(LALT(LGUI(KC_Q))), LCTL(LALT(LGUI(KC_W))), _______,  LCTL(LALT(LGUI(KC_R))), _______,    SET_HOTKEY_2, LCTL(LALT(LGUI(KC_Y))), _______, _______, _______, _______, \
+    _______, _______, _______, _______, _______,    LCTL(LALT(LGUI(KC_G))), SET_HOTKEY_4, _______, LCTL(LALT(LGUI(KC_J))), LCTL(LALT(LGUI(KC_K))), LCTL(LALT(LGUI(KC_L))), _______, \
+    _______, _______, SET_HOTKEY_6, SET_HOTKEY_6, _______, _______, SET_HOTKEY_5, LCTL(LALT(LGUI(KC_N))), _______, _______, _______, LCTL(LALT(LGUI(KC_SLASH))), \
+    _______, _______, _______, _______,    _______, _______, _______, _______,    _______, _______, _______, _______
 
 
 

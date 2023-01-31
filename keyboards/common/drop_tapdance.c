@@ -655,12 +655,16 @@ case TAP_INTERRUPTED_HELD:
     register_code16(KC_P);
     register_code16(KC_P);
     break;
+  case TAP3:
+    tap_code16(RCTL(KC_0));
+    break;
   }
 }
 
 void dance_P_reset(qk_tap_dance_state_t *state, void *user_data) {
   wait_ms(10);
   unregister_code16(KC_P);
+  unregister_code16(KC_0);
   dance_state[9].step = 0;
 }
 
@@ -2863,12 +2867,13 @@ void hyper_finished(qk_tap_dance_state_t *state, void *user_data) {
     break;
 
     default:
-#ifdef RGBLIGHT_ENABLE
-      rgblight_enable_noeeprom();
-      rgblight_mode_noeeprom(RGBLIGHT_MODE_BREATHING);
+/* #ifdef RGBLIGHT_ENABLE */
+      /* rgblight_enable_noeeprom(); */
+      /* rgblight_mode_noeeprom(RGBLIGHT_MODE_BREATHING); */
       rgblight_sethsv_noeeprom(HSV_WHITE);
-#endif
+/* #endif */
       register_code16(KC_LCTL);
+      layer_on(_HYPER);
       break;
     }
 }
@@ -2887,6 +2892,8 @@ void hyper_reset(qk_tap_dance_state_t *state, void *user_data) {
 
   default:
     unregister_code16(KC_LCTL);
+    layer_off(_HYPER);
+
 #ifdef RGBLIGHT_ENABLE
     rgblight_disable();
 #endif
@@ -3491,7 +3498,10 @@ void alt_or_rctrl_finished(qk_tap_dance_state_t *state, void *user_data) {
       break;
 
   case HOLD2:
-    layer_on(_EDITING);
+#ifdef RGBLIGHT_ENABLE
+    rgblight_sethsv_noeeprom(HSV_ORANGE);
+#endif
+    register_code16(COMPOSE);
     break;
 
   case TAP_INTERRUPTED_HELD:
@@ -3535,17 +3545,18 @@ void alt_or_rctrl_finished(qk_tap_dance_state_t *state, void *user_data) {
 
 void alt_or_rctrl_reset(qk_tap_dance_state_t *state, void *user_data) {
   wait_ms(10);
+#ifdef RGBLIGHT_ENABLE
+  rgblight_disable();
+#endif
+
   switch (dance_state[82].step) {
   case HOLD2:
-
-    layer_off(_EDITING);
+    unregister_code16(COMPOSE);
     break;
   default:
     unregister_code16(KC_LALT);
     unregister_code16(KC_RCTL);
-#ifdef RGBLIGHT_ENABLE
-    rgblight_disable();
-#endif
+    unregister_code16(COMPOSE);
   }
 }
 
@@ -3558,36 +3569,47 @@ void on_alt(qk_tap_dance_state_t *state, void *user_data) {
 void alt_finished(qk_tap_dance_state_t *state, void *user_data) {
   dance_state[82].step = dance_step(state);
   switch (dance_state[82].step) {
-    case TAP:
-      tap_code16(KC_DEL);
-      break;
-    case TAP2:
-      tap_code16(KC_DEL);
-      tap_code16(KC_DEL);
-      break;
-    case TAP3:
-      tap_code16(KC_DEL);
-      tap_code16(KC_DEL);
-      tap_code16(KC_DEL);
-      break;
-    case TAP4:
-      tap_code16(KC_DEL);
-      tap_code16(KC_DEL);
-      tap_code16(KC_DEL);
-      tap_code16(KC_DEL);
-      break;
-    case HOLD2:
-      register_code16(KC_DEL);
-      break;
+  case TAP:
+    tap_code16(KC_DEL);
+    break;
+  case TAP2:
+    tap_code16(KC_DEL);
+    tap_code16(KC_DEL);
+    break;
+  case TAP3:
+    tap_code16(KC_DEL);
+    tap_code16(KC_DEL);
+    tap_code16(KC_DEL);
+    break;
+  case TAP4:
+    tap_code16(KC_DEL);
+    tap_code16(KC_DEL);
+    tap_code16(KC_DEL);
+    tap_code16(KC_DEL);
+    break;
+  case HOLD2:
+    register_code16(KC_DEL);
+    break;
 
-    default:
-#ifdef RGBLIGHT_ENABLE
-      rgblight_enable_noeeprom();
-      rgblight_mode_noeeprom(RGBLIGHT_MODE_BREATHING);
-      rgblight_sethsv_noeeprom(HSV_GREEN);
+  default:
+#ifdef MOONLANDER
+    /* RGB_MATRIX_EFFECT(BREATHING); */
+    rgb_matrix_set_color_all(HSV_GREEN);
+    printf("here");
+    /* set_layer_color(2); */
+
 #endif
-      register_code16(KC_LALT);
-      break;
+
+#ifndef MOONLANDER
+    printf("not moon");
+#ifdef RGBLIGHT_ENABLE
+    rgblight_enable_noeeprom();
+    rgblight_mode_noeeprom(RGBLIGHT_MODE_BREATHING);
+    rgblight_sethsv_noeeprom(HSV_GREEN);
+#endif
+#endif
+    register_code16(KC_LALT);
+    break;
   }
 }
 
@@ -3643,7 +3665,7 @@ void DANCE_LEVEL3_APL_finished(qk_tap_dance_state_t *state, void *user_data) {
       rgblight_mode(RGBLIGHT_MODE_SNAKE);
       rgblight_sethsv_noeeprom(HSV_PINK);
 #endif
-      register_code16(KC_KP_ENTER);
+      register_code16(COMPOSE);
       break;
 
     case K74_MO_APL:
@@ -3738,8 +3760,6 @@ void dance_shift_reset(qk_tap_dance_state_t *state, void *user_data) {
 
   }
   dance_state[85].step = 0;
-
-
 }
 
 void on_dance_super(qk_tap_dance_state_t *state, void *user_data) {}

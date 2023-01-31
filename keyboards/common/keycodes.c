@@ -4,6 +4,7 @@
 /* /\* #include "musical_notes.h" *\/ */
 /* #include "../../quantum/hacks.c" */
 
+#define COMPOSE KC_KP_ENTER
 /* super_meta_hyper */
 #define GUI LGUI
 
@@ -21,9 +22,9 @@
 #define SELECT_HOTKEY_6 LALT(LGUI(KC_F6))
 #define SELECT_HOTKEY_0 LALT(LGUI(KC_F12))
 #define key_0_7 KC_GRAVE
-#define key_1_7 SELECT_HOTKEY_1
-#define key_2_7 TD(DANCE_QUOTE)
-#define key_3_7 KC_ENTER
+#define key_1_7 SELECT_HOTKEY_2
+#define key_2_7 SELECT_HOTKEY_4
+#define key_3_7 SELECT_HOTKEY_5
 #define key_4_7 TD(DANCE_ALT_OR_RCTRL)
 /* #define key_4_7 TD(dance_k74) */
 
@@ -266,7 +267,7 @@ void clear_modifiers(void) {
   unregister_code16(KC_LALT);
   unregister_code16(KC_RCTL);
   unregister_code16(KC_LCTL);
-  unregister_code16(KC_KP_ENTER);
+  unregister_code16(COMPOSE);
   unregister_code16(KEYBOARD_LAYOUT_HOLD_KEY);
 }
 
@@ -347,6 +348,7 @@ enum custom_keycodes {
                       LLOCK_LEVEL3,
                       LLOCK_APL,
                       COPY_LATEST_FILE_TO_CLIPBOARD,
+                      CLJ_REFIND,
                       CD_C9,
                       ROFI_CLIPBOARD ,
                       ROFI_WINDOWS ,

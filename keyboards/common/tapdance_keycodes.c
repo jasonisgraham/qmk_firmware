@@ -21,17 +21,17 @@
 
 #define EMACS_REPEAT KC_F9
 #define preonic_00 adhoc_set_hotkey
-#define preonic_1 SELECT_HOTKEY_1
-#define preonic_2 SELECT_HOTKEY_2
-#define preonic_3 GUI(KC_E)
-#define preonic_4 SELECT_HOTKEY_4
-#define preonic_5 SELECT_HOTKEY_5
-#define preonic_6 SELECT_HOTKEY_6
-#define preonic_7 LEFT_OR_HOME
-#define preonic_8 PAGE_DOWN_OR_END
-#define preonic_9 PAGE_UP_OR_HOME
-#define preonic_10 RIGHT_OR_END
-#define preonic_11 SELECT_HOTKEY_0
+#define preonic_1 KC_1
+#define preonic_2 KC_2
+#define preonic_3 KC_3
+#define preonic_4  KC_4
+#define preonic_5  KC_5
+#define preonic_6  SELECT_HOTKEY_1
+#define preonic_7  KC_6
+#define preonic_8  KC_7
+#define preonic_9  KC_8
+#define preonic_10 KC_9
+#define preonic_11 KC_0
 
 #define PAGE_DOWN_OR_END TD(DANCE_PAGE_DOWN_OR_END)
 #define my_lower_j KC_DOWN // PAGE_DOWN_OR_END
@@ -55,7 +55,7 @@
 #define my_y TD(DANCE_Y)
 #define my_z TD(DANCE_Z)
 #define my_space TD(DANCE_SPACE)
-#define my_t TD(DANCE_T)
+#define my_t KC_T
 #define my_u TD(DANCE_U)
 #define my_n TD(DANCE_N)
 #define my_o TD(DANCE_O)

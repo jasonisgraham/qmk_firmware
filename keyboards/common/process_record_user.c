@@ -1455,7 +1455,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   case THREAD_FIRST:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_ESC) "i(some-> ");
+      SEND_STRING(SS_TAP(X_ESC) "i");
+      tap_code16(LALT(KC_LPRN));
+      SEND_STRING("some-> ") ;
       layer_move(_BASE);
     }
     break;
@@ -1463,7 +1465,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   case THREAD_LAST:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_ESC) "i(some->> ");
+      SEND_STRING(SS_TAP(X_ESC) "i");
+      tap_code16(LALT(KC_LPRN));
+      SEND_STRING("some->> ") ;
       layer_move(_BASE);
     }
     break;
@@ -1472,7 +1476,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_ESC) "i");
       tap_code16(LALT(KC_LPRN));
-
       SEND_STRING("->> ") ;
     }
     break;
@@ -1537,7 +1540,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   case EMACS_PRIVATE_READER:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_ESC) "i#'" SS_TAP(X_ESC));
+      SEND_STRING(SS_TAP(X_ESC) "i#'");
     }
     break;
 
@@ -1564,6 +1567,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_ESC) "99" SS_LALT(SS_RCTL(SS_TAP(X_U))));
     }
+    layer_move(_BASE);
     break;
 
 
@@ -1979,6 +1983,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case CD_C9:
     if (record->event.pressed) {
       SEND_STRING(SS_LGUI(SS_TAP(X_T)) SS_DELAY(150) "c9" SS_TAP(X_ENTER));
+      layer_move(_BASE);
+    }
+    break;
+
+  case CLJ_REFIND:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_ESC) "i(re-find #\"(?i)\"");
       layer_move(_BASE);
     }
     break;

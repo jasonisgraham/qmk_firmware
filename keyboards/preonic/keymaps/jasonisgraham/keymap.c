@@ -78,7 +78,7 @@ planck_all_mods
                            TMPTXT, _______, _______, _______, _______, _______,    TO_BASE, SELECT_TO_LINE_HOME, SELECT_TO_DOC_END, SELECT_TO_DOC_HOME, SELECT_TO_LINE_END, PB_1,
 planck_macros                              ),
 
-[_ADHOC_SET_HOTKEY] = LAYOUT_wrapper(TO_BASE, SET_HOTKEY_1, SET_HOTKEY_2, _______, SET_HOTKEY_4, SET_HOTKEY_5 ,  SET_HOTKEY_6,   _______, _______, _______, _______, SET_HOTKEY_0,
+[_ADHOC_SET_HOTKEY] = LAYOUT_wrapper(TO_BASE, SET_HOTKEY_1, SET_HOTKEY_2, _______, SET_HOTKEY_4, SET_HOTKEY_5 ,  SET_HOTKEY_1,   _______, _______, _______, _______, SET_HOTKEY_0,
 planck_adhoc_set_key                              ),
 
 [_HYPER] = LAYOUT_wrapper(

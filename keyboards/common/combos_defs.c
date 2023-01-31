@@ -10,7 +10,7 @@ const uint16_t PROGMEM combo_a_s_k[] = {my_a, my_s, my_k, COMBO_END};
 const uint16_t PROGMEM combo_r_o[] = {my_r, my_o, COMBO_END};
 
 const uint16_t PROGMEM combo_LOWER_SHIFTP[] = {LOWER, my_cap_p, COMBO_END};
-const uint16_t PROGMEM combo_k42_k43[] = {level3, all_mods, COMBO_END};
+const uint16_t PROGMEM combo_k42_k43[] = {apl_level3_and_adhoc_hotkey, all_mods, COMBO_END};
 const uint16_t PROGMEM combo_top_left_hyper[] = {top_left, hyper, COMBO_END};
 const uint16_t PROGMEM combo_super_t[] = {super, my_t, COMBO_END};
 

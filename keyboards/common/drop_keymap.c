@@ -7,7 +7,6 @@
 enum preonic_layers {
                     _BASE,
                     _SHIFTLOCK,
-                    _CTRL,
                     _LOWER,
                     _RAISE,
                     _WINDOWS,

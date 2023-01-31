@@ -1,6 +1,4 @@
 SRC += muse.c
-SRC += ../../../common/layer_lock.c
-# SRC += ../../../common/caps_word.c
 
 # BACKLIGHT_ENABLE = yes
 # RGBLIGHT_ANIMATIONS = yes
@@ -10,8 +8,8 @@ AUTO_SHIFT_ENABLE = yes
 AUTO_SHIFT_MODIFIERS = yes
 CAPS_WORD_ENABLE = yes
 COMBO_ENABLE = yes
-COMMAND_ENABLE = no
-CONSOLE_ENABLE = no
+COMMAND_ENABLE = yes
+CONSOLE_ENABLE = yes
 DYNAMIC_MACRO_ENABLE = yes
 KEY_OVERRIDE_ENABLE = yes
 LEADER_ENABLE = yes
