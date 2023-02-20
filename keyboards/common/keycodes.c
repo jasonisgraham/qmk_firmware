@@ -59,13 +59,13 @@
 #define WINDOW_ALWAYS_ON_TOP LCTL(LSFT(LGUI(RCTL(KC_UP))))
 #define WINDOW_TOGGLE_HORIZONTAL_MAX LSFT(LGUI(RCTL(KC_MINUS)))
 
-#define winmove_U_monitor LGUI(LSFT(KC_UP))
-#define winmove_L_monitor LGUI(LSFT(KC_LEFT))
-#define winmove_R_monitor LGUI(LSFT(KC_RIGHT))
-#define winmove_D_monitor LGUI(LSFT(KC_DOWN))
+#define winmove_U_monitor LGUI(KC_UP)
+#define winmove_L_monitor LGUI(KC_LEFT)
+#define winmove_R_monitor LGUI(KC_RIGHT)
+#define winmove_D_monitor LGUI(KC_DOWN)
 
-#define winmove_U LGUI(LSFT(KC_K))
-#define winmove_D LGUI(LSFT(KC_J))
+#define winmove_U LCTL(LGUI(LSFT(KC_K)))
+#define winmove_D LCTL(LGUI(LSFT(KC_J)))
 
 #define winmove_UL LGUI(LSFT(KC_Y))
 #define winmove_UR LGUI(LSFT(KC_O))
@@ -169,7 +169,8 @@
 #define my_lower_d KC_F7
 #define my_lower_f  KC_F8
 #define my_lower_g KC_TAB
-#define my_lower_m LALT(KC_M)
+#define BROWSER_SEARCH_OPEN_TABS RCTL(LSFT(KC_A))
+#define my_lower_m BROWSER_SEARCH_OPEN_TABS
 #define my_lower_n _______
 #define my_lower_o KC_END
 #define my_lower_p KC_BSPACE
@@ -587,25 +588,29 @@ int closed_paren_level = 0;
 int closed_paren_level_duration = 400;
 
 
-#ifdef RGBLIGHT_ENABLE
 
 int8_t m;
 char b[3];
 int i = 0;
-/* const uint8_t fireworks = 42; */
-/* const uint8_t faves[7] = {fireworks, 15, 16, 17, 20, 22, 41}; */
-/* /\* const uint8_t faves[7] = {fireworks, 15, 16, 17, 20, 22, 41}; *\/ */
-/* void cycle_fave_animations(void) { */
-/*   i++; */
-/*   if (i >= 7) { */
-/*     i = 0; */
-/*   } */
-/*   rgblight_mode(faves[i]); */
-/* } */
 
-/* void apply_fave_animation(void) { */
-/*   rgblight_mode(faves[i]); */
-/* } */
+const uint8_t fireworks = 42;
+const uint8_t faves[7] = {fireworks, 15, 16, 17, 20, 22, 41};
+/* const uint8_t faves[7] = {fireworks, 15, 16, 17, 20, 22, 41}; */
+void cycle_fave_animations(void) {
+  i++;
+  if (i >= 47) {
+    i = 0;
+  }
+  printf("%i\n", i);
+  printf("mode: %u, hue: %u, sat: %u, val: %u, speed: %u\n", rgb_matrix_get_mode(), rgb_matrix_get_hue(), rgb_matrix_get_sat(), rgb_matrix_get_val(),  rgb_matrix_get_speed());
+  rgblight_mode(i);
+}
+
+void apply_fave_animation(void) {
+  rgblight_mode(faves[i]);
+}
+
+#ifdef RGBLIGHT_ENABLE
 
 /* int DROP_CURRENT_ANIMATION = 0;//RGBLIGHT_MODE_STATIC_LIGHT; */
 int DROP_LAYER_0_COLOR = 0;

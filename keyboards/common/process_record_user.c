@@ -1208,6 +1208,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     break;
 
+
+  case CYCLE_FAVE_ANIMATIONS:
+    if (record->event.pressed) {
+      cycle_fave_animations();
+    }
+    break;
+
 #ifdef RGBLIGHT_ENABLE
   case CYCLE_RGBLIGHT_STEP:
     if (record->event.pressed) {
@@ -1220,13 +1227,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       /* SEND_STRING(s); */
     }
     break;
-
-  case CYCLE_FAVE_ANIMATIONS:
-    if (record->event.pressed) {
-      /* cycle_fave_animations(); */
-    }
-    break;
-
   case CYCLE_DROP_COLORS:
     if (record->event.pressed) {
       cycle_drop_color();
@@ -1381,7 +1381,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   case EMACS_OTHER_WINDOW:
     if (record->event.pressed) {
-      SEND_STRING(SS_LGUI(SS_TAP(X_E)) SS_DELAY(150) SS_RCTL(SS_TAP(X_X))  SS_TAP(X_O));
+      SEND_STRING(SS_RCTL(SS_TAP(X_X))  SS_TAP(X_O));
     }
     break;
 

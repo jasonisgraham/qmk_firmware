@@ -57,7 +57,7 @@
     _______, _______, _______, _______, KC_HYPR,  _______,                                                  _______, all_mods, MO(_EMACS), TO(_BASE), _______, emacs_indent_buffer
 
 
-#define planck_winmove                                 _______,   _______, _______, _______, _______, _______,  WINDOW_ALWAYS_ON_TOP, winmove_UL,_______, _______, winmove_UR,_______, \
+#define planck_winmove                                 _______,   _______, _______, _______, _______, WINDOW_ALWAYS_ON_TOP,  WINDOW_ALWAYS_ON_TOP, winmove_UL,_______, _______, winmove_UR,_______, \
     _______, _______, _______, LALT(LGUI(LCTL(RCTL(KC_D)))),_______, _______, _______, winmove_L,   winmove_D, winmove_U ,   winmove_R,   _______, \
     _______, _______, _______, EMACS_FRAME_FULL_SCREEN, _______, _______,  _______, winmove_DL, winmove_U_monitor, _______, winmove_DR,_______, \
     _______, _______, _______, _______, TO(0),          _______,  _______,         winmove_L_monitor,   winmove_D_monitor,   winmove_R_monitor,    _______, _______
@@ -117,5 +117,6 @@
     SHIFTLOCK_LAYER_ACTIVATE, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
     SYSTEM_LAYER_ACTIVATE, _______, _______, _______,    LLOCK_RAISE,  _______, LLOCK_APL, _______,    LLOCK_LOWER, LLOCK_EDITING, _______, _______
 
-
-
+#define planck_scratch _______, _______, _______, _______, _______, _______,   _______, _______, _______, _______, _______, _______, \
+    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
+    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,

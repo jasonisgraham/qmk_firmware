@@ -196,7 +196,7 @@ uint8_t _dance_step(qk_tap_dance_state_t *state) {
 
 uint8_t dance_step(qk_tap_dance_state_t *state) {
   uint8_t step = _dance_step(state);
-  printf("count: %u, pressed: %u, interrupted: %u: step: %u\n", state->count, state->pressed, state->interrupted, step);
+  /* printf("count: %u, pressed: %u, interrupted: %u: step: %u\n", state->count, state->pressed, state->interrupted, step); */
   return step;
 }
 
@@ -1856,6 +1856,7 @@ void dance_raise_finished(qk_tap_dance_state_t *state, void *user_data) {
   switch (dance_state[46].step) {
   case TAP:
   case TAP_INTERRUPTED:
+    /* printf("j4-"); */
     tap_code16(KC_UNDS);
     break;
   case TAP2:
@@ -2634,6 +2635,7 @@ void dance_minus_finished(qk_tap_dance_state_t *state, void *user_data) {
   dance_state[66].step = dance_step(state);
   switch (dance_state[66].step) {
   case HOLD: register_code16(KC_UNDS); break;
+  case TAP2_INTERRUPTED:
   case TAP2: tap_code16(KC_MINUS); tap_code16(KC_MINUS);  break;
   case HOLD2: register_code16(KC_PIPE); break;
   default: register_code16(KC_MINUS); break;
@@ -3594,19 +3596,22 @@ void alt_finished(qk_tap_dance_state_t *state, void *user_data) {
   default:
 #ifdef MOONLANDER
     /* RGB_MATRIX_EFFECT(BREATHING); */
-    rgb_matrix_set_color_all(HSV_GREEN);
-    printf("here");
+    /* rgblight_mode(0); */
+    /* rgb_matrix_set_color_all(HSV_GREEN); */
+    /* printf("here"); */
     /* set_layer_color(2); */
 
 #endif
 
-#ifndef MOONLANDER
-    printf("not moon");
+/* #ifdef MOONLANDER */
+/*     rgb_matrix_sethsv_noeeprom(HSV_GREEN); */
+/*   #endif */
+
+
 #ifdef RGBLIGHT_ENABLE
     rgblight_enable_noeeprom();
     rgblight_mode_noeeprom(RGBLIGHT_MODE_BREATHING);
     rgblight_sethsv_noeeprom(HSV_GREEN);
-#endif
 #endif
     register_code16(KC_LALT);
     break;
@@ -3624,6 +3629,10 @@ void alt_reset(qk_tap_dance_state_t *state, void *user_data) {
     /* PLAY_SONG(caps_lock_on_sound); */
 #endif
     unregister_code16(KC_LALT);
+/* #ifdef MOONLANDER */
+/*     rgb_matrix_sethsv_noeeprom(HSV_BLACK); */
+/* #endif */
+
 #ifdef RGBLIGHT_ENABLE
     rgblight_disable();
 #endif
@@ -3933,8 +3942,8 @@ void dance_microphone_finished(qk_tap_dance_state_t *state, void *user_data) {
 void dance_microphone_reset(qk_tap_dance_state_t *state, void *user_data) {
   wait_ms(10);
   int step = dance_state[89].step;
-  printf("reset count: %u, pressed: %u, interrupted: %u: step: %u\n", state->count, state->pressed, state->interrupted, step);
-  switch (dance_state[89].step) {
+  /* printf("reset count: %u, pressed: %u, interrupted: %u: step: %u\n", state->count, state->pressed, state->interrupted, step); */
+  switch (step) {
   case HOLD:
     /* unregister_code16(on_microphone); */
 #ifdef RGBLIGHT_ENABLE
