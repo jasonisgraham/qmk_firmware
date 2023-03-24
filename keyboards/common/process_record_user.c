@@ -158,16 +158,47 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     break;
 
+  case SSH_PROD:
+    if (record->event.pressed) {
+      SEND_STRING("ssh prod" SS_TAP(X_ENTER) SS_DELAY(1500));
+      SEND_STRING("su app " SS_TAP(X_ENTER) SS_DELAY(250) "cd " SS_TAP(X_ENTER) "cd collage" SS_TAP(X_ENTER));
+      layer_move(_BASE);
+    }
+    break;
+
+
+  case EMACS_JUMP_ITEM:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_ESC) "%");
+    }
+    break;
+
+
+  case EMACS_DEFUN_END:
+    if (record->event.pressed) {
+      tap_code16(LCTL(LALT((KC_E))));
+        SEND_STRING(SS_TAP(X_ESC) "zz");
+    }
+    break;
+
+  case EMACS_DEFUN_BEGIN:
+    if (record->event.pressed) {
+      tap_code16(LCTL(LALT(KC_A)));
+        SEND_STRING(SS_TAP(X_ESC) "zz");
+    }
+    break;
+
+
   case EMACS_PREV_SEXP:
     if (record->event.pressed) {
-      tap_code16(KC_RCBR);
+      tap_code16(KC_LCBR);
       SEND_STRING(SS_TAP(X_ESC) "zz");
     }
     break;
 
   case EMACS_NEXT_SEXP:
     if (record->event.pressed) {
-      tap_code16(KC_LCBR);
+      tap_code16(KC_RCBR);
       SEND_STRING(SS_TAP(X_ESC) "zz");
     }
     break;
@@ -1465,18 +1496,25 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   case THREAD_LAST:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_ESC) "i");
-      tap_code16(LALT(KC_LPRN));
-      SEND_STRING("some->> ") ;
+      SEND_STRING("->> ") ;
       layer_move(_BASE);
     }
     break;
 
   case EMACS_WRAP_IN_THREAD_LAST:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_ESC) "i");
+      /* SEND_STRING(SS_TAP(X_ESC) "i"); */
       tap_code16(LALT(KC_LPRN));
       SEND_STRING("->> ") ;
+    }
+    break;
+
+
+  case EMACS_WRAP_IN_THREAD_LAST_SOME:
+    if (record->event.pressed) {
+      /* SEND_STRING(SS_TAP(X_ESC) "i"); */
+      tap_code16(LALT(KC_LPRN));
+      SEND_STRING("some->> ") ;
     }
     break;
 
@@ -1580,7 +1618,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   case CLJ_ANON_FN:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_ESC) "ianon" macro_alt_slash);
+      SEND_STRING("#(");
     }
     break;
 
@@ -1707,9 +1745,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case ESC_THEN_BASE_LAYER:
     if (record->event.pressed) {
       // only used when returning from shiftlok
-#ifdef AUDIO_ENABLE
-      PLAY_SONG(caps_lock_off_sound);
-#endif
+/* #ifdef AUDIO_ENABLE */
+/*       PLAY_SONG(caps_lock_off_sound); */
+/* #endif */
       SEND_STRING(SS_TAP(X_ESCAPE));
       layer_move(_BASE);
 

@@ -153,7 +153,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // 9
 [_WINMOVE] = LAYOUT_moonlander(
-                               TO(0),   _______, _______, _______, _______, _______, _______,_______,  _______, winmove_UL,_______, _______, winmove_UR,_______,
+                               TO(0),   _______, _______, _______, _______, WINDOW_ALWAYS_ON_TOP, _______,_______,  _______, winmove_UL,_______, _______, winmove_UR,_______,
                                _______, _______, _______, LALT(LGUI(LCTL(RCTL(KC_D)))),_______, _______,  _______,_______, _______, winmove_L,   winmove_D, winmove_U ,   winmove_R,   _______,
                                _______, _______, _______, EMACS_FRAME_FULL_SCREEN, _______, _______, _______,_______,_______,   winmove_DL, winmove_U_monitor, _______, winmove_DR,_______,
                                _______, _______, _______, _______, MO(_WINMOVE_MONITOR),          _______,_______, winmove_L_monitor,    winmove_D_monitor,   winmove_R_monitor,    _______, _______,
@@ -205,7 +205,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // 7
 [_MACROS] = LAYOUT_moonlander(
 
-                              TO_BASE,   _______, _______, _______, emacs_r, COPY_TEXT_OPEN_NEW_TAB_SEARCH, _______,_______, _______,  EMACS_COPY_FILE_PATH, EMACS_BACKWARD_UP, EMACS_INSERT_GI_GET_FEED, CD_C9, COPY_LATEST_FILE_TO_CLIPBOARD,
+                              TO_BASE,   _______, SSH_PROD, _______, emacs_r, COPY_TEXT_OPEN_NEW_TAB_SEARCH, _______,_______, _______,  EMACS_COPY_FILE_PATH, EMACS_BACKWARD_UP, EMACS_INSERT_GI_GET_FEED, CD_C9, COPY_LATEST_FILE_TO_CLIPBOARD,
                               TO_BASE, emacs_a, SSH_CRONJOBS_PROD, EMACS_YAS_DOC,     emacs_f,     EMACS_INSERT_GET_FEED, _______,_______, _______, _______, _______, EMACS_YAS_KEYS_DESCRUCTURE, EMACS_YAS_TL,     _______,
                               _______, _______, _______, EMACS_YAS_C,     _______, _______,   _______,_______, _______, _______, emacs_m,     _______, _______, TERM_CD_UP_DIR,
                               _______, _______, _______, _______, _______, _______,_______,   _______,  _______,           _______, _______, _______,

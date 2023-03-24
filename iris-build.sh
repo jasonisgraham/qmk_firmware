@@ -2,4 +2,4 @@
 
 echo xxx
 clear
-make keebio/iris/rev7:jasonisgraham:flash
+make keebio/iris/rev7:default:flash

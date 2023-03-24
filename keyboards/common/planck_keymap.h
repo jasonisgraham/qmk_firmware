@@ -4,8 +4,7 @@
     hyper, apl_level3_and_adhoc_hotkey, all_mods,      alt, RAISE,  super, key_4_7,   my_space,           LOWER,          editing_and_backspace,   key_4_11,  key_4_12
 
 
-
-#define planck_raise LSFT(KC_TAB),    my_raise_q,          my_raise_w,  KC_END,         EMACS_BUFFER_REVERT,       QK_CAPS_WORD_TOGGLE, _______, my_raise_y, my_raise_u,           my_raise_i,           my_raise_o,           my_raise_p, \
+#define planck_raise LSFT(KC_TAB),    my_raise_q,          my_raise_w,  KC_END,         EMACS_BUFFER_REVERT,       _______, _______, my_raise_y, my_raise_u,           my_raise_i,           my_raise_o,           my_raise_p, \
     _______, my_raise_a, my_raise_s,   my_raise_d, my_raise_f,  TD(DANCE_MACROS), raise_backspace,       my_raise_h,         my_raise_j,           my_raise_k,           my_raise_l,       raise_semi, \
     SHIFTLOCK_LAYER_ACTIVATE, my_raise_z, my_raise_x, my_raise_c,  my_raise_v,      my_raise_b, _______,     my_raise_n,           my_raise_m,           my_raise_comma,         KC_3,           raise_slash, \
     MO(_SYSTEM), _______, KC_ENTER,        _______,        TO(_BASE), _______, OSL(_HYPER),      my_space,   raise_key_4_9,       raise_backspace,  _______,         TO(_BASE)
@@ -23,19 +22,19 @@
 
 #define planck_rofi ESC_THEN_BASE_LAYER, _______, _______, _______, _______,    _______, _______, _______, ROFI_LOCATE, ROFI_WINDOWS, ROFI_CLIPBOARD, COPY_LATEST_FILE_TO_CLIPBOARD, \
     ESC_THEN_BASE_LAYER, _______, _______, _______, _______,   _______, _______, _______, _______, ROFI_EMOJI, _______, _______, \
-    TO(_BASE), _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
+    TO(_BASE), _______, _______, _______, _______, _______, _______, _______, CINNAMON_MENU_OPEN, _______, _______, _______, \
     _______, _______, _______,    _______, _______, _______, TO(_BASE), ROFI_DRUN,    _______, _______, _______,_______
 
 
-#define planck_emacs                                _______, EMACS_DESC_KEY, _______, _______, EMACS_HELM_MARK_RINGS, _______,    _______, EMACS_YANK_IN_SEXP  , EMACS_BACKWARD_UP, _______, _______, _______, \
+#define planck_emacs                                _______, EMACS_DESC_KEY, _______, _______, EMACS_HELM_MARK_RINGS, EMACS_TRANSPOSE,    _______, EMACS_YANK_IN_SEXP  , EMACS_DEFUN_END, EMACS_DEFUN_BEGIN, _______, _______, \
     _______, _______, _______, _______, EMACS_FINDER_COMMENTARY, _______,   _______, EMACS_SPLIT_WINDOW_LEFT, EMACS_SPLIT_WINDOW_DOWN, EMACS_SPLIT_WINDOW_UP, EMACS_SPLIT_WINDOW_RIGHT,_______, \
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
     _______, _______,_______,_______,_______,_______,_______,_______,_______,_______,_______,_______
 
 
-#define planck_sa                            ESC_THEN_BASE_LAYER, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______, \
+#define planck_sa                            ESC_THEN_BASE_LAYER, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, RCTL(KC_0), \
     ESC_THEN_BASE_LAYER, _______, KC_LEFT, _______, KC_RIGHT,    KC_DELETE, _______, _______, _______, _______, _______, _______, \
-    _______, _______, _______, _______, WEB_SAVE_FILE_UNDER_CURSOR, _______, _______, _______, _______, _______, _______, _______, \
+    _______, _______, _______, KC_F11, WEB_SAVE_FILE_UNDER_CURSOR, RCTL(KC_0), _______, _______, _______, _______, _______, _______, \
     _______, _______, _______, _______,    MO(_MOUSE), _______, _______, _______,    _______, _______, _______, _______
 
 
@@ -48,11 +47,11 @@
 #define planck_super                              _______, _______,   _______, _______, _______, _______,    _______, _______,  _______, _______, _______, _______, \
     _______, _______, _______, _______, _______, _______,    _______, _______,  _______, _______, _______, _______, \
     _______, _______, _______, _______,    _______, _______, LALT(KC_7), _______,    _______, _______, _______, _______, \
-    _______, adhoc_set_hotkey, _______, _______,    _______, _______, TD(DANCE_ALT_OR_RCTRL), ROFI_DRUN,    LM(_LOWER, MOD_LGUI), _______, LSFT(KC_TAB), KC_TAB
+    _______, adhoc_set_hotkey, _______, _______,    _______, _______, TD(DANCE_ALT_OR_RCTRL), ROFI_DRUN,  KC_LCTL, _______, LSFT(KC_TAB), KC_TAB
 
 
-#define planck_editing EMACS_ACE_WINDOW_SELECT, EMACS_DESC_KEY, LCTL(KC_7),     LCTL(KC_E), _______,     EMACS_TRANSPOSE,        LALT(KC_UNDS), EMACS_YANK_IN_SEXP  , EMACS_NEXT_SEXP ,EMACS_PREV_SEXP ,  EMACS_HELM_OCCUR, KC_DELETE, \
-    _______, _______, EMACS_LOCCUR, EMACS_KILL_IN_SEXP, LALT(KC_ENTER), EMACS_COPY_FILE_PATH,               EMACS_SCROLL_UP, LALT(LSFT(KC_H)), editing_j, editing_k, editing_l, EMACS_PRIVATE_READER, \
+#define planck_editing EMACS_ACE_WINDOW_SELECT, EMACS_DESC_KEY, LCTL(KC_7),     LCTL(KC_E), _______,    LCTL(KC_S) ,        LALT(KC_UNDS), EMACS_YANK_IN_SEXP  , EMACS_NEXT_SEXP ,EMACS_PREV_SEXP ,  EMACS_HELM_OCCUR, KC_DELETE, \
+    _______, _______, EMACS_LOCCUR, EMACS_KILL_IN_SEXP, LALT(KC_ENTER), LCTL(KC_G),               EMACS_SCROLL_UP, LALT(LSFT(KC_H)), editing_j, editing_k, editing_l, EMACS_PRIVATE_READER, \
     _______, EMACS_RECENTER_ON_DEFUN, _______, EMACS_WINDOW_CLOSE,    TD(DANCE_SAVE_LOAD_NS_SWITCH), _______,                                      _______, next_win_or_frame, EMACS_ACE_WINDOW_SWAP,  editing_comma, editing_period, TERM_CD_UP_DIR, \
     _______, _______, _______, _______, KC_HYPR,  _______,                                                  _______, all_mods, MO(_EMACS), TO(_BASE), _______, emacs_indent_buffer
 

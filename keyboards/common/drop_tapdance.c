@@ -249,8 +249,13 @@ void dance_tab_finished(qk_tap_dance_state_t *state, void *user_data) {
   case TAP2_INTERRUPTED: tap_code16(KC_TAB); register_code16(KC_TAB);
     break;
 
-  case TAP3:
-    tap_code16(QK_BOOTLOADER);
+  case HOLD3:
+    tap_code16(CLEAR_MODIFIERS);
+    layer_move(_BASE);
+#ifdef AUDIO_ENABLE
+    PLAY_SONG(caps_lock_on_sound);
+#endif
+
     break;
   }
 }
@@ -432,19 +437,18 @@ void dance_T_finished(qk_tap_dance_state_t *state, void *user_data) {
   dance_state[5].step = dance_step(state);
   switch (dance_state[5].step) {
   case TAP_INTERRUPTED:
-case TAP_INTERRUPTED_HELD:
+  case TAP_INTERRUPTED_HELD:
+  case TAP: tap_code16(KC_T); break;
 
-  case TAP: register_code16(KC_T); break;
   case HOLD:
     register_key(KC_T); break;
   case HOLD2:
-    /* tap_code16(EMACS_TRANSPOSE); */
-    register_code16(LSFT (KC_T));
+    tap_code16(LGUI (KC_T));
     break;
   case TAP2:
   case TAP2_INTERRUPTED:
-    register_code16(KC_T);
-    register_code16(KC_T);
+    tap_code16(KC_T);
+    tap_code16(KC_T);
     break;
   }
 }
@@ -453,13 +457,12 @@ void dance_T_reset(qk_tap_dance_state_t *state, void *user_data) {
   wait_ms(10);
   switch (dance_state[5].step) {
   case TAP_INTERRUPTED:
-case TAP_INTERRUPTED_HELD:
-
+  case TAP_INTERRUPTED_HELD:
   case TAP: unregister_code16(KC_T); break;
   case HOLD:
     unregister_key(KC_T); break;
   case HOLD2:
-    unregister_code16(LSFT (KC_T));
+    unregister_code16(LGUI (KC_T));
     break;
   case TAP2:
   case TAP2_INTERRUPTED:
@@ -3182,16 +3185,16 @@ void dance_E_finished(qk_tap_dance_state_t *state, void *user_data) {
 
     case TAP_INTERRUPTED:
 case TAP_INTERRUPTED_HELD:
- case TAP: register_code16(KC_E); break;
+ case TAP: tap_code16(KC_E); break;
   case HOLD:
     register_key(KC_E); break;
   case HOLD2:
-    tap_code16(LCTL (KC_E));
+    tap_code16(LGUI(KC_E));
     break;
   case TAP2:
   case TAP2_INTERRUPTED:
-    register_code16(KC_E);
-    register_code16(KC_E);
+    tap_code16(KC_E);
+    tap_code16(KC_E);
     break;
 
   }
@@ -3207,7 +3210,7 @@ case TAP_INTERRUPTED_HELD:
   case HOLD:
     unregister_key(KC_E); break;
   case HOLD2:
-    unregister_code16(LCTL (KC_E));
+    unregister_code16(LGUI (KC_E));
     break;
   case TAP2:
   case TAP2_INTERRUPTED:
@@ -3778,12 +3781,13 @@ void dance_super_finished(qk_tap_dance_state_t *state, void *user_data) {
   switch (dance_state[85].step) {
   case HOLD:
   case HOLD3:
+  /* case TAP_INTERRUPTED: */
     // hold down SUPER cuz i dont wanna explicitly apply SUPER to every key
     register_code16(KC_LGUI);
     layer_on(_SUPER);
     break;
   case HOLD2:
-    tap_code16(ALT_TAB);
+    layer_move(_ROFI);
     break;
 
   default:
@@ -3797,8 +3801,13 @@ void dance_super_reset(qk_tap_dance_state_t *state, void *user_data) {
   switch (dance_state[85].step) {
   case HOLD:
   case HOLD3:
+  /* case TAP_INTERRUPTED: */
     unregister_code16(KC_LGUI);
     layer_off(_SUPER);
+    break;
+
+  case HOLD2:
+    layer_off(_ROFI);
     break;
 
   default:
