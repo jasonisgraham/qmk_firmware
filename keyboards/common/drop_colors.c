@@ -100,7 +100,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     rgblight_mode_noeeprom(0);
 
     #ifdef AUDIO_ENABLE
-    PLAY_SONG(major_sound);
+    /* PLAY_SONG(major_sound); */
     #endif
 
     #ifdef LEVINSON
@@ -152,9 +152,9 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
   case _SHIFTLOCK:
     // shiftlok
-#ifdef AUDIO_ENABLE
-    PLAY_SONG(caps_lock_on_sound);
-#endif
+/* #ifdef AUDIO_ENABLE */
+/*     PLAY_SONG(caps_lock_on_sound); */
+/* #endif */
 
     rgblight_disable_noeeprom();
     rgblight_enable_noeeprom();

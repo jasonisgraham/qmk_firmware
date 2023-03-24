@@ -1,7 +1,6 @@
 
 #define super TD(DANCE_SUPER) // LM(_SUPER, MOD_LGUI) //TD(SUPER_WINDOWS)
 
-#define my_cap_semi KC_SCLN
 #define editing_q TD(DANCE_EDITING_Q)
 #define BROWSER_TAB_NEXT TD(DANCE_30)
 #define alt TD(DANCE_ALT)
@@ -13,25 +12,35 @@
 #define my_c TD(DANCE_C)
 #define BROWSER_TAB_PREV TD(DANCE_29)
 #define my_comma TD(DANCE_COMMA) //KC_COMMA //
-#define my_left_shift TD(DANCE_SHIFT)
+#define my_left_shift TD(DANCE_SHIFT_PAREN)
+#define editing_left_shift TD(DANCE_SHIFT_CURLY)
+#define lower_left_shift TD(DANCE_SHIFT_BRACKET)
 #define my_m TD(DANCE_M)
 #define my_s TD(DANCE_S)
 #define my_w TD(DANCE_W)
+
+#define my_semicolon TD(DANCE_COLN)
+#define my_cap_semi my_semicolon
+
 /* #define super TD(DANCE_SUPER) //TD(SUPER_WINDOWS) */
 
+#define EVIL_FIRST_NON_BLANK KC_HOME
+#define EVIL_END_OF_LINE KC_END
+#define EVIL_JUMP RCTL(KC_COMMA)
+
 #define EMACS_REPEAT KC_F9
-#define preonic_00 adhoc_set_hotkey
-#define preonic_1 KC_1
-#define preonic_2 KC_2
-#define preonic_3 KC_3
-#define preonic_4  KC_4
-#define preonic_5  KC_5
-#define preonic_6  SELECT_HOTKEY_1
-#define preonic_7  KC_6
-#define preonic_8  KC_7
-#define preonic_9  KC_8
-#define preonic_10 KC_9
-#define preonic_11 KC_0
+#define preonic_00 TO(_MOUSE) // TD(DANCE_MICROPHONE) // toggle mic //
+#define preonic_1 EVIL_FIRST_NON_BLANK
+#define preonic_2  KC_BSLASH
+#define preonic_3  my_lower_semi
+#define preonic_4 EVIL_END_OF_LINE
+#define preonic_5  TD(DANCE_ROFI)
+#define preonic_6  SELECT_HOTKEY_0
+#define preonic_7  TD(DANCE_LEFT_OR_HOME)
+#define preonic_8  KC_DOWN
+#define preonic_9  KC_UP
+#define preonic_10 TD(DANCE_RIGHT_OR_END)
+#define preonic_11 EVIL_JUMP
 
 #define PAGE_DOWN_OR_END TD(DANCE_PAGE_DOWN_OR_END)
 #define my_lower_j KC_DOWN // PAGE_DOWN_OR_END
@@ -47,15 +56,15 @@
 #define windows_k TD(DANCE_43)
 #define windows_l TD(DANCE_44)
 
-#define my_lower_u PAGE_DOWN_OR_END
-#define my_lower_i PAGE_UP_OR_HOME
+#define my_lower_u KC_PGDOWN
+#define my_lower_i KC_PGUP
 
 /* #define adhoc_set_hotkey TD(DANCE_ADHOC_SET_HOTKEY) */
 #define my_x TD(DANCE_X)
 #define my_y TD(DANCE_Y)
 #define my_z TD(DANCE_Z)
 #define my_space TD(DANCE_SPACE)
-#define my_t KC_T
+#define my_t TD(DANCE_T)
 #define my_u TD(DANCE_U)
 #define my_n TD(DANCE_N)
 #define my_o TD(DANCE_O)

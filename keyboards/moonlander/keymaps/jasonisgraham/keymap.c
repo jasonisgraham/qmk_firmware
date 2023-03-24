@@ -52,7 +52,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                               esc_ctrl , my_a,   my_s,   my_d,   my_f,   my_g,  _______, _______, key_2_7,     my_h,         my_j,   my_k,   my_l,   my_semicolon,
                               my_left_shift,        my_z,           my_x,           my_c,           my_v,           my_b,     _______, _______, key_3_7, my_n,   my_m,   my_comma,   my_period,   my_forward_slash,
                               hyper, apl_level3_and_adhoc_hotkey, all_mods,      alt, RAISE,      super,       key_4_7, my_space,  LOWER,            editing_and_backspace,    key_4_11,  key_4_12,
-                              _______,_______,_______,_______,_______,   RGB_HUI, SELECT_HOTKEY_1, _______,_______,_______,_______,_______,
+                              _______,_______,_______,_______,_______,   RGB_HUI, SELECT_HOTKEY_0, _______,_______,_______,_______,_______,
                               key_4_7, hyper,  RGB_VAI, RGB_SAI, RGB_MOD, key_4_7
                               ),
 
@@ -153,7 +153,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // 9
 [_WINMOVE] = LAYOUT_moonlander(
-                               TO(0),   _______, _______, _______, _______, _______, _______,_______,  _______, winmove_UL,_______, _______, winmove_UR,_______,
+                               TO(0),   _______, _______, _______, _______, WINDOW_ALWAYS_ON_TOP, _______,_______,  _______, winmove_UL,_______, _______, winmove_UR,_______,
                                _______, _______, _______, LALT(LGUI(LCTL(RCTL(KC_D)))),_______, _______,  _______,_______, _______, winmove_L,   winmove_D, winmove_U ,   winmove_R,   _______,
                                _______, _______, _______, EMACS_FRAME_FULL_SCREEN, _______, _______, _______,_______,_______,   winmove_DL, winmove_U_monitor, _______, winmove_DR,_______,
                                _______, _______, _______, _______, MO(_WINMOVE_MONITOR),          _______,_______, winmove_L_monitor,    winmove_D_monitor,   winmove_R_monitor,    _______, _______,
@@ -205,7 +205,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // 7
 [_MACROS] = LAYOUT_moonlander(
 
-                              TO_BASE,   _______, _______, _______, emacs_r, COPY_TEXT_OPEN_NEW_TAB_SEARCH, _______,_______, _______,  EMACS_COPY_FILE_PATH, EMACS_BACKWARD_UP, EMACS_INSERT_GI_GET_FEED, CD_C9, COPY_LATEST_FILE_TO_CLIPBOARD,
+                              TO_BASE,   _______, SSH_PROD, _______, emacs_r, COPY_TEXT_OPEN_NEW_TAB_SEARCH, _______,_______, _______,  EMACS_COPY_FILE_PATH, EMACS_BACKWARD_UP, EMACS_INSERT_GI_GET_FEED, CD_C9, COPY_LATEST_FILE_TO_CLIPBOARD,
                               TO_BASE, emacs_a, SSH_CRONJOBS_PROD, EMACS_YAS_DOC,     emacs_f,     EMACS_INSERT_GET_FEED, _______,_______, _______, _______, _______, EMACS_YAS_KEYS_DESCRUCTURE, EMACS_YAS_TL,     _______,
                               _______, _______, _______, EMACS_YAS_C,     _______, _______,   _______,_______, _______, _______, emacs_m,     _______, _______, TERM_CD_UP_DIR,
                               _______, _______, _______, _______, _______, _______,_______,   _______,  _______,           _______, _______, _______,
@@ -215,11 +215,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_ADHOC_SET_HOTKEY] = LAYOUT_moonlander(
 
-                                        _______, LCTL(LALT(LGUI(KC_Q))), LCTL(LALT(LGUI(KC_W))), _______,  LCTL(LALT(LGUI(KC_R))), _______, _______,_______,  SET_HOTKEY_2, LCTL(LALT(LGUI(KC_Y))), _______, _______, _______, _______,
-                                        _______, _______, _______, _______, _______,    LCTL(LALT(LGUI(KC_G))), _______,_______,  SET_HOTKEY_4, LCTL(LALT(LGUI(KC_J))), LCTL(LALT(LGUI(KC_K))), LCTL(LALT(LGUI(KC_L))), _______,_______,
-                                        _______, _______, SET_HOTKEY_6, SET_HOTKEY_6, _______, _______, _______,_______, SET_HOTKEY_5,  LCTL(LALT(LGUI(KC_N))), _______, _______, _______, LCTL(LALT(LGUI(KC_SLASH))),
+                                        _______, LCTL(LALT(LGUI(KC_Q))), LCTL(LALT(LGUI(KC_W))), _______,  LCTL(LALT(LGUI(KC_R))), _______, _______,_______,  SET_HOTKEY_1, LCTL(LALT(LGUI(KC_Y))), _______, _______, _______, _______,
+                                        _______, _______, _______, _______, _______,    LCTL(LALT(LGUI(KC_G))), _______,_______,  SET_HOTKEY_3, LCTL(LALT(LGUI(KC_J))), LCTL(LALT(LGUI(KC_K))), LCTL(LALT(LGUI(KC_L))), _______,_______,
+                                        _______, _______, SET_HOTKEY_5, SET_HOTKEY_5, _______, _______, _______,_______, SET_HOTKEY_4,  LCTL(LALT(LGUI(KC_N))), _______, _______, _______, LCTL(LALT(LGUI(KC_SLASH))),
                                         _______, _______, _______,    _______, _______, _______,_______,  _______, _______,    _______, _______, _______,
-                                        _______,_______,_______,_______,_______,   _______,_______, SET_HOTKEY_1, _______,_______,_______,_______,
+                                        _______,_______,_______,_______,_______,   _______,_______, SET_HOTKEY_0, _______,_______,_______,_______,
                                         _______,_______,_______,_______,  _______,  _______
                               ),
 

@@ -8,24 +8,29 @@
 /* super_meta_hyper */
 #define GUI LGUI
 
-#define SET_HOTKEY_1 LCTL(LALT(LGUI(KC_F1)))
-#define SET_HOTKEY_2 LCTL(LALT(LGUI(KC_F2)))
-#define SET_HOTKEY_4 LCTL(LALT(LGUI(KC_F4)))
-#define SET_HOTKEY_5 LCTL(LALT(LGUI(KC_F5)))
-#define SET_HOTKEY_6 LCTL(LALT(LGUI(KC_F6)))
-#define SET_HOTKEY_0 LCTL(LALT(LGUI(KC_F12)))
+#define NOTIFICATIONS LALT(KC_4)
+#define FILE_SEARCH LALT(KC_3)
+#define PLASMA_SEARCH LALT(KC_6)
 
-#define SELECT_HOTKEY_1 LALT(LGUI(KC_F1))
-#define SELECT_HOTKEY_2 LALT(LGUI(KC_F2))
-#define SELECT_HOTKEY_4 LALT(LGUI(KC_F4))
-#define SELECT_HOTKEY_5 LALT(LGUI(KC_F5))
-#define SELECT_HOTKEY_6 LALT(LGUI(KC_F6))
-#define SELECT_HOTKEY_0 LALT(LGUI(KC_F12))
-#define key_0_7 KC_GRAVE
-#define key_1_7 SELECT_HOTKEY_2
-#define key_2_7 SELECT_HOTKEY_4
-#define key_3_7 SELECT_HOTKEY_5
-#define key_4_7 TD(DANCE_ALT_OR_RCTRL)
+#define TOGGLE_MENU_BAR LSFT(LGUI(KC_F12))
+#define PAREDIT_BACKWARD_UP LALT(RCTL(KC_U))
+#define SET_HOTKEY_0 LCTL(LALT(LGUI(KC_F1)))
+#define SET_HOTKEY_1 LCTL(LALT(LGUI(KC_F2)))
+#define SET_HOTKEY_2 LCTL(LALT(LGUI(KC_F12)))
+#define SET_HOTKEY_3 LCTL(LALT(LGUI(KC_F4)))
+#define SET_HOTKEY_4 LCTL(LALT(LGUI(KC_F5)))
+#define SET_HOTKEY_5 LCTL(LALT(LGUI(KC_F6)))
+
+#define SELECT_HOTKEY_0 LALT(LGUI(KC_F1))
+#define SELECT_HOTKEY_1 LALT(LGUI(KC_F2))
+#define SELECT_HOTKEY_2 LALT(LGUI(KC_F12))
+#define SELECT_HOTKEY_3 LALT(LGUI(KC_F4))
+#define SELECT_HOTKEY_4 LALT(LGUI(KC_F5))
+#define SELECT_HOTKEY_5 LALT(LGUI(KC_F6))
+#define key_1_7 SELECT_HOTKEY_1
+#define key_2_7 SELECT_HOTKEY_5
+#define key_3_7 SELECT_HOTKEY_2
+#define key_4_7 QK_LEAD
 /* #define key_4_7 TD(dance_k74) */
 
 
@@ -64,7 +69,7 @@
 #define winmove_R_monitor LGUI(KC_RIGHT)
 #define winmove_D_monitor LGUI(KC_DOWN)
 
-#define winmove_U LCTL(LGUI(LSFT(KC_K)))
+#define winmove_U LGUI(LSFT(KC_K))
 #define winmove_D LCTL(LGUI(LSFT(KC_J)))
 
 #define winmove_UL LGUI(LSFT(KC_Y))
@@ -75,6 +80,7 @@
 #define winmove_DR LGUI(LSFT(KC_DOT))
 
 
+#define editing_h LCTL(KC_H)
 #define editing_j LALT(LSFT(KC_J))
 #define editing_k LALT(LSFT(KC_K))
 #define editing_l LALT(LSFT(KC_L))
@@ -100,6 +106,7 @@
 #define LOWER LT(_LOWER, KC_MINUS) //TD(DANCE_SHIFT)
 
 /* #define RAISE MO(_RAISE) */
+#define CINNAMON_MENU_OPEN LALT(LGUI(KC_7))
 #define RAISE TD(DANCE_RAISE) // LT(_RAISE, KC_PLUS)
 #define all_mods LM(_ALL_MODS, MOD_LGUI | MOD_LCTL | MOD_LALT | MOD_RCTL | MOD_LSFT)
 #define alt_tab ALT_TAB
@@ -107,7 +114,7 @@
 #define KC_BSLASH KC_BACKSLASH
 #define backspace KC_BSPACE
 #define lower_backspace TD(WWW_BACK_FORWARD)
-#define raise_backspace LT(_EDITING, KC_DEL)
+#define raise_backspace LT(_EMACS, KC_DEL)
 #define below_b KC_LALT
 #define below_m MT(MOD_RCTL, KC_ESCAPE)
 #define below_m MT(MOD_RCTL, KC_ESCAPE)
@@ -119,14 +126,14 @@
 #define emacs_r EMACS_YAS_REMOVE_ANON
 #define key_0_0 KC_LCTL
 #define key_0_1 RCTL(LALT(KC_LSFT))
-#define key_4_11 KC_DOWN //CYCLE_DROP_COLORS // LAYER_LOWER_HOLD
-#define key_4_12 KC_UP
+#define key_4_11 KC_DEL  // KC_DOWN //CYCLE_DROP_COLORS // LAYER_LOWER_HOLD
+#define key_4_12 KC_ENTER
 #define key_left KC_LEFT
 #define key_right KC_RIGHT
 #define lm_ctrl LM(_CTRL, MOD_RCTL)
 #define lower_LOWER TO(_BASE)
-#define lower_key_4_11 KC_DOWN
-#define lower_key_4_12 KC_UP
+#define lower_key_4_11 KC_LEFT
+#define lower_key_4_12 KC_RIGHT
 #define lower_right_of_lower TD(WWW_BACK_FORWARD)
 #define macro_alt_slash SS_LALT(SS_TAP(X_SLASH))
 #define my_0 KC_0
@@ -170,8 +177,8 @@
 #define my_lower_f  KC_F8
 #define my_lower_g KC_TAB
 #define BROWSER_SEARCH_OPEN_TABS RCTL(LSFT(KC_A))
-#define my_lower_m BROWSER_SEARCH_OPEN_TABS
-#define my_lower_n _______
+#define my_lower_m LALT(KC_D) // BROWSER_SEARCH_OPEN_TABS
+#define my_lower_n RCTL(KC_COMMA)
 #define my_lower_o KC_END
 #define my_lower_p KC_BSPACE
 /* #define my_lower_p KC_MINUS */
@@ -179,7 +186,7 @@
 #define my_lower_r KC_F4
 #define my_lower_semi TD(DANCE_QUOTE)
 /* #define my_lower_slash KC_GRAVE */
-#define my_lower_slash KC_ENTER
+#define my_lower_slash KC_EQUAL
 #define my_minus _______
 #define my_raise RAISE
 #define my_raise_comma KC_2
@@ -211,12 +218,11 @@
 #define my_raise_y  KC_PLUS
 #define my_right_of_lower editing_and_backspace
 #define my_right_shift KC_RSFT // shift LM(_ALT, MOD_LSFT)
-#define my_semicolon KC_SCOLON
 #define my_singlequote KC_QUOTE
 #define my_v KC_V
 #define raise_space KC_UNDS
 #define raise_key_4_9 KC_ENTER // KC_BSPC
-#define raise_semi  KC_MINUS
+#define raise_semi  KC_COLN
 #define raise_slash KC_ENTER
 /* #define right_of_lower  esc_ctrl  // my_left_shift ///hyper // / MT(MOD_RCTL, KC_ESCAPE) */
 #define lower_right_of_super TD(WWW_BACK_FORWARD)
@@ -224,6 +230,9 @@
 #define scroll_prev RCTL(KC_U)
 #define select_slack LGUI(KC_S)
 #define show_desktop LALT(LGUI(LCTL(KC_F3)))
+
+#define super_backtab LSFT(KC_TAB)
+#define super_tab KC_TAB
 
 #define adhoc_set_hotkey OSL(_ADHOC_SET_HOTKEY)
 #define super_meta_hyper adhoc_set_hotkey
@@ -252,7 +261,7 @@ enum col7_row4_fns {
                     K74_MO_LEVEL3 = SAFE_RANGE,
                     K74_MO_APL
 };
-static int active_apl_level3_fn = K74_MO_APL;
+static int active_apl_level3_fn = K74_MO_LEVEL3;
 
 enum alt_rctrl_fns {
                     MO_ALT = SAFE_RANGE,
@@ -337,7 +346,17 @@ enum custom_keycodes {
                       /* RGB_SLD = SAFE_RANGE, */
                       /* RGB_SLD = EZ_SAFE_RANGE, */
                       FIRST = SAFE_RANGE,
+                      SHRUG,
+                      REFRAME_SUBSCRIBE,
+                      REFRAME_DISPATCH,
+                      EMACS_WINNER_UNDO,
+                      EMACS_WINNER_REDO,
+                      EMACS_DEFUN_END,
+                      EMACS_DEFUN_BEGIN,
+                      CIDER_RUN_TEST,
+                      EMACS_JUMP_ITEM,
                       EMACS_SYNC_FEED,
+                      EMACS_PF_UP,
                       COPY_TEXT_OPEN_NEW_TAB_SEARCH,
                       TMPTXT,
                       ALT,
@@ -367,6 +386,7 @@ enum custom_keycodes {
                       CYCLE_ACTIVE_APL_LEVEL3_FN,
                       level3,
                       SSH_CRONJOBS_PROD,
+                      SSH_PROD,
                       EMACS_PREV_SEXP,
                       AUTOSHIFT_TOGGLE,
                       WEB_SAVE_FILE_UNDER_CURSOR,
@@ -382,10 +402,12 @@ enum custom_keycodes {
                       EMACS_FINDER_COMMENTARY,
                       EMACS_HELM_OCCUR,
                       EMACS_HELM_MARK_RINGS,
+                      EMACS_HELM_KILL_RINGS,
                       EMACS_INSIDE_YANK,
                       EMACS_INSIDE_DELETE,
                       EMACS_TO_YANK,
                       EMACS_TO_DELETE,
+                      CLJ_ANON,
                       EMACS_EVIL_FIND,
                       EMACS_PROJECTILE_FIND_FILE,
                       EMACS_FASD,
@@ -471,8 +493,10 @@ enum custom_keycodes {
                       TMUX_CLOSE,
                       TERM_CD_UP_DIR,
                       EMACS_LOCCUR,
+                      EMACS_TOGGLE_REPL,
                       CLEAR_THAT_REPL,
                       EMACS_WRAP_IN_THREAD_LAST,
+                      EMACS_WRAP_IN_THREAD_LAST_SOME,
                       THREAD_LAST,
                       SA_LAYER_ACTIVATE,
                       THREAD_FIRST,
@@ -601,8 +625,8 @@ void cycle_fave_animations(void) {
   if (i >= 47) {
     i = 0;
   }
-  printf("%i\n", i);
-  printf("mode: %u, hue: %u, sat: %u, val: %u, speed: %u\n", rgb_matrix_get_mode(), rgb_matrix_get_hue(), rgb_matrix_get_sat(), rgb_matrix_get_val(),  rgb_matrix_get_speed());
+  /* printf("%i\n", i); */
+  /* printf("mode: %u, hue: %u, sat: %u, val: %u, speed: %u\n", rgb_matrix_get_mode(), rgb_matrix_get_hue(), rgb_matrix_get_sat(), rgb_matrix_get_val(),  rgb_matrix_get_speed()); */
   rgblight_mode(i);
 }
 
@@ -615,14 +639,14 @@ void apply_fave_animation(void) {
 /* int DROP_CURRENT_ANIMATION = 0;//RGBLIGHT_MODE_STATIC_LIGHT; */
 int DROP_LAYER_0_COLOR = 0;
 
-const uint8_t faves[7] = {1, // static
-                          2, // breathe
-                          14, // rainbow
-                          18, // snake
-                          24, // xmas
-                          29, // gradient
-                          35, // test blinks
-};
+/* const uint8_t faves[7] = {1, // static */
+/*                           2, // breathe */
+/*                           14, // rainbow */
+/*                           18, // snake */
+/*                           24, // xmas */
+/*                           29, // gradient */
+/*                           35, // test blinks */
+/* }; */
 
 void cycle_drop_animations(void) {
   i = i + 1;
@@ -684,4 +708,4 @@ bool do_breathing = false;
 #define editing_period emacs_buffer_stack_up
 #define emacs_indent_buffer RCTL(LALT(KC_BSLASH))
 
-#define EMACS_EVIL_JUMP_ITEM RCTL(KC_COMMA)
+#define EMACS_EVIL_JUMP_ITEM RCTL(KC_PERC)
