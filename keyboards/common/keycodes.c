@@ -30,7 +30,7 @@
 #define key_1_7 SELECT_HOTKEY_1
 #define key_2_7 SELECT_HOTKEY_5
 #define key_3_7 SELECT_HOTKEY_2
-#define key_4_7 QK_LEAD
+#define key_4_7 SELECT_HOTKEY_3
 /* #define key_4_7 TD(dance_k74) */
 
 
@@ -126,7 +126,7 @@
 #define emacs_r EMACS_YAS_REMOVE_ANON
 #define key_0_0 KC_LCTL
 #define key_0_1 RCTL(LALT(KC_LSFT))
-#define key_4_11 KC_DEL  // KC_DOWN //CYCLE_DROP_COLORS // LAYER_LOWER_HOLD
+#define key_4_11 SELECT_HOTKEY_4  // KC_DOWN //CYCLE_DROP_COLORS // LAYER_LOWER_HOLD
 #define key_4_12 KC_ENTER
 #define key_left KC_LEFT
 #define key_right KC_RIGHT

@@ -650,7 +650,7 @@ case TAP_INTERRUPTED_HELD:
     register_key(KC_P);
     break;
   case HOLD2:
-    register_code16(KC_0);
+    tap_code16(RCTL(KC_COMMA));
     break;
   case TAP2:
   case TAP2_INTERRUPTED:
