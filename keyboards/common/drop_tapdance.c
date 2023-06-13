@@ -78,7 +78,7 @@ enum tap_dance_codes {
                       DANCE_HYPER,
                       DANCE_ROFI,
                       DANCE_ALL_MODS,
-                      DANCE_73,
+                      DANCE_SCREENSHOT,
                       DANCE_Z,
                       WINDOWS_OR_ALT_TAB,
                       DANCE_C,
@@ -2913,49 +2913,25 @@ void hyper_reset(qk_tap_dance_state_t *state, void *user_data) {
 
 
 
-void on_dance_73(qk_tap_dance_state_t *state, void *user_data) {
-  if(state->count == 3) {
-    tap_code16(KC_PSCREEN);
-    tap_code16(KC_PSCREEN);
-    tap_code16(KC_PSCREEN);
-  }
-  if(state->count > 3) {
-    tap_code16(KC_PSCREEN);
-  }
-}
+void on_dance_screenshot(qk_tap_dance_state_t *state, void *user_data) {}
 
-void dance_73_finished(qk_tap_dance_state_t *state, void *user_data) {
+void dance_screenshot_finished(qk_tap_dance_state_t *state, void *user_data) {
   dance_state[73].step = dance_step(state);
   switch (dance_state[73].step) {
-    case TAP_INTERRUPTED:
-case TAP_INTERRUPTED_HELD:
- case TAP: register_code16(KC_PSCREEN); break;
-  case HOLD: register_code16(KC_PSCREEN); break;
-  case TAP2: register_code16(KC_PSCREEN); register_code16(KC_PSCREEN); break;
-  case HOLD2: register_code16(LGUI(KC_PSCREEN)); break;
-  case TAP2_INTERRUPTED: tap_code16(KC_PSCREEN); register_code16(KC_PSCREEN);
+  case HOLD2:
+    tap_code16(LGUI(RCTL(KC_PSCREEN)));
+    break;
+
+  default:
+    tap_code16(LSFT(KC_PSCREEN));
+    break;
   }
 }
 
-void dance_73_reset(qk_tap_dance_state_t *state, void *user_data) {
+void dance_screenshot_reset(qk_tap_dance_state_t *state, void *user_data) {
   wait_ms(10);
-  switch (dance_state[73].step) {
-    case TAP_INTERRUPTED:
-case TAP_INTERRUPTED_HELD:
- case TAP: unregister_code16(KC_PSCREEN); break;
-  case HOLD: unregister_code16(KC_PSCREEN); break;
-  case TAP2: unregister_code16(KC_PSCREEN); break;
-  case HOLD2: unregister_code16(LGUI(KC_PSCREEN)); break;
-  case TAP2_INTERRUPTED: unregister_code16(KC_PSCREEN); break;
-  }
   dance_state[73].step = 0;
 }
-
-
-
-
-
-
 
 void on_dance_z(qk_tap_dance_state_t *state, void *user_data) {
   if(state->count == 3) {
@@ -4181,7 +4157,7 @@ qk_tap_dance_action_t tap_dance_actions[] = {
                                              [DANCE_ROFI] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_rofi, dance_rofi_finished, dance_rofi_reset),
                                              [DANCE_HYPER]  = ACTION_TAP_DANCE_FN_ADVANCED(on_hyper, hyper_finished, hyper_reset),
                                              [DANCE_ALL_MODS] = ACTION_TAP_DANCE_FN_ADVANCED(on_all_mods, all_mods_finished, all_mods_reset),
-                                             [DANCE_73] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_73, dance_73_finished, dance_73_reset),
+                                             [DANCE_SCREENSHOT] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_screenshot, dance_screenshot_finished, dance_screenshot_reset),
                                              [DANCE_Z] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_z, dance_z_finished, dance_z_reset),
                                              [WINDOWS_OR_ALT_TAB] = ACTION_TAP_DANCE_FN_ADVANCED(on_windows_or_alt_tab, windows_or_alt_tab_finished, windows_or_alt_tab_reset),
                                              [DANCE_C] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_C, dance_C_finished, dance_C_reset),

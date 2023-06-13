@@ -27,11 +27,11 @@
 #define SELECT_HOTKEY_3 LALT(LGUI(KC_F4))
 #define SELECT_HOTKEY_4 LALT(LGUI(KC_F5))
 #define SELECT_HOTKEY_5 LALT(LGUI(KC_F6))
-#define key_1_7 SELECT_HOTKEY_1
-#define key_2_7 SELECT_HOTKEY_5
-#define key_3_7 SELECT_HOTKEY_2
-#define key_4_7 SELECT_HOTKEY_3
-/* #define key_4_7 TD(dance_k74) */
+#define mod_r1 SELECT_HOTKEY_1
+#define mod_r2 SELECT_HOTKEY_5
+#define mod_r3 SELECT_HOTKEY_2
+#define mod_r4 SELECT_HOTKEY_3
+/* #define mod_r4 TD(dance_k74) */
 
 
 
@@ -258,7 +258,7 @@
 #define KEYBOARD_LAYOUT_HOLD_KEY KC_RGUI
 
 
-/* #define key_4_7 TD(dance_k74) */
+/* #define mod_r4 TD(dance_k74) */
 
 enum col7_row4_fns {
                     K74_MO_LEVEL3 = SAFE_RANGE,
@@ -590,7 +590,7 @@ enum custom_keycodes {
 
 #define emacs_and_backspace LT(_EMACS, KC_BSPACE)
 #define apl_level3_and_adhoc_hotkey TD(DANCE_LEVEL3_APL)
-/* #define key_4_7 apl_level3_and_adhoc_hotkey */
+/* #define mod_r4 apl_level3_and_adhoc_hotkey */
 
 #define max_buffer LALT(KC_ENTER)
 #define close_x_window RCTL(LGUI(KC_Q))

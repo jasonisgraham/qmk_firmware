@@ -42,7 +42,12 @@ enum preonic_layers {
 /* #include "../../../common/drop_animations.c" */
 /* #include "../../../common/layer_lock.h" */
 
+#if defined(JSG_LHS_MODS)
+#include "../../../common/planck_lhs_keymap.h"
+#else
 #include "../../../common/planck_keymap.h"
+#endif
+
 #include "../../../common/matrix_scan_user.c"
 #include "../../../common/process_record_user.c"
 

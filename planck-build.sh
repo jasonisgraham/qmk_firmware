@@ -5,6 +5,8 @@ km=$1
 
 if [[ -z $km ]]; then
     km=jasonisgraham-drop
+elif [[ $km -eq "lhs" ]]; then
+    km=jasonisgraham-lhs-mods
 fi
 
 

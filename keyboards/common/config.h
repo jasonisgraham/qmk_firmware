@@ -73,7 +73,7 @@
 */
 #define ORYX_CONFIGURATOR
 #undef TAPPING_TERM
-#define TAPPING_TERM 130
+#define TAPPING_TERM 150
 
 #define PERMISSIVE_HOLD
 

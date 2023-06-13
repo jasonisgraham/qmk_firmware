@@ -47,10 +47,10 @@
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_BASE] = LAYOUT_moonlander(
-                              top_left,    my_q,    my_w,    my_e,    my_r,   my_t, _______, _______, key_1_7,   my_y,           my_u,    my_i,    my_o,     my_p,
-                              esc_ctrl , my_a,   my_s,   my_d,   my_f,   my_g,  _______, _______, key_2_7,     my_h,         my_j,   my_k,   my_l,   my_semicolon,
-                              my_left_shift,        my_z,           my_x,           my_c,           my_v,           my_b,     _______, _______, key_3_7, my_n,   my_m,   my_comma,   my_period,   my_forward_slash,
-                              hyper, apl_level3_and_adhoc_hotkey, all_mods,      alt, RAISE,      super,       key_4_7, my_space,  LOWER,            emacs_and_backspace,    key_4_11,  key_4_12,
+                              top_left,    my_q,    my_w,    my_e,    my_r,   my_t, _______, _______, mod_r1,   my_y,           my_u,    my_i,    my_o,     my_p,
+                              esc_ctrl , my_a,   my_s,   my_d,   my_f,   my_g,  _______, _______, mod_r2,     my_h,         my_j,   my_k,   my_l,   my_semicolon,
+                              my_left_shift,        my_z,           my_x,           my_c,           my_v,           my_b,     _______, _______, mod_r3, my_n,   my_m,   my_comma,   my_period,   my_forward_slash,
+                              hyper, apl_level3_and_adhoc_hotkey, all_mods,      alt, RAISE,      super,       mod_r4, my_space,  LOWER,            emacs_and_backspace,    key_4_11,  key_4_12,
                               _______,_______,_______,_______,_______,   TD(DANCE_ROFI), SELECT_HOTKEY_0, _______,_______,_______,_______,_______,
                               my_lower_semi, TD(DANCE_LEFT_OR_HOME), KC_DOWN,   KC_UP, TD(DANCE_RIGHT_OR_END), EVIL_JUMP
                               ),
@@ -75,7 +75,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 [_LOWER] = LAYOUT_moonlander(
-                             LALT(KC_C),   KC_F1,          KC_F2,          KC_F3,          KC_F4,  TD(DANCE_73),      _______,_______,  _______,    KC_HOME,     my_lower_u,    my_lower_i,      my_lower_o,         my_lower_p, \
+                             LALT(KC_C),   KC_F1,          KC_F2,          KC_F3,          KC_F4,  TD(DANCE_SCREENSHOT),      _______,_______,  _______,    KC_HOME,     my_lower_u,    my_lower_i,      my_lower_o,         my_lower_p, \
                              _______, KC_F5,          KC_F6,          KC_F7,          KC_F8,          my_lower_g, _______,_______,_______,   my_lower_h,        my_lower_j,        my_lower_k,          my_lower_l,      my_lower_semi,
                              lower_left_shift,   KC_F9,         KC_F10,         KC_F11,         KC_F12,         KC_APPLICATION, _______,_______, _______,   my_lower_n, my_lower_m, my_lower_comma,   my_lower_period, my_lower_slash,
                              MO(_SYSTEM), _______, _______ , alt,   MO(_EDITING), _______, _______,    _______, lower_LOWER,          lower_right_of_lower,  lower_key_4_11, lower_key_4_12,
