@@ -1,0 +1,4 @@
+fitler        -> filter
+lenght        -> length
+ouput         -> output
+widht         -> width
