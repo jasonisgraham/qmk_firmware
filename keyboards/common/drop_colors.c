@@ -57,7 +57,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
   case _CODE:
     for (int i=0; i< RGBLED_NUM; i=i+2) {
-      rgblight_sethsv_at(HSV_BLUE, i);
+      rgblight_sethsv_at(HSV_YELLOW, i);
       rgblight_sethsv_at(HSV_WHITE, i+1);
     }
     break;

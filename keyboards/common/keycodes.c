@@ -43,7 +43,7 @@
 #define SELECT_HOTKEY_3 LALT(LGUI(KC_F4))
 #define SELECT_HOTKEY_4 LALT(LGUI(KC_F5))
 #define SELECT_HOTKEY_5 LALT(LGUI(KC_F6))
-#define mod_r1 TD(DANCE_ROFI)
+#define mod_r1 MO(_CODE)
 #define mod_r2 KC_UP
 #define mod_r3 KC_DOWN
 #define mod_r4 KC_ENTER // TD(DANCE_HOTKEY_OR_COMPOSE)
@@ -131,7 +131,7 @@
 #define KC_BSLASH KC_BACKSLASH
 #define backspace KC_BSPACE
 #define lower_backspace TD(WWW_BACK_FORWARD)
-#define raise_up EMACS_DEFUN_BEGIN
+#define raise_up KC_DEL
 #define raise_right EMACS_NEXT_SEXP
 #define raise_down EMACS_DEFUN_END
 #define raise_left EMACS_PREV_SEXP
