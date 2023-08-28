@@ -1,3 +1,4 @@
+
 #define planck_base  top_left,    my_q,    my_w,    my_e,    my_r,   my_t, mod_r1,    my_y,           my_u,    my_i,    my_o,     my_p, \
     esc_ctrl , my_a,   my_s,   my_d,   my_f,   my_g, mod_r2,  my_h,         my_j,   my_k,   my_l,   my_semicolon, \
         my_left_shift,        my_z,           my_x,           my_c,           my_v,           my_b, mod_r3,     my_n,   my_m,   my_comma,   my_period,   my_forward_slash, \
@@ -8,7 +9,7 @@
 #define planck_raise LSFT(KC_TAB),    my_raise_q,          my_raise_w,  my_raise_e,         my_raise_r,       my_raise_t, raise_right, my_raise_y, my_raise_u,           my_raise_i,           my_raise_o,           my_raise_p, \
     _______, my_raise_a, my_raise_s,   my_raise_d, my_raise_f,  my_raise_g, raise_up,       my_raise_h,         my_raise_j,           my_raise_k,           my_raise_l,       raise_semi, \
     SHIFTLOCK_LAYER_ACTIVATE, my_raise_z, my_raise_x, my_raise_c,  my_raise_v,      my_raise_b, raise_down,     my_raise_n,           my_raise_m,           my_raise_comma,         KC_3,           raise_slash, \
-    MO(_SYSTEM), _______, KC_ENTER,        _______,        TO(_BASE), _______, raise_left,      my_space,   raise_key_4_9,       raise_up,  _______,         TO(_BASE)
+    MO(_SYSTEM), _______, KC_ENTER,        _______,        TO(_BASE), _______, raise_left,      my_space,   raise_key_4_9,       _______,  KC_HOME,         KC_END
 
 
 #define planck_shiftlock SHIFTLOCK_LAYER_DEACTIVATE,   LSFT(KC_Q),     LSFT(KC_W),     LSFT(KC_E),     LSFT(KC_R),     LSFT(KC_T), _______,    LSFT(KC_Y),     my_cap_u,     my_cap_i,     my_cap_o,     my_cap_p, \
@@ -22,7 +23,7 @@
     MO(_SYSTEM), _______, _______ , alt,   MO(_EDITING), _______,       _______,             _______, lower_LOWER,          lower_right_of_lower, lower_key_4_11, lower_key_4_12
 
 #define planck_rofi ESC_THEN_BASE_LAYER, _______, _______, _______, _______,    _______, _______, _______, ROFI_LOCATE, ROFI_WINDOWS, ROFI_CLIPBOARD, COPY_LATEST_FILE_TO_CLIPBOARD, \
-    ESC_THEN_BASE_LAYER, _______, _______, _______, FILE_SEARCH,   _______, _______, _______, ROFI_CIDER_HISTORY, ROFI_EMOJI, CLEAR_NOTIFICATIONS, _______, \
+    ESC_THEN_BASE_LAYER, _______, _______, _______, FILE_SEARCH,   _______, _______, CIDER_HISTORY_WRITE, ROFI_CIDER_HISTORY, ROFI_EMOJI, CLEAR_NOTIFICATIONS, _______, \
     TO(_BASE), _______, _______, _______, _______, _______, _______, NOTIFICATIONS, CINNAMON_MENU_OPEN, PLASMA_SEARCH, _______, _______, \
     _______, _______, _______,    _______, _______, _______, TO(_BASE), ROFI_DRUN,    _______, DM_REC1, DM_RSTP, DM_PLY1
 
@@ -34,10 +35,10 @@
 
 
 
-#define planck_code                                          DM_RSTP, CLJ_FREQS, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______, \
+#define planck_code                                          DM_RSTP, CLJ_FREQS, _______, _______, _______, _______,    _______, _______, _______, _______, EMACS_WRAP_HYDRA, _______, \
     TO(_BASE), _______, _______, _______, _______, _______,   _______, EMACS_SPLIT_WINDOW_LEFT, EMACS_SPLIT_WINDOW_DOWN, EMACS_SPLIT_WINDOW_UP, EMACS_SPLIT_WINDOW_RIGHT, _______, \
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, DM_REC2, DM_PLY2, \
-    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, DM_REC1, DM_PLY1
+    _______, _______, _______, _______, _______, _______, _______, _______, _______, DM_RSTP, DM_REC1, DM_PLY1
 
 #define planck_emacs_select EMACS_FOCUS_REPL_IMMEDIATELY, _______, KC_NO, _______, EMACS_FOCUS_REPL, _______, _______, _______, EMACS_SEL_7,    EMACS_SEL_8,           EMACS_SEL_9,           EMACS_SEL_0, \
     TO(_BASE), _______, _______, _______, _______, _______, _______, _______, EMACS_SEL_4,           EMACS_SEL_5,           EMACS_SEL_6,           _______, \
@@ -137,7 +138,7 @@
 
 #define planck_files _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, EMACS_SET_GLOBAL_LOCATE_DOCS_FILTER_DIR, \
     TO(_BASE), ROFI_LOCATE_GLOBAL, _______, _______, ROFI_LOCATE_WITH_FILTER, ROFI_LOCATE, _______, _______, _______, _______, ROFI_LOCATE_PRINT_FILTER_DIR, _______, \
-    _______, _______, DELETE_LOCATE_DOCS_FILTER_DIR, _______, _______, _______,   _______, _______, _______, _______, _______, _______, \
+    _______, RG_FZF, DELETE_LOCATE_DOCS_FILTER_DIR, _______, _______, _______,   _______, _______, _______, _______, _______, _______, \
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
 
 

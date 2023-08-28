@@ -60,7 +60,6 @@ planck_all_mods
 // 7
 [_MACROS] = LAYOUT_wrapper(
 planck_macros                              ),
-[_DYNAMIC_MACROS] = LAYOUT_wrapper (planck_dynamic_macros),
 [_ADHOC_SET_HOTKEY] = LAYOUT_wrapper(
 planck_adhoc_set_key                              ),
 

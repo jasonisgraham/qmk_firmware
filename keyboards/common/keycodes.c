@@ -131,9 +131,9 @@
 #define KC_BSLASH KC_BACKSLASH
 #define backspace KC_BSPACE
 #define lower_backspace TD(WWW_BACK_FORWARD)
-#define raise_up KC_DEL
+#define raise_up KC_RIGHT
 #define raise_right EMACS_NEXT_SEXP
-#define raise_down EMACS_DEFUN_END
+#define raise_down KC_LEFT
 #define raise_left EMACS_PREV_SEXP
 #define below_b KC_LALT
 #define below_m MT(MOD_RCTL, KC_ESCAPE)
@@ -227,7 +227,7 @@
 #define my_raise_f LALT(KC_ENTER)
 #define my_raise_g TD(DANCE_MACROS)
 
-#define my_raise_z _______
+#define my_raise_z RG_FZF
 #define my_raise_x RCTL(KC_X)
 #define my_raise_c RCTL(KC_C)
 #define my_raise_v TD(DANCE_SAVE_LOAD_NS_SWITCH)
@@ -380,7 +380,9 @@ enum custom_keycodes {
                       /* RGB_SLD = SAFE_RANGE, */
                       /* RGB_SLD = EZ_SAFE_RANGE, */
                       FIRST = SAFE_RANGE,
+                      RG_FZF,
                       EMACS_FOCUS_REPL,
+                      CIDER_HISTORY_WRITE,
                       EMACS_FOCUS_REPL_IMMEDIATELY,
                       LPRN_EQUAL,
                       CIDER_EVAL_OR_TERMINAL_EDIT,

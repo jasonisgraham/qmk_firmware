@@ -5,6 +5,8 @@ combo_t key_combos[COMBO_COUNT] = {
                                    COMBO(combo_s_a, SA_LAYER_ACTIVATE),
                                    COMBO(combo_period_slash, LALT(KC_DOT)),
 
+                                   COMBO(combo_z_x, RG_FZF),
+
                                    COMBO(combo_super_r_super_g, RESET_INPUT_PREFS),
 
                                    COMBO(combo_e_t, CIDER_RUN_TEST),

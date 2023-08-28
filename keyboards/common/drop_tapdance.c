@@ -2758,7 +2758,6 @@ void dance_rofi_finished(qk_tap_dance_state_t *state, void *user_data) {
   switch (dance_state[69].step) {
   case HOLD2:
     set_oneshot_layer(_ADHOC_SET_HOTKEY, ONESHOT_START);
-    printf("dance_rofi hold2");
     break;
 
   default:

@@ -347,11 +347,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     break;
 
+  case RG_FZF:
+    if (record->event.pressed) {
+      tap_code16(LALT(KC_Z));
+    }
+
+    break;
+
+
   case CLJ_ADD_REQS:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_ESC) SS_DELAY(100));
-      SEND_STRING("dgg");
-      SEND_STRING("dG");
+      tap_code16(KC_ESC);
       tap_code16(CTRL_L);
       SEND_STRING("i");
       SEND_STRING(SS_DELAY(100));
@@ -366,9 +372,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   case IMPORTER_RELOAD:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_ESC) SS_DELAY(100));
-      SEND_STRING("dgg");
-      SEND_STRING("dG");
+      tap_code16(KC_ESC);
       tap_code16(CTRL_L);
       SEND_STRING("i");
       SEND_STRING(SS_DELAY(100));
@@ -396,9 +400,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   case EMACS_PF_UP:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_ESC) SS_DELAY(100));
-      SEND_STRING("dgg");
-      SEND_STRING("dG");
+      tap_code16(KC_ESC);
       tap_code16(CTRL_L);
       SEND_STRING("i");
       SEND_STRING(SS_DELAY(100));
@@ -2082,9 +2084,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   case EMACS_SYNC_FEED:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_ESC) SS_DELAY(100));
-      SEND_STRING("dgg");
-      SEND_STRING("dG");
+      tap_code16(KC_ESC);
       tap_code16(CTRL_L);
       SEND_STRING("i");
       SEND_STRING(SS_DELAY(100));
@@ -2098,9 +2098,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   case MAKE_COLORWAYS:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_ESC) SS_DELAY(100));
-      SEND_STRING("dgg");
-      SEND_STRING("dG");
+      tap_code16(KC_ESC);
       tap_code16(CTRL_L);
       SEND_STRING("i");
       SEND_STRING(SS_DELAY(100));
@@ -2121,9 +2119,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   case EMACS_INSERT_GI_GET_FEED:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_ESC) SS_DELAY(100));
-      SEND_STRING("dgg");
-      SEND_STRING("dG");
+      tap_code16(KC_ESC);
       tap_code16(CTRL_L);
       SEND_STRING("i");
       SEND_STRING(SS_DELAY(100));
@@ -2460,6 +2456,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case COPY_LATEST_FILE_TO_CLIPBOARD:
     if (record->event.pressed) {
       SEND_STRING(SS_LALT(SS_LSFT(SS_TAP(X_F11))));
+      layer_move(_BASE);
+    }
+    break;
+
+
+  case CIDER_HISTORY_WRITE:
+    if (record->event.pressed) {
+      tap_code16(LALT(LCTL(KC_2)));
       layer_move(_BASE);
     }
     break;

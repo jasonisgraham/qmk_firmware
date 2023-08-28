@@ -86,6 +86,8 @@ const uint16_t PROGMEM combo_shiftlock_lower_circ[] = {LOWER, my_cap_l, COMBO_EN
 const uint16_t PROGMEM combo_shiftlock_lower_ampr[] = {LOWER, my_cap_u, COMBO_END};
 const uint16_t PROGMEM combo_shiftlock_lower_astr[] = {LOWER,  my_cap_i, COMBO_END};
 
+const uint16_t PROGMEM combo_z_x[] = {my_z, my_x, COMBO_END};
+
 const uint16_t PROGMEM combo_lower_lprn[] = {LOWER, my_o, COMBO_END};
 const uint16_t PROGMEM combo_lower_rprn[] = {LOWER, my_p, COMBO_END};
 const uint16_t PROGMEM combo_lower_exlm[] = {LOWER, my_m, COMBO_END};

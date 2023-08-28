@@ -22,7 +22,6 @@ enum preonic_layers {
                     _HYPER,
 /* 15 */                    _SA,
                     _ROFI,
-                    _DYNAMIC_MACROS,
                     _CODE,
                     _EMACS_SELECT,
                     _MACROS,
