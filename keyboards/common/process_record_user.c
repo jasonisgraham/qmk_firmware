@@ -2010,7 +2010,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   case AUTOSHIFT_TOGGLE:
     if (record->event.pressed) {
-
       /* tap_code16(KC_ASTG); */
       if (get_autoshift_state()) {
         autoshift_disable();
@@ -2497,6 +2496,22 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       layer_move(_BASE);
     }
     break;
+
+  case ROFI_PROCESSES:
+    if (record->event.pressed) {
+      tap_code16(LALT(KC_6));
+      layer_move(_BASE);
+    }
+    break;
+
+  case ROFI_LOCATE_CLJ:
+    if (record->event.pressed) {
+      SEND_STRING(SS_LCTL(SS_LALT(SS_RCTL("J"))));
+      layer_move(_BASE);
+    }
+    break;
+
+
 
   case ROFI_LOCATE_GLOBAL:
     if (record->event.pressed) {

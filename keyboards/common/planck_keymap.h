@@ -23,7 +23,7 @@
     MO(_SYSTEM), _______, _______ , alt,   MO(_EDITING), _______,       _______,             _______, lower_LOWER,          lower_right_of_lower, lower_key_4_11, lower_key_4_12
 
 #define planck_rofi ESC_THEN_BASE_LAYER, _______, _______, _______, _______,    _______, _______, _______, ROFI_LOCATE, ROFI_WINDOWS, ROFI_CLIPBOARD, COPY_LATEST_FILE_TO_CLIPBOARD, \
-    ESC_THEN_BASE_LAYER, _______, _______, _______, FILE_SEARCH,   _______, _______, CIDER_HISTORY_WRITE, ROFI_CIDER_HISTORY, ROFI_EMOJI, CLEAR_NOTIFICATIONS, _______, \
+    CLEAR_NOTIFICATIONS, _______, _______, _______, FILE_SEARCH,   _______, _______, CIDER_HISTORY_WRITE, ROFI_CIDER_HISTORY, ROFI_EMOJI, ROFI_PROCESSES, _______, \
     TO(_BASE), _______, _______, _______, _______, _______, _______, NOTIFICATIONS, CINNAMON_MENU_OPEN, PLASMA_SEARCH, _______, _______, \
     _______, _______, _______,    _______, _______, _______, TO(_BASE), ROFI_DRUN,    _______, DM_REC1, DM_RSTP, DM_PLY1
 
@@ -71,10 +71,10 @@
     _______, _______, _______, _______, MO(_EMACS),  _______,                                                  _______, all_mods, MO(_EMACS), TO(_BASE), _______, emacs_indent_buffer
 
 
-#define planck_winmove                                 _______,   _______, _______, _______, _______, WINDOW_ALWAYS_ON_TOP,  WINDOW_ALWAYS_ON_TOP, winmove_UL,_______, _______, winmove_UR, TOGGLE_MENU_BAR, \
+#define planck_winmove                                 _______,   _______, _______, _______, _______, WINDOW_ALWAYS_ON_TOP,  WINDOW_ALWAYS_ON_TOP, winmove_UL,_______, winmove_top, winmove_UR, TOGGLE_MENU_BAR, \
     _______, _______, _______, LALT(LGUI(LCTL(RCTL(KC_D)))),_______, _______, _______, winmove_L,   winmove_D, winmove_U ,   winmove_R,   _______, \
-    _______, _______, _______, EMACS_FRAME_FULL_SCREEN, _______, _______,  _______, winmove_DL, winmove_U_monitor, _______, winmove_DR,_______, \
-    _______, _______, _______, _______, TO(0),          _______,  _______,         winmove_L_monitor,   winmove_D_monitor,   winmove_R_monitor,    _______, _______
+    _______, _______, _______, EMACS_FRAME_FULL_SCREEN, _______, _______,  _______, winmove_DL, winmove_U_monitor, winmove_bottom, winmove_DR,_______, \
+    _______, _______, _______, _______, WINDOW_TOGGLE_HORIZONTAL_MAX,          _______,  _______,         winmove_L_monitor,   winmove_D_monitor,   winmove_R_monitor,    _______, _______
 
 #define planck_winmove_monitor _______,   _______, _______, _______, _______, _______, _______,   _______, _______, _______, _______, _______, \
     _______, _______, _______, _______, _______, _______, _______, winmove_L_monitor,   winmove_D_monitor, winmove_U_monitor, winmove_R_monitor, _______, \
@@ -90,7 +90,7 @@
 
 #define planck_system                                \
   QK_BOOTLOADER, _______, RGB_VAI, _______, GUI(KC_F5),     _______, CYCLE_ACTIVE_APL_LEVEL3_FN, QK_KEY_OVERRIDE_ON, KC_BRIGHTNESS_DOWN, KC_BRIGHTNESS_UP, QK_CLEAR_EEPROM, KC_MEDIA_PLAY_PAUSE, \
-    CLEAR_MODIFIERS, AC_TOGG, RGB_VAD, _______, _______, _______, _______, _______, KC_AUDIO_VOL_DOWN, KC_AUDIO_VOL_UP, QK_AUTOCORRECT_ON, DB_TOGG, \
+    AS_TOGG, AUTOSHIFT_TOGGLE, RGB_VAD, _______, _______, _______, _______, _______, KC_AUDIO_VOL_DOWN, KC_AUDIO_VOL_UP, QK_AUTOCORRECT_ON, DB_TOGG, \
     QK_CLEAR_EEPROM, _______ , _______, _______, _______, _______,   _______, _______,  KC_AUDIO_MUTE, CYCLE_DROP_ANIMATIONS, RGB_SAI, QK_BOOTLOADER, \
     SYSTEM_LAYER_DEACTIVATE, _______, _______, _______, _______,     _______, CYCLE_ACTIVE_APL_LEVEL3_FN, KC_MEDIA_PLAY_PAUSE, RGB_MOD, DM_REC1, DM_RSTP, DM_PLY1
 
@@ -137,7 +137,7 @@
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
 
 #define planck_files _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, EMACS_SET_GLOBAL_LOCATE_DOCS_FILTER_DIR, \
-    TO(_BASE), ROFI_LOCATE_GLOBAL, _______, _______, ROFI_LOCATE_WITH_FILTER, ROFI_LOCATE, _______, _______, _______, _______, ROFI_LOCATE_PRINT_FILTER_DIR, _______, \
+    TO(_BASE), ROFI_LOCATE_GLOBAL, _______, _______, ROFI_LOCATE_WITH_FILTER, ROFI_LOCATE, _______, _______, ROFI_LOCATE_CLJ, _______, ROFI_LOCATE_PRINT_FILTER_DIR, _______, \
     _______, RG_FZF, DELETE_LOCATE_DOCS_FILTER_DIR, _______, _______, _______,   _______, _______, _______, _______, _______, _______, \
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
 

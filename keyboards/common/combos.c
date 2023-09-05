@@ -64,7 +64,7 @@ combo_t key_combos[COMBO_COUNT] = {
                                    /* COMBO(combo_m_period, SEND_STRING("#()")), */
 
                                    /* COMBO(combo_shift_alt, AUDIO_LAYER_HOLD), */
-                                   COMBO(combo_LOWER_o_p, AUTOSHIFT_TOGGLE),
+                                   COMBO(combo_LOWER_o_p, AS_TOGG),
                                    /* COMBO(combo_LOWER_m_comma, LAYER_MOUSE_HOLD), */
                                    /* COMBO(combo_LOWER_l_semi, LAYER_RAISE_HOLD), */
                                    COMBO(combo_lower_j_k_l, LAYER_LOWER_HOLD),

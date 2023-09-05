@@ -23,7 +23,7 @@
 #define GUI LGUI
 
 #define NOTIFICATIONS LALT(KC_4)
-#define CLEAR_NOTIFICATIONS LALT(KC_6)
+#define CLEAR_NOTIFICATIONS LALT(KC_DLR)
 #define FILE_SEARCH LALT(KC_3)
 #define PLASMA_SEARCH LALT(KC_6)
 
@@ -79,6 +79,7 @@
 
 #define WINDOW_ALWAYS_ON_TOP LCTL(LSFT(LGUI(RCTL(KC_UP))))
 #define WINDOW_TOGGLE_HORIZONTAL_MAX LSFT(LGUI(RCTL(KC_MINUS)))
+#define winmove_cycle_horizontal_max LSFT(LGUI(LALT(KC_SCOLON)))
 
 #define winmove_U_monitor LGUI(KC_UP)
 #define winmove_L_monitor LGUI(KC_LEFT)
@@ -95,6 +96,8 @@
 #define winmove_DL LGUI(LSFT(KC_N))
 #define winmove_DR LGUI(LSFT(KC_DOT))
 
+#define winmove_top LGUI(LSFT(KC_I))
+#define winmove_bottom LGUI(LSFT(KC_COMMA))
 
 #define editing_h LALT(LSFT(KC_H))
 #define editing_j LALT(LSFT(KC_J))
@@ -388,6 +391,8 @@ enum custom_keycodes {
                       CIDER_EVAL_OR_TERMINAL_EDIT,
                       MAKE_COLORWAYS,
                       ROFI_LOCATE_GLOBAL,
+                      ROFI_LOCATE_CLJ,
+                      ROFI_PROCESSES,
                       ROFI_LOCATE_PRINT_FILTER_DIR,
                       CLJ_FREQS,
                       EMACS_SET_GLOBAL_LOCATE_DOCS_FILTER_DIR,
