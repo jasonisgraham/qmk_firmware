@@ -107,7 +107,7 @@ combo_t key_combos[COMBO_COUNT] = {
                                    /* COMBO(combo_e_f, KC_TAB), */
                                    COMBO(combo_shiftlock_d_shiftlock_f, TD(DANCE_TAB)),
                                    COMBO(combo_s_d, EMACS_EVIL_LISP_STATE),
-                                   COMBO(combo_d_f, tab),
+                                   COMBO(combo_d_f, LALT(RCTL(KC_I))),
                                    COMBO(combo_x_c, EMACS_REPEAT),
                                    COMBO(combo_raise_d_raise_f, LSFT(KC_TAB)),
                                    /* COMBO(combo_topright_p_l, CTRL_P), */
@@ -138,8 +138,8 @@ combo_t key_combos[COMBO_COUNT] = {
 
                                    COMBO(combo_e_r, TD(DANCE_ROFI)),
 
-                                   /* COMBO(combo_lower__j_i, KC_F), */
-                                   // COMBO(combo_lower__j_i, EMACS_EVIL_FIND),
+                                   /* COMBO(combo_lower_j_i, KC_F), */
+                                   // COMBO(combo_lower_j_i, EMACS_EVIL_FIND),
                                    COMBO(combo_lower_comma_l, KC_GRV),
                                    /* COMBO(combo_lower_comma_l, KC_TILD), */
                                    COMBO(combo_lower__comma_l, TERM_HOME),
@@ -229,6 +229,7 @@ combo_t key_combos[COMBO_COUNT] = {
                                    COMBO(combo_lower_l_semi, EMACS_PRIVATE_READER),
                                    /* COMBO(combo_bottom_top_mid_column, LLOCK), */
                                    COMBO(combo_top_left_hyper, MO(_SYSTEM)),
+                                   COMBO(combo_top_left_my_q, EMACS_FOCUS_REPL_IMMEDIATELY),
                                    COMBO(combo_a_s_k, adhoc_set_hotkey),
                                    COMBO(combo_q_w_e, adhoc_set_hotkey),
                                    COMBO(combo_q_w, EMACS_WRAP_HYDRA),

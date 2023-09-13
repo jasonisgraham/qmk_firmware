@@ -252,7 +252,7 @@ void dance_tab_finished(qk_tap_dance_state_t *state, void *user_data) {
     break;
 
   case HOLD2:
-   tap_code16(LALT(RCTL(KC_I)));
+    layer_on(_CODE);
     break;
 
   case HOLD3:
@@ -272,8 +272,7 @@ void dance_tab_reset(qk_tap_dance_state_t *state, void *user_data) {
   switch (dance_state[0].step) {
   case TAP: unregister_code16(KC_TAB); break;
   case HOLD2:
-    unregister_code16(RSFT(KC_TAB));
-    layer_off(_HYPER);
+    layer_off(_CODE);
  break;
 
   case TAP_INTERRUPTED:
@@ -3285,28 +3284,9 @@ void dance_save_load_ns_switch_finished(qk_tap_dance_state_t *state, void *user_
   dance_state[83].step = dance_step(state);
   switch (dance_state[83].step) {
   case HOLD:
-    // save
-    tap_code16(RCTL(KC_COLON));
-    // load buffer
-    tap_code16(RCTL(KC_C));
-    tap_code16(RCTL(KC_K));
-    // move to bottom right window (repl)
-    wait_ms(100);
-    tap_code16(editing_k);
-    wait_ms(50);
-    tap_code16(editing_l);
-    wait_ms(50);
-    tap_code16(editing_l);
-    wait_ms(50);
-    tap_code16(editing_j);
-    wait_ms(50);
-    tap_code16(editing_j);
-    wait_ms(50);
-    tap_code16(RCTL(KC_END));
-    wait_ms(50);
-    tap_code16(KC_ESC);
-    wait_ms(50);
-    tap_code16(KC_I);
+    // save all
+    tap_code16(RCTL(KC_X));
+    tap_code16(KC_S);
  break;
   case HOLD2:
     // save and switch to repl

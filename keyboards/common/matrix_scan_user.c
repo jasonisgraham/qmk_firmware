@@ -100,12 +100,14 @@ void matrix_scan_user(void) {
     if (timer_elapsed(rofi_locate_timer) > (rofi_locate_level_duration * 3)) {
       if (rofi_locate_level <= 3) {
         rofi_locate_level++;
+        rgblight_sethsv_noeeprom(HSV_BLUE);
 #ifdef AUDIO_ENABLE
         PLAY_SONG(__c6);
 #endif
       }
     } else if (timer_elapsed(rofi_locate_timer) > (rofi_locate_level_duration * 2)) {
       if (rofi_locate_level <= 2) {
+        rgblight_sethsv_noeeprom(HSV_WHITE);
         rofi_locate_level++;
 #ifdef AUDIO_ENABLE
         PLAY_SONG(__b6);
@@ -115,6 +117,7 @@ void matrix_scan_user(void) {
     } else if (timer_elapsed(rofi_locate_timer) > (rofi_locate_level_duration * 1)) {
       if (rofi_locate_level <= 1) {
         rofi_locate_level++;
+        rgblight_sethsv_noeeprom(HSV_RED);
 #ifdef AUDIO_ENABLE
         PLAY_SONG(__as6);
 #endif

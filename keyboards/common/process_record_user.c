@@ -2548,6 +2548,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     layer_move(_BASE);
     break;
 
+  case ROFI_LOCATE_SOURCE_FILES:
+    if (record->event.pressed) {
+      SEND_STRING(SS_LCTL(SS_LALT(SS_RCTL("C"))));
+      layer_move(_BASE);
+    }
+    break;
+
+
   case ROFI_LOCATE_WITH_FILTER:
     if (record->event.pressed) {
       SEND_STRING(SS_LALT(SS_RCTL("&")));

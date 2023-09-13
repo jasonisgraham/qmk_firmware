@@ -400,6 +400,7 @@ enum custom_keycodes {
                       ROFI_LOCATE_ALL,
                       DELETE_LOCATE_DOCS_FILTER_DIR,
                       ROFI_LOCATE_WITH_FILTER,
+                      ROFI_LOCATE_SOURCE_FILES,
                       RESET_INPUT_PREFS,
                       THREAD_LAST_EQUAL,
                       FN_THEN_THREAD_LAST_EQUAL,
@@ -661,25 +662,27 @@ enum custom_keycodes {
 bool is_alt_tab_active = false;
 uint16_t alt_tab_timer = 0;
 
+const int default_timer_increment = 300;
+
 bool rofi_locate_timer_active = false;
 uint16_t rofi_locate_timer = -20;
 int rofi_locate_level = 0;
-int rofi_locate_level_duration = 400;
+int rofi_locate_level_duration = default_timer_increment;
 
 bool fasd_timer_active = false;
 uint16_t fasd_timer = 0;
 int fasd_level = 0;
-int fasd_level_duration = 400;
+int fasd_level_duration = default_timer_increment;
 
 bool open_paren_timer_active = false;
 uint16_t open_paren_timer = 0;
 int open_paren_level = 0;
-int open_paren_level_duration = 400;
+int open_paren_level_duration = default_timer_increment;
 
 bool closed_paren_timer_active = false;
 uint16_t closed_paren_timer = 0;
 int closed_paren_level = 0;
-int closed_paren_level_duration = 400;
+int closed_paren_level_duration = default_timer_increment;
 
 
 
