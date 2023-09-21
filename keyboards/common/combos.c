@@ -1,0 +1,185 @@
+#include "combos_defs.c"
+
+// TODO
+// layer to temp make right-hand left-hand keys
+
+combo_t key_combos[COMBO_COUNT] = {
+    COMBO(combo_j_k, KC_ENTER),
+    COMBO(combo_emacs_sel_q_w, BROWSER_MOST_RECENT_TAB),
+    COMBO(combo_q_w, OSL(_EMACS_SELECT)),
+    COMBO(combo_raise_d_raise_f, LSFT(KC_TAB)),
+    COMBO(combo_lower_d_lower_f, backtab),
+    COMBO(combo_v_b, KC_APPLICATION),
+    COMBO(combo_tab_a, _______),
+    COMBO(combo_tab_esc, _______),
+    COMBO(combo_h_j, TD(WWW_BACK_FORWARD)),
+    COMBO(combo_j_k_l, ALL_MODS_OSM),
+    COMBO(combo_j_l, OSM(MOD_LALT)),
+    COMBO(combo_k_semi, OSM(MOD_LALT)),
+    COMBO(combo_K_L_SEMI, OSM( MOD_LALT | MOD_RCTL | MOD_LCTL | MOD_LGUI)), // j+k+l+: l -> C-⎕
+    COMBO(combo_H_J, ALL_MODS_OSM),
+    COMBO(combo_J_K_L, OSL_RCTL_LALT),
+    COMBO(combo_K_L, OSM(MOD_RCTL)),
+    COMBO(combo_K_cap_semi, OSM(MOD_LALT)),
+    COMBO(combo_J_K, KC_ENTER),
+
+    COMBO(combo_i_o, KC_BSLASH),
+
+    COMBO(combo_j_i, BRACKET_PAREN),
+    COMBO(combo_mod1_y, TD(DANCE_MICROPHONE)),
+    COMBO(combo_mod1_y_u, OSL(_LAYER_LOCK)),
+    COMBO(combo_a_s, virtualbox_host_key),
+    COMBO(combo_J_I, BRACKET_PAREN),
+    COMBO(combo_K_O, KC_LCBR),
+    COMBO(combo_M_K, KC_LBRACKET),
+    COMBO(combo_l_comma, KC_GRV),
+    COMBO(combo_e_t, _______),
+
+    COMBO(combo_editing_comma__editing_period, emacs_indent_buffer),
+    COMBO(combo_raise_j_raise_k, FISH_ACCEPT_SEND),
+    COMBO(combo_editing_j__editing_k, FISH_ACCEPT_SEND),
+    COMBO(combo_editing_k__editing_l, TERM_CD_PREVIOUS),
+    COMBO(combo_editing_u__editing_i, HOME_THEN_EMACS_WRAP_IN_THREAD_FIRST),
+    COMBO(combo_editing_u__editing_o, HOME_THEN_EMACS_WRAP_IN_THREAD_LAST),
+    COMBO(combo_editor_select_ampr, EMACS_SEL_AMPR),
+    COMBO(combo_editor_select_astr, EMACS_SEL_ASTR),
+    COMBO(combo_editor_select_at,   EMACS_SEL_AT),
+    COMBO(combo_editor_select_circ, EMACS_SEL_CIRC),
+    COMBO(combo_editor_select_dlr,  EMACS_SEL_DLR),
+    COMBO(combo_editor_select_exlm, EMACS_SEL_EXLM),
+    COMBO(combo_editor_select_hash, EMACS_SEL_HASH),
+    COMBO(combo_editor_select_lprn, EMACS_SEL_LPRN),
+    COMBO(combo_editor_select_perc, EMACS_SEL_PERC),
+    COMBO(combo_editor_select_rprn, EMACS_SEL_RPRN),
+    COMBO(combo_g_r3, MS_BTN2),
+    COMBO(combo_r4_space, KC_RIGHT),
+    COMBO(combo_t_r3, KC_RIGHT),
+    COMBO(combo_space_r2, KC_LEFT),
+    COMBO(combo_lower_backspace, OSL(_EMACS_SELECT)),
+    COMBO(combo_lower_backspace_left, KC_INSERT),
+    COMBO(combo_k_l_semi, OSM( MOD_LALT | MOD_RCTL | MOD_LCTL | MOD_LGUI)), // j+k+l+: l -> C-⎕
+    COMBO(combo_k_o, KC_LCBR),
+    COMBO(combo_k_semi, OSM(MOD_LALT)),
+    COMBO(combo_l_p, CLEAR_THAT_REPL),
+    COMBO(combo_l_semi, OSM(MOD_LCTL)),
+    COMBO(combo_left_shift_forward_slash, KC_ENTER),
+    COMBO(combo_left_to_down, KC_DOWN),
+    COMBO(combo_lower__comma__l, TERM_HOME),
+    COMBO(combo_lower__comma__period, CLJ_SET),
+    COMBO(combo_lower__i__o, CLJ_ANON_FN),
+    COMBO(combo_lower__j__i, ROFI_LOCATE),
+    COMBO(combo_right__lower_j_i, ROFI_LOCATE_GLOBAL),
+    COMBO(combo_lower__j__l, THREAD_LAST),
+    COMBO(combo_lower__k__l, CLJ_REGEX),
+    COMBO(combo_lower__u, KC_AMPR),
+    COMBO(combo_lower__i, KC_ASTR),
+    COMBO(combo_lower__comma, KC_AT),
+    COMBO(combo_lower__l, KC_CIRC),
+    COMBO(combo_lower_comma__lower_l, TERM_HOME),
+    COMBO(combo_lower_comma__lower_period, BROWSER_SEARCH_OPEN_TABS),
+    COMBO(combo_raise_comma__lower_period, BROWSER_SEARCH_OPEN_TABS),
+    COMBO(combo_lower_j, KC_DLR),
+    COMBO(combo_lower_m, KC_EXLM),
+    COMBO(combo_lower_dot, KC_HASH),
+    COMBO(combo_lower_j__lower_i, THREAD_LAST),
+    COMBO(combo_lower_j_k, RCTL(KC_ENTER)),
+    COMBO(combo_lower_j_k_l, LAYER_LOWER_HOLD),
+    COMBO(combo_lower_k__lower_l, OSM(MOD_RCTL)),
+    COMBO(combo_lower_o, KC_LPRN),
+    COMBO(combo_lower_m__lower_k, OSM(MOD_MASK_ALL_MODS)),
+    /* COMBO(combo_lower_o_p, CTRL_N), */
+    COMBO(combo_lower_perc, KC_PERC),
+    COMBO(combo_lower_rprn, KC_RPRN),
+    COMBO(combo_lower_u_i, THREAD_FIRST),
+    COMBO(combo_m_comma_period, LPRN_EQUAL),
+    COMBO(combo_m_k, KC_LBRACKET),
+    COMBO(combo_m_l, OSM(MOD_LCTL)),
+    COMBO(combo_mod_r1_mod_r4, LLOCK),
+    COMBO(combo_mod_r2_b, KC_RIGHT),
+    COMBO(combo_mod_r3_super, KC_LEFT),
+    COMBO(combo_mouse1_mouse2, MS_BTN3),
+    COMBO(combo_n_k47, KC_LEFT),
+    COMBO(combo_period_semi, EMACS_COMMENT_READER),
+    COMBO(combo_q_w_e, adhoc_set_hotkey),
+    COMBO(combo_emacs_sel_q_w, BROWSER_MOST_RECENT_TAB),
+    COMBO(combo_r_t, AS_TOGG),
+
+    /* COMBO(combo_o_p, KC_GRAVE), */
+    /* COMBO(combo_tab_q, tab), */
+    /* COMBO(combo_raise_w_raise_e, LSFT(KC_TAB)), */
+
+    COMBO(combo_raise_comma_raise_l, KC_TILD),
+    COMBO(combo_raise_i_raise_o, EMACS_WRAP_IN_THREAD_LAST),
+
+    /* COMBO(combo_raise_j_raise_k, LCTL(KC_ENTER)), */
+    COMBO(combo_raise_k_raise_o, KC_RCBR),
+    COMBO(combo_raise_m_raise_comma, KC_QUOT),
+    COMBO(combo_raise_m_raise_k, KC_RBRACKET),
+    COMBO(combo_raise_r, LAYER_MOUSE_HOLD),
+    COMBO(combo_raise_u_raise_i, EMACS_WRAP_IN_THREAD_FIRST),
+    COMBO(combo_raise_u_raise_o, EMACS_WRAP_IN_THREAD_LAST),
+    COMBO(combo_raise_w_raise_e, LSFT(KC_TAB)),
+    COMBO(combo_right__lower_j_i, OSL(_FILES)),
+    COMBO(combo_right_to_up, KC_UP),
+    COMBO(combo_k_l, OSM(MOD_RCTL)),
+    COMBO(combo_d_f, tab),
+    COMBO(combo_s_d, SHIFTLOCK_LAYER_ACTIVATE),
+    COMBO(combo_S_D, SHIFTLOCK_LAYER_DEACTIVATE),
+    COMBO(combo_select_grave, EMACS_SEL_GRAVE),
+    COMBO(combo_shiftlock_lower_ampr, KC_AMPR),
+    COMBO(combo_shiftlock_lower_astr, KC_ASTR),
+    COMBO(combo_shiftlock_lower_at, KC_AT),
+    COMBO(combo_shiftlock_lower_circ, KC_CIRC),
+    COMBO(combo_shiftlock_lower_dlr, KC_DLR),
+    COMBO(combo_shiftlock_lower_exlm, KC_EXLM),
+    COMBO(combo_shiftlock_lower_hash, KC_HASH),
+    COMBO(combo_shiftlock_lower_lprn, KC_LPRN),
+    COMBO(combo_shiftlock_lower_perc, KC_PERC),
+
+
+    /* COMBO(combo_space_h, KC_EQUAL), */
+    /* COMBO(combo_space_n, KC_PLUS), */
+    /* COMBO(combo_u_h, KC_EQUAL), */
+
+    COMBO(combo_lower_semi, KC_SCLN),
+    COMBO(combo_lower_slash, KC_PLUS),
+
+    COMBO(combo_m_comma, KC_DQUO),
+
+    /* COMBO(combo_n_m, KC_QUOT), */
+    COMBO(combo_comma_dot, KC_PLUS),
+    COMBO(combo_space_j, ONE_SHOT_ALT_KEYBOARD),
+    COMBO(combo_space_k, ONE_SHOT_LEVEL3),
+    COMBO(combo_space_l, QK_LEAD),
+    COMBO(combo_space_m, LALT(KC_M)),
+    COMBO(combo_space_m_k, OSM(MOD_MASK_ALL_MODS)),
+    COMBO(combo_f_g, OSL(_MACROS)),
+    COMBO(combo_r_g, TD(DANCE_F5)),
+    COMBO(combo_u_i, THREAD_FIRST),
+    COMBO(combo_u_o, THREAD_LAST),
+    COMBO(combo_w_e, TD (DANCE_WINMOVE_SELECT)),
+    COMBO(combo_e_r, _______),
+    COMBO(combo_e_f, TD(DANCE_PASTE_OR_CLIPBOARD)),
+    COMBO(combo_s_c, TMUX_SELECT_TEXT),
+    COMBO(combo_x_c, TMUX_SELECT_TEXT),
+    COMBO(combo_c_v, TD(DANCE_PASTE_OR_CLIPBOARD)),
+    COMBO(combo_z_x_c, CTRL_X_ALL_MODS_OSM),
+    COMBO(combo_comma_dot_slash, VIMIUM_CLEAR_FIELD_THEN_INSERT),
+    COMBO(combo_raise_tab, CUT_WEB_FIELD),
+    COMBO(combo_dot_slash, CUT_WEB_FIELD),
+
+    /* COMBO(combo_d_v, SHIFTLOCK_LAYER_ACTIVATE), */
+    COMBO(combo_raise_shift, SHIFTLOCK_LAYER_ACTIVATE),
+    /* COMBO(combo_D_V, SHIFTLOCK_LAYER_DEACTIVATE), */
+
+    COMBO(editing_comma__editing_dot, FN_THEN_THREAD_LAST_EQUAL),
+
+    /* COMBO(morph_less, MORPH_LESS), */
+    /* COMBO(morph_ness, MORPH_NESS), */
+    /* COMBO(morph_ation, MORPH_ATION), */
+    /* COMBO(morph_ment, MORPH_MENT), */
+    /* COMBO(word_because, WORD_BECAUSE), */
+
+    COMBO(cycle_animations, CYCLE_FAVE_ANIMATIONS),
+
+};

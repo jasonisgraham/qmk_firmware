@@ -14,14 +14,15 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "/home/jason/Projects/qmk_firmware/keyboards/common/config.h"
 #pragma once
 
 #ifdef AUDIO_ENABLE
 #    define STARTUP_SONG SONG(PLANCK_SOUND)
 // #define STARTUP_SONG SONG(NO_SOUND)
 
-#    define DEFAULT_LAYER_SONGS \
-        { SONG(QWERTY_SOUND), SONG(COLEMAK_SOUND), SONG(DVORAK_SOUND) }
+#    define DEFAULT_LAYER_SONGS                                     \
+    { SONG(QWERTY_SOUND), SONG(COLEMAK_SOUND), SONG(DVORAK_SOUND) }
 #endif
 
 /*
@@ -42,9 +43,7 @@
 */
 // #define MIDI_ADVANCED
 
-/*
- * Encoder options
- */
-// #define PLANCK_ENCODER_SETTLE_PIN_STATE_DELAY 20
-// #define ENCODER_MAP_KEY_DELAY 10
-// #define ENCODER_RESOLUTION 4
+#ifndef AUDIO_ENABLE
+#define LEADER_PER_KEY_TIMING
+#define LEADER_TIMEOUT 300
+#endif
