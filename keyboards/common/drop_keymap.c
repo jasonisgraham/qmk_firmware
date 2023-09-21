@@ -49,9 +49,7 @@ enum drop_layers {
 /* #include "common/drop_animations.c" */
 /* #include "common/layer_lock.h" */
 
-#if defined(JSG_LHS_MODS)
-#include "common/planck_lhs_keymap.h"
-#else
+#if !defined(JSG_VOYAGER)
 #include "common/planck_keymap.h"
 #endif
 

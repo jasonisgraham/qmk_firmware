@@ -268,7 +268,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     case WEB_SAVE_FILE_UNDER_CURSOR:
         if (record->event.pressed) {
-            tap_code16(KC_MS_BTN2);
+            tap_code16(MS_BTN2);
             wait_ms(300);
             tap_code16(KC_V);
             wait_ms(500);
@@ -609,7 +609,21 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
         break;
 
-    case ALT_TAB:
+    case CYCLE_WINDOWS_BACKWARD:
+        if (record->event.pressed) {
+
+            if (!is_alt_tab_active) {
+                is_alt_tab_active = true;
+                register_code(KC_LALT);
+            }
+            alt_tab_timer = timer_read();
+            register_code16(LSFT(KC_TAB));
+        } else {
+            unregister_code16(LSFT(KC_TAB));
+        }
+        break;
+
+    case CYCLE_WINDOWS_FORWARD:
         if (record->event.pressed) {
 
             if (!is_alt_tab_active) {
@@ -666,12 +680,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             /* #ifdef RGBLIGHT_ENABLE */
             /*       rgblight_mode(42); */
             /* #endif */
-#ifdef AUDIO_ENABLE
-            PLAY_SONG(caps_lock_on_sound);
-#endif
-#ifdef RGBLIGHT_ENABLE
-            /* rgblight_mode(RGBLIGHT_ENABLE_RAINBOW_SWIRL); */
-#endif
+            layer_on(_SHIFTLOCK);
+/* #ifdef AUDIO_ENABLE */
+/*             PLAY_SONG(caps_lock_on_sound); */
+/* #endif */
+/* #ifdef RGBLIGHT_ENABLE */
+/*             /\* rgblight_mode(RGBLIGHT_ENABLE_RAINBOW_SWIRL); *\/ */
+/* #endifj */
         }
         break;
 
@@ -725,13 +740,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     break;
 
-  case EMACS_BUFFER_REVERT:
-    if (record->event.pressed) {
-        tap_code16(RCTL (KC_X));
-        wait_ms(50);
-        tap_code16(RCTL(KC_R));
-    }
-    break;
+    case EMACS_BUFFER_REVERT:
+        if (record->event.pressed) {
+            tap_code16(RCTL (KC_X));
+            wait_ms(50);
+            tap_code16(RCTL(KC_R));
+        }
+        break;
 
   case FISH_ACCEPT_SEND:
     if (record->event.pressed) {
@@ -1057,30 +1072,61 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case AUTOSHIFT_TOGGLE:
     if (record->event.pressed) {
       if (get_autoshift_state()) {
-        autoshift_disable();
-#ifdef AUDIO_ENABLE
-        PLAY_SONG(caps_lock_on_sound);
-#endif
+          autocorrect_enable();
+          autoshift_disable();
       } else {
-        autoshift_enable();
-#ifdef AUDIO_ENABLE
-        PLAY_SONG(caps_lock_off_sound);
-#endif
+          autocorrect_disable();
+          autoshift_enable();
       }
-    }
+}
     break;
 
-  case EMACS_TRANSPOSE:
-    if (record->event.pressed) {
-        SEND_STRING(SS_LALT(SS_TAP(X_M)) SS_DELAY(50) "xt");
-    }
+    case WEB_BOOKMARKS:
+        if (record->event.pressed) {
+            tap_code16(KC_ESC);
+            tap_code16(KC_B);
+        }
+        break;
+
+
+    case AUTOCORRECT_ON:
+        if (record->event.pressed) {
+            autocorrect_enable();
+            autoshift_disable();
+        }
+        break;
+
+    case AUTOCORRECT_OFF:
+        if (record->event.pressed) {
+            autocorrect_disable();
+            autoshift_enable();
+        }
+        break;
+
+    case WEB_CLOSE_TAB:
+        if (record->event.pressed) {
+            tap_code16(KC_ESC);
+            tap_code16(RCTL(KC_W));
+        }
+        break;
+
+    case EMACS_TRANSPOSE:
+        if (record->event.pressed) {
+            SEND_STRING(SS_LALT(SS_TAP(X_M)) SS_DELAY(50) "xt");
+        }
     break;
 
-  case EMACS_PROJECTILE_FIND_FILE:
-    if (record->event.pressed) {
-        SEND_STRING(SS_LALT(SS_TAP(X_M)) SS_DELAY(50) "pf");
-    }
-    break;
+    case HELM_FIND_FILE:
+        if (record->event.pressed) {
+            SEND_STRING(SS_RCTL(SS_TAP(X_X)) SS_DELAY(50) SS_RCTL(SS_TAP(X_F)));
+        }
+        break;
+
+    case EMACS_PROJECTILE_FIND_FILE:
+        if (record->event.pressed) {
+            SEND_STRING(SS_LALT(SS_TAP(X_M)) SS_DELAY(50) "pf");
+        }
+        break;
 
   case EMACS_RE_FIND:
     if (record->event.pressed) {
@@ -1167,7 +1213,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             tap_code16(RCTL(KC_L)); wait_ms(10);
 
             // search google
-            tap_code16(KC_COLN); wait_ms(10);
             tap_code16(KC_G); wait_ms(10);
             tap_code16(KC_SPACE); wait_ms(10);
 
@@ -1512,17 +1557,21 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     break;
 
-   case LAUNCHER_SYSTEM:
+    case LAUNCHER_SOUND:
         if (record->event.pressed) {
             tap_code16(ULAUNCHER);
             wait_ms(300);
             tap_code16(KC_S);
             wait_ms(100);
-            tap_code16(KC_Y);
+            tap_code16(KC_O);
             wait_ms(100);
-            tap_code16(KC_S);
+            tap_code16(KC_U);
             wait_ms(100);
-            tap_code16(KC_SPACE);
+            tap_code16(KC_N);
+            wait_ms(100);
+            tap_code16(KC_D);
+            wait_ms(100);
+            tap_code16(KC_ENTER);
         }
         break;
 
@@ -2162,10 +2211,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   return true;
 }
 
+#define STATUS_LED_1(status) gpio_write_pin(B5, (bool)(status))
+#define STATUS_LED_2(status) gpio_write_pin(B4, (bool)(status))
+#define STATUS_LED_3(status) mcp23018_leds[0] = (bool)(status)
+#define STATUS_LED_4(status) mcp23018_leds[1] = (bool)(status)
+
 void post_process_record_user(uint16_t keycode, keyrecord_t *record) {
   // i cant think of any use case where id want to keep these layers active after 1st key.
   // these layers are only used as OSLs
   if (layer_state_is(_WINDOWS) || layer_state_is(_ROFI)) {
     layer_move(_BASE);
   }
+  STATUS_LED_1(autocorrect_is_enabled());
 }

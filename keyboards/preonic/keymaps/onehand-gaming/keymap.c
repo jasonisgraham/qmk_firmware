@@ -96,7 +96,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                              KC_MUTE, KC_1, KC_2, KC_3,   KC_4, KC_5, KC_ESC, KC_6, KC_7, KC_8, KC_9, KC_0,
                              KC_TAB,    my_q,    my_w,    my_e,    my_r,   my_t, super,    my_y,           my_u,    my_i,    my_o,     my_p, \
                              esc_ctrl , my_a,   my_s,   my_d,   my_f,   my_g, mod_r2,  my_h,         my_j,   my_k,   my_l,   my_semicolon, \
-                             my_left_shift,        my_z,           my_x,           my_c,           my_v,           my_b, mod_r3,     my_n,   my_m,   my_comma,   my_period,   my_forward_slash, \
+                             left_of_z,        my_z,           my_x,           my_c,           my_v,           my_b, mod_r3,     my_n,   my_m,   my_comma,   my_dot,   my_forward_slash, \
                              KC_LALT, level3,   KC_LGUI,         MO(_RAISE), MO(_FUNCTION),  KC_SPACE, mod_r4,  KC_SPACE,           LOWER,          my_right_of_lower,   key_left,  key_right
                              ),
 

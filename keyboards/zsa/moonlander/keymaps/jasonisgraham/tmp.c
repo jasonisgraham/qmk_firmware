@@ -11,7 +11,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_BASE] = LAYOUT_moonlander(
                               top_left,    my_q,    my_w,    my_e,    my_r,   my_t, _______, _______, mod_r1,   my_y,           my_u,    my_i,    my_o,     my_p,
                               esc_ctrl , my_a,   my_s,   my_d,   my_f,   my_g,  _______, _______, mod_r2,     my_h,         my_j,   my_k,   my_l,   my_semicolon,
-                              my_left_shift,        my_z,           my_x,           my_c,           my_v,           my_b,     _______, _______, mod_r3, my_n,   my_m,   my_comma,   my_period,   my_forward_slash,
+                              left_of_z,        my_z,           my_x,           my_c,           my_v,           my_b,     _______, _______, mod_r3, my_n,   my_m,   my_comma,   my_dot,   my_forward_slash,
                               hyper, apl_level3_and_adhoc_hotkey, all_mods,      alt, RAISE,      super,       mod_r4, my_space,  LOWER,            my_right_of_lower,    key_4_11,  key_4_12,
                               _______,_______,_______,_______,_______,   TD(DANCE_ROFI), SELECT_HOTKEY_0, _______,_______,_______,_______,_______,
                               my_lower_semi, TD(DANCE_LEFT_OR_HOME), KC_DOWN,   KC_UP, TD(DANCE_RIGHT_OR_END), EVIL_JUMP
@@ -29,7 +29,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_SHIFTLOCK] = LAYOUT_moonlander(
                                  SHIFTLOCK_LAYER_DEACTIVATE,   LSFT(KC_Q),     LSFT(KC_W),     LSFT(KC_E),     LSFT(KC_R),     LSFT(KC_T), _______, _______, _______,  LSFT(KC_Y),     my_cap_u,     my_cap_i,     my_cap_o,     my_cap_p,
                                  ESC_THEN_BASE_LAYER,          LSFT(KC_A),     LSFT(KC_S),     my_cap_d,     my_cap_f,     LSFT(KC_G), _______, _______,  _______, my_cap_h,     my_cap_j,     my_cap_k,     my_cap_l,     my_cap_semi,
-                                 my_left_shift,          LSFT(KC_Z),     LSFT(KC_X),     LSFT(KC_C),     LSFT(KC_V),     LSFT(KC_B),    _______,  _______,  _______, my_cap_n,     my_cap_m,     my_cap_comma,        my_cap_period,        my_forward_slash,
+                                 left_of_z,          LSFT(KC_Z),     LSFT(KC_X),     LSFT(KC_C),     LSFT(KC_V),     LSFT(KC_B),    _______,  _______,  _______, my_cap_n,     my_cap_m,     my_cap_comma,        my_cap_period,        my_forward_slash,
                                  _______, _______, _______, _______, RAISE, _______,  _______, _______, LOWER,       _______,     _______,  _______,
                                  _______, _______, _______, _______, _______, _______,_______, _______, _______, _______, _______, _______,
                                  _______, _______, _______, _______, _______,  _______
@@ -153,12 +153,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // 6
 [_WINDOWS] = LAYOUT_moonlander(
 
-                               ALT_TAB, WINDOWS_Q,   LGUI(KC_W),   WINDOWS_E,     TD(DANCE_40),   LGUI(KC_T), _______,_______, _______,  LGUI(KC_Y),   LGUI(KC_7),        LGUI(KC_8),     LGUI(KC_9),     LGUI(KC_0),
+                               CYCLE_WINDOWS_FORWARD, WINDOWS_Q,   LGUI(KC_W),   WINDOWS_E,     TD(DANCE_40),   LGUI(KC_T), _______,_______, _______,  LGUI(KC_Y),   LGUI(KC_7),        LGUI(KC_8),     LGUI(KC_9),     LGUI(KC_0),
                                LALT(LGUI(KC_ESCAPE)), LGUI(KC_A),  select_slack, show_desktop     ,LGUI(KC_F),      _______, _______,_______, _______,  LGUI(KC_H),     TD(DANCE_HOTKEY_OR_COMPOSE),   windows_k,   windows_l,   LGUI(KC_SCLN),
                                TO(_BASE), LGUI(KC_Z),     LGUI(KC_X),     LGUI(KC_C),     LGUI(KC_V),    _______,  _______,_______, _______,LGUI(KC_N),   LGUI(KC_M),  _______, LSFT(LGUI(KC_K)), LALT(KC_F4),
-                               _______, _______, _______,         _______,        _______,     ALT_TAB ,_______,    ROFI_DRUN,         GUI(KC_MINUS),  ALT_TAB, _______, _______,
+                               _______, _______, _______,         _______,        _______,     CYCLE_WINDOWS_FORWARD ,_______,    ROFI_DRUN,         GUI(KC_MINUS),  CYCLE_WINDOWS_FORWARD, _______, _______,
                                _______, _______, _______, _______, _______, _______,_______, _______, _______, _______, _______, _______,
-                               ALT_TAB , _______,_______,_______,_______, _______
+                               CYCLE_WINDOWS_FORWARD , _______,_______,_______,_______, _______
                                 ),
 
 // 7

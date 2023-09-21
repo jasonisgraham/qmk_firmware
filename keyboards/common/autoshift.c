@@ -3,7 +3,6 @@
 
 bool get_custom_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
   switch(keycode) {
-  case my_raise_f:
   case EMACS_SEL_K:
   case THREAD_LAST_EQUAL:
   case KC_DQUO:
@@ -49,10 +48,6 @@ void autoshift_press_user(uint16_t keycode, bool shifted, keyrecord_t *record) {
     case EMACS_SEL_K:
         register_code16((!shifted) ? EMACS_SEL_K : EMACS_SEL_DB);
         break;
-
-    case my_raise_f:
-        register_code16((!shifted) ? LALT(LSFT(KC_F8)) : RCTL(LSFT(LALT(KC_GRAVE))));
-    break;
 
   case KC_DQUO:
     register_code16((!shifted) ? KC_DQUO : KC_QUOT);
@@ -321,11 +316,6 @@ void autoshift_release_user(uint16_t keycode, bool shifted, keyrecord_t *record)
   case EMACS_SEL_K:
       unregister_code16((!shifted) ? EMACS_SEL_K : EMACS_SEL_DB);
       break;
-
-    case my_raise_f:
-        unregister_code16((!shifted) ? LALT(LSFT(KC_F8)) : RCTL(LSFT(LALT(KC_GRAVE))));
-    break;
-
 
 
   default:

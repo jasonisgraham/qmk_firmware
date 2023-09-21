@@ -846,7 +846,7 @@ void dance_Q_finished(tap_dance_state_t *state, void *user_data) {
 
   case TAP: register_code16(KC_Q); break;
   case HOLD:
-    register_key(KC_Q);
+    register_key(LSFT(KC_Q));
     break;
   case HOLD2:
     tap_code16(KC_HOME);

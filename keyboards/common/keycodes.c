@@ -5,6 +5,10 @@
 /* #include "../../quantum/hacks.c" */
 
 
+#define WEB_NEW_SPLIT_VIEW RCTL(LSFT(KC_F6))
+#define WEB_UNSPLIT_TABS RCTL(LSFT(KC_X))
+#define WEB_SWAP_TABS RCTL(KC_LCBR)
+
 #define EMACS_SEL_0 LALT(KC_0)
 #define EMACS_SEL_1 LALT(KC_1)
 #define EMACS_SEL_2 LALT(KC_2)
@@ -34,8 +38,8 @@
 #define TERM_PASTE RCTL(RSFT(KC_V))
 
 #define select_firefox LGUI(KC_X)
-#define select_terminal GUI(KC_T)
-#define select_emacs GUI(KC_E)
+#define select_terminal LGUI(KC_T)
+#define select_emacs LGUI(KC_E)
 #define select_emacs_clojure GUI(KC_9)
 
 #define osl_web OSL(_WEB)
@@ -63,10 +67,6 @@
 #define SELECT_HOTKEY_3 LALT(LGUI(KC_F4))
 #define SELECT_HOTKEY_4 LALT(LGUI(KC_F5))
 #define SELECT_HOTKEY_5 LALT(LGUI(KC_F6))
-#define mod_r1 KC_ENTER
-#define mod_r2 KC_UP
-#define mod_r3 KC_DOWN
-#define mod_r4 TD(DANCE_MOD_R4) // TD(DANCE_HOTKEY_OR_COMPOSE)
 /* #define mod_r4 TD(dance_k74) */
 
 
@@ -97,7 +97,7 @@
 #define EMACS_FASD_PROJECT_NO_EXT LCTL(KC_F12)
 #define EMACS_FASD_PROJECT_CURR_EXT RCTL(KC_F12)
 
-#define WINDOW_ALWAYS_ON_TOP LCTL(LSFT(LGUI(RCTL(KC_UP))))
+#define WINDOW_ALWAYS_ON_TOP LCTL(LSFT(RCTL(KC_UP)))
 #define WINDOW_TOGGLE_HORIZONTAL_MAX LSFT(LGUI(RCTL(KC_MINUS)))
 #define winmove_cycle_horizontal_max LSFT(LGUI(LALT(KC_SCOLON)))
 
@@ -147,8 +147,7 @@
 
 /* #define RAISE MO(_RAISE) */
 #define CINNAMON_MENU_OPEN LALT(LGUI(KC_7))
-#define RAISE TD(DANCE_RAISE) //
-#define alt_tab ALT_TAB
+#define alt_tab CYCLE_WINDOWS_FORWARD
 #define KC_BSPACE KC_BACKSPACE
 #define KC_BSLASH KC_BACKSLASH
 #define backspace KC_BSPACE
@@ -169,8 +168,6 @@
 #define key_0_1 RCTL(LALT(KC_LSFT))
 #define key_4_11 LAYER_MOUSE_HOLD  // KC_DOWN //CYCLE_DROP_COLORS // LAYER_LOWER_HOLD
 #define key_4_12 KC_ENTER
-#define key_left KC_LEFT
-#define key_right KC_RIGHT
 #define lm_ctrl LM(_CTRL, MOD_RCTL)
 #define macro_alt_slash SS_LALT(SS_TAP(X_SLASH))
 
@@ -198,6 +195,7 @@
 #define my_cap_i LSFT(KC_I)
 #define my_cap_j LSFT(KC_J)
 #define my_cap_k TD(DANCE_CAP_K)
+#define my_cap_v LSFT(KC_V)
 #define my_cap_l LSFT(KC_L)
 #define my_cap_m LSFT(KC_M)
 #define my_cap_n LSFT(KC_N)
@@ -220,90 +218,107 @@
 #define lower_right_of_super TD(WWW_BACK_FORWARD)
 #define my_lower MO(_LOWER)
 #define my_lower_bs KC_DEL
-#define my_lower_comma BROWSER_TAB_LEFT
 
 #define my_lower_q KC_F1
 #define my_lower_w KC_F2
 #define my_lower_e KC_F3
 #define my_lower_r KC_F4
+#define my_lower_t TD(DANCE_SCREENSHOT)
 
 #define my_lower_a KC_F5
 #define my_lower_s KC_F6
 #define my_lower_d KC_F7
 #define my_lower_f KC_F8
+#define my_lower_g _______
 
 #define my_lower_z KC_F9
 #define my_lower_x KC_F10
 #define my_lower_c KC_F11
 #define my_lower_v KC_F12
-
 #define my_lower_b KC_APPLICATION
-#define my_lower_g RCTL(KC_GRAVE)
-#define my_lower_h KC_LEFT // LEFT_OR_HOME
+
+#define my_lower_y KC_HOME
+#define my_lower_u KC_PGDOWN
 #define my_lower_i KC_PGUP
+#define my_lower_o KC_END
+#define my_lower_p KC_BSPACE
+
+#define my_lower_h KC_LEFT // LEFT_OR_HOME
 #define my_lower_j KC_DOWN // PAGE_DOWN_OR_END
 #define my_lower_k KC_UP // PAGE_UP_OR_HOME
 #define my_lower_l KC_RIGHT   // RIGHT_OR_END
-#define my_lower_m EMACS_JUMP_ITEM // BROWSER_SEARCH_OPEN_TABS
-#define my_lower_n KC_BSLASH
-#define my_lower_o KC_END
-#define my_lower_p KC_BSPACE
-#define my_lower_period BROWSER_TAB_RIGHT
 #define my_lower_semi TD(DANCE_QUOTE)
-#define my_lower_slash TD(WWW_BACK_FORWARD)
-#define my_lower_u KC_PGDOWN
-/* #define my_lower_p KC_MINUS */
-/* #define my_lower_slash KC_GRAVE */
 
+#define my_lower_n _______
+#define my_lower_m EMACS_JUMP_ITEM // BROWSER_SEARCH_OPEN_TABS
+#define my_lower_comma BROWSER_TAB_LEFT
+#define my_lower_period BROWSER_TAB_RIGHT
+#define my_lower_slash KC_EQUAL
 
 
 #define my_minus _______
 
-#define raise_bspace LSFT(KC_TAB)
-#define my_raise RAISE
-#define my_raise_comma KC_2
 
-#define my_raise_q _______
-#define my_raise_w osl_web
-#define my_raise_e TD(DANCE_PASTE_OR_CLIPBOARD)
-#define my_raise_r EMACS_BUFFER_REVERT
-#define my_raise_t KC_PGUP
 
-#define my_raise_tab backtab
+
+
 #define BROWSER_MOST_RECENT_TAB LALT(KC_Z)
-#define my_raise_a TD(DANCE_F5)
-#define my_raise_s _______
-#define my_raise_d KC_ENTER
-#define my_raise_f LALT(LSFT(KC_F8))
-#define my_raise_g KC_PGDOWN
+#define HELM_CIDER_HISTORY LCTL(KC_H)
+
+#define mouse_hints LCTL (RCTL (LSFT(KC_F10)))
+
+#define my_raise RAISE
+
+#define raise_tab backtab
+#define my_raise_q mouse_hints
+#define my_raise_w osl_web
+#define my_raise_e KC_UP
+#define my_raise_r EMACS_BUFFER_REVERT
+#define my_raise_t KC_NO
+
+#define my_raise_a KC_HOME
+#define my_raise_s KC_LEFT
+#define my_raise_d KC_DOWN
+#define my_raise_f KC_RIGHT
+#define my_raise_g KC_END
 
 #define my_raise_z BROWSER_MOST_RECENT_TAB
 #define my_raise_x BROWSER_TAB_LEFT
 #define my_raise_c BROWSER_TAB_RIGHT
-#define my_raise_v TD(DANCE_SAVE_LOAD_NS_SWITCH)
-#define my_raise_b TD(WWW_BACK_FORWARD)
+#define my_raise_v LALT(LSFT(KC_F8))
+#define my_raise_b KC_SPACE
 
-#define HELM_CIDER_HISTORY LCTL(KC_H)
-#define my_raise_h KC_BSLASH
+#define my_raise_y TD(DANCE_PASTE_OR_CLIPBOARD)
+#define my_raise_u KC_7
 #define my_raise_i KC_8
+#define my_raise_o KC_9
+#define my_raise_p KC_0
+
+#define my_raise_h KC_EQUAL
 #define my_raise_j KC_4
 #define my_raise_k KC_5
 #define my_raise_l KC_6
+#define my_singlequote KC_QUOTE
+
+#define my_raise_n KC_PLUS
 #define my_raise_m KC_1
-#define my_raise_n KC_UNDS
-#define my_raise_o KC_9
-#define my_raise_p KC_0
+#define my_raise_comma KC_2
 #define my_raise_period KC_3
+#define raise_slash KC_BSLASH
+
+#define my_raise_tab backtab
 #define my_raise_top_right KC_DEL // TD(WWW_BACK_FORWARD)
-#define my_raise_u  KC_7
-#define my_raise_y  KC_BSLASH
 #define my_right_of_lower LT(_EMACS, KC_BACKSPACE)
 #define my_right_shift KC_RSFT // shift LM(_ALT, MOD_LSFT)
-#define my_singlequote KC_QUOTE
-#define raise_space KC_UNDS
+#define raise_bspace LSFT(KC_TAB)
 #define raise_key_4_9 KC_ENTER // KC_BSPC
-#define raise_semi  KC_DQUO
-#define raise_slash KC_BSLASH
+#define raise_semi  TD(DANCE_QUOTE)
+#define raise_space KC_UNDS
+
+#define raise_mod_r1 KC_LBRACKET
+#define raise_mod_r2 BRACKET_PAREN
+#define raise_mod_r3 KC_LCBR
+#define raise_mod_r4 _______
 
 #define scroll_next RCTL(KC_D)
 #define scroll_prev RCTL(KC_U)
@@ -415,6 +430,10 @@ enum custom_keycodes {
     /* RGB_SLD = SAFE_RANGE, */
     /* RGB_SLD = EZ_SAFE_RANGE, */
     FIRST = SAFE_RANGE,
+    AUTOCORRECT_ON,
+    AUTOCORRECT_OFF,
+    CYCLE_WINDOW,
+    CYCLE_WINDOW_REVERSE,
     COPY_TORRENT_URL_THEN_OPEN,
     MATRIX_INCREASE_SPEED,
     MATRIX_DECREASE_SPEED,
@@ -490,6 +509,7 @@ enum custom_keycodes {
     LAUNCHER_TRANSLATE,
     OPEN_NOTIFICATIONS,
     CLEAR_NOTIFICATIONS,
+    LYNCX,
     ROFI_CALCULATOR,
     RG_FZF,
     EMACS_FOCUS_REPL,
@@ -538,13 +558,16 @@ enum custom_keycodes {
     LLOCK_ALT_KEYBOARD,
     COPY_LATEST_FILE_TO_CLIPBOARD,
     CLJ_REFIND,
-    LAUNCHER_SYSTEM,
+    LAUNCHER_SOUND,
     LAUNCHER_WINDOWS ,
     LAUNCHER_DEFINE,
     LAUNCHER_GOOGLE,
     ROFI_LOCATE ,
     ROFI_DRUN ,
     ROFI_EMOJI ,
+
+    WEB_BOOKMARKS,
+    WEB_CLOSE_TAB,
 
     WINDOWS_Q,
 
@@ -578,6 +601,7 @@ enum custom_keycodes {
     CLJ_ANON,
     EMACS_EVIL_FIND,
     EMACS_PROJECTILE_FIND_FILE,
+    HELM_FIND_FILE,
     EMACS_FASD,
     EMACS_RE_FIND,
     EMACS_BACKWARD_UP,
@@ -610,7 +634,8 @@ enum custom_keycodes {
     EMACS_SPLIT_WINDOW_LEFT,
     CYCLE_FAVE_ANIMATIONS,
     CYCLE_RGBLIGHT_STEP,
-    ALT_TAB,
+    CYCLE_WINDOWS_FORWARD,
+    CYCLE_WINDOWS_BACKWARD,
     ALT_BACKTAB,
     EMACS_ACE_WINDOW_SWAP,
     EMACS_BUFFER_REVERT,
@@ -663,8 +688,10 @@ enum custom_keycodes {
                       WORD_BECAUSE,
 };
 
+#define WINDOW_SELECTION_SCREEN LGUI(LSFT(RCTL(KC_W)))
 
-#define alt_keyboard_level3_and_adhoc_hotkey TD(DANCE_LEVEL3_ALT_KEYBOARD)
+#define CYCLE_WINDOW LALT(LSFT(KC_TAB))
+#define CLOSE_WINDOW LALT(KC_F4)
 /* #define mod_r4 alt_keyboard_level3_and_adhoc_hotkey */
 
 #define max_buffer LALT(KC_ENTER)
@@ -780,7 +807,6 @@ bool do_breathing = false;
 #define CTRL_L RCTL(KC_L)
 #define ctrl_alt_s RALT(RCTL(KC_S))
 
-#define level3 COMPOSE
 #define alt_keyboard KEYBOARD_LAYOUT_HOLD_KEY
 #define META_X LALT(KC_X)
 
@@ -793,7 +819,6 @@ bool do_breathing = false;
 #define JETBRAINS_CLOSE_TAB RCTL(LSFT(KC_F4))
 
 
-#define super TD(DANCE_SUPER) // LM(_SUPER, MOD_LGUI) //TD(SUPER_WINDOWS)
 
 #define editing_q TD(DANCE_EDITING_Q)
 #define BROWSER_TAB_RIGHT TD(DANCE_30)
@@ -804,14 +829,15 @@ bool do_breathing = false;
 /* #define hyper TD(DANCE_HYPER) */
 
 #define BROWSER_TAB_LEFT TD(DANCE_29)
-#define my_comma TD(DANCE_COMMA) //KC_COMMA //
-#define my_left_shift TD(DANCE_SHIFT)
+#define my_comma KC_COMMA //
 #define emacs_left_shift TD(DANCE_SHIFT_CURLY)
 #define editing_left_shift TD(DANCE_SHIFT_CURLY)
 #define raise_left_shift TD(DANCE_RAISE_SHIFT)
 #define lower_left_shift TD(DANCE_LOWER_SHIFT)
 #define my_semicolon TD(DANCE_COLN)
 #define my_cap_semi my_semicolon
+
+#define virtualbox_host_key KC_RSFT
 
 /* #define super TD(DANCE_SUPER) //TD(SUPER_WINDOWS) */
 
@@ -841,9 +867,7 @@ bool do_breathing = false;
 #define LEFT_OR_HOME TD(DANCE_LEFT_OR_HOME)
 #define my_lower_h KC_LEFT // LEFT_OR_HOME
 #define RIGHT_OR_END TD(DANCE_RIGHT_OR_END)
-#define my_lower_l KC_RIGHT   // RIGHT_OR_END
 #define tab TD(DANCE_TAB)
-#define top_left tab
 #define emacs_completion_at_point LALT(RCTL(KC_I))
 #define BRACKET_PAREN TD(DANCE_PAREN_BRACKET)
 #define windows_j LGUI(KC_J)
@@ -910,14 +934,25 @@ bool do_breathing = false;
 #define my_y KC_Y
 #define my_z KC_Z
 #define my_semicolon TD(DANCE_COLN)
+#define mod_r1 KC_ENTER
+#define mod_r2 KC_UP
+#define mod_r3 KC_DOWN
+#define mod_r4 TD(DANCE_MOD_R4) // TD(DANCE_HOTKEY_OR_COMPOSE)
+#define my_forward_slash KC_SLASH
+#define top_left tab
+#define left_of_z TD(DANCE_SHIFT)
+#define alt_keyboard_level3_and_adhoc_hotkey TD(DANCE_LEVEL3_ALT_KEYBOARD)
+#define level3 COMPOSE
+#define RAISE TD(DANCE_RAISE) //
+#define super TD(DANCE_SUPER) // LM(_SUPER, MOD_LGUI) //TD(SUPER_WINDOWS)
+#define my_grave TD(DANCE_TAB)
+#define my_dot KC_DOT
+#define my_space TD(DANCE_SPACE)
+#define key_left KC_LEFT
+#define key_right KC_RIGHT
 /* #endif */
 
 #define my_cap_semi my_semicolon
-
-#define my_forward_slash KC_SLASH
-#define my_grave TD(DANCE_TAB)
-#define my_period TD(DANCE_DOT)
-#define my_space TD(DANCE_SPACE)
 
 #define all_mods TD(DANCE_ALL_MODS)
 #define ROFI_CLIPBOARD SS_LCTL(SS_LALT(SS_RCTL("9")))
@@ -927,3 +962,6 @@ bool do_breathing = false;
 #define preonic_lctl OSM(MOD_LCTL)
 #define preonic_lalt OSM(MOD_LALT)
 #define preonic_rctl OSM(MOD_RCTL)
+
+#define WEB_RELOAD KC_F5
+#define WEB_OPEN_TABS BROWSER_SEARCH_OPEN_TABS

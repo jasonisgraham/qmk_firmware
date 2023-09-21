@@ -3,13 +3,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   /* my_grave, OSL(_WINDOWS), _______, _______,  KC_EXLM, KC_AT, KC_LPRN, KC_RPRN, KC_LEFT, KC_DOWN, KC_UP, KC_RIGHT, */
   /* my_q,    my_w,    my_e,    my_r,    my_t,   KC_HASH,KC_ASTR, my_y,           my_u,    my_i,    my_o,     my_p, */
   /* preonic_a,   my_s,   my_d,   my_f,   my_g, KC_DLR, KC_AMPR, my_h,           my_j,   my_k,   my_l,   my_semicolon, */
-  /* preonic_z,           my_x,           my_c,           my_v,           my_b, KC_PERC,  KC_CIRC,      my_n,   my_m,   my_comma,   my_period,   my_forward_slash, */
+  /* preonic_z,           my_x,           my_c,           my_v,           my_b, KC_PERC,  KC_CIRC,      my_n,   my_m,   my_comma,   my_dot,   my_forward_slash, */
   /* hyper,  LGUI(LCTL(KC_LALT)), alt, RAISE,  super,  esc_ctrl, OSL(_SHIFTLOCK), my_space,           LOWER,           right_of_lower,   key_4_11,  key_4_12 */
 
                                 my_grave, OSL(_WINDOWS), _______, KC_GRAVE,  KC_1, KC_2, KC_9, KC_0, KC_LEFT, KC_DOWN, KC_UP, KC_RIGHT,
                                 my_q,    my_w,    my_e,    my_r,    my_t,   KC_3,KC_8, my_y,           my_u,    my_i,    my_o,     my_p,
                                 preonic_a,   my_s,   my_d,   my_f,   my_g, KC_4, KC_7, my_h,           my_j,   my_k,   my_l,   my_semicolon,
-                                preonic_z,           my_x,           my_c,           my_v,           my_b, KC_5,  KC_6,      my_n,   my_m,   my_comma,   my_period,   my_forward_slash,
+                                preonic_z,           my_x,           my_c,           my_v,           my_b, KC_5,  KC_6,      my_n,   my_m,   my_comma,   my_dot,   my_forward_slash,
                                 hyper,  LGUI(LCTL(KC_LALT)), alt, RAISE,  super,  esc_ctrl, OSL(_SHIFTLOCK), my_space,           LOWER,           right_of_lower,   key_4_11,  key_4_12
 
   ),
@@ -71,11 +71,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   // 6
   [_WINDOWS] = LAYOUT_preonic_grid(
-                                   _______, ALT_TAB, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
+                                   _______, CYCLE_WINDOWS_FORWARD, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
                                    WINDOWS_Q,   TD(DANCE_39),   LGUI(KC_E),     TD(DANCE_40),   LGUI(KC_T), _______,    LGUI(KC_MINUS), LGUI(KC_Y),   LGUI(KC_7),        LGUI(KC_8),     LGUI(KC_9),     LGUI(KC_0),
                                    LGUI(KC_A),  select_slack, show_desktop     ,LGUI(KC_F),     TD(DANCE_42), RGUI(KC_ESCAPE), _______,  LGUI(KC_H),     TD(DANCE_HOTKEY_OR_COMPOSE),   TD(DANCE_44),   TD(DANCE_45),   _______,
                                    LGUI(KC_Z),     LGUI(KC_X),     LGUI(KC_C),     RGUI(KC_V),     _______, TO(_BASE),  _______, TD(DANCE_46),   LGUI(KC_M),  _______, RSFT(LGUI(KC_K)), RCTL(RGUI(KC_Q)),
-                                   _______, _______,         LALT(KC_6),        _______,      ALT_TAB , RGUI(KC_ESCAPE), _______,  LALT(KC_8), RGUI(KC_ESCAPE),  OSL(_ADHOC_SET_HOTKEY), _______, _______
+                                   _______, _______,         LALT(KC_6),        _______,      CYCLE_WINDOWS_FORWARD , RGUI(KC_ESCAPE), _______,  LALT(KC_8), RGUI(KC_ESCAPE),  OSL(_ADHOC_SET_HOTKEY), _______, _______
   ),
 
   // 7

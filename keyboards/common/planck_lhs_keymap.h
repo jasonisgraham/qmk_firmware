@@ -12,7 +12,7 @@ const uint32_t PROGMEM unicode_map[] = {
 
 #define planck_base      my_q,    my_w,    my_e,    my_r,   my_t,top_left, mod_r1,    my_y,           my_u,    my_i,    my_o,     my_p, \
         my_a,   my_s,   my_d,   my_f,   my_g,hyper, mod_r2,  my_h,         my_j,   my_k,   my_l,   my_semicolon, \
-        my_z,           my_x,           my_c,           my_v,           my_b,my_left_shift, mod_r3,     my_n,   my_m,   my_comma,   my_period,   my_forward_slash, \
+        my_z,           my_x,           my_c,           my_v,           my_b,left_of_z, mod_r3,     my_n,   my_m,   my_comma,   my_dot,   my_forward_slash, \
         level3,   alt_keyboard,         alt, RAISE,  super, esc_ctrl ,  mod_r4,   my_space,           LOWER,          my_right_of_lower,   key_left,  key_right
 
 #define planck_alt _______, _______, _______, _______, _______, _______,   _______, _______, _______, _______, _______, _______, \
@@ -48,7 +48,7 @@ const uint32_t PROGMEM unicode_map[] = {
 
 #define planck_rofi \
             _______, LAUNCHER_WIKI, _______,  _______, LAUNCHER_TRANSLATE,ESC_THEN_BASE_LAYER,    _______,  ROFI_LOCATE_GLOBAL, ROFI_LOCATE, LAUNCHER_WINDOWS, LAUNCHER_CLIPBOARD, COPY_LATEST_FILE_TO_CLIPBOARD, \
-                _______, LAUNCHER_SYSTEM, LAUNCHER_DEFINE, LAUNCHER_FDFIND,   LAUNCHER_GOOGLE,CLEAR_NOTIFICATIONS, _______, CIDER_HISTORY_WRITE, ROFI_CIDER_HISTORY, ROFI_EMOJI, ROFI_PROCESSES, ULAUNCHER, \
+                _______, LAUNCHER_SOUND, LAUNCHER_DEFINE, LAUNCHER_FDFIND,   LAUNCHER_GOOGLE,CLEAR_NOTIFICATIONS, _______, CIDER_HISTORY_WRITE, ROFI_CIDER_HISTORY, ROFI_EMOJI, ROFI_PROCESSES, ULAUNCHER, \
                 _______, _______, ROFI_CALCULATOR, _______, _______,AUTOSHIFT_TOGGLE, _______, OPEN_NOTIFICATIONS, CINNAMON_MENU_OPEN, PLASMA_SEARCH, _______, _______, \
                 _______, _______,    _______, _______, ROFI_DRUN,_______, TO(_BASE), ROFI_DRUN,    _______, DM_REC1, DM_RSTP, DM_PLY1
 
@@ -128,10 +128,10 @@ const uint32_t PROGMEM unicode_map[] = {
 
 
 #define planck_windows \
-            WINDOWS_Q,   LGUI(KC_W),   select_emacs,     TD(DANCE_40),   LGUI(KC_T),ALT_TAB, LGUI(KC_MINUS),  LGUI(KC_Y),   LGUI(KC_7),        LGUI(KC_8),     LGUI(KC_9),     LGUI(KC_0), \
+            WINDOWS_Q,   LGUI(KC_W),   select_emacs,     TD(DANCE_40),   LGUI(KC_T),CYCLE_WINDOWS_FORWARD, LGUI(KC_MINUS),  LGUI(KC_Y),   LGUI(KC_7),        LGUI(KC_8),     LGUI(KC_9),     LGUI(KC_0), \
                 LGUI(KC_A),  select_slack, show_desktop     ,LGUI(KC_F),      _______,TO_BASE, KC_TAB,  LGUI(KC_H),     windows_j,   windows_k,   windows_l,   LGUI(KC_SCLN), \
                 LGUI(KC_Z),     select_firefox,     LGUI(KC_C),     LGUI(KC_V),    _______,TO_BASE, LSFT(KC_TAB), LGUI(KC_N),   LGUI(KC_M),  _______, LSFT(LGUI(KC_K)), LALT(KC_F4), \
-                _______, _______,         _______,        _______,     ALT_TAB,_______,   _______, ROFI_DRUN,      GUI(KC_MINUS),  _______, LSFT (ALT_TAB), ALT_TAB
+                _______, _______,         _______,        _______,     CYCLE_WINDOWS_FORWARD,_______,   _______, ROFI_DRUN,      GUI(KC_MINUS),  _______, LSFT (CYCLE_WINDOWS_FORWARD), CYCLE_WINDOWS_FORWARD
 
 
 #define planck_macros                                \
@@ -182,7 +182,7 @@ const uint32_t PROGMEM unicode_map[] = {
                 _______, _______, _______, _______, _______,_______, _______, _______, _______, _______, _______, _______
 
 #define planck_motion                                                   \
-            ALT_TAB, KC_HOME, KC_UP, KC_END,         LAYER_MOUSE_HOLD,EMACS_OTHER_WINDOW,      OSL(_SYSTEM),    KC_HOME,     my_lower_u,    my_lower_i,      my_lower_o,         my_lower_p, \
+            CYCLE_WINDOWS_FORWARD, KC_HOME, KC_UP, KC_END,         LAYER_MOUSE_HOLD,EMACS_OTHER_WINDOW,      OSL(_SYSTEM),    KC_HOME,     my_lower_u,    my_lower_i,      my_lower_o,         my_lower_p, \
                 TD(DANCE_F5), KC_LEFT,     KC_DOWN,     KC_RIGHT,     KC_MS_BTN1,_______,         KC_RIGHT,      my_lower_h,        my_lower_j,        my_lower_k,          my_lower_l,       my_lower_semi, \
                 _______, BROWSER_TAB_LEFT, BROWSER_TAB_RIGHT, BROWSER_TAB_LEFT,        KC_LEFT,LAYER_MOUSE_HOLD, KC_LEFT,  KC_RIGHT, my_lower_m, RCTL(KC_HOME),   RCTL(KC_END), LALT(KC_F4), \
                 _______, _______ , alt,   _______, _______,_______,       TO_BASE,             _______, _______,          TD(WWW_BACK_FORWARD), RCTL(KC_LEFT), RCTL(KC_RIGHT)

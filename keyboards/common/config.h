@@ -23,7 +23,7 @@
 #undef COMBO_TERM
 #define COMBO_TERM 17  // default is 50.  50ms produces false positives when typing kinda fast
 #undef COMBO_COUNT
-#define COMBO_COUNT 175
+#define COMBO_COUNT 200
 
 /* #define echo false */
 /* #define RGBLIGHT_LAYER_BLINK 1 */
@@ -46,10 +46,10 @@
 /* #define RGBLIGHT_EFFECT_TWINKLE */
 
 
-/* #define LEADER_TIMEOUT 1000 */
+
 #define LEADER_KEY_STRICT_KEY_PROCESSING
-/* #define LEADER_NO_TIMEOUT */
-#define LEADER_TIMEOUT 200
+#define LEADER_NO_TIMEOUT
+/* #define LEADER_TIMEOUT 200 */
 #define LEADER_PER_KEY_TIMING
 #define LEADER_NO_TIMEOUT
 

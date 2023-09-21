@@ -40,7 +40,7 @@
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT_moonlander(top_left,    my_q,    my_w,    my_e,    my_r,   my_t, mod_r1, KC_NO, mod_r1,    my_y,           my_u,    my_i,    my_o,     my_p,
                                 esc_ctrl , my_a,   my_s,   my_d,   my_f,   my_g, mod_r2, KC_NO, mod_r2,  my_h,         my_j,   my_k,   my_l,   my_semicolon,
-                                my_left_shift,        my_z,           my_x,           my_c,           my_v,           my_b, mod_r3 , KC_NO, mod_r3,     my_n,   my_m,   my_comma,   my_period,   my_forward_slash,
+                                left_of_z,        my_z,           my_x,           my_c,           my_v,           my_b, mod_r3 , KC_NO, mod_r3,     my_n,   my_m,   my_comma,   my_dot,   my_forward_slash,
                                 hyper, level3,   alt_keyboard,         alt, RAISE,  super, mod_r4 ,   my_space,           LOWER,          my_right_of_lower,   key_left,  key_right,
                                 KC_NO, KC_NO, mod_r4, mod_r4, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
                                 KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO),
@@ -77,7 +77,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
     [_ROFI] = LAYOUT_moonlander(ESC_THEN_BASE_LAYER, _______, LAUNCHER_WIKI, _______,  _______, LAUNCHER_TRANSLATE,_______, _______,     _______,  ROFI_LOCATE_GLOBAL, ROFI_LOCATE, LAUNCHER_WINDOWS, LAUNCHER_CLIPBOARD, COPY_LATEST_FILE_TO_CLIPBOARD,
-                                CLEAR_NOTIFICATIONS, _______, LAUNCHER_SYSTEM, LAUNCHER_DEFINE, LAUNCHER_FDFIND,   LAUNCHER_GOOGLE,_______, _______,  _______, CIDER_HISTORY_WRITE, ROFI_CIDER_HISTORY, ROFI_EMOJI, ROFI_PROCESSES, ULAUNCHER,
+                                CLEAR_NOTIFICATIONS, _______, LAUNCHER_SOUND, LAUNCHER_DEFINE, LAUNCHER_FDFIND,   LAUNCHER_GOOGLE,_______, _______,  _______, CIDER_HISTORY_WRITE, ROFI_CIDER_HISTORY, ROFI_EMOJI, ROFI_PROCESSES, ULAUNCHER,
                                 AUTOSHIFT_TOGGLE, _______, _______, ROFI_CALCULATOR, _______, _______,_______, _______,  _______, OPEN_NOTIFICATIONS, CINNAMON_MENU_OPEN, PLASMA_SEARCH, _______, _______,
                                 _______, _______, _______,    _______, _______, ROFI_DRUN, TO(_BASE), ROFI_DRUN,    _______, DM_REC1, DM_RSTP, DM_PLY1,
                                 _______, _______, _______, _______, _______, _______,_______, _______, _______, _______, _______, _______,
@@ -164,10 +164,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 
-    [_WINDOWS] = LAYOUT_moonlander(ALT_TAB, WINDOWS_Q,   LGUI(KC_W),   select_emacs,     TD(DANCE_40),   LGUI(KC_T),_______, _______,  LGUI(KC_MINUS),  LGUI(KC_Y),   LGUI(KC_7),        LGUI(KC_8),     LGUI(KC_9),     LGUI(KC_0),
+    [_WINDOWS] = LAYOUT_moonlander(CYCLE_WINDOWS_FORWARD, WINDOWS_Q,   LGUI(KC_W),   select_emacs,     TD(DANCE_40),   LGUI(KC_T),_______, _______,  LGUI(KC_MINUS),  LGUI(KC_Y),   LGUI(KC_7),        LGUI(KC_8),     LGUI(KC_9),     LGUI(KC_0),
                                    TO_BASE, LGUI(KC_A),  select_slack, show_desktop     ,LGUI(KC_F),      _______,_______, _______,  KC_TAB,  LGUI(KC_H),     windows_j,   windows_k,   windows_l,   LGUI(KC_SCLN),
                                    TO_BASE, LGUI(KC_Z),     select_firefox,     LGUI(KC_C),     LGUI(KC_V),    _______,_______, _______,  LSFT(KC_TAB), LGUI(KC_N),   LGUI(KC_M),  _______, LSFT(LGUI(KC_K)), LALT(KC_F4),
-                                   _______, _______, _______,         _______,        _______,     ALT_TAB,   _______, ROFI_DRUN,      GUI(KC_MINUS),  _______, LSFT (ALT_TAB), ALT_TAB,
+                                   _______, _______, _______,         _______,        _______,     CYCLE_WINDOWS_FORWARD,   _______, ROFI_DRUN,      GUI(KC_MINUS),  _______, LSFT (CYCLE_WINDOWS_FORWARD), CYCLE_WINDOWS_FORWARD,
                                    _______, _______, _______, _______, _______, _______,_______, _______, _______, _______, _______, _______,
                                    _______, _______, _______, _______, _______, _______),
 
@@ -235,7 +235,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                _______, _______, _______, _______, _______, _______),
 
 
-    [_MOTION] = LAYOUT_moonlander(EMACS_OTHER_WINDOW,   ALT_TAB, KC_HOME, KC_UP, KC_END,         LAYER_MOUSE_HOLD,_______, _______,       OSL(_SYSTEM),    KC_HOME,     my_lower_u,    my_lower_i,      my_lower_o,         my_lower_p,
+    [_MOTION] = LAYOUT_moonlander(EMACS_OTHER_WINDOW,   CYCLE_WINDOWS_FORWARD, KC_HOME, KC_UP, KC_END,         LAYER_MOUSE_HOLD,_______, _______,       OSL(_SYSTEM),    KC_HOME,     my_lower_u,    my_lower_i,      my_lower_o,         my_lower_p,
                                   _______,  TD(DANCE_F5), KC_LEFT,     KC_DOWN,     KC_RIGHT,     KC_MS_BTN1,_______, _______,          KC_RIGHT,      my_lower_h,        my_lower_j,        my_lower_k,          my_lower_l,       my_lower_semi,
                                   LAYER_MOUSE_HOLD,   _______, BROWSER_TAB_LEFT, BROWSER_TAB_RIGHT, BROWSER_TAB_LEFT,        KC_LEFT,_______, _______,  KC_LEFT,  KC_RIGHT, my_lower_m, RCTL(KC_HOME),   RCTL(KC_END), LALT(KC_F4),
                                   _______, _______, _______ , alt,   _______, _______,       TO_BASE,             _______, _______,          TD(WWW_BACK_FORWARD), RCTL(KC_LEFT), RCTL(KC_RIGHT),
