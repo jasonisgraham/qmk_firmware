@@ -30,7 +30,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
   case _LOWER:
     rgblight_enable_noeeprom();
-    rgblight_mode(DROP_CURRENT_ANIMATION);
+    rgblight_mode(RGBLIGHT_MODE_TWINKLE);
     rgblight_sethsv_noeeprom(HSV_RED);
     /* rgblight_mode(RGBLIGHT_MODE_KNIGHT); */
     break;
@@ -38,6 +38,16 @@ layer_state_t layer_state_set_user(layer_state_t state) {
   case _ROFI:
     rgblight_mode(DROP_CURRENT_ANIMATION);
     static_kinda_dim(HSV_PURPLE);
+    break;
+
+  case _NUMLOCK:
+    rgblight_enable_noeeprom();
+    rgblight_mode(RGBLIGHT_MODE_TWINKLE);
+    for (int i=0; i< RGBLED_NUM; i=i+3) {
+      rgblight_sethsv_at(HSV_WHITE, i);
+      rgblight_sethsv_at(HSV_BLACK, i+1);
+      rgblight_sethsv_at(HSV_RED, i+2);
+    }
     break;
 
   case _RAISE:

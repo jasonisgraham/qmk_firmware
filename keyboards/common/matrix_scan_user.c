@@ -101,6 +101,7 @@ void matrix_scan_user(void) {
       if (rofi_locate_level <= 3) {
         rofi_locate_level++;
         rgblight_sethsv_noeeprom(HSV_BLUE);
+        rgblight_mode(18);
 #ifdef AUDIO_ENABLE
         PLAY_SONG(__c6);
 #endif

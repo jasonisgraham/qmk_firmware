@@ -11,7 +11,7 @@ combo_t key_combos[COMBO_COUNT] = {
 
                                    COMBO(combo_e_t, CIDER_RUN_TEST),
 
-                                   COMBO(combo_macro_r_macro_g, IMPORTER_RELOAD),
+                                   /* COMBO(combo_macro_r_macro_g, IMPORTER_RELOAD), */
 
                                    COMBO(combo_super_tab_backtab, LGUI(KC_GRAVE)),
                                    /* COMBO(combo_backspace_y, KC_DELETE), */
@@ -125,7 +125,7 @@ combo_t key_combos[COMBO_COUNT] = {
                                    COMBO(combo_raise_j_raise_i, KC_RPRN),
                                    COMBO(combo_m_k, KC_LBRACKET),
                                    COMBO(combo_j_l, EMACS_WRAP_HYDRA),
-                                   COMBO(combo_raise_j_raise_l, EMACS_WRAP_IN_THREAD_LAST),
+                                   COMBO(combo_raise_i_raise_o, EMACS_WRAP_IN_THREAD_LAST),
                                    COMBO(combo_raise_u_raise_i, EMACS_WRAP_IN_THREAD_FIRST),
                                    COMBO(combo_raise_u_raise_o, EMACS_WRAP_IN_THREAD_LAST),
                                    COMBO(combo_editing_u_editing_i, HOME_THEN_EMACS_WRAP_IN_THREAD_FIRST),
@@ -153,7 +153,7 @@ combo_t key_combos[COMBO_COUNT] = {
                                    COMBO(combo_lower_d_lower_f, TO(_BASE)), // ??
 
                                    COMBO(combo_i_o, KC_BSLASH),
-                                   COMBO(combo_raise_i_raise_o, KC_PIPE),
+                                   /* COMBO(combo_raise_i_raise_o, KC_PIPE), */
 
                                    COMBO(combo_k_l, OSM(MOD_RCTL)),
                                    COMBO(combo_K_L, OSM(MOD_RCTL)),
@@ -221,7 +221,7 @@ combo_t key_combos[COMBO_COUNT] = {
                                    COMBO(combo_lower_j_k, KC_ENTER),
                                    COMBO(combo_raise_j_raise_k, LCTL(KC_ENTER)),
                                    COMBO(combo_j_k, KC_ENTER),
-                                   COMBO(combo_editing_j_editing_k, CIDER_RUN_PREV_COMMAND),
+                                   COMBO(combo_editing_j_editing_k, FISH_ACCEPT_SEND),
                                    COMBO(combo_editing_k_editing_l, TERM_CD_PREVIOUS),
                                    COMBO(combo_J_K, KC_ENTER),
 

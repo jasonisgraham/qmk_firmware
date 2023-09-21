@@ -23,7 +23,6 @@
 #define GUI LGUI
 
 #define NOTIFICATIONS LALT(KC_4)
-#define CLEAR_NOTIFICATIONS LALT(KC_DLR)
 #define FILE_SEARCH LALT(KC_3)
 #define PLASMA_SEARCH LALT(KC_6)
 
@@ -46,7 +45,7 @@
 #define mod_r1 MO(_CODE)
 #define mod_r2 KC_UP
 #define mod_r3 KC_DOWN
-#define mod_r4 KC_ENTER // TD(DANCE_HOTKEY_OR_COMPOSE)
+#define mod_r4 TD(DANCE_ENTER) // TD(DANCE_HOTKEY_OR_COMPOSE)
 /* #define mod_r4 TD(dance_k74) */
 
 
@@ -133,7 +132,8 @@
 #define KC_BSPACE KC_BACKSPACE
 #define KC_BSLASH KC_BACKSLASH
 #define backspace KC_BSPACE
-#define lower_backspace TD(WWW_BACK_FORWARD)
+#define lower_backspace RCTL(KC_UP)
+#define lower_down RCTL(KC_DOWN)
 #define raise_up KC_RIGHT
 #define raise_right EMACS_NEXT_SEXP
 #define raise_down KC_LEFT
@@ -143,7 +143,7 @@
 #define below_m MT(MOD_RCTL, KC_ESCAPE)
 #define below_n KC_LALT
 #define below_v MT(MOD_RCTL, KC_ESCAPE)
-#define emacs_a IMPORTER_RELOAD
+#define emacs_a _______
 #define emacs_f EMACS_YAS_FILTER_ANON
 #define emacs_m EMACS_YAS_MAP_ANON
 #define emacs_r EMACS_YAS_REMOVE_ANON
@@ -199,7 +199,7 @@
 #define my_lower_comma BROWSER_TAB_PREV
 #define my_lower_d KC_F7
 #define my_lower_f  KC_F8
-#define my_lower_g LCTL(KC_G)
+#define my_lower_g RCTL(KC_GRAVE)
 #define BROWSER_SEARCH_OPEN_TABS RCTL(LSFT(KC_A))
 #define my_lower_m EMACS_JUMP_ITEM // BROWSER_SEARCH_OPEN_TABS
 #define my_lower_n KC_BSLASH
@@ -226,7 +226,7 @@
 
 #define my_raise_a TD(DANCE_F5)
 #define my_raise_s OSL(_EMACS_SELECT)
-#define my_raise_d _______
+#define my_raise_d MO(_NUMLOCK)
 #define my_raise_f LALT(KC_ENTER)
 #define my_raise_g TD(DANCE_MACROS)
 
@@ -257,8 +257,8 @@
 #define raise_space KC_UNDS
 #define raise_key_4_9 KC_ENTER // KC_BSPC
 /* #define raise_semi  my_lower_semi */
-#define raise_semi  TD(DANCE_QUOTE)
-#define raise_slash KC_BSLASH
+#define raise_semi  KC_DQUO
+#define raise_slash KC_PLUS
 
 /* #define right_of_lower  esc_ctrl  // my_left_shift ///hyper // / MT(MOD_RCTL, KC_ESCAPE) */
 #define lower_right_of_super TD(WWW_BACK_FORWARD)
@@ -383,13 +383,14 @@ enum custom_keycodes {
                       /* RGB_SLD = SAFE_RANGE, */
                       /* RGB_SLD = EZ_SAFE_RANGE, */
                       FIRST = SAFE_RANGE,
+                      CLEAR_NOTIFICATIONS,
+
                       RG_FZF,
                       EMACS_FOCUS_REPL,
                       CIDER_HISTORY_WRITE,
                       EMACS_FOCUS_REPL_IMMEDIATELY,
                       LPRN_EQUAL,
                       CIDER_EVAL_OR_TERMINAL_EDIT,
-                      MAKE_COLORWAYS,
                       ROFI_LOCATE_GLOBAL,
                       ROFI_LOCATE_CLJ,
                       ROFI_PROCESSES,
@@ -417,10 +418,7 @@ enum custom_keycodes {
                       EMACS_DEFUN_BEGIN,
                       CIDER_RUN_TEST,
                       EMACS_JUMP_ITEM,
-                      EMACS_SYNC_FEED,
-                      EMACS_PF_UP,
                       CLJ_ADD_REQS,
-                      IMPORTER_RELOAD,
                       COPY_TEXT_OPEN_NEW_TAB_SEARCH,
                       TMPTXT,
                       ALT,
@@ -433,7 +431,6 @@ enum custom_keycodes {
                       LLOCK_APL,
                       COPY_LATEST_FILE_TO_CLIPBOARD,
                       CLJ_REFIND,
-                      CD_C9,
                       ROFI_CLIPBOARD ,
                       ROFI_WINDOWS ,
                       ROFI_LOCATE ,
@@ -448,8 +445,6 @@ enum custom_keycodes {
                       EMACS_NEXT_SEXP,
                       CYCLE_ACTIVE_APL_LEVEL3_FN,
                       level3,
-                      SSH_CRONJOBS_PROD,
-                      SSH_PROD,
                       EMACS_PREV_SEXP,
                       AUTOSHIFT_TOGGLE,
                       WEB_SAVE_FILE_UNDER_CURSOR,
@@ -492,16 +487,11 @@ enum custom_keycodes {
                       gauth_lp,
                       AUDIO_LAYER_HOLD,
                       CYCLE_DROP_COLORS,
-                      EMACS_GOTO_REMOTEID,
                       CLJ_TAP,
-                      EMACS_GOTO_SYNC_FEED,
-                      EMACS_GOTO_PARSE_ITEM,
-                      EMACS_GOTO_ROLLUP,
                       TOGGLE_ECHO,
                       TOGGLE_BREATHING,
                       EMACS_ACE_WINDOW_SELECT,
                       TERM_HOME,
-                      CD_CSV,
                       EMACS_SEL_0,
                       EMACS_SEL_1,
                       EMACS_SEL_2,
