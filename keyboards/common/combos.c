@@ -172,7 +172,7 @@ combo_t key_combos[COMBO_COUNT] = {
 
                                    /* COMBO(combo_m_k_l, KC_COLN), */
                                    COMBO(combo_M_cap_semi, KC_COLN),
-                                   COMBO(combo_m_l, KC_COLN),
+                                   COMBO(combo_m_l, KC_SCLN),
 
                                    COMBO(combo_u_i, THREAD_FIRST),
                                    COMBO(combo_u_o, THREAD_LAST),

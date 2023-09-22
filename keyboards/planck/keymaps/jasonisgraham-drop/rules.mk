@@ -2,6 +2,7 @@ SRC += muse.c
 
 REPEAT_KEY_ENABLE = yes
 # SRC += ../../../common/layer_lock.c
+VELOCIKEY_ENABLE = yes
 
 AUDIO_ENABLE = yes
 AUTOCORRECT_ENABLE = yes
@@ -10,7 +11,7 @@ AUTO_SHIFT_MODIFIERS = yes
 CAPS_WORD_ENABLE = yes
 KEY_LOCK_ENABLE = yes
 COMBO_ENABLE = yes
-COMMAND_ENABLE = yes
+# COMMAND_ENABLE = yes
 CONSOLE_ENABLE = yes
 DYNAMIC_MACRO_ENABLE = yes
 # ENCODER_ENABLE = yes
