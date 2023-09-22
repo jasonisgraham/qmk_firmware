@@ -8,6 +8,7 @@ DYNAMIC_MACRO_ENABLE = yes
 # Bootloader selection
 BOOTLOADER = stm32-dfu
 
+>>>>>>> 711c8462fb (ctrl+key hack: adding tapdances)
 # Build Options
 #   change yes to no to disable
 #
@@ -20,15 +21,14 @@ NKRO_ENABLE = yes           # Enable N-Key Rollover
 BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
 RGBLIGHT_ENABLE = yes       # Enable keyboard RGB underglow
 AUDIO_ENABLE = yes          # Audio output
+
 WS2812_DRIVER = pwm
 # CUSTOM_MATRIX = yes
 # Do not enable RGB_MATRIX_ENABLE together with RGBLIGHT_ENABLE
 RGB_MATRIX_ENABLE = no
-RGB_MATRIX_DRIVER = WS2812
 ENCODER_ENABLE = yes
 DIP_SWITCH_ENABLE = yes
 
 SRC += matrix.c
 
-LAYOUTS = ortho_4x12 planck_mit
 LAYOUTS_HAS_RGB = no
