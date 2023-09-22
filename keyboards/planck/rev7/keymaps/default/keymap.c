@@ -45,7 +45,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
     KC_ESC,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
     KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT ,
-    BACKLIT, KC_LCTL, KC_LALT, KC_LGUI, LOWER,   KC_RSFT, KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
+    BACKLIT, QK_LEAD, KC_LALT, KC_LGUI, LOWER,   KC_RSFT, KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
 ),
 
 /* Colemak
@@ -356,3 +356,31 @@ bool dip_switch_update_user(uint8_t index, bool active) {
     }
     return true;
 }
+
+
+float leader_start_song[][2] = SONG(ONE_UP_SOUND);
+float leader_succeed_song[][2] = SONG(ALL_STAR);
+float leader_fail_song[][2] = SONG(RICK_ROLL);
+
+void leader_start_user(void) {
+  PLAY_SONG(leader_start_song);
+}
+
+void leader_end_user(void) {
+  bool did_leader_succeed = false;
+
+  if (leader_sequence_one_key(KC_E)) {
+    SEND_STRING(SS_LCTL(SS_LSFT("t")));
+    did_leader_succeed = true;
+  } else if (leader_sequence_two_keys(KC_E, KC_D)) {
+    SEND_STRING(SS_LGUI("r") "cmd\n" SS_LCTL("c"));
+    did_leader_succeed = true;
+  }
+
+  if (did_leader_succeed) {
+    PLAY_SONG(leader_succeed_song);
+  } else {
+    PLAY_SONG(leader_fail_song);
+  }
+}
+
