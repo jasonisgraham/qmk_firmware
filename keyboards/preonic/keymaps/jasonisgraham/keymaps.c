@@ -128,7 +128,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                    _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
                                    _______, EMACS_OTHER_WINDOW,     _______, EMACS_BUFFER_REVERT,     _______,  _______, _______, EMACS_COPY_FILE_PATH, LCTL(KC_7),     _______, EMACS_OTHER_WINDOW, _______,
                                    _______, _______, _______, RALT(KC_ENTER), _______, _______, RCTL(KC_QUOTE), RALT(RSFT(KC_H)),RALT(RSFT(KC_J)),RALT(RSFT(KC_K)),RALT(RSFT(KC_L)),RCTL(KC_SCOLON),
-                                   _______, _______, EMACS_WINDOW_CLOSE,    _______, _______, _______,  _______, RALT(RSFT(KC_N)), EMACS_ACE_WINDOW_SWAP,  _______, _______, TERM_CD_UP_DIR,
+                                   _______, _______, EMACS_WINDOW_DELETE,    _______, _______, _______,  _______, RALT(RSFT(KC_N)), EMACS_ACE_WINDOW_SWAP,  _______, _______, TERM_CD_UP_DIR,
                                    _______, _______, _______, OSL(18), _______, _______, _______, KC_NO,          RALT(KC_ENTER), _______, _______, _______
 
   ),
@@ -144,7 +144,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_VIM_CMDS] = LAYOUT_preonic_grid(
                                     _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
                                     _______, LALT(KC_F),     _______, _______, _______, _______, _______, RCTL(KC_Y),     _______, TO(0),          _______, RCTL(KC_V),
-                                    _______, _______, _______, _______, OSL(15), _______,        TD(DANCE_H),  _______, TD(DANCE_J),   TD(DANCE_64),   TD(DANCE_65),   KC_LCBR,
+                                    _______, _______, _______, _______, OSL(15), _______,        TD(DANCE_H),  _______, TD(DANCE_J),   TD(DANCE_64),   TD(DANCE_W),   KC_LCBR,
                                     _______, TD(DANCE_66),   _______, _______, LALT(KC_B), _______,     _______, TD(DANCE_67),    _______, _______, _______, _______,
     _______, _______, _______, _______,    _______, _______, _______, _______,    _______, _______, _______, _______
   ),

@@ -4,6 +4,12 @@
 /* /\* #include "musical_notes.h" *\/ */
 /* #include "../../quantum/hacks.c" */
 
+#define MOD_MASK_ALL_MODS_COMPAT (MOD_BIT_LCTRL | MOD_BIT_RCTRL | MOD_BIT_LALT | MOD_MASK_SHIFT | MOD_BIT_RGUI)
+#define OSL_RCTL_LALT (MOD_BIT_RCTRL | MOD_BIT_LALT)
+#define ULAUNCHER LGUI(KC_SPACE)
+#define backtab LSFT(KC_TAB)
+#define emacs_completion_at_point LALT(RCTL(KC_I))
+
 #define GREP_STRING_IN_BUFFER_DIR LCTL(LALT(KC_G))
 #define TERM_PASTE RCTL(RSFT(KC_V))
 
@@ -22,7 +28,6 @@
 /* super_meta_hyper */
 #define GUI LGUI
 
-#define NOTIFICATIONS LALT(KC_4)
 #define FILE_SEARCH LALT(KC_3)
 #define PLASMA_SEARCH LALT(KC_6)
 
@@ -122,18 +127,15 @@
 #define EMACS_OTHER_WINDOW_NEXT RCTL(LALT(KC_PGUP))
 #define EMACS_OTHER_WINDOW_PREV RCTL(LALT(KC_PGDOWN))
 #define HYPER_L LCTL(KC_L)
-#define LOWER TD(DANCE_LOWER) // LT(_LOWER, KC_MINUS) //TD(DANCE_SHIFT)
+
 
 /* #define RAISE MO(_RAISE) */
 #define CINNAMON_MENU_OPEN LALT(LGUI(KC_7))
-#define RAISE TD(DANCE_RAISE) // LT(_RAISE, KC_PLUS)
-#define all_mods LM(_ALL_MODS, MOD_LGUI | MOD_LCTL | MOD_LALT | MOD_RCTL | MOD_LSFT)
+#define RAISE TD(DANCE_RAISE) //
 #define alt_tab ALT_TAB
 #define KC_BSPACE KC_BACKSPACE
 #define KC_BSLASH KC_BACKSLASH
 #define backspace KC_BSPACE
-#define lower_backspace RCTL(KC_UP)
-#define lower_down RCTL(KC_DOWN)
 #define raise_up KC_RIGHT
 #define raise_right EMACS_NEXT_SEXP
 #define raise_down KC_LEFT
@@ -154,10 +156,6 @@
 #define key_left KC_LEFT
 #define key_right KC_RIGHT
 #define lm_ctrl LM(_CTRL, MOD_RCTL)
-#define lower_LOWER TO(_BASE)
-#define lower_key_4_11 _______
-#define lower_key_4_12 LALT(KC_C)
-#define lower_right_of_lower TD(WWW_BACK_FORWARD)
 #define macro_alt_slash SS_LALT(SS_TAP(X_SLASH))
 
 #define my_0 KC_0
@@ -170,7 +168,6 @@
 #define my_7 KC_7
 #define my_8 KC_8
 #define my_9 KC_9
-#define my_b KC_B
 
 
 
@@ -190,29 +187,59 @@
 
 #define my_cap_o LSFT(KC_O)
 #define my_cap_p LSFT(KC_P)
-#define my_lctl  MT(MOD_RCTL, KC_ESCAPE)
+#define my_lctl  TD(DANCE_ESC_CTRL) // MT(MOD_RCTL, KC_ESCAPE)
 #define esc_ctrl my_lctl
-#define my_lower MO(_LOWER)
+
+
+#define BROWSER_SEARCH_OPEN_TABS RCTL(LSFT(KC_A))
+#define LOWER TD(DANCE_LOWER) // LT(_LOWER, KC_MINUS) //TD(DANCE_SHIFT)
+#define lower_LOWER TO(_BASE)
+#define lower_backspace RCTL(KC_UP)
+#define lower_down RCTL(KC_DOWN)
+#define lower_key_4_11 KC_DOWN
+#define lower_key_4_12 KC_UP
+#define lower_right_of_lower TD(WWW_BACK_FORWARD)
+#define lower_right_of_super TD(WWW_BACK_FORWARD)
 #define my_lower MO(_LOWER)
 #define my_lower_bs KC_DEL
 #define my_lower_comma BROWSER_TAB_PREV
-#define my_lower_comma BROWSER_TAB_PREV
+
+#define my_lower_q KC_F1
+#define my_lower_w KC_F2
+#define my_lower_e KC_F3
+#define my_lower_r KC_F4
+
+#define my_lower_a KC_F5
+#define my_lower_s KC_F6
 #define my_lower_d KC_F7
-#define my_lower_f  KC_F8
+#define my_lower_f KC_F8
+
+#define my_lower_z KC_F9
+#define my_lower_x KC_F10
+#define my_lower_c KC_F11
+#define my_lower_v KC_F12
+
+#define my_lower_b KC_APPLICATION
 #define my_lower_g RCTL(KC_GRAVE)
-#define BROWSER_SEARCH_OPEN_TABS RCTL(LSFT(KC_A))
+#define my_lower_h KC_LEFT // LEFT_OR_HOME
+#define my_lower_i KC_PGUP
+#define my_lower_j KC_DOWN // PAGE_DOWN_OR_END
+#define my_lower_k KC_UP // PAGE_UP_OR_HOME
+#define my_lower_l KC_RIGHT   // RIGHT_OR_END
 #define my_lower_m EMACS_JUMP_ITEM // BROWSER_SEARCH_OPEN_TABS
 #define my_lower_n KC_BSLASH
 #define my_lower_o KC_END
 #define my_lower_p KC_BSPACE
-/* #define my_lower_p KC_MINUS */
 #define my_lower_period BROWSER_TAB_NEXT
-#define my_lower_r KC_F4
 #define my_lower_semi TD(DANCE_QUOTE)
-/* #define my_lower_slash KC_GRAVE */
 #define my_lower_slash KC_EQUAL
-#define my_minus _______
+#define my_lower_u KC_PGDOWN
+/* #define my_lower_p KC_MINUS */
+/* #define my_lower_slash KC_GRAVE */
 
+
+
+#define my_minus _______
 
 #define raise_bspace LSFT(KC_TAB)
 #define my_raise RAISE
@@ -220,19 +247,19 @@
 
 #define my_raise_q _______
 #define my_raise_w osl_web
-#define my_raise_e TD (DANCE_PASTE_OR_CLIPBOARD)
+#define my_raise_e TD(DANCE_PASTE_OR_CLIPBOARD)
 #define my_raise_r EMACS_BUFFER_REVERT
 #define my_raise_t _______
 
 #define my_raise_a TD(DANCE_F5)
 #define my_raise_s OSL(_EMACS_SELECT)
-#define my_raise_d MO(_NUMLOCK)
+#define my_raise_d _______
 #define my_raise_f LALT(KC_ENTER)
-#define my_raise_g TD(DANCE_MACROS)
+#define my_raise_g _______
 
-#define my_raise_z RG_FZF
-#define my_raise_x RCTL(KC_X)
-#define my_raise_c RCTL(KC_C)
+#define my_raise_z EASYMOTION_LEADER
+#define my_raise_x _______
+#define my_raise_c EASYMOTION_LEADER
 #define my_raise_v TD(DANCE_SAVE_LOAD_NS_SWITCH)
 #define my_raise_b _______
 
@@ -250,18 +277,14 @@
 #define my_raise_top_right KC_DEL // TD(WWW_BACK_FORWARD)
 #define my_raise_u  KC_7
 #define my_raise_y  KC_BSLASH
-#define my_right_of_lower emacs_and_backspace
+#define my_right_of_lower LT(_EMACS, KC_BACKSPACE)
 #define my_right_shift KC_RSFT // shift LM(_ALT, MOD_LSFT)
 #define my_singlequote KC_QUOTE
-#define my_v KC_V
 #define raise_space KC_UNDS
 #define raise_key_4_9 KC_ENTER // KC_BSPC
-/* #define raise_semi  my_lower_semi */
 #define raise_semi  KC_DQUO
 #define raise_slash KC_PLUS
 
-/* #define right_of_lower  esc_ctrl  // my_left_shift ///hyper // / MT(MOD_RCTL, KC_ESCAPE) */
-#define lower_right_of_super TD(WWW_BACK_FORWARD)
 #define scroll_next RCTL(KC_D)
 #define scroll_prev RCTL(KC_U)
 #define select_slack LGUI(KC_S)
@@ -316,6 +339,8 @@ void clear_modifiers(void) {
   unregister_code16(KC_LCTL);
   unregister_code16(COMPOSE);
   unregister_code16(KEYBOARD_LAYOUT_HOLD_KEY);
+  unregister_code16(KC_LSHIFT);
+  unregister_code16(KC_RSHIFT);
 }
 
 void cycle_active_key_alt_rctrl_fn(void) {
@@ -383,8 +408,25 @@ enum custom_keycodes {
                       /* RGB_SLD = SAFE_RANGE, */
                       /* RGB_SLD = EZ_SAFE_RANGE, */
                       FIRST = SAFE_RANGE,
+                      EASYMOTION_LEADER,
+                      ACEJUMP,
+                      SWAP_SELECTION_BOUNDARIES,
+                      MOVE_STATEMENT_DOWN,
+                      MOVE_STATEMENT_UP,
+                      DUPLICATE_LINE,
+                      SELECTION_EXPAND,
+                      SELECTION_SHRINK,
+                      CTRL_X_ALL_MODS_OSM,
+                      SURROUND,
+                      EMACS_BUFFER_MAXIMIZE,
+                      LAUNCHER_FDFIND,
+                      ALL_MODS_OSM,
+                      LAUNCHER_CLIPBOARD,
+                      LAUNCHER_WIKI,
+                      LAUNCHER_TRANSLATE,
+                      OPEN_NOTIFICATIONS,
                       CLEAR_NOTIFICATIONS,
-
+                      ROFI_CALCULATOR,
                       RG_FZF,
                       EMACS_FOCUS_REPL,
                       CIDER_HISTORY_WRITE,
@@ -431,8 +473,10 @@ enum custom_keycodes {
                       LLOCK_APL,
                       COPY_LATEST_FILE_TO_CLIPBOARD,
                       CLJ_REFIND,
-                      ROFI_CLIPBOARD ,
-                      ROFI_WINDOWS ,
+                      LAUNCHER_SYSTEM,
+                      LAUNCHER_WINDOWS ,
+                      LAUNCHER_DEFINE,
+                      LAUNCHER_GOOGLE,
                       ROFI_LOCATE ,
                       ROFI_DRUN ,
                       ROFI_EMOJI ,
@@ -518,7 +562,7 @@ enum custom_keycodes {
                       EMACS_INSERT_GI_GET_FEED,
                       EMACS_KILL_PROCESS,
                       EMACS_OTHER_WINDOW,
-                      EMACS_WINDOW_CLOSE,
+                      EMACS_WINDOW_DELETE,
                       EMACS_COPY_FILE_PATH,
                       EMACS_YAS_C,
                       EMACS_YAS_DOC,
@@ -641,7 +685,6 @@ enum custom_keycodes {
 };
 
 
-#define emacs_and_backspace LT(_EMACS, KC_BSPACE)
 #define apl_level3_and_adhoc_hotkey TD(DANCE_LEVEL3_APL)
 /* #define mod_r4 apl_level3_and_adhoc_hotkey */
 
@@ -777,8 +820,9 @@ bool do_breathing = false;
 #define macros_g EMACS_INSERT_GET_FEED
 
 
-#define editing_u PAREDIT_BACKWARD_UP
-#define editing_i FORWARD_SEXP
+#define editing_u SELECTION_SHRINK
+#define editing_i SELECTION_EXPAND
 #define editing_o EMACS_HELM_OCCUR
 
 #define CTRL_L RCTL(KC_L)
+#define ctrl_alt_s RALT(RCTL(KC_S))
