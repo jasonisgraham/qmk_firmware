@@ -14,6 +14,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "/home/jason/Projects/qmk_firmware/keyboards/common/config.h"
 #pragma once
 
 #ifdef AUDIO_ENABLE
@@ -41,3 +42,6 @@
    - etc.
 */
 // #define MIDI_ADVANCED
+
+#define LEADER_PER_KEY_TIMING
+#define LEADER_TIMEOUT 300
