@@ -30,7 +30,6 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
   case _LOWER:
     rgblight_enable_noeeprom();
-    rgblight_mode(RGBLIGHT_MODE_TWINKLE);
     rgblight_sethsv_noeeprom(HSV_RED);
     /* rgblight_mode(RGBLIGHT_MODE_KNIGHT); */
     break;
