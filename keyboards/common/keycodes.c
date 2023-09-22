@@ -126,7 +126,7 @@
 
 /* #define RAISE MO(_RAISE) */
 #define CINNAMON_MENU_OPEN LALT(LGUI(KC_7))
-#define RAISE TD(DANCE_RAISE) // LT(_RAISE, KC_PLUS)
+#define RAISE TD(DANCE_RAISE) // 
 #define all_mods LM(_ALL_MODS, MOD_LGUI | MOD_LCTL | MOD_LALT | MOD_RCTL | MOD_LSFT)
 #define alt_tab ALT_TAB
 #define KC_BSPACE KC_BACKSPACE
@@ -170,7 +170,6 @@
 #define my_7 KC_7
 #define my_8 KC_8
 #define my_9 KC_9
-#define my_b KC_B
 
 
 
@@ -190,7 +189,7 @@
 
 #define my_cap_o LSFT(KC_O)
 #define my_cap_p LSFT(KC_P)
-#define my_lctl  MT(MOD_RCTL, KC_ESCAPE)
+#define my_lctl  TD(DANCE_ESC_CTRL) // MT(MOD_RCTL, KC_ESCAPE)
 #define esc_ctrl my_lctl
 #define my_lower MO(_LOWER)
 #define my_lower MO(_LOWER)
@@ -226,15 +225,15 @@
 
 #define my_raise_a TD(DANCE_F5)
 #define my_raise_s OSL(_EMACS_SELECT)
-#define my_raise_d MO(_NUMLOCK)
+#define my_raise_d _______
 #define my_raise_f LALT(KC_ENTER)
-#define my_raise_g TD(DANCE_MACROS)
+#define my_raise_g _______
 
-#define my_raise_z RG_FZF
+#define my_raise_z QK_LEAD
 #define my_raise_x RCTL(KC_X)
 #define my_raise_c RCTL(KC_C)
 #define my_raise_v TD(DANCE_SAVE_LOAD_NS_SWITCH)
-#define my_raise_b _______
+#define my_raise_b SNEK
 
 #define HELM_CIDER_HISTORY LCTL(KC_H)
 #define my_raise_h HELM_CIDER_HISTORY
@@ -253,7 +252,6 @@
 #define my_right_of_lower emacs_and_backspace
 #define my_right_shift KC_RSFT // shift LM(_ALT, MOD_LSFT)
 #define my_singlequote KC_QUOTE
-#define my_v KC_V
 #define raise_space KC_UNDS
 #define raise_key_4_9 KC_ENTER // KC_BSPC
 /* #define raise_semi  my_lower_semi */

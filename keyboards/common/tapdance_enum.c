@@ -72,7 +72,7 @@ enum tap_dance_codes {
                       DANCE_69,
                       DANCE_HYPER,
                       ONLY_N,
-                      DANCE_ALL_MODS,
+                      DANCE_ESC_CTRL,
                       DANCE_73,
                       DANCE_Z,
                       DANCE_C,

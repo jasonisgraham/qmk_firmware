@@ -1,3 +1,15 @@
+enum unicode_names {
+  BANG,
+  IRONY,
+  SNEK
+};
+
+const uint32_t PROGMEM unicode_map[] = {
+  [BANG]  = 0x203D,  // ‽
+  [IRONY] = 0x2E2E,  // ⸮
+  [SNEK]  = 0x1F40D, // 🐍
+};
+
 #define planck_base  top_left,    my_q,    my_w,    my_e,    my_r,   my_t, mod_r1,    my_y,           my_u,    my_i,    my_o,     my_p, \
     esc_ctrl , my_a,   my_s,   my_d,   my_f,   my_g, mod_r2,  my_h,         my_j,   my_k,   my_l,   my_semicolon, \
         my_left_shift,        my_z,           my_x,           my_c,           my_v,           my_b, mod_r3,     my_n,   my_m,   my_comma,   my_period,   my_forward_slash, \
@@ -150,3 +162,4 @@
     TO(_BASE), _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
     _______, _______, _______, _______, WEB_SAVE_FILE_UNDER_CURSOR, _______,   _______, _______, _______, _______, _______, _______, \
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
+

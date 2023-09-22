@@ -8,17 +8,13 @@
 #define hyper TD(DANCE_HYPER) // LM(_HYPER, MOD_LCTL) //KC_LCTL // OSL(_WINDOWS)
 
 /* #define hyper TD(DANCE_HYPER) */
-#define my_a TD(DANCE_A)
-#define my_c TD(DANCE_C)
+
 #define BROWSER_TAB_PREV TD(DANCE_29)
 #define my_comma TD(DANCE_COMMA) //KC_COMMA //
 #define my_left_shift TD(DANCE_SHIFT_PAREN)
 #define emacs_left_shift TD(DANCE_SHIFT_CURLY)
 #define editing_left_shift TD(DANCE_SHIFT_ANGLE)
 #define lower_left_shift TD(DANCE_SHIFT_BRACKET)
-#define my_m TD(DANCE_M)
-#define my_s KC_S
-#define my_w KC_W
 #define my_semicolon TD(DANCE_COLN)
 #define my_cap_semi my_semicolon
 
@@ -63,26 +59,34 @@
 #define my_lower_i KC_PGUP
 
 /* #define adhoc_set_hotkey TD(DANCE_ADHOC_SET_HOTKEY) */
-#define my_x TD(DANCE_X)
-#define my_y TD(DANCE_Y)
-#define my_z TD(DANCE_Z)
-#define my_space TD(DANCE_SPACE)
-#define my_t TD(DANCE_T)
-#define my_u TD(DANCE_U)
-#define my_n TD(DANCE_N)
-#define my_o TD(DANCE_O)
-#define my_p TD(DANCE_P)
-#define my_period TD(DANCE_DOT)
-#define my_q TD(DANCE_Q)
-#define my_r TD(DANCE_R)
+#define my_a TD(DANCE_A)
+#define my_b TD(DANCE_B)
+#define my_c TD(DANCE_C)
 #define my_d TD(DANCE_D)
 #define my_e TD(DANCE_E)
 #define my_f TD(DANCE_F)
-#define my_forward_slash TD(DANCE_FORWARD_SLASH)
 #define my_g TD(DANCE_G)
-#define my_grave TD(DANCE_TAB)
 #define my_h TD(DANCE_H)
 #define my_i TD(DANCE_I)
 #define my_j TD(DANCE_J)
 #define my_k TD(DANCE_K)
 #define my_l TD(DANCE_L)
+#define my_m TD(DANCE_M)
+#define my_n TD(DANCE_N)
+#define my_o TD(DANCE_O)
+#define my_p TD(DANCE_P)
+#define my_q TD(DANCE_Q)
+#define my_r TD(DANCE_R)
+#define my_s TD(DANCE_S)
+#define my_t TD(DANCE_T)
+#define my_u TD(DANCE_U)
+#define my_v TD(DANCE_V)
+#define my_w TD(DANCE_W)
+#define my_x TD(DANCE_X)
+#define my_y TD(DANCE_Y)
+#define my_z TD(DANCE_Z)
+
+#define my_forward_slash TD(DANCE_FORWARD_SLASH)
+#define my_grave TD(DANCE_TAB)
+#define my_period TD(DANCE_DOT)
+#define my_space TD(DANCE_SPACE)
