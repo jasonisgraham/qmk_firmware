@@ -102,7 +102,6 @@ const uint16_t PROGMEM combo_k_l[] = {my_2_10, my_2_11, COMBO_END};
 const uint16_t PROGMEM combo_K_L[] = {my_cap_k, my_cap_l, COMBO_END};
 const uint16_t PROGMEM combo_windows_k_l[] = {windows_k, windows_l, COMBO_END};
 const uint16_t PROGMEM combo_raise_k_raise_l[] = {my_raise_k, my_raise_l, COMBO_END};
-const uint16_t PROGMEM combo_cap_j_cap_k_cap_l[] = {my_cap_j, my_cap_k, my_cap_l, COMBO_END};
 
 
 const uint16_t PROGMEM combo_h_j[] = {my_h, my_2_9, COMBO_END};
@@ -261,7 +260,7 @@ const uint16_t PROGMEM combo_lower__i_o[] = {LOWER, my_1_10, my_1_11, COMBO_END}
 const uint16_t PROGMEM combo_lower__k_l[] = {LOWER, my_2_10, my_2_11, COMBO_END};
 const uint16_t PROGMEM combo_lower__comma_period[] = {LOWER, my_comma, my_period, COMBO_END};
 /* const uint16_t PROGMEM combo_lower_i_o[] = {my_lower_i, my_lower_o, COMBO_END}; */
-const uint16_t PROGMEM combo_lower_k_raise_l[] = {my_lower_k, my_lower_l, COMBO_END};
+const uint16_t PROGMEM combo_lower_k_lower_l[] = {my_lower_k, my_lower_l, COMBO_END};
 
 const uint16_t PROGMEM combo_lower_comma_l[] = {my_lower_comma, my_lower_l, COMBO_END};
 const uint16_t PROGMEM combo_lower__comma_l[] = {LOWER, my_comma, my_2_11, COMBO_END};
@@ -400,7 +399,7 @@ combo_t key_combos[COMBO_COUNT] = {
                                    COMBO(combo_lower_comma_l, KC_TILD),
                                    /* COMBO(combo_lower_comma_l, KC_TILD), */
                                    COMBO(combo_lower__comma_l, TERM_HOME),
-                                   COMBO(combo_lower_k_raise_l, KC_UNDS),
+                                   COMBO(combo_lower_k_lower_l, KC_UNDS),
 
 
                                    COMBO(combo_lower__i_o, CLJ_ANON_FN),
@@ -417,7 +416,6 @@ combo_t key_combos[COMBO_COUNT] = {
                                    COMBO(combo_raise_k_raise_l, KC_UNDS),
                                    COMBO(combo_j_k_l, KC_UNDS),
                                    /* COMBO(combo_lower_j_k_l, KC_UNDS), */
-                                   COMBO(combo_cap_j_cap_k_cap_l, KC_UNDS),
 
                                    COMBO(combo_u_i, KC_QUOT),
                                    COMBO(combo_comma_l, KC_GRV),

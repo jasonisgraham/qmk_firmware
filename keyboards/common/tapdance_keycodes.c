@@ -11,10 +11,11 @@
 
 #define BROWSER_TAB_PREV TD(DANCE_29)
 #define my_comma TD(DANCE_COMMA) //KC_COMMA //
-#define my_left_shift TD(DANCE_SHIFT_PAREN)
+#define my_left_shift TD(DANCE_SHIFT)
 #define emacs_left_shift TD(DANCE_SHIFT_CURLY)
-#define editing_left_shift TD(DANCE_SHIFT_ANGLE)
-#define lower_left_shift TD(DANCE_SHIFT_BRACKET)
+#define editing_left_shift SHIFTLOCK_LAYER_ACTIVATE
+#define raise_left_shift TD(DANCE_RAISE_SHIFT)
+#define lower_left_shift TD(DANCE_LOWER_SHIFT)
 #define my_semicolon TD(DANCE_COLN)
 #define my_cap_semi my_semicolon
 
@@ -58,7 +59,6 @@
 #define my_lower_u KC_PGDOWN
 #define my_lower_i KC_PGUP
 
-/* #define adhoc_set_hotkey TD(DANCE_ADHOC_SET_HOTKEY) */
 #define my_a TD(DANCE_A)
 #define my_b TD(DANCE_B)
 #define my_c TD(DANCE_C)
@@ -90,3 +90,5 @@
 #define my_grave TD(DANCE_TAB)
 #define my_period TD(DANCE_DOT)
 #define my_space TD(DANCE_SPACE)
+
+#define all_mods TD(DANCE_ALL_MODS)

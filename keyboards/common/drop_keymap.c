@@ -6,6 +6,7 @@
 
 enum preonic_layers {
                     _BASE,
+                    _NUMLOCK,
 /* 1 */                    _SHIFTLOCK,
                     _LOWER,
                     _RAISE,
@@ -20,10 +21,9 @@ enum preonic_layers {
                     _ALL_MODS,
                     _ADHOC_SET_HOTKEY,
                     _HYPER,
-/* 15 */                    _SA,
                     _ROFI,
-                    _NUMLOCK,
                     _CODE,
+                    /* 15 */                    _SA,
                     _EMACS_SELECT,
                     _MACROS,
                     _LAYER_LOCK,

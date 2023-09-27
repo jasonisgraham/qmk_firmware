@@ -50,7 +50,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                               top_left,    my_q,    my_w,    my_e,    my_r,   my_t, _______, _______, mod_r1,   my_y,           my_u,    my_i,    my_o,     my_p,
                               esc_ctrl , my_a,   my_s,   my_d,   my_f,   my_g,  _______, _______, mod_r2,     my_h,         my_j,   my_k,   my_l,   my_semicolon,
                               my_left_shift,        my_z,           my_x,           my_c,           my_v,           my_b,     _______, _______, mod_r3, my_n,   my_m,   my_comma,   my_period,   my_forward_slash,
-                              hyper, apl_level3_and_adhoc_hotkey, all_mods,      alt, RAISE,      super,       mod_r4, my_space,  LOWER,            emacs_and_backspace,    key_4_11,  key_4_12,
+                              hyper, apl_level3_and_adhoc_hotkey, all_mods,      alt, RAISE,      super,       mod_r4, my_space,  LOWER,            my_right_of_lower,    key_4_11,  key_4_12,
                               _______,_______,_______,_______,_______,   TD(DANCE_ROFI), SELECT_HOTKEY_0, _______,_______,_______,_______,_______,
                               my_lower_semi, TD(DANCE_LEFT_OR_HOME), KC_DOWN,   KC_UP, TD(DANCE_RIGHT_OR_END), EVIL_JUMP
                               ),
@@ -86,7 +86,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 [_ROFI] = LAYOUT_moonlander(
-                            ESC_THEN_BASE_LAYER, _______, _______, _______, _______,    _______, _______,_______, _______,  _______, ROFI_LOCATE, ROFI_WINDOWS, ROFI_CLIPBOARD, COPY_LATEST_FILE_TO_CLIPBOARD,
+                            ESC_THEN_BASE_LAYER, _______, _______, _______, _______,    _______, _______,_______, _______,  _______, ROFI_LOCATE, LAUNCHER_WINDOWS, LAUNCHER_CLIPBOARD, COPY_LATEST_FILE_TO_CLIPBOARD,
                             ESC_THEN_BASE_LAYER, _______, _______, _______, _______, _______,   _______,_______, _______, _______, _______, ROFI_EMOJI, PLASMA_SEARCH, _______,
                             TO(_BASE), _______, _______, _______, _______, _______, _______,_______, _______, NOTIFICATIONS, CINNAMON_MENU_OPEN, _______, _______, _______,
                             TO(_BASE), _______, _______, _______, _______, _______,_______, ROFI_DRUN,  _______, _______, _______, _______,
@@ -128,7 +128,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                              _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
                              LSFT(KC_J), _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
                              _______, _______, _______, _______,_______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-                             _______, adhoc_set_hotkey,  _______,  _______, _______,    _______,_______, ROFI_DRUN,     ROFI_CLIPBOARD, ROFI_WINDOWS, LSFT(KC_TAB), KC_TAB,
+                             _______, adhoc_set_hotkey,  _______,  _______, _______,    _______,_______, ROFI_DRUN,     LAUNCHER_CLIPBOARD, LAUNCHER_WINDOWS, LSFT(KC_TAB), KC_TAB,
                              _______, _______, _______, _______,    _______, _______,_______,   _______,    _______, _______, _______,  LALT(KC_7),
                              TD(DANCE_ALT_OR_RCTRL), _______, _______, _______, _______,   _______
 
@@ -141,7 +141,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                EMACS_ACE_WINDOW_SELECT, EMACS_DESC_KEY, LCTL(KC_7),     LCTL(KC_E), _______,     LCTL(KC_S) , _______,_______, LALT(KC_UNDS),  EMACS_YANK_IN_SEXP  , EMACS_NEXT_SEXP ,EMACS_PREV_SEXP ,  EMACS_HELM_OCCUR, KC_DELETE,
 
                                _______, _______, EMACS_LOCCUR, EMACS_KILL_IN_SEXP, LALT(KC_ENTER), EMACS_COPY_FILE_PATH, EMACS_SCROLL_UP,_______, _______, editing_h, editing_j, editing_k, editing_l, EMACS_PRIVATE_READER,
-                               emacs_left_shift, EMACS_RECENTER_ON_DEFUN, _______, EMACS_WINDOW_CLOSE,    TD(DANCE_SAVE_LOAD_NS_SWITCH), _______, _______,_______,_______,   next_win_or_frame, EMACS_ACE_WINDOW_SWAP,  editing_comma, editing_period, TERM_CD_UP_DIR,
+                               emacs_left_shift, EMACS_RECENTER_ON_DEFUN, _______, EMACS_WINDOW_DELETE,    TD(DANCE_SAVE_LOAD_NS_SWITCH), _______, _______,_______,_______,   next_win_or_frame, EMACS_ACE_WINDOW_SWAP,  editing_comma, editing_period, TERM_CD_UP_DIR,
                                _______, _______, _______, _______, KC_HYPR,  _______,_______,  _______,                    MO(_EMACS), TO(_BASE), _______,  emacs_indent_buffer,
                                _______, _______, _______, _______, _______, _______,_______, _______, _______, _______, _______, _______,
                                _______, _______, _______, _______, _______, all_mods
