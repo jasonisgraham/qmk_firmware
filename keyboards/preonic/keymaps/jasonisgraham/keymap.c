@@ -22,7 +22,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 [_ROFI] = LAYOUT_wrapper(
-                         _______, _______, ROFI_LOCATE, ROFI_WINDOWS, ROFI_DRUN, CINNAMON_MENU_OPEN,    TO_BASE, _______, _______, _______, _______, GUI(KC_MINUS),
+                         _______, _______, ROFI_LOCATE, LAUNCHER_WINDOWS, ROFI_DRUN, CINNAMON_MENU_OPEN,    TO_BASE, _______, _______, _______, _______, GUI(KC_MINUS),
 planck_rofi                             ),
 
 [_EMACS] = LAYOUT_wrapper(
@@ -89,4 +89,3 @@ planck_hyper                                         ),
                           planck_layer_lock                                         ),
 
   };
-

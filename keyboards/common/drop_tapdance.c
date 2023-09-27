@@ -28,9 +28,10 @@ enum tap_dance_codes {
   DANCE_X,
   DANCE_Y,
   DANCE_Z,
+
                       DANCE_29,
                       DANCE_30,
-                      DANCE_31,
+                      DANCE_ALL_MODS,
                       DANCE_33,
                       DANCE_35,
                       DANCE_36,
@@ -52,7 +53,6 @@ enum tap_dance_codes {
                       DANCE_59,
                       DANCE_60,
                       DANCE_61,
-                      DANCE_ADHOC_SET_HOTKEY,
                       DANCE_ALT,
                       DANCE_ALT_OR_RCTRL,
                       DANCE_COLN,
@@ -80,13 +80,13 @@ enum tap_dance_codes {
                       DANCE_RAISE,
                       DANCE_RIGHT_OR_END,
                       DANCE_ROFI,
-                      DANCE_ROFI_WINDOWS,
+                      DANCE_LAUNCHER_WINDOWS,
                       DANCE_SAVE_LOAD_NS_SWITCH,
                       DANCE_SCREENSHOT,
-                      DANCE_SHIFT_ANGLE,
-                      DANCE_SHIFT_BRACKET,
+                      DANCE_LOWER_SHIFT,
+                      DANCE_RAISE_SHIFT,
                       DANCE_SHIFT_CURLY,
-                      DANCE_SHIFT_PAREN,
+                      DANCE_SHIFT,
                       DANCE_SLASH,
                       DANCE_SPACE,
                       DANCE_SUPER,
@@ -253,7 +253,7 @@ void dance_tab_finished(tap_dance_state_t *state, void *user_data) {
     break;
 
   case HOLD2:
-    layer_on(_CODE);
+    tap_code16(emacs_completion_at_point);
     break;
 
   case HOLD3:
@@ -271,10 +271,6 @@ void dance_tab_finished(tap_dance_state_t *state, void *user_data) {
 void dance_tab_reset(tap_dance_state_t *state, void *user_data) {
   wait_ms(10);
   switch (dance_state[0].step) {
-  case TAP: unregister_code16(KC_TAB); break;
-  case HOLD2:
-    layer_off(_CODE);
- break;
 
   case TAP_INTERRUPTED:
 case TAP_INTERRUPTED_HELD:
@@ -592,19 +588,27 @@ void dance_coln_finished(tap_dance_state_t *state, void *user_data) {
   switch (dance_state[28].step) {
   case TAP2:
   case TAP2_INTERRUPTED:
+      tap_code16(KC_COLN);
+      break;
   case HOLD2:
   case HOLD:
-    tap_code16(KC_SCLN);
-    break;
+      register_code16(KC_COLN);
+      break;
   default:
-    tap_code16(KC_COLN);
+    tap_code16(KC_SCLN);
 
     break;
   }
 }
 
 void dance_coln_reset(tap_dance_state_t *state, void *user_data) {
-  wait_ms(10);
+    wait_ms(10);
+  switch (dance_state[28].step) {
+  case HOLD2:
+  case HOLD:
+      unregister_code16(KC_COLN);
+      break;
+  }
   dance_state[28].step = 0;
 }
 
@@ -675,27 +679,46 @@ case TAP_INTERRUPTED_HELD:
 
 
 
-void on_dance_31(tap_dance_state_t *state, void *user_data) {
+void on_DANCE_ALL_MODS(tap_dance_state_t *state, void *user_data) {
 }
 
-void dance_31_finished(tap_dance_state_t *state, void *user_data) {
+void DANCE_ALL_MODS_finished(tap_dance_state_t *state, void *user_data) {
   dance_state[31].step = dance_step(state);
   switch (dance_state[31].step) {
-    case TAP_INTERRUPTED:
-case TAP_INTERRUPTED_HELD:
- case TAP: register_code16(KC_INSERT); break;
-  case TAP2: layer_move(8); break;
-  case TAP2_INTERRUPTED: tap_code16(KC_INSERT); register_code16(KC_INSERT);
+  /* case TAP_INTERRUPTED: */
+  /* case TAP_INTERRUPTED_HELD: */
+  case TAP:
+    layer_move(_SHIFTLOCK);
+#ifdef AUDIO_ENABLE
+    PLAY_SONG(caps_lock_on_sound);
+#endif
+    break;
+  case HOLD2:
+    register_code16(KC_RALT);
+    break;
+  default:
+    layer_move(_ALL_MODS);
+    add_mods(MOD_MASK_ALL_MODS_COMPAT);
+    break;
   }
 }
 
-void dance_31_reset(tap_dance_state_t *state, void *user_data) {
+void DANCE_ALL_MODS_reset(tap_dance_state_t *state, void *user_data) {
   wait_ms(10);
   switch (dance_state[31].step) {
-    case TAP_INTERRUPTED:
-case TAP_INTERRUPTED_HELD:
- case TAP: unregister_code16(KC_INSERT); break;
-  case TAP2_INTERRUPTED: unregister_code16(KC_INSERT); break;
+    /* case TAP_INTERRUPTED: */
+    /* case TAP_INTERRUPTED_HELD: */
+    case TAP:
+      break;
+
+  case HOLD2:
+    unregister_code16(KC_RALT);
+    break;
+  default:
+    layer_move(_BASE);
+    del_mods(MOD_MASK_ALL_MODS_COMPAT);
+    clear_mods();
+    break;
   }
   dance_state[31].step = 0;
 }
@@ -828,37 +851,6 @@ case TAP_INTERRUPTED_HELD:
 }
 
 
-
-
-
-void on_adhoc_set_hotkey(tap_dance_state_t *state, void *user_data) {
-}
-
-void adhoc_set_hotkey_finished(tap_dance_state_t *state, void *user_data) {
-  dance_state[38].step = dance_step(state);
-  switch (dance_state[38].step) {
-  default:
-    register_code16(LGUI(LCTL(KC_LALT)));
-#ifdef RGBLIGHT_MODE
-    rgblight_enable_noeeprom();
-    rgblight_mode_noeeprom(RGBLIGHT_MODE_KNIGHT);
-#endif
-    break;
-  }
-}
-
-void adhoc_set_hotkey_reset(tap_dance_state_t *state, void *user_data) {
-  wait_ms(10);
-  switch (dance_state[38].step) {
-  default:
-    unregister_code16(LGUI(LCTL(KC_LALT)));
-#ifdef RGBLIGHT_MODE
-    rgblight_disable();
-#endif
-    break;
-  }
-  dance_state[38].step = 0;
-}
 
 
 
@@ -1189,19 +1181,21 @@ void dance_raise_finished(tap_dance_state_t *state, void *user_data) {
     tap_code16(KC_UNDS);
     break;
   case HOLD2:
-    layer_on(_EMACS);
-    break;
+      register_code16(KC_LALT);
+      layer_on(_NUMLOCK);
+      break;
   default:
-    layer_on(_RAISE);
-    break;
+      layer_on(_RAISE);
+      break;
   }
 }
 
 void dance_raise_reset(tap_dance_state_t *state, void *user_data) {
-  wait_ms(10);
-  switch (dance_state[46].step) {
-  case HOLD2:
-    layer_off(_EMACS);
+    wait_ms(10);
+    switch (dance_state[46].step) {
+    case HOLD2:
+      unregister_code16(KC_LALT);
+      layer_off(_NUMLOCK);
     break;
   default:
     layer_off(_RAISE);
@@ -1717,69 +1711,12 @@ void on_dance_ctrl(tap_dance_state_t *state, void *user_data) {}
 void dance_ctrl_finished(tap_dance_state_t *state, void *user_data) {
   dance_state[67].step = dance_step(state);
   switch (dance_state[67].step) {
-  case TAP:
-  case TAP2:
-  case TAP3:
-  case TAP4:
-  case TAP5:
-  tap_code16(KC_ESCAPE);
-  break;
-
-  case HOLD2:
-#ifdef RGBLIGHT_ENABLE
-    rgblight_enable_noeeprom();
-    rgblight_mode_noeeprom(RGBLIGHT_MODE_TWINKLE);
-    rgblight_sethsv_noeeprom(HSV_WHITE);
-#endif
-    register_code16(KC_LCTL);
-    break;
-
-  case TAP_INTERRUPTED:
-  case TAP_INTERRUPTED_HELD:
-    set_oneshot_mods(MOD_BIT(KC_RCTL));
-    break;
-
-  default:
-#ifdef RGBLIGHT_ENABLE
-    rgblight_enable_noeeprom();
-    rgblight_mode_noeeprom(RGBLIGHT_MODE_TWINKLE);
-    rgblight_sethsv_noeeprom(HSV_MAGENTA);
-#endif
-    register_code16(KC_RCTL);
-    break;
-
-
   }
 }
 
 void dance_ctrl_reset(tap_dance_state_t *state, void *user_data) {
   wait_ms(10);
   switch (dance_state[67].step) {
-  case TAP:
-  case TAP2:
-  case TAP3:
-  case TAP4:
-  case TAP5:
-    /* tap_code16(KC_ESCAPE); */
-  break;
-
-  case HOLD2:
-#ifdef RGBLIGHT_ENABLE
-    rgblight_disable();
-#endif
-    unregister_code16(KC_LCTL);
-    break;
-
-  case TAP_INTERRUPTED_HELD:
-  case TAP_INTERRUPTED:
-    break;
-
-  default:
-#ifdef RGBLIGHT_ENABLE
-    rgblight_disable();
-#endif
-    unregister_code16(KC_RCTL);
-    break;
   }
   dance_state[67].step = 0;
 }
@@ -2023,7 +1960,7 @@ void paste_or_clipboard_finished(tap_dance_state_t *state, void *user_data) {
     tap_code16(TERM_PASTE);
     break;
   case HOLD:
-    tap_code16(LALT(KC_9));
+      tap_code16(LCTL(LALT(RCTL(KC_9))));
     break;
   case TAP2:
     tap_code16(LCTL(KC_Y));
@@ -2194,7 +2131,7 @@ void alt_or_rctrl_reset(tap_dance_state_t *state, void *user_data) {
 
 
 void on_alt(tap_dance_state_t *state, void *user_data) {
-  on_dance_fn(KC_DEL, state, user_data);
+  on_dance_fn(KC_BSPACE, state, user_data);
 }
 
 void alt_finished(tap_dance_state_t *state, void *user_data) {
@@ -2223,19 +2160,6 @@ void alt_finished(tap_dance_state_t *state, void *user_data) {
     break;
 
   default:
-#ifdef MOONLANDER
-    /* RGB_MATRIX_EFFECT(BREATHING); */
-    /* rgblight_mode(0); */
-    /* rgb_matrix_set_color_all(HSV_GREEN); */
-    /* printf("here"); */
-    /* set_layer_color(2); */
-
-#endif
-
-/* #ifdef MOONLANDER */
-/*     rgb_matrix_sethsv_noeeprom(HSV_GREEN); */
-/*   #endif */
-
 
 #ifdef RGBLIGHT_ENABLE
     rgblight_enable_noeeprom();
@@ -2283,7 +2207,6 @@ void DANCE_LEVEL3_APL_finished(tap_dance_state_t *state, void *user_data) {
   case TAP3:
     set_oneshot_layer(_ADHOC_SET_HOTKEY, ONESHOT_START);
     break;
-
   case HOLD2:
     cycle_active_apl_level3_fn();
     break;
@@ -2345,21 +2268,14 @@ case TAP_INTERRUPTED_HELD:
 
 
 
-void on_dance_shift_paren(tap_dance_state_t *state, void *user_data) {
+void on_dance_shift(tap_dance_state_t *state, void *user_data) {
   on_dance_fn(KC_LSFT, state, user_data);
 }
 
-void dance_shift_paren_finished(tap_dance_state_t *state, void *user_data) {
-  dance_state[85].step = dance_step(state);
-  switch (dance_state[85].step) {
-  case TAP:
-  case TAP_INTERRUPTED:
-    tap_code16(KC_LPRN);
-    break;
-  case TAP2:
-  case TAP2_INTERRUPTED:
-    tap_code16(KC_RPRN);
-    break;
+void dance_shift_finished(tap_dance_state_t *state, void *user_data) {
+ dance_state[85].step = dance_step(state);
+ dprintf("state: %d", dance_state[85].step);
+  switch  (dance_state[85].step) {
   case HOLD2:
     layer_move(_SHIFTLOCK);
 #ifdef AUDIO_ENABLE
@@ -2367,19 +2283,33 @@ void dance_shift_paren_finished(tap_dance_state_t *state, void *user_data) {
 #endif
     break;
 
-  default:
-    register_code16(KC_LSFT);
+  case HOLD:
+  case TAP_INTERRUPTED:
+  case TAP_INTERRUPTED_HELD:
+      register_code16(KC_LSFT);
+      break;
 
-    break;
+  case TAP2:
+  case TAP2_INTERRUPTED:
+      tap_code16(KC_LSHIFT);
+      tap_code16(KC_LSHIFT);
+      break;
+
+  default:
+      tap_code16(KC_BSLASH);
+      break;
+
   }
 }
 
-void dance_shift_paren_reset(tap_dance_state_t *state, void *user_data) {
-  wait_ms(10);
-  switch (dance_state[85].step) {
-  case HOLD2:
-    break;
-  default:
+void dance_shift_reset(tap_dance_state_t *state, void *user_data) {
+    wait_ms(10);
+    switch (dance_state[85].step) {
+    case HOLD2:
+        break;
+    case HOLD:
+    case TAP_INTERRUPTED:
+  case TAP_INTERRUPTED_HELD:
     unregister_code16(KC_LSFT);
     break;
 
@@ -2388,21 +2318,22 @@ void dance_shift_paren_reset(tap_dance_state_t *state, void *user_data) {
 }
 
 
-void on_dance_shift_bracket(tap_dance_state_t *state, void *user_data) {
+void on_dance_raise_shift(tap_dance_state_t *state, void *user_data) {
   on_dance_fn(KC_LSFT, state, user_data);
 }
 
-void dance_shift_bracket_finished(tap_dance_state_t *state, void *user_data) {
+void dance_raise_shift_finished(tap_dance_state_t *state, void *user_data) {
   dance_state[101].step = dance_step(state);
   switch (dance_state[101].step) {
   case TAP:
   case TAP_INTERRUPTED:
-    tap_code16(KC_LBRACKET);
-    break;
   case TAP2:
   case TAP2_INTERRUPTED:
-    tap_code16(KC_RBRACKET);
-    break;
+      layer_move(_SHIFTLOCK);
+#ifdef AUDIO_ENABLE
+      PLAY_SONG(caps_lock_on_sound);
+#endif
+      break;
   default:
     register_code16(KC_LSFT);
 
@@ -2410,7 +2341,7 @@ void dance_shift_bracket_finished(tap_dance_state_t *state, void *user_data) {
   }
 }
 
-void dance_shift_bracket_reset(tap_dance_state_t *state, void *user_data) {
+void dance_raise_shift_reset(tap_dance_state_t *state, void *user_data) {
   wait_ms(10);
   switch (dance_state[101].step) {
   default:
@@ -2462,19 +2393,17 @@ void dance_super_finished(tap_dance_state_t *state, void *user_data) {
   dance_state[85].step = dance_step(state);
   switch (dance_state[85].step) {
   case HOLD:
-  case HOLD3:
-  /* case TAP_INTERRUPTED: */
-    // hold down SUPER cuz i dont wanna explicitly apply SUPER to every key
     register_code16(KC_LGUI);
     layer_on(_SUPER);
     break;
   case HOLD2:
-    layer_move(_ROFI);
+      register_code16(KC_LALT);
+      layer_on(_NUMLOCK);
     break;
 
   default:
     set_oneshot_layer(_WINDOWS, ONESHOT_START);
-    break;       
+    break;
   }
 }
 
@@ -2482,14 +2411,13 @@ void dance_super_reset(tap_dance_state_t *state, void *user_data) {
   // layer_off(_ROFI) and layer_off(_ROFI) are handled by post_process_record_user
   switch (dance_state[85].step) {
   case HOLD:
-  case HOLD3:
-  /* case TAP_INTERRUPTED: */
     unregister_code16(KC_LGUI);
     layer_off(_SUPER);
     break;
 
   case HOLD2:
-    layer_off(_ROFI);
+      unregister_code16(KC_LALT);
+      layer_off(_NUMLOCK);
     break;
 
   default:
@@ -2701,35 +2629,57 @@ void dance_quote_reset(tap_dance_state_t *state, void *user_data) {
 }
 
 
-void on_dance_shift_angle(tap_dance_state_t *state, void *user_data) {
-  on_dance_fn(KC_LSFT, state, user_data);
+void on_dance_lower_shift(tap_dance_state_t *state, void *user_data) {
+    on_dance_fn(KC_LSFT, state, user_data);
 }
 
-void dance_shift_angle_finished(tap_dance_state_t *state, void *user_data) {
-  dance_state[102].step = dance_step(state);
-  switch (dance_state[102].step) {
-  case TAP:
-  case TAP_INTERRUPTED:
-    tap_code16(KC_LEFT_ANGLE_BRACKET);
-    break;
-  case TAP2:
-  case TAP2_INTERRUPTED:
-    tap_code16(KC_RIGHT_ANGLE_BRACKET);
-    break;
-  default:
-    register_code16(KC_LSFT);
+void dance_lower_shift_finished(tap_dance_state_t *state, void *user_data) {
+    dance_state[102].step = dance_step(state);
+    switch (dance_state[102].step) {
 
-    break;
+    case TAP:
+    case TAP_INTERRUPTED:
+        tap_code16(KC_PIPE);
+        break;
+    case TAP2:
+    case TAP2_INTERRUPTED:
+        tap_code16(KC_PIPE);
+        tap_code16(KC_PIPE);
+        break;
+    case TAP3:
+    case TAP3_INTERRUPTED:
+        tap_code16(KC_PIPE);
+        tap_code16(KC_PIPE);
+        tap_code16(KC_PIPE);
+        break;
+    case TAP4:
+        tap_code16(KC_PIPE);
+        tap_code16(KC_PIPE);
+        tap_code16(KC_PIPE);
+        tap_code16(KC_PIPE);
+        break;
+
+    default:
+        register_code16(KC_LSFT);
+        break;
   }
 }
 
-void dance_shift_angle_reset(tap_dance_state_t *state, void *user_data) {
-  wait_ms(10);
-  switch (dance_state[102].step) {
-  default:
-    unregister_code16(KC_LSFT);
-    break;
+void dance_lower_shift_reset(tap_dance_state_t *state, void *user_data) {
+    wait_ms(10);
+    switch (dance_state[102].step) {
+    case TAP:
+    case TAP_INTERRUPTED:
+    case TAP2:
+    case TAP2_INTERRUPTED:
+    case TAP3:
+    case TAP3_INTERRUPTED:
+    case TAP4:
+        break;
 
+    default:
+        unregister_code16(KC_LSFT);
+        break;
   }
   dance_state[101].step = 0;
 }
@@ -2741,7 +2691,7 @@ void dance_shift_angle_reset(tap_dance_state_t *state, void *user_data) {
 tap_dance_action_t tap_dance_actions[] = {
                                              [DANCE_29] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_29, dance_29_finished, dance_29_reset),
                                              [DANCE_30] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_30, dance_30_finished, dance_30_reset),
-                                             [DANCE_31] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_31, dance_31_finished, dance_31_reset),
+                                             [DANCE_ALL_MODS] = ACTION_TAP_DANCE_FN_ADVANCED(on_DANCE_ALL_MODS, DANCE_ALL_MODS_finished, DANCE_ALL_MODS_reset),
                                              [DANCE_33] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_33, dance_33_finished, dance_33_reset),
                                              [DANCE_35] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_35, dance_35_finished, dance_35_reset),
                                              [DANCE_36] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_36, dance_36_finished, dance_36_reset),
@@ -2766,7 +2716,6 @@ tap_dance_action_t tap_dance_actions[] = {
                                              [DANCE_61] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_61, dance_61_finished, dance_61_reset),
                                              [DANCE_B] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_b, dance_b_finished, dance_b_reset),
                                              [DANCE_W] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_w, dance_w_finished, dance_w_reset),
-                                             [DANCE_ADHOC_SET_HOTKEY] = ACTION_TAP_DANCE_FN_ADVANCED(on_adhoc_set_hotkey, adhoc_set_hotkey_finished, adhoc_set_hotkey_reset),
                                              [DANCE_ALT] = ACTION_TAP_DANCE_FN_ADVANCED(on_alt, alt_finished, alt_reset),
                                              [DANCE_ALT_OR_RCTRL] = ACTION_TAP_DANCE_FN_ADVANCED(on_alt_or_rctrl, alt_or_rctrl_finished, alt_or_rctrl_reset),
                                              [DANCE_A] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_A, dance_A_finished, dance_A_reset),
@@ -2810,14 +2759,14 @@ tap_dance_action_t tap_dance_actions[] = {
                                              [DANCE_RAISE] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_raise, dance_raise_finished, dance_raise_reset),
                                              [DANCE_RIGHT_OR_END] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_right_or_end, dance_right_or_end_finished, dance_right_or_end_reset),
                                              [DANCE_ROFI] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_rofi, dance_rofi_finished, dance_rofi_reset),
-                                             [DANCE_ROFI_WINDOWS] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_rofi_windows, dance_rofi_windows_finished, dance_rofi_windows_reset),
+                                             [DANCE_LAUNCHER_WINDOWS] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_rofi_windows, dance_rofi_windows_finished, dance_rofi_windows_reset),
                                              [DANCE_R] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_R, dance_R_finished, dance_R_reset),
                                              [DANCE_SAVE_LOAD_NS_SWITCH] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_save_load_ns_switch, dance_save_load_ns_switch_finished, dance_save_load_ns_switch_reset),
                                              [DANCE_SCREENSHOT] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_screenshot, dance_screenshot_finished, dance_screenshot_reset),
-                                             [DANCE_SHIFT_ANGLE] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_shift_angle, dance_shift_angle_finished, dance_shift_angle_reset),
-                                             [DANCE_SHIFT_BRACKET] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_shift_bracket, dance_shift_bracket_finished, dance_shift_bracket_reset),
+                                             [DANCE_LOWER_SHIFT] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_lower_shift, dance_lower_shift_finished, dance_lower_shift_reset),
+                                             [DANCE_RAISE_SHIFT] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_raise_shift, dance_raise_shift_finished, dance_raise_shift_reset),
                                              [DANCE_SHIFT_CURLY] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_shift_curly, dance_shift_curly_finished, dance_shift_curly_reset),
-                                             [DANCE_SHIFT_PAREN] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_shift_paren, dance_shift_paren_finished, dance_shift_paren_reset),
+                                             [DANCE_SHIFT] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_shift, dance_shift_finished, dance_shift_reset),
                                              [DANCE_SPACE] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_space, dance_space_finished, dance_space_reset),
                                              [DANCE_SUPER] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_super, dance_super_finished, dance_super_reset),
                                              [DANCE_TAB] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_tab, dance_tab_finished, dance_tab_reset),

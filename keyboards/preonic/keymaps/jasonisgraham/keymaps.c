@@ -128,7 +128,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                    _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
                                    _______, EMACS_OTHER_WINDOW,     _______, EMACS_BUFFER_REVERT,     _______,  _______, _______, EMACS_COPY_FILE_PATH, LCTL(KC_7),     _______, EMACS_OTHER_WINDOW, _______,
                                    _______, _______, _______, RALT(KC_ENTER), _______, _______, RCTL(KC_QUOTE), RALT(RSFT(KC_H)),RALT(RSFT(KC_J)),RALT(RSFT(KC_K)),RALT(RSFT(KC_L)),RCTL(KC_SCOLON),
-                                   _______, _______, EMACS_WINDOW_CLOSE,    _______, _______, _______,  _______, RALT(RSFT(KC_N)), EMACS_ACE_WINDOW_SWAP,  _______, _______, TERM_CD_UP_DIR,
+                                   _______, _______, EMACS_WINDOW_DELETE,    _______, _______, _______,  _______, RALT(RSFT(KC_N)), EMACS_ACE_WINDOW_SWAP,  _______, _______, TERM_CD_UP_DIR,
                                    _______, _______, _______, OSL(18), _______, _______, _______, KC_NO,          RALT(KC_ENTER), _______, _______, _______
 
   ),
