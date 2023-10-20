@@ -2,10 +2,10 @@
 
 combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo_editing_equal, emacs_indent_buffer),
-    COMBO(combo_s_a, SA_LAYER_ACTIVATE),
+
     COMBO(combo_period_slash, LALT(KC_DOT)),
 
-    COMBO(combo_z_x, EASYMOTION_LEADER),
+    COMBO(combo_z_x, QK_LEAD),
 
     COMBO(combo_super_r_super_g, RESET_INPUT_PREFS),
 
@@ -15,8 +15,6 @@ combo_t key_combos[COMBO_COUNT] = {
 
     COMBO(combo_super_tab_backtab, LGUI(KC_GRAVE)),
     /* COMBO(combo_backspace_y, KC_DELETE), */
-    /* COMBO(combo_apl_mutl, APL_MULT), */
-    /* COMBO(combo_apl_division, APL_DIVISION), */
     /* COMBO(combo_y_i,EMACS_INSIDE_YANK), */
     /* COMBO(combo_d_i,EMACS_INSIDE_DELETE), */
     COMBO(combo_y_t,EMACS_TO_YANK),
@@ -34,7 +32,9 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo_4_10_4_12, KC_RIGHT),
     COMBO(combo_4_11_4_12, KC_RIGHT),
     COMBO(combo_space_m, LALT(KC_M)),
-    COMBO(combo_space_j, LALT(KC_M)),
+    COMBO(combo_space_j, ONE_SHOT_ALT_KEYBOARD),
+    COMBO(combo_space_k, ONE_SHOT_LEVEL3),
+    COMBO(combo_space_l, QK_LEAD),
     COMBO(combo_space_h, LALT(KC_M)),
     COMBO(combo_k47_space, KC_RIGHT),
     COMBO(combo_super_space, KC_DOWN),
@@ -61,6 +61,7 @@ combo_t key_combos[COMBO_COUNT] = {
     /* COMBO(, OSM(MOD_RCTL | MOD_LCTL)), */
     COMBO(combo_k_l, OSM(MOD_RCTL)),
     COMBO(combo_K_L, OSM(MOD_RCTL)),
+    COMBO(combo_lower_k_lower_l, OSM(MOD_RCTL)),
 
     COMBO(combo_h_j, ALL_MODS_OSM),
     COMBO(combo_H_J, ALL_MODS_OSM),
@@ -73,7 +74,6 @@ combo_t key_combos[COMBO_COUNT] = {
     /* COMBO(combo_l_k_semicolon, OSM(MOD_LCTL)), */
     /* COMBO(combo_l_p, OSM(MOD_LCTL)), */
     /* COMBO(combo_M_cap_semi, OSM(MOD_LCTL)), */
-    /* COMBO(combo_lower_k_lower_l, KC_UNDS), */
 
 
 
@@ -83,7 +83,9 @@ combo_t key_combos[COMBO_COUNT] = {
     /* COMBO(combo_w_d, TO(_GAUTH)), */
     COMBO(combo_r_t, KC_AGIN),
 
-    COMBO(combo_backspace_g, OSL(_EMACS_SELECT)),
+    COMBO(combo_e_f, OSL(_EMACS_SELECT)),
+    COMBO(combo_a_s, QK_LEAD),
+    COMBO(combo_q_w, OSL(_EMACS_SELECT)),
     COMBO(combo_k49_k410, OSL(_EMACS_SELECT)),
     COMBO(combo_k49_k410_k11, KC_INSERT),
 
@@ -97,8 +99,8 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo_lower_j_k_l, LAYER_LOWER_HOLD),
     COMBO(combo_LOWER_lower_lower_period_lower_slash, TO(_BASE)),
 
-    COMBO(combo_h_u, TD(DANCE_SAVE_LOAD_NS_SWITCH)),
-    COMBO(combo_j_n, KC_TILDE),
+    COMBO(combo_h_u, KC_LBRACKET),
+    COMBO(combo_j_n, KC_LEFT_ANGLE_BRACKET),
 
     /* COMBO(combo_raise_h_raise_j, KC_DELETE), */
     /* COMBO(combo_my_raise_g, TD(DANCE_MACROS)), */
@@ -117,7 +119,6 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo_windows_k_l, LGUI(KC_MINUS)),
     COMBO(combo_slack_show_desktop, ALT_TAB), // only active in WINDOWS layer. bad name.  alt-tab tho
 
-    COMBO(combo_e_f, TD(DANCE_SAVE_LOAD_NS_SWITCH)),
     /* COMBO(combo_s_c, LALT(KC_SCOLON)), */
 
     // emacs paste
@@ -205,6 +206,19 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo_lower_ampr, KC_AMPR),
     COMBO(combo_lower_astr, KC_ASTR),
 
+
+    COMBO(combo_editor_select_lprn, EMACS_SEL_LPRN),
+    COMBO(combo_editor_select_rprn, EMACS_SEL_RPRN),
+    COMBO(combo_editor_select_exlm, EMACS_SEL_EXLM),
+    COMBO(combo_editor_select_at,   EMACS_SEL_AT),
+    COMBO(combo_editor_select_hash, EMACS_SEL_HASH),
+    COMBO(combo_editor_select_dlr,  EMACS_SEL_DLR),
+    COMBO(combo_editor_select_perc, EMACS_SEL_PERC),
+    COMBO(combo_editor_select_circ, EMACS_SEL_CIRC),
+    COMBO(combo_editor_select_ampr, EMACS_SEL_AMPR),
+    COMBO(combo_editor_select_astr, EMACS_SEL_ASTR),
+
+
     COMBO(combo_shiftlock_lower_lprn, KC_LPRN),
     COMBO(combo_shiftlock_lower_rprn, KC_RPRN),
     COMBO(combo_shiftlock_lower_exlm, KC_EXLM),
@@ -229,48 +243,41 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo_lower_o_p, CTRL_N),
     COMBO(combo_left_shift_forward_slash, KC_ENTER),
 
-
-    COMBO(combo__lower_d_f, backtab),
-    COMBO(combo_raise_d_f, ALT_TAB),
-
-    COMBO(combo_lower_j_k, KC_ENTER),
+    COMBO(combo_space_m_k, OSM(MOD_MASK_ALL_MODS)),
+    COMBO(combo_lower_m_k, OSM(MOD_MASK_ALL_MODS)),
+    COMBO(combo_lower_j_k, RCTL(KC_ENTER)),
     COMBO(combo_raise_j_raise_k, LCTL(KC_ENTER)),
     COMBO(combo_j_k, KC_ENTER),
     COMBO(combo_editing_j_editing_k, FISH_ACCEPT_SEND),
     COMBO(combo_editing_k_editing_l, TERM_CD_PREVIOUS),
     COMBO(combo_J_K, KC_ENTER),
 
+    COMBO(combo_z_x_c, META_X),
     COMBO(combo_period_semicolon, EMACS_COMMENT_READER),
     COMBO(combo_lower_l_semi, EMACS_PRIVATE_READER),
     /* COMBO(combo_bottom_top_mid_column, LLOCK), */
-    COMBO(combo_top_left_hyper, MO(_SYSTEM)),
     COMBO(combo_top_left_my_q, OSL(_CODE)),
-    COMBO(combo_a_s_k, adhoc_set_hotkey),
     COMBO(combo_q_w_e, adhoc_set_hotkey),
-    COMBO(combo_q_w, EMACS_WRAP_HYDRA),
     COMBO(combo_w_d, EMACS_WRAP_HYDRA),
     COMBO(combo_1_7_y, TD(DANCE_MICROPHONE)),
     COMBO(combo_1_7_y_u, OSL(_LAYER_LOCK)),
-    COMBO(combo_k42_k43, LLOCK),
-    COMBO(combo_raise_f, TD(DANCE_MACROS)),
+    COMBO(combo_mod_r1_mod_r4, LLOCK),
     COMBO(combo_raise_r, LAYER_MOUSE_HOLD),
     COMBO(combo_winmove_up_right, WINDOW_TOGGLE_HORIZONTAL_MAX),
     COMBO (combo_lower_semicolon, CLJ_ARROW),
     COMBO(combo_lower_comma_lower_period, BROWSER_SEARCH_OPEN_TABS),
     /* #ifdef PREONIC_BUILD */
-    COMBO(combo_up_left, winmove_UL),
-    COMBO(combo_up_right, winmove_UR),
-    COMBO(combo_right_zero, winmove_R),
-    COMBO(combo_six_left, winmove_L),
-    COMBO(combo_down_left, winmove_DL),
-    COMBO(combo_down_right, winmove_DR),
-    COMBO(combo_left_right, WINDOW_TOGGLE_HORIZONTAL_MAX),
-    COMBO(combo_up_down, winmove_U),
     /* #endif */
 
 
 
-    COMBO(combo_mod_r3_super, KC_RIGHT),
-    COMBO(combo_mod_r2_b, KC_LEFT),
+    COMBO(combo_f_b, KC_MS_BTN1),
+    COMBO(combo_g_r3, KC_MS_BTN2),
+    COMBO(combo_super__f_b, KC_MS_BTN1),
+    COMBO(combo_super__g_r3, KC_MS_BTN2),
+    COMBO(combo_mouse1_mouse2, KC_MS_BTN3),
+    COMBO(combo_mod_r3_super, KC_LEFT),
+    COMBO(combo_mod_r2_b, KC_RIGHT),
+    COMBO(combo_select_grave, EMACS_SEL_GRAVE),
 
 };
