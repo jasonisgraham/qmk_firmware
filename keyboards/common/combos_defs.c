@@ -13,7 +13,7 @@ const uint16_t PROGMEM combo_a_s_k[] = {my_a, my_s, my_k, COMBO_END};
 const uint16_t PROGMEM combo_r_o[] = {my_r, my_o, COMBO_END};
 
 const uint16_t PROGMEM combo_LOWER_SHIFTP[] = {LOWER, my_cap_p, COMBO_END};
-const uint16_t PROGMEM combo_k42_k43[] = {apl_level3_and_adhoc_hotkey, all_mods, COMBO_END};
+const uint16_t PROGMEM combo_k42_k43[] = {alt_keyboard, level3, COMBO_END};
 const uint16_t PROGMEM combo_top_left_hyper[] = {top_left, hyper, COMBO_END};
 const uint16_t PROGMEM combo_top_left_my_q[] = {top_left, my_q, COMBO_END};
 const uint16_t PROGMEM combo_period_slash[] = {my_period, my_forward_slash, COMBO_END};
@@ -398,12 +398,12 @@ const uint16_t PROGMEM combo_super_tab_backtab[] = {super_tab, super_backtab, CO
 /* const uint16_t PROGMEM combo_hyper_slash[] = {LOWER, right_of_lower, my_forward_slash, COMBO_END}; */
 const uint16_t PROGMEM combo_lower_j_k_l[] = {LOWER, my_j, my_k, my_l, COMBO_END};
 
-const uint16_t PROGMEM combo_apl_mutl[] = {APL_QUAD, APL_APOSTROPHE, COMBO_END};
-const uint16_t PROGMEM combo_apl_division[] = {APL_UP_SHOE_JOT, APL_BACKSLASH_BAR, COMBO_END};
-
 const uint16_t PROGMEM combo_editing_j_editing_k[] = {editing_j, editing_k, COMBO_END};
 
 const uint16_t PROGMEM combo_backspace_y[] = {backspace, my_y, COMBO_END};
 
 const uint16_t PROGMEM combo_lower_j_k[] = {LOWER, my_j, my_k, COMBO_END};
+const uint16_t PROGMEM combo_lower_m_k[] = {LOWER, my_m, my_k, COMBO_END};
+const uint16_t PROGMEM combo_space_m_k[] = {my_space, my_m, my_k, COMBO_END};
+
 const uint16_t PROGMEM combo_raise_j_raise_k[] = {my_raise_j, my_raise_k, COMBO_END};

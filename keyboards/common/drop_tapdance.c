@@ -67,7 +67,7 @@ enum tap_dance_codes {
                       DANCE_HOTKEY_OR_COMPOSE,
                       DANCE_HYPER,
                       DANCE_LEFT_OR_HOME,
-                      DANCE_LEVEL3_APL,
+                      DANCE_LEVEL3_ALT_KEYBOARD,
                       DANCE_LOWER,
                       DANCE_MACROS,
                       DANCE_MICROPHONE,
@@ -2191,12 +2191,12 @@ void alt_reset(tap_dance_state_t *state, void *user_data) {
 
 
 
-void on_DANCE_LEVEL3_APL(tap_dance_state_t *state, void *user_data) {
+void on_DANCE_LEVEL3_ALT_KEYBOARD(tap_dance_state_t *state, void *user_data) {
   // on_dance_fn(KC_UP, state, user_data);
 }
 
-void DANCE_LEVEL3_APL_finished(tap_dance_state_t *state, void *user_data) {
-  printf("active_apl_level3_fn: %u\n", active_apl_level3_fn);
+void DANCE_LEVEL3_ALT_KEYBOARD_finished(tap_dance_state_t *state, void *user_data) {
+  printf("active_alt_keyboard_level3_fn: %u\n", active_alt_keyboard_level3_fn);
   printf("tap: %u, tap_int: %u, hold: %u, hold2: %u, mine: %u", TAP, TAP_INTERRUPTED, HOLD, HOLD2, dance_state[84].step);
   dance_state[84].step = dance_step(state);
   switch (dance_state[84].step) {
@@ -2208,12 +2208,12 @@ void DANCE_LEVEL3_APL_finished(tap_dance_state_t *state, void *user_data) {
     set_oneshot_layer(_ADHOC_SET_HOTKEY, ONESHOT_START);
     break;
   case HOLD2:
-    cycle_active_apl_level3_fn();
+    cycle_active_alt_keyboard_level3_fn();
     break;
 
 
   default:
-    switch (active_apl_level3_fn) {
+    switch (active_alt_keyboard_level3_fn) {
     case K74_MO_LEVEL3:
 #ifdef RGBLIGHT_ENABLE
       rgblight_enable_noeeprom();
@@ -2223,7 +2223,7 @@ void DANCE_LEVEL3_APL_finished(tap_dance_state_t *state, void *user_data) {
       register_code16(COMPOSE);
       break;
 
-    case K74_MO_APL:
+    case K74_MO_ALT_KEYBOARD:
 #ifdef RGBLIGHT_ENABLE
       rgblight_enable_noeeprom();
       rgblight_mode(RGBLIGHT_MODE_KNIGHT);
@@ -2236,7 +2236,7 @@ void DANCE_LEVEL3_APL_finished(tap_dance_state_t *state, void *user_data) {
   }
 }
 
-void DANCE_LEVEL3_APL_reset(tap_dance_state_t *state, void *user_data) {
+void DANCE_LEVEL3_ALT_KEYBOARD_reset(tap_dance_state_t *state, void *user_data) {
   wait_ms(10);
   switch (dance_state[84].step) {
   /* case TAP: */
@@ -2686,7 +2686,7 @@ void dance_lower_shift_reset(tap_dance_state_t *state, void *user_data) {
 
 
 
-/* #include "apl_tapdance.c" */
+/* #include "alt_keyboard_tapdance.c" */
 
 tap_dance_action_t tap_dance_actions[] = {
                                              [DANCE_29] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_29, dance_29_finished, dance_29_reset),
@@ -2740,7 +2740,7 @@ tap_dance_action_t tap_dance_actions[] = {
                                              [DANCE_J] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_J, dance_J_finished, dance_J_reset),
                                              [DANCE_K] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_K, dance_K_finished, dance_K_reset),
                                              [DANCE_LEFT_OR_HOME] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_left_or_home, dance_left_or_home_finished, dance_left_or_home_reset),
-                                             [DANCE_LEVEL3_APL] = ACTION_TAP_DANCE_FN_ADVANCED(on_DANCE_LEVEL3_APL, DANCE_LEVEL3_APL_finished, DANCE_LEVEL3_APL_reset),
+                                             [DANCE_LEVEL3_ALT_KEYBOARD] = ACTION_TAP_DANCE_FN_ADVANCED(on_DANCE_LEVEL3_ALT_KEYBOARD, DANCE_LEVEL3_ALT_KEYBOARD_finished, DANCE_LEVEL3_ALT_KEYBOARD_reset),
                                              [DANCE_LOWER] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_lower, dance_lower_finished, dance_lower_reset),
                                              [DANCE_L] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_L, dance_L_finished, dance_L_reset),
                                              [DANCE_MACROS] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_macros, dance_macros_finished, dance_macros_reset),
