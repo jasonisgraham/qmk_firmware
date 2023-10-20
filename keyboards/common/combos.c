@@ -15,8 +15,6 @@ combo_t key_combos[COMBO_COUNT] = {
 
     COMBO(combo_super_tab_backtab, LGUI(KC_GRAVE)),
     /* COMBO(combo_backspace_y, KC_DELETE), */
-    /* COMBO(combo_apl_mutl, APL_MULT), */
-    /* COMBO(combo_apl_division, APL_DIVISION), */
     /* COMBO(combo_y_i,EMACS_INSIDE_YANK), */
     /* COMBO(combo_d_i,EMACS_INSIDE_DELETE), */
     COMBO(combo_y_t,EMACS_TO_YANK),
@@ -97,8 +95,8 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo_lower_j_k_l, LAYER_LOWER_HOLD),
     COMBO(combo_LOWER_lower_lower_period_lower_slash, TO(_BASE)),
 
-    COMBO(combo_h_u, TD(DANCE_SAVE_LOAD_NS_SWITCH)),
-    COMBO(combo_j_n, KC_TILDE),
+    COMBO(combo_h_u, KC_LBRACKET),
+    COMBO(combo_j_n, KC_LEFT_ANGLE_BRACKET),
 
     /* COMBO(combo_raise_h_raise_j, KC_DELETE), */
     /* COMBO(combo_my_raise_g, TD(DANCE_MACROS)), */
@@ -233,7 +231,9 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo__lower_d_f, backtab),
     COMBO(combo_raise_d_f, ALT_TAB),
 
-    COMBO(combo_lower_j_k, KC_ENTER),
+    COMBO(combo_space_m_k, OSM(MOD_MASK_ALL_MODS)),
+    COMBO(combo_lower_m_k, OSM(MOD_MASK_ALL_MODS)),
+    COMBO(combo_lower_j_k, RCTL(KC_ENTER)),
     COMBO(combo_raise_j_raise_k, LCTL(KC_ENTER)),
     COMBO(combo_j_k, KC_ENTER),
     COMBO(combo_editing_j_editing_k, FISH_ACCEPT_SEND),

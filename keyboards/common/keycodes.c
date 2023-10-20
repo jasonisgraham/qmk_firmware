@@ -5,6 +5,7 @@
 /* #include "../../quantum/hacks.c" */
 
 #define MOD_MASK_ALL_MODS_COMPAT (MOD_BIT_LCTRL | MOD_BIT_RCTRL | MOD_BIT_LALT | MOD_MASK_SHIFT | MOD_BIT_RGUI)
+#define MOD_MASK_ALL_MODS (MOD_BIT_RALT | MOD_BIT_RCTRL | MOD_BIT_LCTRL | MOD_BIT_RCTRL | MOD_BIT_LALT | MOD_MASK_SHIFT | MOD_BIT_RGUI)
 #define OSL_RCTL_LALT (MOD_BIT_RCTRL | MOD_BIT_LALT)
 #define ULAUNCHER LGUI(KC_SPACE)
 #define backtab LSFT(KC_TAB)
@@ -319,9 +320,9 @@
 
 enum col7_row4_fns {
                     K74_MO_LEVEL3 = SAFE_RANGE,
-                    K74_MO_APL
+                    K74_MO_ALT_KEYBOARD
                     };
-static int active_apl_level3_fn = K74_MO_LEVEL3;
+static int active_alt_keyboard_level3_fn = K74_MO_LEVEL3;
 
 enum alt_rctrl_fns {
                     MO_ALT = SAFE_RANGE,
@@ -364,26 +365,26 @@ void cycle_active_key_alt_rctrl_fn(void) {
 }
 
 
-void cycle_active_apl_level3_fn(void) {
-  dprintf("cycle active_apl_level3_fn: %u", active_apl_level3_fn);
+void cycle_active_alt_keyboard_level3_fn(void) {
+  dprintf("cycle active_alt_keyboard_level3_fn: %u", active_alt_keyboard_level3_fn);
 
-  switch (active_apl_level3_fn) {
+  switch (active_alt_keyboard_level3_fn) {
   case K74_MO_LEVEL3:
 #ifdef AUDIO_ENABLE
     PLAY_SONG(voice_change_sound);
 #endif
 
-    active_apl_level3_fn = K74_MO_APL;
+    active_alt_keyboard_level3_fn = K74_MO_ALT_KEYBOARD;
     break;
-  case K74_MO_APL:
+  case K74_MO_ALT_KEYBOARD:
 #ifdef AUDIO_ENABLE
     PLAY_SONG(guitar_sound);
 
 #endif
 
-    active_apl_level3_fn = K74_MO_LEVEL3;
+    active_alt_keyboard_level3_fn = K74_MO_LEVEL3;
     break;
-    dprintf("active_apl_level3_fn: %u", active_apl_level3_fn);
+    dprintf("active_alt_keyboard_level3_fn: %u", active_alt_keyboard_level3_fn);
   }
 }
 ;
@@ -470,7 +471,7 @@ enum custom_keycodes {
                       LLOCK_LOWER,
                       LLOCK_EDITING,
                       LLOCK_LEVEL3,
-                      LLOCK_APL,
+                      LLOCK_ALT_KEYBOARD,
                       COPY_LATEST_FILE_TO_CLIPBOARD,
                       CLJ_REFIND,
                       LAUNCHER_SYSTEM,
@@ -487,7 +488,7 @@ enum custom_keycodes {
 
 
                       EMACS_NEXT_SEXP,
-                      CYCLE_ACTIVE_APL_LEVEL3_FN,
+                      CYCLE_ACTIVE_ALT_KEYBOARD_LEVEL3_FN,
                       level3,
                       EMACS_PREV_SEXP,
                       AUTOSHIFT_TOGGLE,
@@ -601,92 +602,11 @@ enum custom_keycodes {
                       SA_LAYER_ACTIVATE,
                       THREAD_FIRST,
                       CLJ_ARROW,
-                      APL_DIAMOND,
-                      APL_QUAD_DIAMOND,
-                      APL_DIAERESIS,
-                      APL_IBEAM,
-                      APL_MACRON,
-                      APL_DEL_TILDE,
-                      APL_LESS,
-                      APL_DEL_STILE,
-                      APL_LESS_EQUAL,
-                      APL_DELTA_STILE,
-                      APL_EQUALS,
-                      APL_CIRCLE_STILE,
-                      APL_GREATER_EQUAL,
-                      APL_CIRCLE_BACKSLASH,
-                      APL_GREATER,
-                      APL_CIRCLED_MINUS,
-                      APL_NOT_EQUAL,
-                      APL_CIRCLE_STAR,
-                      APL_OR,
-                      APL_DOWN_CARET_TILDE,
-                      APL_AND,
-                      APL_UP_CARET_TILDE,
-                      APL_MULT,
-                      APL_EXCL,
-                      APL_DIVISION,
-                      APL_QUAD_DIVIDE,
-                      APL_QUESTION_MARK,
-                      APL_OMEGA,
-                      APL_OMEGA_UNDERBAR,
-                      APL_EPSILON,
-                      APL_SMALL_ELEMENT,
-                      APL_EPSILON_UNDERBAR,
-                      APL_RHO,
-                      APL_TILDE,
-                      APL_TILDE_DIAERESIS,
-                      APL_UPWARDS_ARROW,
-                      APL_DOWNWARDS_ARROW,
-                      APL_IOTA,
-                      APL_IOTA_UNDERBAR,
-                      APL_WHITE_CIRCLE,
-                      APL_CIRCLE_DIAERESIS,
-                      APL_STAR_OPERATOR,
-                      APL_STAR_DIAERESIS,
-                      APL_LEFT_ARROW,
-                      APL_QUOTE_QUAD,
-                      APL_RIGHT_ARROW,
-                      APL_ZILDE,
-                      APL_ALPHA,
-                      APL_ALPHA_UNDERBAR,
-                      APL_LEFT_CEILING,
-                      APL_LEFT_FLOOR,
-                      APL_LOW_LINE,
-                      APL_NABLA,
-                      APL_INCREMENT,
-                      APL_DELTA_UNDERBAR,
-                      APL_RING_OPERATOR,
-                      APL_JOT_DIAERESIS,
-                      APL_APOSTROPHE,
-                      APL_QUAD_EQUAL,
-                      APL_QUAD,
-                      APL_SQUISH_QUAD,
-                      APL_DOWN_TACK_JOT,
-                      APL_IDENTICAL,
-                      APL_UP_TACK_JOT,
-                      APL_NOT_IDENTICAL,
-                      APL_RIGHT_TACK,
-                      APL_LEFT_TACK,
-                      APL_SUBSET,
-                      APL_SUPERSET,
-                      APL_CHI,
-                      APL_INTERSECTION,
-                      APL_UNION,
-                      APL_UP_TACK,
-                      APL_DOWN_TACK,
-                      APL_VERTICAL_LINE,
-                      APL_UP_SHOE_JOT,
-                      APL_COMMA_BAR,
-                      APL_BACKSLASH_BAR,
-                      APL_SLASH_BAR,
-                      APL_QUAD_COLON,
-
 };
 
 
-#define apl_level3_and_adhoc_hotkey TD(DANCE_LEVEL3_APL)
-/* #define mod_r4 apl_level3_and_adhoc_hotkey */
+#define alt_keyboard_level3_and_adhoc_hotkey TD(DANCE_LEVEL3_ALT_KEYBOARD)
+/* #define mod_r4 alt_keyboard_level3_and_adhoc_hotkey */
 
 #define max_buffer LALT(KC_ENTER)
 #define close_x_window RCTL(LGUI(KC_Q))
@@ -807,7 +727,7 @@ bool do_breathing = false;
 /* SS_LGUI(SS_TAP(X_E)) SS_DELAY(100) SS_LALT(SS_TAP(X_M)) */
 /* SS_LGUI(SS_TAP(X_E)) SS_DELAY(100) SS_LGUI(SS_TAP(X_E)) SS_DELAY(100) SS_LALT(SS_TAP(X_M)) */
 
-#define right_of_super MO(_APL)  // X(BANG) // esc_ctrl //  BRACKET_PAREN //all_mods
+#define right_of_super MO(_ALT_KEYBOARD)  // X(BANG) // esc_ctrl //  BRACKET_PAREN //all_mods
 
 
 #define editing_comma emacs_buffer_stack_down
@@ -826,3 +746,6 @@ bool do_breathing = false;
 
 #define CTRL_L RCTL(KC_L)
 #define ctrl_alt_s RALT(RCTL(KC_S))
+
+#define level3 COMPOSE
+#define alt_keyboard KEYBOARD_LAYOUT_HOLD_KEY

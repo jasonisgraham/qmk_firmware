@@ -13,7 +13,7 @@ const uint32_t PROGMEM unicode_map[] = {
 #define planck_base  top_left,    my_q,    my_w,    my_e,    my_r,   my_t, mod_r1,    my_y,           my_u,    my_i,    my_o,     my_p, \
     esc_ctrl , my_a,   my_s,   my_d,   my_f,   my_g, mod_r2,  my_h,         my_j,   my_k,   my_l,   my_semicolon, \
         my_left_shift,        my_z,           my_x,           my_c,           my_v,           my_b, mod_r3,     my_n,   my_m,   my_comma,   my_period,   my_forward_slash, \
-    hyper,  apl_level3_and_adhoc_hotkey, all_mods,       alt, RAISE,  super, mod_r4,   my_space,           LOWER,          my_right_of_lower,   key_left,  key_right
+        hyper, alt_keyboard, level3,       alt, RAISE,  super, mod_r4,   my_space,           LOWER,          my_right_of_lower,   key_left,  key_right
 
 
 
@@ -30,7 +30,7 @@ const uint32_t PROGMEM unicode_map[] = {
 
 #define planck_shiftlock SHIFTLOCK_LAYER_DEACTIVATE,   LSFT(KC_Q),     LSFT(KC_W),     LSFT(KC_E),     LSFT(KC_R),     LSFT(KC_T), _______,    LSFT(KC_Y),     my_cap_u,     my_cap_i,     my_cap_o,     my_cap_p, \
     esc_ctrl,          LSFT(KC_A),     LSFT(KC_S),     my_cap_d,     my_cap_f,     LSFT(KC_G), _______,    my_cap_h,     my_cap_j,     my_cap_k,     my_cap_l,     my_cap_semi, \
-    my_left_shift,          LSFT(KC_Z),     LSFT(KC_X),     LSFT(KC_C),     LSFT(KC_V),     LSFT(KC_B), _______,   my_cap_n,     my_cap_m,     my_cap_comma,        my_cap_period,        my_forward_slash, \
+        SHIFTLOCK_LAYER_DEACTIVATE,          LSFT(KC_Z),     LSFT(KC_X),     LSFT(KC_C),     LSFT(KC_V),     LSFT(KC_B), _______,   my_cap_n,     my_cap_m,     my_cap_comma,        my_cap_period,        my_forward_slash, \
     _______, _______, _______, _______, RAISE, _______, _______,       _______,    LOWER,  _______, _______, _______
 
 #define planck_lower                               EMACS_OTHER_WINDOW,   my_lower_q,          my_lower_w,          my_lower_e,          my_lower_r,  TD(DANCE_SCREENSHOT),        _______ ,    KC_HOME,     my_lower_u,    my_lower_i,      my_lower_o,         my_lower_p, \
@@ -104,10 +104,10 @@ const uint32_t PROGMEM unicode_map[] = {
 
 
 #define planck_system                                \
-    QK_DEBUG_TOGGLE, _______, RGB_VAI, _______, RESET_INPUT_PREFS,     _______, CYCLE_ACTIVE_APL_LEVEL3_FN, QK_KEY_OVERRIDE_ON, KC_BRIGHTNESS_DOWN, KC_BRIGHTNESS_UP, QK_CLEAR_EEPROM, KC_MEDIA_PLAY_PAUSE, \
+    QK_DEBUG_TOGGLE, _______, RGB_VAI, _______, RESET_INPUT_PREFS,     _______, CYCLE_ACTIVE_ALT_KEYBOARD_LEVEL3_FN, QK_KEY_OVERRIDE_ON, KC_BRIGHTNESS_DOWN, KC_BRIGHTNESS_UP, QK_CLEAR_EEPROM, KC_MEDIA_PLAY_PAUSE, \
     AS_TOGG, AUTOSHIFT_TOGGLE, RGB_VAD, _______, _______, _______, _______, _______, KC_AUDIO_VOL_DOWN, KC_AUDIO_VOL_UP, QK_AUTOCORRECT_ON, DB_TOGG, \
     QK_CLEAR_EEPROM, _______ , _______, _______, _______, _______,   _______, _______,  KC_AUDIO_MUTE, CYCLE_DROP_ANIMATIONS, RGB_SAI, QK_BOOTLOADER, \
-    SYSTEM_LAYER_DEACTIVATE, _______, _______, _______, _______,     _______, CYCLE_ACTIVE_APL_LEVEL3_FN, KC_MEDIA_PLAY_PAUSE, RGB_MOD, DM_REC1, DM_RSTP, DM_PLY1
+    SYSTEM_LAYER_DEACTIVATE, _______, _______, _______, _______,     _______, CYCLE_ACTIVE_ALT_KEYBOARD_LEVEL3_FN, KC_MEDIA_PLAY_PAUSE, RGB_MOD, DM_REC1, DM_RSTP, DM_PLY1
 
 
 #define planck_windows ALT_TAB, WINDOWS_Q,   LGUI(KC_W),   select_emacs,     TD(DANCE_40),   LGUI(KC_T), LGUI(KC_MINUS),  LGUI(KC_Y),   LGUI(KC_7),        LGUI(KC_8),     LGUI(KC_9),     LGUI(KC_0), \
@@ -145,7 +145,7 @@ const uint32_t PROGMEM unicode_map[] = {
 #define planck_layer_lock                                      _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______, \
     TO(_BASE), _______, _______, _______, _______, _______,   _______, _______, _______, _______, _______, _______, \
     SHIFTLOCK_LAYER_ACTIVATE, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
-    SYSTEM_LAYER_ACTIVATE, _______, _______, _______,    LLOCK_RAISE,  _______, LLOCK_APL, _______,    LLOCK_LOWER, LLOCK_EDITING, _______, _______
+    SYSTEM_LAYER_ACTIVATE, _______, _______, _______,    LLOCK_RAISE,  _______, LLOCK_ALT_KEYBOARD, _______,    LLOCK_LOWER, LLOCK_EDITING, _______, _______
 
 #define planck_scratch _______, _______, _______, _______, _______, _______,   _______, _______, _______, _______, _______, _______, \
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
