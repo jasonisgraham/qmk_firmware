@@ -75,7 +75,7 @@ planck_hyper                                         ),
 [_EMACS_SELECT] = LAYOUT_wrapper(planck_emacs_select                                         ),
 
 [_FILES] = LAYOUT_wrapper(planck_files                                         ),
-[_WEB] = LAYOUT_wrapper(planck_web                                         )
+[_WEB] = LAYOUT_wrapper(planck_web                                         ),
+[_MOTION] = LAYOUT_wrapper(planck_motion                                         )
 
   };
-

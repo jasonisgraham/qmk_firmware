@@ -66,6 +66,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
         break;
 
+    case SAVE_FILE_THEN_VIM_NORMAL_MODE:
+        if (record->event.pressed) {
+        }
+        break;
+
     case EQUAL_THEN_SPACE:
         if (record->event.pressed) {
             SEND_STRING("= ");
@@ -122,34 +127,29 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     case TO_BASE:
         if (record->event.pressed) {
-            clear_modifiers();
+            PLAY_SONG(caps_lock_off_sound);
             layer_move(_BASE);
+            clear_modifiers();
+            unregister_key(level3);
+            unregister_key(KEYBOARD_LAYOUT_HOLD_KEY);
         }
         break;
 
 
-    case LLOCK_APL:
+    case LLOCK_ALT_KEYBOARD:
         if (record->event.pressed) {
             clear_modifiers();
             layer_move(_BASE);
-            switch (active_apl_level3_fn) {
-            case K74_MO_LEVEL3:
-#ifdef RGBLIGHT_ENABLE
-                rgblight_enable_noeeprom();
-                rgblight_mode(RGBLIGHT_MODE_SNAKE);
-                rgblight_sethsv_noeeprom(HSV_PINK);
-#endif
-                register_code16(KC_KP_ENTER);
-                break;
-            case K74_MO_APL:
-#ifdef RGBLIGHT_ENABLE
-                rgblight_enable_noeeprom();
-                rgblight_mode(RGBLIGHT_MODE_KNIGHT);
-                rgblight_sethsv_noeeprom(HSV_GREEN);
-#endif
-                register_code16(KEYBOARD_LAYOUT_HOLD_KEY);
-                break;
-            }
+            register_key(KEYBOARD_LAYOUT_HOLD_KEY);
+            return false;
+        }
+        break;
+
+    case LLOCK_LEVEL3:
+        if (record->event.pressed) {
+            clear_modifiers();
+            layer_move(_BASE);
+            register_key(level3);
             return false;
         }
         break;
@@ -436,959 +436,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 
         // ------
-    case APL_ALPHA:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_A);
-            tap_code16(KC_L);
-            return false;
-
-        }
-        break;
-
-    case APL_AND:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_A);
-            tap_code16(KC_N);
-            return false;
-
-
-        }
-        break;
-
-    case APL_APOSTROPHE:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_A);
-            tap_code16(KC_P);
-            return false;
-
-
-        }
-        break;
-
-    case APL_ALPHA_UNDERBAR:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_A);
-            tap_code16(KC_U);
-            return false;
-
-
-        }
-        break;
-
-    case APL_BACKSLASH_BAR:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_B);
-            tap_code16(KC_B);
-            return false;
-
-
-        }
-        break;
-
-    case APL_COMMA_BAR:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_C);
-            tap_code16(KC_B);
-            return false;
-
-
-        }
-        break;
-
-    case APL_CIRCLE_DIAERESIS:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_C);
-            tap_code16(KC_D);
-            return false;
-
-
-        }
-        break;
-
-    case APL_CHI:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_C);
-            tap_code16(KC_H);
-            return false;
-
-
-        }
-        break;
-
-    case APL_CIRCLE_BACKSLASH:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_C);
-            tap_code16(KC_I);
-            return false;
-
-
-        }
-        break;
-
-    case APL_CIRCLE_STILE:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_C);
-            tap_code16(KC_L);
-            return false;
-
-
-        }
-        break;
-
-    case APL_CIRCLED_MINUS:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_C);
-            tap_code16(KC_M);
-            return false;
-
-
-        }
-        break;
-
-    case APL_CIRCLE_STAR:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_C);
-            tap_code16(KC_S);
-            return false;
-
-
-        }
-        break;
-
-    case APL_DOWNWARDS_ARROW:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_D);
-            tap_code16(KC_A);
-            return false;
-
-
-        }
-        break;
-
-
-
-    case APL_DOWN_CARET_TILDE:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_D);
-            tap_code16(KC_C);
-            return false;
-
-
-        }
-        break;
-
-    case APL_DIAERESIS:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_D);
-            tap_code16(KC_I);
-            return false;
-
-
-        }
-        break;
-
-    case APL_DOWN_TACK_JOT:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_D);
-            tap_code16(KC_J);
-            return false;
-
-
-        }
-        break;
-
-    case APL_DEL_STILE:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_D);
-            tap_code16(KC_L);
-            return false;
-
-
-        }
-        break;
-
-    case APL_DIAMOND:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_D);
-            tap_code16(KC_M);
-            return false;
-
-
-        }
-        break;
-
-    case APL_DELTA_STILE:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_D);
-            tap_code16(KC_S);
-            return false;
-
-
-        }
-        break;
-
-    case APL_DELTA_UNDERBAR:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_D);
-            tap_code16(KC_U);
-            return false;
-
-
-        }
-        break;
-
-    case APL_DIVISION:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_D);
-            tap_code16(KC_V);
-            return false;
-
-
-        }
-        break;
-
-    case APL_EPSILON:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_E);
-            tap_code16(KC_P);
-            return false;
-
-
-        }
-        break;
-
-    case APL_EQUALS:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_E);
-            tap_code16(KC_Q);
-            return false;
-
-
-        }
-        break;
-
-    case APL_EPSILON_UNDERBAR:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_E);
-            tap_code16(KC_U);
-            return false;
-
-
-        }
-        break;
-
-    case APL_GREATER_EQUAL:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_G);
-            tap_code16(KC_E);
-            return false;
-
-
-        }
-        break;
-
-    case APL_GREATER:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_G);
-            tap_code16(KC_R);
-            return false;
-
-
-        }
-        break;
-
-    case APL_IBEAM:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_I);
-            tap_code16(KC_B);
-            return false;
-
-
-        }
-        break;
-
-    case APL_INCREMENT:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_I);
-            tap_code16(KC_C);
-            return false;
-
-
-        }
-        break;
-
-    case APL_IDENTICAL:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_I);
-            tap_code16(KC_D);
-            return false;
-
-
-        }
-        break;
-
-    case APL_INTERSECTION:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_I);
-            tap_code16(KC_N);
-            return false;
-
-
-        }
-        break;
-
-    case APL_IOTA:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_I);
-            tap_code16(KC_O);
-            return false;
-
-
-        }
-        break;
-
-    case APL_IOTA_UNDERBAR:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_I);
-            tap_code16(KC_U);
-            return false;
-
-
-        }
-        break;
-
-    case APL_JOT_DIAERESIS:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_J);
-            tap_code16(KC_D);
-            return false;
-
-
-        }
-        break;
-
-    case APL_LEFT_ARROW:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_L);
-            tap_code16(KC_A);
-            return false;
-
-
-        }
-        break;
-
-    case APL_LEFT_CEILING:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_L);
-            tap_code16(KC_C);
-            return false;
-
-
-        }
-        break;
-
-    case APL_LESS_EQUAL:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_L);
-            tap_code16(KC_E);
-            return false;
-
-
-        }
-        break;
-
-    case APL_LEFT_FLOOR:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_L);
-            tap_code16(KC_F);
-            return false;
-
-
-        }
-        break;
-
-    case APL_LOW_LINE:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_L);
-            tap_code16(KC_L);
-            return false;
-
-
-        }
-        break;
-
-    case APL_LESS:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_L);
-            tap_code16(KC_S);
-            return false;
-
-
-        }
-        break;
-
-    case APL_LEFT_TACK:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_L);
-            tap_code16(KC_T);
-            return false;
-
-
-        }
-        break;
-
-    case APL_MACRON:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_M);
-            tap_code16(KC_C);
-            return false;
-
-
-        }
-        break;
-
-    case APL_MULT:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_M);
-            tap_code16(KC_U);
-            return false;
-
-
-        }
-        break;
-
-    case APL_NABLA:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_N);
-            tap_code16(KC_A);
-            return false;
-
-
-        }
-        break;
-
-    case APL_NOT_EQUAL:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_N);
-            tap_code16(KC_E);
-            return false;
-
-
-        }
-        break;
-
-    case APL_NOT_IDENTICAL:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_N);
-            tap_code16(KC_I);
-            return false;
-
-
-        }
-        break;
-
-    case APL_OMEGA:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_O);
-            tap_code16(KC_M);
-            return false;
-
-
-        }
-        break;
-
-    case APL_OR:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_O);
-            tap_code16(KC_R);
-            return false;
-
-
-        }
-        break;
-
-    case APL_OMEGA_UNDERBAR:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_O);
-            tap_code16(KC_U);
-            return false;
-
-
-        }
-        break;
-
-    case APL_WHITE_CIRCLE:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_P);
-            tap_code16(KC_I);
-            return false;
-
-
-        }
-        break;
-
-    case APL_QUAD_COLON:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_Q);
-            tap_code16(KC_C);
-            return false;
-
-
-        }
-        break;
-
-    case APL_QUAD_DIVIDE:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_Q);
-            tap_code16(KC_D);
-            return false;
-
-
-        }
-        break;
-
-    case APL_QUAD_EQUAL:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_Q);
-            tap_code16(KC_E);
-            return false;
-
-
-        }
-        break;
-
-    case APL_QUESTION_MARK:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_Q);
-            tap_code16(KC_M);
-            return false;
-
-
-        }
-        break;
-
-    case APL_QUOTE_QUAD:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_Q);
-            tap_code16(KC_Q);
-            return false;
-
-
-        }
-        break;
-
-    case APL_QUAD:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_Q);
-            tap_code16(KC_U);
-            return false;
-
-
-        }
-        break;
-
-    case APL_RIGHT_ARROW:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_R);
-            tap_code16(KC_A);
-            return false;
-
-
-        }
-        break;
-
-    case APL_RHO:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_R);
-            tap_code16(KC_H);
-            return false;
-
-
-        }
-        break;
-
-    case APL_RING_OPERATOR:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_R);
-            tap_code16(KC_I);
-            return false;
-
-
-        }
-        break;
-
-    case APL_RIGHT_TACK:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_R);
-            tap_code16(KC_T);
-            return false;
-
-
-        }
-        break;
-
-    case APL_SLASH_BAR:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_S);
-            tap_code16(KC_B);
-            return false;
-
-
-        }
-        break;
-
-    case APL_STAR_DIAERESIS:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_S);
-            tap_code16(KC_D);
-            return false;
-
-
-        }
-        break;
-
-    case APL_SMALL_ELEMENT:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_S);
-            tap_code16(KC_E);
-            return false;
-
-
-        }
-        break;
-
-    case APL_STAR_OPERATOR:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_S);
-            tap_code16(KC_O);
-            return false;
-
-
-        }
-        break;
-
-    case APL_SUPERSET:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_S);
-            tap_code16(KC_P);
-            return false;
-
-
-        }
-        break;
-
-    case APL_SQUISH_QUAD:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_S);
-            tap_code16(KC_Q);
-            return false;
-
-
-        }
-        break;
-
-    case APL_TILDE_DIAERESIS:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_T);
-            tap_code16(KC_D);
-            return false;
-
-
-        }
-        break;
-
-    case APL_TILDE:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_T);
-            tap_code16(KC_I);
-            return false;
-
-
-        }
-        break;
-
-    case APL_UPWARDS_ARROW:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_U);
-            tap_code16(KC_A);
-            return false;
-
-
-        }
-        break;
-
-    case APL_UP_CARET_TILDE:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_U);
-            tap_code16(KC_C);
-            return false;
-
-
-        }
-        break;
-
-    case APL_UNION:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_U);
-            tap_code16(KC_N);
-            return false;
-
-
-        }
-        break;
-
-    case APL_UP_TACK:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_U);
-            tap_code16(KC_T);
-            return false;
-
-
-        }
-        break;
-
-    case APL_VERTICAL_LINE:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_V);
-            tap_code16(KC_L);
-            return false;
-
-
-        }
-        break;
-
-    case APL_ZILDE:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_A);
-            tap_code16(KC_Z);
-            tap_code16(KC_I);
-            return false;
-
-
-        }
-        break;
-
-    case APL_DEL_TILDE:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_D);
-            tap_code16(KC_T);
-            tap_code16(KC_I);
-            return false;
-
-
-        }
-        break;
-
-    case APL_DOWN_TACK:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_D);
-            tap_code16(KC_T);
-            tap_code16(KC_K);
-            return false;
-
-
-        }
-        break;
-
-    case APL_QUAD_DIAMOND:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_Q);
-            tap_code16(KC_D);
-            tap_code16(KC_I);
-            return false;
-
-
-        }
-        break;
-
-    case APL_SUBSET:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_S);
-            tap_code16(KC_U);
-            tap_code16(KC_B);
-            return false;
-
-
-        }
-        break;
-
-    case APL_UP_SHOE_JOT:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_U);
-            tap_code16(KC_S);
-            tap_code16(KC_J);
-            return false;
-
-
-        }
-        break;
-
-    case APL_UP_TACK_JOT:
-        if (record->event.pressed) {
-            tap_code16(KC_SCROLL_LOCK);
-            tap_code16(KC_U);
-            tap_code16(KC_T);
-            tap_code16(KC_J);
-            return false;
-
-
-        }
-        break;
-
-
-        // ----
-
-
 
     case OPEN_PAREN:
         if (record->event.pressed) {
@@ -1502,9 +549,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         break;
 #endif
 
-    case CYCLE_ACTIVE_APL_LEVEL3_FN:
+    case CYCLE_ACTIVE_ALT_KEYBOARD_LEVEL3_FN:
         if (record->event.pressed) {
-            cycle_active_apl_level3_fn();
+            cycle_active_alt_keyboard_level3_fn();
         }
         break;
 
@@ -1607,9 +654,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 /*       /\* rgblight_mode(42); *\/ */
       /* #endif */
       layer_move(_BASE);
-      // #ifdef AUDIO_ENABLE
-      //       PLAY_SONG(caps_lock_off_sound);
-      // #endif
+      #ifdef AUDIO_ENABLE
+            PLAY_SONG(caps_lock_off_sound);
+      #endif
 #ifdef RGBLIGHT_ENABLE
       /* rgblight_mode(RGBLIGHT_ENABLE_RAINBOW_SWIRL); */
 #endif
@@ -1654,8 +701,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   case EMACS_BUFFER_REVERT:
     if (record->event.pressed) {
-        SEND_STRING(SS_RCTL(SS_TAP(X_C)) SS_DELAY(50)  SS_TAP(X_R));
-
+        tap_code16(RCTL (KC_X));
+        wait_ms(50);
+        tap_code16(RCTL(KC_R));
     }
     break;
 
@@ -1734,7 +782,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   case THREAD_FIRST:
     if (record->event.pressed) {
-      SEND_STRING("-> ") ;
+        tap_code16(KC_MINUS);
+        wait_ms(50);
+        tap_code16(KC_RIGHT_ANGLE_BRACKET);
+        tap_code16(KC_SPACE);
     }
     break;
 
@@ -1988,7 +1039,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   case AUTOSHIFT_TOGGLE:
     if (record->event.pressed) {
-      /* tap_code16(KC_ASTG); */
       if (get_autoshift_state()) {
         autoshift_disable();
 #ifdef AUDIO_ENABLE
@@ -2203,23 +1253,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     case MOVE_STATEMENT_UP:
         if (record->event.pressed) {
-            tap_code16(RCTL(KC_X));
-            wait_ms(30);
-            add_oneshot_mods(MOD_MASK_ALL_MODS_COMPAT);
-            tap_code16(KC_UP);
-            del_oneshot_mods(MOD_MASK_ALL_MODS_COMPAT);
-
+            tap_code16(LALT(LSFT(KC_UP)));
         }
         break;
 
     case MOVE_STATEMENT_DOWN:
         if (record->event.pressed) {
-            tap_code16(RCTL(KC_X));
-            wait_ms(30);
-            add_oneshot_mods(MOD_MASK_ALL_MODS_COMPAT);
-            tap_code16(KC_DOWN);
-            del_oneshot_mods(MOD_MASK_ALL_MODS_COMPAT);
-
+            tap_code16(LALT(LSFT(KC_DOWN)));
         }
         break;
 
@@ -2246,85 +1286,57 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         break;
 
 
+    case EMACS_SEL_P:
+        if (record->event.pressed) {
+            tap_code16(LALT(KC_0));
+        }
+    break;
 
+    case EMACS_SEL_M:
+        if (record->event.pressed) {
+            tap_code16(LALT(KC_1));
+        }
+        break;
 
-  case EMACS_SEL_0:
-    if (record->event.pressed) {
-      SEND_STRING(SS_DELAY(100));
-      SEND_STRING( SS_LALT(SS_TAP(X_M)) SS_DELAY(100) SS_TAP(X_0));
-      layer_move(_BASE);
+    case EMACS_SEL_COMMA:
+        if (record->event.pressed) {
+            tap_code16(LALT(KC_2));
+        }
+        break;
+
+    case EMACS_SEL_DOT:
+        if (record->event.pressed) {
+        tap_code16(LALT(KC_3));
+        }
+        break;
+
+    case EMACS_SEL_J:
+        if (record->event.pressed) {
+        tap_code16(LALT(KC_4));
+        }
+        break;
+
+    case EMACS_SEL_K:
+        if (record->event.pressed) {
+        tap_code16(LALT(KC_5));
     }
     break;
 
-  case EMACS_SEL_1:
+  case EMACS_SEL_L:
     if (record->event.pressed) {
-      SEND_STRING(SS_DELAY(100));
-      SEND_STRING( SS_LALT(SS_TAP(X_M)) SS_DELAY(100) SS_TAP(X_1));
-      layer_move(_BASE);
+        tap_code16(LALT(KC_6));
     }
     break;
 
-  case EMACS_SEL_2:
+  case EMACS_SEL_U:
     if (record->event.pressed) {
-      SEND_STRING(SS_DELAY(100));
-      SEND_STRING( SS_LALT(SS_TAP(X_M)) SS_DELAY(100) SS_TAP(X_2));
-      layer_move(_BASE);
+        tap_code16(LALT(KC_7));
     }
     break;
 
-  case EMACS_SEL_3:
+  case EMACS_SEL_I:
     if (record->event.pressed) {
-      SEND_STRING(SS_DELAY(100));
-      SEND_STRING( SS_LALT(SS_TAP(X_M)) SS_DELAY(100) SS_TAP(X_3));
-      layer_move(_BASE);
-    }
-    break;
-
-  case EMACS_SEL_4:
-    if (record->event.pressed) {
-      SEND_STRING(SS_DELAY(100));
-      SEND_STRING( SS_LALT(SS_TAP(X_M)) SS_DELAY(100) SS_TAP(X_4));
-      layer_move(_BASE);
-    }
-    break;
-
-  case EMACS_SEL_5:
-    if (record->event.pressed) {
-      SEND_STRING(SS_DELAY(100));
-      SEND_STRING( SS_LALT(SS_TAP(X_M)) SS_DELAY(100) SS_TAP(X_5));
-      layer_move(_BASE);
-    }
-    break;
-
-  case EMACS_SEL_6:
-    if (record->event.pressed) {
-      SEND_STRING(SS_DELAY(100));
-      SEND_STRING( SS_LALT(SS_TAP(X_M)) SS_DELAY(100) SS_TAP(X_6));
-      layer_move(_BASE);
-    }
-    break;
-
-  case EMACS_SEL_7:
-    if (record->event.pressed) {
-      SEND_STRING(SS_DELAY(100));
-      SEND_STRING( SS_LALT(SS_TAP(X_M)) SS_DELAY(100) SS_TAP(X_7));
-      layer_move(_BASE);
-    }
-    break;
-
-  case EMACS_SEL_8:
-    if (record->event.pressed) {
-      SEND_STRING(SS_DELAY(100));
-      SEND_STRING( SS_LALT(SS_TAP(X_M)) SS_DELAY(100) SS_TAP(X_8));
-      layer_move(_BASE);
-    }
-    break;
-
-  case EMACS_SEL_9:
-    if (record->event.pressed) {
-      SEND_STRING(SS_DELAY(100));
-      SEND_STRING( SS_LALT(SS_TAP(X_M)) SS_DELAY(100) SS_TAP(X_9));
-      layer_move(_BASE);
+        tap_code16(LALT(KC_8));
     }
     break;
 
@@ -2500,25 +1512,395 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     case SELECTION_SHRINK:
         if (record->event.pressed) {
-            tap_code16(RCTL(KC_X));
+            tap_code16(LALT(KC_M));
             wait_ms(50);
-            add_oneshot_mods(MOD_MASK_ALL_MODS_COMPAT);
-            tap_code16(KC_U);
-            del_oneshot_mods(MOD_MASK_ALL_MODS_COMPAT);
+            tap_code16(RSFT(KC_V));
         }
         return false;
         break;
 
     case SELECTION_EXPAND:
         if (record->event.pressed) {
-            tap_code16(RCTL(KC_X));
+            tap_code16(LALT(KC_M));
             wait_ms(50);
-            add_oneshot_mods(MOD_MASK_ALL_MODS_COMPAT);
-            tap_code16(KC_I);
-            del_oneshot_mods(MOD_MASK_ALL_MODS_COMPAT);
+            tap_code16(KC_V);
         }
         return false;
         break;
+
+    case ONE_SHOT_ALT_KEYBOARD:
+    if (record->event.pressed) {
+        set_oneshot_mods(MOD_BIT_RGUI);
+    }
+    return false;
+    break;
+
+    case ONE_SHOT_LEVEL3:
+        if (record->event.pressed) {
+            set_oneshot_mods(MOD_BIT_RALT);
+        }
+        return false;
+        break;
+
+    case EMACS_SEL_O:
+        if (record->event.pressed) {
+            tap_code16(LALT(KC_9));
+        }
+        return false;
+        break;
+
+    case EMACS_SEL_GRAVE:
+        if (record->event.pressed) {
+            tap_code16(RCTL(KC_X));
+            wait_ms(50);
+            tap_code16(LALT(KC_GRAVE));
+        }
+    return false;
+    break;
+
+
+    case EMACS_SEL_TAB:
+        if (record->event.pressed) {
+            tap_code16(RCTL(KC_X));
+            wait_ms(50);
+            tap_code16(RCTL(LALT(KC_SPACE)));
+        }
+        return false;
+        break;
+
+    case EMACS_SEL_A:
+        if (record->event.pressed) {
+            tap_code16(RCTL(KC_X));
+            wait_ms(50);
+            tap_code16(LALT(KC_A));
+        }
+        return false;
+        break;
+
+    case EMACS_SEL_S:
+        if (record->event.pressed) {
+            tap_code16(RCTL(KC_X));
+            wait_ms(50);
+            tap_code16(LALT(KC_S));
+        }
+        return false;
+        break;
+
+    case EMACS_SEL_LOWER:
+        if (record->event.pressed) {
+            tap_code16(RCTL(KC_X));
+            wait_ms(50);
+            tap_code16(LALT(KC_MINUS));
+        }
+        return false;
+        break;
+
+    case EMACS_SEL_MODR1:
+        if (record->event.pressed) {
+            tap_code16(LSFT(RCTL(KC_X)));
+            wait_ms(50);
+            tap_code16(RCTL(LALT(KC_EXLM)));
+        }
+        return false;
+        break;
+
+
+    case EMACS_SEL_MODR2:
+        if (record->event.pressed) {
+            tap_code16(LSFT(RCTL(KC_X)));
+            wait_ms(50);
+            tap_code16(RCTL(LALT(KC_AT)));
+        }
+        return false;
+        break;
+
+
+    case EMACS_SEL_MODR3:
+        if (record->event.pressed) {
+            tap_code16(LSFT(RCTL(KC_X)));
+            wait_ms(50);
+            tap_code16(RCTL(LALT(KC_HASH)));
+        }
+        return false;
+        break;
+
+
+    case EMACS_SEL_EXLM:
+        if (record->event.pressed) {
+            tap_code16(LSFT(RCTL(KC_X)));
+            wait_ms(50);
+            tap_code16(RCTL(LALT(KC_EXLM)));
+        }
+        return false;
+        break;
+
+    case EMACS_SEL_AT:
+        if (record->event.pressed) {
+            tap_code16(LSFT(RCTL(KC_X)));
+            wait_ms(50);
+            tap_code16(RCTL(LALT(KC_AT)));
+        }
+        return false;
+        break;
+
+
+    case EMACS_SEL_HASH:
+        if (record->event.pressed) {
+            tap_code16(LSFT(RCTL(KC_X)));
+            wait_ms(50);
+            tap_code16(RCTL(LALT(KC_HASH)));
+        }
+        return false;
+        break;
+
+
+    case EMACS_SEL_DLR:
+        if (record->event.pressed) {
+            tap_code16(LSFT(RCTL(KC_X)));
+            wait_ms(50);
+            tap_code16(RCTL(LALT(KC_DLR)));
+        }
+        return false;
+        break;
+
+
+    case EMACS_SEL_PERC:
+        if (record->event.pressed) {
+            tap_code16(LSFT(RCTL(KC_X)));
+            wait_ms(50);
+            tap_code16(RCTL(LALT(KC_PERC)));
+        }
+        return false;
+        break;
+
+
+    case EMACS_SEL_CIRC:
+        if (record->event.pressed) {
+            tap_code16(LSFT(RCTL(KC_X)));
+            wait_ms(50);
+            tap_code16(RCTL(LALT(KC_CIRC)));
+        }
+        return false;
+        break;
+
+
+    case EMACS_SEL_AMPR:
+        if (record->event.pressed) {
+            tap_code16(LSFT(RCTL(KC_X)));
+            wait_ms(50);
+            tap_code16(RCTL(LALT(KC_AMPR)));
+        }
+        return false;
+        break;
+
+
+    case EMACS_SEL_ASTR:
+        if (record->event.pressed) {
+            tap_code16(LSFT(RCTL(KC_X)));
+            wait_ms(50);
+            tap_code16(RCTL(LALT(KC_ASTR)));
+        }
+        return false;
+        break;
+
+
+    case EMACS_SEL_LPRN:
+        if (record->event.pressed) {
+            tap_code16(LSFT(RCTL(KC_X)));
+            wait_ms(50);
+            tap_code16(RCTL(LALT(KC_LPRN)));
+        }
+        return false;
+        break;
+
+
+    case EMACS_SEL_RPRN:
+        if (record->event.pressed) {
+            tap_code16(LSFT(RCTL(KC_X)));
+            wait_ms(50);
+            tap_code16(RCTL(LALT(KC_RPRN)));
+        }
+        return false;
+        break;
+
+
+
+    case EMACS_SEL_MODR4:
+        if (record->event.pressed) {
+            tap_code16(LSFT(RCTL(KC_X)));
+            wait_ms(50);
+            tap_code16(RCTL(LALT(KC_DLR)));
+        }
+        return false;
+        break;
+
+    case EMACS_SEL_SLASH:
+        if (record->event.pressed) {
+            tap_code16(RCTL(KC_X));
+            wait_ms(50);
+            tap_code16(LALT(KC_SLASH));
+        }
+        return false;
+        break;
+
+    case EMACS_SEL_N:
+        if (record->event.pressed) {
+            tap_code16(RCTL(KC_X));
+            wait_ms(50);
+            tap_code16(LALT(KC_N));
+        }
+        return false;
+        break;
+
+
+
+    case EMACS_SEL_SCLN:
+        if (record->event.pressed) {
+            tap_code16(RCTL(KC_X));
+            wait_ms(50);
+            tap_code16(LALT(KC_SCLN));
+        }
+        return false;
+        break;
+
+
+    case EMACS_SEL_D:
+        if (record->event.pressed) {
+            tap_code16(RCTL(KC_X));
+            wait_ms(50);
+            tap_code16(LALT(KC_D));
+        }
+        return false;
+        break;
+
+    case EMACS_SEL_T:
+        if (record->event.pressed) {
+            tap_code16(RCTL(KC_X));
+            wait_ms(50);
+            tap_code16(LALT(KC_T));
+        }
+        return false;
+        break;
+
+
+    case EMACS_SEL_C:
+        if (record->event.pressed) {
+            tap_code16(RCTL(KC_X));
+            wait_ms(50);
+            tap_code16(LALT(KC_C));
+        }
+        return false;
+        break;
+
+    case EMACS_SEL_R:
+        if (record->event.pressed) {
+            tap_code16(RCTL(KC_X));
+            wait_ms(50);
+            tap_code16(LALT(KC_R));
+        }
+        return false;
+        break;
+
+    case EMACS_SEL_G:
+        if (record->event.pressed) {
+            tap_code16(RCTL(KC_X));
+            wait_ms(50);
+            tap_code16(LALT(KC_G));
+        }
+        return false;
+        break;
+
+    case EMACS_SEL_F:
+        if (record->event.pressed) {
+            tap_code16(RCTL(KC_X));
+            wait_ms(50);
+            tap_code16(LALT(KC_F));
+        }
+        return false;
+        break;
+
+    case EMACS_SEL_RAISE:
+        if (record->event.pressed) {
+            tap_code16(RCTL(KC_X));
+            wait_ms(50);
+            tap_code16(LALT(KC_UNDS));
+        }
+        return false;
+        break;
+
+    case EMACS_SEL_H:
+        if (record->event.pressed) {
+            tap_code16(RCTL(KC_X));
+            wait_ms(50);
+            tap_code16(LALT(KC_H));
+        }
+        return false;
+        break;
+
+    case EMACS_SEL_Y:
+        if (record->event.pressed) {
+            tap_code16(RCTL(KC_X));
+            wait_ms(50);
+            tap_code16(LALT(KC_Y));
+        }
+        return false;
+        break;
+
+    case EMACS_SEL_E:
+        if (record->event.pressed) {
+            tap_code16(RCTL(KC_X));
+            wait_ms(50);
+            tap_code16(LALT(KC_E));
+        }
+        return false;
+        break;
+
+    case EMACS_SEL_V:
+        if (record->event.pressed) {
+            tap_code16(RCTL(KC_X));
+            wait_ms(50);
+            tap_code16(LALT(KC_V));
+        }
+        return false;
+        break;
+
+    case EMACS_SEL_B:
+        if (record->event.pressed) {
+            tap_code16(RCTL(KC_X));
+            wait_ms(50);
+            tap_code16(LALT(KC_B));
+        }
+        return false;
+        break;
+
+    case EMACS_SEL_Q:
+        if (record->event.pressed) {
+            tap_code16(RCTL(KC_X));
+            wait_ms(50);
+            tap_code16(LALT(KC_Q));
+        }
+        return false;
+        break;
+
+    case EMACS_SEL_W:
+        if (record->event.pressed) {
+            tap_code16(RCTL(KC_X));
+            wait_ms(50);
+            tap_code16(LALT(KC_W));
+        }
+        return false;
+        break;
+
+    case EMACS_SEL_X:
+        if (record->event.pressed) {
+            tap_code16(RCTL(KC_X));
+            wait_ms(50);
+            tap_code16(LALT(KC_X));
+        }
+        return false;
+        break;
+
+
 
     case CTRL_X_ALL_MODS_OSM:
         if (record->event.pressed) {
