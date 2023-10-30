@@ -2,7 +2,8 @@
 
 combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo_editing_equal, emacs_indent_buffer),
-    COMBO(combo_s_a, SA_LAYER_ACTIVATE),
+    COMBO(combo_s_a, OSM(MOD_RCTL)),
+
     COMBO(combo_period_slash, LALT(KC_DOT)),
 
     COMBO(combo_z_x, EASYMOTION_LEADER),
@@ -32,7 +33,8 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo_4_10_4_12, KC_RIGHT),
     COMBO(combo_4_11_4_12, KC_RIGHT),
     COMBO(combo_space_m, LALT(KC_M)),
-    COMBO(combo_space_j, LALT(KC_M)),
+    COMBO(combo_space_j, ONE_SHOT_ALT_KEYBOARD),
+    COMBO(combo_space_k, ONE_SHOT_LEVEL3),
     COMBO(combo_space_h, LALT(KC_M)),
     COMBO(combo_k47_space, KC_RIGHT),
     COMBO(combo_super_space, KC_DOWN),
@@ -59,6 +61,7 @@ combo_t key_combos[COMBO_COUNT] = {
     /* COMBO(, OSM(MOD_RCTL | MOD_LCTL)), */
     COMBO(combo_k_l, OSM(MOD_RCTL)),
     COMBO(combo_K_L, OSM(MOD_RCTL)),
+    COMBO(combo_lower_k_lower_l, OSM(MOD_RCTL)),
 
     COMBO(combo_h_j, ALL_MODS_OSM),
     COMBO(combo_H_J, ALL_MODS_OSM),
@@ -71,7 +74,6 @@ combo_t key_combos[COMBO_COUNT] = {
     /* COMBO(combo_l_k_semicolon, OSM(MOD_LCTL)), */
     /* COMBO(combo_l_p, OSM(MOD_LCTL)), */
     /* COMBO(combo_M_cap_semi, OSM(MOD_LCTL)), */
-    /* COMBO(combo_lower_k_lower_l, KC_UNDS), */
 
 
 
@@ -251,7 +253,7 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo_w_d, EMACS_WRAP_HYDRA),
     COMBO(combo_1_7_y, TD(DANCE_MICROPHONE)),
     COMBO(combo_1_7_y_u, OSL(_LAYER_LOCK)),
-    COMBO(combo_k42_k43, LLOCK),
+    COMBO(combo_mod_r1_mod_r4, LLOCK),
     COMBO(combo_raise_f, TD(DANCE_MACROS)),
     COMBO(combo_raise_r, LAYER_MOUSE_HOLD),
     COMBO(combo_winmove_up_right, WINDOW_TOGGLE_HORIZONTAL_MAX),
@@ -270,7 +272,12 @@ combo_t key_combos[COMBO_COUNT] = {
 
 
 
-    COMBO(combo_mod_r3_super, KC_RIGHT),
-    COMBO(combo_mod_r2_b, KC_LEFT),
+    COMBO(combo_f_b, KC_MS_BTN1),
+    COMBO(combo_g_r3, KC_MS_BTN2),
+    COMBO(combo_super__f_b, KC_MS_BTN1),
+    COMBO(combo_super__g_r3, KC_MS_BTN2),
+    COMBO(combo_mouse1_mouse2, KC_MS_BTN3),
+    COMBO(combo_mod_r3_super, KC_LEFT),
+    COMBO(combo_mod_r2_b, KC_RIGHT),
 
 };

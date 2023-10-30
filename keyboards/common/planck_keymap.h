@@ -13,27 +13,26 @@ const uint32_t PROGMEM unicode_map[] = {
 #define planck_base  top_left,    my_q,    my_w,    my_e,    my_r,   my_t, mod_r1,    my_y,           my_u,    my_i,    my_o,     my_p, \
     esc_ctrl , my_a,   my_s,   my_d,   my_f,   my_g, mod_r2,  my_h,         my_j,   my_k,   my_l,   my_semicolon, \
         my_left_shift,        my_z,           my_x,           my_c,           my_v,           my_b, mod_r3,     my_n,   my_m,   my_comma,   my_period,   my_forward_slash, \
-        hyper, alt_keyboard, level3,       alt, RAISE,  super, mod_r4,   my_space,           LOWER,          my_right_of_lower,   key_left,  key_right
+        level3,   alt_keyboard, hyper,        alt, RAISE,  super, mod_r4,   my_space,           LOWER,          my_right_of_lower,   key_left,  key_right
 
 
-
-#define planck_numlock TO(_BASE),    _______,          _______,  _______,         _______,       _______, _______, _______, my_raise_u,           my_raise_i,           my_raise_o,           my_raise_p, \
+#define planck_numlock TO_BASE,    _______,          _______,  _______,         _______,       _______, _______, _______, my_raise_u,           my_raise_i,           my_raise_o,           my_raise_p, \
         _______, _______, _______,   _______, _______,  _______, _______,       _______,         my_raise_j,           my_raise_k,           my_raise_l,       _______, \
     _______, _______, _______, _______,  _______,      _______, _______,     _______,           my_raise_m,           my_raise_comma,         KC_3,           _______, \
         _______, _______, _______, _______,        _______,        _______, _______, _______,      _______, _______ ,       _______,           _______
 
-#define planck_raise KC_LALT,    my_raise_q,          my_raise_w,  my_raise_e,         my_raise_r,       my_raise_t, raise_right, my_raise_y, my_raise_u,           my_raise_i,           my_raise_o,           my_raise_p, \
+#define planck_raise backtab,    my_raise_q,          my_raise_w,  my_raise_e,         my_raise_r,       my_raise_t, TO_BASE, my_raise_y, my_raise_u,           my_raise_i,           my_raise_o,           my_raise_p, \
     _______, my_raise_a, my_raise_s,   my_raise_d, my_raise_f,  my_raise_g, raise_up,       my_raise_h,         my_raise_j,           my_raise_k,           my_raise_l,       raise_semi, \
     raise_left_shift, my_raise_z, my_raise_x, my_raise_c,  my_raise_v,      my_raise_b, raise_down,     my_raise_n,           my_raise_m,           my_raise_comma,         KC_3,           raise_slash, \
     MO(_SYSTEM), _______, KC_ENTER,        _______,        TO(_BASE), _______, raise_left,      my_space,   raise_key_4_9,       KC_INSERT,  KC_DOWN,         KC_UP
 
 
-#define planck_shiftlock SHIFTLOCK_LAYER_DEACTIVATE,   LSFT(KC_Q),     LSFT(KC_W),     LSFT(KC_E),     LSFT(KC_R),     LSFT(KC_T), _______,    LSFT(KC_Y),     my_cap_u,     my_cap_i,     my_cap_o,     my_cap_p, \
+#define planck_shiftlock KC_TAB,   LSFT(KC_Q),     LSFT(KC_W),     LSFT(KC_E),     LSFT(KC_R),     LSFT(KC_T), TO_BASE,    LSFT(KC_Y),     my_cap_u,     my_cap_i,     my_cap_o,     my_cap_p, \
     esc_ctrl,          LSFT(KC_A),     LSFT(KC_S),     my_cap_d,     my_cap_f,     LSFT(KC_G), _______,    my_cap_h,     my_cap_j,     my_cap_k,     my_cap_l,     my_cap_semi, \
         SHIFTLOCK_LAYER_DEACTIVATE,          LSFT(KC_Z),     LSFT(KC_X),     LSFT(KC_C),     LSFT(KC_V),     LSFT(KC_B), _______,   my_cap_n,     my_cap_m,     my_cap_comma,        my_cap_period,        my_forward_slash, \
     _______, _______, _______, _______, RAISE, _______, _______,       _______,    LOWER,  _______, _______, _______
 
-#define planck_lower                               EMACS_OTHER_WINDOW,   my_lower_q,          my_lower_w,          my_lower_e,          my_lower_r,  TD(DANCE_SCREENSHOT),        _______ ,    KC_HOME,     my_lower_u,    my_lower_i,      my_lower_o,         my_lower_p, \
+#define planck_lower                               EMACS_OTHER_WINDOW,   my_lower_q,          my_lower_w,          my_lower_e,          my_lower_r,  TD(DANCE_SCREENSHOT),  TO_BASE,    KC_HOME,     my_lower_u,    my_lower_i,      my_lower_o,         my_lower_p, \
     _______, my_lower_a,          my_lower_s,          my_lower_d,          my_lower_f,          my_lower_g, lower_backspace,      my_lower_h,        my_lower_j,        my_lower_k,          my_lower_l,       my_lower_semi, \
     lower_left_shift,   my_lower_z,         my_lower_x,         my_lower_c,         my_lower_v,         my_lower_b, lower_down,  my_lower_n, my_lower_m, my_lower_comma,   my_lower_period, my_lower_slash, \
     LAYER_MOUSE_HOLD, _______, _______ , alt,   MO(_EDITING), _______,       _______,             _______, lower_LOWER,          lower_right_of_lower, lower_key_4_11, lower_key_4_12
@@ -51,7 +50,7 @@ const uint32_t PROGMEM unicode_map[] = {
 
 
 #define planck_code                                          COMPOSE, CLJ_FREQS, _______, _______, _______, _______,    _______, DUPLICATE_LINE, _______, _______, EMACS_WRAP_HYDRA, TEMP_TEXT, \
-        TO(_BASE), _______, _______, _______, _______, _______,   MOVE_STATEMENT_UP, EMACS_SPLIT_WINDOW_LEFT, EMACS_SPLIT_WINDOW_DOWN, EMACS_SPLIT_WINDOW_UP, EMACS_SPLIT_WINDOW_RIGHT, _______, \
+        TO_BASE, _______, _______, _______, _______, _______,   MOVE_STATEMENT_UP, EMACS_SPLIT_WINDOW_LEFT, EMACS_SPLIT_WINDOW_DOWN, EMACS_SPLIT_WINDOW_UP, EMACS_SPLIT_WINDOW_RIGHT, _______, \
         _______, _______, _______, _______, _______, _______, MOVE_STATEMENT_DOWN, _______, _______, _______, DM_REC2, DM_PLY2, \
     _______, _______, _______, _______, _______, _______, _______, _______, _______, DM_RSTP, DM_REC1, DM_PLY1
 
@@ -68,19 +67,19 @@ const uint32_t PROGMEM unicode_map[] = {
     _______, _______, _______, _______,    MO(_MOUSE), _______, _______, _______,    _______, _______, _______, _______
 
 
-#define planck_mouse                               TO(_BASE),    _______, KC_MS_BTN1, KC_MS_UP, KC_MS_BTN2, _______, _______,  KC_HOME,        KC_PGUP,        KC_PGDOWN,      KC_END,         _______, \
-    TO(_BASE),  _______, KC_MS_LEFT,     KC_MS_DOWN,     KC_MS_RIGHT,     _______,  _______, KC_MS_BTN1,     KC_MS_WH_DOWN,  KC_MS_WH_UP,    KC_MS_BTN2,     KC_MS_BTN3, \
+#define planck_mouse                               TO_BASE,    _______, KC_MS_BTN1, KC_MS_UP, KC_MS_BTN2, _______, _______,  KC_HOME,        KC_PGUP,        KC_PGDOWN,      KC_END,         _______, \
+    TO_BASE,  _______, KC_MS_LEFT,     KC_MS_DOWN,     KC_MS_RIGHT,     _______,  _______, KC_MS_BTN1,     KC_MS_WH_DOWN,  KC_MS_WH_UP,    KC_MS_BTN2,     KC_MS_BTN3, \
       _______, _______, _______, _______, WEB_SAVE_FILE_UNDER_CURSOR, _______, _______,  LALT(LGUI(KC_N)), KC_MS_BTN3,     BROWSER_TAB_PREV,   BROWSER_TAB_NEXT,   LALT(KC_F4), \
     _______, _______, _______, _______, _______, _______,   _______, KC_BTN4, KC_BTN5,  KC_BTN6, KC_BTN7, KC_BTN8
 
 
 #define planck_super                              _______, _______,   _______, _______, super_r, _______,    KC_TAB, _______,  _______, _______, _______, _______, \
-    LSFT(KC_J), _______, _______, _______, _______, super_g,    KC_TAB, _______,  _______, _______, _______, _______, \
-    KC_LSFT, _______, _______, _______,    _______, _______, LSFT(KC_TAB), _______,    _______, _______, _______, _______, \
+    LSFT(KC_J), _______, _______, _______, super_f, super_g,    super_mod_r2, _______,  _______, _______, _______, _______, \
+        KC_LSFT, _______, _______, _______,    _______, super_b, super_mod_r3, _______,    _______, _______, _______, _______, \
     _______, adhoc_set_hotkey, _______, _______,    _______, _______, LSFT(KC_TAB), ROFI_DRUN, _______, KC_GRAVE, LSFT(KC_TAB), KC_TAB
 
 
-#define planck_editing EMACS_OTHER_WINDOW, EMACS_DESC_KEY, LCTL(KC_7),     CIDER_EVAL_OR_TERMINAL_EDIT, EMACS_BUFFER_REVERT, LCTL(KC_S),        LALT(KC_UNDS), EMACS_YANK_IN_SEXP  , editing_u, editing_i, editing_o, PAREDIT_BACKWARD_UP, \
+#define planck_editing EMACS_OTHER_WINDOW, EMACS_DESC_KEY, LCTL(KC_7),     CIDER_EVAL_OR_TERMINAL_EDIT, EMACS_BUFFER_REVERT, LCTL(KC_S),        TO_BASE, EMACS_YANK_IN_SEXP  , editing_u, editing_i, editing_o, PAREDIT_BACKWARD_UP, \
         _______, _______, SURROUND, EMACS_KILL_IN_SEXP, LALT(KC_ENTER), GREP_STRING_IN_BUFFER_DIR,               KC_DELETE, editing_h, editing_j, editing_k, editing_l, EMACS_PRIVATE_READER, \
         editing_left_shift, EMACS_RECENTER_ON_DEFUN, SWAP_SELECTION_BOUNDARIES, EMACS_WINDOW_DELETE,    TD(DANCE_SAVE_LOAD_NS_SWITCH), _______,                                      KC_BACKSPACE, next_win_or_frame, EMACS_BUFFER_MAXIMIZE,  editing_comma, editing_period, TERM_CD_UP_DIR, \
     _______, _______, _______, _______, MO(_EMACS),  _______,                                                  FISH_ACCEPT_SEND, all_mods, MO(_EMACS), TO(_BASE), _______, emacs_indent_buffer
@@ -104,15 +103,15 @@ const uint32_t PROGMEM unicode_map[] = {
 
 
 #define planck_system                                \
-    QK_DEBUG_TOGGLE, _______, RGB_VAI, _______, RESET_INPUT_PREFS,     _______, CYCLE_ACTIVE_ALT_KEYBOARD_LEVEL3_FN, QK_KEY_OVERRIDE_ON, KC_BRIGHTNESS_DOWN, KC_BRIGHTNESS_UP, QK_CLEAR_EEPROM, KC_MEDIA_PLAY_PAUSE, \
-    AS_TOGG, AUTOSHIFT_TOGGLE, RGB_VAD, _______, _______, _______, _______, _______, KC_AUDIO_VOL_DOWN, KC_AUDIO_VOL_UP, QK_AUTOCORRECT_ON, DB_TOGG, \
-    QK_CLEAR_EEPROM, _______ , _______, _______, _______, _______,   _______, _______,  KC_AUDIO_MUTE, CYCLE_DROP_ANIMATIONS, RGB_SAI, QK_BOOTLOADER, \
-    SYSTEM_LAYER_DEACTIVATE, _______, _______, _______, _______,     _______, CYCLE_ACTIVE_ALT_KEYBOARD_LEVEL3_FN, KC_MEDIA_PLAY_PAUSE, RGB_MOD, DM_REC1, DM_RSTP, DM_PLY1
+    QK_BOOTLOADER, _______, _______, _______, RESET_INPUT_PREFS,     _______, _______, _______, KC_BRIGHTNESS_DOWN, KC_BRIGHTNESS_UP, QK_CLEAR_EEPROM, KC_MEDIA_PLAY_PAUSE, \
+        _______, _______, DM_REC1, _______, _______, _______, DM_REC1, DM_PLY1, KC_AUDIO_VOL_DOWN, KC_AUDIO_VOL_UP, QK_AUTOCORRECT_ON, DB_TOGG, \
+        QK_AUTO_SHIFT_TOGGLE, _______ , _______, _______, _______, _______,   DM_REC2, DM_PLY2,  KC_AUDIO_MUTE, _______, _______, QK_BOOTLOADER, \
+        SYSTEM_LAYER_DEACTIVATE, _______, _______, _______, _______,     _______, DM_RSTP, _______, _______, _______, _______, _______
 
 
 #define planck_windows ALT_TAB, WINDOWS_Q,   LGUI(KC_W),   select_emacs,     TD(DANCE_40),   LGUI(KC_T), LGUI(KC_MINUS),  LGUI(KC_Y),   LGUI(KC_7),        LGUI(KC_8),     LGUI(KC_9),     LGUI(KC_0), \
-    TO(_BASE), LGUI(KC_A),  select_slack, show_desktop     ,LGUI(KC_F),      _______, _______,  LGUI(KC_H),     windows_j,   windows_k,   windows_l,   LGUI(KC_SCLN), \
-    TO(_BASE), LGUI(KC_Z),     select_firefox,     LGUI(KC_C),     LGUI(KC_V),    _______, _______, LGUI(KC_N),   LGUI(KC_M),  _______, LSFT(LGUI(KC_K)), LALT(KC_F4), \
+    TO_BASE, LGUI(KC_A),  select_slack, show_desktop     ,LGUI(KC_F),      _______, _______,  LGUI(KC_H),     windows_j,   windows_k,   windows_l,   LGUI(KC_SCLN), \
+    TO_BASE, LGUI(KC_Z),     select_firefox,     LGUI(KC_C),     LGUI(KC_V),    _______, _______, LGUI(KC_N),   LGUI(KC_M),  _______, LSFT(LGUI(KC_K)), LALT(KC_F4), \
     _______, _______, _______,         _______,        _______,     ALT_TAB ,   ALT_TAB , ROFI_DRUN,      GUI(KC_MINUS),  ALT_TAB, LSFT(ALT_TAB), ALT_TAB
 
 
@@ -124,9 +123,9 @@ const uint32_t PROGMEM unicode_map[] = {
 
 
 #define planck_adhoc_set_key                                            \
-  _______, LCTL(LALT(LGUI(KC_Q))), LCTL(LALT(LGUI(KC_W))), _______,  LCTL(LALT(LGUI(KC_R))), _______,    SET_HOTKEY_1, LCTL(LALT(LGUI(KC_Y))), _______, _______, _______, _______, \
-    _______, _______, _______, _______, _______,    LCTL(LALT(LGUI(KC_G))), SET_HOTKEY_5, _______, LCTL(LALT(LGUI(KC_J))), LCTL(LALT(LGUI(KC_K))), LCTL(LALT(LGUI(KC_L))), _______, \
-    _______, _______, SET_HOTKEY_5, SET_HOTKEY_5, _______, _______, SET_HOTKEY_2, LCTL(LALT(LGUI(KC_N))), _______, _______, _______, LCTL(LALT(LGUI(KC_SLASH))), \
+    _______, LCTL(LALT(LGUI(KC_Q))), LCTL(LALT(LGUI(KC_W))), LCTL(LALT(LGUI(KC_E))),  LCTL(LALT(LGUI(KC_R))), _______,    SET_HOTKEY_1, LCTL(LALT(LGUI(KC_Y))), LCTL(LALT(LGUI(KC_U))), LCTL(LALT(LGUI(KC_I))), LCTL(LALT(LGUI(KC_O))), LCTL(LALT(LGUI(KC_P))), \
+        _______, _______, _______, LCTL(LALT(LGUI(KC_D))), _______,    LCTL(LALT(LGUI(KC_G))), SET_HOTKEY_5, _______, LCTL(LALT(LGUI(KC_J))), LCTL(LALT(LGUI(KC_K))), LCTL(LALT(LGUI(KC_L))), LCTL(LALT(LGUI(KC_SCLN))), \
+        _______,  LCTL(LALT(LGUI(KC_Z))), LCTL(LALT(LGUI(KC_X))), LCTL(LALT(LGUI(KC_C))), LCTL(LALT(LGUI(KC_V))), LCTL(LALT(LGUI(KC_V))), SET_HOTKEY_2, LCTL(LALT(LGUI(KC_N))), LCTL(LALT(LGUI(KC_M))), LCTL(LALT(LGUI(KC_COMMA))), LCTL(LALT(LGUI(KC_DOT))), LCTL(LALT(LGUI(KC_SLASH))), \
     _______, _______, _______, _______,    _______, _______, SET_HOTKEY_3, _______,    _______, _______, SET_HOTKEY_4, _______
 
 
@@ -142,10 +141,10 @@ const uint32_t PROGMEM unicode_map[] = {
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
 
 
-#define planck_layer_lock                                      _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______, \
-    TO(_BASE), _______, _______, _______, _______, _______,   _______, _______, _______, _______, _______, _______, \
+#define planck_layer_lock                                      _______, _______, _______, _______, _______, _______,    TO_BASE, _______, _______, _______, _______, _______, \
+    TO_BASE, _______, _______, _______, _______, _______,   _______, _______, _______, _______, _______, _______, \
     SHIFTLOCK_LAYER_ACTIVATE, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
-    SYSTEM_LAYER_ACTIVATE, _______, _______, _______,    LLOCK_RAISE,  _______, LLOCK_ALT_KEYBOARD, _______,    LLOCK_LOWER, LLOCK_EDITING, _______, _______
+    SYSTEM_LAYER_ACTIVATE, _______, _______, _______,    LLOCK_RAISE,  _______, LLOCK_LOWER, _______,    LLOCK_LOWER, LLOCK_EDITING, _______, _______
 
 #define planck_scratch _______, _______, _______, _______, _______, _______,   _______, _______, _______, _______, _______, _______, \
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
@@ -161,3 +160,8 @@ const uint32_t PROGMEM unicode_map[] = {
     TO(_BASE), _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
     _______, _______, _______, _______, WEB_SAVE_FILE_UNDER_CURSOR, _______,   _______, _______, _______, _______, _______, _______, \
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
+
+#define planck_motion                               EMACS_OTHER_WINDOW,   my_lower_q,          my_lower_w,          my_lower_e,          my_lower_r,  TD(DANCE_SCREENSHOT),      LLOCK,    KC_HOME,     my_lower_u,    my_lower_i,      my_lower_o,         my_lower_p, \
+        _______, my_lower_a,          my_lower_s,          my_lower_d,          my_lower_f,          my_lower_g, RCTL(KC_UP),      my_lower_h,        my_lower_j,        my_lower_k,          my_lower_l,       my_lower_semi, \
+        lower_left_shift,   my_lower_z,         my_lower_x,         my_lower_c,         my_lower_v,         my_lower_b, RCTL(KC_DOWN),  my_lower_n, my_lower_m, RCTL(KC_HOME),   RCTL(KC_END), my_lower_slash, \
+        _______, _______, _______ , alt,   _______, _______,       _______,             _______, _______,          TD(WWW_BACK_FORWARD), RCTL(KC_LEFT), RCTL(KC_RIGHT)

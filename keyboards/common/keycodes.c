@@ -11,12 +11,15 @@
 #define backtab LSFT(KC_TAB)
 #define emacs_completion_at_point LALT(RCTL(KC_I))
 
-#define GREP_STRING_IN_BUFFER_DIR LCTL(LALT(KC_G))
-#define TERM_PASTE RCTL(RSFT(KC_V))
-
-
+#define super_mod_r2 KC_TAB
+#define super_mod_r3 LSFT(KC_TAB)
+#define super_f KC_F
+#define super_b KC_B
 #define super_r KC_R
 #define super_g KC_G
+
+#define GREP_STRING_IN_BUFFER_DIR LCTL(LALT(KC_G))
+#define TERM_PASTE RCTL(RSFT(KC_V))
 
 #define select_firefox LGUI(KC_X)
 #define select_terminal GUI(KC_T)
@@ -48,7 +51,7 @@
 #define SELECT_HOTKEY_3 LALT(LGUI(KC_F4))
 #define SELECT_HOTKEY_4 LALT(LGUI(KC_F5))
 #define SELECT_HOTKEY_5 LALT(LGUI(KC_F6))
-#define mod_r1 MO(_CODE)
+#define mod_r1 TD(DANCE_CODE_SYSTEM)
 #define mod_r2 KC_UP
 #define mod_r3 KC_DOWN
 #define mod_r4 TD(DANCE_ENTER) // TD(DANCE_HOTKEY_OR_COMPOSE)
@@ -422,6 +425,8 @@ enum custom_keycodes {
                       EMACS_BUFFER_MAXIMIZE,
                       LAUNCHER_FDFIND,
                       ALL_MODS_OSM,
+                      ONE_SHOT_ALT_KEYBOARD,
+                      ONE_SHOT_LEVEL3,
                       LAUNCHER_CLIPBOARD,
                       LAUNCHER_WIKI,
                       LAUNCHER_TRANSLATE,
@@ -492,6 +497,7 @@ enum custom_keycodes {
                       level3,
                       EMACS_PREV_SEXP,
                       AUTOSHIFT_TOGGLE,
+                      SAVE_FILE_THEN_VIM_NORMAL_MODE,
                       WEB_SAVE_FILE_UNDER_CURSOR,
                       CAPS_WORD_TOGGLE,
                       TEMP_TEXT,
