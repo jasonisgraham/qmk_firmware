@@ -66,6 +66,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
         break;
 
+    case SAVE_FILE_THEN_VIM_NORMAL_MODE:
+        if (record->event.pressed) {
+        }
+        break;
+
     case EQUAL_THEN_SPACE:
         if (record->event.pressed) {
             SEND_STRING("= ");
@@ -122,8 +127,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     case TO_BASE:
         if (record->event.pressed) {
-            clear_modifiers();
+            PLAY_SONG(caps_lock_off_sound);
             layer_move(_BASE);
+            clear_modifiers();
+            unregister_key(level3);
+            unregister_key(KEYBOARD_LAYOUT_HOLD_KEY);
         }
         break;
 
@@ -132,24 +140,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         if (record->event.pressed) {
             clear_modifiers();
             layer_move(_BASE);
-            switch (active_alt_keyboard_level3_fn) {
-            case K74_MO_LEVEL3:
-#ifdef RGBLIGHT_ENABLE
-                rgblight_enable_noeeprom();
-                rgblight_mode(RGBLIGHT_MODE_SNAKE);
-                rgblight_sethsv_noeeprom(HSV_PINK);
-#endif
-                register_code16(KC_KP_ENTER);
-                break;
-            case K74_MO_ALT_KEYBOARD:
-#ifdef RGBLIGHT_ENABLE
-                rgblight_enable_noeeprom();
-                rgblight_mode(RGBLIGHT_MODE_KNIGHT);
-                rgblight_sethsv_noeeprom(HSV_GREEN);
-#endif
-                register_code16(KEYBOARD_LAYOUT_HOLD_KEY);
-                break;
-            }
+            register_key(KEYBOARD_LAYOUT_HOLD_KEY);
+            return false;
+        }
+        break;
+
+    case LLOCK_LEVEL3:
+        if (record->event.pressed) {
+            clear_modifiers();
+            layer_move(_BASE);
+            register_key(level3);
             return false;
         }
         break;
@@ -1547,22 +1547,32 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     case SELECTION_SHRINK:
         if (record->event.pressed) {
-            tap_code16(RCTL(KC_X));
+            tap_code16(LALT(KC_M));
             wait_ms(50);
-            add_oneshot_mods(MOD_MASK_ALL_MODS_COMPAT);
-            tap_code16(KC_U);
-            del_oneshot_mods(MOD_MASK_ALL_MODS_COMPAT);
+            tap_code16(RSFT(KC_V));
         }
         return false;
         break;
 
     case SELECTION_EXPAND:
         if (record->event.pressed) {
-            tap_code16(RCTL(KC_X));
+            tap_code16(LALT(KC_M));
             wait_ms(50);
-            add_oneshot_mods(MOD_MASK_ALL_MODS_COMPAT);
-            tap_code16(KC_I);
-            del_oneshot_mods(MOD_MASK_ALL_MODS_COMPAT);
+            tap_code16(KC_V);
+        }
+        return false;
+        break;
+
+    case ONE_SHOT_ALT_KEYBOARD:
+    if (record->event.pressed) {
+        set_oneshot_mods(MOD_BIT_RGUI);
+    }
+    return false;
+    break;
+
+    case ONE_SHOT_LEVEL3:
+        if (record->event.pressed) {
+            set_oneshot_mods(MOD_BIT_RALT);
         }
         return false;
         break;

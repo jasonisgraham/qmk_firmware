@@ -514,7 +514,7 @@ case TAP_INTERRUPTED_HELD:
     register_code16(KC_DOWN);
     break;
   case TAP2:
-    tap_code16(RCTL(KC_LBRACKET));
+    tap_code16(KC_ESC);
     break;
 
   }
@@ -561,7 +561,14 @@ case TAP_INTERRUPTED_HELD:
     register_code16(KC_UP);
     break;
 
-  case TAP2: register_code16(RCTL(KC_COLON)); break;
+  case TAP2:
+      tap_code16(RCTL(KC_X));
+      wait_ms(10);
+      tap_code16(RCTL(KC_S));
+      wait_ms(10);
+      tap_code16(KC_ESC);
+      wait_ms(10);
+      break;
   case TAP2_INTERRUPTED: tap_code16(KC_K); register_code16(KC_K);
   }
 }
