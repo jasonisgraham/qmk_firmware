@@ -21,7 +21,7 @@ const uint32_t PROGMEM unicode_map[] = {
     _______, _______, _______, _______,  _______,      _______, _______,     _______,           my_raise_m,           my_raise_comma,         KC_3,           _______, \
         _______, _______, _______, _______,        _______,        _______, _______, _______,      _______, _______ ,       _______,           _______
 
-#define planck_raise backtab,    my_raise_q,          my_raise_w,  my_raise_e,         my_raise_r,       my_raise_t, TO_BASE, my_raise_y, my_raise_u,           my_raise_i,           my_raise_o,           my_raise_p, \
+#define planck_raise KC_GRAVE,    my_raise_q,          my_raise_w,  my_raise_e,         my_raise_r,       my_raise_t, TO_BASE, my_raise_y, my_raise_u,           my_raise_i,           my_raise_o,           my_raise_p, \
     _______, my_raise_a, my_raise_s,   my_raise_d, my_raise_f,  my_raise_g, raise_up,       my_raise_h,         my_raise_j,           my_raise_k,           my_raise_l,       raise_semi, \
     raise_left_shift, my_raise_z, my_raise_x, my_raise_c,  my_raise_v,      my_raise_b, raise_down,     my_raise_n,           my_raise_m,           my_raise_comma,         KC_3,           raise_slash, \
     MO(_SYSTEM), _______, KC_ENTER,        _______,        TO(_BASE), _______, raise_left,      my_space,   raise_key_4_9,       KC_INSERT,  KC_DOWN,         KC_UP
@@ -32,7 +32,7 @@ const uint32_t PROGMEM unicode_map[] = {
         SHIFTLOCK_LAYER_DEACTIVATE,          LSFT(KC_Z),     LSFT(KC_X),     LSFT(KC_C),     LSFT(KC_V),     LSFT(KC_B), _______,   my_cap_n,     my_cap_m,     my_cap_comma,        my_cap_period,        my_forward_slash, \
     _______, _______, _______, _______, RAISE, _______, _______,       _______,    LOWER,  _______, _______, _______
 
-#define planck_lower                               EMACS_OTHER_WINDOW,   my_lower_q,          my_lower_w,          my_lower_e,          my_lower_r,  TD(DANCE_SCREENSHOT),  TO_BASE,    KC_HOME,     my_lower_u,    my_lower_i,      my_lower_o,         my_lower_p, \
+#define planck_lower                               backtab,   my_lower_q,          my_lower_w,          my_lower_e,          my_lower_r,  TD(DANCE_SCREENSHOT),  TO_BASE,    KC_HOME,     my_lower_u,    my_lower_i,      my_lower_o,         my_lower_p, \
     _______, my_lower_a,          my_lower_s,          my_lower_d,          my_lower_f,          my_lower_g, lower_backspace,      my_lower_h,        my_lower_j,        my_lower_k,          my_lower_l,       my_lower_semi, \
     lower_left_shift,   my_lower_z,         my_lower_x,         my_lower_c,         my_lower_v,         my_lower_b, lower_down,  my_lower_n, my_lower_m, my_lower_comma,   my_lower_period, my_lower_slash, \
     LAYER_MOUSE_HOLD, _______, _______ , alt,   MO(_EDITING), _______,       _______,             _______, lower_LOWER,          lower_right_of_lower, lower_key_4_11, lower_key_4_12
@@ -52,12 +52,12 @@ const uint32_t PROGMEM unicode_map[] = {
 #define planck_code                                          COMPOSE, CLJ_FREQS, _______, _______, _______, _______,    _______, DUPLICATE_LINE, _______, _______, EMACS_WRAP_HYDRA, TEMP_TEXT, \
         TO_BASE, _______, _______, _______, _______, _______,   MOVE_STATEMENT_UP, EMACS_SPLIT_WINDOW_LEFT, EMACS_SPLIT_WINDOW_DOWN, EMACS_SPLIT_WINDOW_UP, EMACS_SPLIT_WINDOW_RIGHT, _______, \
         _______, _______, _______, _______, _______, _______, MOVE_STATEMENT_DOWN, _______, _______, _______, DM_REC2, DM_PLY2, \
-    _______, _______, _______, _______, _______, _______, _______, _______, _______, DM_RSTP, DM_REC1, DM_PLY1
+        _______, _______, _______, _______, _______, _______, META_X, _______, _______, DM_RSTP, DM_REC1, DM_PLY1
 
-#define planck_emacs_select EMACS_FOCUS_REPL_IMMEDIATELY, _______, KC_NO, _______, EMACS_FOCUS_REPL, _______, _______, _______, EMACS_SEL_7,    EMACS_SEL_8,           EMACS_SEL_9,           EMACS_SEL_0, \
-    TO(_BASE), _______, _______, _______, _______, _______, _______, _______, EMACS_SEL_4,           EMACS_SEL_5,           EMACS_SEL_6,           _______, \
-  _______, _______, _______, _______, _______, _______, _______, EMACS_SEL_0,           EMACS_SEL_1,           EMACS_SEL_2,           EMACS_SEL_3,           _______, \
-  _______, _______, _______, _______, _______, _______, KC_NO,          _______, _______, _______, _______, _______
+#define planck_emacs_select EMACS_SEL_TAB, EMACS_SEL_Q,  EMACS_SEL_W, EMACS_SEL_E, EMACS_SEL_R, EMACS_SEL_T, EMACS_SEL_MODR1, EMACS_SEL_Y, EMACS_SEL_U,    EMACS_SEL_I,           EMACS_SEL_O,           EMACS_SEL_P, \
+        TO(_BASE), EMACS_SEL_A, EMACS_SEL_S, EMACS_SEL_D, EMACS_SEL_F, EMACS_SEL_G, EMACS_SEL_MODR2, EMACS_SEL_H,  EMACS_SEL_J,           EMACS_SEL_K,           EMACS_SEL_L,           EMACS_SEL_SCLN, \
+        _______, EMACS_SEL_Z, EMACS_SEL_X, EMACS_SEL_C, EMACS_SEL_V, EMACS_SEL_B, EMACS_SEL_MODR3, EMACS_SEL_N,           EMACS_SEL_M,           EMACS_SEL_COMMA,           EMACS_SEL_DOT,           EMACS_SEL_SLASH, \
+        _______, _______, _______, EMACS_WINDOW_DELETE, EMACS_SEL_RAISE, _______, EMACS_SEL_MODR4,          _______, EMACS_SEL_LOWER, EMACS_WINDOW_DELETE, _______, _______
 
 
 
@@ -133,7 +133,7 @@ const uint32_t PROGMEM unicode_map[] = {
 #define planck_hyper                                          _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______, \
     _______, _______, _______, _______, _______, _______,   _______, _______, _______, _______, _______, _______, \
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
-    _______, _______, _______, _______,    _______, _______, _______, _______,    MO(_EMACS), _______, _______, _______
+        _______, _______, _______, _______,    _______, _______, _______, _______,    _______, _______, _______, _______
 
 #define planck_dynamic_macros                                          _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______, \
     _______, _______, _______, _______, _______, _______,   _______, _______, _______, _______, _______, _______, \

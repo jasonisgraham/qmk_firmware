@@ -3,6 +3,8 @@
 
 bool get_custom_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
   switch(keycode) {
+  case my_raise_f:
+  case EMACS_SEL_K:
   case THREAD_LAST_EQUAL:
   case KC_DQUO:
   case KC_F1:
@@ -30,19 +32,28 @@ bool get_custom_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
   case KC_LPRN:
   case KC_RPRN:
   case KC_ENTER:
-  /* case KC_COLN: */
+      /* case KC_COLN: */
   case KC_LEFT_ANGLE_BRACKET:
   case KC_RIGHT_ANGLE_BRACKET:
-    return true;
+      return true;
 
 
   default:
-    return false;
+      return false;
   }
 }
 
 void autoshift_press_user(uint16_t keycode, bool shifted, keyrecord_t *record) {
-  switch(keycode) {
+    switch(keycode) {
+
+    case EMACS_SEL_K:
+        register_code16((!shifted) ? EMACS_SEL_K : EMACS_SEL_DB);
+        break;
+
+    case my_raise_f:
+        register_code16((!shifted) ? LALT(LSFT(KC_F8)) : RCTL(LSFT(LALT(KC_GRAVE))));
+    break;
+
   case KC_DQUO:
     register_code16((!shifted) ? KC_DQUO : KC_QUOT);
     break;
@@ -306,6 +317,16 @@ void autoshift_release_user(uint16_t keycode, bool shifted, keyrecord_t *record)
   case KC_F12:
       unregister_code16((!shifted) ? KC_F12 : LSFT(KC_F12));
       break;
+
+  case EMACS_SEL_K:
+      unregister_code16((!shifted) ? EMACS_SEL_K : EMACS_SEL_DB);
+      break;
+
+    case my_raise_f:
+        unregister_code16((!shifted) ? LALT(LSFT(KC_F8)) : RCTL(LSFT(LALT(KC_GRAVE))));
+    break;
+
+
 
   default:
     // & 0xFF gets the Tap key for Tap Holds, required when using Retro Shift

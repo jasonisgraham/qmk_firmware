@@ -13,6 +13,7 @@ enum tap_dance_codes {
   DANCE_I,
   DANCE_J,
   DANCE_K,
+  DANCE_CAP_K,
   DANCE_L,
   DANCE_M,
   DANCE_N,
@@ -1238,8 +1239,7 @@ void dance_raise_finished(tap_dance_state_t *state, void *user_data) {
     tap_code16(KC_UNDS);
     break;
   case HOLD2:
-      register_code16(KC_LALT);
-      layer_on(_NUMLOCK);
+      layer_on(_EMACS_SELECT);
       break;
   default:
       layer_on(_RAISE);
@@ -1251,8 +1251,7 @@ void dance_raise_reset(tap_dance_state_t *state, void *user_data) {
     wait_ms(10);
     switch (dance_state[46].step) {
     case HOLD2:
-      unregister_code16(KC_LALT);
-      layer_off(_NUMLOCK);
+      layer_off(_EMACS_SELECT);
     break;
   default:
     layer_off(_RAISE);
@@ -2358,7 +2357,7 @@ void dance_shift_finished(tap_dance_state_t *state, void *user_data) {
       break;
 
   default:
-      tap_code16(KC_BSLASH);
+      tap_code16(KC_LPRN);
       break;
 
   }
@@ -2389,17 +2388,29 @@ void dance_raise_shift_finished(tap_dance_state_t *state, void *user_data) {
   switch (dance_state[101].step) {
   case TAP:
   case TAP_INTERRUPTED:
+      tap_code16(KC_LCBR);
+      break;
   case TAP2:
   case TAP2_INTERRUPTED:
-      layer_move(_SHIFTLOCK);
-#ifdef AUDIO_ENABLE
-      PLAY_SONG(caps_lock_on_sound);
-#endif
+      tap_code16(KC_LCBR);
+      tap_code16(KC_LCBR);
       break;
-  default:
-    register_code16(KC_LSFT);
+  case TAP3:
+  case TAP3_INTERRUPTED:
+      tap_code16(KC_LCBR);
+      tap_code16(KC_LCBR);
+      tap_code16(KC_LCBR);
+      break;
+  case TAP4:
+      tap_code16(KC_LCBR);
+      tap_code16(KC_LCBR);
+      tap_code16(KC_LCBR);
+      tap_code16(KC_LCBR);
+      break;
 
-    break;
+  default:
+      register_code16(KC_LSFT);
+      break;
   }
 }
 
@@ -2701,24 +2712,24 @@ void dance_lower_shift_finished(tap_dance_state_t *state, void *user_data) {
 
     case TAP:
     case TAP_INTERRUPTED:
-        tap_code16(KC_PIPE);
+        tap_code16(KC_LBRACKET);
         break;
     case TAP2:
     case TAP2_INTERRUPTED:
-        tap_code16(KC_PIPE);
-        tap_code16(KC_PIPE);
+        tap_code16(KC_LBRACKET);
+        tap_code16(KC_LBRACKET);
         break;
     case TAP3:
     case TAP3_INTERRUPTED:
-        tap_code16(KC_PIPE);
-        tap_code16(KC_PIPE);
-        tap_code16(KC_PIPE);
+        tap_code16(KC_LBRACKET);
+        tap_code16(KC_LBRACKET);
+        tap_code16(KC_LBRACKET);
         break;
     case TAP4:
-        tap_code16(KC_PIPE);
-        tap_code16(KC_PIPE);
-        tap_code16(KC_PIPE);
-        tap_code16(KC_PIPE);
+        tap_code16(KC_LBRACKET);
+        tap_code16(KC_LBRACKET);
+        tap_code16(KC_LBRACKET);
+        tap_code16(KC_LBRACKET);
         break;
 
     default:
@@ -2802,6 +2813,7 @@ tap_dance_action_t tap_dance_actions[] = {
                                              [DANCE_I] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_I, dance_I_finished, dance_I_reset),
                                              [DANCE_J] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_J, dance_J_finished, dance_J_reset),
                                              [DANCE_K] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_K, dance_K_finished, dance_K_reset),
+                                             [DANCE_CAP_K] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_cap_K, dance_cap_K_finished, dance_cap_K_reset),
                                              [DANCE_LEFT_OR_HOME] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_left_or_home, dance_left_or_home_finished, dance_left_or_home_reset),
                                              [DANCE_LEVEL3_ALT_KEYBOARD] = ACTION_TAP_DANCE_FN_ADVANCED(on_DANCE_LEVEL3_ALT_KEYBOARD, DANCE_LEVEL3_ALT_KEYBOARD_finished, DANCE_LEVEL3_ALT_KEYBOARD_reset),
                                              [DANCE_LOWER] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_lower, dance_lower_finished, dance_lower_reset),
