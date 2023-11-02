@@ -183,7 +183,7 @@
 #define my_cap_h LSFT(KC_H)
 #define my_cap_i LSFT(KC_I)
 #define my_cap_j LSFT(KC_J)
-#define my_cap_k LSFT(KC_K)
+#define my_cap_k TD(DANCE_CAP_K)
 #define my_cap_l LSFT(KC_L)
 #define my_cap_m LSFT(KC_M)
 #define my_cap_n LSFT(KC_N)
@@ -249,7 +249,7 @@
 #define my_raise RAISE
 #define my_raise_comma KC_2
 
-#define my_raise_q _______
+#define my_raise_q OSL(_EMACS_SELECT)
 #define my_raise_w osl_web
 #define my_raise_e TD(DANCE_PASTE_OR_CLIPBOARD)
 #define my_raise_r EMACS_BUFFER_REVERT
@@ -258,12 +258,12 @@
 #define my_raise_a TD(DANCE_F5)
 #define my_raise_s OSL(_EMACS_SELECT)
 #define my_raise_d _______
-#define my_raise_f LALT(KC_ENTER)
+#define my_raise_f LALT(LSFT(KC_F8))
 #define my_raise_g _______
 
 #define my_raise_z EASYMOTION_LEADER
 #define my_raise_x _______
-#define my_raise_c EASYMOTION_LEADER
+#define my_raise_c _______
 #define my_raise_v TD(DANCE_SAVE_LOAD_NS_SWITCH)
 #define my_raise_b _______
 
@@ -412,7 +412,56 @@ enum custom_keycodes {
                       /* RGB_SLD = SAFE_RANGE, */
                       /* RGB_SLD = EZ_SAFE_RANGE, */
                       FIRST = SAFE_RANGE,
-                      EASYMOTION_LEADER,
+
+                      EMACS_SEL_EXLM,
+                      EMACS_SEL_AT,
+                      EMACS_SEL_HASH,
+                      EMACS_SEL_DLR,
+                      EMACS_SEL_PERC,
+                      EMACS_SEL_CIRC,
+                      EMACS_SEL_AMPR,
+                      EMACS_SEL_ASTR,
+                      EMACS_SEL_LPRN,
+                      EMACS_SEL_RPRN,
+
+                      EMACS_SEL_A,
+                      EMACS_SEL_B,
+                      EMACS_SEL_C,
+                      EMACS_SEL_COMMA,
+                      EMACS_SEL_D,
+                      EMACS_SEL_DB,
+                      EMACS_SEL_DOT,
+                      EMACS_SEL_E,
+                      EMACS_SEL_F,
+                      EMACS_SEL_G,
+                      EMACS_SEL_H,
+                      EMACS_SEL_I,
+                      EMACS_SEL_J,
+                      EMACS_SEL_K,
+                      EMACS_SEL_L,
+                      EMACS_SEL_LOWER,
+                      EMACS_SEL_M,
+                      EMACS_SEL_MODR1,
+                      EMACS_SEL_MODR2,
+                      EMACS_SEL_MODR3,
+                      EMACS_SEL_MODR4,
+                      EMACS_SEL_N,
+                      EMACS_SEL_O,
+                      EMACS_SEL_P,
+                      EMACS_SEL_Q,
+                      EMACS_SEL_GRAVE,
+                      EMACS_SEL_R,
+                      EMACS_SEL_RAISE,
+                      EMACS_SEL_S,
+                      EMACS_SEL_SCLN,
+                      EMACS_SEL_SLASH,
+                      EMACS_SEL_T,
+                      EMACS_SEL_TAB,
+                      EMACS_SEL_U,
+                      EMACS_SEL_V,
+                      EMACS_SEL_W,
+                      EMACS_SEL_X,
+                      EMACS_SEL_Y,                     EASYMOTION_LEADER,
                       ACEJUMP,
                       SWAP_SELECTION_BOUNDARIES,
                       MOVE_STATEMENT_DOWN,
@@ -543,17 +592,7 @@ enum custom_keycodes {
                       TOGGLE_BREATHING,
                       EMACS_ACE_WINDOW_SELECT,
                       TERM_HOME,
-                      EMACS_SEL_0,
-                      EMACS_SEL_1,
-                      EMACS_SEL_2,
-                      EMACS_SEL_3,
-                      EMACS_SEL_4,
-                      EMACS_SEL_5,
-                      EMACS_SEL_6,
                       LAYER_MOUSE_HOLD,
-                      EMACS_SEL_7,
-                      EMACS_SEL_8,
-                      EMACS_SEL_9,
                       TMUX_SPLIT_WINDOW,
                       EMACS_SPLIT_WINDOW_UP,
                       EMACS_SPLIT_WINDOW_DOWN,
@@ -755,3 +794,12 @@ bool do_breathing = false;
 
 #define level3 COMPOSE
 #define alt_keyboard KEYBOARD_LAYOUT_HOLD_KEY
+#define META_X LALT(KC_X)
+
+#define MOVE_STATEMENT_UP LALT(LSFT(KC_UP))
+#define MOVE_STATEMENT_DOWN LALT(LSFT(KC_DOWN))
+#define MOVE_ELEMENT_UP LALT(LSFT(KC_UP))
+#define MOVE_ELEMENT_DOWN LALT(LSFT(KC_DOWN))
+
+#define EMACS_SEL_Z LALT(KC_Z)
+#define JETBRAINS_CLOSE_TAB RCTL(LSFT(KC_F4))

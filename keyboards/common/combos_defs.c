@@ -3,7 +3,20 @@
 
 #include QMK_KEYBOARD_H
 
+const uint16_t PROGMEM combo_editor_select_exlm[] = {EMACS_SEL_LOWER, EMACS_SEL_M, COMBO_END};
+const uint16_t PROGMEM combo_editor_select_at[] = {EMACS_SEL_LOWER, EMACS_SEL_COMMA, COMBO_END};
+const uint16_t PROGMEM combo_editor_select_hash[] = {EMACS_SEL_LOWER, EMACS_SEL_DOT, COMBO_END};
+const uint16_t PROGMEM combo_editor_select_dlr[] = {EMACS_SEL_LOWER, EMACS_SEL_J, COMBO_END};
+const uint16_t PROGMEM combo_editor_select_perc[] = {EMACS_SEL_LOWER, EMACS_SEL_K, COMBO_END};
+const uint16_t PROGMEM combo_editor_select_circ[] = {EMACS_SEL_LOWER, EMACS_SEL_L, COMBO_END};
+const uint16_t PROGMEM combo_editor_select_ampr[] = {EMACS_SEL_LOWER, EMACS_SEL_U, COMBO_END};
+const uint16_t PROGMEM combo_editor_select_astr[] = {EMACS_SEL_LOWER, EMACS_SEL_I, COMBO_END};
+const uint16_t PROGMEM combo_editor_select_lprn[] = {EMACS_SEL_LOWER, EMACS_SEL_O, COMBO_END};
+const uint16_t PROGMEM combo_editor_select_rprn[] = {EMACS_SEL_LOWER, EMACS_SEL_P, COMBO_END};
 
+
+
+const uint16_t PROGMEM combo_select_grave[] = {EMACS_SEL_COMMA, EMACS_SEL_L, COMBO_END};
 const uint16_t PROGMEM combo_mouse1_mouse2[] = {KC_MS_BTN1, KC_MS_BTN2, COMBO_END};
 const uint16_t PROGMEM combo_super_r_super_g[] = {super_r, super_g, COMBO_END};
 
@@ -48,7 +61,7 @@ const uint16_t PROGMEM combo_x_c[] = {my_x, my_c, COMBO_END};
 const uint16_t PROGMEM combo_raise_f[] = {RAISE, my_f, COMBO_END};
 const uint16_t PROGMEM combo_raise_r[] = {RAISE, my_r, COMBO_END};
 const uint16_t PROGMEM combo_bottom_top_mid_column[] = {top_alpha_mid_column, mod_r4, COMBO_END};
-const uint16_t PROGMEM combo_s_a[] = {my_a, my_s, COMBO_END};
+const uint16_t PROGMEM combo_a_s[] = {my_a, my_s, COMBO_END};
 /* const uint16_t PROGMEM combo_lower_bottom_right_2[] = {lower_key_4_11, lower_key_4_12, COMBO_END}; */
 /* const uint16_t PROGMEM combo_raise_lower_i[] = {raise_key_4_9, my_raise_i, COMBO_END}; */
 
@@ -94,6 +107,7 @@ const uint16_t PROGMEM combo_shiftlock_lower_ampr[] = {LOWER, my_cap_u, COMBO_EN
 const uint16_t PROGMEM combo_shiftlock_lower_astr[] = {LOWER,  my_cap_i, COMBO_END};
 
 const uint16_t PROGMEM combo_z_x[] = {my_z, my_x, COMBO_END};
+const uint16_t PROGMEM combo_z_x_c[] = {my_z, my_x, my_c, COMBO_END};
 
 const uint16_t PROGMEM combo_lower_lprn[] = {LOWER, my_o, COMBO_END};
 const uint16_t PROGMEM combo_lower_rprn[] = {LOWER, my_p, COMBO_END};

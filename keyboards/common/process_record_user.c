@@ -701,8 +701,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   case EMACS_BUFFER_REVERT:
     if (record->event.pressed) {
-        SEND_STRING(SS_RCTL(SS_TAP(X_C)) SS_DELAY(50)  SS_TAP(X_R));
-
+        tap_code16(RCTL (KC_X));
+        wait_ms(50);
+        tap_code16(RCTL(KC_R));
     }
     break;
 
@@ -781,7 +782,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   case THREAD_FIRST:
     if (record->event.pressed) {
-      SEND_STRING("-> ") ;
+        tap_code16(KC_MINUS);
+        wait_ms(50);
+        tap_code16(KC_RIGHT_ANGLE_BRACKET);
+        tap_code16(KC_SPACE);
     }
     break;
 
@@ -1250,23 +1254,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     case MOVE_STATEMENT_UP:
         if (record->event.pressed) {
-            tap_code16(RCTL(KC_X));
-            wait_ms(30);
-            add_oneshot_mods(MOD_MASK_ALL_MODS_COMPAT);
-            tap_code16(KC_UP);
-            del_oneshot_mods(MOD_MASK_ALL_MODS_COMPAT);
-
+            tap_code16(LALT(LSFT(KC_UP)));
         }
         break;
 
     case MOVE_STATEMENT_DOWN:
         if (record->event.pressed) {
-            tap_code16(RCTL(KC_X));
-            wait_ms(30);
-            add_oneshot_mods(MOD_MASK_ALL_MODS_COMPAT);
-            tap_code16(KC_DOWN);
-            del_oneshot_mods(MOD_MASK_ALL_MODS_COMPAT);
-
+            tap_code16(LALT(LSFT(KC_DOWN)));
         }
         break;
 
@@ -1293,85 +1287,57 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         break;
 
 
+    case EMACS_SEL_P:
+        if (record->event.pressed) {
+            tap_code16(LALT(KC_0));
+        }
+    break;
 
+    case EMACS_SEL_M:
+        if (record->event.pressed) {
+            tap_code16(LALT(KC_1));
+        }
+        break;
 
-  case EMACS_SEL_0:
-    if (record->event.pressed) {
-      SEND_STRING(SS_DELAY(100));
-      SEND_STRING( SS_LALT(SS_TAP(X_M)) SS_DELAY(100) SS_TAP(X_0));
-      layer_move(_BASE);
+    case EMACS_SEL_COMMA:
+        if (record->event.pressed) {
+            tap_code16(LALT(KC_2));
+        }
+        break;
+
+    case EMACS_SEL_DOT:
+        if (record->event.pressed) {
+        tap_code16(LALT(KC_3));
+        }
+        break;
+
+    case EMACS_SEL_J:
+        if (record->event.pressed) {
+        tap_code16(LALT(KC_4));
+        }
+        break;
+
+    case EMACS_SEL_K:
+        if (record->event.pressed) {
+        tap_code16(LALT(KC_5));
     }
     break;
 
-  case EMACS_SEL_1:
+  case EMACS_SEL_L:
     if (record->event.pressed) {
-      SEND_STRING(SS_DELAY(100));
-      SEND_STRING( SS_LALT(SS_TAP(X_M)) SS_DELAY(100) SS_TAP(X_1));
-      layer_move(_BASE);
+        tap_code16(LALT(KC_6));
     }
     break;
 
-  case EMACS_SEL_2:
+  case EMACS_SEL_U:
     if (record->event.pressed) {
-      SEND_STRING(SS_DELAY(100));
-      SEND_STRING( SS_LALT(SS_TAP(X_M)) SS_DELAY(100) SS_TAP(X_2));
-      layer_move(_BASE);
+        tap_code16(LALT(KC_7));
     }
     break;
 
-  case EMACS_SEL_3:
+  case EMACS_SEL_I:
     if (record->event.pressed) {
-      SEND_STRING(SS_DELAY(100));
-      SEND_STRING( SS_LALT(SS_TAP(X_M)) SS_DELAY(100) SS_TAP(X_3));
-      layer_move(_BASE);
-    }
-    break;
-
-  case EMACS_SEL_4:
-    if (record->event.pressed) {
-      SEND_STRING(SS_DELAY(100));
-      SEND_STRING( SS_LALT(SS_TAP(X_M)) SS_DELAY(100) SS_TAP(X_4));
-      layer_move(_BASE);
-    }
-    break;
-
-  case EMACS_SEL_5:
-    if (record->event.pressed) {
-      SEND_STRING(SS_DELAY(100));
-      SEND_STRING( SS_LALT(SS_TAP(X_M)) SS_DELAY(100) SS_TAP(X_5));
-      layer_move(_BASE);
-    }
-    break;
-
-  case EMACS_SEL_6:
-    if (record->event.pressed) {
-      SEND_STRING(SS_DELAY(100));
-      SEND_STRING( SS_LALT(SS_TAP(X_M)) SS_DELAY(100) SS_TAP(X_6));
-      layer_move(_BASE);
-    }
-    break;
-
-  case EMACS_SEL_7:
-    if (record->event.pressed) {
-      SEND_STRING(SS_DELAY(100));
-      SEND_STRING( SS_LALT(SS_TAP(X_M)) SS_DELAY(100) SS_TAP(X_7));
-      layer_move(_BASE);
-    }
-    break;
-
-  case EMACS_SEL_8:
-    if (record->event.pressed) {
-      SEND_STRING(SS_DELAY(100));
-      SEND_STRING( SS_LALT(SS_TAP(X_M)) SS_DELAY(100) SS_TAP(X_8));
-      layer_move(_BASE);
-    }
-    break;
-
-  case EMACS_SEL_9:
-    if (record->event.pressed) {
-      SEND_STRING(SS_DELAY(100));
-      SEND_STRING( SS_LALT(SS_TAP(X_M)) SS_DELAY(100) SS_TAP(X_9));
-      layer_move(_BASE);
+        tap_code16(LALT(KC_8));
     }
     break;
 
@@ -1576,6 +1542,366 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
         return false;
         break;
+
+    case EMACS_SEL_O:
+        if (record->event.pressed) {
+            tap_code16(LALT(KC_9));
+        }
+        return false;
+        break;
+
+    case EMACS_SEL_GRAVE:
+        if (record->event.pressed) {
+            tap_code16(RCTL(KC_X));
+            wait_ms(50);
+            tap_code16(LALT(KC_GRAVE));
+        }
+    return false;
+    break;
+
+
+    case EMACS_SEL_TAB:
+        if (record->event.pressed) {
+            tap_code16(RCTL(KC_X));
+            wait_ms(50);
+            tap_code16(RCTL(LALT(KC_SPACE)));
+        }
+        return false;
+        break;
+
+    case EMACS_SEL_A:
+        if (record->event.pressed) {
+            tap_code16(RCTL(KC_X));
+            wait_ms(50);
+            tap_code16(LALT(KC_A));
+        }
+        return false;
+        break;
+
+    case EMACS_SEL_S:
+        if (record->event.pressed) {
+            tap_code16(RCTL(KC_X));
+            wait_ms(50);
+            tap_code16(LALT(KC_S));
+        }
+        return false;
+        break;
+
+    case EMACS_SEL_LOWER:
+        if (record->event.pressed) {
+            tap_code16(RCTL(KC_X));
+            wait_ms(50);
+            tap_code16(LALT(KC_MINUS));
+        }
+        return false;
+        break;
+
+    case EMACS_SEL_MODR1:
+        if (record->event.pressed) {
+            tap_code16(LSFT(RCTL(KC_X)));
+            wait_ms(50);
+            tap_code16(RCTL(LALT(KC_EXLM)));
+        }
+        return false;
+        break;
+
+
+    case EMACS_SEL_MODR2:
+        if (record->event.pressed) {
+            tap_code16(LSFT(RCTL(KC_X)));
+            wait_ms(50);
+            tap_code16(RCTL(LALT(KC_AT)));
+        }
+        return false;
+        break;
+
+
+    case EMACS_SEL_MODR3:
+        if (record->event.pressed) {
+            tap_code16(LSFT(RCTL(KC_X)));
+            wait_ms(50);
+            tap_code16(RCTL(LALT(KC_HASH)));
+        }
+        return false;
+        break;
+
+
+    case EMACS_SEL_EXLM:
+        if (record->event.pressed) {
+            tap_code16(LSFT(RCTL(KC_X)));
+            wait_ms(50);
+            tap_code16(RCTL(LALT(KC_EXLM)));
+        }
+        return false;
+        break;
+
+    case EMACS_SEL_AT:
+        if (record->event.pressed) {
+            tap_code16(LSFT(RCTL(KC_X)));
+            wait_ms(50);
+            tap_code16(RCTL(LALT(KC_AT)));
+        }
+        return false;
+        break;
+
+
+    case EMACS_SEL_HASH:
+        if (record->event.pressed) {
+            tap_code16(LSFT(RCTL(KC_X)));
+            wait_ms(50);
+            tap_code16(RCTL(LALT(KC_HASH)));
+        }
+        return false;
+        break;
+
+
+    case EMACS_SEL_DLR:
+        if (record->event.pressed) {
+            tap_code16(LSFT(RCTL(KC_X)));
+            wait_ms(50);
+            tap_code16(RCTL(LALT(KC_DLR)));
+        }
+        return false;
+        break;
+
+
+    case EMACS_SEL_PERC:
+        if (record->event.pressed) {
+            tap_code16(LSFT(RCTL(KC_X)));
+            wait_ms(50);
+            tap_code16(RCTL(LALT(KC_PERC)));
+        }
+        return false;
+        break;
+
+
+    case EMACS_SEL_CIRC:
+        if (record->event.pressed) {
+            tap_code16(LSFT(RCTL(KC_X)));
+            wait_ms(50);
+            tap_code16(RCTL(LALT(KC_CIRC)));
+        }
+        return false;
+        break;
+
+
+    case EMACS_SEL_AMPR:
+        if (record->event.pressed) {
+            tap_code16(LSFT(RCTL(KC_X)));
+            wait_ms(50);
+            tap_code16(RCTL(LALT(KC_AMPR)));
+        }
+        return false;
+        break;
+
+
+    case EMACS_SEL_ASTR:
+        if (record->event.pressed) {
+            tap_code16(LSFT(RCTL(KC_X)));
+            wait_ms(50);
+            tap_code16(RCTL(LALT(KC_ASTR)));
+        }
+        return false;
+        break;
+
+
+    case EMACS_SEL_LPRN:
+        if (record->event.pressed) {
+            tap_code16(LSFT(RCTL(KC_X)));
+            wait_ms(50);
+            tap_code16(RCTL(LALT(KC_LPRN)));
+        }
+        return false;
+        break;
+
+
+    case EMACS_SEL_RPRN:
+        if (record->event.pressed) {
+            tap_code16(LSFT(RCTL(KC_X)));
+            wait_ms(50);
+            tap_code16(RCTL(LALT(KC_RPRN)));
+        }
+        return false;
+        break;
+
+
+
+    case EMACS_SEL_MODR4:
+        if (record->event.pressed) {
+            tap_code16(LSFT(RCTL(KC_X)));
+            wait_ms(50);
+            tap_code16(RCTL(LALT(KC_DLR)));
+        }
+        return false;
+        break;
+
+    case EMACS_SEL_SLASH:
+        if (record->event.pressed) {
+            tap_code16(RCTL(KC_X));
+            wait_ms(50);
+            tap_code16(LALT(KC_SLASH));
+        }
+        return false;
+        break;
+
+    case EMACS_SEL_N:
+        if (record->event.pressed) {
+            tap_code16(RCTL(KC_X));
+            wait_ms(50);
+            tap_code16(LALT(KC_N));
+        }
+        return false;
+        break;
+
+
+
+    case EMACS_SEL_SCLN:
+        if (record->event.pressed) {
+            tap_code16(RCTL(KC_X));
+            wait_ms(50);
+            tap_code16(LALT(KC_SCLN));
+        }
+        return false;
+        break;
+
+
+    case EMACS_SEL_D:
+        if (record->event.pressed) {
+            tap_code16(RCTL(KC_X));
+            wait_ms(50);
+            tap_code16(LALT(KC_D));
+        }
+        return false;
+        break;
+
+    case EMACS_SEL_T:
+        if (record->event.pressed) {
+            tap_code16(RCTL(KC_X));
+            wait_ms(50);
+            tap_code16(LALT(KC_T));
+        }
+        return false;
+        break;
+
+
+    case EMACS_SEL_C:
+        if (record->event.pressed) {
+            tap_code16(RCTL(KC_X));
+            wait_ms(50);
+            tap_code16(LALT(KC_C));
+        }
+        return false;
+        break;
+
+    case EMACS_SEL_R:
+        if (record->event.pressed) {
+            tap_code16(RCTL(KC_X));
+            wait_ms(50);
+            tap_code16(LALT(KC_R));
+        }
+        return false;
+        break;
+
+    case EMACS_SEL_G:
+        if (record->event.pressed) {
+            tap_code16(RCTL(KC_X));
+            wait_ms(50);
+            tap_code16(LALT(KC_G));
+        }
+        return false;
+        break;
+
+    case EMACS_SEL_F:
+        if (record->event.pressed) {
+            tap_code16(RCTL(KC_X));
+            wait_ms(50);
+            tap_code16(LALT(KC_F));
+        }
+        return false;
+        break;
+
+    case EMACS_SEL_RAISE:
+        if (record->event.pressed) {
+            tap_code16(RCTL(KC_X));
+            wait_ms(50);
+            tap_code16(LALT(KC_UNDS));
+        }
+        return false;
+        break;
+
+    case EMACS_SEL_H:
+        if (record->event.pressed) {
+            tap_code16(RCTL(KC_X));
+            wait_ms(50);
+            tap_code16(LALT(KC_H));
+        }
+        return false;
+        break;
+
+    case EMACS_SEL_Y:
+        if (record->event.pressed) {
+            tap_code16(RCTL(KC_X));
+            wait_ms(50);
+            tap_code16(LALT(KC_Y));
+        }
+        return false;
+        break;
+
+    case EMACS_SEL_E:
+        if (record->event.pressed) {
+            tap_code16(RCTL(KC_X));
+            wait_ms(50);
+            tap_code16(LALT(KC_E));
+        }
+        return false;
+        break;
+
+    case EMACS_SEL_V:
+        if (record->event.pressed) {
+            tap_code16(RCTL(KC_X));
+            wait_ms(50);
+            tap_code16(LALT(KC_V));
+        }
+        return false;
+        break;
+
+    case EMACS_SEL_B:
+        if (record->event.pressed) {
+            tap_code16(RCTL(KC_X));
+            wait_ms(50);
+            tap_code16(LALT(KC_B));
+        }
+        return false;
+        break;
+
+    case EMACS_SEL_Q:
+        if (record->event.pressed) {
+            tap_code16(RCTL(KC_X));
+            wait_ms(50);
+            tap_code16(LALT(KC_Q));
+        }
+        return false;
+        break;
+
+    case EMACS_SEL_W:
+        if (record->event.pressed) {
+            tap_code16(RCTL(KC_X));
+            wait_ms(50);
+            tap_code16(LALT(KC_W));
+        }
+        return false;
+        break;
+
+    case EMACS_SEL_X:
+        if (record->event.pressed) {
+            tap_code16(RCTL(KC_X));
+            wait_ms(50);
+            tap_code16(LALT(KC_X));
+        }
+        return false;
+        break;
+
+
 
     case CTRL_X_ALL_MODS_OSM:
         if (record->event.pressed) {
