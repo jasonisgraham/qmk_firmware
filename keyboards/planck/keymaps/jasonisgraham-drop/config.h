@@ -28,8 +28,10 @@
 /* #define ENABLE_RGB_MATRIX_DUAL_HUE_STAR_LIGHT */
 
 #include "../../../common/config.h"
-/* #define LEADER_NO_TIMEOUT */
-#define LEADER_PER_KEY_TIMING
-#define LEADER_TIMEOUT 300
 
-#define UNICODE_KEY_LNX	LCTL(LSFT(KC_U))	
+
+#define UNICODE_KEY_LNX	LCTL(LSFT(KC_U))
+
+#define DYNAMIC_MACRO_DELAY 100
+
+/* #define LEADER_KEY_STRICT_KEY_PROCESSING */

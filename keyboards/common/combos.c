@@ -5,7 +5,7 @@ combo_t key_combos[COMBO_COUNT] = {
 
     COMBO(combo_period_slash, LALT(KC_DOT)),
 
-    COMBO(combo_z_x, EASYMOTION_LEADER),
+    COMBO(combo_z_x, QK_LEAD),
 
     COMBO(combo_super_r_super_g, RESET_INPUT_PREFS),
 
@@ -34,6 +34,7 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo_space_m, LALT(KC_M)),
     COMBO(combo_space_j, ONE_SHOT_ALT_KEYBOARD),
     COMBO(combo_space_k, ONE_SHOT_LEVEL3),
+    COMBO(combo_space_l, QK_LEAD),
     COMBO(combo_space_h, LALT(KC_M)),
     COMBO(combo_k47_space, KC_RIGHT),
     COMBO(combo_super_space, KC_DOWN),
@@ -83,7 +84,7 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo_r_t, KC_AGIN),
 
     COMBO(combo_e_f, OSL(_EMACS_SELECT)),
-    COMBO(combo_a_s, OSL(_EMACS_SELECT)),
+    COMBO(combo_a_s, QK_LEAD),
     COMBO(combo_q_w, OSL(_EMACS_SELECT)),
     COMBO(combo_k49_k410, OSL(_EMACS_SELECT)),
     COMBO(combo_k49_k410_k11, KC_INSERT),
@@ -241,7 +242,6 @@ combo_t key_combos[COMBO_COUNT] = {
 
     COMBO(combo_lower_o_p, CTRL_N),
     COMBO(combo_left_shift_forward_slash, KC_ENTER),
-
 
     COMBO(combo_space_m_k, OSM(MOD_MASK_ALL_MODS)),
     COMBO(combo_lower_m_k, OSM(MOD_MASK_ALL_MODS)),

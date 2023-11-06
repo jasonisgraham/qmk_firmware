@@ -39,7 +39,7 @@ const uint32_t PROGMEM unicode_map[] = {
 
 #define planck_rofi ESC_THEN_BASE_LAYER, _______, LAUNCHER_WIKI, _______,  _______, LAUNCHER_TRANSLATE,    _______,  ROFI_LOCATE_GLOBAL, ROFI_LOCATE, LAUNCHER_WINDOWS, LAUNCHER_CLIPBOARD, COPY_LATEST_FILE_TO_CLIPBOARD, \
         CLEAR_NOTIFICATIONS, _______, LAUNCHER_SYSTEM, LAUNCHER_DEFINE, LAUNCHER_FDFIND,   LAUNCHER_GOOGLE, _______, CIDER_HISTORY_WRITE, ROFI_CIDER_HISTORY, ROFI_EMOJI, ROFI_PROCESSES, ULAUNCHER, \
-    TO(_BASE), _______, _______, ROFI_CALCULATOR, _______, _______, _______, OPEN_NOTIFICATIONS, CINNAMON_MENU_OPEN, PLASMA_SEARCH, _______, _______, \
+        AUTOSHIFT_TOGGLE, _______, _______, ROFI_CALCULATOR, _______, _______, _______, OPEN_NOTIFICATIONS, CINNAMON_MENU_OPEN, PLASMA_SEARCH, _______, _______, \
     _______, _______, _______,    _______, _______, ROFI_DRUN, TO(_BASE), ROFI_DRUN,    _______, DM_REC1, DM_RSTP, DM_PLY1
 
 #define planck_emacs                                EMACS_FOCUS_REPL, EMACS_DESC_KEY, EMACS_WRAP_HYDRA, LCTL(KC_E), EMACS_HELM_MARK_RINGS, EMACS_TRANSPOSE,    _______, EMACS_HELM_KILL_RINGS, EMACS_DEFUN_END, EMACS_DEFUN_BEGIN, EMACS_HELM_OCCUR, _______, \
@@ -104,7 +104,7 @@ const uint32_t PROGMEM unicode_map[] = {
 
 #define planck_system                                \
     QK_BOOTLOADER, _______, _______, _______, RESET_INPUT_PREFS,     _______, _______, _______, KC_BRIGHTNESS_DOWN, KC_BRIGHTNESS_UP, QK_CLEAR_EEPROM, KC_MEDIA_PLAY_PAUSE, \
-        _______, _______, DM_REC1, _______, _______, _______, DM_REC1, DM_PLY1, KC_AUDIO_VOL_DOWN, KC_AUDIO_VOL_UP, QK_AUTOCORRECT_ON, DB_TOGG, \
+        _______, _______, _______, DB_TOGG, _______, _______, DM_REC1, DM_PLY1, KC_AUDIO_VOL_DOWN, KC_AUDIO_VOL_UP, QK_AUTOCORRECT_ON, DB_TOGG, \
         QK_AUTO_SHIFT_TOGGLE, _______ , _______, _______, _______, _______,   DM_REC2, DM_PLY2,  KC_AUDIO_MUTE, _______, _______, QK_BOOTLOADER, \
         SYSTEM_LAYER_DEACTIVATE, _______, _______, _______, _______,     _______, DM_RSTP, _______, _______, _______, _______, _______
 
