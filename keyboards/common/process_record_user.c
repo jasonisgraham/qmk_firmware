@@ -1039,7 +1039,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   case AUTOSHIFT_TOGGLE:
     if (record->event.pressed) {
-      /* tap_code16(KC_ASTG); */
       if (get_autoshift_state()) {
         autoshift_disable();
 #ifdef AUDIO_ENABLE

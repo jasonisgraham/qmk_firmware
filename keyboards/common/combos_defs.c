@@ -54,6 +54,7 @@ const uint16_t PROGMEM combo_space_period[] = {my_space, my_period, COMBO_END};
 const uint16_t PROGMEM combo_space_j_k[] = {my_space, my_j, my_k, COMBO_END};
 const uint16_t PROGMEM combo_space_j[] = {my_space, my_j, COMBO_END};
 const uint16_t PROGMEM combo_space_k[] = {my_space, my_k, COMBO_END};
+const uint16_t PROGMEM combo_space_l[] = {my_space, my_l, COMBO_END};
 
 const uint16_t PROGMEM combo_space_h[] = {my_space, my_h, COMBO_END};
 

@@ -37,7 +37,6 @@ enum preonic_layers {
 #undef UNICODE_SELECTED_MODES
 #define UNICODE_SELECTED_MODES UC_LNX
 
-/* #include "../../../common/leader.c" */
 #include "../../../common/key_overrides.c"
 #include "../../../common/drop_colors.c"
 #include "../../../common/keycodes.c"
@@ -62,3 +61,5 @@ enum preonic_layers {
 /* #define row0  { top_left } */
 /* const int row0[] = { top_left, top_left,    my_q,    my_w,    my_e,    my_r,   my_t, backspace ,    my_y,           my_u,    my_i,    my_o,     my_p}; */
 /* int row0[10] = {}; */
+
+#include "../../../common/leader.c"
