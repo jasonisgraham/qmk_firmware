@@ -562,13 +562,7 @@ case TAP_INTERRUPTED_HELD:
     break;
 
   case TAP2:
-      tap_code16(RCTL(KC_X));
-      wait_ms(10);
-      tap_code16(RCTL(KC_S));
-      wait_ms(10);
-      tap_code16(KC_ESC);
-      wait_ms(10);
-      layer_off(_SHIFTLOCK);
+      save_all_and_esc();
 #ifdef AUDIO_ENABLE
       PLAY_SONG(caps_lock_off_sound);
 #endif

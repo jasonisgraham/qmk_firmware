@@ -21,7 +21,7 @@ const uint32_t PROGMEM unicode_map[] = {
     _______, _______, _______, _______,  _______,      _______, _______,     _______,           my_raise_m,           my_raise_comma,         KC_3,           _______, \
         _______, _______, _______, _______,        _______,        _______, _______, _______,      _______, _______ ,       _______,           _______
 
-#define planck_raise KC_GRAVE,    my_raise_q,          my_raise_w,  my_raise_e,         my_raise_r,       my_raise_t, TO_BASE, my_raise_y, my_raise_u,           my_raise_i,           my_raise_o,           my_raise_p, \
+#define planck_raise backtab,    my_raise_q,          my_raise_w,  my_raise_e,         my_raise_r,       my_raise_t, TO_BASE, my_raise_y, my_raise_u,           my_raise_i,           my_raise_o,           my_raise_p, \
     _______, my_raise_a, my_raise_s,   my_raise_d, my_raise_f,  my_raise_g, raise_up,       my_raise_h,         my_raise_j,           my_raise_k,           my_raise_l,       raise_semi, \
     raise_left_shift, my_raise_z, my_raise_x, my_raise_c,  my_raise_v,      my_raise_b, raise_down,     my_raise_n,           my_raise_m,           my_raise_comma,         KC_3,           raise_slash, \
     MO(_SYSTEM), _______, KC_ENTER,        _______,        TO(_BASE), _______, raise_left,      my_space,   raise_key_4_9,       KC_INSERT,  KC_DOWN,         KC_UP
@@ -32,7 +32,7 @@ const uint32_t PROGMEM unicode_map[] = {
         SHIFTLOCK_LAYER_DEACTIVATE,          LSFT(KC_Z),     LSFT(KC_X),     LSFT(KC_C),     LSFT(KC_V),     LSFT(KC_B), _______,   my_cap_n,     my_cap_m,     my_cap_comma,        my_cap_period,        my_forward_slash, \
     _______, _______, _______, _______, RAISE, _______, _______,       _______,    LOWER,  _______, _______, _______
 
-#define planck_lower                               backtab,   my_lower_q,          my_lower_w,          my_lower_e,          my_lower_r,  TD(DANCE_SCREENSHOT),  TO_BASE,    KC_HOME,     my_lower_u,    my_lower_i,      my_lower_o,         my_lower_p, \
+#define planck_lower                               KC_GRAVE,   my_lower_q,          my_lower_w,          my_lower_e,          my_lower_r,  TD(DANCE_SCREENSHOT),  TO_BASE,    KC_HOME,     my_lower_u,    my_lower_i,      my_lower_o,         my_lower_p, \
     _______, my_lower_a,          my_lower_s,          my_lower_d,          my_lower_f,          my_lower_g, lower_backspace,      my_lower_h,        my_lower_j,        my_lower_k,          my_lower_l,       my_lower_semi, \
     lower_left_shift,   my_lower_z,         my_lower_x,         my_lower_c,         my_lower_v,         my_lower_b, lower_down,  my_lower_n, my_lower_m, my_lower_comma,   my_lower_period, my_lower_slash, \
     LAYER_MOUSE_HOLD, _______, _______ , alt,   MO(_EDITING), _______,       _______,             _______, lower_LOWER,          lower_right_of_lower, lower_key_4_11, lower_key_4_12
@@ -85,8 +85,8 @@ const uint32_t PROGMEM unicode_map[] = {
     _______, _______, _______, _______, MO(_EMACS),  _______,                                                  FISH_ACCEPT_SEND, all_mods, MO(_EMACS), TO(_BASE), _______, emacs_indent_buffer
 
 
-#define planck_winmove                                 _______,   _______, _______, _______, _______, WINDOW_ALWAYS_ON_TOP,  WINDOW_ALWAYS_ON_TOP, winmove_UL,_______, winmove_top, winmove_UR, TOGGLE_MENU_BAR, \
-    _______, _______, _______, LALT(LGUI(LCTL(RCTL(KC_D)))),_______, _______, _______, winmove_L,   winmove_D, winmove_U ,   winmove_R,   _______, \
+#define planck_winmove                                 _______,   _______, _______, _______, _______, _______,  _______, winmove_UL,_______, winmove_top, winmove_UR, TOGGLE_MENU_BAR, \
+        _______, _______, _______, LALT(LGUI(LCTL(RCTL(KC_D)))),_______, _______, WINDOW_ALWAYS_ON_TOP, winmove_L,   winmove_D, winmove_U ,   winmove_R,   _______, \
     _______, _______, _______, EMACS_FRAME_FULL_SCREEN, _______, _______,  _______, winmove_DL, winmove_U_monitor, winmove_bottom, winmove_DR,_______, \
     _______, _______, _______, _______, WINDOW_TOGGLE_HORIZONTAL_MAX,          _______,  _______,         winmove_L_monitor,   winmove_D_monitor,   winmove_R_monitor,    _______, _______
 
@@ -148,7 +148,8 @@ const uint32_t PROGMEM unicode_map[] = {
 
 #define planck_scratch _______, _______, _______, _______, _______, _______,   _______, _______, _______, _______, _______, _______, \
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
-    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
+    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
 
 #define planck_files _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, EMACS_SET_GLOBAL_LOCATE_DOCS_FILTER_DIR, \
     TO(_BASE), ROFI_LOCATE_GLOBAL, _______, _______, ROFI_LOCATE_WITH_FILTER, ROFI_LOCATE_GLOBAL, _______, _______, ROFI_LOCATE_CLJ, _______, ROFI_LOCATE_PRINT_FILTER_DIR, _______, \
@@ -165,3 +166,8 @@ const uint32_t PROGMEM unicode_map[] = {
         _______, my_lower_a,          my_lower_s,          my_lower_d,          my_lower_f,          my_lower_g, RCTL(KC_UP),      my_lower_h,        my_lower_j,        my_lower_k,          my_lower_l,       my_lower_semi, \
         lower_left_shift,   my_lower_z,         my_lower_x,         my_lower_c,         my_lower_v,         my_lower_b, RCTL(KC_DOWN),  my_lower_n, my_lower_m, RCTL(KC_HOME),   RCTL(KC_END), my_lower_slash, \
         _______, _______, _______ , alt,   _______, _______,       _______,             _______, _______,          TD(WWW_BACK_FORWARD), RCTL(KC_LEFT), RCTL(KC_RIGHT)
+
+#define planck_leader1 _______, _______, _______, _______, _______, _______,   _______, _______, _______, _______, _______, _______, \
+        TO_BASE, _______, _______, _______, _______, _______,   _______, _______, _______, _______, TO(LLOCK), _______, \
+    SHIFTLOCK_LAYER_ACTIVATE, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
+    SYSTEM_LAYER_ACTIVATE, _______, _______, _______,    LLOCK_RAISE,  _______, LLOCK_LOWER, _______,    LLOCK_LOWER, LLOCK_EDITING, _______, _______

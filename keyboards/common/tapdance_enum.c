@@ -27,7 +27,7 @@ enum tap_dance_codes {
                       DANCE_N,
                       DANCE_M,
                       DANCE_SPACE,
-                      DANCE_ENTER,
+                      dance_mod_r4,
                       DANCE_25,
                       WWW_BACK_FORWARD,
                       DANCE_28,

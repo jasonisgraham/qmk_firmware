@@ -338,7 +338,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         if (record->event.pressed) {
             tap_code16(GUI(KC_F5));
 #ifdef AUDIO_ENABLE
-            PLAY_SONG(major_sound);
+            PLAY_SONG(caps_lock_on_sound);
 #endif
         }
         break;
@@ -579,7 +579,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
             if (!is_alt_tab_active) {
                 is_alt_tab_active = true;
-                register_code(KC_LGUI);
+                register_code(KC_LALT);
             }
             alt_tab_timer = timer_read();
             register_code(KC_TAB);
