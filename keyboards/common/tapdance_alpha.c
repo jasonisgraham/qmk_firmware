@@ -253,7 +253,7 @@ case TAP_INTERRUPTED_HELD:
   case HOLD:
     register_key(KC_E); break;
   case HOLD2:
-    tap_code16(LGUI(KC_E));
+      tap_code16(TERM_PASTE);
     break;
   case TAP2:
   case TAP2_INTERRUPTED:
@@ -273,9 +273,6 @@ case TAP_INTERRUPTED_HELD:
  case TAP: unregister_code16(KC_E); break;
   case HOLD:
     unregister_key(KC_E); break;
-  case HOLD2:
-    unregister_code16(LGUI (KC_E));
-    break;
   case TAP2:
   case TAP2_INTERRUPTED:
     unregister_code16(KC_E);
@@ -562,13 +559,7 @@ case TAP_INTERRUPTED_HELD:
     break;
 
   case TAP2:
-      tap_code16(RCTL(KC_X));
-      wait_ms(10);
-      tap_code16(RCTL(KC_S));
-      wait_ms(10);
-      tap_code16(KC_ESC);
-      wait_ms(10);
-      layer_off(_SHIFTLOCK);
+      save_all_then_goto_base();
 #ifdef AUDIO_ENABLE
       PLAY_SONG(caps_lock_off_sound);
 #endif
@@ -587,15 +578,11 @@ case TAP_INTERRUPTED_HELD:
 
   case HOLD:
     unregister_key(KC_K); break;
-  /* case HOLD2: */
-  /*   /\* unregister_code16(KC_5); *\/ */
-  /*   break; */
 
   case HOLD2:
     unregister_code16(KC_UP);
     break;
 
-  case TAP2: unregister_code16(RCTL(KC_COLON)); break;
   case TAP2_INTERRUPTED: unregister_code16(KC_K); break;
   }
   dance_state[17].step = 0;
@@ -969,7 +956,7 @@ case TAP_INTERRUPTED_HELD:
     register_key(KC_U);
     break;
   case HOLD2:
-    register_code16(KC_7);
+      tap_code16(EMACS_BUFFER_REVERT);
     break;
   case TAP2:
   case TAP2_INTERRUPTED:
@@ -988,9 +975,6 @@ case TAP_INTERRUPTED_HELD:
   case TAP: unregister_code16(KC_U); break;
   case HOLD:
     unregister_key(KC_U);
-    break;
-  case HOLD2:
-    unregister_code16(KC_7);
     break;
   case TAP2:
   case TAP2_INTERRUPTED:
@@ -1048,6 +1032,9 @@ case TAP_INTERRUPTED_HELD:
  case TAP: register_code16(KC_W); break;
   case HOLD:
     register_key(KC_W); break;
+  case HOLD2:
+      tap_code16(LALT(KC_F4)); break;
+
   case TAP2: register_code16(KC_W); register_code16(KC_W); break;
   case TAP2_INTERRUPTED: tap_code16(KC_W); register_code16(KC_W);
   }

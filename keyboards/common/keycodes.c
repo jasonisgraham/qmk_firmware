@@ -16,6 +16,7 @@
 #define super_f KC_F
 #define super_b KC_B
 #define super_r KC_R
+#define super_w KC_R
 #define super_g KC_G
 
 #define GREP_STRING_IN_BUFFER_DIR LCTL(LALT(KC_G))
@@ -54,7 +55,7 @@
 #define mod_r1 TD(DANCE_CODE_SYSTEM)
 #define mod_r2 KC_UP
 #define mod_r3 KC_DOWN
-#define mod_r4 TD(DANCE_ENTER) // TD(DANCE_HOTKEY_OR_COMPOSE)
+#define mod_r4 TD(DANCE_MOD_R4) // TD(DANCE_HOTKEY_OR_COMPOSE)
 /* #define mod_r4 TD(dance_k74) */
 
 
@@ -175,6 +176,8 @@
 
 
 
+#define my_cap_a LSFT(KC_A)
+#define my_cap_s LSFT(KC_S)
 #define my_cap_comma KC_COMMA
 #define my_cap_period KC_DOT
 #define my_cap_d LSFT(KC_D)
@@ -249,9 +252,9 @@
 #define my_raise RAISE
 #define my_raise_comma KC_2
 
-#define my_raise_q OSL(_EMACS_SELECT)
+#define my_raise_q _______
 #define my_raise_w osl_web
-#define my_raise_e TD(DANCE_PASTE_OR_CLIPBOARD)
+#define my_raise_e _______
 #define my_raise_r EMACS_BUFFER_REVERT
 #define my_raise_t _______
 
@@ -262,13 +265,13 @@
 #define my_raise_g _______
 
 #define my_raise_z EASYMOTION_LEADER
-#define my_raise_x _______
+#define my_raise_x LALT(KC_F4)
 #define my_raise_c _______
 #define my_raise_v TD(DANCE_SAVE_LOAD_NS_SWITCH)
 #define my_raise_b _______
 
 #define HELM_CIDER_HISTORY LCTL(KC_H)
-#define my_raise_h HELM_CIDER_HISTORY
+#define my_raise_h TD(WWW_BACK_FORWARD)
 #define my_raise_i KC_8
 #define my_raise_j KC_4
 #define my_raise_k KC_5
@@ -333,19 +336,6 @@ enum alt_rctrl_fns {
 
 };
 static int active_alt_rctrl_key_fn = MO_ALT;
-
-void clear_modifiers(void) {
-  unregister_code16(KC_LGUI);
-  unregister_code16(KC_RGUI);
-  unregister_code16(KC_RALT);
-  unregister_code16(KC_LALT);
-  unregister_code16(KC_RCTL);
-  unregister_code16(KC_LCTL);
-  unregister_code16(COMPOSE);
-  unregister_code16(KEYBOARD_LAYOUT_HOLD_KEY);
-  unregister_code16(KC_LSHIFT);
-  unregister_code16(KC_RSHIFT);
-}
 
 void cycle_active_key_alt_rctrl_fn(void) {
   switch (active_alt_rctrl_key_fn) {
@@ -412,7 +402,7 @@ enum custom_keycodes {
                       /* RGB_SLD = SAFE_RANGE, */
                       /* RGB_SLD = EZ_SAFE_RANGE, */
                       FIRST = SAFE_RANGE,
-
+                      SAVE_ALL_THEN_GOTO_BASE,
                       EMACS_SEL_EXLM,
                       EMACS_SEL_AT,
                       EMACS_SEL_HASH,
@@ -522,6 +512,7 @@ enum custom_keycodes {
                       TO_BASE,
                       LLOCK,
                       LLOCK_RAISE,
+                      LLOCK_MOTION,
                       LLOCK_LOWER,
                       LLOCK_EDITING,
                       LLOCK_LEVEL3,
@@ -599,9 +590,9 @@ enum custom_keycodes {
                       EMACS_SPLIT_WINDOW_RIGHT,
                       EMACS_SPLIT_WINDOW_LEFT,
                       CYCLE_FAVE_ANIMATIONS,
-                      CYCLE_DROP_ANIMATIONS,
                       CYCLE_RGBLIGHT_STEP,
                       ALT_TAB,
+                      ALT_BACKTAB,
                       EMACS_ACE_WINDOW_SWAP,
                       EMACS_BUFFER_REVERT,
                       EMACS_INSERT_GET_FEED,
@@ -632,7 +623,6 @@ enum custom_keycodes {
                       SYSTEM_LAYER_DEACTIVATE,
                       RGBLIGHT_STEP,
                       RGBLIGHT_TOGGLE,
-                      TMUX_COPY_MODE,
                       TMUX_CLOSE,
                       TERM_CD_UP_DIR,
                       EMACS_LOCCUR,
@@ -707,33 +697,7 @@ void apply_fave_animation(void) {
 
 #ifdef RGBLIGHT_ENABLE
 
-/* int DROP_CURRENT_ANIMATION = 0;//RGBLIGHT_MODE_STATIC_LIGHT; */
 int DROP_LAYER_0_COLOR = 0;
-
-/* const uint8_t faves[7] = {1, // static */
-/*                           2, // breathe */
-/*                           14, // rainbow */
-/*                           18, // snake */
-/*                           24, // xmas */
-/*                           29, // gradient */
-/*                           35, // test blinks */
-/* }; */
-
-void cycle_drop_animations(void) {
-  i = i + 1;
-  if (i >= 42) {
-    i = 0;
-  }
-
-  DROP_CURRENT_ANIMATION = faves[i];
-  /* dprintf("idx: %u, drop animation: %u\n", i, DROP_CURRENT_ANIMATION); */
-  rgblight_mode(DROP_CURRENT_ANIMATION);
-}
-
-/* enum colors { */
-/*              RGB_AZURE, */
-/*              RGB_BLUE */
-/* } */
 
 void cycle_drop_color(void) {
   rgblight_increase_hue();
@@ -803,3 +767,99 @@ bool do_breathing = false;
 
 #define EMACS_SEL_Z LALT(KC_Z)
 #define JETBRAINS_CLOSE_TAB RCTL(LSFT(KC_F4))
+
+
+#define super TD(DANCE_SUPER) // LM(_SUPER, MOD_LGUI) //TD(SUPER_WINDOWS)
+
+#define editing_q TD(DANCE_EDITING_Q)
+#define BROWSER_TAB_NEXT TD(DANCE_30)
+#define alt TD(DANCE_ALT)
+#define alt_or_rctrl TD(DANCE_ALT_OR_RCTRL)
+#define hyper TD(DANCE_HYPER) // LM(_HYPER, MOD_LCTL) //KC_LCTL // OSL(_WINDOWS)
+
+/* #define hyper TD(DANCE_HYPER) */
+
+#define BROWSER_TAB_PREV TD(DANCE_29)
+#define my_comma TD(DANCE_COMMA) //KC_COMMA //
+#define my_left_shift TD(DANCE_SHIFT)
+#define emacs_left_shift TD(DANCE_SHIFT_CURLY)
+#define editing_left_shift TD(DANCE_SHIFT_CURLY)
+#define raise_left_shift TD(DANCE_RAISE_SHIFT)
+#define lower_left_shift TD(DANCE_LOWER_SHIFT)
+#define my_semicolon TD(DANCE_COLN)
+#define my_cap_semi my_semicolon
+
+/* #define super TD(DANCE_SUPER) //TD(SUPER_WINDOWS) */
+
+#define EVIL_FIRST_NON_BLANK KC_HOME
+#define EVIL_END_OF_LINE KC_END
+#define EVIL_JUMP RCTL(KC_COMMA)
+
+#define EMACS_REPEAT KC_F9
+#define preonic_00 TO(_MOUSE) // TD(DANCE_MICROPHONE) // toggle mic //
+#define preonic_1 EVIL_FIRST_NON_BLANK
+#define preonic_2  KC_BSLASH
+#define preonic_3  my_lower_semi
+#define preonic_4 EVIL_END_OF_LINE
+#define preonic_5  TD(DANCE_ROFI)
+#define preonic_6  SELECT_HOTKEY_0
+#define preonic_7  TD(DANCE_LEFT_OR_HOME)
+#define preonic_8  KC_DOWN
+#define preonic_9  KC_UP
+#define preonic_10 TD(DANCE_RIGHT_OR_END)
+#define preonic_11 EVIL_JUMP
+
+#define PAGE_DOWN_OR_END TD(DANCE_PAGE_DOWN_OR_END)
+#define my_lower_j KC_DOWN // PAGE_DOWN_OR_END
+#define PAGE_UP_OR_HOME TD(DANCE_PAGE_UP_OR_HOME)
+#define my_lower_k KC_UP // PAGE_UP_OR_HOME
+
+#define LEFT_OR_HOME TD(DANCE_LEFT_OR_HOME)
+#define my_lower_h KC_LEFT // LEFT_OR_HOME
+#define RIGHT_OR_END TD(DANCE_RIGHT_OR_END)
+#define my_lower_l KC_RIGHT   // RIGHT_OR_END
+#define tab TD(DANCE_TAB)
+#define top_left tab
+#define emacs_completion_at_point LALT(RCTL(KC_I))
+#define BRACKET_PAREN TD(DANCE_PAREN_BRACKET)
+#define windows_j LGUI(KC_J)
+#define windows_k LGUI(KC_K)
+#define windows_l LGUI(KC_L)
+
+#define my_lower_u KC_PGDOWN
+#define my_lower_i KC_PGUP
+
+#define my_a TD(DANCE_A)
+#define my_b TD(DANCE_B)
+#define my_c TD(DANCE_C)
+#define my_d TD(DANCE_D)
+#define my_e TD(DANCE_E)
+#define my_f TD(DANCE_F)
+#define my_g TD(DANCE_G)
+#define my_h TD(DANCE_H)
+#define my_i TD(DANCE_I)
+#define my_j TD(DANCE_J)
+#define my_k TD(DANCE_K)
+#define my_l TD(DANCE_L)
+#define my_m TD(DANCE_M)
+#define my_n TD(DANCE_N)
+#define my_o TD(DANCE_O)
+#define my_p TD(DANCE_P)
+#define my_q TD(DANCE_Q)
+#define my_r TD(DANCE_R)
+#define my_s TD(DANCE_S)
+#define my_t TD(DANCE_T)
+#define my_u TD(DANCE_U)
+#define my_v TD(DANCE_V)
+#define my_w TD(DANCE_W)
+#define my_x TD(DANCE_X)
+#define my_y TD(DANCE_Y)
+#define my_z TD(DANCE_Z)
+
+#define my_forward_slash KC_SLASH
+#define my_grave TD(DANCE_TAB)
+#define my_period TD(DANCE_DOT)
+#define my_space TD(DANCE_SPACE)
+
+#define all_mods TD(DANCE_ALL_MODS)
+#define ROFI_CLIPBOARD SS_LCTL(SS_LALT(SS_RCTL("9")))
