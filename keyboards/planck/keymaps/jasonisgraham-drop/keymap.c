@@ -20,36 +20,36 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_ROFI] = LAYOUT_wrapper(planck_rofi                             ),
 
 [_EMACS] = LAYOUT_wrapper(
-planck_emacs
-                                ),
+                          planck_emacs
+                          ),
 
 [_SA] = LAYOUT_wrapper(
-planck_sa
-                            ),
+                       planck_sa
+                       ),
 
 
 [_MOUSE] = LAYOUT_wrapper(
-planck_mouse),
+                          planck_mouse),
 
 
 // 11
 [_SUPER] = LAYOUT_wrapper(
-planck_super                              ),
+                          planck_super                              ),
 
 
 
 // 12
 [_EDITING] = LAYOUT_wrapper(
-planck_editing
-                                ),
+                            planck_editing
+                            ),
 // 9
 [_WINMOVE] = LAYOUT_wrapper(
-planck_winmove                                ),
+                            planck_winmove                                ),
 
 // 4
 [_ALL_MODS] = LAYOUT_wrapper(
-planck_all_mods
-                              ),
+                             planck_all_mods
+                             ),
 
 
 // 5
