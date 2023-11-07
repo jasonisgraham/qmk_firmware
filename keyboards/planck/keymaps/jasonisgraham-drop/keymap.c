@@ -76,6 +76,7 @@ planck_hyper                                         ),
 
 [_FILES] = LAYOUT_wrapper(planck_files                                         ),
 [_WEB] = LAYOUT_wrapper(planck_web                                         ),
-[_MOTION] = LAYOUT_wrapper(planck_motion                                         )
+[_MOTION] = LAYOUT_wrapper(planck_motion                                         ),
+[_LEADER1] = LAYOUT_wrapper(planck_leader1                                         )
 
   };

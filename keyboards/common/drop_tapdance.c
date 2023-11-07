@@ -576,6 +576,7 @@ void dance_mod_r4_finished(tap_dance_state_t *state, void *user_data) {
 
 void dance_mod_r4_reset(tap_dance_state_t *state, void *user_data) {
   wait_ms(10);
+      layer_off(_LEADER1);
     layer_off(_MOTION);
   dance_state[24].step = 0;
 }
@@ -644,13 +645,15 @@ void on_dance_coln(tap_dance_state_t *state, void *user_data) {
 void dance_coln_finished(tap_dance_state_t *state, void *user_data) {
   dance_state[28].step = dance_step(state);
   switch (dance_state[28].step) {
-  case TAP2:
-  case TAP2_INTERRUPTED:
-      tap_code16(KC_SCLN);
-      break;
-  case HOLD2:
   case HOLD:
       register_code16(KC_SCLN);
+      break;
+  case TAP2:
+  case HOLD2:
+      save_all_and_esc();
+#ifdef AUDIO_ENABLE
+      PLAY_SONG(caps_lock_off_sound);
+#endif
       break;
   default:
     tap_code16(KC_COLN);
@@ -2051,32 +2054,31 @@ void dance_save_load_ns_switch_finished(tap_dance_state_t *state, void *user_dat
   case HOLD:
       // save
       tap_code16(RCTL(KC_SCLN));
+      wait_ms(20);
       // load buffer
       tap_code16(RCTL(KC_C));
+      wait_ms(20);
       tap_code16(RCTL(KC_K));
       break;
   case HOLD2:
       // save and switch to repl
       tap_code16(RCTL(KC_X));
+      wait_ms(20);
       tap_code16(KC_S);
+      wait_ms(20);
       tap_code16(KC_1);
+      wait_ms(20);
       tap_code16(KC_COMMA);
+      wait_ms(20);
       tap_code16(KC_S);
+      wait_ms(20);
       tap_code16(KC_S);
       break;
   case TAP2:
-      // save all
-      tap_code16(RCTL(KC_X));
-      tap_code16(KC_S);
+      save_all();
       break;
   default:
-      tap_code16(RCTL(KC_X));
-      wait_ms(10);
-      tap_code16(RCTL(KC_S));
-      wait_ms(10);
-      tap_code16(KC_ESC);
-      wait_ms(10);
-
+      save_all_and_esc();
   }
 }
 
@@ -2222,11 +2224,6 @@ void alt_finished(tap_dance_state_t *state, void *user_data) {
 
   default:
 
-#ifdef RGBLIGHT_ENABLE
-    rgblight_enable_noeeprom();
-    rgblight_mode_noeeprom(RGBLIGHT_MODE_BREATHING);
-    rgblight_sethsv_noeeprom(HSV_GREEN);
-#endif
     register_code16(KC_LALT);
     break;
   }
@@ -2241,9 +2238,6 @@ void alt_reset(tap_dance_state_t *state, void *user_data) {
   default:
     unregister_code16(KC_LALT);
 
-#ifdef RGBLIGHT_ENABLE
-    rgblight_disable();
-#endif
   }
 }
 

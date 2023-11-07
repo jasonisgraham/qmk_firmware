@@ -125,3 +125,6 @@
 #ifndef WEBUSB_ENABLE
 #    define WEBUSB_PAIR KC_NO
 #endif
+
+
+#define MACRO_WAIT 10

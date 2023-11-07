@@ -333,6 +333,7 @@ const uint16_t PROGMEM combo_v_d[] = {my_v, my_d, COMBO_END};
 const uint16_t PROGMEM combo_v_c[] = {my_v, my_c, COMBO_END};
 const uint16_t PROGMEM combo_d_f[] = {my_d, my_f, COMBO_END};
 const uint16_t PROGMEM combo_raise_d_raise_f[] = {my_raise_d, my_raise_f, COMBO_END};
+const uint16_t PROGMEM combo_raise_w_raise_e[] = {my_raise_w, my_raise_e, COMBO_END};
 
 
 

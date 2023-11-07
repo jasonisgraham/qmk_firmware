@@ -20,6 +20,7 @@ enum preonic_layers {
     _MOTION,
     _SYSTEM,
     _ALL_MODS,
+    _LEADER1,
     _ADHOC_SET_HOTKEY,
     _HYPER,
     _ROFI,
@@ -36,6 +37,7 @@ enum preonic_layers {
 /* #include "../../../common/config.h" */
 #undef UNICODE_SELECTED_MODES
 #define UNICODE_SELECTED_MODES UC_LNX
+#include "../../../common/common_fns.c"
 
 #include "../../../common/key_overrides.c"
 #include "../../../common/drop_colors.c"
@@ -62,4 +64,4 @@ enum preonic_layers {
 /* const int row0[] = { top_left, top_left,    my_q,    my_w,    my_e,    my_r,   my_t, backspace ,    my_y,           my_u,    my_i,    my_o,     my_p}; */
 /* int row0[10] = {}; */
 
-#include "../../../common/leader.c"
+/* #include "../../../common/leader.c" */

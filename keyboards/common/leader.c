@@ -4,10 +4,12 @@ float leader_fail_song[][2] = SONG(RICK_ROLL);
 
 void leader_start_user(void) {
     printf("leader start\n");
+    alt_colors(HSV_FUSCIA, HSV_WHITE);
 }
 
 void leader_end_user(void) {
     bool did_leader_succeed = false;
+    rgblight_disable();
     printf("leader end\n");
 
     if (leader_sequence_one_key(my_t)) {
@@ -41,8 +43,10 @@ void leader_end_user(void) {
     }
 
     if (did_leader_succeed) {
-        printf("success");
     } else {
-        printf("failure!");
+#ifdef AUDIO_ENABLE
+        printf("leader fail");
+        PLAY_SONG(caps_lock_off_sound);
+#endif
     }
 }
