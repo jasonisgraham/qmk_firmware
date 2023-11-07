@@ -115,10 +115,9 @@ void matrix_scan_user(void) {
 
 
   if (is_alt_tab_active) {
-    if (timer_elapsed(alt_tab_timer) > 250) {
-      unregister_code(KC_LGUI);
+    if (timer_elapsed(alt_tab_timer) > 500) {
+      unregister_code(KC_LALT);
       is_alt_tab_active = false;
     }
   }
-
 }

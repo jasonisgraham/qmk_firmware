@@ -182,7 +182,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_SYSTEM] = LAYOUT_moonlander(
                               _______, _______, RGB_VAI, _______, QK_BOOTLOADER, _______,  _______,_______,  _______, QK_KEY_OVERRIDE_ON, QK_KEY_OVERRIDE_OFF, QK_DEBUG_TOGGLE, QK_CLEAR_EEPROM, QK_BOOTLOADER,
                               CLEAR_MODIFIERS, _______, RGB_VAD, _______, _______, _______,  _______,_______,  _______, _______, KC_AUDIO_VOL_DOWN, KC_AUDIO_VOL_UP, QK_AUTOCORRECT_ON, DB_TOGG,
-                              QK_CLEAR_EEPROM, _______ , _______, _______, _______, _______,  _______,_______, _______,    _______, KC_AUDIO_MUTE, CYCLE_DROP_ANIMATIONS,  _______, RGB_TOG,
+                              QK_CLEAR_EEPROM, _______ , _______, _______, _______, _______,  _______,_______, _______,    _______, KC_AUDIO_MUTE, _______,  _______, RGB_TOG,
                               SYSTEM_LAYER_DEACTIVATE, _______, _______, _______, _______,     _______,_______,    RGB_TOG, RGB_MOD, RGB_HUI, KC_BRIGHTNESS_DOWN,KC_BRIGHTNESS_UP,
                               _______, _______, _______, _______, _______, _______,_______, _______, _______, _______, _______, _______,
                               _______,  _______,  _______,  _______,  _______,  _______
