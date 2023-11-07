@@ -660,6 +660,41 @@ case TAP_INTERRUPTED_HELD:
 
 
 
+void on_dance_coln(tap_dance_state_t *state, void *user_data) {
+  on_dance_fn(KC_SCLN, state, user_data);
+}
+
+void dance_coln_finished(tap_dance_state_t *state, void *user_data) {
+  dance_state[28].step = dance_step(state);
+  switch (dance_state[28].step) {
+  case HOLD:
+      register_code16(KC_SCLN);
+      break;
+  case TAP2:
+  case HOLD2:
+      save_all_then_goto_base();
+#ifdef AUDIO_ENABLE
+      PLAY_SONG(caps_lock_off_sound);
+#endif
+      break;
+  default:
+    tap_code16(KC_COLN);
+
+    break;
+  }
+}
+
+void dance_coln_reset(tap_dance_state_t *state, void *user_data) {
+    wait_ms(10);
+  switch (dance_state[28].step) {
+  case HOLD2:
+  case HOLD:
+      unregister_code16(KC_SCLN);
+      break;
+  }
+  dance_state[28].step = 0;
+}
+
 
 
 void on_dance_29(tap_dance_state_t *state, void *user_data) {
