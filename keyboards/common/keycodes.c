@@ -254,7 +254,7 @@
 
 #define my_raise_q _______
 #define my_raise_w osl_web
-#define my_raise_e TD(DANCE_PASTE_OR_CLIPBOARD)
+#define my_raise_e _______
 #define my_raise_r EMACS_BUFFER_REVERT
 #define my_raise_t _______
 
@@ -791,6 +791,8 @@ bool do_breathing = false;
 #define editing_left_shift TD(DANCE_SHIFT_CURLY)
 #define raise_left_shift TD(DANCE_RAISE_SHIFT)
 #define lower_left_shift TD(DANCE_LOWER_SHIFT)
+#define my_semicolon TD(DANCE_COLN)
+#define my_cap_semi my_semicolon
 
 /* #define super TD(DANCE_SUPER) //TD(SUPER_WINDOWS) */
 
@@ -799,6 +801,18 @@ bool do_breathing = false;
 #define EVIL_JUMP RCTL(KC_COMMA)
 
 #define EMACS_REPEAT KC_F9
+#define preonic_00 TO(_MOUSE) // TD(DANCE_MICROPHONE) // toggle mic //
+#define preonic_1 EVIL_FIRST_NON_BLANK
+#define preonic_2  KC_BSLASH
+#define preonic_3  my_lower_semi
+#define preonic_4 EVIL_END_OF_LINE
+#define preonic_5  TD(DANCE_ROFI)
+#define preonic_6  SELECT_HOTKEY_0
+#define preonic_7  TD(DANCE_LEFT_OR_HOME)
+#define preonic_8  KC_DOWN
+#define preonic_9  KC_UP
+#define preonic_10 TD(DANCE_RIGHT_OR_END)
+#define preonic_11 EVIL_JUMP
 
 #define PAGE_DOWN_OR_END TD(DANCE_PAGE_DOWN_OR_END)
 #define my_lower_j KC_DOWN // PAGE_DOWN_OR_END
@@ -820,36 +834,6 @@ bool do_breathing = false;
 #define my_lower_u KC_PGDOWN
 #define my_lower_i KC_PGUP
 
-/* #ifdef USE_WORKMAN */
-/* #define my_a TD(DANCE_A) */
-/* #define my_b TD(DANCE_B) */
-/* #define my_c TD(DANCE_C) */
-/* #define my_d TD(DANCE_R) */
-/* #define my_e TD(DANCE_D) */
-/* #define my_f TD(DANCE_T) */
-/* #define my_g TD(DANCE_G) */
-/* #define my_h TD(DANCE_H) */
-/* #define my_i TD(DANCE_L) */
-/* #define my_j TD(DANCE_N) */
-/* #define my_k TD(DANCE_E) */
-/* #define my_l TD(DANCE_O) */
-/* #define my_m TD(DANCE_M) */
-/* #define my_n TD(DANCE_K) */
-/* #define my_o TD(DANCE_P) */
-/* #define my_p TD(DANCE_COLN) */
-/* #define my_q TD(DANCE_Q) */
-/* #define my_r TD(DANCE_Y) */
-/* #define my_s TD(DANCE_S) */
-/* #define my_t TD(DANCE_F) */
-/* #define my_u TD(DANCE_U) */
-/* #define my_v TD(DANCE_V) */
-/* #define my_w TD(DANCE_W) */
-/* #define my_x TD(DANCE_X) */
-/* #define my_y TD(DANCE_J) */
-/* #define my_z TD(DANCE_Z) */
-/* #define my_semicolon TD(DANCE_I) */
-
-/* #else */
 #define my_a TD(DANCE_A)
 #define my_b TD(DANCE_B)
 #define my_c TD(DANCE_C)
@@ -880,7 +864,6 @@ bool do_breathing = false;
 /* #endif */
 
 #define my_cap_semi my_semicolon
-
 
 #define my_forward_slash KC_SLASH
 #define my_grave TD(DANCE_TAB)
