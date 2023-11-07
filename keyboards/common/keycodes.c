@@ -632,7 +632,6 @@ enum custom_keycodes {
                       SYSTEM_LAYER_DEACTIVATE,
                       RGBLIGHT_STEP,
                       RGBLIGHT_TOGGLE,
-                      TMUX_COPY_MODE,
                       TMUX_CLOSE,
                       TERM_CD_UP_DIR,
                       EMACS_LOCCUR,
