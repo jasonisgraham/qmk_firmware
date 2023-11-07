@@ -4,8 +4,9 @@
 
 /* #define UNICODE_ENABLE */
 
-enum preonic_layers {
+enum drop_layers {
     _BASE,
+    _ALT,
     _NUMLOCK,
     _SHIFTLOCK,
     _LOWER,
@@ -19,10 +20,11 @@ enum preonic_layers {
     _MOUSE,
     _MOTION,
     _SYSTEM,
-    _ALL_MODS,
+    _LEADER1,
     _ADHOC_SET_HOTKEY,
     _HYPER,
     _ROFI,
+    _ALL_MODS,
     _CODE,
     _SA,
     _EMACS_SELECT,
@@ -36,12 +38,12 @@ enum preonic_layers {
 /* #include "../../../common/config.h" */
 #undef UNICODE_SELECTED_MODES
 #define UNICODE_SELECTED_MODES UC_LNX
+#include "../../../common/keycodes.c"
+#include "../../../common/common_fns.c"
 
 #include "../../../common/key_overrides.c"
 #include "../../../common/drop_colors.c"
-#include "../../../common/keycodes.c"
 #include "../../../common/drop_tapdance.c"
-#include "../../../common/tapdance_keycodes.c"
 
 #include "../../../common/combos.c"
 #include "../../../common/autoshift.c"
@@ -62,4 +64,4 @@ enum preonic_layers {
 /* const int row0[] = { top_left, top_left,    my_q,    my_w,    my_e,    my_r,   my_t, backspace ,    my_y,           my_u,    my_i,    my_o,     my_p}; */
 /* int row0[10] = {}; */
 
-#include "../../../common/leader.c"
+/* #include "../../../common/leader.c" */

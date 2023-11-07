@@ -40,7 +40,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         break;
 
 
+    case SAVE_ALL_THEN_GOTO_BASE:
+        if (record->event.pressed) {
+            save_all_then_goto_base();
+        }
+        break;
+
     case OPEN_NOTIFICATIONS:
+
+
         if (record->event.pressed) {
             SEND_STRING(SS_LALT(SS_RCTL("$")));
         }
@@ -169,6 +177,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         layer_move(_EDITING);
         return false;
         break;
+
+    case LLOCK_MOTION:
+#ifdef AUDIO_ENABLE
+        PLAY_SONG(caps_lock_on_sound);
+#endif
+        layer_move(_MOTION);
+        return false;
+        break;
+
 
     case LLOCK_RAISE:
 #ifdef AUDIO_ENABLE
@@ -338,7 +355,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         if (record->event.pressed) {
             tap_code16(GUI(KC_F5));
 #ifdef AUDIO_ENABLE
-            PLAY_SONG(major_sound);
+            PLAY_SONG(caps_lock_on_sound);
 #endif
         }
         break;
@@ -542,11 +559,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
         break;
 
-    case CYCLE_DROP_ANIMATIONS:
-        if (record->event.pressed) {
-            cycle_drop_animations();
-        }
-        break;
 #endif
 
     case CYCLE_ACTIVE_ALT_KEYBOARD_LEVEL3_FN:
@@ -573,22 +585,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
         break;
 
-
     case ALT_TAB:
         if (record->event.pressed) {
 
             if (!is_alt_tab_active) {
                 is_alt_tab_active = true;
-                register_code(KC_LGUI);
+                register_code(KC_LALT);
             }
             alt_tab_timer = timer_read();
             register_code(KC_TAB);
         } else {
             unregister_code(KC_TAB);
-
         }
-        /* layer_off(_WINDOWS); */
-        // layer_move(_BASE);
         break;
 
     case SA_LAYER_ACTIVATE:
@@ -653,6 +661,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             /*       apply_fave_animation(); */
 /*       /\* rgblight_mode(42); *\/ */
       /* #endif */
+    layer_off(_SHIFTLOCK);
       layer_move(_BASE);
       #ifdef AUDIO_ENABLE
             PLAY_SONG(caps_lock_off_sound);
