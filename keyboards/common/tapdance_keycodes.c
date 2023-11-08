@@ -14,7 +14,7 @@
 #define my_left_shift TD(DANCE_SHIFT)
 #define emacs_left_shift TD(DANCE_SHIFT_CURLY)
 #define editing_left_shift TD(DANCE_SHIFT_CURLY)
-#define raise_left_shift SHIFTLOCK_LAYER_ACTIVATE
+#define raise_left_shift TD(DANCE_RAISE_SHIFT)
 #define lower_left_shift TD(DANCE_LOWER_SHIFT)
 #define my_semicolon TD(DANCE_COLN)
 #define my_cap_semi my_semicolon

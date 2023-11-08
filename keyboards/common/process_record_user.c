@@ -40,7 +40,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         break;
 
 
+    case SAVE_ALL_AND_ESC:
+        if (record->event.pressed) {
+            save_all_and_esc();
+        }
+        break;
+
     case OPEN_NOTIFICATIONS:
+
+
         if (record->event.pressed) {
             SEND_STRING(SS_LALT(SS_RCTL("$")));
         }
@@ -169,6 +177,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         layer_move(_EDITING);
         return false;
         break;
+
+    case LLOCK_MOTION:
+#ifdef AUDIO_ENABLE
+        PLAY_SONG(caps_lock_on_sound);
+#endif
+        layer_move(_MOTION);
+        return false;
+        break;
+
 
     case LLOCK_RAISE:
 #ifdef AUDIO_ENABLE
@@ -573,7 +590,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
         break;
 
-
     case ALT_TAB:
         if (record->event.pressed) {
 
@@ -585,10 +601,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             register_code(KC_TAB);
         } else {
             unregister_code(KC_TAB);
-
         }
-        /* layer_off(_WINDOWS); */
-        // layer_move(_BASE);
         break;
 
     case SA_LAYER_ACTIVATE:
@@ -653,6 +666,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             /*       apply_fave_animation(); */
 /*       /\* rgblight_mode(42); *\/ */
       /* #endif */
+    layer_off(_SHIFTLOCK);
       layer_move(_BASE);
       #ifdef AUDIO_ENABLE
             PLAY_SONG(caps_lock_off_sound);

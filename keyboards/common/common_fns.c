@@ -10,7 +10,7 @@ void save_all_and_esc(void);
 void save_all_and_esc(void) {
     tap_code16(RCTL(KC_X));
     wait_ms(MACRO_WAIT);
-    tap_code16(RCTL(KC_S));
+    tap_code16(LCTL(RCTL(KC_A)));
     wait_ms(MACRO_WAIT);
     tap_code16(KC_ESC);
     wait_ms(MACRO_WAIT);

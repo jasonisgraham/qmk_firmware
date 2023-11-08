@@ -175,6 +175,8 @@
 
 
 
+#define my_cap_a LSFT(KC_A)
+#define my_cap_s LSFT(KC_S)
 #define my_cap_comma KC_COMMA
 #define my_cap_period KC_DOT
 #define my_cap_d LSFT(KC_D)
@@ -268,7 +270,7 @@
 #define my_raise_b _______
 
 #define HELM_CIDER_HISTORY LCTL(KC_H)
-#define my_raise_h HELM_CIDER_HISTORY
+#define my_raise_h TD(WWW_BACK_FORWARD)
 #define my_raise_i KC_8
 #define my_raise_j KC_4
 #define my_raise_k KC_5
@@ -412,7 +414,7 @@ enum custom_keycodes {
                       /* RGB_SLD = SAFE_RANGE, */
                       /* RGB_SLD = EZ_SAFE_RANGE, */
                       FIRST = SAFE_RANGE,
-
+                      SAVE_ALL_AND_ESC,
                       EMACS_SEL_EXLM,
                       EMACS_SEL_AT,
                       EMACS_SEL_HASH,
@@ -522,6 +524,7 @@ enum custom_keycodes {
                       TO_BASE,
                       LLOCK,
                       LLOCK_RAISE,
+                      LLOCK_MOTION,
                       LLOCK_LOWER,
                       LLOCK_EDITING,
                       LLOCK_LEVEL3,
@@ -602,6 +605,7 @@ enum custom_keycodes {
                       CYCLE_DROP_ANIMATIONS,
                       CYCLE_RGBLIGHT_STEP,
                       ALT_TAB,
+                      ALT_BACKTAB,
                       EMACS_ACE_WINDOW_SWAP,
                       EMACS_BUFFER_REVERT,
                       EMACS_INSERT_GET_FEED,
@@ -658,6 +662,8 @@ enum custom_keycodes {
 
 bool is_alt_tab_active = false;
 uint16_t alt_tab_timer = 0;
+bool is_alt_backtab_active = false;
+uint16_t alt_backtab_timer = 0;
 
 const int default_timer_increment = 300;
 

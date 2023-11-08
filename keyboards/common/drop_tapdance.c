@@ -1221,7 +1221,6 @@ void dance_raise_finished(tap_dance_state_t *state, void *user_data) {
   switch (dance_state[46].step) {
   case TAP:
   case TAP_INTERRUPTED:
-    /* printf("j4-"); */
     tap_code16(KC_UNDS);
     break;
   case TAP2:
@@ -2382,26 +2381,11 @@ void dance_raise_shift_finished(tap_dance_state_t *state, void *user_data) {
   switch (dance_state[101].step) {
   case TAP:
   case TAP_INTERRUPTED:
-      tap_code16(KC_PIPE);
+      layer_move(_SHIFTLOCK);
+#ifdef AUDIO_ENABLE
+      PLAY_SONG(caps_lock_on_sound);
+#endif
       break;
-  case TAP2:
-  case TAP2_INTERRUPTED:
-      tap_code16(KC_PIPE);
-      tap_code16(KC_PIPE);
-      break;
-  case TAP3:
-  case TAP3_INTERRUPTED:
-      tap_code16(KC_PIPE);
-      tap_code16(KC_PIPE);
-      tap_code16(KC_PIPE);
-      break;
-  case TAP4:
-      tap_code16(KC_PIPE);
-      tap_code16(KC_PIPE);
-      tap_code16(KC_PIPE);
-      tap_code16(KC_PIPE);
-      break;
-
   default:
       register_code16(KC_LSFT);
       break;
@@ -2473,12 +2457,10 @@ void dance_super_finished(tap_dance_state_t *state, void *user_data) {
   dance_state[85].step = dance_step(state);
   switch (dance_state[85].step) {
   case HOLD:
-    register_code16(KC_LGUI);
     layer_on(_SUPER);
     break;
   case HOLD2:
-      register_code16(KC_LALT);
-      layer_on(_NUMLOCK);
+      layer_on(_WINMOVE);
     break;
 
   default:
@@ -2491,13 +2473,11 @@ void dance_super_reset(tap_dance_state_t *state, void *user_data) {
   // layer_off(_ROFI) and layer_off(_ROFI) are handled by post_process_record_user
   switch (dance_state[85].step) {
   case HOLD:
-    unregister_code16(KC_LGUI);
     layer_off(_SUPER);
     break;
 
   case HOLD2:
-      unregister_code16(KC_LALT);
-      layer_off(_NUMLOCK);
+      layer_off(_WINMOVE);
     break;
 
   default:
