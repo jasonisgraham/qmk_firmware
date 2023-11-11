@@ -253,7 +253,7 @@ case TAP_INTERRUPTED_HELD:
   case HOLD:
     register_key(KC_E); break;
   case HOLD2:
-    tap_code16(LGUI(KC_E));
+      tap_code16(TERM_PASTE);
     break;
   case TAP2:
   case TAP2_INTERRUPTED:
@@ -273,9 +273,6 @@ case TAP_INTERRUPTED_HELD:
  case TAP: unregister_code16(KC_E); break;
   case HOLD:
     unregister_key(KC_E); break;
-  case HOLD2:
-    unregister_code16(LGUI (KC_E));
-    break;
   case TAP2:
   case TAP2_INTERRUPTED:
     unregister_code16(KC_E);
@@ -963,7 +960,7 @@ case TAP_INTERRUPTED_HELD:
     register_key(KC_U);
     break;
   case HOLD2:
-    register_code16(KC_7);
+      tap_code16(EMACS_BUFFER_REVERT);
     break;
   case TAP2:
   case TAP2_INTERRUPTED:
@@ -982,9 +979,6 @@ case TAP_INTERRUPTED_HELD:
   case TAP: unregister_code16(KC_U); break;
   case HOLD:
     unregister_key(KC_U);
-    break;
-  case HOLD2:
-    unregister_code16(KC_7);
     break;
   case TAP2:
   case TAP2_INTERRUPTED:

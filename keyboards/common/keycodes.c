@@ -254,8 +254,8 @@
 
 #define my_raise_q _______
 #define my_raise_w osl_web
-#define my_raise_e TD(DANCE_PASTE_OR_CLIPBOARD)
-#define my_raise_r EMACS_BUFFER_REVERT
+#define my_raise_e _______
+#define my_raise_r _______
 #define my_raise_t _______
 
 #define my_raise_a TD(DANCE_F5)
@@ -902,3 +902,4 @@ bool do_breathing = false;
 #define my_space TD(DANCE_SPACE)
 
 #define all_mods TD(DANCE_ALL_MODS)
+#define ROFI_CLIPBOARD SS_LCTL(SS_LALT(SS_RCTL("9")))
