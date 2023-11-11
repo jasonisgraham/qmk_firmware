@@ -559,7 +559,7 @@ case TAP_INTERRUPTED_HELD:
     break;
 
   case TAP2:
-      save_all_and_esc();
+      save_all_then_goto_base();
 #ifdef AUDIO_ENABLE
       PLAY_SONG(caps_lock_off_sound);
 #endif
@@ -578,15 +578,11 @@ case TAP_INTERRUPTED_HELD:
 
   case HOLD:
     unregister_key(KC_K); break;
-  /* case HOLD2: */
-  /*   /\* unregister_code16(KC_5); *\/ */
-  /*   break; */
 
   case HOLD2:
     unregister_code16(KC_UP);
     break;
 
-  case TAP2: unregister_code16(RCTL(KC_COLON)); break;
   case TAP2_INTERRUPTED: unregister_code16(KC_K); break;
   }
   dance_state[17].step = 0;

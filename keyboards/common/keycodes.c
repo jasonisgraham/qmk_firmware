@@ -255,7 +255,7 @@
 #define my_raise_q _______
 #define my_raise_w osl_web
 #define my_raise_e _______
-#define my_raise_r _______
+#define my_raise_r EMACS_BUFFER_REVERT
 #define my_raise_t _______
 
 #define my_raise_a TD(DANCE_F5)
@@ -337,19 +337,6 @@ enum alt_rctrl_fns {
 };
 static int active_alt_rctrl_key_fn = MO_ALT;
 
-void clear_modifiers(void) {
-  unregister_code16(KC_LGUI);
-  unregister_code16(KC_RGUI);
-  unregister_code16(KC_RALT);
-  unregister_code16(KC_LALT);
-  unregister_code16(KC_RCTL);
-  unregister_code16(KC_LCTL);
-  unregister_code16(COMPOSE);
-  unregister_code16(KEYBOARD_LAYOUT_HOLD_KEY);
-  unregister_code16(KC_LSHIFT);
-  unregister_code16(KC_RSHIFT);
-}
-
 void cycle_active_key_alt_rctrl_fn(void) {
   switch (active_alt_rctrl_key_fn) {
   case MO_ALT:
@@ -415,7 +402,7 @@ enum custom_keycodes {
                       /* RGB_SLD = SAFE_RANGE, */
                       /* RGB_SLD = EZ_SAFE_RANGE, */
                       FIRST = SAFE_RANGE,
-                      SAVE_ALL_AND_ESC,
+                      SAVE_ALL_THEN_GOTO_BASE,
                       EMACS_SEL_EXLM,
                       EMACS_SEL_AT,
                       EMACS_SEL_HASH,
@@ -603,7 +590,6 @@ enum custom_keycodes {
                       EMACS_SPLIT_WINDOW_RIGHT,
                       EMACS_SPLIT_WINDOW_LEFT,
                       CYCLE_FAVE_ANIMATIONS,
-                      CYCLE_DROP_ANIMATIONS,
                       CYCLE_RGBLIGHT_STEP,
                       ALT_TAB,
                       ALT_BACKTAB,
@@ -711,33 +697,7 @@ void apply_fave_animation(void) {
 
 #ifdef RGBLIGHT_ENABLE
 
-/* int DROP_CURRENT_ANIMATION = 0;//RGBLIGHT_MODE_STATIC_LIGHT; */
 int DROP_LAYER_0_COLOR = 0;
-
-/* const uint8_t faves[7] = {1, // static */
-/*                           2, // breathe */
-/*                           14, // rainbow */
-/*                           18, // snake */
-/*                           24, // xmas */
-/*                           29, // gradient */
-/*                           35, // test blinks */
-/* }; */
-
-void cycle_drop_animations(void) {
-  i = i + 1;
-  if (i >= 42) {
-    i = 0;
-  }
-
-  DROP_CURRENT_ANIMATION = faves[i];
-  /* dprintf("idx: %u, drop animation: %u\n", i, DROP_CURRENT_ANIMATION); */
-  rgblight_mode(DROP_CURRENT_ANIMATION);
-}
-
-/* enum colors { */
-/*              RGB_AZURE, */
-/*              RGB_BLUE */
-/* } */
 
 void cycle_drop_color(void) {
   rgblight_increase_hue();

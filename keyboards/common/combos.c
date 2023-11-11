@@ -15,8 +15,8 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo_K_L_SEMI, OSM( MOD_LALT | MOD_RCTL | MOD_LCTL | MOD_LGUI)), // j+k+l+: l -> C-⎕
     COMBO(combo_K_cap_semi, OSM(MOD_LALT)),
     COMBO(combo_lower_o_p, AS_TOGG),
-    COMBO(combo_a_s, SAVE_ALL_AND_ESC),
-    COMBO(combo_A_S, SAVE_ALL_AND_ESC),
+    COMBO(combo_a_s, SAVE_ALL_THEN_GOTO_BASE),
+    COMBO(combo_A_S, SAVE_ALL_THEN_GOTO_BASE),
     COMBO(combo_r2_h, TD(WWW_BACK_FORWARD)),
     COMBO(combo_h_backspace, TD(WWW_BACK_FORWARD)),
     COMBO(combo_J_I, BRACKET_PAREN),

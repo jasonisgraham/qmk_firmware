@@ -40,9 +40,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         break;
 
 
-    case SAVE_ALL_AND_ESC:
+    case SAVE_ALL_THEN_GOTO_BASE:
         if (record->event.pressed) {
-            save_all_and_esc();
+            save_all_then_goto_base();
         }
         break;
 
@@ -559,11 +559,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
         break;
 
-    case CYCLE_DROP_ANIMATIONS:
-        if (record->event.pressed) {
-            cycle_drop_animations();
-        }
-        break;
 #endif
 
     case CYCLE_ACTIVE_ALT_KEYBOARD_LEVEL3_FN:

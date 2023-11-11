@@ -38,11 +38,11 @@ enum drop_layers {
 /* #include "../../../common/config.h" */
 #undef UNICODE_SELECTED_MODES
 #define UNICODE_SELECTED_MODES UC_LNX
+#include "../../../common/keycodes.c"
 #include "../../../common/common_fns.c"
 
 #include "../../../common/key_overrides.c"
 #include "../../../common/drop_colors.c"
-#include "../../../common/keycodes.c"
 #include "../../../common/drop_tapdance.c"
 
 #include "../../../common/combos.c"

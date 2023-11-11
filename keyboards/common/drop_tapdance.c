@@ -664,7 +664,7 @@ void dance_coln_finished(tap_dance_state_t *state, void *user_data) {
       break;
   case TAP2:
   case HOLD2:
-      save_all_and_esc();
+      save_all_then_goto_base();
 #ifdef AUDIO_ENABLE
       PLAY_SONG(caps_lock_off_sound);
 #endif
@@ -2088,10 +2088,10 @@ void dance_save_load_ns_switch_finished(tap_dance_state_t *state, void *user_dat
       tap_code16(KC_S);
       break;
   case TAP2:
-      save_all();
+      save_all_then_goto_base();
       break;
   default:
-      save_all_and_esc();
+      save_then_goto_base();
   }
 }
 
