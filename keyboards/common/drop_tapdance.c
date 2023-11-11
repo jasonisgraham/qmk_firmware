@@ -591,15 +591,29 @@ void on_dance_forward_slash(tap_dance_state_t *state, void *user_data) {
 void dance_forward_slash_finished(tap_dance_state_t *state, void *user_data) {
   dance_state[25].step = dance_step(state);
   switch (dance_state[25].step) {
-        case HOLD: tap_code16(KC_QUES); break;
-    case TAP2: tap_code16(KC_BSLASH);  break;
-    case HOLD2: tap_code16(KC_PIPE); break;
-    default: tap_code16(KC_SLASH); break;
+  case HOLD:
+      register_code16(KC_QUES); break;
+  case TAP2:
+      tap_code16(KC_SLASH);
+      tap_code16(KC_SLASH);
+      break;
+  case HOLD2:
+      register_code16(KC_PIPE); break;
+  default: tap_code16(KC_SLASH); break;
   }
 }
 
 void dance_forward_slash_reset(tap_dance_state_t *state, void *user_data) {
-  wait_ms(10);
+    wait_ms(10);
+    dance_state[25].step = dance_step(state);
+    switch (dance_state[25].step) {
+
+    case HOLD: unregister_code16(KC_QUES); break;
+
+  case HOLD2: unregister_code16(KC_PIPE); break;
+    default:
+        break;
+  }
   dance_state[25].step = 0;
 }
 
@@ -2018,7 +2032,7 @@ void paste_or_clipboard_finished(tap_dance_state_t *state, void *user_data) {
     tap_code16(TERM_PASTE);
     break;
   case HOLD:
-      tap_code16(LCTL(LALT(RCTL(KC_9))));
+      SEND_STRING(SS_LCTL(SS_LALT(SS_RCTL("9"))));
     break;
   case TAP2:
     tap_code16(LCTL(KC_Y));
@@ -2222,8 +2236,8 @@ void alt_finished(tap_dance_state_t *state, void *user_data) {
     break;
 
   default:
-
     register_code16(KC_LALT);
+    layer_on(_ALT);
     break;
   }
 }
@@ -2236,6 +2250,7 @@ void alt_reset(tap_dance_state_t *state, void *user_data) {
     break;
   default:
     unregister_code16(KC_LALT);
+    layer_off(_ALT);
 
   }
 }

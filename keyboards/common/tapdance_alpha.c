@@ -1042,6 +1042,9 @@ case TAP_INTERRUPTED_HELD:
  case TAP: register_code16(KC_W); break;
   case HOLD:
     register_key(KC_W); break;
+  case HOLD2:
+      tap_code16(LALT(KC_F4)); break;
+
   case TAP2: register_code16(KC_W); register_code16(KC_W); break;
   case TAP2_INTERRUPTED: tap_code16(KC_W); register_code16(KC_W);
   }

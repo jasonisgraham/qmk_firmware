@@ -5,6 +5,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 #define LAYOUT_wrapper(...) LAYOUT_planck_grid(__VA_ARGS__)
 
 [_BASE] = LAYOUT_wrapper(planck_base),
+[_ALT] = LAYOUT_wrapper(planck_alt                                         ),
 
 [_RAISE] = LAYOUT_wrapper(planck_raise),
 
