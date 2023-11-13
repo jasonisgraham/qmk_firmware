@@ -164,8 +164,8 @@ const uint32_t PROGMEM unicode_map[] = {
 
 #define planck_motion                                                   \
     EMACS_OTHER_WINDOW,   ALT_TAB, KC_HOME, KC_UP, KC_END,         LAYER_MOUSE_HOLD,      OSL(_SYSTEM),    KC_HOME,     my_lower_u,    my_lower_i,      my_lower_o,         my_lower_p, \
-        _______,  TD(DANCE_F5), KC_LEFT,     KC_DOWN,     KC_RIGHT,     _______,         RCTL(KC_UP),      my_lower_h,        my_lower_j,        my_lower_k,          my_lower_l,       my_lower_semi, \
-        LAYER_MOUSE_HOLD,   _______, BROWSER_TAB_PREV, BROWSER_TAB_NEXT, BROWSER_TAB_PREV,        KC_LEFT, RCTL(KC_DOWN),  KC_RIGHT, my_lower_m, RCTL(KC_HOME),   RCTL(KC_END), LALT(KC_F4), \
+        _______,  TD(DANCE_F5), KC_LEFT,     KC_DOWN,     KC_RIGHT,     _______,         KC_RIGHT,      my_lower_h,        my_lower_j,        my_lower_k,          my_lower_l,       my_lower_semi, \
+        LAYER_MOUSE_HOLD,   _______, BROWSER_TAB_PREV, BROWSER_TAB_NEXT, BROWSER_TAB_PREV,        KC_LEFT, KC_LEFT,  KC_RIGHT, my_lower_m, RCTL(KC_HOME),   RCTL(KC_END), LALT(KC_F4), \
         _______, _______, _______ , alt,   _______, _______,       TO_BASE,             _______, _______,          TD(WWW_BACK_FORWARD), RCTL(KC_LEFT), RCTL(KC_RIGHT)
 
 #define planck_leader1 _______, _______, _______, _______, _______, _______,   _______, _______, _______, _______, _______, _______, \
