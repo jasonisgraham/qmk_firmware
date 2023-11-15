@@ -796,18 +796,6 @@ bool do_breathing = false;
 #define EVIL_JUMP RCTL(KC_COMMA)
 
 #define EMACS_REPEAT KC_F9
-#define preonic_00 TO(_MOUSE) // TD(DANCE_MICROPHONE) // toggle mic //
-#define preonic_1 EVIL_FIRST_NON_BLANK
-#define preonic_2  KC_BSLASH
-#define preonic_3  my_lower_semi
-#define preonic_4 EVIL_END_OF_LINE
-#define preonic_5  TD(DANCE_ROFI)
-#define preonic_6  SELECT_HOTKEY_0
-#define preonic_7  TD(DANCE_LEFT_OR_HOME)
-#define preonic_8  KC_DOWN
-#define preonic_9  KC_UP
-#define preonic_10 TD(DANCE_RIGHT_OR_END)
-#define preonic_11 EVIL_JUMP
 
 #define PAGE_DOWN_OR_END TD(DANCE_PAGE_DOWN_OR_END)
 #define my_lower_j KC_DOWN // PAGE_DOWN_OR_END
@@ -863,3 +851,22 @@ bool do_breathing = false;
 
 #define all_mods TD(DANCE_ALL_MODS)
 #define ROFI_CLIPBOARD SS_LCTL(SS_LALT(SS_RCTL("9")))
+
+#define ACCEPT RCTL(KC_E)
+
+#define preonic_lctl OSM(MOD_LCTL)
+#define preonic_lalt OSM(MOD_LALT)
+#define preonic_rctl OSM(MOD_RCTL)
+
+#define preonic_00 TO(_MOUSE) // TD(DANCE_MICROPHONE) // toggle mic //
+#define preonic_1 SHIFTLOCK_LAYER_ACTIVATE
+#define preonic_2 OSM(MOD_LCTL)
+#define preonic_3 OSM(MOD_LALT)
+#define preonic_4 KC_SCROLLLOCK
+#define preonic_5 TD(DANCE_F5)
+#define preonic_6 TD(DANCE_PASTE_OR_CLIPBOARD)
+#define preonic_7 KC_HOME
+#define preonic_8 KC_PGDOWN
+#define preonic_9 KC_PGUP
+#define preonic_10 KC_END
+#define preonic_11 SAVE_ALL_THEN_GOTO_BASE
