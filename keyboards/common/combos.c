@@ -12,6 +12,10 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo_H_J, ALL_MODS_OSM),
     COMBO(combo_J_K, KC_ENTER),
     COMBO(combo_J_K_L, OSL_RCTL_LALT),
+    COMBO(preonic_h_a_c,OSM(MOD_RCTL | MOD_LALT | MOD_LCTL)),
+    COMBO(preonic_h_a,OSM(MOD_LCTL | MOD_LALT)),
+    COMBO(preonic_h_c,OSM(MOD_RCTL | MOD_LCTL)),
+    COMBO(preonic_a_c,OSM(MOD_RCTL | MOD_LALT)),
     COMBO(combo_K_L, OSM(MOD_RCTL)),
     COMBO(combo_K_L_SEMI, OSM( MOD_LALT | MOD_RCTL | MOD_LCTL | MOD_LGUI)), // j+k+l+: l -> C-⎕
     COMBO(combo_K_cap_semi, OSM(MOD_LALT)),
