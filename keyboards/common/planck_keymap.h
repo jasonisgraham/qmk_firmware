@@ -20,6 +20,11 @@ const uint32_t PROGMEM unicode_map[] = {
         _______, _______, _______, _______, _______, _______, LSFT(KC_TAB), _______, _______, _______, _______, _______, \
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, LSFT(KC_TAB), KC_TAB
 
+#define planck_fn _______, _______, _______, _______, _______, _______,   _______, _______, KC_F7, KC_F8, KC_F9, KC_F10, \
+        _______, _______, _______, _______, _______, _______,   _______, _______, KC_F4, KC_F5, KC_F6, KC_F11, \
+        _______, _______, _______, _______, _______, _______,   _______, _______, KC_F1, KC_F2, KC_F3, KC_F12, \
+        _______, _______, _______, _______, _______, _______,   _______, _______, _______, _______, _______, _______
+
 #define planck_numlock TO_BASE,    _______,          _______,  _______,         _______,       _______, _______, _______, my_raise_u,           my_raise_i,           my_raise_o,           my_raise_p, \
         _______, _______, _______,   _______, _______,  _______, _______,       _______,         my_raise_j,           my_raise_k,           my_raise_l,       _______, \
     _______, _______, _______, _______,  _______,      _______, _______,     _______,           my_raise_m,           my_raise_comma,         KC_3,           _______, \
@@ -107,7 +112,7 @@ const uint32_t PROGMEM unicode_map[] = {
 
 
 #define planck_system                                \
-    QK_BOOTLOADER, _______, _______, _______, RESET_INPUT_PREFS,     _______, _______, _______, KC_BRIGHTNESS_DOWN, KC_BRIGHTNESS_UP, QK_CLEAR_EEPROM, KC_MEDIA_PLAY_PAUSE, \
+    QK_BOOTLOADER, _______, _______, _______, RESET_INPUT_PREFS,     _______, SYSTEM_LAYER_DEACTIVATE, _______, KC_BRIGHTNESS_DOWN, KC_BRIGHTNESS_UP, QK_CLEAR_EEPROM, KC_MEDIA_PLAY_PAUSE, \
         _______, _______, _______, DB_TOGG, _______, _______, DM_REC1, DM_PLY1, KC_AUDIO_VOL_DOWN, KC_AUDIO_VOL_UP, QK_AUTOCORRECT_ON, DB_TOGG, \
         QK_AUTO_SHIFT_TOGGLE, _______ , _______, _______, _______, _______,   DM_REC2, DM_PLY2,  KC_AUDIO_MUTE, _______, _______, QK_BOOTLOADER, \
         SYSTEM_LAYER_DEACTIVATE, _______, _______, _______, _______,     _______, DM_RSTP, _______, _______, _______, _______, _______

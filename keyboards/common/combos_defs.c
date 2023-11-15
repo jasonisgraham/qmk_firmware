@@ -263,3 +263,9 @@ const uint16_t PROGMEM combo_z_x[] = {my_z, my_x, COMBO_END};
 const uint16_t PROGMEM combo_z_x_c[] = {my_z, my_x, my_c, COMBO_END};
 const uint16_t PROGMEM editing_comma__editing_dot[] = {editing_comma, editing_period, COMBO_END};
 const uint16_t PROGMEM raise_comma__raise_dot[] = {my_raise_comma,  my_raise_period, COMBO_END};
+
+
+const uint16_t PROGMEM preonic_h_a_c[] = {preonic_lctl,  preonic_lalt, preonic_rctl,  COMBO_END};
+const uint16_t PROGMEM preonic_h_a[] = {preonic_lctl,  preonic_lalt,  COMBO_END};
+const uint16_t PROGMEM preonic_h_c[] = {preonic_lctl,  preonic_rctl,  COMBO_END};
+const uint16_t PROGMEM preonic_a_c[] = {preonic_lalt,  preonic_rctl,  COMBO_END};
