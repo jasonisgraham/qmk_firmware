@@ -10,6 +10,7 @@ enum drop_layers {
     _NUMLOCK,
     _SHIFTLOCK,
     _LOWER,
+    _FN,
     _RAISE,
     _WINDOWS,
     _WINMOVE,
