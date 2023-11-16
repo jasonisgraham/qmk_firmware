@@ -1,6 +1,7 @@
 #pragma once
 #define I2C_DRIVER I2CD1
 
+#define USE_WORKMAN 1
 #define AUTO_SHIFT_REPEAT
 #define MOUSEKEY_MAX_SPEED 2
 #define UNICODE_SELECTED_MODES UC_LNX

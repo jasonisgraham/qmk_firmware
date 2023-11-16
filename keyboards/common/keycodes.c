@@ -786,8 +786,6 @@ bool do_breathing = false;
 #define editing_left_shift TD(DANCE_SHIFT_CURLY)
 #define raise_left_shift TD(DANCE_RAISE_SHIFT)
 #define lower_left_shift TD(DANCE_LOWER_SHIFT)
-#define my_semicolon TD(DANCE_COLN)
-#define my_cap_semi my_semicolon
 
 /* #define super TD(DANCE_SUPER) //TD(SUPER_WINDOWS) */
 
@@ -843,6 +841,10 @@ bool do_breathing = false;
 #define my_x TD(DANCE_X)
 #define my_y TD(DANCE_Y)
 #define my_z TD(DANCE_Z)
+#define my_semicolon TD(DANCE_COLN)
+
+#define my_cap_semi my_semicolon
+
 
 #define my_forward_slash KC_SLASH
 #define my_grave TD(DANCE_TAB)
