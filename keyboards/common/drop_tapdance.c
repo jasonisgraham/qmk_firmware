@@ -229,7 +229,11 @@ void on_dance_fn5(int key, tap_dance_state_t *state, void *user_data) {
 }
 
 
+#ifdef USE_WORKMAN
+#include "tapdance_alpha_workman.c"
+#else
 #include "tapdance_alpha.c"
+#endif
 
 
 void on_dance_tab(tap_dance_state_t *state, void *user_data) {
