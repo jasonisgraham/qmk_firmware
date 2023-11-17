@@ -33,7 +33,7 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo_comma_dot, EQUAL_THEN_SPACE),
     COMBO(combo_d_f, OSL(_LOWER)),
     COMBO(combo_d_t,EMACS_TO_DELETE),
-    COMBO(combo_e_f, OSL(_EMACS_SELECT)),
+    COMBO(combo_e_f, KC_TAB),
     COMBO(combo_e_t, CIDER_RUN_TEST),
     COMBO(combo_editing_comma__editing_period, emacs_indent_buffer),
     COMBO(combo_editing_j__editing_k, FISH_ACCEPT_SEND),
