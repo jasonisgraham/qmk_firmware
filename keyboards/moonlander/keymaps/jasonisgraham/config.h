@@ -23,12 +23,12 @@
 #define NO_AUTO_SHIFT_TAB
 #define CAPS_LOCK_STATUS
 #define HOLD_ON_OTHER_KEY_PRESS
-#define FIRMWARE_VERSION u8"yBwNd/gEveM"
+#define FIRMWARE_VERSION u8"yBwNd/KXZd7"
 #define RAW_USAGE_PAGE 0xFF60
 #define RAW_USAGE_ID 0x61
-#define RGB_MATRIX_STARTUP_SPD 60
+#define LAYER_STATE_32BIT
 
+#define RGB_MATRIX_STARTUP_SPD 60
 
 #undef COMBO_TERM
 #define COMBO_TERM 25  // default is 50.  50ms produces false positives when typing kinda fast
-

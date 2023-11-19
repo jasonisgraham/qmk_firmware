@@ -2,7 +2,7 @@ void oneshot_mods_changed_user(uint8_t mods) {
     if (mods & MOD_MASK_CTRL) {
         rgblight_enable_noeeprom();
         rgblight_sethsv_noeeprom(HSV_RED);
-        rgblight_mode(RGBLIGHT_MODE_TWINKLE);
+        /* rgblight_mode(RGBLIGHT_MODE_TWINKLE); */
     }
     if (!mods) {
         rgblight_disable();
@@ -22,6 +22,38 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     //   }
 
     switch (keycode) {
+
+    case WORD_BECAUSE:
+        if (record->event.pressed) {
+            SEND_STRING("because ");
+        }
+        break;
+
+    case MORPH_MENT:
+        if (record->event.pressed) {
+            SEND_STRING("ment");
+        }
+        break;
+
+
+    case MORPH_ATION:
+        if (record->event.pressed) {
+            SEND_STRING("ation");
+        }
+        break;
+
+    case MORPH_NESS:
+        if (record->event.pressed) {
+            SEND_STRING("ness");
+        }
+        break;
+
+    case MORPH_LESS:
+        if (record->event.pressed) {
+            SEND_STRING("less");
+        }
+        break;
+
 
         /* case esc_ctrl: */
         /*   if (record->event.pressed) { */
@@ -553,6 +585,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             /* SEND_STRING(s); */
         }
         break;
+
     case CYCLE_DROP_COLORS:
         if (record->event.pressed) {
             cycle_drop_color();
@@ -2017,8 +2050,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   case ROFI_LOCATE:
       if (record->event.pressed) {
-          rgblight_mode(DROP_CURRENT_ANIMATION);
-          static_kinda_dim(HSV_PURPLE);
+          /* rgblight_mode(DROP_CURRENT_ANIMATION); */
+          /* static_kinda_dim(HSV_PURPLE); */
           rofi_locate_timer = timer_read();
           rofi_locate_timer_active = true;
           rofi_locate_level = 0;
