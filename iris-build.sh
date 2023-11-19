@@ -1,4 +1,4 @@
 #!/bin/bash
 
 
-make keebio/iris/rev8:default:flash
+make keebio/iris/rev7:onehand-gaming:flash

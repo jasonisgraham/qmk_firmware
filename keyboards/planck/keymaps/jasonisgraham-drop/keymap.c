@@ -59,7 +59,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_WINDOWS] = LAYOUT_wrapper(planck_windows
                                 ),
 
-
 // 7
 [_MACROS] = LAYOUT_wrapper(
 planck_macros                              ),

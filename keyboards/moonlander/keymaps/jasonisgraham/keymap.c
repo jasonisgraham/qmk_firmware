@@ -38,12 +38,12 @@
 #define UNICODE_SELECTED_MODES UC_LNX
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    [_BASE] = LAYOUT_moonlander(top_left,    my_q,    my_w,    my_e,    my_r,   my_t, _______, _______, mod_r1,    my_y,           my_u,    my_i,    my_o,     my_p,
-                                esc_ctrl , my_a,   my_s,   my_d,   my_f,   my_g, _______, _______, mod_r2,  my_h,         my_j,   my_k,   my_l,   my_semicolon,
-                                my_left_shift,        my_z,           my_x,           my_c,           my_v,           my_b, _______, _______, mod_r3,     my_n,   my_m,   my_comma,   my_period,   my_forward_slash,
-                                hyper, level3,   alt_keyboard,         alt, RAISE,  super, mod_r4,   my_space,           LOWER,          my_right_of_lower,   key_left,  key_right,
-                                _______, _______, _______, _______, _______, _______,_______, _______, _______, _______, _______, _______,
-                                _______, _______, _______, _______, _______, _______),
+    [_BASE] = LAYOUT_moonlander(top_left,    my_q,    my_w,    my_e,    my_r,   my_t, mod_r1, KC_NO, mod_r1,    my_y,           my_u,    my_i,    my_o,     my_p,
+                                esc_ctrl , my_a,   my_s,   my_d,   my_f,   my_g, mod_r2, KC_NO, mod_r2,  my_h,         my_j,   my_k,   my_l,   my_semicolon,
+                                my_left_shift,        my_z,           my_x,           my_c,           my_v,           my_b, mod_r3 , KC_NO, mod_r3,     my_n,   my_m,   my_comma,   my_period,   my_forward_slash,
+                                hyper, level3,   alt_keyboard,         alt, RAISE,  super, mod_r4 ,   my_space,           LOWER,          my_right_of_lower,   key_left,  key_right,
+                                KC_NO, KC_NO, mod_r4, mod_r4, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+                                KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO),
 
     [_ALT] = LAYOUT_moonlander(_______, _______, _______, _______, _______, _______,_______, _______,    _______, _______, _______, _______, _______, _______,
                                _______, _______, _______, _______, _______, _______,_______, _______,  KC_TAB, _______, _______, _______, _______, _______,
@@ -53,11 +53,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                _______, _______, _______, _______, _______, _______),
 
 
-    [_RAISE] = LAYOUT_moonlander(backtab,    my_raise_q,          my_raise_w,  my_raise_e,         my_raise_r,       my_raise_t,_______, _______,  TO_BASE, my_raise_y, my_raise_u,           my_raise_i,           my_raise_o,           my_raise_p,
-                                 _______, my_raise_a, my_raise_s,   my_raise_d, my_raise_f,  my_raise_g,_______, _______,  raise_up,       my_raise_h,         my_raise_j,           my_raise_k,           my_raise_l,       raise_semi,
-                                 raise_left_shift, my_raise_z, my_raise_x, my_raise_c,  my_raise_v,      my_raise_b,_______, _______,  raise_down,     my_raise_n,           my_raise_m,           my_raise_comma,         KC_3,           raise_slash,
+    [_RAISE] = LAYOUT_moonlander(backtab,    my_raise_q,          my_raise_w,  my_raise_e,         my_raise_r,       my_raise_t, raise_up ,  _______,  TO_BASE, my_raise_y, my_raise_u,           my_raise_i,           my_raise_o,           my_raise_p,
+                                 _______, my_raise_a, my_raise_s,   my_raise_d, my_raise_f,  my_raise_g, raise_down, _______,   raise_up,       my_raise_h,         my_raise_j,           my_raise_k,           my_raise_l,       raise_semi,
+                                 raise_left_shift, my_raise_z, my_raise_x, my_raise_c,  my_raise_v,      my_raise_b, _______,  _______,  raise_down,     my_raise_n,           my_raise_m,           my_raise_comma,         KC_3,           raise_slash,
                                  MO(_SYSTEM), _______, KC_ENTER,        _______,        TO(_BASE), _______, raise_left,      my_space,   raise_key_4_9,       KC_INSERT,  KC_DOWN,         KC_UP,
-                                 _______, _______, _______, _______, _______, _______,_______, _______, _______, _______, _______, _______,
+                                 _______, _______, _______, _______, TO(_BASE), _______,_______, _______, _______, _______, _______, _______,
                                  _______, _______, _______, _______, _______, _______),
 
     [_SHIFTLOCK] = LAYOUT_moonlander(KC_TAB,   LSFT(KC_Q),     LSFT(KC_W),     LSFT(KC_E),     LSFT(KC_R),     LSFT(KC_T),_______, _______,  TO_BASE,    LSFT(KC_Y),     my_cap_u,     my_cap_i,     my_cap_o,     my_cap_p,
@@ -71,7 +71,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_LOWER] = LAYOUT_moonlander(                             KC_GRAVE,   my_lower_q,          my_lower_w,          my_lower_e,          my_lower_r,  TD(DANCE_SCREENSHOT),_______, _______,   TO_BASE,    KC_HOME,     my_lower_u,    my_lower_i,      my_lower_o,         my_lower_p,
                                                               _______, my_lower_a,          my_lower_s,          my_lower_d,          my_lower_f,          my_lower_g,_______, _______,  lower_backspace,      my_lower_h,        my_lower_j,        my_lower_k,          my_lower_l,       my_lower_semi,
                                                               lower_left_shift,   my_lower_z,         my_lower_x,         my_lower_c,         my_lower_v,         my_lower_b,_______, _______,  lower_down,  my_lower_n, my_lower_m, my_lower_comma,   my_lower_period, my_lower_slash,
-                                                              LAYER_MOUSE_HOLD, _______, _______ , alt,   MO(_EDITING), OSL(_WINMOVE),       _______,             _______, lower_LOWER,          lower_right_of_lower, lower_key_4_11, lower_key_4_12,
+                                                              LAYER_MOUSE_HOLD, _______, _______ , alt,   MO(_EDITING), OSL(_MOTION),       _______,             _______, lower_LOWER,          lower_right_of_lower, lower_key_4_11, lower_key_4_12,
                                                               _______, _______, _______, _______, _______, _______,_______, _______, _______, _______, _______, _______,
                                                               _______, _______, _______, _______, _______, _______),
 
@@ -119,8 +119,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 
-    [_MOUSE] = LAYOUT_moonlander(                              TO_BASE,    _______, KC_MS_BTN1, KC_MS_UP, KC_MS_BTN2, _______,_______, _______,  _______,  KC_HOME,        KC_PGUP,        KC_PGDOWN,      KC_END,         _______,
-                                                               _______,  _______, KC_MS_LEFT,     KC_MS_DOWN,     KC_MS_RIGHT,     _______,_______, _______,   _______, KC_MS_BTN1,     KC_MS_WH_DOWN,  KC_MS_WH_UP,    KC_MS_BTN2,     KC_MS_BTN3,
+    [_MOUSE] = LAYOUT_moonlander(                              TO_BASE,    _______, KC_MS_BTN1, KC_MS_UP, KC_MS_BTN2, _______,_______, _______,  _______,  KC_HOME,        KC_PGDOWN, KC_PGUP,              KC_END,         _______,
+                                                               TO_BASE,  _______, KC_MS_LEFT,     KC_MS_DOWN,     KC_MS_RIGHT,     _______,_______, _______,   _______, KC_MS_BTN1,     KC_MS_WH_DOWN,  KC_MS_WH_UP,    KC_MS_BTN2,     KC_MS_BTN3,
                                                                TO_BASE, _______, _______, _______, WEB_SAVE_FILE_UNDER_CURSOR, _______,_______, _______,  _______,  LALT(LGUI(KC_N)), KC_MS_BTN3,     BROWSER_TAB_PREV,   BROWSER_TAB_NEXT,   LALT(KC_F4),
                                                                _______, _______, _______, _______, _______, _______,   _______, KC_BTN4, KC_BTN5,  KC_BTN6, KC_BTN7, KC_BTN8,
                                                                _______, _______, _______, _______, _______, _______,_______, _______, _______, _______, _______, _______,
@@ -128,10 +128,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 
-    [_SUPER] = LAYOUT_moonlander(                             _______, _______,   _______, _______, super_r, _______,_______, _______,     LALT(KC_TAB), _______,  _______, _______, _______, _______,
+    [_SUPER] = LAYOUT_moonlander(                             KC_TAB, _______,   _______, _______, super_r, _______,_______, _______,     LALT(KC_TAB), _______,  _______, _______, _______, _______,
                                                               LGUI(LSFT(KC_J)), _______, _______, _______, super_f, super_g,_______, _______,     super_mod_r2, _______,  _______, _______, _______, _______,
                                                               KC_LSFT, _______, _______, _______,    _______, super_b,_______, _______,  super_mod_r3, _______,    _______, _______, _______, _______,
-                                                              _______, adhoc_set_hotkey, _______, _______,    _______, _______, LALT(LSFT(KC_TAB)), ROFI_DRUN, _______, LALT (KC_GRAVE), LALT(LSFT(KC_TAB)), LALT (KC_TAB),
+                                                              _______, adhoc_set_hotkey, _______, _______,    _______, _______, LALT(LSFT(KC_TAB)), ROFI_DRUN, _______, KC_GRAVE, LSFT(KC_TAB), KC_TAB,
                                                               _______, _______, _______, _______, _______, _______,_______, _______, _______, _______, _______, _______,
                                                               _______, _______, _______, _______, _______, _______),
 
@@ -140,19 +140,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_EDITING] = LAYOUT_moonlander(EMACS_OTHER_WINDOW, EMACS_DESC_KEY, LCTL(KC_7),     CIDER_EVAL_OR_TERMINAL_EDIT, EMACS_BUFFER_REVERT, LCTL(KC_S),_______, _______,         TO_BASE, EMACS_YANK_IN_SEXP  , editing_u, editing_i, editing_o, PAREDIT_BACKWARD_UP,
                                    _______, _______, SURROUND, EMACS_KILL_IN_SEXP, LALT(KC_ENTER), GREP_STRING_IN_BUFFER_DIR,_______, _______,                KC_DELETE, editing_h, editing_j, editing_k, editing_l, EMACS_PRIVATE_READER,
                                    editing_left_shift, EMACS_RECENTER_ON_DEFUN, SWAP_SELECTION_BOUNDARIES, EMACS_WINDOW_DELETE,    TD(DANCE_SAVE_LOAD_NS_SWITCH), _______,_______, _______,                                       KC_BACKSPACE, next_win_or_frame, EMACS_BUFFER_MAXIMIZE,  editing_comma, editing_period, TERM_CD_UP_DIR,
-                                   _______, _______, _______, _______, MO(_EMACS),  OSL(_WINMOVE),                                                  FISH_ACCEPT_SEND, all_mods, MO(_EMACS), TO(_BASE), _______, emacs_indent_buffer,
+                                   _______, _______, _______, _______, MO(_EMACS),  OSL(_MOTION),                                                  FISH_ACCEPT_SEND, all_mods, MO(_EMACS), TO(_BASE), _______, emacs_indent_buffer,
                                    _______, _______, _______, _______, _______, _______,_______, _______, _______, _______, _______, _______,
                                    _______, _______, _______, _______, _______, _______),
 
 
-[_SYSTEM] = LAYOUT_moonlander(
-                              _______, _______, RGB_VAI, _______, QK_BOOTLOADER, _______,  _______,_______,  _______, QK_KEY_OVERRIDE_ON, QK_KEY_OVERRIDE_OFF, QK_DEBUG_TOGGLE, QK_CLEAR_EEPROM, QK_BOOTLOADER,
-                              CLEAR_MODIFIERS, _______, RGB_VAD, _______, _______, _______,  _______,_______,  _______, _______, KC_AUDIO_VOL_DOWN, KC_AUDIO_VOL_UP, QK_AUTOCORRECT_ON, DB_TOGG,
-                              QK_CLEAR_EEPROM, _______ , _______, _______, _______, _______,  _______,_______, _______,    _______, KC_AUDIO_MUTE, _______,  _______, RGB_TOG,
-                              SYSTEM_LAYER_DEACTIVATE, _______, _______, _______, _______,     _______,_______,    RGB_TOG, RGB_MOD, RGB_HUI, KC_BRIGHTNESS_DOWN,KC_BRIGHTNESS_UP,
-                              _______, _______, _______, _______, _______, _______,_______, _______, _______, _______, _______, _______,
-                              _______,  _______,  _______,  _______,  _______,  _______
-                              ),
 
     [_WINMOVE] = LAYOUT_moonlander(                                _______,   _______, _______, _______, _______, _______,_______, _______,   WINDOW_ALWAYS_ON_TOP, winmove_UL,_______, winmove_top, winmove_UR, TOGGLE_MENU_BAR,
                                                                    _______, _______, _______, LALT(LGUI(LCTL(RCTL(KC_D)))),_______, _______,_______, _______,  _______, winmove_L,   winmove_D, winmove_U ,   winmove_R,   _______,
@@ -163,11 +155,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
     [_SYSTEM] = LAYOUT_moonlander(
-                                  QK_BOOTLOADER, _______, RGB_MOD, _______, RESET_INPUT_PREFS,     _______,_______, _______,   SYSTEM_LAYER_DEACTIVATE, _______, KC_BRIGHTNESS_DOWN, KC_BRIGHTNESS_UP, QK_CLEAR_EEPROM, KC_MEDIA_PLAY_PAUSE,
+                                  SYSTEM_LAYER_DEACTIVATE, MATRIX_SET_DEFAULT_ANIMATION, QK_BOOTLOADER, _______, RESET_INPUT_PREFS,     _______,_______, _______,   SYSTEM_LAYER_DEACTIVATE, _______, KC_BRIGHTNESS_DOWN, KC_BRIGHTNESS_UP, QK_CLEAR_EEPROM, KC_MEDIA_PLAY_PAUSE,
                                   _______, _______, _______, DB_TOGG, _______, _______,_______, _______,   DM_REC1, DM_PLY1, KC_AUDIO_VOL_DOWN, KC_AUDIO_VOL_UP, QK_AUTOCORRECT_ON, DB_TOGG,
-                                  QK_AUTO_SHIFT_TOGGLE, _______ , _______, _______, _______,  _______,  _______, _______,   DM_REC2, DM_PLY2,  KC_AUDIO_MUTE, _______, _______, QK_BOOTLOADER,
-                                  SYSTEM_LAYER_DEACTIVATE, _______, _______, _______, _______,     _______, DM_RSTP, _______, _______, _______, _______, _______,
-                                  _______, _______, _______, _______, _______, _______,_______, _______, _______, _______, _______, _______,
+                                  QK_AUTO_SHIFT_TOGGLE, _______ , _______, _______, _______,  _______,  _______, _______,   DM_REC2, DM_PLY2,  KC_AUDIO_MUTE, RGB_MATRIX_CYCLE_SPIRAL, RGB_MATRIX_TYPING_HEATMAP, QK_BOOTLOADER,
+                                  SYSTEM_LAYER_DEACTIVATE, _______, _______, _______, _______,     _______, DM_RSTP, RGB_MATRIX_HUE_WAVE, RGB_MATRIX_RAINBOW_MOVING_CHEVRON, RGB_MATRIX_BREATHING, MATRIX_DECREASE_SPEED, MATRIX_INCREASE_SPEED,
+                                 _______, _______, _______, _______, _______, _______,_______, _______, _______, _______, _______, _______,
                                   _______, _______, _______, _______, _______, _______),
 
 
@@ -198,6 +190,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                             _______, _______, _______, _______,    _______, _______, SET_HOTKEY_3, _______,    _______, _______, SET_HOTKEY_4, _______,
                                             _______, _______, _______, _______, _______, _______,_______, _______, _______, _______, _______, _______,
                                             _______, _______, _______, _______, _______, _______),
+
+    [_NUMPAD] = LAYOUT_moonlander(KC_0, KC_1, KC_2, KC_3, KC_4, _______,_______, _______,    _______, _______, _______, _______, _______, _______,
+                                  _______, KC_5, KC_6, KC_7, KC_8, _______,_______, _______,  KC_TAB, _______, _______, _______, _______, _______,
+                                  _______, KC_9, KC_0, _______, _______, _______,_______, _______,  LSFT(KC_TAB), _______, _______, _______, _______, _______,
+                                  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, LSFT(KC_TAB), KC_TAB,
+                                  _______, _______, _______, _______, _______, _______,_______, _______, _______, _______, _______, _______,
+                                  _______, _______, _______, _______, _______, _______),
 
 
 
@@ -237,7 +236,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
     [_MOTION] = LAYOUT_moonlander(EMACS_OTHER_WINDOW,   ALT_TAB, KC_HOME, KC_UP, KC_END,         LAYER_MOUSE_HOLD,_______, _______,       OSL(_SYSTEM),    KC_HOME,     my_lower_u,    my_lower_i,      my_lower_o,         my_lower_p,
-                                  _______,  TD(DANCE_F5), KC_LEFT,     KC_DOWN,     KC_RIGHT,     _______,_______, _______,          KC_RIGHT,      my_lower_h,        my_lower_j,        my_lower_k,          my_lower_l,       my_lower_semi,
+                                  _______,  TD(DANCE_F5), KC_LEFT,     KC_DOWN,     KC_RIGHT,     KC_MS_BTN1,_______, _______,          KC_RIGHT,      my_lower_h,        my_lower_j,        my_lower_k,          my_lower_l,       my_lower_semi,
                                   LAYER_MOUSE_HOLD,   _______, BROWSER_TAB_PREV, BROWSER_TAB_NEXT, BROWSER_TAB_PREV,        KC_LEFT,_______, _______,  KC_LEFT,  KC_RIGHT, my_lower_m, RCTL(KC_HOME),   RCTL(KC_END), LALT(KC_F4),
                                   _______, _______, _______ , alt,   _______, _______,       TO_BASE,             _______, _______,          TD(WWW_BACK_FORWARD), RCTL(KC_LEFT), RCTL(KC_RIGHT),
                                   _______, _______, _______, _______, _______, _______,_______, _______, _______, _______, _______, _______,

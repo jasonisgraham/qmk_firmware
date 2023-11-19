@@ -44,7 +44,7 @@ const uint32_t PROGMEM unicode_map[] = {
 #define planck_lower                               KC_GRAVE,   my_lower_q,          my_lower_w,          my_lower_e,          my_lower_r,  TD(DANCE_SCREENSHOT),  TO_BASE,    KC_HOME,     my_lower_u,    my_lower_i,      my_lower_o,         my_lower_p, \
     _______, my_lower_a,          my_lower_s,          my_lower_d,          my_lower_f,          my_lower_g, lower_backspace,      my_lower_h,        my_lower_j,        my_lower_k,          my_lower_l,       my_lower_semi, \
     lower_left_shift,   my_lower_z,         my_lower_x,         my_lower_c,         my_lower_v,         my_lower_b, lower_down,  my_lower_n, my_lower_m, my_lower_comma,   my_lower_period, my_lower_slash, \
-        LAYER_MOUSE_HOLD, _______, _______ , alt,   MO(_EDITING), OSL(_WINMOVE),       _______,             _______, lower_LOWER,          lower_right_of_lower, lower_key_4_11, lower_key_4_12
+        LAYER_MOUSE_HOLD, _______, _______ , alt,   MO(_EDITING), OSL(_MOTION),       _______,             _______, lower_LOWER,          lower_right_of_lower, lower_key_4_11, lower_key_4_12
 
 #define planck_rofi ESC_THEN_BASE_LAYER, _______, LAUNCHER_WIKI, _______,  _______, LAUNCHER_TRANSLATE,    _______,  ROFI_LOCATE_GLOBAL, ROFI_LOCATE, LAUNCHER_WINDOWS, LAUNCHER_CLIPBOARD, COPY_LATEST_FILE_TO_CLIPBOARD, \
         CLEAR_NOTIFICATIONS, _______, LAUNCHER_SYSTEM, LAUNCHER_DEFINE, LAUNCHER_FDFIND,   LAUNCHER_GOOGLE, _______, CIDER_HISTORY_WRITE, ROFI_CIDER_HISTORY, ROFI_EMOJI, ROFI_PROCESSES, ULAUNCHER, \
@@ -77,21 +77,21 @@ const uint32_t PROGMEM unicode_map[] = {
 
 
 #define planck_mouse                               TO_BASE,    _______, KC_MS_BTN1, KC_MS_UP, KC_MS_BTN2, _______, _______,  KC_HOME,        KC_PGUP,        KC_PGDOWN,      KC_END,         _______, \
-    _______,  _______, KC_MS_LEFT,     KC_MS_DOWN,     KC_MS_RIGHT,     _______,  _______, KC_MS_BTN1,     KC_MS_WH_DOWN,  KC_MS_WH_UP,    KC_MS_BTN2,     KC_MS_BTN3, \
+        TO_BASE,  _______, KC_MS_LEFT,     KC_MS_DOWN,     KC_MS_RIGHT,     _______,  _______, KC_MS_BTN1,     KC_MS_WH_DOWN,  KC_MS_WH_UP,    KC_MS_BTN2,     KC_MS_BTN3, \
         TO_BASE, _______, _______, _______, WEB_SAVE_FILE_UNDER_CURSOR, _______, _______,  LALT(LGUI(KC_N)), KC_MS_BTN3,     BROWSER_TAB_PREV,   BROWSER_TAB_NEXT,   LALT(KC_F4), \
     _______, _______, _______, _______, _______, _______,   _______, KC_BTN4, KC_BTN5,  KC_BTN6, KC_BTN7, KC_BTN8
 
 
-#define planck_super                              _______, _______,   _______, _______, super_r, _______,    LALT(KC_TAB), _______,  _______, _______, _______, _______, \
+#define planck_super                              KC_TAB, _______,   _______, _______, super_r, _______,    LALT(KC_TAB), _______,  _______, _______, _______, _______, \
         LGUI(LSFT(KC_J)), _______, _______, _______, super_f, super_g,    super_mod_r2, _______,  _______, _______, _______, _______, \
         KC_LSFT, _______, _______, _______,    _______, super_b, super_mod_r3, _______,    _______, _______, _______, _______, \
-        _______, adhoc_set_hotkey, _______, _______,    _______, _______, LALT(LSFT(KC_TAB)), ROFI_DRUN, _______, LALT (KC_GRAVE), LALT(LSFT(KC_TAB)), LALT (KC_TAB)
+        _______, adhoc_set_hotkey, _______, _______,    _______, _______, LALT(LSFT(KC_TAB)), ROFI_DRUN, _______, KC_GRAVE, LSFT(KC_TAB), KC_TAB
 
 
 #define planck_editing EMACS_OTHER_WINDOW, EMACS_DESC_KEY, LCTL(KC_7),     CIDER_EVAL_OR_TERMINAL_EDIT, EMACS_BUFFER_REVERT, LCTL(KC_S),        TO_BASE, EMACS_YANK_IN_SEXP  , editing_u, editing_i, editing_o, PAREDIT_BACKWARD_UP, \
         _______, _______, SURROUND, EMACS_KILL_IN_SEXP, LALT(KC_ENTER), GREP_STRING_IN_BUFFER_DIR,               KC_DELETE, editing_h, editing_j, editing_k, editing_l, EMACS_PRIVATE_READER, \
         editing_left_shift, EMACS_RECENTER_ON_DEFUN, SWAP_SELECTION_BOUNDARIES, EMACS_WINDOW_DELETE,    TD(DANCE_SAVE_LOAD_NS_SWITCH), _______,                                      KC_BACKSPACE, next_win_or_frame, EMACS_BUFFER_MAXIMIZE,  editing_comma, editing_period, TERM_CD_UP_DIR, \
-        _______, _______, _______, _______, MO(_EMACS),  OSL(_WINMOVE),                                                  FISH_ACCEPT_SEND, all_mods, MO(_EMACS), TO(_BASE), _______, emacs_indent_buffer
+        _______, _______, _______, _______, MO(_EMACS),  OSL(_MOUSE),                                                  FISH_ACCEPT_SEND, all_mods, MO(_EMACS), TO(_BASE), _______, emacs_indent_buffer
 
 
 #define planck_winmove                                 _______,   _______, _______, _______, _______, _______,  WINDOW_ALWAYS_ON_TOP, winmove_UL,_______, winmove_top, winmove_UR, TOGGLE_MENU_BAR, \
@@ -112,7 +112,7 @@ const uint32_t PROGMEM unicode_map[] = {
 
 
 #define planck_system                                \
-    QK_BOOTLOADER, _______, _______, _______, RESET_INPUT_PREFS,     _______, SYSTEM_LAYER_DEACTIVATE, _______, KC_BRIGHTNESS_DOWN, KC_BRIGHTNESS_UP, QK_CLEAR_EEPROM, KC_MEDIA_PLAY_PAUSE, \
+    SYSTEM_LAYER_DEACTIVATE, _______, _______, _______, RESET_INPUT_PREFS,     _______, SYSTEM_LAYER_DEACTIVATE, _______, KC_BRIGHTNESS_DOWN, KC_BRIGHTNESS_UP, QK_CLEAR_EEPROM, KC_MEDIA_PLAY_PAUSE, \
         _______, _______, _______, DB_TOGG, _______, _______, DM_REC1, DM_PLY1, KC_AUDIO_VOL_DOWN, KC_AUDIO_VOL_UP, QK_AUTOCORRECT_ON, DB_TOGG, \
         QK_AUTO_SHIFT_TOGGLE, _______ , _______, _______, _______, _______,   DM_REC2, DM_PLY2,  KC_AUDIO_MUTE, _______, _______, QK_BOOTLOADER, \
         SYSTEM_LAYER_DEACTIVATE, _______, _______, _______, _______,     _______, DM_RSTP, _______, _______, _______, _______, _______
@@ -169,7 +169,7 @@ const uint32_t PROGMEM unicode_map[] = {
 
 #define planck_motion                                                   \
     EMACS_OTHER_WINDOW,   ALT_TAB, KC_HOME, KC_UP, KC_END,         LAYER_MOUSE_HOLD,      OSL(_SYSTEM),    KC_HOME,     my_lower_u,    my_lower_i,      my_lower_o,         my_lower_p, \
-        _______,  TD(DANCE_F5), KC_LEFT,     KC_DOWN,     KC_RIGHT,     _______,         KC_RIGHT,      my_lower_h,        my_lower_j,        my_lower_k,          my_lower_l,       my_lower_semi, \
+        _______,  TD(DANCE_F5), KC_LEFT,     KC_DOWN,     KC_RIGHT,     KC_MS_BTN1,         KC_RIGHT,      my_lower_h,        my_lower_j,        my_lower_k,          my_lower_l,       my_lower_semi, \
         LAYER_MOUSE_HOLD,   _______, BROWSER_TAB_PREV, BROWSER_TAB_NEXT, BROWSER_TAB_PREV,        KC_LEFT, KC_LEFT,  KC_RIGHT, my_lower_m, RCTL(KC_HOME),   RCTL(KC_END), LALT(KC_F4), \
         _______, _______, _______ , alt,   _______, _______,       TO_BASE,             _______, _______,          TD(WWW_BACK_FORWARD), RCTL(KC_LEFT), RCTL(KC_RIGHT)
 
