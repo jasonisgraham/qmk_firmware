@@ -32,3 +32,5 @@
 
 #undef COMBO_TERM
 #define COMBO_TERM 25  // default is 50.  50ms produces false positives when typing kinda fast
+
+#define RGB_MATRIX_KEYPRESSES
