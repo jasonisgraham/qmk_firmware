@@ -1,17 +1,5 @@
 
 
-void dynamic_macro_record_key_user(int8_t dir, keyrecord_t *record) {
-    PLAY_SONG(minor_sound);
-}
-
-void dynamic_macro_record_start_user(int8_t dir) {
-    PLAY_SONG(caps_lock_on_sound);
-}
-void dynamic_macro_record_end_user(int8_t dir) {
-    PLAY_SONG(major_sound);
-}
-
-
 
 void matrix_scan_user(void) {
 
