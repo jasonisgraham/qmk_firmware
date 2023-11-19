@@ -276,3 +276,6 @@ const uint16_t PROGMEM morph_ment[] = {my_m,  my_t,  COMBO_END};
 const uint16_t PROGMEM morph_ation[] = {my_t, my_n,  COMBO_END};
 const uint16_t PROGMEM word_because[] = {my_b, my_c,  COMBO_END};
 const uint16_t PROGMEM cycle_animations[] = {level3,   alt_keyboard,  COMBO_END};
+
+const uint16_t PROGMEM super_t[] = {super,   my_t,  COMBO_END};
+const uint16_t PROGMEM super_e[] = {super,   my_e,  COMBO_END};

@@ -71,6 +71,39 @@ layer_state_t layer_state_set_user(layer_state_t state) {
         /* rgblight_mode(RGBLIGHT_MODE_KNIGHT); */
         break;
 
+    case _ROFI:
+        rgblight_mode(DROP_CURRENT_ANIMATION);
+        static_kinda_dim(HSV_PURPLE);
+        break;
+
+    case _RAISE:
+        /* float x[][2] = SONG(ROCK_A_BYE_BABY); */
+        /* PLAY_SONG(x);             /\*  *\/ */
+        rgblight_enable_noeeprom();
+        rgblight_mode(DROP_CURRENT_ANIMATION);
+        rgblight_sethsv_noeeprom(HSV_BLUE);
+        break;
+
+    case _WEB:
+        for (int i=0; i< RGBLED_NUM; i=i+2) {
+            rgblight_sethsv_at(HSV_WHITE, i);
+            rgblight_sethsv_at(HSV_PURPLE, i+1);
+        }
+        break;
+
+    case _CODE:
+        rgblight_enable_noeeprom();
+        rgblight_mode(DROP_CURRENT_ANIMATION);
+        for (int i=0; i< RGBLED_NUM; i=i+2) {
+            rgblight_sethsv_at(HSV_YELLOW, i);
+            rgblight_sethsv_at(HSV_WHITE, i+1);
+        }
+        break;
+
+
+    case _EMACS_SELECT:
+        rgblight_enable_noeeprom();
+        rgblight_mode(RGBLIGHT_MODE_KNIGHT);
         for (int i=0; i< RGBLED_NUM; i=i+2) {
             rgblight_sethsv_at(HSV_BLUE, i);
             rgblight_sethsv_at(HSV_WHITE, i+1);
@@ -110,12 +143,6 @@ layer_state_t layer_state_set_user(layer_state_t state) {
         rgblight_mode(1);
         rgblight_sethsv_noeeprom(HSV_GREEN);
         break;
-
-        /* case _CTRL: */
-        /*   rgblight_enable_noeeprom(); */
-        /*   rgblight_mode(RGBLIGHT_MODE_KNIGHT); */
-        /*   rgblight_sethsv_noeeprom(HSV_MAGENTA); */
-        /*   break; */
 
     case _ALL_MODS:
         static_kinda_dim(HSV_YELLOW);
@@ -196,13 +223,6 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
         break;
 
-        /* case 16: */
-        /*   rgblight_enable_noeeprom(); */
-        /* rgblight_mode(DROP_CURRENT_ANIMATION); */
-        /*   /\* rgblight_mode(RGBLIGHT_MODE_BREATHING); *\/ */
-        /*   rgblight_sethsv_noeeprom(HSV_PURPLE); */
-        /*   break; */
-
     case _EMACS:
         rgblight_mode(RGBLIGHT_MODE_ALTERNATING);
         rgblight_enable_noeeprom();
@@ -215,15 +235,6 @@ layer_state_t layer_state_set_user(layer_state_t state) {
         break;
 
     default:
-        // White
-        //Read RGB Light State
-        /* rgblight_config.raw = eeconfig_read_rgblight(); */
-        /* //If enabled, set white */
-        /* if (rgblight_config.enable) { */
-        /*   rgblight_sethsv_noeeprom(HSV_WHITE); */
-        /* } else { //Otherwise go back to disabled */
-        /*   rgblight_disable_noeeprom(); */
-        /* } */
         break;
     }
     return state;
