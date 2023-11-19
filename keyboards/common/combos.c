@@ -170,4 +170,12 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(editing_comma__editing_dot, FN_THEN_THREAD_LAST_EQUAL),
     COMBO(raise_comma__raise_dot, THREAD_LAST_EQUAL),
 
+    COMBO(morph_less, MORPH_LESS),
+    COMBO(morph_ness, MORPH_NESS),
+    COMBO(morph_ation, MORPH_ATION),
+    COMBO(morph_ment, MORPH_MENT),
+    COMBO(word_because, WORD_BECAUSE),
+
+    COMBO(cycle_animations, CYCLE_FAVE_ANIMATIONS),
+
 };

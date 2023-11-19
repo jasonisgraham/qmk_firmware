@@ -269,3 +269,10 @@ const uint16_t PROGMEM preonic_h_a_c[] = {preonic_lctl,  preonic_lalt, preonic_r
 const uint16_t PROGMEM preonic_h_a[] = {preonic_lctl,  preonic_lalt,  COMBO_END};
 const uint16_t PROGMEM preonic_h_c[] = {preonic_lctl,  preonic_rctl,  COMBO_END};
 const uint16_t PROGMEM preonic_a_c[] = {preonic_lalt,  preonic_rctl,  COMBO_END};
+
+const uint16_t PROGMEM morph_less[] = {my_s,  my_l,  COMBO_END};
+const uint16_t PROGMEM morph_ness[] = {my_s,  my_n,  COMBO_END};
+const uint16_t PROGMEM morph_ment[] = {my_m,  my_t,  COMBO_END};
+const uint16_t PROGMEM morph_ation[] = {my_t, my_n,  COMBO_END};
+const uint16_t PROGMEM word_because[] = {my_b, my_c,  COMBO_END};
+const uint16_t PROGMEM cycle_animations[] = {level3,   alt_keyboard,  COMBO_END};

@@ -254,19 +254,19 @@
 
 #define my_raise_q _______
 #define my_raise_w osl_web
-#define my_raise_e _______
+#define my_raise_e TD(DANCE_PASTE_OR_CLIPBOARD)
 #define my_raise_r EMACS_BUFFER_REVERT
 #define my_raise_t _______
 
 #define my_raise_a TD(DANCE_F5)
 #define my_raise_s OSL(_EMACS_SELECT)
-#define my_raise_d _______
+#define my_raise_d KC_TAB
 #define my_raise_f LALT(LSFT(KC_F8))
 #define my_raise_g _______
 
 #define my_raise_z EASYMOTION_LEADER
-#define my_raise_x LALT(KC_F4)
-#define my_raise_c _______
+#define my_raise_x BROWSER_TAB_PREV
+#define my_raise_c BROWSER_TAB_NEXT
 #define my_raise_v TD(DANCE_SAVE_LOAD_NS_SWITCH)
 #define my_raise_b _______
 
@@ -637,6 +637,11 @@ enum custom_keycodes {
                       SA_LAYER_ACTIVATE,
                       THREAD_FIRST,
                       CLJ_ARROW,
+                      MORPH_LESS,
+                      MORPH_NESS,
+                      MORPH_ATION,
+                      MORPH_MENT,
+                      WORD_BECAUSE,
 };
 
 
@@ -686,8 +691,8 @@ void cycle_fave_animations(void) {
   if (i >= 47) {
     i = 0;
   }
-  /* printf("%i\n", i); */
-  /* printf("mode: %u, hue: %u, sat: %u, val: %u, speed: %u\n", rgb_matrix_get_mode(), rgb_matrix_get_hue(), rgb_matrix_get_sat(), rgb_matrix_get_val(),  rgb_matrix_get_speed()); */
+  printf("%i\n", i);
+  printf("mode: %u, hue: %u, sat: %u, val: %u, speed: %u\n", rgb_matrix_get_mode(), rgb_matrix_get_hue(), rgb_matrix_get_sat(), rgb_matrix_get_val(),  rgb_matrix_get_speed());
   rgblight_mode(i);
 }
 
@@ -815,6 +820,36 @@ bool do_breathing = false;
 #define my_lower_u KC_PGDOWN
 #define my_lower_i KC_PGUP
 
+/* #ifdef USE_WORKMAN */
+/* #define my_a TD(DANCE_A) */
+/* #define my_b TD(DANCE_B) */
+/* #define my_c TD(DANCE_C) */
+/* #define my_d TD(DANCE_R) */
+/* #define my_e TD(DANCE_D) */
+/* #define my_f TD(DANCE_T) */
+/* #define my_g TD(DANCE_G) */
+/* #define my_h TD(DANCE_H) */
+/* #define my_i TD(DANCE_L) */
+/* #define my_j TD(DANCE_N) */
+/* #define my_k TD(DANCE_E) */
+/* #define my_l TD(DANCE_O) */
+/* #define my_m TD(DANCE_M) */
+/* #define my_n TD(DANCE_K) */
+/* #define my_o TD(DANCE_P) */
+/* #define my_p TD(DANCE_COLN) */
+/* #define my_q TD(DANCE_Q) */
+/* #define my_r TD(DANCE_Y) */
+/* #define my_s TD(DANCE_S) */
+/* #define my_t TD(DANCE_F) */
+/* #define my_u TD(DANCE_U) */
+/* #define my_v TD(DANCE_V) */
+/* #define my_w TD(DANCE_W) */
+/* #define my_x TD(DANCE_X) */
+/* #define my_y TD(DANCE_J) */
+/* #define my_z TD(DANCE_Z) */
+/* #define my_semicolon TD(DANCE_I) */
+
+/* #else */
 #define my_a TD(DANCE_A)
 #define my_b TD(DANCE_B)
 #define my_c TD(DANCE_C)
@@ -842,6 +877,7 @@ bool do_breathing = false;
 #define my_y TD(DANCE_Y)
 #define my_z TD(DANCE_Z)
 #define my_semicolon TD(DANCE_COLN)
+/* #endif */
 
 #define my_cap_semi my_semicolon
 

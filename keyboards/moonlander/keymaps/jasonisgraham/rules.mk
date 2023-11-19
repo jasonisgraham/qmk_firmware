@@ -20,6 +20,7 @@ RGB_ANIMATIONS = yes
 TAP_DANCE_ENABLE = yes
 UNICODE_ENABLE = yes
 WEBUSB_ENABLE = yes
+# RGB_MATRIX_CUSTOM_KB = yes
 
 
 SRC = matrix.c
