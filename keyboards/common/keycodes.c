@@ -402,6 +402,9 @@ enum custom_keycodes {
                       /* RGB_SLD = SAFE_RANGE, */
                       /* RGB_SLD = EZ_SAFE_RANGE, */
                       FIRST = SAFE_RANGE,
+                      MATRIX_INCREASE_SPEED,
+                      MATRIX_DECREASE_SPEED,
+                      MATRIX_SET_DEFAULT_ANIMATION,
                       SAVE_ALL_THEN_GOTO_BASE,
                       EMACS_SEL_EXLM,
                       EMACS_SEL_AT,

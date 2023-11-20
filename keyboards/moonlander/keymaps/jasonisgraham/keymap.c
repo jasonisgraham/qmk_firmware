@@ -155,11 +155,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
     [_SYSTEM] = LAYOUT_moonlander(
-                                  QK_BOOTLOADER, _______, RGB_MOD, _______, RESET_INPUT_PREFS,     _______,_______, _______,   SYSTEM_LAYER_DEACTIVATE, _______, KC_BRIGHTNESS_DOWN, KC_BRIGHTNESS_UP, QK_CLEAR_EEPROM, KC_MEDIA_PLAY_PAUSE,
+                                  QK_BOOTLOADER, MATRIX_SET_DEFAULT_ANIMATION, RGB_MOD, _______, RESET_INPUT_PREFS,     _______,_______, _______,   SYSTEM_LAYER_DEACTIVATE, _______, KC_BRIGHTNESS_DOWN, KC_BRIGHTNESS_UP, QK_CLEAR_EEPROM, KC_MEDIA_PLAY_PAUSE,
                                   _______, _______, _______, DB_TOGG, _______, _______,_______, _______,   DM_REC1, DM_PLY1, KC_AUDIO_VOL_DOWN, KC_AUDIO_VOL_UP, QK_AUTOCORRECT_ON, DB_TOGG,
-                                  QK_AUTO_SHIFT_TOGGLE, _______ , _______, _______, _______,  _______,  _______, _______,   DM_REC2, DM_PLY2,  KC_AUDIO_MUTE, _______, _______, QK_BOOTLOADER,
-                                  SYSTEM_LAYER_DEACTIVATE, _______, _______, _______, _______,     _______, DM_RSTP, _______, _______, _______, _______, _______,
-                                  _______, _______, _______, _______, _______, _______,_______, _______, _______, _______, _______, _______,
+                                  QK_AUTO_SHIFT_TOGGLE, _______ , _______, _______, _______,  _______,  _______, _______,   DM_REC2, DM_PLY2,  KC_AUDIO_MUTE, RGB_MATRIX_CYCLE_SPIRAL, RGB_MATRIX_TYPING_HEATMAP, QK_BOOTLOADER,
+                                  SYSTEM_LAYER_DEACTIVATE, _______, _______, _______, _______,     _______, DM_RSTP, RGB_MATRIX_HUE_WAVE, RGB_MATRIX_RAINBOW_MOVING_CHEVRON, RGB_MATRIX_BREATHING, MATRIX_DECREASE_SPEED, MATRIX_INCREASE_SPEED,
+                                 _______, _______, _______, _______, _______, _______,_______, _______, _______, _______, _______, _______,
                                   _______, _______, _______, _______, _______, _______),
 
 

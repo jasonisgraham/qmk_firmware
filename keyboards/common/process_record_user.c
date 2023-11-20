@@ -5,7 +5,9 @@ void oneshot_mods_changed_user(uint8_t mods) {
         /* rgblight_mode(RGBLIGHT_MODE_TWINKLE); */
     }
     if (!mods) {
-        rgblight_disable();
+#ifdef RGBLIGHT_ENABLE
+            rgblight_disable();
+#endif
     }
 }
 
@@ -1293,17 +1295,25 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
         break;
 
-    case MOVE_STATEMENT_UP:
+    case MATRIX_INCREASE_SPEED:
         if (record->event.pressed) {
-            tap_code16(LALT(LSFT(KC_UP)));
+        rgb_matrix_increase_speed();
         }
         break;
 
-    case MOVE_STATEMENT_DOWN:
+
+    case MATRIX_SET_DEFAULT_ANIMATION:
         if (record->event.pressed) {
-            tap_code16(LALT(LSFT(KC_DOWN)));
+            rgblight_mode(30);
         }
         break;
+
+    case MATRIX_DECREASE_SPEED:
+        if (record->event.pressed) {
+            rgb_matrix_decrease_speed();
+        }
+        break;
+
 
     case DUPLICATE_LINE:
         if (record->event.pressed) {
@@ -2074,7 +2084,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       rofi_locate_timer_active = false;
       rofi_locate_timer = 0;
     }
-    rgblight_disable();
     layer_move(_BASE);
     break;
 

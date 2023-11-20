@@ -155,12 +155,6 @@ layer_state_t layer_state_set_user(layer_state_t state) {
         rgblight_sethsv_noeeprom(HSV_GREEN);
         break;
 
-        /* case _CTRL: */
-        /*   rgblight_enable_noeeprom(); */
-        /*   rgblight_mode(RGBLIGHT_MODE_KNIGHT); */
-        /*   rgblight_sethsv_noeeprom(HSV_MAGENTA); */
-        /*   break; */
-
     case _ALL_MODS:
         static_kinda_dim(HSV_YELLOW);
         break;
@@ -187,14 +181,6 @@ layer_state_t layer_state_set_user(layer_state_t state) {
         /* PLAY_SONG(major_sound); */
 #endif
 
-#ifdef LEVINSON
-        for (int i=0; i< RGBLED_NUM; i=i+2) {
-            rgblight_sethsv_at(HSV_BLUE, i);
-            rgblight_sethsv_at(HSV_RED, i+1);
-        }
-#endif
-
-#ifndef LEVINSON
         sethsv(HSV_BLUE, (LED_TYPE *)&led[0]);
         sethsv(HSV_RED, (LED_TYPE *)&led[1]);
         sethsv(HSV_BLUE, (LED_TYPE *)&led[2]);
@@ -206,7 +192,6 @@ layer_state_t layer_state_set_user(layer_state_t state) {
         sethsv(HSV_BLUE,   (LED_TYPE *)&led[8]);
         rgblight_set();
         /* rgblight_mode(RGBLIGHT_MODE_BREATHING); */
-#endif
 
         break;
 
@@ -250,13 +235,6 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
         break;
 
-        /* case 16: */
-        /*   rgblight_enable_noeeprom(); */
-        /* rgblight_mode(DROP_CURRENT_ANIMATION); */
-        /*   /\* rgblight_mode(RGBLIGHT_MODE_BREATHING); *\/ */
-        /*   rgblight_sethsv_noeeprom(HSV_PURPLE); */
-        /*   break; */
-
     case _EMACS:
         rgblight_mode(RGBLIGHT_MODE_ALTERNATING);
         rgblight_enable_noeeprom();
@@ -268,49 +246,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
         static_kinda_dim(HSV_SPRINGGREEN);
         break;
 
-    case _WINMOVE_MONITOR:
-        rgblight_mode(RGBLIGHT_MODE_ALTERNATING);
-        static_kinda_dim(HSV_RED);
-        break;
-
-
-
-        /* case _APL: */
-        /*   rgblight_mode(RGBLIGHT_MODE_SNAKE); */
-        /*   rgblight_enable_noeeprom(); */
-        /*   rgblight_sethsv_noeeprom(HSV_CORAL); */
-        /*   /\* rgblight_mode(RGBLIGHT_MODE_BREATHING); *\/ */
-        /*   /\* rgblight_sethsv_noeeprom(HSV_GREEN); *\/ */
-        /*   break; */
-
-        /* case _APL_RHS: */
-        /*   rgblight_mode(RGBLIGHT_MODE_SNAKE); */
-        /*   rgblight_enable_noeeprom(); */
-        /*   rgblight_sethsv_noeeprom(HSV_AZURE); */
-        /*   break; */
-
-        /* case _AUDIO: */
-        /*   rgblight_enable_noeeprom(); */
-        /*   rgblight_mode(RGBLIGHT_MODE_SNAKE); */
-        /*   rgblight_sethsv_noeeprom(HSV_GREEN); */
-        /*   break; */
-
-        /* case _BRIGHTNESS: */
-        /*   rgblight_enable_noeeprom(); */
-        /*   rgblight_mode(RGBLIGHT_MODE_SNAKE); */
-        /*   rgblight_sethsv_noeeprom(HSV_BLUE); */
-        /*   break; */
-
     default:
-        // White
-        //Read RGB Light State
-        /* rgblight_config.raw = eeconfig_read_rgblight(); */
-        /* //If enabled, set white */
-        /* if (rgblight_config.enable) { */
-        /*   rgblight_sethsv_noeeprom(HSV_WHITE); */
-        /* } else { //Otherwise go back to disabled */
-        /*   rgblight_disable_noeeprom(); */
-        /* } */
         break;
     }
     return state;

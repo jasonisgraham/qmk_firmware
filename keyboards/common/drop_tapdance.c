@@ -261,7 +261,7 @@ void dance_tab_finished(tap_dance_state_t *state, void *user_data) {
     break;
 
   case HOLD2:
-    tap_code16(emacs_completion_at_point);
+      layer_on(_CODE);
     break;
 
   case HOLD3:
@@ -283,6 +283,9 @@ void dance_tab_reset(tap_dance_state_t *state, void *user_data) {
   case TAP_INTERRUPTED:
 case TAP_INTERRUPTED_HELD:
 
+  case HOLD2:
+    layer_off(_CODE);
+    break;
   case HOLD:
     layer_off(_EDITING);
 #ifdef RGBLIGHT_ENABLE
@@ -486,16 +489,14 @@ void dance_space_reset(tap_dance_state_t *state, void *user_data) {
 
 
 
-void on_dance_code_system(tap_dance_state_t *state, void *user_data) {
-    on_dance_fn(KC_ENTER, state, user_data);
-}
+void on_dance_code_system(tap_dance_state_t *state, void *user_data) {}
 
 void dance_code_system_finished(tap_dance_state_t *state, void *user_data) {
     dance_state[103].step = dance_step(state);
     switch (dance_state[103].step) {
     case TAP:
     case TAP_INTERRUPTED:
-        tap_code16(KC_ENTER);
+        set_oneshot_layer(_CODE, ONESHOT_START);
         break;
     case TAP2:
     case TAP2_INTERRUPTED:
@@ -507,9 +508,6 @@ void dance_code_system_finished(tap_dance_state_t *state, void *user_data) {
         tap_code16(KC_ENTER);
         tap_code16(KC_ENTER);
         break;
-    case TAP4:
-        tap_code16 (QK_BOOTLOADER);
-        break;
     case HOLD2:
         layer_on(_SYSTEM);
         break;
@@ -518,8 +516,8 @@ void dance_code_system_finished(tap_dance_state_t *state, void *user_data) {
         rgblight_enable_noeeprom();
         rgblight_mode(RGBLIGHT_MODE_SNAKE);
         rgblight_sethsv_noeeprom(HSV_CORAL);
-        layer_move(_CODE);
 #endif
+        layer_move(_CODE);
         break;
     }
 }
@@ -527,16 +525,21 @@ void dance_code_system_finished(tap_dance_state_t *state, void *user_data) {
 void dance_code_system_reset(tap_dance_state_t *state, void *user_data) {
     wait_ms(10);
     switch (dance_state[103].step) {
+    case TAP:
+    case TAP_INTERRUPTED:
+        clear_oneshot_layer_state(_CODE);
+        break;
     case TAP2:
-        case TAP2_INTERRUPTED:
-            clear_oneshot_layer_state(_SYSTEM);
-            break;
+    case TAP2_INTERRUPTED:
+        clear_oneshot_layer_state(_SYSTEM);
+        break;
     default:
-        rgblight_disable();
 #ifdef RGBLIGHT_ENABLE
-        layer_off(_SYSTEM);
+        rgblight_disable();
 #endif
+        layer_off(_SYSTEM);
         layer_off(_CODE);
+        break;
     }
         dance_state[103].step = 0;
 
@@ -2447,7 +2450,7 @@ void dance_super_finished(tap_dance_state_t *state, void *user_data) {
     layer_on(_SUPER);
     break;
   case HOLD2:
-      layer_on(_WINMOVE);
+      layer_on(_MOTION);
     break;
 
   default:
@@ -2464,7 +2467,7 @@ void dance_super_reset(tap_dance_state_t *state, void *user_data) {
     break;
 
   case HOLD2:
-      layer_off(_WINMOVE);
+      layer_off(_MOTION);
     break;
 
   default:
