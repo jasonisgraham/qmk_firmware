@@ -2444,25 +2444,27 @@ void dance_shift_curly_reset(tap_dance_state_t *state, void *user_data) {
 void on_dance_super(tap_dance_state_t *state, void *user_data) {}
 
 void dance_super_finished(tap_dance_state_t *state, void *user_data) {
-  dance_state[85].step = dance_step(state);
-  switch (dance_state[85].step) {
-  case HOLD:
-    layer_on(_SUPER);
-    break;
-  case HOLD2:
-      layer_on(_MOTION);
-    break;
+    dance_state[85].step = dance_step(state);
+    switch (dance_state[85].step) {
+    case HOLD:
+        add_mods(MOD_BIT(KC_LGUI));
+        layer_on(_SUPER);
+        break;
+    case HOLD2:
+        layer_on(_MOTION);
+        break;
 
-  default:
-    set_oneshot_layer(_WINDOWS, ONESHOT_START);
-    break;
-  }
+    default:
+        set_oneshot_layer(_WINDOWS, ONESHOT_START);
+        break;
+    }
 }
 
 void dance_super_reset(tap_dance_state_t *state, void *user_data) {
-  // layer_off(_ROFI) and layer_off(_ROFI) are handled by post_process_record_user
-  switch (dance_state[85].step) {
-  case HOLD:
+    // layer_off(_ROFI) and layer_off(_ROFI) are handled by post_process_record_user
+    switch (dance_state[85].step) {
+    case HOLD:
+      del_mods(MOD_BIT(KC_LGUI));
     layer_off(_SUPER);
     break;
 

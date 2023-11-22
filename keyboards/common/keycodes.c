@@ -694,8 +694,8 @@ void cycle_fave_animations(void) {
   if (i >= 47) {
     i = 0;
   }
-  printf("%i\n", i);
-  printf("mode: %u, hue: %u, sat: %u, val: %u, speed: %u\n", rgb_matrix_get_mode(), rgb_matrix_get_hue(), rgb_matrix_get_sat(), rgb_matrix_get_val(),  rgb_matrix_get_speed());
+  /* printf("%i\n", i); */
+  /* printf("mode: %u, hue: %u, sat: %u, val: %u, speed: %u\n", rgb_matrix_get_mode(), rgb_matrix_get_hue(), rgb_matrix_get_sat(), rgb_matrix_get_val(),  rgb_matrix_get_speed()); */
   rgblight_mode(i);
 }
 

@@ -77,16 +77,6 @@ layer_state_t layer_state_set_user(layer_state_t state) {
         static_kinda_dim(HSV_PURPLE);
         break;
 
-    case _NUMLOCK:
-        rgblight_enable_noeeprom();
-        rgblight_mode(RGBLIGHT_MODE_TWINKLE);
-        for (int i=0; i< RGBLED_NUM; i=i+3) {
-            rgblight_sethsv_at(HSV_WHITE, i);
-            rgblight_sethsv_at(HSV_BLACK, i+1);
-            rgblight_sethsv_at(HSV_RED, i+2);
-        }
-        break;
-
     case _RAISE:
         /* float x[][2] = SONG(ROCK_A_BYE_BABY); */
         /* PLAY_SONG(x);             /\*  *\/ */

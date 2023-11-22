@@ -1297,7 +1297,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     case MATRIX_INCREASE_SPEED:
         if (record->event.pressed) {
+#ifndef RGBLIGHT_ENABLE
         rgb_matrix_increase_speed();
+        #endif
         }
         break;
 
@@ -1310,7 +1312,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     case MATRIX_DECREASE_SPEED:
         if (record->event.pressed) {
+#ifndef RGBLIGHT_ENABLE
             rgb_matrix_decrease_speed();
+            #endif
         }
         break;
 

@@ -177,5 +177,7 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(word_because, WORD_BECAUSE),
 
     COMBO(cycle_animations, CYCLE_FAVE_ANIMATIONS),
+    COMBO(super_t, LAYER_MOUSE_HOLD),
+    COMBO(super_e, LAYER_MOUSE_HOLD),
 
 };
