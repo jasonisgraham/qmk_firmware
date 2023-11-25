@@ -469,7 +469,7 @@ void dance_space_finished(tap_dance_state_t *state, void *user_data) {
   dance_state[23].step = dance_step(state);
   switch (dance_state[23].step) {
   case HOLD:
-      layer_on(_NUMPAD);
+      set_oneshot_layer(_ROFI, ONESHOT_START);
     break;
 
   case TAP2:
@@ -486,7 +486,7 @@ case TAP_INTERRUPTED_HELD:
 void dance_space_reset(tap_dance_state_t *state, void *user_data) {
   wait_ms(10);
     unregister_code16(KC_SPACE);
-    layer_off(_NUMPAD);
+    layer_off(_ROFI);
   dance_state[23].step = 0;
 }
 
