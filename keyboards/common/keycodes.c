@@ -765,7 +765,7 @@ bool do_breathing = false;
 #define ctrl_alt_s RALT(RCTL(KC_S))
 
 #define level3 COMPOSE
-#define alt_keyboard KEYBOARD_LAYOUT_HOLD_KEY
+#define alt_keyboard super
 #define META_X LALT(KC_X)
 
 #define MOVE_STATEMENT_UP LALT(LSFT(KC_UP))

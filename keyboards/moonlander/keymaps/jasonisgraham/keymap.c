@@ -41,7 +41,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT_moonlander(top_left,    my_q,    my_w,    my_e,    my_r,   my_t, _______, _______, mod_r1,    my_y,           my_u,    my_i,    my_o,     my_p,
                                 esc_ctrl , my_a,   my_s,   my_d,   my_f,   my_g, _______, _______, mod_r2,  my_h,         my_j,   my_k,   my_l,   my_semicolon,
                                 my_left_shift,        my_z,           my_x,           my_c,           my_v,           my_b, _______, _______, mod_r3,     my_n,   my_m,   my_comma,   my_period,   my_forward_slash,
-                                hyper, level3,   alt_keyboard,         alt, RAISE,  super, mod_r4,   my_space,           LOWER,          my_right_of_lower,   key_left,  key_right,
+                                hyper, level3,   alt_keyboard,         alt, RAISE,  my_space, KC_A,   my_space,           LOWER,          my_right_of_lower,   key_left,  key_right,
                                 _______, _______, _______, _______, _______, _______,_______, _______, _______, _______, _______, _______,
                                 _______, _______, _______, _______, _______, _______),
 
@@ -155,7 +155,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
     [_SYSTEM] = LAYOUT_moonlander(
-                                  QK_BOOTLOADER, MATRIX_SET_DEFAULT_ANIMATION, RGB_MOD, _______, RESET_INPUT_PREFS,     _______,_______, _______,   SYSTEM_LAYER_DEACTIVATE, _______, KC_BRIGHTNESS_DOWN, KC_BRIGHTNESS_UP, QK_CLEAR_EEPROM, KC_MEDIA_PLAY_PAUSE,
+                                  SYSTEM_LAYER_DEACTIVATE, MATRIX_SET_DEFAULT_ANIMATION, QK_BOOTLOADER, _______, RESET_INPUT_PREFS,     _______,_______, _______,   SYSTEM_LAYER_DEACTIVATE, _______, KC_BRIGHTNESS_DOWN, KC_BRIGHTNESS_UP, QK_CLEAR_EEPROM, KC_MEDIA_PLAY_PAUSE,
                                   _______, _______, _______, DB_TOGG, _______, _______,_______, _______,   DM_REC1, DM_PLY1, KC_AUDIO_VOL_DOWN, KC_AUDIO_VOL_UP, QK_AUTOCORRECT_ON, DB_TOGG,
                                   QK_AUTO_SHIFT_TOGGLE, _______ , _______, _______, _______,  _______,  _______, _______,   DM_REC2, DM_PLY2,  KC_AUDIO_MUTE, RGB_MATRIX_CYCLE_SPIRAL, RGB_MATRIX_TYPING_HEATMAP, QK_BOOTLOADER,
                                   SYSTEM_LAYER_DEACTIVATE, _______, _______, _______, _______,     _______, DM_RSTP, RGB_MATRIX_HUE_WAVE, RGB_MATRIX_RAINBOW_MOVING_CHEVRON, RGB_MATRIX_BREATHING, MATRIX_DECREASE_SPEED, MATRIX_INCREASE_SPEED,
@@ -190,6 +190,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                             _______, _______, _______, _______,    _______, _______, SET_HOTKEY_3, _______,    _______, _______, SET_HOTKEY_4, _______,
                                             _______, _______, _______, _______, _______, _______,_______, _______, _______, _______, _______, _______,
                                             _______, _______, _______, _______, _______, _______),
+
+    [_NUMPAD] = LAYOUT_moonlander(KC_0, KC_1, KC_2, KC_3, KC_4, _______,_______, _______,    _______, _______, _______, _______, _______, _______,
+                                  _______, KC_5, KC_6, KC_7, KC_8, _______,_______, _______,  KC_TAB, _______, _______, _______, _______, _______,
+                                  _______, KC_9, KC_0, _______, _______, _______,_______, _______,  LSFT(KC_TAB), _______, _______, _______, _______, _______,
+                                  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, LSFT(KC_TAB), KC_TAB,
+                                  _______, _______, _______, _______, _______, _______,_______, _______, _______, _______, _______, _______,
+                                  _______, _______, _______, _______, _______, _______),
 
 
 

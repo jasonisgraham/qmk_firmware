@@ -270,6 +270,9 @@ void dance_tab_finished(tap_dance_state_t *state, void *user_data) {
 #ifdef AUDIO_ENABLE
     PLAY_SONG(caps_lock_on_sound);
 #endif
+  case HOLD4:
+      layer_on(_SYSTEM);
+      break;
 
     break;
   }
@@ -466,7 +469,7 @@ void dance_space_finished(tap_dance_state_t *state, void *user_data) {
   dance_state[23].step = dance_step(state);
   switch (dance_state[23].step) {
   case HOLD:
-    set_oneshot_layer(_ROFI, ONESHOT_START);
+      layer_on(_NUMPAD);
     break;
 
   case TAP2:
@@ -483,7 +486,7 @@ case TAP_INTERRUPTED_HELD:
 void dance_space_reset(tap_dance_state_t *state, void *user_data) {
   wait_ms(10);
     unregister_code16(KC_SPACE);
-    layer_off(_ROFI);
+    layer_off(_NUMPAD);
   dance_state[23].step = 0;
 }
 
@@ -496,11 +499,12 @@ void dance_code_system_finished(tap_dance_state_t *state, void *user_data) {
     switch (dance_state[103].step) {
     case TAP:
     case TAP_INTERRUPTED:
-        set_oneshot_layer(_CODE, ONESHOT_START);
+        tap_code16(KC_ENTER);
         break;
     case TAP2:
     case TAP2_INTERRUPTED:
-        set_oneshot_layer(_SYSTEM, ONESHOT_START);
+        tap_code16(KC_ENTER);
+        tap_code16(KC_ENTER);
         break;
     case TAP3:
     case TAP3_INTERRUPTED:

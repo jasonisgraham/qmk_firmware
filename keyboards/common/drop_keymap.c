@@ -31,6 +31,7 @@ enum drop_layers {
     _FN,
     _ALL_MODS,
     _LEADER1,
+    _NUMPAD,
 };
 
 /* #include "../../../common/config.h" */
