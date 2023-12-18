@@ -58,6 +58,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
         alt_colors(HSV_WHITE, HSV_FUSCIA);
         break;
 
+
     case _FN:
         rgblight_enable_noeeprom();
         rgblight_mode(RGBLIGHT_MODE_KNIGHT);
