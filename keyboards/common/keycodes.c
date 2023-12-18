@@ -4,6 +4,8 @@
 /* /\* #include "musical_notes.h" *\/ */
 /* #include "../../quantum/hacks.c" */
 
+#define TMUX_SELECT_TEXT LALT(KC_LCBR)
+
 #define MOD_MASK_ALL_MODS_COMPAT (MOD_BIT_LCTRL | MOD_BIT_RCTRL | MOD_BIT_LALT | MOD_MASK_SHIFT | MOD_BIT_RGUI)
 #define MOD_MASK_ALL_MODS (MOD_BIT_RALT | MOD_BIT_RCTRL | MOD_BIT_LCTRL | MOD_BIT_RCTRL | MOD_BIT_LALT | MOD_MASK_SHIFT | MOD_BIT_RGUI)
 #define OSL_RCTL_LALT (MOD_BIT_RCTRL | MOD_BIT_LALT)

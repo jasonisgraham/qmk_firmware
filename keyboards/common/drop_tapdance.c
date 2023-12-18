@@ -969,7 +969,7 @@ void dance_comma_finished(tap_dance_state_t *state, void *user_data) {
 case TAP_INTERRUPTED_HELD:
  case TAP: register_code16(KC_COMMA); break;
   case HOLD:
-    register_key(KC_COMMA);
+    register_code16(KC_COMMA);
     break;
 
   case HOLD2:
@@ -989,7 +989,7 @@ void dance_comma_reset(tap_dance_state_t *state, void *user_data) {
   wait_ms(10);
   switch (dance_state[99].step) {
   case HOLD:
-    unregister_key(KC_COMMA); break;
+    unregister_code16(KC_COMMA); break;
 
   case HOLD2:
     unregister_code16(KC_2);
@@ -1017,7 +1017,7 @@ void dance_dot_finished(tap_dance_state_t *state, void *user_data) {
 case TAP_INTERRUPTED_HELD:
  case TAP: register_code16(KC_DOT); break;
   case HOLD:
-    register_key(KC_DOT); break;
+    register_code16(KC_DOT); break;
 
   case HOLD2:
     register_code16(KC_3);
@@ -1036,7 +1036,7 @@ void dance_dot_reset(tap_dance_state_t *state, void *user_data) {
   wait_ms(10);
   switch (dance_state[100].step) {
   case HOLD:
-    unregister_key(KC_DOT); break;
+    unregister_code16(KC_DOT); break;
   case HOLD2:
     unregister_code16(KC_3);
     break;

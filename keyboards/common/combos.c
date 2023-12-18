@@ -159,8 +159,8 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo_t_y,EMACS_TO_YANK),
     COMBO(combo_z_x, QK_LEAD),
     COMBO(combo_x_c, CTRL_X_ALL_MODS_OSM),
-    COMBO(combo_c_v, TD(DANCE_PASTE_OR_CLIPBOARD)),
-    COMBO(combo_d_v, TD(DANCE_PASTE_OR_CLIPBOARD)),
+    COMBO(combo_c_v, TMUX_SELECT_TEXT),
+    COMBO(combo_d_v, TMUX_SELECT_TEXT),
 
     COMBO(combo_z_x_c, META_X),
     COMBO(editing_comma__editing_dot, FN_THEN_THREAD_LAST_EQUAL),
