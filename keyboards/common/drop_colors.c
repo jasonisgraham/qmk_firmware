@@ -77,16 +77,6 @@ layer_state_t layer_state_set_user(layer_state_t state) {
         static_kinda_dim(HSV_PURPLE);
         break;
 
-    case _NUMLOCK:
-        rgblight_enable_noeeprom();
-        rgblight_mode(RGBLIGHT_MODE_TWINKLE);
-        for (int i=0; i< RGBLED_NUM; i=i+3) {
-            rgblight_sethsv_at(HSV_WHITE, i);
-            rgblight_sethsv_at(HSV_BLACK, i+1);
-            rgblight_sethsv_at(HSV_RED, i+2);
-        }
-        break;
-
     case _RAISE:
         /* float x[][2] = SONG(ROCK_A_BYE_BABY); */
         /* PLAY_SONG(x);             /\*  *\/ */
@@ -195,17 +185,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 #endif
 
 #ifndef LEVINSON
-        sethsv(HSV_BLUE, (LED_TYPE *)&led[0]);
-        sethsv(HSV_RED, (LED_TYPE *)&led[1]);
-        sethsv(HSV_BLUE, (LED_TYPE *)&led[2]);
-        sethsv(HSV_RED, (LED_TYPE *)&led[3]);
-        sethsv(HSV_BLUE, (LED_TYPE *)&led[4]);
-        sethsv(HSV_RED,   (LED_TYPE *)&led[5]);
-        sethsv(HSV_BLUE,   (LED_TYPE *)&led[6]);
-        sethsv(HSV_RED,   (LED_TYPE *)&led[7]);
-        sethsv(HSV_BLUE,   (LED_TYPE *)&led[8]);
-        rgblight_set();
-        /* rgblight_mode(RGBLIGHT_MODE_BREATHING); */
+        alt_colors(HSV_BLUE, HSV_RED);
 #endif
 
         break;
@@ -267,39 +247,6 @@ layer_state_t layer_state_set_user(layer_state_t state) {
         rgblight_mode(DROP_CURRENT_ANIMATION);
         static_kinda_dim(HSV_SPRINGGREEN);
         break;
-
-    case _WINMOVE_MONITOR:
-        rgblight_mode(RGBLIGHT_MODE_ALTERNATING);
-        static_kinda_dim(HSV_RED);
-        break;
-
-
-
-        /* case _APL: */
-        /*   rgblight_mode(RGBLIGHT_MODE_SNAKE); */
-        /*   rgblight_enable_noeeprom(); */
-        /*   rgblight_sethsv_noeeprom(HSV_CORAL); */
-        /*   /\* rgblight_mode(RGBLIGHT_MODE_BREATHING); *\/ */
-        /*   /\* rgblight_sethsv_noeeprom(HSV_GREEN); *\/ */
-        /*   break; */
-
-        /* case _APL_RHS: */
-        /*   rgblight_mode(RGBLIGHT_MODE_SNAKE); */
-        /*   rgblight_enable_noeeprom(); */
-        /*   rgblight_sethsv_noeeprom(HSV_AZURE); */
-        /*   break; */
-
-        /* case _AUDIO: */
-        /*   rgblight_enable_noeeprom(); */
-        /*   rgblight_mode(RGBLIGHT_MODE_SNAKE); */
-        /*   rgblight_sethsv_noeeprom(HSV_GREEN); */
-        /*   break; */
-
-        /* case _BRIGHTNESS: */
-        /*   rgblight_enable_noeeprom(); */
-        /*   rgblight_mode(RGBLIGHT_MODE_SNAKE); */
-        /*   rgblight_sethsv_noeeprom(HSV_BLUE); */
-        /*   break; */
 
     default:
         // White

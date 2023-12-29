@@ -58,8 +58,6 @@ planck_all_mods
 // 6
 [_WINDOWS] = LAYOUT_wrapper(planck_windows
                                 ),
-[_NUMLOCK] = LAYOUT_wrapper(planck_numlock
-                            ),
 
 
 // 7
