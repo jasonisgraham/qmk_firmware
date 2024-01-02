@@ -48,11 +48,11 @@ enum drop_layers {
 /* #include "../../../common/drop_animations.c" */
 /* #include "../../../common/layer_lock.h" */
 
-#if defined(JSG_LHS_MODS)
-#include "../../../common/planck_lhs_keymap.h"
-#else
+/* #if defined(JSG_LHS_MODS) */
+/* #include "../../../common/planck_lhs_keymap.h" */
+/* #else */
 #include "../../../common/planck_keymap.h"
-#endif
+/* #endif */
 
 #include "../../../common/matrix_scan_user.c"
 #include "../../../common/process_record_user.c"
@@ -62,4 +62,4 @@ enum drop_layers {
 /* const int row0[] = { top_left, top_left,    my_q,    my_w,    my_e,    my_r,   my_t, backspace ,    my_y,           my_u,    my_i,    my_o,     my_p}; */
 /* int row0[10] = {}; */
 
-/* #include "../../../common/leader.c" */
+#include "../../../common/leader.c"

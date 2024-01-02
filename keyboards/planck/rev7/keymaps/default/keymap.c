@@ -22,6 +22,9 @@ enum planck_keycodes { QWERTY = SAFE_RANGE, COLEMAK, DVORAK, PLOVER, BACKLIT, EX
 
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
+#define my_t KC_T
+#define my_a KC_A
+#include "/home/jason/Projects/qmk_firmware/keyboards/common/leader.c"
 
 /* clang-format off */
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -38,10 +41,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_QWERTY] = LAYOUT_planck_grid(
-    KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
-    KC_ESC,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
-    KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT ,
-    BACKLIT, QK_LEAD, KC_LALT, KC_LGUI, LOWER,   KC_RSFT, KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
+                               QK_BOOT,  KC_Q,    KC_W,    KC_E,    KC_R,    my_t,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
+    KC_RCTL,  my_a,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
+    KC_LCTL, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT ,
+    QK_LEAD, QK_REP, QK_AREP, KC_LALT, LOWER,   KC_LGUI, KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
 ),
 
 /* Colemak
@@ -93,7 +96,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_LOWER] = LAYOUT_planck_grid(
     KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR,    KC_ASTR,    KC_LPRN, KC_RPRN, KC_BSPC,
-    KC_DEL,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_UNDS,    KC_PLUS,    KC_LCBR, KC_RCBR, KC_PIPE,
+    KC_DEL,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_UNDS,    QK_REP,    QK_AREP, KC_RCBR, KC_PIPE,
     _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  S(KC_NUHS), S(KC_NUBS), KC_HOME, KC_END,  _______,
     _______, _______, _______, _______, _______, _______, _______, _______,    KC_MNXT,    KC_VOLD, KC_VOLU, KC_MPLY
 ),
@@ -371,31 +374,3 @@ bool dip_switch_update_user(uint8_t index, bool active) {
     }
     return true;
 }
-
-
-float leader_start_song[][2] = SONG(ONE_UP_SOUND);
-float leader_succeed_song[][2] = SONG(ALL_STAR);
-float leader_fail_song[][2] = SONG(RICK_ROLL);
-
-void leader_start_user(void) {
-  PLAY_SONG(leader_start_song);
-}
-
-void leader_end_user(void) {
-  bool did_leader_succeed = false;
-
-  if (leader_sequence_one_key(KC_E)) {
-    SEND_STRING(SS_LCTL(SS_LSFT("t")));
-    did_leader_succeed = true;
-  } else if (leader_sequence_two_keys(KC_E, KC_D)) {
-    SEND_STRING(SS_LGUI("r") "cmd\n" SS_LCTL("c"));
-    did_leader_succeed = true;
-  }
-
-  if (did_leader_succeed) {
-    PLAY_SONG(leader_succeed_song);
-  } else {
-    PLAY_SONG(leader_fail_song);
-  }
-}
-
