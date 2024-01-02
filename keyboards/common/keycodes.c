@@ -57,7 +57,7 @@
 #define mod_r1 TD(DANCE_CODE_SYSTEM)
 #define mod_r2 KC_UP
 #define mod_r3 KC_DOWN
-#define mod_r4 TD(DANCE_MOD_R4) // TD(DANCE_HOTKEY_OR_COMPOSE)
+#define mod_r4 QK_LEAD // TD(DANCE_MOD_R4) // TD(DANCE_HOTKEY_OR_COMPOSE)
 /* #define mod_r4 TD(dance_k74) */
 
 
@@ -261,12 +261,12 @@
 #define my_raise_t _______
 
 #define my_raise_a TD(DANCE_F5)
-#define my_raise_s OSL(_EMACS_SELECT)
-#define my_raise_d KC_TAB
+#define my_raise_s _______
+#define my_raise_d _______
 #define my_raise_f LALT(LSFT(KC_F8))
 #define my_raise_g _______
 
-#define my_raise_z EASYMOTION_LEADER
+#define my_raise_z  QK_REP
 #define my_raise_x BROWSER_TAB_PREV
 #define my_raise_c BROWSER_TAB_NEXT
 #define my_raise_v TD(DANCE_SAVE_LOAD_NS_SWITCH)
@@ -869,32 +869,32 @@ bool do_breathing = false;
 /* #define my_semicolon TD(DANCE_I) */
 
 /* #else */
-#define my_a TD(DANCE_A)
-#define my_b TD(DANCE_B)
-#define my_c TD(DANCE_C)
-#define my_d TD(DANCE_D)
-#define my_e TD(DANCE_E)
-#define my_f TD(DANCE_F)
-#define my_g TD(DANCE_G)
-#define my_h TD(DANCE_H)
-#define my_i TD(DANCE_I)
-#define my_j TD(DANCE_J)
+#define my_a KC_A
+#define my_b KC_B
+#define my_c KC_C
+#define my_d KC_D
+#define my_e KC_E
+#define my_f KC_F
+#define my_g KC_G
+#define my_h KC_H
+#define my_i KC_I
+#define my_j KC_J
 #define my_k TD(DANCE_K)
-#define my_l TD(DANCE_L)
-#define my_m TD(DANCE_M)
-#define my_n TD(DANCE_N)
-#define my_o TD(DANCE_O)
-#define my_p TD(DANCE_P)
+#define my_l KC_L
+#define my_m KC_M
+#define my_n KC_N
+#define my_o KC_O
+#define my_p KC_P
 #define my_q TD(DANCE_Q)
-#define my_r TD(DANCE_R)
-#define my_s TD(DANCE_S)
-#define my_t TD(DANCE_T)
-#define my_u TD(DANCE_U)
-#define my_v TD(DANCE_V)
-#define my_w TD(DANCE_W)
-#define my_x TD(DANCE_X)
-#define my_y TD(DANCE_Y)
-#define my_z TD(DANCE_Z)
+#define my_r KC_R
+#define my_s KC_S
+#define my_t KC_T
+#define my_u KC_U
+#define my_v KC_V
+#define my_w KC_W
+#define my_x KC_X
+#define my_y KC_Y
+#define my_z KC_Z
 #define my_semicolon TD(DANCE_COLN)
 /* #endif */
 

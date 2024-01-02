@@ -561,16 +561,38 @@ void dance_mod_r4_finished(tap_dance_state_t *state, void *user_data) {
   switch (dance_state[24].step) {
   case TAP:
   case TAP_INTERRUPTED:
-    tap_code16(QK_LEAD);
+    tap_code16(KC_ENTER);
+    break;
+  case TAP2:
+  case TAP2_INTERRUPTED:
+    tap_code16(KC_ENTER);
+    tap_code16(KC_ENTER);
+    break;
+  case TAP3:
+  case TAP3_INTERRUPTED:
+    tap_code16(KC_ENTER);
+    tap_code16(KC_ENTER);
+    tap_code16(KC_ENTER);
+    break;
+  case TAP4:
+    tap_code16(KC_ENTER);
+    tap_code16(KC_ENTER);
+    tap_code16(KC_ENTER);
+    tap_code16(KC_ENTER);
+    break;
+  case HOLD2:
+    tap_code16(RCTL(KC_ENTER));
     break;
   default:
-      tap_code16(KC_ENTER);
+    layer_on(_MOTION);
     break;
   }
 }
 
 void dance_mod_r4_reset(tap_dance_state_t *state, void *user_data) {
   wait_ms(10);
+      layer_off(_LEADER1);
+    layer_off(_MOTION);
   dance_state[24].step = 0;
 }
 
@@ -641,6 +663,7 @@ case TAP_INTERRUPTED_HELD:
   }
   dance_state[27].step = 0;
 }
+
 
 
 
