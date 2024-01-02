@@ -929,7 +929,9 @@ void dance_S_reset(tap_dance_state_t *state, void *user_data) {
   alpha_char_default_reset(KC_S, 54);
 }
 
-void on_dance_T(tap_dance_state_t *state, void *user_data) {}
+void on_dance_T(tap_dance_state_t *state, void *user_data) {
+  on_dance_fn(KC_T, state, user_data);
+}
 
 void dance_T_finished(tap_dance_state_t *state, void *user_data) {
   alpha_char_default_finished(KC_T, 5, state);
