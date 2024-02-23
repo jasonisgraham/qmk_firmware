@@ -63,7 +63,7 @@ const uint32_t PROGMEM unicode_map[] = {
         _______, _______, _______, _______, _______, _______, MOVE_STATEMENT_DOWN, _______, _______, _______, DM_REC2, DM_PLY2, \
         _______, _______, _______, _______, _______, _______, META_X, _______, _______, DM_RSTP, DM_REC1, DM_PLY1
 
-#define planck_emacs_select EMACS_SEL_TAB, EMACS_SEL_Q,  EMACS_SEL_W, EMACS_SEL_E, EMACS_SEL_R, EMACS_SEL_T, EMACS_SEL_MODR1, EMACS_SEL_Y, EMACS_SEL_U,    EMACS_SEL_I,           EMACS_SEL_O,           EMACS_SEL_P, \
+#define planck_emacs_select EMACS_SEL_0, EMACS_SEL_1,  EMACS_SEL_2, EMACS_SEL_3, EMACS_SEL_4, EMACS_SEL_5, EMACS_SEL_MODR1, EMACS_SEL_Y, EMACS_SEL_U,    EMACS_SEL_I,           EMACS_SEL_O,           EMACS_SEL_P, \
         TO(_BASE), EMACS_SEL_A, EMACS_SEL_S, EMACS_SEL_D, EMACS_SEL_F, EMACS_SEL_G, EMACS_SEL_MODR2, EMACS_SEL_H,  EMACS_SEL_J,           EMACS_SEL_K,           EMACS_SEL_L,           EMACS_SEL_SCLN, \
         _______, EMACS_SEL_Z, EMACS_SEL_X, EMACS_SEL_C, EMACS_SEL_V, EMACS_SEL_B, EMACS_SEL_MODR3, EMACS_SEL_N,           EMACS_SEL_M,           EMACS_SEL_COMMA,           EMACS_SEL_DOT,           EMACS_SEL_SLASH, \
         _______, _______, _______, EMACS_WINDOW_DELETE, EMACS_SEL_RAISE, _______, EMACS_SEL_MODR4,          _______, EMACS_SEL_LOWER, EMACS_WINDOW_DELETE, _______, _______
@@ -78,7 +78,7 @@ const uint32_t PROGMEM unicode_map[] = {
 
 #define planck_mouse                               TO_BASE,    _______, KC_MS_BTN1, KC_MS_UP, KC_MS_BTN2, _______, _______,  KC_HOME,        KC_PGUP,        KC_PGDOWN,      KC_END,         _______, \
         TO_BASE,  _______, KC_MS_LEFT,     KC_MS_DOWN,     KC_MS_RIGHT,     _______,  _______, KC_MS_BTN1,     KC_MS_WH_DOWN,  KC_MS_WH_UP,    KC_MS_BTN2,     KC_MS_BTN3, \
-        TO_BASE, _______, _______, _______, WEB_SAVE_FILE_UNDER_CURSOR, _______, _______,  LALT(LGUI(KC_N)), KC_MS_BTN3,     BROWSER_TAB_PREV,   BROWSER_TAB_NEXT,   LALT(KC_F4), \
+        TO_BASE, _______, _______, _______, WEB_SAVE_FILE_UNDER_CURSOR, _______, _______,  LALT(LGUI(KC_N)), KC_MS_BTN3,     BROWSER_TAB_LEFT,   BROWSER_TAB_RIGHT,   LALT(KC_F4), \
     _______, _______, _______, _______, _______, _______,   _______, KC_BTN4, KC_BTN5,  KC_BTN6, KC_BTN7, KC_BTN8
 
 
@@ -163,14 +163,14 @@ const uint32_t PROGMEM unicode_map[] = {
 
 
 #define planck_web _______, _______, _______, _______, RELOAD_TAP_INSPECTOR, COPY_TEXT_OPEN_NEW_TAB_SEARCH,   _______, _______, _______, _______, _______, _______, \
-    TO(_BASE), _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
+    TO(_BASE), _______, _______, COPY_TORRENT_URL_THEN_OPEN, _______, _______, _______, _______, _______, _______, _______, _______, \
     _______, _______, _______, _______, WEB_SAVE_FILE_UNDER_CURSOR, _______,   _______, _______, _______, _______, _______, _______, \
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
 
 #define planck_motion                                                   \
     EMACS_OTHER_WINDOW,   ALT_TAB, KC_HOME, KC_UP, KC_END,         LAYER_MOUSE_HOLD,      OSL(_SYSTEM),    KC_HOME,     my_lower_u,    my_lower_i,      my_lower_o,         my_lower_p, \
         _______,  TD(DANCE_F5), KC_LEFT,     KC_DOWN,     KC_RIGHT,     KC_MS_BTN1,         KC_RIGHT,      my_lower_h,        my_lower_j,        my_lower_k,          my_lower_l,       my_lower_semi, \
-        LAYER_MOUSE_HOLD,   _______, BROWSER_TAB_PREV, BROWSER_TAB_NEXT, BROWSER_TAB_PREV,        KC_LEFT, KC_LEFT,  KC_RIGHT, my_lower_m, RCTL(KC_HOME),   RCTL(KC_END), LALT(KC_F4), \
+        LAYER_MOUSE_HOLD,   _______, BROWSER_TAB_LEFT, BROWSER_TAB_RIGHT, BROWSER_TAB_LEFT,        KC_LEFT, KC_LEFT,  KC_RIGHT, my_lower_m, RCTL(KC_HOME),   RCTL(KC_END), LALT(KC_F4), \
         _______, _______, _______ , alt,   _______, _______,       TO_BASE,             _______, _______,          TD(WWW_BACK_FORWARD), RCTL(KC_LEFT), RCTL(KC_RIGHT)
 
 #define planck_leader1 _______, _______, _______, _______, _______, _______,   _______, _______, _______, _______, _______, _______, \

@@ -4,6 +4,15 @@
 /* /\* #include "musical_notes.h" *\/ */
 /* #include "../../quantum/hacks.c" */
 
+
+#define EMACS_SEL_0 LALT(KC_0)
+#define EMACS_SEL_1 LALT(KC_1)
+#define EMACS_SEL_2 LALT(KC_2)
+#define EMACS_SEL_3 LALT(KC_3)
+#define EMACS_SEL_4 LALT(KC_4)
+#define EMACS_SEL_5 LALT(KC_5)
+
+#define WINDOWS_COPY RCTL(KC_C)
 #define TMUX_SELECT_TEXT LALT(KC_LCBR)
 
 #define MOD_MASK_ALL_MODS_COMPAT (MOD_BIT_LCTRL | MOD_BIT_RCTRL | MOD_BIT_LALT | MOD_MASK_SHIFT | MOD_BIT_RGUI)
@@ -54,10 +63,10 @@
 #define SELECT_HOTKEY_3 LALT(LGUI(KC_F4))
 #define SELECT_HOTKEY_4 LALT(LGUI(KC_F5))
 #define SELECT_HOTKEY_5 LALT(LGUI(KC_F6))
-#define mod_r1 TD(DANCE_CODE_SYSTEM)
+#define mod_r1 QK_LEAD
 #define mod_r2 KC_UP
 #define mod_r3 KC_DOWN
-#define mod_r4 QK_LEAD // TD(DANCE_MOD_R4) // TD(DANCE_HOTKEY_OR_COMPOSE)
+#define mod_r4  KC_ENTER // TD(DANCE_MOD_R4) // TD(DANCE_HOTKEY_OR_COMPOSE)
 /* #define mod_r4 TD(dance_k74) */
 
 
@@ -211,7 +220,7 @@
 #define lower_right_of_super TD(WWW_BACK_FORWARD)
 #define my_lower MO(_LOWER)
 #define my_lower_bs KC_DEL
-#define my_lower_comma BROWSER_TAB_PREV
+#define my_lower_comma BROWSER_TAB_LEFT
 
 #define my_lower_q KC_F1
 #define my_lower_w KC_F2
@@ -239,7 +248,7 @@
 #define my_lower_n KC_BSLASH
 #define my_lower_o KC_END
 #define my_lower_p KC_BSPACE
-#define my_lower_period BROWSER_TAB_NEXT
+#define my_lower_period BROWSER_TAB_RIGHT
 #define my_lower_semi TD(DANCE_QUOTE)
 #define my_lower_slash KC_EQUAL
 #define my_lower_u KC_PGDOWN
@@ -266,9 +275,10 @@
 #define my_raise_f LALT(LSFT(KC_F8))
 #define my_raise_g _______
 
-#define my_raise_z  QK_REP
-#define my_raise_x BROWSER_TAB_PREV
-#define my_raise_c BROWSER_TAB_NEXT
+#define BROWSER_MOST_RECENT_TAB LALT(KC_A)
+#define my_raise_z BROWSER_MOST_RECENT_TAB
+#define my_raise_x BROWSER_TAB_LEFT
+#define my_raise_c BROWSER_TAB_RIGHT
 #define my_raise_v TD(DANCE_SAVE_LOAD_NS_SWITCH)
 #define my_raise_b _______
 
@@ -327,318 +337,319 @@
 
 
 enum col7_row4_fns {
-                    K74_MO_LEVEL3 = SAFE_RANGE,
-                    K74_MO_ALT_KEYBOARD
-                    };
+    K74_MO_LEVEL3 = SAFE_RANGE,
+    K74_MO_ALT_KEYBOARD
+};
 static int active_alt_keyboard_level3_fn = K74_MO_LEVEL3;
 
 enum alt_rctrl_fns {
-                    MO_ALT = SAFE_RANGE,
-                    MO_RCTRL
+    MO_ALT = SAFE_RANGE,
+    MO_RCTRL
 
 };
 static int active_alt_rctrl_key_fn = MO_ALT;
 
 void cycle_active_key_alt_rctrl_fn(void) {
-  switch (active_alt_rctrl_key_fn) {
-  case MO_ALT:
+    switch (active_alt_rctrl_key_fn) {
+    case MO_ALT:
 #ifdef AUDIO_ENABLE
-    PLAY_SONG(voice_change_sound);
+        PLAY_SONG(voice_change_sound);
 #endif
 
-    active_alt_rctrl_key_fn = MO_RCTRL;
-    break;
+        active_alt_rctrl_key_fn = MO_RCTRL;
+        break;
 
-  case MO_RCTRL:
+    case MO_RCTRL:
 #ifdef AUDIO_ENABLE
-    PLAY_SONG(guitar_sound);
+        PLAY_SONG(guitar_sound);
 #endif
 
-    active_alt_rctrl_key_fn = MO_ALT;
-    break;
-  }
+        active_alt_rctrl_key_fn = MO_ALT;
+        break;
+    }
 }
 
 
 void cycle_active_alt_keyboard_level3_fn(void) {
-  dprintf("cycle active_alt_keyboard_level3_fn: %u", active_alt_keyboard_level3_fn);
+    dprintf("cycle active_alt_keyboard_level3_fn: %u", active_alt_keyboard_level3_fn);
 
-  switch (active_alt_keyboard_level3_fn) {
-  case K74_MO_LEVEL3:
+    switch (active_alt_keyboard_level3_fn) {
+    case K74_MO_LEVEL3:
 #ifdef AUDIO_ENABLE
-    PLAY_SONG(voice_change_sound);
+        PLAY_SONG(voice_change_sound);
 #endif
 
-    active_alt_keyboard_level3_fn = K74_MO_ALT_KEYBOARD;
-    break;
-  case K74_MO_ALT_KEYBOARD:
+        active_alt_keyboard_level3_fn = K74_MO_ALT_KEYBOARD;
+        break;
+    case K74_MO_ALT_KEYBOARD:
 #ifdef AUDIO_ENABLE
-    PLAY_SONG(guitar_sound);
+        PLAY_SONG(guitar_sound);
 
 #endif
 
-    active_alt_keyboard_level3_fn = K74_MO_LEVEL3;
-    break;
-    dprintf("active_alt_keyboard_level3_fn: %u", active_alt_keyboard_level3_fn);
-  }
+        active_alt_keyboard_level3_fn = K74_MO_LEVEL3;
+        break;
+        dprintf("active_alt_keyboard_level3_fn: %u", active_alt_keyboard_level3_fn);
+    }
 }
 ;
 
 static bool do_echo = false;
 void toggle_echo(void) {
-  if (do_echo) {
-    do_echo = false;
-  } else {
-    SEND_STRING("echo on");
-    do_echo = true;
-  }
+    if (do_echo) {
+        do_echo = false;
+    } else {
+        SEND_STRING("echo on");
+        do_echo = true;
+    }
 }
 
 char * int2str(uint8_t i) {
-  static char s[10];
-  itoa(i, s, 10);
-  return s;
+    static char s[10];
+    itoa(i, s, 10);
+    return s;
 }
 
 enum custom_keycodes {
-                      /* RGB_SLD = SAFE_RANGE, */
-                      /* RGB_SLD = EZ_SAFE_RANGE, */
-                      FIRST = SAFE_RANGE,
-                      MATRIX_INCREASE_SPEED,
-                      MATRIX_DECREASE_SPEED,
-                      MATRIX_SET_DEFAULT_ANIMATION,
-                      SAVE_ALL_THEN_GOTO_BASE,
-                      EMACS_SEL_EXLM,
-                      EMACS_SEL_AT,
-                      EMACS_SEL_HASH,
-                      EMACS_SEL_DLR,
-                      EMACS_SEL_PERC,
-                      EMACS_SEL_CIRC,
-                      EMACS_SEL_AMPR,
-                      EMACS_SEL_ASTR,
-                      EMACS_SEL_LPRN,
-                      EMACS_SEL_RPRN,
+    /* RGB_SLD = SAFE_RANGE, */
+    /* RGB_SLD = EZ_SAFE_RANGE, */
+    FIRST = SAFE_RANGE,
+    COPY_TORRENT_URL_THEN_OPEN,
+    MATRIX_INCREASE_SPEED,
+    MATRIX_DECREASE_SPEED,
+    MATRIX_SET_DEFAULT_ANIMATION,
+    SAVE_ALL_THEN_GOTO_BASE,
+    EMACS_SEL_EXLM,
+    EMACS_SEL_AT,
+    EMACS_SEL_HASH,
+    EMACS_SEL_DLR,
+    EMACS_SEL_PERC,
+    EMACS_SEL_CIRC,
+    EMACS_SEL_AMPR,
+    EMACS_SEL_ASTR,
+    EMACS_SEL_LPRN,
+    EMACS_SEL_RPRN,
 
-                      EMACS_SEL_A,
-                      EMACS_SEL_B,
-                      EMACS_SEL_C,
-                      EMACS_SEL_COMMA,
-                      EMACS_SEL_D,
-                      EMACS_SEL_DB,
-                      EMACS_SEL_DOT,
-                      EMACS_SEL_E,
-                      EMACS_SEL_F,
-                      EMACS_SEL_G,
-                      EMACS_SEL_H,
-                      EMACS_SEL_I,
-                      EMACS_SEL_J,
-                      EMACS_SEL_K,
-                      EMACS_SEL_L,
-                      EMACS_SEL_LOWER,
-                      EMACS_SEL_M,
-                      EMACS_SEL_MODR1,
-                      EMACS_SEL_MODR2,
-                      EMACS_SEL_MODR3,
-                      EMACS_SEL_MODR4,
-                      EMACS_SEL_N,
-                      EMACS_SEL_O,
-                      EMACS_SEL_P,
-                      EMACS_SEL_Q,
-                      EMACS_SEL_GRAVE,
-                      EMACS_SEL_R,
-                      EMACS_SEL_RAISE,
-                      EMACS_SEL_S,
-                      EMACS_SEL_SCLN,
-                      EMACS_SEL_SLASH,
-                      EMACS_SEL_T,
-                      EMACS_SEL_TAB,
-                      EMACS_SEL_U,
-                      EMACS_SEL_V,
-                      EMACS_SEL_W,
-                      EMACS_SEL_X,
-                      EMACS_SEL_Y,                     EASYMOTION_LEADER,
-                      ACEJUMP,
-                      SWAP_SELECTION_BOUNDARIES,
-                      MOVE_STATEMENT_DOWN,
-                      MOVE_STATEMENT_UP,
-                      DUPLICATE_LINE,
-                      SELECTION_EXPAND,
-                      SELECTION_SHRINK,
-                      CTRL_X_ALL_MODS_OSM,
-                      SURROUND,
-                      EMACS_BUFFER_MAXIMIZE,
-                      LAUNCHER_FDFIND,
-                      ALL_MODS_OSM,
-                      ONE_SHOT_ALT_KEYBOARD,
-                      ONE_SHOT_LEVEL3,
-                      LAUNCHER_CLIPBOARD,
-                      LAUNCHER_WIKI,
-                      LAUNCHER_TRANSLATE,
-                      OPEN_NOTIFICATIONS,
-                      CLEAR_NOTIFICATIONS,
-                      ROFI_CALCULATOR,
-                      RG_FZF,
-                      EMACS_FOCUS_REPL,
-                      CIDER_HISTORY_WRITE,
-                      EMACS_FOCUS_REPL_IMMEDIATELY,
-                      LPRN_EQUAL,
-                      CIDER_EVAL_OR_TERMINAL_EDIT,
-                      ROFI_LOCATE_GLOBAL,
-                      ROFI_LOCATE_CLJ,
-                      ROFI_PROCESSES,
-                      ROFI_LOCATE_PRINT_FILTER_DIR,
-                      CLJ_FREQS,
-                      EMACS_SET_GLOBAL_LOCATE_DOCS_FILTER_DIR,
-                      ROFI_CIDER_HISTORY,
-                      ROFI_LOCATE_ALL,
-                      DELETE_LOCATE_DOCS_FILTER_DIR,
-                      ROFI_LOCATE_WITH_FILTER,
-                      ROFI_LOCATE_SOURCE_FILES,
-                      RESET_INPUT_PREFS,
-                      THREAD_LAST_EQUAL,
-                      FN_THEN_THREAD_LAST_EQUAL,
-                      LISP_COMMENT,
-                      EQUAL_THEN_SPACE,
-                      RELOAD_TAP_INSPECTOR,
-                      SHRUG,
-                      EMACS_WRAP_HYDRA,
-                      REFRAME_SUBSCRIBE,
-                      REFRAME_DISPATCH,
-                      EMACS_WINNER_UNDO,
-                      EMACS_WINNER_REDO,
-                      EMACS_DEFUN_END,
-                      EMACS_DEFUN_BEGIN,
-                      CIDER_RUN_TEST,
-                      EMACS_JUMP_ITEM,
-                      CLJ_ADD_REQS,
-                      COPY_TEXT_OPEN_NEW_TAB_SEARCH,
-                      TMPTXT,
-                      ALT,
-                      TO_BASE,
-                      LLOCK,
-                      LLOCK_RAISE,
-                      LLOCK_MOTION,
-                      LLOCK_LOWER,
-                      LLOCK_EDITING,
-                      LLOCK_LEVEL3,
-                      LLOCK_ALT_KEYBOARD,
-                      COPY_LATEST_FILE_TO_CLIPBOARD,
-                      CLJ_REFIND,
-                      LAUNCHER_SYSTEM,
-                      LAUNCHER_WINDOWS ,
-                      LAUNCHER_DEFINE,
-                      LAUNCHER_GOOGLE,
-                      ROFI_LOCATE ,
-                      ROFI_DRUN ,
-                      ROFI_EMOJI ,
+    EMACS_SEL_A,
+    EMACS_SEL_B,
+    EMACS_SEL_C,
+    EMACS_SEL_COMMA,
+    EMACS_SEL_D,
+    EMACS_SEL_DB,
+    EMACS_SEL_DOT,
+    EMACS_SEL_E,
+    EMACS_SEL_F,
+    EMACS_SEL_G,
+    EMACS_SEL_H,
+    EMACS_SEL_I,
+    EMACS_SEL_J,
+    EMACS_SEL_K,
+    EMACS_SEL_L,
+    EMACS_SEL_LOWER,
+    EMACS_SEL_M,
+    EMACS_SEL_MODR1,
+    EMACS_SEL_MODR2,
+    EMACS_SEL_MODR3,
+    EMACS_SEL_MODR4,
+    EMACS_SEL_N,
+    EMACS_SEL_O,
+    EMACS_SEL_P,
+    EMACS_SEL_Q,
+    EMACS_SEL_GRAVE,
+    EMACS_SEL_R,
+    EMACS_SEL_RAISE,
+    EMACS_SEL_S,
+    EMACS_SEL_SCLN,
+    EMACS_SEL_SLASH,
+    EMACS_SEL_T,
+    EMACS_SEL_TAB,
+    EMACS_SEL_U,
+    EMACS_SEL_V,
+    EMACS_SEL_W,
+    EMACS_SEL_X,
+    EMACS_SEL_Y,                     EASYMOTION_LEADER,
+    ACEJUMP,
+    SWAP_SELECTION_BOUNDARIES,
+    MOVE_STATEMENT_DOWN,
+    MOVE_STATEMENT_UP,
+    DUPLICATE_LINE,
+    SELECTION_EXPAND,
+    SELECTION_SHRINK,
+    CTRL_X_ALL_MODS_OSM,
+    SURROUND,
+    EMACS_BUFFER_MAXIMIZE,
+    LAUNCHER_FDFIND,
+    ALL_MODS_OSM,
+    ONE_SHOT_ALT_KEYBOARD,
+    ONE_SHOT_LEVEL3,
+    LAUNCHER_CLIPBOARD,
+    LAUNCHER_WIKI,
+    LAUNCHER_TRANSLATE,
+    OPEN_NOTIFICATIONS,
+    CLEAR_NOTIFICATIONS,
+    ROFI_CALCULATOR,
+    RG_FZF,
+    EMACS_FOCUS_REPL,
+    CIDER_HISTORY_WRITE,
+    EMACS_FOCUS_REPL_IMMEDIATELY,
+    LPRN_EQUAL,
+    CIDER_EVAL_OR_TERMINAL_EDIT,
+    ROFI_LOCATE_GLOBAL,
+    ROFI_LOCATE_CLJ,
+    ROFI_PROCESSES,
+    ROFI_LOCATE_PRINT_FILTER_DIR,
+    CLJ_FREQS,
+    EMACS_SET_GLOBAL_LOCATE_DOCS_FILTER_DIR,
+    ROFI_CIDER_HISTORY,
+    ROFI_LOCATE_ALL,
+    DELETE_LOCATE_DOCS_FILTER_DIR,
+    ROFI_LOCATE_WITH_FILTER,
+    ROFI_LOCATE_SOURCE_FILES,
+    RESET_INPUT_PREFS,
+    THREAD_LAST_EQUAL,
+    FN_THEN_THREAD_LAST_EQUAL,
+    LISP_COMMENT,
+    EQUAL_THEN_SPACE,
+    RELOAD_TAP_INSPECTOR,
+    SHRUG,
+    EMACS_WRAP_HYDRA,
+    REFRAME_SUBSCRIBE,
+    REFRAME_DISPATCH,
+    EMACS_WINNER_UNDO,
+    EMACS_WINNER_REDO,
+    EMACS_DEFUN_END,
+    EMACS_DEFUN_BEGIN,
+    CIDER_RUN_TEST,
+    EMACS_JUMP_ITEM,
+    CLJ_ADD_REQS,
+    COPY_TEXT_OPEN_NEW_TAB_SEARCH,
+    TMPTXT,
+    ALT,
+    TO_BASE,
+    LLOCK,
+    LLOCK_RAISE,
+    LLOCK_MOTION,
+    LLOCK_LOWER,
+    LLOCK_EDITING,
+    LLOCK_LEVEL3,
+    LLOCK_ALT_KEYBOARD,
+    COPY_LATEST_FILE_TO_CLIPBOARD,
+    CLJ_REFIND,
+    LAUNCHER_SYSTEM,
+    LAUNCHER_WINDOWS ,
+    LAUNCHER_DEFINE,
+    LAUNCHER_GOOGLE,
+    ROFI_LOCATE ,
+    ROFI_DRUN ,
+    ROFI_EMOJI ,
 
-                      WINDOWS_Q,
+    WINDOWS_Q,
 
-                      CLEAR_MODIFIERS,
+    CLEAR_MODIFIERS,
 
 
-                      EMACS_NEXT_SEXP,
-                      CYCLE_ACTIVE_ALT_KEYBOARD_LEVEL3_FN,
-                      level3,
-                      EMACS_PREV_SEXP,
-                      AUTOSHIFT_TOGGLE,
-                      SAVE_FILE_THEN_VIM_NORMAL_MODE,
-                      WEB_SAVE_FILE_UNDER_CURSOR,
-                      CAPS_WORD_TOGGLE,
-                      TEMP_TEXT,
-                      BACKWARD_KILL_LINE,
-                      EMACS_TRANSPOSE,
-                      OPEN_PAREN,
-                      CLOSED_PAREN,
-                      TERM_CD_PREVIOUS,
-                      CIDER_RUN_PREV_COMMAND,
-                      EMACS_DESC_KEY,
-                      EMACS_FINDER_COMMENTARY,
-                      EMACS_HELM_OCCUR,
-                      EMACS_HELM_MARK_RINGS,
-                      EMACS_HELM_KILL_RINGS,
-                      EMACS_INSIDE_YANK,
-                      EMACS_INSIDE_DELETE,
-                      EMACS_TO_YANK,
-                      EMACS_TO_DELETE,
-                      CLJ_ANON,
-                      EMACS_EVIL_FIND,
-                      EMACS_PROJECTILE_FIND_FILE,
-                      EMACS_FASD,
-                      EMACS_RE_FIND,
-                      EMACS_BACKWARD_UP,
-                      RESET_ANIMATION,
-                      GAUTH_LAYER_ACTIVATE,
-                      EMACS_COMMENT_READER,
-                      EMACS_PRIVATE_READER,
-                      EMACS_ANON_FN,
-                      CLJ_REGEX,
-                      CLJ_ANON_FN,
-                      CLJ_SET,
-                      EMACS_YANK_TO,
-                      gauth_fb,
-                      gauth_gh,
-                      gauth_plex,
-                      gauth_hb,
-                      gauth_lp,
-                      AUDIO_LAYER_HOLD,
-                      CYCLE_DROP_COLORS,
-                      CLJ_TAP,
-                      TOGGLE_ECHO,
-                      TOGGLE_BREATHING,
-                      EMACS_ACE_WINDOW_SELECT,
-                      TERM_HOME,
-                      LAYER_MOUSE_HOLD,
-                      TMUX_SPLIT_WINDOW,
-                      EMACS_SPLIT_WINDOW_UP,
-                      EMACS_SPLIT_WINDOW_DOWN,
-                      EMACS_SPLIT_WINDOW_RIGHT,
-                      EMACS_SPLIT_WINDOW_LEFT,
-                      CYCLE_FAVE_ANIMATIONS,
-                      CYCLE_RGBLIGHT_STEP,
-                      ALT_TAB,
-                      ALT_BACKTAB,
-                      EMACS_ACE_WINDOW_SWAP,
-                      EMACS_BUFFER_REVERT,
-                      EMACS_INSERT_GET_FEED,
-                      EMACS_INSERT_GI_GET_FEED,
-                      EMACS_KILL_PROCESS,
-                      EMACS_OTHER_WINDOW,
-                      EMACS_WINDOW_DELETE,
-                      EMACS_COPY_FILE_PATH,
-                      EMACS_YAS_C,
-                      EMACS_YAS_DOC,
-                      EMACS_YAS_MAP_ANON,
-                      EMACS_YAS_FILTER_ANON,
-                      EMACS_YAS_REMOVE_ANON,
-                      EMACS_YAS_TF,
-                      EMACS_YAS_TL,
-                      EMACS_YAS_KEYS_DESCRUCTURE,
-                      EMACS_FRAME_FULL_SCREEN,
-                      ESC_THEN_BASE_LAYER,
-                      FISH_ACCEPT_SEND,
-                      LAYER_LOWER_HOLD,
-                      LAYER_COLORS_HOLD,
-                      LAYER_RAISE_HOLD,
-                      MUSIC_LAYER_ACTIVATE,
-                      WINDOWS_LAYER_ACTIVATE,
-                      SHIFTLOCK_LAYER_ACTIVATE,
-                      SHIFTLOCK_LAYER_DEACTIVATE,
-                      SYSTEM_LAYER_ACTIVATE,
-                      SYSTEM_LAYER_DEACTIVATE,
-                      RGBLIGHT_STEP,
-                      RGBLIGHT_TOGGLE,
-                      TMUX_CLOSE,
-                      TERM_CD_UP_DIR,
-                      EMACS_LOCCUR,
-                      EMACS_TOGGLE_REPL,
-                      CLEAR_THAT_REPL,
-                      HOME_THEN_EMACS_WRAP_IN_THREAD_LAST,
-                      HOME_THEN_EMACS_WRAP_IN_THREAD_FIRST,
-                      EMACS_WRAP_IN_THREAD_LAST,
-                      EMACS_WRAP_IN_THREAD_FIRST,
-                      EMACS_WRAP_IN_THREAD_LAST_SOME,
-                      THREAD_LAST,
+    EMACS_NEXT_SEXP,
+    CYCLE_ACTIVE_ALT_KEYBOARD_LEVEL3_FN,
+    level3,
+    EMACS_PREV_SEXP,
+    AUTOSHIFT_TOGGLE,
+    SAVE_FILE_THEN_VIM_NORMAL_MODE,
+    WEB_SAVE_FILE_UNDER_CURSOR,
+    CAPS_WORD_TOGGLE,
+    TEMP_TEXT,
+    BACKWARD_KILL_LINE,
+    EMACS_TRANSPOSE,
+    OPEN_PAREN,
+    CLOSED_PAREN,
+    TERM_CD_PREVIOUS,
+    CIDER_RUN_PREV_COMMAND,
+    EMACS_DESC_KEY,
+    EMACS_FINDER_COMMENTARY,
+    EMACS_HELM_OCCUR,
+    EMACS_HELM_MARK_RINGS,
+    EMACS_HELM_KILL_RINGS,
+    EMACS_INSIDE_YANK,
+    EMACS_INSIDE_DELETE,
+    EMACS_TO_YANK,
+    EMACS_TO_DELETE,
+    CLJ_ANON,
+    EMACS_EVIL_FIND,
+    EMACS_PROJECTILE_FIND_FILE,
+    EMACS_FASD,
+    EMACS_RE_FIND,
+    EMACS_BACKWARD_UP,
+    RESET_ANIMATION,
+    GAUTH_LAYER_ACTIVATE,
+    EMACS_COMMENT_READER,
+    EMACS_PRIVATE_READER,
+    EMACS_ANON_FN,
+    CLJ_REGEX,
+    CLJ_ANON_FN,
+    CLJ_SET,
+    EMACS_YANK_TO,
+    gauth_fb,
+    gauth_gh,
+    gauth_plex,
+    gauth_hb,
+    gauth_lp,
+    AUDIO_LAYER_HOLD,
+    CYCLE_DROP_COLORS,
+    CLJ_TAP,
+    TOGGLE_ECHO,
+    TOGGLE_BREATHING,
+    EMACS_ACE_WINDOW_SELECT,
+    TERM_HOME,
+    LAYER_MOUSE_HOLD,
+    TMUX_SPLIT_WINDOW,
+    EMACS_SPLIT_WINDOW_UP,
+    EMACS_SPLIT_WINDOW_DOWN,
+    EMACS_SPLIT_WINDOW_RIGHT,
+    EMACS_SPLIT_WINDOW_LEFT,
+    CYCLE_FAVE_ANIMATIONS,
+    CYCLE_RGBLIGHT_STEP,
+    ALT_TAB,
+    ALT_BACKTAB,
+    EMACS_ACE_WINDOW_SWAP,
+    EMACS_BUFFER_REVERT,
+    EMACS_INSERT_GET_FEED,
+    EMACS_INSERT_GI_GET_FEED,
+    EMACS_KILL_PROCESS,
+    EMACS_OTHER_WINDOW,
+    EMACS_WINDOW_DELETE,
+    EMACS_COPY_FILE_PATH,
+    EMACS_YAS_C,
+    EMACS_YAS_DOC,
+    EMACS_YAS_MAP_ANON,
+    EMACS_YAS_FILTER_ANON,
+    EMACS_YAS_REMOVE_ANON,
+    EMACS_YAS_TF,
+    EMACS_YAS_TL,
+    EMACS_YAS_KEYS_DESCRUCTURE,
+    EMACS_FRAME_FULL_SCREEN,
+    ESC_THEN_BASE_LAYER,
+    FISH_ACCEPT_SEND,
+    LAYER_LOWER_HOLD,
+    LAYER_COLORS_HOLD,
+    LAYER_RAISE_HOLD,
+    MUSIC_LAYER_ACTIVATE,
+    WINDOWS_LAYER_ACTIVATE,
+    SHIFTLOCK_LAYER_ACTIVATE,
+    SHIFTLOCK_LAYER_DEACTIVATE,
+    SYSTEM_LAYER_ACTIVATE,
+    SYSTEM_LAYER_DEACTIVATE,
+    RGBLIGHT_STEP,
+    RGBLIGHT_TOGGLE,
+    TMUX_CLOSE,
+    TERM_CD_UP_DIR,
+    EMACS_LOCCUR,
+    EMACS_TOGGLE_REPL,
+    CLEAR_THAT_REPL,
+    HOME_THEN_EMACS_WRAP_IN_THREAD_LAST,
+    HOME_THEN_EMACS_WRAP_IN_THREAD_FIRST,
+    EMACS_WRAP_IN_THREAD_LAST,
+    EMACS_WRAP_IN_THREAD_FIRST,
+    EMACS_WRAP_IN_THREAD_LAST_SOME,
+    THREAD_LAST,
                       SA_LAYER_ACTIVATE,
                       THREAD_FIRST,
                       CLJ_ARROW,
@@ -782,14 +793,14 @@ bool do_breathing = false;
 #define super TD(DANCE_SUPER) // LM(_SUPER, MOD_LGUI) //TD(SUPER_WINDOWS)
 
 #define editing_q TD(DANCE_EDITING_Q)
-#define BROWSER_TAB_NEXT TD(DANCE_30)
+#define BROWSER_TAB_RIGHT TD(DANCE_30)
 #define alt TD(DANCE_ALT)
 #define alt_or_rctrl TD(DANCE_ALT_OR_RCTRL)
 #define hyper TD(DANCE_HYPER) // LM(_HYPER, MOD_LCTL) //KC_LCTL // OSL(_WINDOWS)
 
 /* #define hyper TD(DANCE_HYPER) */
 
-#define BROWSER_TAB_PREV TD(DANCE_29)
+#define BROWSER_TAB_LEFT TD(DANCE_29)
 #define my_comma TD(DANCE_COMMA) //KC_COMMA //
 #define my_left_shift TD(DANCE_SHIFT)
 #define emacs_left_shift TD(DANCE_SHIFT_CURLY)
@@ -806,18 +817,18 @@ bool do_breathing = false;
 #define EVIL_JUMP RCTL(KC_COMMA)
 
 #define EMACS_REPEAT KC_F9
-#define preonic_00 TO(_MOUSE) // TD(DANCE_MICROPHONE) // toggle mic //
-#define preonic_1 EVIL_FIRST_NON_BLANK
-#define preonic_2  KC_BSLASH
-#define preonic_3  my_lower_semi
-#define preonic_4 EVIL_END_OF_LINE
-#define preonic_5  TD(DANCE_ROFI)
-#define preonic_6  SELECT_HOTKEY_0
-#define preonic_7  TD(DANCE_LEFT_OR_HOME)
-#define preonic_8  KC_DOWN
-#define preonic_9  KC_UP
-#define preonic_10 TD(DANCE_RIGHT_OR_END)
-#define preonic_11 EVIL_JUMP
+#define preonic_00 QK_LOCK // QK_AREP // TD(DANCE_MICROPHONE) // toggle mic //
+#define preonic_1  KC_1
+#define preonic_2  KC_2
+#define preonic_3  KC_3
+#define preonic_4  KC_4
+#define preonic_5  KC_5
+#define preonic_6  TD(DANCE_CODE_SYSTEM)
+#define preonic_7  KC_6
+#define preonic_8  KC_7
+#define preonic_9  KC_8
+#define preonic_10 KC_9
+#define preonic_11 KC_0
 
 #define PAGE_DOWN_OR_END TD(DANCE_PAGE_DOWN_OR_END)
 #define my_lower_j KC_DOWN // PAGE_DOWN_OR_END
