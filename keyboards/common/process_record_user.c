@@ -1117,6 +1117,36 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     break;
 
+    case COPY_TORRENT_URL_THEN_OPEN:
+        if (record->event.pressed) {
+            // browser
+            tap_code16(GUI(KC_W));
+            wait_ms(300);
+            // copy url
+            tap_code16(RCTL(KC_L));
+            wait_ms(100);
+            tap_code16(WINDOWS_COPY);
+            wait_ms(300);
+            // open transmission
+            tap_code16(GUI(KC_Y));
+            wait_ms(400);
+            // open URL
+            tap_code16(RCTL(KC_U));
+            wait_ms(500);
+            // accept
+            tap_code16(KC_ENTER);
+            wait_ms(500);
+            tap_code16(KC_ENTER);
+            wait_ms(500);
+            // go back to browser
+            tap_code16(GUI(KC_W));
+            wait_ms(500);
+            tap_code16(KC_TAB);
+            // close tab
+            tap_code16(RCTL(KC_W));
+        }
+        break;
+
   case COPY_TEXT_OPEN_NEW_TAB_SEARCH:
     if (record->event.pressed) {
       SEND_STRING(SS_RCTL(SS_TAP(X_C))  SS_DELAY(10) SS_RCTL(SS_TAP(X_T)) SS_DELAY(100)  SS_RCTL(SS_TAP(X_V)) SS_DELAY(10) SS_TAP(X_ENTER));
