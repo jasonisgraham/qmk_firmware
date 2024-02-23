@@ -121,7 +121,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_MOUSE] = LAYOUT_moonlander(                              TO_BASE,    _______, KC_MS_BTN1, KC_MS_UP, KC_MS_BTN2, _______,_______, _______,  _______,  KC_HOME,        KC_PGDOWN, KC_PGUP,              KC_END,         _______,
                                                                TO_BASE,  _______, KC_MS_LEFT,     KC_MS_DOWN,     KC_MS_RIGHT,     _______,_______, _______,   _______, KC_MS_BTN1,     KC_MS_WH_DOWN,  KC_MS_WH_UP,    KC_MS_BTN2,     KC_MS_BTN3,
-                                                               TO_BASE, _______, _______, _______, WEB_SAVE_FILE_UNDER_CURSOR, _______,_______, _______,  _______,  LALT(LGUI(KC_N)), KC_MS_BTN3,     BROWSER_TAB_PREV,   BROWSER_TAB_NEXT,   LALT(KC_F4),
+                                                               TO_BASE, _______, _______, _______, WEB_SAVE_FILE_UNDER_CURSOR, _______,_______, _______,  _______,  LALT(LGUI(KC_N)), KC_MS_BTN3,     BROWSER_TAB_LEFT,   BROWSER_TAB_RIGHT,   LALT(KC_F4),
                                                                _______, _______, _______, _______, _______, _______,   _______, KC_BTN4, KC_BTN5,  KC_BTN6, KC_BTN7, KC_BTN8,
                                                                _______, _______, _______, _______, _______, _______,_______, _______, _______, _______, _______, _______,
                                                                _______, _______, _______, _______, _______, _______),
@@ -237,7 +237,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_MOTION] = LAYOUT_moonlander(EMACS_OTHER_WINDOW,   ALT_TAB, KC_HOME, KC_UP, KC_END,         LAYER_MOUSE_HOLD,_______, _______,       OSL(_SYSTEM),    KC_HOME,     my_lower_u,    my_lower_i,      my_lower_o,         my_lower_p,
                                   _______,  TD(DANCE_F5), KC_LEFT,     KC_DOWN,     KC_RIGHT,     KC_MS_BTN1,_______, _______,          KC_RIGHT,      my_lower_h,        my_lower_j,        my_lower_k,          my_lower_l,       my_lower_semi,
-                                  LAYER_MOUSE_HOLD,   _______, BROWSER_TAB_PREV, BROWSER_TAB_NEXT, BROWSER_TAB_PREV,        KC_LEFT,_______, _______,  KC_LEFT,  KC_RIGHT, my_lower_m, RCTL(KC_HOME),   RCTL(KC_END), LALT(KC_F4),
+                                  LAYER_MOUSE_HOLD,   _______, BROWSER_TAB_LEFT, BROWSER_TAB_RIGHT, BROWSER_TAB_LEFT,        KC_LEFT,_______, _______,  KC_LEFT,  KC_RIGHT, my_lower_m, RCTL(KC_HOME),   RCTL(KC_END), LALT(KC_F4),
                                   _______, _______, _______ , alt,   _______, _______,       TO_BASE,             _______, _______,          TD(WWW_BACK_FORWARD), RCTL(KC_LEFT), RCTL(KC_RIGHT),
                                   _______, _______, _______, _______, _______, _______,_______, _______, _______, _______, _______, _______,
                                   _______, _______, _______, _______, _______, _______),

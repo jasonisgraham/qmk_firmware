@@ -1,6 +1,8 @@
 #include "combos_defs.c"
 
 combo_t key_combos[COMBO_COUNT] = {
+    COMBO(combo_tab_a, _______),
+    COMBO(combo_tab_esc, _______),
     COMBO(combo_n_r3, KC_RIGHT),
     COMBO(combo_b_r3, KC_LEFT),
     COMBO(combo_g_r2, KC_RIGHT),
@@ -156,7 +158,7 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo_u_i, THREAD_FIRST),
     COMBO(combo_u_o, THREAD_LAST),
     COMBO(combo_w_d, EMACS_WRAP_HYDRA),
-    COMBO(combo_w_e, OSL(_WINMOVE)),
+    COMBO(combo_w_e, MO(_WINMOVE)),
     COMBO(combo_e_r, KC_TAB),
     COMBO(combo_t_y,EMACS_TO_YANK),
     COMBO(combo_z_x, QK_LEAD),
