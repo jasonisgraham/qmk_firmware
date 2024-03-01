@@ -31,7 +31,7 @@ const uint32_t PROGMEM unicode_map[] = {
         _______, _______, _______, _______,        _______,        _______, _______, _______,      _______, _______ ,       _______,           _______
 
 #define planck_raise backtab,    my_raise_q,          my_raise_w,  my_raise_e,         my_raise_r,       my_raise_t, TO_BASE, my_raise_y, my_raise_u,           my_raise_i,           my_raise_o,           my_raise_p, \
-    _______, my_raise_a, my_raise_s,   my_raise_d, my_raise_f,  my_raise_g, raise_up,       my_raise_h,         my_raise_j,           my_raise_k,           my_raise_l,       raise_semi, \
+    _______, my_raise_a, my_raise_s,   my_raise_d, my_raise_f,  my_raise_g, raise_up,       my_raise_h,         my_raise_j,           my_raise_k,           my_raise_l,      raise_semi, \
     raise_left_shift, my_raise_z, my_raise_x, my_raise_c,  my_raise_v,      my_raise_b, raise_down,     my_raise_n,           my_raise_m,           my_raise_comma,         KC_3,           raise_slash, \
     MO(_SYSTEM), _______, KC_ENTER,        _______,        TO(_BASE), _______, raise_left,      my_space,   raise_key_4_9,       KC_INSERT,  KC_DOWN,         KC_UP
 

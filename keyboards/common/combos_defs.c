@@ -162,6 +162,7 @@ const uint16_t PROGMEM combo_period_slash[] = {my_period, my_forward_slash, COMB
 const uint16_t PROGMEM combo_q_e[] = {my_q, my_e, COMBO_END};
 const uint16_t PROGMEM combo_q_o[] = {my_o, my_q, COMBO_END};
 const uint16_t PROGMEM combo_q_w[] = {my_q, my_w, COMBO_END};
+const uint16_t PROGMEM combo_emacs_sel_q_w[] = {EMACS_SEL_1,  EMACS_SEL_2, COMBO_END};
 const uint16_t PROGMEM combo_q_w_e[] = {my_q, my_w, my_e,  COMBO_END};
 const uint16_t PROGMEM combo_r2_h[] = {mod_r2, my_h, COMBO_END};
 const uint16_t PROGMEM combo_r4_space[] = {mod_r4, my_space, COMBO_END};
