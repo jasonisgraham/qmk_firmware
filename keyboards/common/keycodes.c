@@ -283,7 +283,7 @@
 #define my_raise_b _______
 
 #define HELM_CIDER_HISTORY LCTL(KC_H)
-#define my_raise_h TD(WWW_BACK_FORWARD)
+#define my_raise_h KC_BSLASH
 #define my_raise_i KC_8
 #define my_raise_j KC_4
 #define my_raise_k KC_5
