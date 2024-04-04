@@ -100,7 +100,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                          _______, _______, _______, _______, _______, _______),
 
 
-    [_EMACS_SELECT] = LAYOUT_moonlander(EMACS_SEL_TAB, EMACS_SEL_Q,  EMACS_SEL_W, EMACS_SEL_E, EMACS_SEL_R, EMACS_SEL_T,_______, _______,  EMACS_SEL_MODR1, EMACS_SEL_Y, EMACS_SEL_U,    EMACS_SEL_I,           EMACS_SEL_O,           EMACS_SEL_P,
+    [_EMACS_SELECT] = LAYOUT_moonlander(EMACS_SEL_0, EMACS_SEL_1,  EMACS_SEL_2, EMACS_SEL_3, EMACS_SEL_4, EMACS_SEL_5,_______, _______,  EMACS_SEL_MODR1, EMACS_SEL_Y, EMACS_SEL_U,    EMACS_SEL_I,           EMACS_SEL_O,           EMACS_SEL_P,
                                         TO(_BASE), EMACS_SEL_A, EMACS_SEL_S, EMACS_SEL_D, EMACS_SEL_F, EMACS_SEL_G,_______, _______,  EMACS_SEL_MODR2, EMACS_SEL_H,  EMACS_SEL_J,           EMACS_SEL_K,           EMACS_SEL_L,           EMACS_SEL_SCLN,
                                         _______, EMACS_SEL_Z, EMACS_SEL_X, EMACS_SEL_C, EMACS_SEL_V, EMACS_SEL_B,_______, _______,  EMACS_SEL_MODR3, EMACS_SEL_N,           EMACS_SEL_M,           EMACS_SEL_COMMA,           EMACS_SEL_DOT,           EMACS_SEL_SLASH,
                                         _______, _______, _______, EMACS_WINDOW_DELETE, EMACS_SEL_RAISE, _______, EMACS_SEL_MODR4,          _______, EMACS_SEL_LOWER, EMACS_WINDOW_DELETE, _______, _______,
@@ -191,12 +191,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                             _______, _______, _______, _______, _______, _______,_______, _______, _______, _______, _______, _______,
                                             _______, _______, _______, _______, _______, _______),
 
-    [_NUMPAD] = LAYOUT_moonlander(KC_0, KC_1, KC_2, KC_3, KC_4, _______,_______, _______,    _______, _______, _______, _______, _______, _______,
-                                  _______, KC_5, KC_6, KC_7, KC_8, _______,_______, _______,  KC_TAB, _______, _______, _______, _______, _______,
-                                  _______, KC_9, KC_0, _______, _______, _______,_______, _______,  LSFT(KC_TAB), _______, _______, _______, _______, _______,
-                                  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, LSFT(KC_TAB), KC_TAB,
-                                  _______, _______, _______, _______, _______, _______,_______, _______, _______, _______, _______, _______,
-                                  _______, _______, _______, _______, _______, _______),
+    /* [_NUMPAD] = LAYOUT_moonlander(KC_0, KC_1, KC_2, KC_3, KC_4, _______,_______, _______,    _______, _______, _______, _______, _______, _______, */
+    /*                               _______, KC_5, KC_6, KC_7, KC_8, _______,_______, _______,  KC_TAB, _______, _______, _______, _______, _______, */
+    /*                               _______, KC_9, KC_0, _______, _______, _______,_______, _______,  LSFT(KC_TAB), _______, _______, _______, _______, _______, */
+    /*                               _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, LSFT(KC_TAB), KC_TAB, */
+    /*                               _______, _______, _______, _______, _______, _______,_______, _______, _______, _______, _______, _______, */
+    /*                               _______, _______, _______, _______, _______, _______), */
 
 
 

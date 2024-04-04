@@ -18,19 +18,27 @@ enum preonic_keycodes {
 #define key_x front_punch
 #define back_punch KC_Y // y
 #define key_y back_punch
-#define front_kick KC_A // a
+#define front_kick KC_A // axybayxxbayab
 #define key_a front_kick
 #define back_kick KC_B // b
 #define key_b back_kick
-#define throw KC_SPACE // l1
+#define throw KC_L // l1
 #define key_l1 throw
 #define block KC_V // r2
-#define kameo KC_P // r1
+#define kameo KC_R // r1
 #define key_r1 kameo
-#define key_l2 KC_L // l2
+#define key_l2 KC_SPACE // l2
 #define key_l3 KC_Z
 #define key_r3 KC_SLASH
 #define key_r2 KC_SEMICOLON
+
+
+#define dpad_lu KC_LEFT
+#define dpad_ru KC_RIGHT
+#define dpad_ld KC_Z
+#define dpad_rd KC_C
+
+
 
 #define preonic_1  KC_1
 #define preonic_2  KC_2
@@ -49,9 +57,9 @@ enum preonic_keycodes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_BASE] = LAYOUT_preonic_grid(MO(_SYSTEM), preonic_1, preonic_2, preonic_3,   preonic_4, preonic_5, preonic_6, KC_BSPC	, key_l2, preonic_9, preonic_10, key_r2, \
-                                  key_l1,    dpad_left,    dpad_up,    KC_W,    KC_R,   KC_T, KC_ESC,    KC_Y,          key_l1,    key_y,    key_b,     key_r1, \
-                                  KC_ESC, dpad_left,  dpad_down,   dpad_right,   KC_F,   KC_G, KC_ENTER,  key_l2,         key_x,   KC_K,   KC_L,   key_r2, \
-                                  key_l3, KC_Z,           KC_X,           KC_C,  KC_V       ,           _______,  key_l1,     KC_N,   KC_M,   KC_COMMA,   KC_DOT,   key_r3, \
+                                  key_l1,    dpad_lu,    dpad_up,    dpad_ru,    KC_R,   KC_T, key_l2,    KC_Y,          key_l1,    key_y,    key_r2,     key_r1, \
+                                  KC_ESC, dpad_left,  dpad_down,   dpad_right,   KC_F,   KC_G, KC_ENTER,  key_l1,         key_y,   key_r1,   KC_L,   _______, \
+                                  key_l3, dpad_ld,           KC_X,           dpad_rd,  KC_V       ,           _______,  _______,     key_x,   key_a,   key_b,   KC_DOT,   key_r3, \
                                   MO(_SYSTEM), _______,   _______,         _______, dpad_down,  _______, key_l1,           key_a, key_r1,_______,_______,_______),
 
     [_SYSTEM] = LAYOUT_preonic_grid(_______, _______,_______,_______,_______,_______, QK_BOOTLOADER,_______,_______,_______,_______,_______, \

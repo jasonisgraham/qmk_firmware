@@ -22,11 +22,11 @@ void save_then_goto_base(void) {
 
 void save_all_then_goto_base(void);
 void save_all_then_goto_base(void) {
+    tap_code16(KC_ESC);
+    wait_ms(MACRO_WAIT);
     tap_code16(RCTL(KC_X));
     wait_ms(MACRO_WAIT);
     tap_code16(RCTL(KC_F5));
-    wait_ms(MACRO_WAIT);
-    tap_code16(KC_ESC);
     wait_ms(MACRO_WAIT);
     clear_modifiers();
     layer_move(_BASE);
