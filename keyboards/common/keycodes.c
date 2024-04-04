@@ -269,13 +269,14 @@
 #define my_raise_r EMACS_BUFFER_REVERT
 #define my_raise_t _______
 
-#define my_raise_a TD(DANCE_F5)
+#define my_raise_tab backtab
+#define BROWSER_MOST_RECENT_TAB LALT(KC_Z)
+#define my_raise_a _______
 #define my_raise_s _______
 #define my_raise_d _______
 #define my_raise_f LALT(LSFT(KC_F8))
 #define my_raise_g _______
 
-#define BROWSER_MOST_RECENT_TAB LALT(KC_A)
 #define my_raise_z BROWSER_MOST_RECENT_TAB
 #define my_raise_x BROWSER_TAB_LEFT
 #define my_raise_c BROWSER_TAB_RIGHT

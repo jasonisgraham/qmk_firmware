@@ -5,7 +5,7 @@ float leader_succeed_song[][2] = SONG(ALL_STAR);
 float leader_fail_song[][2] = SONG(RICK_ROLL);
 
 void leader_start_user(void) {
-        alt_colors(HSV_WHITE, HSV_FUSCIA);
+        /* alt_colors(HSV_WHITE, HSV_FUSCIA); */
         /* PLAY_SONG(caps_lock_off_sound); */
         /* SEND_STRING("LEADER START"); */
 }
