@@ -251,46 +251,48 @@ void dance_tab_finished(tap_dance_state_t *state, void *user_data) {
 
   case TAP_INTERRUPTED_HELD:
   case HOLD:
-    layer_on(_EDITING);
-    break;
+      register_code16(KC_LALT);
+      static_kinda_dim(HSV_GREEN);
+      break;
 
 
   case TAP2:
   case TAP2_INTERRUPTED:
       tap_code16(LCTL(KC_TAB));
-    break;
+      break;
 
   case HOLD2:
       layer_on(_CODE);
-    break;
+      break;
 
   case HOLD3:
-    tap_code16(CLEAR_MODIFIERS);
-    layer_move(_BASE);
+      tap_code16(CLEAR_MODIFIERS);
+      layer_move(_BASE);
 #ifdef AUDIO_ENABLE
-    PLAY_SONG(caps_lock_on_sound);
+      PLAY_SONG(caps_lock_on_sound);
 #endif
   case HOLD4:
       layer_on(_SYSTEM);
       break;
 
-    break;
+      break;
   }
 }
 
 
 void dance_tab_reset(tap_dance_state_t *state, void *user_data) {
-  wait_ms(10);
-  switch (dance_state[0].step) {
+    wait_ms(10);
+    switch (dance_state[0].step) {
 
-  case TAP_INTERRUPTED:
-case TAP_INTERRUPTED_HELD:
+    case TAP_INTERRUPTED:
+    case TAP_INTERRUPTED_HELD:
 
-  case HOLD2:
-    layer_off(_CODE);
-    break;
-  case HOLD:
-    layer_off(_EDITING);
+    case HOLD2:
+        layer_off(_CODE);
+        break;
+    case HOLD:
+      unregister_code16(KC_LALT);
+
 #ifdef RGBLIGHT_ENABLE
   rgblight_disable();
 #endif
@@ -1825,6 +1827,7 @@ void esc_ctrl_finished(tap_dance_state_t *state, void *user_data) {
   case TAP2_INTERRUPTED:
     printf("tap2");
     tap_code16(KC_ESC);
+    save_all_then_goto_base();
     tap_code16(KC_ESC);
     break;
   case TAP3:
@@ -2192,9 +2195,9 @@ void alt_finished(tap_dance_state_t *state, void *user_data) {
     break;
 
   default:
-    register_code16(KC_LALT);
-    layer_on(_ALT);
-    break;
+      register_code16(KC_LALT);
+      static_kinda_dim(HSV_GREEN);
+      break;
   }
 }
 
@@ -2206,7 +2209,9 @@ void alt_reset(tap_dance_state_t *state, void *user_data) {
     break;
   default:
     unregister_code16(KC_LALT);
-    layer_off(_ALT);
+#ifdef RGBLIGHT_ENABLE
+  rgblight_disable();
+#endif
 
   }
 }

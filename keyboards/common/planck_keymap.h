@@ -63,7 +63,7 @@ const uint32_t PROGMEM unicode_map[] = {
         _______, _______, _______, _______, _______, _______, MOVE_STATEMENT_DOWN, _______, _______, _______, DM_REC2, DM_PLY2, \
         _______, _______, _______, _______, _______, _______, META_X, _______, _______, DM_RSTP, DM_REC1, DM_PLY1
 
-#define planck_emacs_select EMACS_SEL_0, EMACS_SEL_1,  EMACS_SEL_2, EMACS_SEL_3, EMACS_SEL_4, EMACS_SEL_5, EMACS_SEL_MODR1, EMACS_SEL_Y, EMACS_SEL_U,    EMACS_SEL_I,           EMACS_SEL_O,           EMACS_SEL_P, \
+#define planck_emacs_select BROWSER_MOST_RECENT_TAB, EMACS_SEL_1,  EMACS_SEL_2, EMACS_SEL_3, EMACS_SEL_4, EMACS_SEL_5, EMACS_SEL_MODR1, EMACS_SEL_Y, EMACS_SEL_U,    EMACS_SEL_I,           EMACS_SEL_O,           EMACS_SEL_P, \
         TO(_BASE), EMACS_SEL_A, EMACS_SEL_S, EMACS_SEL_D, EMACS_SEL_F, EMACS_SEL_G, EMACS_SEL_MODR2, EMACS_SEL_H,  EMACS_SEL_J,           EMACS_SEL_K,           EMACS_SEL_L,           EMACS_SEL_SCLN, \
         _______, EMACS_SEL_Z, EMACS_SEL_X, EMACS_SEL_C, EMACS_SEL_V, EMACS_SEL_B, EMACS_SEL_MODR3, EMACS_SEL_N,           EMACS_SEL_M,           EMACS_SEL_COMMA,           EMACS_SEL_DOT,           EMACS_SEL_SLASH, \
         _______, _______, _______, EMACS_WINDOW_DELETE, EMACS_SEL_RAISE, _______, EMACS_SEL_MODR4,          _______, EMACS_SEL_LOWER, EMACS_WINDOW_DELETE, _______, _______
