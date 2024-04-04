@@ -1,7 +1,9 @@
 #pragma once
 #define I2C_DRIVER I2CD1
+
 #define JSG_LHS_MODS 1
 
+/* #define USE_WORKMAN 1 */
 #define AUTO_SHIFT_REPEAT
 #define MOUSEKEY_MAX_SPEED 2
 #define UNICODE_SELECTED_MODES UC_LNX
@@ -28,5 +30,7 @@
 /* #define ENABLE_RGB_MATRIX_DUAL_HUE_STAR_LIGHT */
 
 #include "../../../common/config.h"
-#define LEADER_NO_TIMEOUT
-#define LEADER_TIMEOUT 10000
+
+#define UNICODE_KEY_LNX	LCTL(LSFT(KC_U))
+
+#define DYNAMIC_MACRO_DELAY 100
