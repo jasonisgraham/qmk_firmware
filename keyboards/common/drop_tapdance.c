@@ -2469,8 +2469,14 @@ void dance_f5_finished(tap_dance_state_t *state, void *user_data) {
   switch (dance_state[86].step) {
     case TAP_INTERRUPTED:
 case TAP_INTERRUPTED_HELD:
- case TAP: tap_code16(KC_F5); break;
+ case TAP: tap_code16(KC_F5);
+
+#ifdef AUDIO_ENABLE
+    PLAY_SONG(caps_lock_on_sound);
+#endif
+    break;
   case HOLD:
+
     tap_code16(RCTL(KC_F5)); break;
   case TAP2: tap_code16(KC_F5); tap_code16(KC_F5); break;
   default:

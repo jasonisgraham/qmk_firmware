@@ -66,7 +66,7 @@
 #define mod_r1 QK_LEAD
 #define mod_r2 KC_UP
 #define mod_r3 KC_DOWN
-#define mod_r4  KC_ENTER // TD(DANCE_MOD_R4) // TD(DANCE_HOTKEY_OR_COMPOSE)
+#define mod_r4  OSM(MOD_RCTL) // TD(DANCE_MOD_R4) // TD(DANCE_HOTKEY_OR_COMPOSE)
 /* #define mod_r4 TD(dance_k74) */
 
 
@@ -271,7 +271,7 @@
 
 #define my_raise_tab backtab
 #define BROWSER_MOST_RECENT_TAB LALT(KC_Z)
-#define my_raise_a _______
+#define my_raise_a TD(DANCE_F5)
 #define my_raise_s _______
 #define my_raise_d _______
 #define my_raise_f LALT(LSFT(KC_F8))
