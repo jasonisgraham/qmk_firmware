@@ -1,10 +1,11 @@
 #include "combos_defs.c"
 
 combo_t key_combos[COMBO_COUNT] = {
-    COMBO(combo_emacs_sel_d_f, BROWSER_MOST_RECENT_TAB),
     COMBO(combo_j_k, KC_ENTER),
-    COMBO(combo_d_f, OSL(_EMACS_SELECT)),
-    COMBO(combo_q_w, KC_TAB),
+    COMBO(combo_emacs_sel_q_w, BROWSER_MOST_RECENT_TAB),
+    COMBO(combo_q_w, OSL(_EMACS_SELECT)),
+    COMBO(combo_d_f, KC_TAB),
+    COMBO(combo_raise_d_raise_f, LSFT(KC_TAB)),
     COMBO(combo_raise_q_raise_w, backtab),
     COMBO(combo_lower_q_lower_w, backtab),
     COMBO(combo_f_b, _______),
@@ -47,7 +48,7 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo_comma_dot, KC_EQUAL),
     /* COMBO(combo_d_f, OSL(_LOWER)), */
     /* COMBO(combo_d_t,EMACS_TO_DELETE), */
-    COMBO(combo_e_f, _______),
+    COMBO(combo_e_f, KC_TAB),
     COMBO(combo_e_t, _______),
     COMBO(combo_editing_comma__editing_period, emacs_indent_buffer),
     COMBO(combo_editing_j__editing_k, FISH_ACCEPT_SEND),
