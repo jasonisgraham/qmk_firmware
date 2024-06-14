@@ -561,9 +561,8 @@ void on_dance_mod_r4(tap_dance_state_t *state, void *user_data) {
 void dance_mod_r4_finished(tap_dance_state_t *state, void *user_data) {
   dance_state[24].step = dance_step(state);
   switch (dance_state[24].step) {
-  case TAP:
-  case TAP_INTERRUPTED:
-    tap_code16(QK_LEAD);
+  case HOLD:
+    layer_on(_R4);
     break;
   default:
       tap_code16(KC_ENTER);
@@ -572,7 +571,12 @@ void dance_mod_r4_finished(tap_dance_state_t *state, void *user_data) {
 }
 
 void dance_mod_r4_reset(tap_dance_state_t *state, void *user_data) {
-  wait_ms(10);
+    wait_ms(10);
+  switch (dance_state[24].step) {
+  case HOLD:
+    layer_off(_R4);
+    break;
+  }
   dance_state[24].step = 0;
 }
 
