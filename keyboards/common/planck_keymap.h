@@ -35,6 +35,12 @@ const uint32_t PROGMEM unicode_map[] = {
     raise_left_shift, my_raise_z, my_raise_x, my_raise_c,  my_raise_v,      my_raise_b, raise_down,     my_raise_n,           my_raise_m,           my_raise_comma,         KC_3,           raise_slash, \
     MO(_SYSTEM), _______, KC_ENTER,        _______,        TO(_BASE), _______, raise_left,      my_space,   raise_key_4_9,       KC_INSERT,  KC_DOWN,         KC_UP
 
+#define planck_r4 _______, _______, _______, _______, _______, _______,   _______, _______, _______, _______, _______, _______, \
+        _______, _______, _______, _______, _______, _______, raise_up, _______, _______, _______, _______, _______, \
+        _______, _______, _______, _______, _______, _______, raise_down, _______, _______, _______, _______, _______, \
+        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,_______, _______
+
+
 
 #define planck_shiftlock KC_TAB,   LSFT(KC_Q),     LSFT(KC_W),     LSFT(KC_E),     LSFT(KC_R),     LSFT(KC_T), TO_BASE,    LSFT(KC_Y),     my_cap_u,     my_cap_i,     my_cap_o,     my_cap_p, \
     esc_ctrl,          my_cap_a,     my_cap_s,     my_cap_d,     my_cap_f,     LSFT(KC_G), _______,    my_cap_h,     my_cap_j,     my_cap_k,     my_cap_l,     my_cap_semi, \
