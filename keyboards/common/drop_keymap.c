@@ -30,6 +30,7 @@ enum drop_layers {
     _MOTION,
     _FN,
     _ALL_MODS,
+    _R4,
     _LEADER1,
 };
 
