@@ -66,7 +66,7 @@
 #define mod_r1 QK_LEAD
 #define mod_r2 KC_UP
 #define mod_r3 KC_DOWN
-#define mod_r4  OSM(MOD_RCTL) // TD(DANCE_MOD_R4) // TD(DANCE_HOTKEY_OR_COMPOSE)
+#define mod_r4 TD(DANCE_MOD_R4) // TD(DANCE_HOTKEY_OR_COMPOSE)
 /* #define mod_r4 TD(dance_k74) */
 
 
