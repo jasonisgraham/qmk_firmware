@@ -13,7 +13,7 @@ const uint32_t PROGMEM unicode_map[] = {
 #define planck_base  top_left,    my_q,    my_w,    my_e,    my_r,   my_t, mod_r1,    my_y,           my_u,    my_i,    my_o,     my_p, \
     esc_ctrl , my_a,   my_s,   my_d,   my_f,   my_g, mod_r2,  my_h,         my_j,   my_k,   my_l,   my_semicolon, \
         my_left_shift,        my_z,           my_x,           my_c,           my_v,           my_b, mod_r3,     my_n,   my_m,   my_comma,   my_period,   my_forward_slash, \
-        hyper, level3,   alt_keyboard,         alt,    super,RAISE,    my_space,           LOWER,          my_right_of_lower, mod_r4, key_left,  key_right
+        hyper, level3,   alt_keyboard,         alt, RAISE,  super, mod_r4,   my_space,           LOWER,          my_right_of_lower,   key_left,  key_right
 
 #define planck_alt _______, _______, _______, _______, _______, _______,   _______, _______, _______, _______, _______, _______, \
     _______, _______, _______, _______, _______, _______, KC_TAB, _______, _______, _______, _______, _______, \
