@@ -40,7 +40,7 @@ enum drop_layers {
 #include "../../../common/keycodes.c"
 #include "../../../common/common_fns.c"
 
-#include "../../../common/key_overrides.c"
+/* #include "../../../common/key_overrides.c" */
 #include "../../../common/drop_colors.c"
 #include "../../../common/drop_tapdance.c"
 

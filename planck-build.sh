@@ -13,7 +13,7 @@ if [[ "lhs" = $km ]]; then
 fi
 
 # if [[ $km = "default" ]]; then
-qmk generate-autocorrect-data -kb planck/rev7 -km $km autocorrect.txt
+# qmk generate-autocorrect-data -kb planck/rev7 -km $km autocorrect.txt
 # fi
 
 qmk flash -kb planck/rev7 -km $km

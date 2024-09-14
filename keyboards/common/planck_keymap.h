@@ -120,7 +120,7 @@ const uint32_t PROGMEM unicode_map[] = {
 #define planck_system                                \
     SYSTEM_LAYER_DEACTIVATE, _______, _______, _______, RESET_INPUT_PREFS,     _______, SYSTEM_LAYER_DEACTIVATE, _______, KC_BRIGHTNESS_DOWN, KC_BRIGHTNESS_UP, QK_CLEAR_EEPROM, KC_MEDIA_PLAY_PAUSE, \
         _______, _______, _______, DB_TOGG, _______, _______, DM_REC1, DM_PLY1, KC_AUDIO_VOL_DOWN, KC_AUDIO_VOL_UP, QK_AUTOCORRECT_ON, DB_TOGG, \
-        QK_AUTO_SHIFT_TOGGLE, _______ , _______, _______, _______, _______,   DM_REC2, DM_PLY2,  KC_AUDIO_MUTE, _______, _______, QK_BOOTLOADER, \
+        QK_AUTO_SHIFT_TOGGLE, _______ , _______, AC_ON, _______, _______,   DM_REC2, DM_PLY2,  KC_AUDIO_MUTE, _______, _______, QK_BOOTLOADER, \
         SYSTEM_LAYER_DEACTIVATE, _______, _______, _______, _______,     _______, DM_RSTP, _______, _______, _______, _______, _______
 
 
@@ -169,8 +169,8 @@ const uint32_t PROGMEM unicode_map[] = {
 
 
 #define planck_web _______, _______, _______, _______, RELOAD_TAP_INSPECTOR, COPY_TEXT_OPEN_NEW_TAB_SEARCH,   _______, _______, _______, _______, _______, _______, \
-    TO(_BASE), _______, _______, COPY_TORRENT_URL_THEN_OPEN, _______, _______, _______, _______, _______, _______, _______, _______, \
-    _______, _______, _______, _______, WEB_SAVE_FILE_UNDER_CURSOR, _______,   _______, _______, _______, _______, _______, _______, \
+        TO(_BASE), _______, _______, COPY_TORRENT_URL_THEN_OPEN, _______, BRAVE_SEARCH_TO_GOOGLE, _______, _______, _______, _______, _______, _______, \
+        _______, _______, CUT_TEXT_IN_FIRST_FIELD, _______, WEB_SAVE_FILE_UNDER_CURSOR, _______,   _______, _______, _______, _______, _______, _______, \
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
 
 #define planck_motion                                                   \
