@@ -63,6 +63,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         /*   } */
         /*   break; */
+
     case EASYMOTION_LEADER:
         if (record->event.pressed) {
             tap_code16(KC_ESC);
@@ -1147,11 +1148,53 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
         break;
 
-  case COPY_TEXT_OPEN_NEW_TAB_SEARCH:
-    if (record->event.pressed) {
-      SEND_STRING(SS_RCTL(SS_TAP(X_C))  SS_DELAY(10) SS_RCTL(SS_TAP(X_T)) SS_DELAY(100)  SS_RCTL(SS_TAP(X_V)) SS_DELAY(10) SS_TAP(X_ENTER));
-    }
-    break;
+    case BRAVE_SEARCH_TO_GOOGLE:
+        if (record->event.pressed) {
+            tap_code16(KC_ESC); wait_ms(10);
+            tap_code16(KC_ESC); wait_ms(10);
+
+            // select search field
+            tap_code16(KC_G); wait_ms(50);
+            tap_code16(KC_I); wait_ms(50);
+
+            // copy text
+            tap_code16(LSFT(RCTL(KC_HOME))); wait_ms(50);
+            tap_code16(RCTL(KC_X)); wait_ms(50);
+
+            // select search
+            tap_code16(RCTL(KC_L)); wait_ms(10);
+
+            // search google
+            tap_code16(KC_COLN); wait_ms(10);
+            tap_code16(KC_G); wait_ms(10);
+            tap_code16(KC_SPACE); wait_ms(10);
+
+            // paste and enter
+            tap_code16(RCTL(KC_V)); wait_ms(10);
+            tap_code16(KC_ENTER); wait_ms(10);
+        }
+        break;
+
+    case CUT_TEXT_IN_FIRST_FIELD:
+        if (record->event.pressed) {
+            tap_code16(KC_ESC); wait_ms(10);
+            tap_code16(KC_ESC); wait_ms(10);
+
+            // select search field
+            tap_code16(KC_G); wait_ms(50);
+            tap_code16(KC_I); wait_ms(50);
+
+            // copy text
+            tap_code16(LSFT(RCTL(KC_HOME))); wait_ms(50);
+            tap_code16(RCTL(KC_X)); wait_ms(50);
+        }
+        break;
+
+    case COPY_TEXT_OPEN_NEW_TAB_SEARCH:
+        if (record->event.pressed) {
+            SEND_STRING(SS_RCTL(SS_TAP(X_C))  SS_DELAY(10) SS_RCTL(SS_TAP(X_T)) SS_DELAY(100)  SS_RCTL(SS_TAP(X_V)) SS_DELAY(10) SS_TAP(X_ENTER));
+        }
+        break;
 
   case EMACS_INSERT_GET_FEED:
     if (record->event.pressed) {

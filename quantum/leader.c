@@ -1,7 +1,6 @@
 // Copyright 2023 QMK
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#include "print.h"
 #include "leader.h"
 #include "timer.h"
 #include "util.h"
@@ -78,7 +77,6 @@ void leader_reset_timer(void) {
 }
 
 bool leader_sequence_is(uint16_t kc1, uint16_t kc2, uint16_t kc3, uint16_t kc4, uint16_t kc5) {
-    printf("[kc1, ls[0]] = [%u, %u], [kc2, ls[1]] = [%u, %u]\n\n", kc1, leader_sequence[0], kc2, leader_sequence[1]);
     return leader_sequence[0] == kc1 && leader_sequence[1] == kc2 && leader_sequence[2] == kc3 && leader_sequence[3] == kc4 && leader_sequence[4] == kc5;
 }
 

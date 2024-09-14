@@ -119,7 +119,7 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo_period_slash, LALT(KC_DOT)),
     COMBO(combo_q_w_e, adhoc_set_hotkey),
     COMBO(combo_emacs_sel_q_w, BROWSER_MOST_RECENT_TAB),
-    COMBO(combo_r_t, EMACS_BUFFER_REVERT),
+    /* COMBO(combo_r_t, EMACS_BUFFER_REVERT), */
     COMBO(combo_raise_comma_raise_l, KC_TILD),
     COMBO(combo_raise_i_raise_o, EMACS_WRAP_IN_THREAD_LAST),
     COMBO(combo_raise_j_raise_i, KC_RPRN),

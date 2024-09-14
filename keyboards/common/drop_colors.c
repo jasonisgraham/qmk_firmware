@@ -3,6 +3,9 @@
 #include "user_song_list.c"
 #endif
 
+#define RGBLED_NUM 9
+
+
 #ifndef DROP_DEFAULT_ANIMATION
 #define DROP_DEFAULT_ANIMATION 0
 #endif
