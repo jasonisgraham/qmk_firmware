@@ -134,7 +134,7 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo_raise_w_raise_e, LSFT(KC_TAB)),
     COMBO(combo_right__lower_j_i, OSL(_FILES)),
     COMBO(combo_right_to_up, KC_UP),
-    COMBO(combo_s_d, OSM(MOD_RCTL)),
+    COMBO(combo_s_d, CW_TOGG),
     COMBO(combo_select_grave, EMACS_SEL_GRAVE),
     COMBO(combo_shiftlock_lower_ampr, KC_AMPR),
     COMBO(combo_shiftlock_lower_astr, KC_ASTR),
@@ -169,7 +169,7 @@ combo_t key_combos[COMBO_COUNT] = {
     /* COMBO(combo_e_r, KC_TAB), */
     COMBO(combo_e_r, _______),
     /* COMBO(combo_t_y, EMACS_TO_YANK), */
-    COMBO(combo_z_x, QK_LEAD),
+    /* COMBO(combo_z_x, QK_LEAD), */
     COMBO(combo_x_c, CTRL_X_ALL_MODS_OSM),
     COMBO(combo_c_v, TMUX_SELECT_TEXT),
     COMBO(combo_d_v, TMUX_SELECT_TEXT),

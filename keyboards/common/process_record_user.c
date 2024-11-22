@@ -170,7 +170,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     case TO_BASE:
         if (record->event.pressed) {
+#ifdef AUDIO_ENABLE
             PLAY_SONG(caps_lock_off_sound);
+#endif
             layer_move(_BASE);
             clear_modifiers();
             unregister_key(level3);
@@ -1267,6 +1269,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       rgblight_enable_noeeprom();
       rgblight_sethsv_noeeprom(HSV_GREEN);
 #endif
+      layer_move(_MOUSE);
 
       return false;
 

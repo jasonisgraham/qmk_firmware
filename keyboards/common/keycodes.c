@@ -15,7 +15,7 @@
 #define WINDOWS_COPY RCTL(KC_C)
 #define TMUX_SELECT_TEXT LALT(KC_LCBR)
 
-#define MOD_MASK_ALL_MODS_COMPAT (MOD_BIT_LCTRL | MOD_BIT_RCTRL | MOD_BIT_LALT | MOD_MASK_SHIFT | MOD_BIT_RGUI)
+#define MOD_MASK_ALL_MODS_COMPAT (MOD_BIT_LCTRL | MOD_BIT_RCTRL | MOD_BIT_LALT | MOD_BIT_RGUI)
 #define MOD_MASK_ALL_MODS (MOD_BIT_RALT | MOD_BIT_RCTRL | MOD_BIT_LCTRL | MOD_BIT_RCTRL | MOD_BIT_LALT | MOD_MASK_SHIFT | MOD_BIT_RGUI)
 #define OSL_RCTL_LALT (MOD_BIT_RCTRL | MOD_BIT_LALT)
 #define ULAUNCHER LGUI(KC_SPACE)
@@ -63,7 +63,7 @@
 #define SELECT_HOTKEY_3 LALT(LGUI(KC_F4))
 #define SELECT_HOTKEY_4 LALT(LGUI(KC_F5))
 #define SELECT_HOTKEY_5 LALT(LGUI(KC_F6))
-#define mod_r1 QK_LEAD
+#define mod_r1 KC_ENTER
 #define mod_r2 KC_UP
 #define mod_r3 KC_DOWN
 #define mod_r4 TD(DANCE_MOD_R4) // TD(DANCE_HOTKEY_OR_COMPOSE)
@@ -250,7 +250,7 @@
 #define my_lower_p KC_BSPACE
 #define my_lower_period BROWSER_TAB_RIGHT
 #define my_lower_semi TD(DANCE_QUOTE)
-#define my_lower_slash KC_EQUAL
+#define my_lower_slash TD(WWW_BACK_FORWARD)
 #define my_lower_u KC_PGDOWN
 /* #define my_lower_p KC_MINUS */
 /* #define my_lower_slash KC_GRAVE */
@@ -267,7 +267,7 @@
 #define my_raise_w osl_web
 #define my_raise_e TD(DANCE_PASTE_OR_CLIPBOARD)
 #define my_raise_r EMACS_BUFFER_REVERT
-#define my_raise_t _______
+#define my_raise_t KC_PGUP
 
 #define my_raise_tab backtab
 #define BROWSER_MOST_RECENT_TAB LALT(KC_Z)
@@ -275,13 +275,13 @@
 #define my_raise_s _______
 #define my_raise_d _______
 #define my_raise_f LALT(LSFT(KC_F8))
-#define my_raise_g _______
+#define my_raise_g KC_PGDOWN
 
 #define my_raise_z BROWSER_MOST_RECENT_TAB
 #define my_raise_x BROWSER_TAB_LEFT
 #define my_raise_c BROWSER_TAB_RIGHT
 #define my_raise_v TD(DANCE_SAVE_LOAD_NS_SWITCH)
-#define my_raise_b _______
+#define my_raise_b TD(WWW_BACK_FORWARD)
 
 #define HELM_CIDER_HISTORY LCTL(KC_H)
 #define my_raise_h KC_BSLASH
@@ -290,7 +290,7 @@
 #define my_raise_k KC_5
 #define my_raise_l KC_6
 #define my_raise_m KC_1
-#define my_raise_n KC_PIPE
+#define my_raise_n KC_UNDS
 #define my_raise_o KC_9
 #define my_raise_p KC_0
 #define my_raise_period KC_3
@@ -303,7 +303,7 @@
 #define raise_space KC_UNDS
 #define raise_key_4_9 KC_ENTER // KC_BSPC
 #define raise_semi  KC_DQUO
-#define raise_slash KC_PLUS
+#define raise_slash KC_BSLASH
 
 #define scroll_next RCTL(KC_D)
 #define scroll_prev RCTL(KC_U)
@@ -893,7 +893,7 @@ bool do_breathing = false;
 #define my_h KC_H
 #define my_i KC_I
 #define my_j KC_J
-#define my_k TD(DANCE_K)
+#define my_k KC_K
 #define my_l KC_L
 #define my_m KC_M
 #define my_n KC_N

@@ -7,4 +7,4 @@ if [[ -z $km ]]; then
     km=jasonisgraham
 fi
 
-clear; qmk flash -c -kb zsa/moonlander -km $km
+clear; qmk flash -c -kb zsa/voyager -km $km

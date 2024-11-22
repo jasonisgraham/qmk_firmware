@@ -1,7 +1,7 @@
 #include QMK_KEYBOARD_H
 #include "version.h"
 
-#include "../../../common/drop_keymap.c"
+#include "../../../../common/drop_keymap.c"
 // must be included before drop stuff
 #include "colors.c"
 
