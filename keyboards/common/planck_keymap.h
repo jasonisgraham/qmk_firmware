@@ -139,8 +139,8 @@ const uint32_t PROGMEM unicode_map[] = {
 
 #define planck_adhoc_set_key                                            \
     _______, LCTL(LALT(LGUI(KC_Q))), LCTL(LALT(LGUI(KC_W))), LCTL(LALT(LGUI(KC_E))),  LCTL(LALT(LGUI(KC_R))), _______,    SET_HOTKEY_1, LCTL(LALT(LGUI(KC_Y))), LCTL(LALT(LGUI(KC_U))), LCTL(LALT(LGUI(KC_I))), LCTL(LALT(LGUI(KC_O))), LCTL(LALT(LGUI(KC_P))), \
-        _______, _______, _______, LCTL(LALT(LGUI(KC_D))), _______,    LCTL(LALT(LGUI(KC_G))), SET_HOTKEY_5, _______, LCTL(LALT(LGUI(KC_J))), LCTL(LALT(LGUI(KC_K))), LCTL(LALT(LGUI(KC_L))), LCTL(LALT(LGUI(KC_SCLN))), \
-        _______,  LCTL(LALT(LGUI(KC_Z))), LCTL(LALT(LGUI(KC_X))), LCTL(LALT(LGUI(KC_C))), LCTL(LALT(LGUI(KC_V))), LCTL(LALT(LGUI(KC_V))), SET_HOTKEY_2, LCTL(LALT(LGUI(KC_N))), LCTL(LALT(LGUI(KC_M))), LCTL(LALT(LGUI(KC_COMMA))), LCTL(LALT(LGUI(KC_DOT))), LCTL(LALT(LGUI(KC_SLASH))), \
+        _______, _______, _______, LCTL(LALT(LGUI(KC_D))), _______,    LCTL(LALT(LGUI(KC_G))), SET_HOTKEY_5, LCTL(LALT(LGUI(KC_H))), LCTL(LALT(LGUI(KC_J))), LCTL(LALT(LGUI(KC_K))), LCTL(LALT(LGUI(KC_L))), LCTL(LALT(LGUI(KC_SCLN))), \
+        _______,  LCTL(LALT(LGUI(KC_Z))), LCTL(LALT(LGUI(KC_X))), LCTL(LALT(LGUI(KC_C))), LCTL(LALT(LGUI(KC_V))), LCTL(LALT(LGUI(KC_B))), SET_HOTKEY_2, LCTL(LALT(LGUI(KC_N))), LCTL(LALT(LGUI(KC_M))), LCTL(LALT(LGUI(KC_COMMA))), LCTL(LALT(LGUI(KC_DOT))), LCTL(LALT(LGUI(KC_SLASH))), \
     _______, _______, _______, _______,    _______, _______, SET_HOTKEY_3, _______,    _______, _______, SET_HOTKEY_4, _______
 
 

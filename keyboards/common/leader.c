@@ -1,8 +1,8 @@
 #include "leader.h"
 
-float leader_start_song[][2] = SONG(ONE_UP_SOUND);
-float leader_succeed_song[][2] = SONG(ALL_STAR);
-float leader_fail_song[][2] = SONG(RICK_ROLL);
+/* float leader_start_song[][2] = SONG(ONE_UP_SOUND); */
+/* float leader_succeed_song[][2] = SONG(ALL_STAR); */
+/* float leader_fail_song[][2] = SONG(RICK_ROLL); */
 
 void leader_start_user(void) {
         /* alt_colors(HSV_WHITE, HSV_FUSCIA); */

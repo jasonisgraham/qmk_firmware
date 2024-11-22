@@ -252,7 +252,7 @@ void dance_tab_finished(tap_dance_state_t *state, void *user_data) {
   case TAP_INTERRUPTED_HELD:
   case HOLD:
       register_code16(KC_LALT);
-      static_kinda_dim(HSV_GREEN);
+      layer_on(_ALT);
       break;
 
 
@@ -291,7 +291,8 @@ void dance_tab_reset(tap_dance_state_t *state, void *user_data) {
         layer_off(_CODE);
         break;
     case HOLD:
-      unregister_code16(KC_LALT);
+        unregister_code16(KC_LALT);
+        layer_off(_ALT);
 
 #ifdef RGBLIGHT_ENABLE
   rgblight_disable();
@@ -1922,11 +1923,11 @@ void hyper_finished(tap_dance_state_t *state, void *user_data) {
     break;
 
     default:
-/* #ifdef RGBLIGHT_ENABLE */
+#ifdef RGBLIGHT_ENABLE
       /* rgblight_enable_noeeprom(); */
       /* rgblight_mode_noeeprom(RGBLIGHT_MODE_BREATHING); */
       rgblight_sethsv_noeeprom(HSV_WHITE);
-/* #endif */
+#endif
       register_code16(KC_LCTL);
       layer_on(_HYPER);
       break;
@@ -2199,8 +2200,11 @@ void alt_finished(tap_dance_state_t *state, void *user_data) {
     break;
 
   default:
+      layer_on(_ALT);
       register_code16(KC_LALT);
+#ifdef RGBLIGHT_ENABLE
       static_kinda_dim(HSV_GREEN);
+#endif
       break;
   }
 }
@@ -2212,6 +2216,7 @@ void alt_reset(tap_dance_state_t *state, void *user_data) {
     unregister_code16(KC_DEL);
     break;
   default:
+      layer_off(_ALT);
     unregister_code16(KC_LALT);
 #ifdef RGBLIGHT_ENABLE
   rgblight_disable();
@@ -2310,27 +2315,16 @@ void dance_shift_finished(tap_dance_state_t *state, void *user_data) {
  dance_state[85].step = dance_step(state);
  dprintf("state: %d", dance_state[85].step);
   switch  (dance_state[85].step) {
-  case HOLD2:
-    layer_move(_SHIFTLOCK);
-#ifdef AUDIO_ENABLE
-    PLAY_SONG(caps_lock_on_sound);
-#endif
-    break;
-
-  case HOLD:
+  case TAP:
   case TAP_INTERRUPTED:
   case TAP_INTERRUPTED_HELD:
-      register_code16(KC_LSFT);
-      break;
-
   case TAP2:
   case TAP2_INTERRUPTED:
-      tap_code16(KC_LSHIFT);
-      tap_code16(KC_LSHIFT);
+      layer_on(_SHIFTLOCK);
       break;
 
   default:
-      tap_code16(KC_LPRN);
+      register_code16(KC_LSFT);
       break;
 
   }
@@ -2338,14 +2332,10 @@ void dance_shift_finished(tap_dance_state_t *state, void *user_data) {
 
 void dance_shift_reset(tap_dance_state_t *state, void *user_data) {
     wait_ms(10);
-    switch (dance_state[85].step) {
-    case HOLD2:
-        break;
-    case HOLD:
-    case TAP_INTERRUPTED:
-  case TAP_INTERRUPTED_HELD:
-    unregister_code16(KC_LSFT);
-    break;
+    switch (dance_state[85].step) {case TAP_INTERRUPTED:
+  default:
+      unregister_code16(KC_LSFT);
+      break;
 
   }
   dance_state[85].step = 0;

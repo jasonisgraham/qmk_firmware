@@ -133,3 +133,5 @@
 
 
 #define MACRO_WAIT 10
+
+#define AUTO_SHIFT_REPEAT
