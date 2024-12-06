@@ -273,7 +273,7 @@
 #define BROWSER_MOST_RECENT_TAB LALT(KC_Z)
 #define my_raise_a TD(DANCE_F5)
 #define my_raise_s _______
-#define my_raise_d _______
+#define my_raise_d KC_ENTER
 #define my_raise_f LALT(LSFT(KC_F8))
 #define my_raise_g KC_PGDOWN
 

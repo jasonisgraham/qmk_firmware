@@ -9,17 +9,17 @@
 #define LAYOUT_wrapper(...) LAYOUT_voyager(__VA_ARGS__)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    [_BASE] = LAYOUT_wrapper(planck_base,                             super, alt, MO(_WINMOVE), alt),
+    [_BASE] = LAYOUT_wrapper(planck_base,                             super, my_left_shift, MO(_WINMOVE), alt),
 
 
     [_ALT] = LAYOUT_wrapper(planck_alt                           ,_______, _______, _______, _______              ),
 
-    [_RAISE] = LAYOUT_wrapper(planck_raise,_______, _______, _______, _______),
+    [_RAISE] = LAYOUT_wrapper(planck_raise,_______, raise_left_shift, _______, _______),
 
-    [_SHIFTLOCK] = LAYOUT_wrapper(planck_shiftlock,_______, _______, _______, _______),
+    [_SHIFTLOCK] = LAYOUT_wrapper(planck_shiftlock,_______, SHIFTLOCK_LAYER_DEACTIVATE, _______, _______),
 
 
-    [_LOWER] = LAYOUT_wrapper(planck_lower,_______, _______, _______, _______),
+    [_LOWER] = LAYOUT_wrapper(planck_lower,_______, lower_left_shift, _______, _______),
 
     [_FN] = LAYOUT_wrapper(planck_fn,_______, _______, _______, _______),
 
@@ -27,8 +27,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_ROFI] = LAYOUT_wrapper(planck_rofi                             ,_______, _______, _______, _______),
 
-    [_EMACS] = LAYOUT_wrapper(planck_emacs
-                              ,_______, _______, _______, _______),
+    [_EMACS] = LAYOUT_wrapper(planck_emacs ,_______, emacs_left_shift, _______, _______),
 
     [_SA] = LAYOUT_wrapper(planck_sa
                            ,_______, _______, _______, _______),
@@ -43,8 +42,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 // 12
-    [_EDITING] = LAYOUT_wrapper(planck_editing
-                                ,_______, _______, _______, _______),
+    [_EDITING] = LAYOUT_wrapper(planck_editing ,_______,editing_left_shift, _______, _______),
 // 9
     [_WINMOVE] = LAYOUT_wrapper(planck_winmove                                ,_______, _______, _______, _______),
 
@@ -58,7 +56,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // 6
     [_WINDOWS] = LAYOUT_wrapper(planck_windows
-                                ,_______, _______, _______, _______),
+                                ,ALT_TAB, _______, _______, _______),
 
 
 // 7

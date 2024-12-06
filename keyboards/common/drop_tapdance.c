@@ -2316,11 +2316,14 @@ void dance_shift_finished(tap_dance_state_t *state, void *user_data) {
  dprintf("state: %d", dance_state[85].step);
   switch  (dance_state[85].step) {
   case TAP:
-  case TAP_INTERRUPTED:
-  case TAP_INTERRUPTED_HELD:
+      tap_code16(KC_BSLASH);
+      break;
   case TAP2:
   case TAP2_INTERRUPTED:
-      layer_on(_SHIFTLOCK);
+      tap_code16(KC_PIPE);
+      break;
+  case HOLD2:
+      register_code16(KC_PIPE);
       break;
 
   default:
@@ -2333,6 +2336,10 @@ void dance_shift_finished(tap_dance_state_t *state, void *user_data) {
 void dance_shift_reset(tap_dance_state_t *state, void *user_data) {
     wait_ms(10);
     switch (dance_state[85].step) {case TAP_INTERRUPTED:
+  case HOLD2:
+      unregister_code16(KC_PIPE);
+      break;
+
   default:
       unregister_code16(KC_LSFT);
       break;
