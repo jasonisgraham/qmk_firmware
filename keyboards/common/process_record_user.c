@@ -735,7 +735,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   case FISH_ACCEPT_SEND:
     if (record->event.pressed) {
-        SEND_STRING(SS_LALT(SS_LSFT(SS_TAP(X_L)))  SS_DELAY(50) SS_TAP(X_ENTER));
+        SEND_STRING(SS_RCTL(SS_TAP(X_E))  SS_DELAY(50) SS_TAP(X_ENTER));
 
     }
     break;
