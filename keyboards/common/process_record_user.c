@@ -1076,11 +1076,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     break;
 
-  case EMACS_PROJECTILE_FIND_FILE:
-    if (record->event.pressed) {
-        SEND_STRING(SS_LALT(SS_TAP(X_M)) SS_DELAY(50) "pf");
-    }
-    break;
+    case HELM_FIND_FILE:
+        if (record->event.pressed) {
+            SEND_STRING(SS_RCTL(SS_TAP(X_X)) SS_DELAY(50) SS_RCTL(SS_TAP(X_F)));
+        }
+        break;
+
+    case EMACS_PROJECTILE_FIND_FILE:
+        if (record->event.pressed) {
+            SEND_STRING(SS_LALT(SS_TAP(X_M)) SS_DELAY(50) "pf");
+        }
+        break;
 
   case EMACS_RE_FIND:
     if (record->event.pressed) {

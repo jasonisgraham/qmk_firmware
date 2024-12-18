@@ -95,14 +95,14 @@ const uint32_t PROGMEM unicode_map[] = {
 
 
 #define planck_editing EMACS_OTHER_WINDOW, EMACS_DESC_KEY, LCTL(KC_7),     CIDER_EVAL_OR_TERMINAL_EDIT, EMACS_BUFFER_REVERT, LCTL(KC_S),        TO_BASE, EMACS_YANK_IN_SEXP  , editing_u, editing_i, editing_o, PAREDIT_BACKWARD_UP, \
-        _______, _______, SURROUND, EMACS_KILL_IN_SEXP, LALT(KC_ENTER), GREP_STRING_IN_BUFFER_DIR,               KC_DELETE, editing_h, editing_j, editing_k, editing_l, EMACS_PRIVATE_READER, \
+        _______, _______, SURROUND, EMACS_KILL_IN_SEXP, HELM_FIND_FILE, GREP_STRING_IN_BUFFER_DIR,               KC_DELETE, editing_h, editing_j, editing_k, editing_l, EMACS_PRIVATE_READER, \
         editing_left_shift, EMACS_RECENTER_ON_DEFUN, SWAP_SELECTION_BOUNDARIES, EMACS_WINDOW_DELETE,    TD(DANCE_SAVE_LOAD_NS_SWITCH), _______,                                      KC_BACKSPACE, next_win_or_frame, EMACS_BUFFER_MAXIMIZE,  editing_comma, editing_period, TERM_CD_UP_DIR, \
         _______, _______, _______, _______, MO(_EMACS),  OSL(_MOUSE),                                                  FISH_ACCEPT_SEND, all_mods, MO(_EMACS), TO(_BASE), _______, emacs_indent_buffer
 
 
 #define planck_winmove                                 _______,   _______, _______, _______, _______, _______,  WINDOW_ALWAYS_ON_TOP, winmove_UL,_______, winmove_top, winmove_UR, TOGGLE_MENU_BAR, \
         _______, _______, _______, LALT(LGUI(LCTL(RCTL(KC_D)))),_______, _______, _______, winmove_L,   winmove_D, winmove_U ,   winmove_R,   _______, \
-        _______, _______, _______, EMACS_FRAME_FULL_SCREEN, _______, _______,  _______, winmove_DL, winmove_U_monitor, winmove_bottom, winmove_DR, _______, \
+        _______, _______, _______, EMACS_FRAME_FULL_SCREEN, _______, _______,  _______, winmove_DL, winmove_U_monitor, winmove_bottom, winmove_DR, CLOSE_WINDOW, \
         _______, _______, _______, _______, WINDOW_TOGGLE_HORIZONTAL_MAX, _______,         _______,         winmove_L_monitor, winmove_D_monitor,   winmove_R_monitor, _______,     _______
 
 #define planck_winmove_monitor _______,   _______, _______, _______, _______, _______, _______,   _______, _______, _______, _______, _______, \
@@ -126,7 +126,7 @@ const uint32_t PROGMEM unicode_map[] = {
 
 #define planck_windows ALT_TAB, WINDOWS_Q,   LGUI(KC_W),   select_emacs,     TD(DANCE_40),   LGUI(KC_T), LGUI(KC_MINUS),  LGUI(KC_Y),   LGUI(KC_7),        LGUI(KC_8),     LGUI(KC_9),     LGUI(KC_0), \
         TO_BASE, LGUI(KC_A),  select_slack, show_desktop     ,LGUI(KC_F),      _______, KC_TAB,  LGUI(KC_H),     windows_j,   windows_k,   windows_l,   LGUI(KC_SCLN), \
-        TO_BASE, LGUI(KC_Z),     select_firefox,     LGUI(KC_C),     LGUI(KC_V),    _______, LSFT(KC_TAB), LGUI(KC_N),   LGUI(KC_M),  _______, LSFT(LGUI(KC_K)), LALT(KC_F4), \
+        TO_BASE, LGUI(KC_Z),     select_firefox,     LGUI(KC_C),     LGUI(KC_V),    _______, LSFT(KC_TAB), LGUI(KC_N),   LGUI(KC_M),  _______, LSFT(LGUI(KC_K)), CLOSE_WINDOW, \
         _______, _______, _______,         _______,        _______,     ALT_TAB,   _______, ROFI_DRUN,      GUI(KC_MINUS),  _______, LSFT (ALT_TAB), ALT_TAB
 
 

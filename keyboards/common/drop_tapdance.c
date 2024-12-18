@@ -91,6 +91,7 @@ enum tap_dance_codes {
                       DANCE_SHIFT,
                       DANCE_SLASH,
                       DANCE_SPACE,
+    DANCE_WINMOVE_SELECT,
                       DANCE_SUPER,
                       DANCE_TAB,
                       DANCE_THREAD_FIRST,
@@ -2462,6 +2463,38 @@ void dance_super_reset(tap_dance_state_t *state, void *user_data) {
   dance_state[85].step = 0;
 }
 
+void on_dance_winmove_select(tap_dance_state_t *state, void *user_data) {}
+
+void dance_winmove_select_finished(tap_dance_state_t *state, void *user_data) {
+    dance_state[103].step = dance_step(state);
+    switch (dance_state[103].step) {
+    case HOLD:
+        layer_on(_WINMOVE);
+        break;
+    case HOLD2:
+        tap_code16(GUI(KC_F5));
+        break;
+
+    default:
+        set_oneshot_layer(_WINDOWS, ONESHOT_START);
+        break;
+    }
+}
+
+void dance_winmove_select_reset(tap_dance_state_t *state, void *user_data) {
+    switch (dance_state[103].step) {
+    case HOLD:
+        layer_off(_WINMOVE);
+        break;
+
+    default:
+        clear_oneshot_layer_state(ONESHOT_PRESSED);
+        break;
+    }
+    dance_state[103].step = 0;
+}
+
+
 
 void on_dance_f5(tap_dance_state_t *state, void *user_data) {}
 
@@ -2812,6 +2845,7 @@ tap_dance_action_t tap_dance_actions[] = {
                                              [DANCE_SHIFT] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_shift, dance_shift_finished, dance_shift_reset),
                                              [DANCE_SPACE] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_space, dance_space_finished, dance_space_reset),
                                              [DANCE_SUPER] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_super, dance_super_finished, dance_super_reset),
+                                             [DANCE_WINMOVE_SELECT] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_winmove_select, dance_winmove_select_finished, dance_winmove_select_reset),
                                              [DANCE_TAB] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_tab, dance_tab_finished, dance_tab_reset),
                                              [DANCE_THREAD_FIRST] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_thread_first, dance_thread_first_finished, dance_thread_first_reset),
                                              [DANCE_THREAD_LAST] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_thread_last, dance_thread_last_finished, dance_thread_last_reset),

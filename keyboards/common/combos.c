@@ -166,7 +166,7 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo_u_o, THREAD_LAST),
     /* COMBO(combo_w_d, EMACS_WRAP_HYDRA), */
     COMBO(combo_w_d, _______),
-    COMBO(combo_w_e, MO(_WINMOVE)),
+    COMBO(combo_w_e, TD (DANCE_WINMOVE_SELECT)),
     /* COMBO(combo_e_r, KC_TAB), */
     COMBO(combo_e_r, _______),
     /* COMBO(combo_t_y, EMACS_TO_YANK), */

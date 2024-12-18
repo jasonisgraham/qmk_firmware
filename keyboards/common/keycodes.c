@@ -63,10 +63,6 @@
 #define SELECT_HOTKEY_3 LALT(LGUI(KC_F4))
 #define SELECT_HOTKEY_4 LALT(LGUI(KC_F5))
 #define SELECT_HOTKEY_5 LALT(LGUI(KC_F6))
-#define mod_r1 KC_ENTER
-#define mod_r2 KC_UP
-#define mod_r3 KC_DOWN
-#define mod_r4 TD(DANCE_MOD_R4) // TD(DANCE_HOTKEY_OR_COMPOSE)
 /* #define mod_r4 TD(dance_k74) */
 
 
@@ -147,7 +143,6 @@
 
 /* #define RAISE MO(_RAISE) */
 #define CINNAMON_MENU_OPEN LALT(LGUI(KC_7))
-#define RAISE TD(DANCE_RAISE) //
 #define alt_tab ALT_TAB
 #define KC_BSPACE KC_BACKSPACE
 #define KC_BSLASH KC_BACKSLASH
@@ -169,8 +164,6 @@
 #define key_0_1 RCTL(LALT(KC_LSFT))
 #define key_4_11 LAYER_MOUSE_HOLD  // KC_DOWN //CYCLE_DROP_COLORS // LAYER_LOWER_HOLD
 #define key_4_12 KC_ENTER
-#define key_left KC_LEFT
-#define key_right KC_RIGHT
 #define lm_ctrl LM(_CTRL, MOD_RCTL)
 #define macro_alt_slash SS_LALT(SS_TAP(X_SLASH))
 
@@ -259,51 +252,53 @@
 
 #define my_minus _______
 
-#define raise_bspace LSFT(KC_TAB)
-#define my_raise RAISE
-#define my_raise_comma KC_2
 
-#define my_raise_q _______
-#define my_raise_w osl_web
-#define my_raise_e TD(DANCE_PASTE_OR_CLIPBOARD)
-#define my_raise_r EMACS_BUFFER_REVERT
-#define my_raise_t KC_PGUP
 
-#define my_raise_tab backtab
+
+
 #define BROWSER_MOST_RECENT_TAB LALT(KC_Z)
+#define HELM_CIDER_HISTORY LCTL(KC_H)
+
+#define my_raise RAISE
 #define my_raise_a TD(DANCE_F5)
-#define my_raise_s _______
+#define my_raise_b TD(WWW_BACK_FORWARD)
+#define my_raise_c BROWSER_TAB_RIGHT
 #define my_raise_d KC_ENTER
+#define my_raise_e TD(DANCE_PASTE_OR_CLIPBOARD)
 #define my_raise_f LALT(LSFT(KC_F8))
 #define my_raise_g KC_PGDOWN
-
-#define my_raise_z BROWSER_MOST_RECENT_TAB
-#define my_raise_x BROWSER_TAB_LEFT
-#define my_raise_c BROWSER_TAB_RIGHT
-#define my_raise_v TD(DANCE_SAVE_LOAD_NS_SWITCH)
-#define my_raise_b TD(WWW_BACK_FORWARD)
-
-#define HELM_CIDER_HISTORY LCTL(KC_H)
-#define my_raise_h KC_BSLASH
+#define my_raise_h KC_EQUAL
 #define my_raise_i KC_8
 #define my_raise_j KC_4
 #define my_raise_k KC_5
 #define my_raise_l KC_6
 #define my_raise_m KC_1
-#define my_raise_n KC_UNDS
+#define my_raise_n KC_PLUS
 #define my_raise_o KC_9
 #define my_raise_p KC_0
+#define my_raise_q _______
+#define my_raise_r EMACS_BUFFER_REVERT
+#define my_raise_s _______
+#define my_raise_t KC_PGUP
+#define my_raise_u  KC_7
+#define my_raise_v TD(DANCE_SAVE_LOAD_NS_SWITCH)
+#define my_raise_w osl_web
+#define my_raise_x BROWSER_TAB_LEFT
+#define my_raise_y  KC_PIPE
+#define my_raise_z BROWSER_MOST_RECENT_TAB
+
+#define my_raise_tab backtab
+#define my_raise_comma KC_2
 #define my_raise_period KC_3
 #define my_raise_top_right KC_DEL // TD(WWW_BACK_FORWARD)
-#define my_raise_u  KC_7
-#define my_raise_y  KC_BSLASH
 #define my_right_of_lower LT(_EMACS, KC_BACKSPACE)
 #define my_right_shift KC_RSFT // shift LM(_ALT, MOD_LSFT)
 #define my_singlequote KC_QUOTE
-#define raise_space KC_UNDS
+#define raise_bspace LSFT(KC_TAB)
 #define raise_key_4_9 KC_ENTER // KC_BSPC
 #define raise_semi  KC_DQUO
 #define raise_slash KC_BSLASH
+#define raise_space KC_UNDS
 
 #define scroll_next RCTL(KC_D)
 #define scroll_prev RCTL(KC_U)
@@ -578,6 +573,7 @@ enum custom_keycodes {
     CLJ_ANON,
     EMACS_EVIL_FIND,
     EMACS_PROJECTILE_FIND_FILE,
+    HELM_FIND_FILE,
     EMACS_FASD,
     EMACS_RE_FIND,
     EMACS_BACKWARD_UP,
@@ -664,7 +660,7 @@ enum custom_keycodes {
 };
 
 
-#define alt_keyboard_level3_and_adhoc_hotkey TD(DANCE_LEVEL3_ALT_KEYBOARD)
+#define CLOSE_WINDOW LALT(KC_F4)
 /* #define mod_r4 alt_keyboard_level3_and_adhoc_hotkey */
 
 #define max_buffer LALT(KC_ENTER)
@@ -780,7 +776,6 @@ bool do_breathing = false;
 #define CTRL_L RCTL(KC_L)
 #define ctrl_alt_s RALT(RCTL(KC_S))
 
-#define level3 COMPOSE
 #define alt_keyboard KEYBOARD_LAYOUT_HOLD_KEY
 #define META_X LALT(KC_X)
 
@@ -793,7 +788,6 @@ bool do_breathing = false;
 #define JETBRAINS_CLOSE_TAB RCTL(LSFT(KC_F4))
 
 
-#define super TD(DANCE_SUPER) // LM(_SUPER, MOD_LGUI) //TD(SUPER_WINDOWS)
 
 #define editing_q TD(DANCE_EDITING_Q)
 #define BROWSER_TAB_RIGHT TD(DANCE_30)
@@ -805,7 +799,6 @@ bool do_breathing = false;
 
 #define BROWSER_TAB_LEFT TD(DANCE_29)
 #define my_comma TD(DANCE_COMMA) //KC_COMMA //
-#define my_left_shift TD(DANCE_SHIFT)
 #define emacs_left_shift TD(DANCE_SHIFT_CURLY)
 #define editing_left_shift TD(DANCE_SHIFT_CURLY)
 #define raise_left_shift TD(DANCE_RAISE_SHIFT)
@@ -843,7 +836,6 @@ bool do_breathing = false;
 #define RIGHT_OR_END TD(DANCE_RIGHT_OR_END)
 #define my_lower_l KC_RIGHT   // RIGHT_OR_END
 #define tab TD(DANCE_TAB)
-#define top_left tab
 #define emacs_completion_at_point LALT(RCTL(KC_I))
 #define BRACKET_PAREN TD(DANCE_PAREN_BRACKET)
 #define windows_j LGUI(KC_J)
@@ -910,14 +902,25 @@ bool do_breathing = false;
 #define my_y KC_Y
 #define my_z KC_Z
 #define my_semicolon TD(DANCE_COLN)
-/* #endif */
-
-#define my_cap_semi my_semicolon
-
+#define mod_r1 KC_ENTER
+#define mod_r2 KC_UP
+#define mod_r3 KC_DOWN
+#define mod_r4 TD(DANCE_MOD_R4) // TD(DANCE_HOTKEY_OR_COMPOSE)
 #define my_forward_slash KC_SLASH
+#define top_left tab
+#define my_left_shift TD(DANCE_SHIFT)
+#define alt_keyboard_level3_and_adhoc_hotkey TD(DANCE_LEVEL3_ALT_KEYBOARD)
+#define level3 COMPOSE
+#define RAISE TD(DANCE_RAISE) //
+#define super TD(DANCE_SUPER) // LM(_SUPER, MOD_LGUI) //TD(SUPER_WINDOWS)
 #define my_grave TD(DANCE_TAB)
 #define my_period TD(DANCE_DOT)
 #define my_space TD(DANCE_SPACE)
+#define key_left KC_LEFT
+#define key_right KC_RIGHT
+/* #endif */
+
+#define my_cap_semi my_semicolon
 
 #define all_mods TD(DANCE_ALL_MODS)
 #define ROFI_CLIPBOARD SS_LCTL(SS_LALT(SS_RCTL("9")))
