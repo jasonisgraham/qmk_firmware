@@ -21,7 +21,7 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo_n_r3, KC_RIGHT),
     COMBO(combo_b_r3, KC_LEFT),
     COMBO(combo_g_r2, KC_RIGHT),
-    /* COMBO(combo_lower_semi, CLJ_ARROW), */
+    COMBO(combo_lower_semi, KC_QUOTE),
     /* COMBO(combo_mod1_g, QK_AREP), */
     COMBO(combo_mod1_y, TD(DANCE_MICROPHONE)),
     COMBO(combo_mod1_y_u, OSL(_LAYER_LOCK)),

@@ -260,44 +260,50 @@
 #define HELM_CIDER_HISTORY LCTL(KC_H)
 
 #define my_raise RAISE
-#define my_raise_a TD(DANCE_F5)
-#define my_raise_b TD(WWW_BACK_FORWARD)
-#define my_raise_c BROWSER_TAB_RIGHT
-#define my_raise_d KC_ENTER
+
+#define my_raise_q _______
+#define my_raise_w osl_web
 #define my_raise_e TD(DANCE_PASTE_OR_CLIPBOARD)
+#define my_raise_r EMACS_BUFFER_REVERT
+#define my_raise_t _______
+
+#define my_raise_a _______
+#define my_raise_s _______
+#define my_raise_d _______
 #define my_raise_f LALT(LSFT(KC_F8))
-#define my_raise_g KC_PGDOWN
-#define my_raise_h KC_EQUAL
+#define my_raise_g _______
+
+#define my_raise_z BROWSER_MOST_RECENT_TAB
+#define my_raise_x BROWSER_TAB_LEFT
+#define my_raise_c BROWSER_TAB_RIGHT
+#define my_raise_v _______
+#define my_raise_b _______
+
+#define my_raise_y  _______
+#define my_raise_u  KC_7
 #define my_raise_i KC_8
+#define my_raise_o KC_9
+#define my_raise_p KC_0
+
+#define my_raise_h _______
 #define my_raise_j KC_4
 #define my_raise_k KC_5
 #define my_raise_l KC_6
-#define my_raise_m KC_1
-#define my_raise_n KC_PLUS
-#define my_raise_o KC_9
-#define my_raise_p KC_0
-#define my_raise_q _______
-#define my_raise_r EMACS_BUFFER_REVERT
-#define my_raise_s _______
-#define my_raise_t KC_PGUP
-#define my_raise_u  KC_7
-#define my_raise_v TD(DANCE_SAVE_LOAD_NS_SWITCH)
-#define my_raise_w osl_web
-#define my_raise_x BROWSER_TAB_LEFT
-#define my_raise_y  KC_PIPE
-#define my_raise_z BROWSER_MOST_RECENT_TAB
+#define my_singlequote KC_QUOTE
 
-#define my_raise_tab backtab
+#define my_raise_n KC_PLUS
+#define my_raise_m KC_1
 #define my_raise_comma KC_2
 #define my_raise_period KC_3
+#define raise_slash KC_BSLASH
+
+#define my_raise_tab backtab
 #define my_raise_top_right KC_DEL // TD(WWW_BACK_FORWARD)
 #define my_right_of_lower LT(_EMACS, KC_BACKSPACE)
 #define my_right_shift KC_RSFT // shift LM(_ALT, MOD_LSFT)
-#define my_singlequote KC_QUOTE
 #define raise_bspace LSFT(KC_TAB)
 #define raise_key_4_9 KC_ENTER // KC_BSPC
 #define raise_semi  KC_DQUO
-#define raise_slash KC_BSLASH
 #define raise_space KC_UNDS
 
 #define scroll_next RCTL(KC_D)
