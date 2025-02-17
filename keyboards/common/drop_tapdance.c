@@ -252,8 +252,8 @@ void dance_tab_finished(tap_dance_state_t *state, void *user_data) {
 
   case TAP_INTERRUPTED_HELD:
   case HOLD:
-      register_code16(KC_LALT);
-      layer_on(_ALT);
+      register_code16(KC_LCTL);
+      layer_on(_HYPER);
       break;
 
 
@@ -292,8 +292,8 @@ void dance_tab_reset(tap_dance_state_t *state, void *user_data) {
         layer_off(_CODE);
         break;
     case HOLD:
-        unregister_code16(KC_LALT);
-        layer_off(_ALT);
+        unregister_code16(KC_LCTL);
+        layer_off(_HYPER);
 
 #ifdef RGBLIGHT_ENABLE
   rgblight_disable();
@@ -2439,7 +2439,7 @@ void dance_super_finished(tap_dance_state_t *state, void *user_data) {
         layer_on(_SUPER);
         break;
     case HOLD2:
-        tap_code16(LALT(KC_F4));
+        tap_code16(KC_LGUI);
         break;
 
     default:
@@ -2452,9 +2452,9 @@ void dance_super_reset(tap_dance_state_t *state, void *user_data) {
     // layer_off(_ROFI) and layer_off(_ROFI) are handled by post_process_record_user
     switch (dance_state[85].step) {
     case HOLD:
-      del_mods(MOD_BIT(KC_LGUI));
-    layer_off(_SUPER);
-    break;
+        del_mods(MOD_BIT(KC_LGUI));
+        layer_off(_SUPER);
+        break;
 
   default:
     clear_oneshot_layer_state(ONESHOT_PRESSED);
@@ -2468,27 +2468,31 @@ void on_dance_winmove_select(tap_dance_state_t *state, void *user_data) {}
 void dance_winmove_select_finished(tap_dance_state_t *state, void *user_data) {
     dance_state[103].step = dance_step(state);
     switch (dance_state[103].step) {
-    case HOLD:
-        layer_on(_WINMOVE);
+    case TAP:
+        set_oneshot_layer(_WINDOWS, ONESHOT_START);
         break;
+
     case HOLD2:
         tap_code16(GUI(KC_F5));
         break;
 
     default:
-        set_oneshot_layer(_WINDOWS, ONESHOT_START);
+        layer_on(_WINMOVE);
         break;
     }
 }
 
 void dance_winmove_select_reset(tap_dance_state_t *state, void *user_data) {
     switch (dance_state[103].step) {
-    case HOLD:
-        layer_off(_WINMOVE);
+    case TAP:
+        clear_oneshot_layer_state(ONESHOT_PRESSED);
+        break;
+
+    case HOLD2:
         break;
 
     default:
-        clear_oneshot_layer_state(ONESHOT_PRESSED);
+        layer_off(_WINMOVE);
         break;
     }
     dance_state[103].step = 0;

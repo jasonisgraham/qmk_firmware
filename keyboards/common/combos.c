@@ -34,7 +34,7 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo_K_L_SEMI, OSM( MOD_LALT | MOD_RCTL | MOD_LCTL | MOD_LGUI)), // j+k+l+: l -> C-⎕
     COMBO(combo_K_cap_semi, OSM(MOD_LALT)),
     COMBO(combo_lower_o_p, AS_TOGG),
-    COMBO(combo_a_s, KC_ESC),
+    COMBO(combo_a_s, _______),
     /* COMBO(combo_A_S, SAVE_ALL_THEN_GOTO_BASE), */
     COMBO(combo_r2_h, TD(WWW_BACK_FORWARD)),
     /* COMBO(combo_h_backspace, TD(WWW_BACK_FORWARD)), */
@@ -135,7 +135,7 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo_right__lower_j_i, OSL(_FILES)),
     COMBO(combo_right_to_up, KC_UP),
     COMBO(combo_k_l, OSM(MOD_RCTL)),
-    COMBO(combo_s_d, OSM(MOD_RCTL)),
+    COMBO(combo_s_d, _______),
     COMBO(combo_select_grave, EMACS_SEL_GRAVE),
     COMBO(combo_shiftlock_lower_ampr, KC_AMPR),
     COMBO(combo_shiftlock_lower_astr, KC_ASTR),
@@ -164,13 +164,9 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo_super_space_r4, KC_DOWN),
     COMBO(combo_u_i, THREAD_FIRST),
     COMBO(combo_u_o, THREAD_LAST),
-    /* COMBO(combo_w_d, EMACS_WRAP_HYDRA), */
     COMBO(combo_w_d, _______),
     COMBO(combo_w_e, TD (DANCE_WINMOVE_SELECT)),
-    /* COMBO(combo_e_r, KC_TAB), */
     COMBO(combo_e_r, _______),
-    /* COMBO(combo_t_y, EMACS_TO_YANK), */
-    /* COMBO(combo_z_x, QK_LEAD), */
     COMBO(combo_x_c, CTRL_X_ALL_MODS_OSM),
     COMBO(combo_c_v, TMUX_SELECT_TEXT),
     COMBO(combo_d_v, TMUX_SELECT_TEXT),

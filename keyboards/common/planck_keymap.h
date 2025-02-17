@@ -13,7 +13,7 @@ const uint32_t PROGMEM unicode_map[] = {
 #define planck_base  top_left,    my_q,    my_w,    my_e,    my_r,   my_t, mod_r1,    my_y,           my_u,    my_i,    my_o,     my_p, \
     esc_ctrl , my_a,   my_s,   my_d,   my_f,   my_g, mod_r2,  my_h,         my_j,   my_k,   my_l,   my_semicolon, \
         my_left_shift,        my_z,           my_x,           my_c,           my_v,           my_b, mod_r3,     my_n,   my_m,   my_comma,   my_period,   my_forward_slash, \
-        hyper, level3,   alt_keyboard,         alt, RAISE,  super, mod_r4,   my_space,           LOWER,          my_right_of_lower,   key_left,  key_right
+        hyper, level3,   alt_keyboard,         alt, RAISE,  super, TD (DANCE_WINMOVE_SELECT),   my_space,           LOWER,          my_right_of_lower,   key_left,  key_right
 
 #define planck_alt _______, _______, _______, _______, _______, _______,   _______, _______, _______, _______, _______, _______, \
     _______, _______, _______, _______, _______, _______, KC_TAB, _______, _______, _______, _______, _______, \
@@ -31,7 +31,7 @@ const uint32_t PROGMEM unicode_map[] = {
         _______, _______, _______, _______,        _______,        _______, _______, _______,      _______, _______ ,       _______,           _______
 
 #define planck_raise backtab,    my_raise_q,          my_raise_w,  my_raise_e,         my_raise_r,       my_raise_t, TO_BASE, my_raise_y, my_raise_u,           my_raise_i,           my_raise_o,           my_raise_p, \
-        TD(WWW_BACK_FORWARD), my_raise_a, my_raise_s,   my_raise_d, my_raise_f,  my_raise_g, raise_up,       my_raise_h,         my_raise_j,           my_raise_k,           my_raise_l,      raise_semi, \
+        _______, my_raise_a, my_raise_s,   my_raise_d, my_raise_f,  my_raise_g, raise_up,       my_raise_h,         my_raise_j,           my_raise_k,           my_raise_l,      raise_semi, \
     raise_left_shift, my_raise_z, my_raise_x, my_raise_c,  my_raise_v,      my_raise_b, raise_down,     my_raise_n,           my_raise_m,           my_raise_comma,         KC_3,           raise_slash, \
     MO(_SYSTEM), _______, KC_ENTER,        _______,        TO(_BASE), _______, raise_left,      my_space,   raise_key_4_9,       KC_INSERT,  KC_DOWN,         KC_UP
 
@@ -52,9 +52,9 @@ const uint32_t PROGMEM unicode_map[] = {
     lower_left_shift,   my_lower_z,         my_lower_x,         my_lower_c,         my_lower_v,         my_lower_b, lower_down,  my_lower_n, my_lower_m, my_lower_comma,   my_lower_period, my_lower_slash, \
         LAYER_MOUSE_HOLD, _______, _______ , alt,   MO(_EDITING), OSL(_MOTION),       _______,             _______, lower_LOWER,          lower_right_of_lower, lower_key_4_11, lower_key_4_12
 
-#define planck_rofi ESC_THEN_BASE_LAYER, _______, LAUNCHER_WIKI, _______,  _______, LAUNCHER_TRANSLATE,    _______,  ROFI_LOCATE_GLOBAL, ROFI_LOCATE, LAUNCHER_WINDOWS, LAUNCHER_CLIPBOARD, COPY_LATEST_FILE_TO_CLIPBOARD, \
-        CLEAR_NOTIFICATIONS, _______, LAUNCHER_SYSTEM, LAUNCHER_DEFINE, LAUNCHER_FDFIND,   LAUNCHER_GOOGLE, _______, CIDER_HISTORY_WRITE, ROFI_CIDER_HISTORY, ROFI_EMOJI, ROFI_PROCESSES, ULAUNCHER, \
-        AUTOSHIFT_TOGGLE, _______, _______, ROFI_CALCULATOR, _______, _______, _______, OPEN_NOTIFICATIONS, CINNAMON_MENU_OPEN, PLASMA_SEARCH, _______, _______, \
+#define planck_rofi ESC_THEN_BASE_LAYER, _______, LAUNCHER_WIKI, _______,  _______, LAUNCHER_TRANSLATE,    KC_AUDIO_MUTE,  ROFI_LOCATE_GLOBAL, ROFI_LOCATE, LAUNCHER_WINDOWS, LAUNCHER_CLIPBOARD, COPY_LATEST_FILE_TO_CLIPBOARD, \
+        CLEAR_NOTIFICATIONS, _______, LAUNCHER_SYSTEM, LAUNCHER_DEFINE, LAUNCHER_FDFIND,   LAUNCHER_GOOGLE, KC_AUDIO_VOL_UP, CIDER_HISTORY_WRITE, ROFI_CIDER_HISTORY, ROFI_EMOJI, ROFI_PROCESSES, ULAUNCHER, \
+        AUTOSHIFT_TOGGLE, _______, _______, ROFI_CALCULATOR, _______, _______, KC_AUDIO_VOL_DOWN, OPEN_NOTIFICATIONS, CINNAMON_MENU_OPEN, PLASMA_SEARCH, _______, _______, \
     _______, _______, _______,    _______, _______, ROFI_DRUN, TO(_BASE), ROFI_DRUN,    _______, DM_REC1, DM_RSTP, DM_PLY1
 
 #define planck_emacs                                EMACS_FOCUS_REPL, EMACS_DESC_KEY, EMACS_WRAP_HYDRA, LCTL(KC_E), EMACS_HELM_MARK_RINGS, EMACS_TRANSPOSE,    _______, EMACS_HELM_KILL_RINGS, EMACS_DEFUN_END, EMACS_DEFUN_BEGIN, EMACS_HELM_OCCUR, _______, \
@@ -91,7 +91,7 @@ const uint32_t PROGMEM unicode_map[] = {
 #define planck_super                              KC_TAB, _______,   _______, _______, super_r, _______,    LALT(KC_TAB), _______,  _______, _______, _______, _______, \
         LGUI(LSFT(KC_J)), _______, _______, _______, super_f, super_g,    super_mod_r2, _______,  _______, _______, _______, _______, \
         KC_LSFT, _______, _______, _______,    _______, super_b, super_mod_r3, _______,    _______, _______, _______, _______, \
-        _______, adhoc_set_hotkey, _______, _______,    _______, _______, LALT(LSFT(KC_TAB)), ROFI_DRUN, _______, KC_GRAVE, LSFT(KC_TAB), KC_TAB
+        _______, adhoc_set_hotkey, _______, _______,    _______, CYCLE_WINDOW, CYCLE_WINDOW, ROFI_DRUN, KC_LGUI, KC_GRAVE, LSFT(KC_TAB), KC_TAB
 
 
 #define planck_editing EMACS_OTHER_WINDOW, EMACS_DESC_KEY, LCTL(KC_7),     CIDER_EVAL_OR_TERMINAL_EDIT, EMACS_BUFFER_REVERT, LCTL(KC_S),        TO_BASE, EMACS_YANK_IN_SEXP  , editing_u, editing_i, editing_o, PAREDIT_BACKWARD_UP, \
@@ -101,8 +101,8 @@ const uint32_t PROGMEM unicode_map[] = {
 
 
 #define planck_winmove                                 _______,   _______, _______, _______, _______, _______,  WINDOW_ALWAYS_ON_TOP, winmove_UL,_______, winmove_top, winmove_UR, TOGGLE_MENU_BAR, \
-        _______, _______, _______, LALT(LGUI(LCTL(RCTL(KC_D)))),_______, _______, _______, winmove_L,   winmove_D, winmove_U ,   winmove_R,   _______, \
-        _______, _______, _______, EMACS_FRAME_FULL_SCREEN, _______, _______,  _______, winmove_DL, winmove_U_monitor, winmove_bottom, winmove_DR, CLOSE_WINDOW, \
+        _______, _______, _______, LALT(LGUI(LCTL(RCTL(KC_D)))),_______, _______, KC_AUDIO_VOL_UP, winmove_L,   winmove_D, winmove_U ,   winmove_R,   _______, \
+        _______, _______, _______, EMACS_FRAME_FULL_SCREEN, _______, _______,  KC_AUDIO_VOL_DOWN, winmove_DL, winmove_U_monitor, winmove_bottom, winmove_DR, CLOSE_WINDOW, \
         _______, _______, _______, _______, WINDOW_TOGGLE_HORIZONTAL_MAX, _______,         _______,         winmove_L_monitor, winmove_D_monitor,   winmove_R_monitor, _______,     _______
 
 #define planck_winmove_monitor _______,   _______, _______, _______, _______, _______, _______,   _______, _______, _______, _______, _______, \
@@ -125,8 +125,8 @@ const uint32_t PROGMEM unicode_map[] = {
 
 
 #define planck_windows ALT_TAB, WINDOWS_Q,   LGUI(KC_W),   select_emacs,     TD(DANCE_40),   LGUI(KC_T), LGUI(KC_MINUS),  LGUI(KC_Y),   LGUI(KC_7),        LGUI(KC_8),     LGUI(KC_9),     LGUI(KC_0), \
-        TO_BASE, LGUI(KC_A),  select_slack, show_desktop     ,LGUI(KC_F),      _______, KC_TAB,  LGUI(KC_H),     windows_j,   windows_k,   windows_l,   LGUI(KC_SCLN), \
-        TO_BASE, LGUI(KC_Z),     select_firefox,     LGUI(KC_C),     LGUI(KC_V),    _______, LSFT(KC_TAB), LGUI(KC_N),   LGUI(KC_M),  _______, LSFT(LGUI(KC_K)), CLOSE_WINDOW, \
+        TO_BASE, LGUI(KC_A),  select_slack, show_desktop     ,LGUI(KC_F),    LGUI(KC_G), KC_TAB,  LGUI(KC_H),     windows_j,   windows_k,   windows_l,   LGUI(KC_SCLN), \
+        TO_BASE, LGUI(KC_Z),     select_firefox,     LGUI(KC_C),     LGUI(KC_V),   LGUI(KC_B), LSFT(KC_TAB), LGUI(KC_N),   LGUI(KC_M),  _______, LSFT(LGUI(KC_K)), CLOSE_WINDOW, \
         _______, _______, _______,         _______,        _______,     ALT_TAB,   _______, ROFI_DRUN,      GUI(KC_MINUS),  _______, LSFT (ALT_TAB), ALT_TAB
 
 

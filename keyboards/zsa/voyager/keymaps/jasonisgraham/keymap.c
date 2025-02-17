@@ -9,7 +9,7 @@
 #define LAYOUT_wrapper(...) LAYOUT_voyager(__VA_ARGS__)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    [_BASE] = LAYOUT_wrapper(planck_base,                             super, my_left_shift, TD (DANCE_WINMOVE_SELECT), alt),
+    [_BASE] = LAYOUT_wrapper(planck_base,                             super, my_left_shift, alt, TD (DANCE_WINMOVE_SELECT)),
 
 
     [_ALT] = LAYOUT_wrapper(planck_alt                           ,_______, _______, _______, _______              ),

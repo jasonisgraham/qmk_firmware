@@ -243,7 +243,9 @@
 #define my_lower_p KC_BSPACE
 #define my_lower_period BROWSER_TAB_RIGHT
 #define my_lower_semi TD(DANCE_QUOTE)
-#define my_lower_slash TD(WWW_BACK_FORWARD)
+/* #define my_lower_slash TD(WWW_BACK_FORWARD) */
+#define my_lower_slash KC_EQUAL
+
 #define my_lower_u KC_PGDOWN
 /* #define my_lower_p KC_MINUS */
 /* #define my_lower_slash KC_GRAVE */
@@ -416,6 +418,8 @@ enum custom_keycodes {
     /* RGB_SLD = SAFE_RANGE, */
     /* RGB_SLD = EZ_SAFE_RANGE, */
     FIRST = SAFE_RANGE,
+    CYCLE_WINDOW,
+    CYCLE_WINDOW_REVERSE,
     COPY_TORRENT_URL_THEN_OPEN,
     MATRIX_INCREASE_SPEED,
     MATRIX_DECREASE_SPEED,
@@ -666,6 +670,7 @@ enum custom_keycodes {
 };
 
 
+#define CYCLE_WINDOW LALT(LSFT(KC_TAB))
 #define CLOSE_WINDOW LALT(KC_F4)
 /* #define mod_r4 alt_keyboard_level3_and_adhoc_hotkey */
 
@@ -908,7 +913,7 @@ bool do_breathing = false;
 #define my_y KC_Y
 #define my_z KC_Z
 #define my_semicolon TD(DANCE_COLN)
-#define mod_r1 KC_ENTER
+#define mod_r1 LT (_SYSTEM, KC_ENTER)
 #define mod_r2 KC_UP
 #define mod_r3 KC_DOWN
 #define mod_r4 TD(DANCE_MOD_R4) // TD(DANCE_HOTKEY_OR_COMPOSE)
