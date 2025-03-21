@@ -2687,22 +2687,23 @@ void dance_left_or_home_reset(tap_dance_state_t *state, void *user_data) {
 
 
 void on_dance_quote(tap_dance_state_t *state, void *user_data) {
-  on_dance_fn(KC_QUOTE, state, user_data);
+  on_dance_fn(KC_DQUO, state, user_data);
 }
 
 void dance_quote_finished(tap_dance_state_t *state, void *user_data) {
   dance_state[90].step = dance_step(state);
   switch (dance_state[90].step) {
-  case HOLD: register_code16(KC_DQUO); break;
+  case HOLD: register_code16(KC_QUOT); break;
    case TAP2: tap_code16(KC_GRAVE);  break;
   case HOLD2: tap_code16(KC_TILDE); break;
-  default: tap_code16(KC_QUOTE); break;
+  default: tap_code16(KC_DQUO); break;
   }
 }
 
 void dance_quote_reset(tap_dance_state_t *state, void *user_data) {
   wait_ms(10);
   unregister_code16(KC_DQUO);
+  unregister_code16(KC_QUOT);
   dance_state[90].step = 0;
 }
 

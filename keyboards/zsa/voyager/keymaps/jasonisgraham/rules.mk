@@ -3,6 +3,7 @@
 # RGB_MATRIX_CUSTOM_KB = yes
 # AUDIO_ENABLE = yes
 MOUSEKEY_ENABLE = yes
+# TODO remove autoshift
 AUTO_SHIFT_ENABLE = yes
 AUTO_SHIFT_MODIFIERS = yes
 COMBO_ENABLE = yes

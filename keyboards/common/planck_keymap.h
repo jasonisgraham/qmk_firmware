@@ -60,7 +60,7 @@ const uint32_t PROGMEM unicode_map[] = {
 #define planck_emacs                                EMACS_FOCUS_REPL, EMACS_DESC_KEY, EMACS_WRAP_HYDRA, LCTL(KC_E), EMACS_HELM_MARK_RINGS, EMACS_TRANSPOSE,    _______, EMACS_HELM_KILL_RINGS, EMACS_DEFUN_END, EMACS_DEFUN_BEGIN, EMACS_HELM_OCCUR, _______, \
     _______, _______, REFRAME_SUBSCRIBE, REFRAME_DISPATCH, EMACS_FINDER_COMMENTARY, _______,   _______, editing_h, editing_j, editing_k, editing_l, _______, \
     emacs_left_shift, _______, _______, EMACS_WINDOW_DELETE, _______, _______, _______, _______, _______, _______, _______, _______, \
-    _______, _______,_______, OSL(_EMACS_SELECT), MO(_CODE), OSL(_EMACS_SELECT), _______,_______,_______,_______,_______,_______
+        _______, _______,_______, OSL(_EMACS_SELECT), MO(_CODE), OSL(_EMACS_SELECT), _______,_______,_______, lower_right_of_lower, lower_key_4_11,_______
 
 
 
@@ -100,8 +100,12 @@ const uint32_t PROGMEM unicode_map[] = {
         _______, _______, _______, _______, MO(_EMACS),  OSL(_MOUSE),                                                  FISH_ACCEPT_SEND, all_mods, MO(_EMACS), TO(_BASE), _______, emacs_indent_buffer
 
 
-#define planck_winmove                                 _______,   _______, _______, _______, _______, _______,  WINDOW_ALWAYS_ON_TOP, winmove_UL,_______, winmove_top, winmove_UR, TOGGLE_MENU_BAR, \
-        _______, _______, _______, LALT(LGUI(LCTL(RCTL(KC_D)))),_______, _______, KC_AUDIO_VOL_UP, winmove_L,   winmove_D, winmove_U ,   winmove_R,   _______, \
+#define planck_winmove                                 _______,   _______, _______, _______, _______, _______, \
+                                                       WINDOW_ALWAYS_ON_TOP, winmove_UL,_______, winmove_top, winmove_UR, TOGGLE_MENU_BAR, \
+
+                                                       _______, _______, _______, LALT(LGUI(LCTL(RCTL(KC_D)))),_______, _______, \
+                                                       KC_AUDIO_VOL_UP, winmove_L,   winmove_D, winmove_U ,   winmove_R,   _______, \
+
         _______, _______, _______, EMACS_FRAME_FULL_SCREEN, _______, _______,  KC_AUDIO_VOL_DOWN, winmove_DL, winmove_U_monitor, winmove_bottom, winmove_DR, CLOSE_WINDOW, \
         _______, _______, _______, _______, WINDOW_TOGGLE_HORIZONTAL_MAX, _______,         _______,         winmove_L_monitor, winmove_D_monitor,   winmove_R_monitor, _______,     _______
 

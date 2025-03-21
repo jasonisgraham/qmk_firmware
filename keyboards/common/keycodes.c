@@ -213,43 +213,42 @@
 #define lower_right_of_super TD(WWW_BACK_FORWARD)
 #define my_lower MO(_LOWER)
 #define my_lower_bs KC_DEL
-#define my_lower_comma BROWSER_TAB_LEFT
 
 #define my_lower_q KC_F1
 #define my_lower_w KC_F2
 #define my_lower_e KC_F3
 #define my_lower_r KC_F4
+#define my_lower_t TD(DANCE_SCREENSHOT)
 
 #define my_lower_a KC_F5
 #define my_lower_s KC_F6
 #define my_lower_d KC_F7
 #define my_lower_f KC_F8
+#define my_lower_g _______
 
 #define my_lower_z KC_F9
 #define my_lower_x KC_F10
 #define my_lower_c KC_F11
 #define my_lower_v KC_F12
-
 #define my_lower_b KC_APPLICATION
-#define my_lower_g RCTL(KC_GRAVE)
-#define my_lower_h KC_LEFT // LEFT_OR_HOME
+
+#define my_lower_y KC_HOME
+#define my_lower_u KC_PGDOWN
 #define my_lower_i KC_PGUP
+#define my_lower_o KC_END
+#define my_lower_p KC_BSPACE
+
+#define my_lower_h KC_LEFT // LEFT_OR_HOME
 #define my_lower_j KC_DOWN // PAGE_DOWN_OR_END
 #define my_lower_k KC_UP // PAGE_UP_OR_HOME
 #define my_lower_l KC_RIGHT   // RIGHT_OR_END
-#define my_lower_m EMACS_JUMP_ITEM // BROWSER_SEARCH_OPEN_TABS
-#define my_lower_n KC_BSLASH
-#define my_lower_o KC_END
-#define my_lower_p KC_BSPACE
-#define my_lower_period BROWSER_TAB_RIGHT
 #define my_lower_semi TD(DANCE_QUOTE)
-/* #define my_lower_slash TD(WWW_BACK_FORWARD) */
+
+#define my_lower_n _______
+#define my_lower_m EMACS_JUMP_ITEM // BROWSER_SEARCH_OPEN_TABS
+#define my_lower_comma BROWSER_TAB_LEFT
+#define my_lower_period BROWSER_TAB_RIGHT
 #define my_lower_slash KC_EQUAL
-
-#define my_lower_u KC_PGDOWN
-/* #define my_lower_p KC_MINUS */
-/* #define my_lower_slash KC_GRAVE */
-
 
 
 #define my_minus _______
@@ -278,22 +277,22 @@
 #define my_raise_z BROWSER_MOST_RECENT_TAB
 #define my_raise_x BROWSER_TAB_LEFT
 #define my_raise_c BROWSER_TAB_RIGHT
-#define my_raise_v _______
+#define my_raise_v SAVE_ALL_THEN_GOTO_BASE
 #define my_raise_b _______
 
-#define my_raise_y  _______
+#define my_raise_y  KC_EQUAL
 #define my_raise_u  KC_7
 #define my_raise_i KC_8
 #define my_raise_o KC_9
 #define my_raise_p KC_0
 
-#define my_raise_h _______
+#define my_raise_h KC_PLUS
 #define my_raise_j KC_4
 #define my_raise_k KC_5
 #define my_raise_l KC_6
 #define my_singlequote KC_QUOTE
 
-#define my_raise_n KC_PLUS
+#define my_raise_n _______
 #define my_raise_m KC_1
 #define my_raise_comma KC_2
 #define my_raise_period KC_3
