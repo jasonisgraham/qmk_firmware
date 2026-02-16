@@ -52,7 +52,7 @@ void leader_end_user(void) {
         layer_on(_RAISE);
         printf("leader raise\n");
         did_leader_succeed = true;
-    } else if (leader_sequence_two_keys(my_l, left_of_z)) {
+    } else if (leader_sequence_two_keys(my_l, my_shift)) {
         printf("leader shiftlock\n");
         layer_on(_SHIFTLOCK);
         did_leader_succeed = true;

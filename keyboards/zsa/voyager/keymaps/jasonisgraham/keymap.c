@@ -9,10 +9,9 @@
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT_voyager(top_left,    my_q,    my_w,    my_e,    my_r,   my_t, mod_r1, my_y,           my_u,    my_i,    my_o,     my_p,   \
                              esc_ctrl, my_a,   my_s,   my_d,   my_f,   my_g,  mod_r2, my_h,         my_j,   my_k,   my_l,   my_semicolon,  \
-                             left_of_z,        my_z,           my_x,           my_c,           my_v,           my_b, mod_r3,  my_n,   my_m,   my_comma,   my_dot,   my_forward_slash, \
+                             my_shift,        my_z,           my_x,           my_c,           my_v,           my_b, mod_r3,  my_n,   my_m,   my_comma,   my_dot,   my_forward_slash, \
                              hyper, level3,   alt_keyboard,         alt,  RAISE,   QK_REPEAT_KEY,     QK_ALT_REPEAT_KEY, my_space, LOWER,           my_right_of_lower,   key_left,  key_right, \
                              super,  TD(DANCE_OSM_LEADER_MO_MOUSE), TD(DANCE_OSM_LEADER_MO_MOUSE),  TD(DANCE_WINMOVE_SELECT)),
-
 
     // layer to swap left & right.  or maybe already exists?
 
@@ -24,12 +23,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_RAISE] = LAYOUT_voyager(raise_tab,    my_raise_q,          my_raise_w,  my_raise_e,         my_raise_r,       my_raise_t, raise_mod_r1,  my_raise_y, my_raise_u,           my_raise_i,           my_raise_o,           my_raise_p, \
                               _______, my_raise_a, my_raise_s,   my_raise_d, my_raise_f,  my_raise_g,  raise_mod_r2,       my_raise_h,         my_raise_j,           my_raise_k,           my_raise_l,      raise_semi,\
-                              raise_left_shift, my_raise_z, my_raise_x, my_raise_c,  my_raise_v,      my_raise_b,  raise_mod_r3,     my_raise_n,           my_raise_m,           my_raise_comma,         my_raise_period,           raise_slash,\
+                              raise_shift, my_raise_z, my_raise_x, my_raise_c,  my_raise_v,      my_raise_b,  raise_mod_r3,     my_raise_n,           my_raise_m,           my_raise_comma,         my_raise_period,           raise_slash,\
                               MO(_SYSTEM), _______, _______,        _______,        TO(_BASE), _______, _______,  my_space,   raise_key_4_9,       KC_INSERT,  KC_DOWN,         KC_UP, \
-                              _______, raise_left_shift, _______, _______),
+                              _______, raise_shift, _______, _______),
 
     [_SHIFTLOCK] = LAYOUT_voyager(KC_TAB,   LSFT(KC_Q),     LSFT(KC_W),     LSFT(KC_E),     LSFT(KC_R),     LSFT(KC_T), TO_BASE,     LSFT(KC_Y),     my_cap_u,     my_cap_i,     my_cap_o,     my_cap_p,\
-                                  _______,          my_cap_a,     my_cap_s,     my_cap_d,     my_cap_f,     LSFT(KC_G), _______,     my_cap_h,     my_cap_j,     my_cap_k,     my_cap_l,     my_cap_semi,\
+                                  SHIFTLOCK_LAYER_DEACTIVATE,          my_cap_a,     my_cap_s,     my_cap_d,     my_cap_f,     LSFT(KC_G), _______,     my_cap_h,     my_cap_j,     my_cap_k,     my_cap_l,     my_cap_semi,\
                                   SHIFTLOCK_LAYER_DEACTIVATE,          LSFT(KC_Z),     LSFT(KC_X),     LSFT(KC_C),     my_cap_v,     LSFT(KC_B), _______,    my_cap_n,     my_cap_m,     my_cap_comma,        my_cap_period,        my_forward_slash,\
                                   _______, _______, _______, _______, RAISE, _______, _______,        _______,    LOWER,  _______, _______, _______,\
                                   _______, SHIFTLOCK_LAYER_DEACTIVATE, _______, _______),
@@ -37,7 +36,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_LOWER] = LAYOUT_voyager(KC_GRAVE,   my_lower_q,          my_lower_w,          my_lower_e,          my_lower_r,  my_lower_t, _______,     my_lower_y,     my_lower_u,    my_lower_i,      my_lower_o,         my_lower_p, \
                               _______, my_lower_a,          my_lower_s,          my_lower_d,          my_lower_f,          my_lower_g,    _______,   my_lower_h,        my_lower_j,        my_lower_k,          my_lower_l,       my_lower_semi,\
-                              lower_left_shift,   my_lower_z,         my_lower_x,         my_lower_c,         my_lower_v,         my_lower_b,  _______, my_lower_n, my_lower_m, my_lower_comma,   my_lower_period, my_lower_slash, \
+                              lower_shift,   my_lower_z,         my_lower_x,         my_lower_c,         my_lower_v,         my_lower_b,  _______, my_lower_n, my_lower_m, my_lower_comma,   my_lower_period, my_lower_slash, \
                               _______, _______, _______ , alt,  MO(_EDITING),               KC_APP, _______,_______, lower_LOWER,          lower_right_of_lower, _______, MO(_SYSTEM), \
                               MO(_EDITING), RESET_INPUT_PREFS, _______,            lower_right_of_lower),
 
@@ -89,17 +88,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // 12
     [_EDITING] = LAYOUT_voyager(EMACS_OTHER_WINDOW, EMACS_DESC_KEY, LCTL(KC_7),     CIDER_EVAL_OR_TERMINAL_EDIT, EMACS_BUFFER_REVERT, LCTL(KC_S),        TO_BASE,                                 EMACS_YANK_IN_SEXP  , editing_u, editing_i, editing_o, PAREDIT_BACKWARD_UP, \
                                 _______, _______, SURROUND, EMACS_KILL_IN_SEXP, HELM_FIND_FILE, GREP_STRING_IN_BUFFER_DIR,                KC_DELETE,                                 editing_h, editing_j, editing_k, editing_l, EMACS_PRIVATE_READER, \
-                                editing_left_shift, EMACS_RECENTER_ON_DEFUN, SWAP_SELECTION_BOUNDARIES, EMACS_WINDOW_DELETE,    TD(DANCE_SAVE_LOAD_NS_SWITCH),                                       KC_BACKSPACE, _______,                                 next_win_or_frame, EMACS_BUFFER_MAXIMIZE,  EMACS_WINNER_UNDO, EMACS_WINNER_UNDO, TERM_CD_UP_DIR, \
+                                editing_shift, EMACS_RECENTER_ON_DEFUN, SWAP_SELECTION_BOUNDARIES, EMACS_WINDOW_DELETE,    TD(DANCE_SAVE_LOAD_NS_SWITCH),                                       KC_BACKSPACE, _______,                                 next_win_or_frame, EMACS_BUFFER_MAXIMIZE,  EMACS_WINNER_UNDO, EMACS_WINNER_UNDO, TERM_CD_UP_DIR, \
                                 _______, _______, _______, _______, MO(_EMACS),  OSL(_MOUSE),                                                   FISH_ACCEPT_SEND,                                 all_mods, MO(_EMACS), TO(_BASE), _______, emacs_indent_buffer, \
 
-                                _______,editing_left_shift, _______, _______),
+                                _______,editing_shift, _______, _______),
 
     [_EMACS] = LAYOUT_voyager(EMACS_FOCUS_REPL, EMACS_DESC_KEY, EMACS_WRAP_HYDRA, LCTL(KC_E), EMACS_HELM_MARK_RINGS, EMACS_TRANSPOSE,    _______,                               EMACS_HELM_KILL_RINGS, EMACS_DEFUN_END, EMACS_DEFUN_BEGIN, EMACS_HELM_OCCUR, _______, \
-                              _______, _______, REFRAME_SUBSCRIBE, REFRAME_DISPATCH, EMACS_FINDER_COMMENTARY, _______,    _______,                               editing_h, editing_j, editing_k, editing_l, _______, \
-                              emacs_left_shift, _______, _______, EMACS_WINDOW_DELETE, _______, _______,  _______,                               _______, _______, _______, _______, _______, \
+                              _______, _______, REFRAME_SUBSCRIBE, REFRAME_DISPATCH, EMACS_FINDER_COMMENTARY, _______,    _______,                               MOVE_ELEMENT_DOWN, MOVE_STATEMENT_DOWN, MOVE_STATEMENT_UP, MOVE_ELEMENT_UP,  _______, \
+                              emacs_shift, _______, _______, EMACS_WINDOW_DELETE, _______, _______,  _______,                               _______, _______, _______, _______, _______, \
                               _______, _______,_______, _______, MO(_CODE), OSL(_EMACS_SELECT), _______,                               _______,_______,_______, KC_DOWN, KC_UP, \
 
-                              _______, emacs_left_shift, _______, _______),
+                              _______, emacs_shift, _______, _______),
+
+    [_CODE] = LAYOUT_voyager(COMPOSE, CLJ_FREQS, EMACS_WRAP_HYDRA, _______, _______, _______,     _______, _______, MOVE_STATEMENT_DOWN, MOVE_STATEMENT_UP,   _______, DUPLICATE_LINE, \
+                             TO_BASE, _______, _______, _______, _______, _______,   _______, EMACS_SPLIT_WINDOW_LEFT, EMACS_SPLIT_WINDOW_DOWN, EMACS_SPLIT_WINDOW_UP, EMACS_SPLIT_WINDOW_RIGHT, _______,\
+                             _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,  _______,\
+                             _______, _______, _______, _______, _______, _______, _______, _______, _______,  _______, _______,  _______, \
+                                         _______, _______, _______, _______),
+
 
 
 // 9
@@ -157,12 +163,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                    SHIFTLOCK_LAYER_ACTIVATE, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
                                    SYSTEM_LAYER_ACTIVATE, _______, _______, _______,    LLOCK_RAISE,  _______, _______, _______,    LLOCK_LOWER, LLOCK_EDITING, _______, _______, \
                                    _______, _______, _______, _______),
-
-    [_CODE] = LAYOUT_voyager(COMPOSE, CLJ_FREQS, EMACS_WRAP_HYDRA, _______, _______, _______,     _______, _______, MOVE_STATEMENT_DOWN, MOVE_STATEMENT_UP,   _______, DUPLICATE_LINE, \
-                             TO_BASE, _______, _______, _______, _______, _______,   _______, EMACS_SPLIT_WINDOW_LEFT, EMACS_SPLIT_WINDOW_DOWN, EMACS_SPLIT_WINDOW_UP, EMACS_SPLIT_WINDOW_RIGHT, _______,\
-                             _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,  _______,\
-                             _______, _______, _______, _______, _______, _______, _______, _______, _______,  _______, _______,  _______, \
-                                         _______, _______, _______, _______),
 
     [_EMACS_SELECT] = LAYOUT_voyager(BROWSER_MOST_RECENT_TAB, EMACS_SEL_1,  EMACS_SEL_2, EMACS_SEL_3, EMACS_SEL_4, EMACS_SEL_5,  EMACS_SEL_MODR1, EMACS_SEL_Y, EMACS_SEL_U,    EMACS_SEL_I,           EMACS_SEL_O,           EMACS_SEL_P, \
                                      TO(_BASE), EMACS_SEL_A, EMACS_SEL_S, EMACS_SEL_D, EMACS_SEL_F, EMACS_SEL_G,  EMACS_SEL_MODR2, EMACS_SEL_H,  EMACS_SEL_J,           EMACS_SEL_K,           EMACS_SEL_L,           EMACS_SEL_SCLN,\

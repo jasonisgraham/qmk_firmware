@@ -39,7 +39,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_LOWER] = LAYOUT_moonlander(
                              LALT(KC_C),   KC_F1,          KC_F2,          KC_F3,          KC_F4,  TD(DANCE_SCREENSHOT),      _______,_______,  _______,    KC_HOME,     my_lower_u,    my_lower_i,      my_lower_o,         my_lower_p, \
                              _______, KC_F5,          KC_F6,          KC_F7,          KC_F8,          my_lower_g, _______,_______,_______,   my_lower_h,        my_lower_j,        my_lower_k,          my_lower_l,      my_lower_semi,
-                             lower_left_shift,   KC_F9,         KC_F10,         KC_F11,         KC_F12,         KC_APPLICATION, _______,_______, _______,   my_lower_n, my_lower_m, my_lower_comma,   my_lower_period, my_lower_slash,
+                             lower_shift,   KC_F9,         KC_F10,         KC_F11,         KC_F12,         KC_APPLICATION, _______,_______, _______,   my_lower_n, my_lower_m, my_lower_comma,   my_lower_period, my_lower_slash,
                              MO(_SYSTEM), _______, _______ , alt,   MO(_EDITING), _______, _______,    _______, lower_LOWER,          lower_right_of_lower,  lower_key_4_11, lower_key_4_12,
                              _______, _______, _______, _______, _______, _______,_______, _______, _______, _______, _______, _______,
                              _______, TD(DANCE_RIGHT_OR_END), KC_UP, KC_DOWN,  TD(DANCE_LEFT_OR_HOME), _______
@@ -103,7 +103,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                EMACS_ACE_WINDOW_SELECT, EMACS_DESC_KEY, LCTL(KC_7),     LCTL(KC_E), _______,     LCTL(KC_S) , _______,_______, LALT(KC_UNDS),  EMACS_YANK_IN_SEXP  , EMACS_NEXT_SEXP ,EMACS_PREV_SEXP ,  EMACS_HELM_OCCUR, KC_DELETE,
 
                                _______, _______, EMACS_LOCCUR, EMACS_KILL_IN_SEXP, LALT(KC_ENTER), EMACS_COPY_FILE_PATH, EMACS_SCROLL_UP,_______, _______, editing_h, editing_j, editing_k, editing_l, EMACS_PRIVATE_READER,
-                               emacs_left_shift, EMACS_RECENTER_ON_DEFUN, _______, EMACS_WINDOW_DELETE,    TD(DANCE_SAVE_LOAD_NS_SWITCH), _______, _______,_______,_______,   next_win_or_frame, EMACS_ACE_WINDOW_SWAP,  editing_comma, editing_period, TERM_CD_UP_DIR,
+                               emacs_shift, EMACS_RECENTER_ON_DEFUN, _______, EMACS_WINDOW_DELETE,    TD(DANCE_SAVE_LOAD_NS_SWITCH), _______, _______,_______,_______,   next_win_or_frame, EMACS_ACE_WINDOW_SWAP,  editing_comma, editing_period, TERM_CD_UP_DIR,
                                _______, _______, _______, _______, KC_HYPR,  _______,_______,  _______,                    MO(_EMACS), TO(_BASE), _______,  emacs_indent_buffer,
                                _______, _______, _______, _______, _______, _______,_______, _______, _______, _______, _______, _______,
                                _______, _______, _______, _______, _______, all_mods

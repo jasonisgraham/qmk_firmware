@@ -12,7 +12,7 @@ const uint32_t PROGMEM unicode_map[] = {
 
 #define planck_base      my_q,    my_w,    my_e,    my_r,   my_t,top_left, mod_r1,    my_y,           my_u,    my_i,    my_o,     my_p, \
         my_a,   my_s,   my_d,   my_f,   my_g,hyper, mod_r2,  my_h,         my_j,   my_k,   my_l,   my_semicolon, \
-        my_z,           my_x,           my_c,           my_v,           my_b,left_of_z, mod_r3,     my_n,   my_m,   my_comma,   my_dot,   my_forward_slash, \
+        my_z,           my_x,           my_c,           my_v,           my_b,my_shift, mod_r3,     my_n,   my_m,   my_comma,   my_dot,   my_forward_slash, \
         level3,   alt_keyboard,         alt, RAISE,  super, esc_ctrl ,  mod_r4,   my_space,           LOWER,          my_right_of_lower,   key_left,  key_right
 
 #define planck_alt _______, _______, _______, _______, _______, _______,   _______, _______, _______, _______, _______, _______, \
@@ -32,7 +32,7 @@ const uint32_t PROGMEM unicode_map[] = {
 
 #define planck_raise     my_raise_q,          my_raise_w,  my_raise_e,         my_raise_r,       my_raise_t, my_raise_tab, TO_BASE, my_raise_y, my_raise_u,           my_raise_i,           my_raise_o,           my_raise_p, \
                 my_raise_a, my_raise_s,   my_raise_d, my_raise_f,  my_raise_g,_______, raise_up,       my_raise_h,         my_raise_j,           my_raise_k,           my_raise_l,      raise_semi, \
-                my_raise_z, my_raise_x, my_raise_c,  my_raise_v,      my_raise_b,raise_left_shift, raise_down,     my_raise_n,           my_raise_m,           my_raise_comma,         KC_3,           raise_slash, \
+                my_raise_z, my_raise_x, my_raise_c,  my_raise_v,      my_raise_b,raise_shift, raise_down,     my_raise_n,           my_raise_m,           my_raise_comma,         KC_3,           raise_slash, \
         MO(_SYSTEM),_______, KC_ENTER,        _______,        TO(_BASE), _______, raise_left,      my_space,   raise_key_4_9,       KC_INSERT,  KC_DOWN,         KC_UP
 
 
@@ -43,7 +43,7 @@ const uint32_t PROGMEM unicode_map[] = {
 
 #define planck_lower                                  my_lower_q,          my_lower_w,          my_lower_e,          my_lower_r,  TD(DANCE_SCREENSHOT),KC_GRAVE,  TO_BASE,    KC_HOME,     my_lower_u,    my_lower_i,      my_lower_o,         my_lower_p, \
                 my_lower_a,          my_lower_s,          my_lower_d,          my_lower_f,          my_lower_g,_______, lower_backspace,      my_lower_h,        my_lower_j,        my_lower_k,          my_lower_l,       my_lower_semi, \
-                my_lower_z,         my_lower_x,         my_lower_c,         my_lower_v,         my_lower_b,lower_left_shift, lower_down,  my_lower_n, my_lower_m, my_lower_comma,   my_lower_period, my_lower_slash, \
+                my_lower_z,         my_lower_x,         my_lower_c,         my_lower_v,         my_lower_b,lower_shift, lower_down,  my_lower_n, my_lower_m, my_lower_comma,   my_lower_period, my_lower_slash, \
                 _______, _______ , alt,   MO(_EDITING), OSL(_MOTION),LAYER_MOUSE_HOLD,       _______,             _______, lower_LOWER,          lower_right_of_lower, lower_key_4_11, lower_key_4_12
 
 #define planck_rofi \
@@ -55,7 +55,7 @@ const uint32_t PROGMEM unicode_map[] = {
 #define planck_emacs                                \
             EMACS_DESC_KEY, EMACS_WRAP_HYDRA, LCTL(KC_E), EMACS_HELM_MARK_RINGS, EMACS_TRANSPOSE,EMACS_FOCUS_REPL,    _______, EMACS_HELM_KILL_RINGS, EMACS_DEFUN_END, EMACS_DEFUN_BEGIN, EMACS_HELM_OCCUR, _______, \
                 _______, REFRAME_SUBSCRIBE, REFRAME_DISPATCH, EMACS_FINDER_COMMENTARY, _______,_______,   _______, editing_h, editing_j, editing_k, editing_l, _______, \
-                _______, _______, EMACS_WINDOW_DELETE, _______, _______,emacs_left_shift, _______, _______, _______, _______, _______, _______, \
+                _______, _______, EMACS_WINDOW_DELETE, _______, _______,emacs_shift, _______, _______, _______, _______, _______, _______, \
                 _______,_______, OSL(_EMACS_SELECT), MO(_CODE), OSL(_EMACS_SELECT),_______, _______,_______,_______,_______,_______,_______
 
 
@@ -98,7 +98,7 @@ const uint32_t PROGMEM unicode_map[] = {
 #define planck_editing \
             EMACS_DESC_KEY, LCTL(KC_7),     CIDER_EVAL_OR_TERMINAL_EDIT, EMACS_BUFFER_REVERT, LCTL(KC_S),EMACS_OTHER_WINDOW,        TO_BASE, EMACS_YANK_IN_SEXP  , editing_u, editing_i, editing_o, PAREDIT_BACKWARD_UP, \
                 _______, SURROUND, EMACS_KILL_IN_SEXP, LALT(KC_ENTER), GREP_STRING_IN_BUFFER_DIR,_______,               KC_DELETE, editing_h, editing_j, editing_k, editing_l, EMACS_PRIVATE_READER, \
-                EMACS_RECENTER_ON_DEFUN, SWAP_SELECTION_BOUNDARIES, EMACS_WINDOW_DELETE,    TD(DANCE_SAVE_LOAD_NS_SWITCH), _______,editing_left_shift,                                      KC_BACKSPACE, next_win_or_frame, EMACS_BUFFER_MAXIMIZE,  editing_comma, editing_period, TERM_CD_UP_DIR, \
+                EMACS_RECENTER_ON_DEFUN, SWAP_SELECTION_BOUNDARIES, EMACS_WINDOW_DELETE,    TD(DANCE_SAVE_LOAD_NS_SWITCH), _______,editing_shift,                                      KC_BACKSPACE, next_win_or_frame, EMACS_BUFFER_MAXIMIZE,  editing_comma, editing_period, TERM_CD_UP_DIR, \
                 _______, _______, _______, MO(_EMACS),  OSL(_MOUSE),_______,                                                  FISH_ACCEPT_SEND, all_mods, MO(_EMACS), TO(_BASE), _______, emacs_indent_buffer
 
 

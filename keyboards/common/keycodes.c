@@ -142,7 +142,6 @@
 #define EMACS_NUMBER_INC LCTL(KC_PLUS)
 #define EMACS_OTHER_WINDOW_NEXT RCTL(LALT(KC_PGUP))
 #define EMACS_OTHER_WINDOW_PREV RCTL(LALT(KC_PGDOWN))
-#define HYPER_L LCTL(KC_L)
 
 
 /* #define RAISE MO(_RAISE) */
@@ -203,12 +202,9 @@
 
 #define my_cap_o LSFT(KC_O)
 #define my_cap_p LSFT(KC_P)
-#define my_lctl  TD(DANCE_ESC_CTRL) // MT(MOD_RCTL, KC_ESCAPE)
-#define esc_ctrl my_lctl
 
 
 #define BROWSER_SEARCH_OPEN_TABS RCTL(LSFT(KC_A))
-#define LOWER TD(DANCE_LOWER) // LT(_LOWER, KC_MINUS) //TD(DANCE_SHIFT)
 #define lower_LOWER TO(_BASE)
 #define lower_backspace RCTL(KC_UP)
 #define lower_down RCTL(KC_DOWN)
@@ -308,8 +304,6 @@
 
 #define my_raise_tab backtab
 #define my_raise_top_right KC_DEL // TD(WWW_BACK_FORWARD)
-#define my_right_of_lower LT(_EMACS, KC_BACKSPACE)
-#define my_right_shift KC_RSFT // shift LM(_ALT, MOD_LSFT)
 #define raise_bspace LSFT(KC_TAB)
 #define raise_key_4_9 KC_ENTER // KC_BSPC
 #define raise_semi  TD(DANCE_QUOTE)
@@ -807,9 +801,10 @@ bool do_breathing = false;
 #define CTRL_L RCTL(KC_L)
 #define ctrl_alt_s RALT(RCTL(KC_S))
 
-#define alt_keyboard KEYBOARD_LAYOUT_HOLD_KEY
 #define META_X LALT(KC_X)
 
+
+// TODO: make these work
 #define MOVE_STATEMENT_UP LALT(LSFT(KC_UP))
 #define MOVE_STATEMENT_DOWN LALT(LSFT(KC_DOWN))
 #define MOVE_ELEMENT_UP LALT(LSFT(KC_UP))
@@ -822,18 +817,16 @@ bool do_breathing = false;
 
 #define editing_q TD(DANCE_EDITING_Q)
 #define BROWSER_TAB_RIGHT TD(DANCE_30)
-#define alt TD(DANCE_ALT)
 #define alt_or_rctrl TD(DANCE_ALT_OR_RCTRL)
 #define hyper TD(DANCE_HYPER) // LM(_HYPER, MOD_LCTL) //KC_LCTL // OSL(_WINDOWS)
 
 /* #define hyper TD(DANCE_HYPER) */
 
 #define BROWSER_TAB_LEFT TD(DANCE_29)
-#define my_comma KC_COMMA //
-#define emacs_left_shift TD(DANCE_SHIFT_CURLY)
-#define editing_left_shift TD(DANCE_SHIFT_CURLY)
-#define raise_left_shift TD(DANCE_RAISE_SHIFT)
-#define lower_left_shift TD(DANCE_LOWER_SHIFT)
+#define lower_shift TD(DANCE_LOWER_SHIFT)
+#define emacs_shift TD(DANCE_SHIFT_CURLY)
+#define editing_shift TD(DANCE_SHIFT_CURLY)
+#define raise_shift SHIFTLOCK_LAYER_ACTIVATE
 #define my_semicolon TD(DANCE_COLN)
 #define my_cap_semi my_semicolon
 
@@ -867,7 +860,6 @@ bool do_breathing = false;
 #define LEFT_OR_HOME TD(DANCE_LEFT_OR_HOME)
 #define my_lower_h KC_LEFT // LEFT_OR_HOME
 #define RIGHT_OR_END TD(DANCE_RIGHT_OR_END)
-#define tab TD(DANCE_TAB)
 #define emacs_completion_at_point LALT(RCTL(KC_I))
 #define BRACKET_PAREN TD(DANCE_PAREN_BRACKET)
 #define windows_j LGUI(KC_J)
@@ -877,80 +869,74 @@ bool do_breathing = false;
 #define my_lower_u KC_PGDOWN
 #define my_lower_i KC_PGUP
 
-/* #ifdef USE_WORKMAN */
-/* #define my_a TD(DANCE_A) */
-/* #define my_b TD(DANCE_B) */
-/* #define my_c TD(DANCE_C) */
-/* #define my_d TD(DANCE_R) */
-/* #define my_e TD(DANCE_D) */
-/* #define my_f TD(DANCE_T) */
-/* #define my_g TD(DANCE_G) */
-/* #define my_h TD(DANCE_H) */
-/* #define my_i TD(DANCE_L) */
-/* #define my_j TD(DANCE_N) */
-/* #define my_k TD(DANCE_E) */
-/* #define my_l TD(DANCE_O) */
-/* #define my_m TD(DANCE_M) */
-/* #define my_n TD(DANCE_K) */
-/* #define my_o TD(DANCE_P) */
-/* #define my_p TD(DANCE_COLN) */
-/* #define my_q TD(DANCE_Q) */
-/* #define my_r TD(DANCE_Y) */
-/* #define my_s TD(DANCE_S) */
-/* #define my_t TD(DANCE_F) */
-/* #define my_u TD(DANCE_U) */
-/* #define my_v TD(DANCE_V) */
-/* #define my_w TD(DANCE_W) */
-/* #define my_x TD(DANCE_X) */
-/* #define my_y TD(DANCE_J) */
-/* #define my_z TD(DANCE_Z) */
-/* #define my_semicolon TD(DANCE_I) */
+#define my_lctl  TD(DANCE_ESC_CTRL) // MT(MOD_RCTL, KC_ESCAPE)
 
-/* #else */
-#define my_a KC_A
-#define my_b KC_B
-#define my_c KC_C
-#define my_d KC_D
+#define tab TD(DANCE_TAB)
+#define top_left tab
+#define my_q TD(DANCE_Q)
+#define my_w KC_W
 #define my_e KC_E
+#define my_r KC_R
+#define my_t KC_T
+
+#define mod_r1 KC_ENTER
+#define my_y KC_Y
+#define my_u KC_U
+#define my_i KC_I
+#define my_o KC_O
+#define my_p KC_P
+
+#define esc_ctrl my_lctl
+#define my_a KC_A
+#define my_s KC_S
+#define my_d KC_D
 #define my_f KC_F
 #define my_g KC_G
+
+#define mod_r2 KC_UP
 #define my_h KC_H
-#define my_i KC_I
 #define my_j KC_J
 #define my_k KC_K
 #define my_l KC_L
-#define my_m KC_M
-#define my_n KC_N
-#define my_o KC_O
-#define my_p KC_P
-#define my_q TD(DANCE_Q)
-#define my_r KC_R
-#define my_s KC_S
-#define my_t KC_T
-#define my_u KC_U
-#define my_v KC_V
-#define my_w KC_W
-#define my_x KC_X
-#define my_y KC_Y
-#define my_z KC_Z
 #define my_semicolon TD(DANCE_COLN)
-#define mod_r1 KC_ENTER
-#define mod_r2 KC_UP
+
+#define my_shift TD(DANCE_SHIFT)
+#define my_z KC_Z
+#define my_x KC_X
+#define my_c KC_C
+#define my_v KC_V
+#define my_b KC_B
+
 #define mod_r3 KC_DOWN
-#define mod_r4 TD(DANCE_MOD_R4) // TD(DANCE_HOTKEY_OR_COMPOSE)
-#define my_forward_slash KC_SLASH
-#define top_left tab
-#define left_of_z TD(DANCE_SHIFT)
-#define alt_keyboard_level3_and_adhoc_hotkey TD(DANCE_LEVEL3_ALT_KEYBOARD)
-#define level3 COMPOSE
-#define RAISE TD(DANCE_RAISE) //
-#define super TD(DANCE_SUPER) // LM(_SUPER, MOD_LGUI) //TD(SUPER_WINDOWS)
-#define my_grave TD(DANCE_TAB)
+#define my_n KC_N
+#define my_m KC_M
+#define my_comma KC_COMMA
 #define my_dot KC_DOT
+#define my_forward_slash KC_SLASH
+
+
+#define HYPER_L LCTL(KC_L)
+#define level3 COMPOSE
+#define alt_keyboard KEYBOARD_LAYOUT_HOLD_KEY
+#define alt TD(DANCE_ALT)
+#define RAISE TD(DANCE_RAISE)
+// --------
+
+// --------
 #define my_space TD(DANCE_SPACE)
+#define LOWER TD(DANCE_LOWER)
+#define my_right_of_lower LT(_EMACS, KC_BACKSPACE)
 #define key_left KC_LEFT
 #define key_right KC_RIGHT
-/* #endif */
+
+
+
+#define alt_keyboard_level3_and_adhoc_hotkey TD(DANCE_LEVEL3_ALT_KEYBOARD)
+#define super TD(DANCE_SUPER) // LM(_SUPER, MOD_LGUI) //TD(SUPER_WINDOWS)
+
+#define mod_r4 TD(DANCE_MOD_R4) // TD(DANCE_HOTKEY_OR_COMPOSE)
+
+#define my_grave TD(DANCE_TAB)
 
 #define my_cap_semi my_semicolon
 
