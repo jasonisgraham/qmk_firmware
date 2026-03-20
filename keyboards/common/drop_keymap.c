@@ -8,8 +8,8 @@ enum drop_layers {
     _BASE,
     _ALT,
     _RAISE,
-    _SHIFTLOCK,
     _LOWER,
+    _SHIFTLOCK,
     _ROFI,
     _EMACS,
     _CODE,
@@ -32,6 +32,7 @@ enum drop_layers {
     _LEADER1,
     _ALL_MODS,
     _R4,
+    _LEFT_TO_RIGHT,
 };
 
 /* #include "../../../common/config.h" */

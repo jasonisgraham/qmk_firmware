@@ -258,6 +258,11 @@ void dance_tab_finished(tap_dance_state_t *state, void *user_data) {
     tap_code16(KC_TAB);
     break;
 
+  case TAP2:
+      tap_code16(virtualbox_host_key);
+      break;
+
+
   case TAP_INTERRUPTED_HELD:
   case HOLD:
       tap_code16(LSFT(KC_TAB));
@@ -365,17 +370,14 @@ void dance_pb_finished(tap_dance_state_t *state, void *user_data) {
     case TAP3: tap_code16(KC_LCBR);  break;
     case HOLD3: tap_code16(KC_RCBR); break;
 
-
     case TAP2: tap_code16(KC_LBRACKET);  break;
     case HOLD2: tap_code16(KC_RBRACKET); break;
 
-    case TAP_INTERRUPTED:
-    case TAP:
-        tap_code16(KC_LPRN); break;
-
     case TAP_INTERRUPTED_HELD:
-    case HOLD:
-        tap_code16(KC_RPRN); break;
+    case HOLD: tap_code16(KC_RPRN); break;
+
+    case TAP_INTERRUPTED:
+    case TAP: tap_code16(KC_LPRN); break;
 
     default:
         tap_code16(KC_LPRN);
@@ -458,9 +460,9 @@ void dance_space_finished(tap_dance_state_t *state, void *user_data) {
         break;
 
     case TAP2:
+    case TAP2_INTERRUPTED:
         register_code16(KC_SPACE); register_code16(KC_SPACE); break;
 
-    case TAP2_INTERRUPTED:
     case HOLD2:
     case HOLD2_INTERRUPTED:
         layer_on(_WINMOVE);
@@ -611,29 +613,13 @@ void on_www_back_forward(tap_dance_state_t *state, void *user_data) {
 void www_back_forward_finished(tap_dance_state_t *state, void *user_data) {
   dance_state[27].step = dance_step(state);
   switch (dance_state[27].step) {
-  case TAP_INTERRUPTED:
-case TAP_INTERRUPTED_HELD:
-
-  case TAP: register_code16(LALT(KC_LEFT)); break;
-  case HOLD: register_code16(LALT(KC_RIGHT)); break;
-  case TAP2: register_code16(LALT(KC_LEFT)); register_code16(LALT(KC_LEFT)); break;
-  case HOLD2: register_code16(LALT(KC_RIGHT)); break;
-  case TAP2_INTERRUPTED: tap_code16(LALT(KC_LEFT)); register_code16(LALT(KC_LEFT));
+  case TAP: tap_code16(LALT(KC_LEFT)); break;
+  case HOLD: tap_code16(LALT(KC_RIGHT)); break;
   }
 }
 
 void www_back_forward_reset(tap_dance_state_t *state, void *user_data) {
   wait_ms(10);
-  switch (dance_state[27].step) {
-  case TAP_INTERRUPTED:
-case TAP_INTERRUPTED_HELD:
-
-  case TAP: unregister_code16(LALT(KC_LEFT)); break;
-  case TAP2: unregister_code16(LALT(KC_LEFT)); break;
-  case HOLD: unregister_code16(LALT(KC_RIGHT)); break;
-  case HOLD2: unregister_code16(LALT(KC_RIGHT)); break;
-  case TAP2_INTERRUPTED: unregister_code16(LALT(KC_LEFT)); break;
-  }
   dance_state[27].step = 0;
 }
 
