@@ -1,5 +1,6 @@
 #include QMK_KEYBOARD_H
 #include "version.h"
+
 #define MOON_LED_LEVEL LED_LEVEL
 #define ML_SAFE_RANGE SAFE_RANGE
 #include "../../../../common/drop_keymap.c"
@@ -11,7 +12,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                              esc_ctrl, my_a,   my_s,   my_d,   my_f,   my_g,  mod_r2, my_h,         my_j,   my_k,   my_l,   my_semicolon,  \
                              my_shift,        my_z,           my_x,           my_c,           my_v,           my_b, mod_r3,  my_n,   my_m,   my_comma,   my_dot,   my_forward_slash, \
                              hyper, level3,   alt_keyboard,         alt,  RAISE,   QK_REPEAT_KEY,     QK_ALT_REPEAT_KEY, my_space, LOWER,           my_right_of_lower,   key_left,  key_right, \
-                             super,  TD(DANCE_OSM_LEADER_MO_MOUSE), TD(DANCE_OSM_LEADER_MO_MOUSE),  TD(DANCE_WINMOVE_SELECT)),
+                             super,  TD(DANCE_OSM_LEADER_MO_MOUSE), MO(_LEFT_TO_RIGHT),  TD(DANCE_WINMOVE_SELECT)),
+
+    [_LEFT_TO_RIGHT] = LAYOUT_voyager(top_left,    my_q,    my_w,    my_e,    my_r,   my_t, top_left,    my_q,    my_w,    my_e,    my_r,   my_t, \
+                                      esc_ctrl, my_a,   my_s,   my_d,   my_f,   my_g, esc_ctrl, my_a,   my_s,   my_d,   my_f,   my_g,  \
+                                      my_shift,        my_z,           my_x,           my_c,           my_v,           my_b, my_shift,        my_z,           my_x,           my_c,           my_v,           my_b,  \
+                                      hyper, level3,   alt_keyboard,         alt,  RAISE,   QK_REPEAT_KEY,     QK_ALT_REPEAT_KEY, my_space, LOWER,           my_right_of_lower,   key_left,  key_right, \
+                                      super,  TD(DANCE_OSM_LEADER_MO_MOUSE), _______,  TD(DANCE_WINMOVE_SELECT)),
 
     // layer to swap left & right.  or maybe already exists?
 
@@ -110,8 +117,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // 9
     [_WINMOVE] = LAYOUT_voyager(_______,   _______, _______, _______, _______, WINDOW_ALWAYS_ON_TOP, _______,                                      winmove_UL, winmove_bottom, winmove_top,  winmove_UR, TOGGLE_MENU_BAR, \
-                                _______, _______, _______, LGUI(KC_D),_______, _______, CYCLE_WINDOWS_FORWARD,                                 winmove_L,   winmove_D, winmove_U ,   winmove_R,   _______, \
-                                _______, _______, _______, EMACS_FRAME_FULL_SCREEN, _______, _______, CYCLE_WINDOWS_BACKWARD,                                 winmove_DL, winmove_U_monitor, winmove_bottom, winmove_DR, CLOSE_WINDOW, \
+                                _______, _______, _______, LGUI(KC_D),_______, _______, KC_LEFT,                                 winmove_L,   winmove_D, winmove_U ,   winmove_R,   _______, \
+                                _______, _______, _______, EMACS_FRAME_FULL_SCREEN, _______, _______, KC_RIGHT,                                 winmove_DL, winmove_U_monitor, winmove_bottom, winmove_DR, CLOSE_WINDOW, \
                                 _______, _______, _______, _______, WINDOW_TOGGLE_HORIZONTAL_MAX, _______,     _______,                                          winmove_L_monitor, winmove_D_monitor,   winmove_R_monitor, _______, _______,  \
 
                                 TOGGLE_MENU_BAR, TOGGLE_MENU_BAR, TOGGLE_MENU_BAR, TOGGLE_MENU_BAR),

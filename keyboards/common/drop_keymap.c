@@ -32,6 +32,7 @@ enum drop_layers {
     _LEADER1,
     _ALL_MODS,
     _R4,
+    _LEFT_TO_RIGHT,
 };
 
 /* #include "../../../common/config.h" */

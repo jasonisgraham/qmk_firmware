@@ -1,14 +1,17 @@
 #include "combos_defs.c"
 
+// TODO
+// layer to temp make right-hand left-hand keys
+
 combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo_j_k, KC_ENTER),
     COMBO(combo_emacs_sel_q_w, BROWSER_MOST_RECENT_TAB),
     COMBO(combo_q_w, OSL(_EMACS_SELECT)),
     COMBO(combo_raise_d_raise_f, LSFT(KC_TAB)),
     COMBO(combo_lower_d_lower_f, backtab),
-    COMBO(combo_f_b, _______),
+    COMBO(combo_v_b, KC_APPLICATION),
     COMBO(combo_tab_a, _______),
-    COMBO(combo_tab_esc, _______),
+    COMBO(combo_tab_esc, UM(SNEK)),
     COMBO(combo_h_j, TD(WWW_BACK_FORWARD)),
     COMBO(combo_j_k_l, ALL_MODS_OSM),
     COMBO(combo_j_l, OSM(MOD_LALT)),
@@ -120,8 +123,8 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo_right_to_up, KC_UP),
     COMBO(combo_k_l, OSM(MOD_RCTL)),
     COMBO(combo_d_f, tab),
-    COMBO(combo_s_d, QK_CAPS_WORD_TOGGLE),
-    /* COMBO(combo_S_D, SHIFTLOCK_LAYER_DEACTIVATE), */
+    COMBO(combo_s_d, SHIFTLOCK_LAYER_ACTIVATE),
+    COMBO(combo_S_D, SHIFTLOCK_LAYER_DEACTIVATE),
     COMBO(combo_select_grave, EMACS_SEL_GRAVE),
     COMBO(combo_shiftlock_lower_ampr, KC_AMPR),
     COMBO(combo_shiftlock_lower_astr, KC_ASTR),
@@ -145,32 +148,25 @@ combo_t key_combos[COMBO_COUNT] = {
 
     /* COMBO(combo_n_m, KC_QUOT), */
     COMBO(combo_comma_dot, KC_PLUS),
-    COMBO(combo_dot_slash, _______),
-
     COMBO(combo_space_j, ONE_SHOT_ALT_KEYBOARD),
     COMBO(combo_space_k, ONE_SHOT_LEVEL3),
     COMBO(combo_space_l, QK_LEAD),
     COMBO(combo_space_m, LALT(KC_M)),
     COMBO(combo_space_m_k, OSM(MOD_MASK_ALL_MODS)),
-    COMBO(combo_super_f__super_b, MS_BTN1),
-    COMBO(combo_super_g__super_r3, MS_BTN2),
-    COMBO(combo_super_r4, KC_LEFT),
-    COMBO(combo_super_r__super_g, RESET_INPUT_PREFS),
     COMBO(combo_f_g, OSL(_MACROS)),
     COMBO(combo_r_g, TD(DANCE_F5)),
-    /* COMBO(combo_super_space, KC_DOWN), */
-    /* COMBO(combo_super_space_r4, KC_DOWN), */
     COMBO(combo_u_i, THREAD_FIRST),
     COMBO(combo_u_o, THREAD_LAST),
-    /* COMBO(combo_w_d, osl_web), */
     COMBO(combo_w_e, TD (DANCE_WINMOVE_SELECT)),
     COMBO(combo_e_r, _______),
     COMBO(combo_e_f, TD(DANCE_PASTE_OR_CLIPBOARD)),
     COMBO(combo_s_c, TMUX_SELECT_TEXT),
     COMBO(combo_x_c, TMUX_SELECT_TEXT),
     COMBO(combo_c_v, TD(DANCE_PASTE_OR_CLIPBOARD)),
-
     COMBO(combo_z_x_c, CTRL_X_ALL_MODS_OSM),
+    COMBO(combo_comma_dot_slash, VIMIUM_CLEAR_FIELD_THEN_INSERT),
+    COMBO(combo_raise_tab, CUT_WEB_FIELD),
+    COMBO(combo_dot_slash, CUT_WEB_FIELD),
 
     /* COMBO(combo_d_v, SHIFTLOCK_LAYER_ACTIVATE), */
     COMBO(combo_raise_shift, SHIFTLOCK_LAYER_ACTIVATE),

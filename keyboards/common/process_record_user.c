@@ -755,6 +755,34 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     break;
 
+    case CUT_WEB_FIELD:
+        if (record->event.pressed) {
+            tap_code16(KC_HOME);
+            wait_ms(50);
+            register_code16(KC_LSFT);
+            tap_code16(KC_END);
+            wait_ms(50);
+            unregister_code16(KC_LSFT);
+            wait_ms(50);
+            SEND_STRING(SS_RCTL("x"));
+            wait_ms(50);
+        }
+        break;
+
+    case VIMIUM_CLEAR_FIELD_THEN_INSERT:
+        if (record->event.pressed) {
+            SEND_STRING(SS_TAP(X_ESC) SS_DELAY(100));
+            SEND_STRING("g");
+            SEND_STRING(SS_DELAY(100));
+            SEND_STRING("i");
+            tap_code16(KC_HOME);
+            wait_ms(50);
+            tap_code16(LSFT(KC_END));
+            wait_ms(50);
+            tap_code16(KC_DEL);
+        }
+        break;
+
   case EMACS_YAS_DOC:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_ESC) SS_DELAY(100));

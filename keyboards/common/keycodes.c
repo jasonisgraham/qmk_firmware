@@ -225,7 +225,7 @@
 #define my_lower_s KC_F6
 #define my_lower_d KC_F7
 #define my_lower_f KC_F8
-#define my_lower_g _______
+#define my_lower_g TD(DANCE_PAREN_BRACKET)
 
 #define my_lower_z KC_F9
 #define my_lower_x KC_F10
@@ -272,17 +272,17 @@
 #define my_raise_r EMACS_BUFFER_REVERT
 #define my_raise_t KC_NO
 
-#define my_raise_a KC_HOME
+#define my_raise_a TD(DANCE_PAREN_BRACKET)
 #define my_raise_s KC_LEFT
 #define my_raise_d KC_DOWN
 #define my_raise_f KC_RIGHT
-#define my_raise_g KC_END
+#define my_raise_g TD(DANCE_PAREN_BRACKET)
 
 #define my_raise_z BROWSER_MOST_RECENT_TAB
 #define my_raise_x BROWSER_TAB_LEFT
 #define my_raise_c BROWSER_TAB_RIGHT
-#define my_raise_v LALT(LSFT(KC_F8))
-#define my_raise_b KC_SPACE
+#define my_raise_v TD(DANCE_PAREN_BRACKET)
+#define my_raise_b LALT(LSFT(KC_F8))
 
 #define my_raise_y TD(DANCE_PASTE_OR_CLIPBOARD)
 #define my_raise_u KC_7
@@ -424,6 +424,8 @@ enum custom_keycodes {
     /* RGB_SLD = SAFE_RANGE, */
     /* RGB_SLD = EZ_SAFE_RANGE, */
     FIRST = SAFE_RANGE,
+    CUT_WEB_FIELD,
+    VIMIUM_CLEAR_FIELD_THEN_INSERT,
     AUTOCORRECT_ON,
     AUTOCORRECT_OFF,
     CYCLE_WINDOW,
