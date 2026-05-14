@@ -11,7 +11,7 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo_lower_d_lower_f, backtab),
     COMBO(combo_v_b, KC_APPLICATION),
     COMBO(combo_tab_a, _______),
-    COMBO(combo_tab_esc, UM(SNEK)),
+    COMBO(combo_tab_esc, _______),
     COMBO(combo_h_j, TD(WWW_BACK_FORWARD)),
     COMBO(combo_j_k_l, ALL_MODS_OSM),
     COMBO(combo_j_l, OSM(MOD_LALT)),
