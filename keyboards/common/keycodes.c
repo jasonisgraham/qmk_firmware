@@ -306,7 +306,7 @@
 #define my_raise_top_right KC_DEL // TD(WWW_BACK_FORWARD)
 #define raise_bspace LSFT(KC_TAB)
 #define raise_key_4_9 KC_ENTER // KC_BSPC
-#define raise_semi  TD(DANCE_QUOTE)
+#define raise_semi  KC_ENTER
 #define raise_space KC_UNDS
 
 #define raise_mod_r1 KC_LBRACKET
