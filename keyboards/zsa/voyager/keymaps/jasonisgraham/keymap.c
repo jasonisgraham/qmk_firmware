@@ -1,6 +1,9 @@
 #include QMK_KEYBOARD_H
 #include "version.h"
 
+#define DUAL_FUNC_0 LT(11, KC_F12)
+#define DUAL_FUNC_1 LT(13, KC_F21)
+
 #define MOON_LED_LEVEL LED_LEVEL
 #define ML_SAFE_RANGE SAFE_RANGE
 #include "../../../../common/drop_keymap.c"
@@ -114,7 +117,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                          _______, _______, _______, _______),
 
 
-
 // 9
     [_WINMOVE] = LAYOUT_voyager(_______,   _______, _______, _______, _______, WINDOW_ALWAYS_ON_TOP, _______,                                      winmove_UL, winmove_bottom, winmove_top,  winmove_UR, TOGGLE_MENU_BAR, \
                                 _______, _______, _______, LGUI(KC_D),_______, _______, KC_LEFT,                                 winmove_L,   winmove_D, winmove_U ,   winmove_R,   _______, \
@@ -188,6 +190,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                             _______, _______, CUT_TEXT_IN_FIRST_FIELD, WEB_NEW_SPLIT_VIEW, WEB_SAVE_FILE_UNDER_CURSOR, _______, WEB_SWAP_TABS,   _______, _______, _______, _______, _______, \
                             _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
                             _______, _______, _______, _______),
+
+      [_NAVIGATOR] = LAYOUT_voyager(
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 QK_LLCK,        KC_MS_WH_LEFT,  KC_MS_WH_UP,    KC_MS_WH_DOWN,  KC_MS_WH_RIGHT, KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_MS_BTN4,     KC_MS_BTN1,     KC_MS_BTN2,     KC_MS_BTN5,     KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, TOGGLE_SCROLL,  DRAG_SCROLL,    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, NAVIGATOR_AIM,  KC_TRANSPARENT, NAVIGATOR_INC_CPI,NAVIGATOR_DEC_CPI,
+                                                    KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
+  ),
+
 
 /*     [_MOTION] = LAYOUT_voyager(planck_motion                                         ,_______, _______, _______, _______), */
 /*     [_LEADER1] = LAYOUT_voyager(planck_leader1                                         ,_______, _______, _______, _______) */

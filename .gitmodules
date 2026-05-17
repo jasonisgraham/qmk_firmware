@@ -26,3 +26,9 @@
 	path = lib/lvgl
 	url = https://github.com/qmk/lvgl.git
 	branch = qmk-master
+
+[submodule "modules/zsa"]
+    path = modules/zsa
+    url = https://github.com/zsa/qmk_modules.git
+    branch = main
+
