@@ -4,6 +4,7 @@
 /* /\* #include "musical_notes.h" *\/ */
 /* #include "../../quantum/hacks.c" */
 
+#define MINIMIZE_WINDOW LALT(RCTL(LSFT(KC_F6)))
 
 #define WEB_NEW_SPLIT_VIEW RCTL(LSFT(KC_F6))
 #define WEB_UNSPLIT_TABS RCTL(LSFT(KC_X))
@@ -281,8 +282,8 @@
 #define my_raise_z BROWSER_MOST_RECENT_TAB
 #define my_raise_x BROWSER_TAB_LEFT
 #define my_raise_c BROWSER_TAB_RIGHT
-#define my_raise_v TD(DANCE_PAREN_BRACKET)
-#define my_raise_b LALT(LSFT(KC_F8))
+#define my_raise_v LALT(LSFT(KC_F8))
+#define my_raise_b TD(WWW_BACK_FORWARD) // LALT(LSFT(KC_F8))
 
 #define my_raise_y TD(DANCE_PASTE_OR_CLIPBOARD)
 #define my_raise_u KC_7

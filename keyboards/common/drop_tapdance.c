@@ -613,29 +613,13 @@ void on_www_back_forward(tap_dance_state_t *state, void *user_data) {
 void www_back_forward_finished(tap_dance_state_t *state, void *user_data) {
   dance_state[27].step = dance_step(state);
   switch (dance_state[27].step) {
-  case TAP_INTERRUPTED:
-case TAP_INTERRUPTED_HELD:
-
-  case TAP: register_code16(LALT(KC_LEFT)); break;
-  case HOLD: register_code16(LALT(KC_RIGHT)); break;
-  case TAP2: register_code16(LALT(KC_LEFT)); register_code16(LALT(KC_LEFT)); break;
-  case HOLD2: register_code16(LALT(KC_RIGHT)); break;
-  case TAP2_INTERRUPTED: tap_code16(LALT(KC_LEFT)); register_code16(LALT(KC_LEFT));
+  case TAP: tap_code16(LALT(KC_LEFT)); break;
+  case HOLD: tap_code16(LALT(KC_RIGHT)); break;
   }
 }
 
 void www_back_forward_reset(tap_dance_state_t *state, void *user_data) {
   wait_ms(10);
-  switch (dance_state[27].step) {
-  case TAP_INTERRUPTED:
-case TAP_INTERRUPTED_HELD:
-
-  case TAP: unregister_code16(LALT(KC_LEFT)); break;
-  case TAP2: unregister_code16(LALT(KC_LEFT)); break;
-  case HOLD: unregister_code16(LALT(KC_RIGHT)); break;
-  case HOLD2: unregister_code16(LALT(KC_RIGHT)); break;
-  case TAP2_INTERRUPTED: unregister_code16(LALT(KC_LEFT)); break;
-  }
   dance_state[27].step = 0;
 }
 

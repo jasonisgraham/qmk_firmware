@@ -32,7 +32,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                               _______, my_raise_a, my_raise_s,   my_raise_d, my_raise_f,  my_raise_g,  raise_mod_r2,       my_raise_h,         my_raise_j,           my_raise_k,           my_raise_l,      raise_semi,\
                               raise_shift, my_raise_z, my_raise_x, my_raise_c,  my_raise_v,      my_raise_b,  raise_mod_r3,     my_raise_n,           my_raise_m,           my_raise_comma,         my_raise_period,           raise_slash,\
                               MO(_SYSTEM), _______, _______,        _______,        TO(_BASE), _______, _______,  my_space,   raise_key_4_9,       KC_INSERT,  KC_DOWN,         KC_UP, \
-                              _______, raise_shift, _______, _______),
+                              MINIMIZE_WINDOW, raise_shift, _______, _______),
 
     [_SHIFTLOCK] = LAYOUT_voyager(KC_TAB,   LSFT(KC_Q),     LSFT(KC_W),     LSFT(KC_E),     LSFT(KC_R),     LSFT(KC_T), TO_BASE,     LSFT(KC_Y),     my_cap_u,     my_cap_i,     my_cap_o,     my_cap_p,\
                                   SHIFTLOCK_LAYER_DEACTIVATE,          my_cap_a,     my_cap_s,     my_cap_d,     my_cap_f,     LSFT(KC_G), _______,     my_cap_h,     my_cap_j,     my_cap_k,     my_cap_l,     my_cap_semi,\
