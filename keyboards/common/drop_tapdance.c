@@ -2408,7 +2408,7 @@ void dance_super_finished(tap_dance_state_t *state, void *user_data) {
     dance_state[85].step = dance_step(state);
     switch (dance_state[85].step) {
     case HOLD:
-        add_mods(MOD_BIT(KC_LGUI));
+        register_key(KC_LGUI);
         layer_on(_SUPER);
         break;
     case HOLD2:
@@ -2429,7 +2429,8 @@ void dance_super_reset(tap_dance_state_t *state, void *user_data) {
     // layer_off(_ROFI) and layer_off(_ROFI) are handled by post_process_record_user
     switch (dance_state[85].step) {
     case HOLD:
-        del_mods(MOD_BIT(KC_LGUI));
+        unregister_key(KC_LGUI);
+        /* del_mods(MOD_BIT(KC_LGUI)); */
         layer_off(_SUPER);
         break;
     case HOLD2:

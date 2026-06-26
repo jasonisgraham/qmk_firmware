@@ -37,5 +37,6 @@ enum ploopy_keycodes {
 
 bool encoder_update_user(uint8_t index, bool clockwise);
 bool encoder_update_kb(uint8_t index, bool clockwise);
+bool is_drag_scroll_active(void);
 void toggle_drag_scroll(void);
 void cycle_dpi(void);

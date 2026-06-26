@@ -8,8 +8,10 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo_emacs_sel_q_w, BROWSER_MOST_RECENT_TAB),
     COMBO(combo_q_w, OSL(_EMACS_SELECT)),
     COMBO(combo_raise_d_raise_f, LSFT(KC_TAB)),
-    COMBO(combo_lower_d_lower_f, backtab),
-    COMBO(combo_v_b, KC_APPLICATION),
+    /* COMBO(combo_lower_d_lower_f, backtab), */
+    /* COMBO(combo_d_f, TD(WWW_BACK_FORWARD)), */
+    /* COMBO(combo_v_b, TD(WWW_BACK_FORWARD)), */
+    /* COMBO(combo_z_x, TD(WWW_BACK_FORWARD)), */
     COMBO(combo_tab_a, _______),
     COMBO(combo_tab_esc, _______),
     COMBO(combo_h_j, TD(WWW_BACK_FORWARD)),
@@ -122,9 +124,8 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo_right__lower_j_i, OSL(_FILES)),
     COMBO(combo_right_to_up, KC_UP),
     COMBO(combo_k_l, OSM(MOD_RCTL)),
-    COMBO(combo_d_f, tab),
-    COMBO(combo_s_d, SHIFTLOCK_LAYER_ACTIVATE),
-    COMBO(combo_S_D, SHIFTLOCK_LAYER_DEACTIVATE),
+    COMBO(combo_s_d, CW_TOGG),
+    COMBO(combo_S_D, CW_TOGG),
     COMBO(combo_select_grave, EMACS_SEL_GRAVE),
     COMBO(combo_shiftlock_lower_ampr, KC_AMPR),
     COMBO(combo_shiftlock_lower_astr, KC_ASTR),
