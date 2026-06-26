@@ -1,0 +1,19 @@
+#define POINTING_DEVICE_HIRES_SCROLL_ENABLE 1
+#define POINTING_DEVICE_HIRES_SCROLL_MULTIPLIER 30
+
+#define PLOOPY_DRAGSCROLL_MOMENTARY
+#define PLOOPY_DRAGSCROLL_DIVISOR_H 4.0
+#define PLOOPY_DRAGSCROLL_DIVISOR_V 4.0
+#define PLOOPY_DRAGSCROLL_INVERT
+
+#define PLOOPY_DPI_OPTIONS { 150, 300, 600, }
+#define PLOOPY_DPI_DEFAULT 2
+
+/* // Number of milliseconds between scroll events. (default is 5) */
+/* #define PLOOPY_SCROLL_DEBOUNCE 1000 // default of 5 cant be right, right? */
+
+#undef COMBO_COUNT
+#define COMBO_COUNT 10
+
+#undef TAPPING_TERM
+#define TAPPING_TERM 155
