@@ -2247,8 +2247,25 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 void post_process_record_user(uint16_t keycode, keyrecord_t *record) {
   // i cant think of any use case where id want to keep these layers active after 1st key.
   // these layers are only used as OSLs
-  if (layer_state_is(_WINDOWS) || layer_state_is(_ROFI)) {
-    layer_move(_BASE);
-  }
-  STATUS_LED_1(autocorrect_is_enabled());
+    if (layer_state_is(_WINDOWS) || layer_state_is(_ROFI)) {
+        layer_move(_BASE);
+    }
+    STATUS_LED_1(autocorrect_is_enabled());
+}
+bool caps_word_press_user(uint16_t keycode) {
+    switch (keycode) {
+        // Keycodes that continue Caps Word, with shift applied.
+    case KC_A ... KC_Z:
+    case KC_MINS:
+        add_weak_mods(MOD_BIT(KC_LSFT));  // Apply shift to next key.
+        return true;
+
+    case my_shift:
+    case esc_ctrl:
+    case super:
+        return false;  // Deactivate Caps Word.
+
+    default:
+        return true;
+    }
 }

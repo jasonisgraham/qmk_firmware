@@ -273,11 +273,11 @@
 #define my_raise_r EMACS_BUFFER_REVERT
 #define my_raise_t KC_NO
 
-#define my_raise_a TD(DANCE_PAREN_BRACKET)
+#define my_raise_a KC_SPACE
 #define my_raise_s KC_LEFT
 #define my_raise_d KC_DOWN
 #define my_raise_f KC_RIGHT
-#define my_raise_g TD(DANCE_PAREN_BRACKET)
+#define my_raise_g KC_ENTER
 
 #define my_raise_z BROWSER_MOST_RECENT_TAB
 #define my_raise_x BROWSER_TAB_LEFT
@@ -954,3 +954,7 @@ bool do_breathing = false;
 
 #define WEB_RELOAD KC_F5
 #define WEB_OPEN_TABS BROWSER_SEARCH_OPEN_TABS
+
+#define VOYAGER_USER_LEDS
+#define CAPS_WORD_INVERT_ON_SHIFT
+/* #define TD(DANCE_WINMOVE_SELECT) */
